@@ -1,0 +1,80 @@
+name: sovereign-tick
+# עורק-האוטונומיה-חסר-הסנדבוקס (v2 · T-42 — הרצף-המתמיד).
+# לקח-חי-2026-10-09: ה-scheduler-של-GitHub-החסיר-11-משבצות-cron-רצופות (0-הרצות-מתוזמנות;
+# העורק-שתק-ללא-כל-שגיאה). עורק-הנשען-על-המתזמן-לבדו אינו-רציף. לכן — ארבעה-גורמי-מכניסה:
+#   · schedule (cron — אם-יתעורר, מתקבל)  · push-ל-main (כל-דחיפה-מכה-נוספת)
+#   · workflow_dispatch (ידני-למפעיל)     · repository_dispatch (השרשרת-העצמית)
+# והשרשרת: כל-הרצה מסיימת ב-sleep-עד-המשבצת-הבאה → מנפיקה-את-הטביעה-הבאה
+# (GITHUB_TOKEN-בלבד; ל-documentation-של-GitHub: repository_dispatch-הוא-החריג-המוכח
+#  ש-GITHUB_TOKEN-מצית-אותו). מצערת-בתוך-הסקריפט (12-דק') מונעת-טביעות-כפולות,
+# ו-concurrency ממזגת-את-כל-הגורמים-לזרם-טורי-אחד — אפס-סערת-הרצות (יחס-1:1).
+# ה-runner-אפמרלי-במכוון — הרציפות-חיה-בריפו. אפס-PAT: GITHUB_TOKEN בלבד.
+on:
+  schedule:
+    # trace-1a1312f4: private-repo Actions minutes are a metered quota — once it
+    # ran dry, even a bare echo failed in ~2s (measured 18:01Z). The heavy public
+    # cadence moved to Domain/.github/workflows/sandbox-arteries.yml (public
+    # minutes); this lane is now an hourly redundancy + dispatch triggers.
+    - cron: "21 * * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [sovereign-tick]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sovereign-tick
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: tick (measure + receipts, self-throttled)
+        id: tick
+        run: node engine/sovereign-tick.mjs
+
+      # T-42 agent-3 merge: network mirror — FleetHQ public receipts → receipts/network.json.
+      # Runs only on genuine ticks (ticked!=0) — a throttled run stays a dead end by law.
+      - name: network-probe (mirror public sources)
+        if: steps.tick.outputs.ticked != '0'
+        run: node engine/network-probe.mjs
+
+      - name: leak-scan (fail-closed)
+        if: always()
+        run: |
+          node engine/leak-scan.mjs receipts/latest.json receipts/ticks.jsonl
+          for f in receipts/network.json receipts/network-log.jsonl; do
+            [ -f "$f" ] && node engine/leak-scan.mjs "$f"
+          done
+
+      - name: commit + push (rebase-safe)
+        run: |
+          git config user.name "sandbox-sovereign"
+          git config user.email "sandbox-sovereign@users.noreply.github.com"
+          git add receipts/
+          if git diff --cached --quiet; then
+            echo "no receipt changes — skip"
+          else
+            git commit -m "[tick] sovereign heartbeat: $(date -u +%FT%TZ)"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+      # trace-1a1312f4: the runner-sleep self-chain (sleep ≤870s on the metered
+      # runner) was the top private-minutes burner. The public-side
+      # sandbox-arteries workflow now carries the cadence; this lane stays
+      # hourly-cron + push + dispatch (manual re-ignite always possible).
