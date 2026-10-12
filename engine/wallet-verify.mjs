@@ -17,7 +17,40 @@ const REPO = process.env.WALLET_SLUG || "roshpinacare-sys/Saosmartwallet";
 const TOKEN = process.env.ECO_WALLET_TOKEN || "";
 const out = (...a) => console.log(...a);
 
-if (!TOKEN) { out("BLOCKED: ECO_WALLET_TOKEN absent — nothing measured, nothing claimed"); process.exit(2); }
+if (!TOKEN) {
+  // 3-a fix (measured run 38307263408): the token gate used to die HERE, before any
+  // receipt existed - breaking this lane's own receipt law ("honest verdicts always
+  // land, FAIL included") downstream: leak-scan exited 1 on the absent file, the commit
+  // step crashed (fatal pathspec on receipts/wallet, exit 128), and the verdict gate
+  // had nothing honest to read. The alarm itself stays EXACTLY as loud: same BLOCKED
+  // line, same exit 2, verdict=BLOCKED (never PASS) - but the honest receipt now lands.
+  out("BLOCKED: ECO_WALLET_TOKEN absent — nothing measured, nothing claimed");
+  const blocked = {
+    at: new Date().toISOString(),
+    slug: REPO,
+    walletHead: null,
+    checks: {},
+    asserts: [],
+    warns: [],
+    alerts: ["ECO_WALLET_TOKEN absent - owner secret not wired to this repo; nothing measured, nothing claimed"],
+    overall: "BLOCKED",
+    reason: "ECO_WALLET_TOKEN absent — nothing measured, nothing claimed",
+    provenance: {
+      runId: process.env.GITHUB_RUN_ID || null,
+      runUrl: process.env.GITHUB_SERVER_URL && process.env.GITHUB_RUN_ID
+        ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
+        : null,
+      sha: process.env.GITHUB_SHA || null,
+    },
+  };
+  try {
+    mkdirSync("receipts/wallet", { recursive: true });
+    writeFileSync("receipts/wallet/verdict.json", JSON.stringify(blocked, null, 2) + "\n");
+    appendFileSync("receipts/wallet/log.jsonl", JSON.stringify(blocked) + "\n");
+  } catch (e) { out("receipt-write error:", String(e.message || e).slice(0, 200)); }
+  process.exit(2);
+}
+
 
 const tmp = mkdtempSync(join(tmpdir(), "wallet-verify-"));
 const result = {

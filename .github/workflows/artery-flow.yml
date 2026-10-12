@@ -65,9 +65,25 @@ jobs:
           for i in 1 2 3; do
             if git pull --rebase origin main && git push origin main; then OK=1; echo "push ok (attempt $i)"; break; fi
             git rebase --abort 2>/dev/null || true
-            sleep 5
+            [ "$i" -lt 3 ] || break
+            sleep $((i * 5))
+            # 3-a (measured run 38305754067: add/add CONFLICT on all four ops/flow files — a
+            # sibling artery-flow landing its map between this run's checkout and push; the
+            # old loop aborted + retried the SAME doomed rebase 3 times). House regen law
+            # (as artery-catchup): auto-generated state is re-derivable each tick — origin
+            # wins, re-measure on the fresh tree, re-commit only a real delta.
+            git fetch origin main
+            git reset --hard origin/main
+            node engine/flow-map.mjs || { echo "flow-map re-derivation failed — honest failure"; break; }
+            git add ops/flow
+            if git diff --cached --quiet; then
+              echo "re-derived flow map: no delta vs origin (upstream map already fresher) — nothing to push"
+              OK=1
+              break
+            fi
+            git commit -m "[artery-flow] flow map: $(date -u +%FT%TZ)"
           done
-          [ "$OK" = "1" ] || { echo "flow-map push failed after 3 attempts — honest failure"; exit 1; }
+          [ "$OK" = "1" ] || { echo "flow-map push failed after 3 attempts — honest failure, no silent green"; exit 1; }
 
       - name: verdict gate — red unless the map landed
         if: always()

@@ -29,14 +29,20 @@ const H = {
 const out = (...a) => console.log(...a);
 const NOW = Date.now();
 
+// 3-a topology fix (measured 2026-10-12): the artery producers moved — wallet/fleet/grid
+// receipts, the state pulse, lessons ledger, scribe learner and flow-map self-node now live
+// and commit in roshpinacare-sys/Autonomy (this repo) since the wave-1/2 migration. The old
+// Sandbox addresses 404 for this lane (private repo, repo-scoped token) and masked the real
+// ghosts as GHOST-SOURCE on dead addresses. Any edge that still reads the OLD home surfaces
+// honestly as ghost/orphan below — that is the true mid-migration state, not a bug to hide.
 // ── מניפסט-המפיקים (maxAgeH = חוק-טריות-מוצהר-לכל-פיד) ──
 const NODES = [
-  { repo: `${OWNER}/Sandbox`, path: "receipts/wallet/verdict.json",    kind: "receipt", maxAgeH: 2,  feeds: "artery-wallet (hourly)" },
-  { repo: `${OWNER}/Sandbox`, path: "receipts/fleet/verdict.json",     kind: "receipt", maxAgeH: 3,  feeds: "artery-fleet (2h)" },
-  { repo: `${OWNER}/Sandbox`, path: "receipts/grid/verdict.json",      kind: "receipt", maxAgeH: 1,  feeds: "artery-grid (30min)" },
-  { repo: `${OWNER}/Sandbox`, path: "receipts/latest.json",            kind: "pulse",   maxAgeH: 1,  feeds: "sovereign.yml (~15min)" },
-  { repo: `${OWNER}/Sandbox`, path: "ops/lessons/ledger.md",           kind: "lesson",  maxAgeH: 26, feeds: "artery-scribe (daily)" },
-  { repo: `${OWNER}/Sandbox`, path: "ops/flow/flow-map.json",          kind: "flowmap", maxAgeH: 4,  feeds: "artery-flow (3h)" },
+  { repo: `${OWNER}/Autonomy`, path: "receipts/wallet/verdict.json",    kind: "receipt", maxAgeH: 2,  feeds: "artery-wallet (hourly)" },
+  { repo: `${OWNER}/Autonomy`, path: "receipts/fleet/verdict.json",     kind: "receipt", maxAgeH: 3,  feeds: "artery-fleet (2h)" },
+  { repo: `${OWNER}/Autonomy`, path: "receipts/grid/verdict.json",      kind: "receipt", maxAgeH: 1,  feeds: "artery-grid (30min)" },
+  { repo: `${OWNER}/Autonomy`, path: "receipts/latest.json",            kind: "pulse",   maxAgeH: 1,  feeds: "sovereign.yml (~15min)" },
+  { repo: `${OWNER}/Autonomy`, path: "ops/lessons/ledger.md",           kind: "lesson",  maxAgeH: 26, feeds: "artery-scribe (daily)" },
+  { repo: `${OWNER}/Autonomy`, path: "ops/flow/flow-map.json",          kind: "flowmap", maxAgeH: 4,  feeds: "artery-flow (3h)" },
   { repo: `${OWNER}/FleetHQ`, path: "receipts/office-ci/verdict.json", kind: "receipt", maxAgeH: 30, feeds: "office-ci (push)" },
   { repo: `${OWNER}/FleetHQ`, path: "office/state/office-state.json",  kind: "state",   maxAgeH: 3,  feeds: "office-heartbeat (2h)" },
   { repo: `${OWNER}/FleetHQ`, path: "digest.json",                     kind: "digest",  maxAgeH: 26, feeds: "unknown (404 measured 2026-10-11)" },
@@ -61,8 +67,8 @@ const CORPUS = [
   { repo: `${OWNER}/Domain`,  path: "agents/office-pulse.cjs",            role: "agent" },
   { repo: `${OWNER}/Domain`,  path: "agents/office-feed.mjs",             role: "agent" },
   { repo: `${OWNER}/Domain`,  path: "agents/office-artery.mjs",           role: "agent" },
-  { repo: `${OWNER}/Sandbox`, path: "engine/scribe.mjs",                  role: "learner" },
-  { repo: `${OWNER}/Sandbox`, path: ".github/workflows/artery-watch.yml", role: "watch" },
+  { repo: `${OWNER}/Autonomy`, path: "engine/scribe.mjs",                  role: "learner" },
+  { repo: `${OWNER}/Autonomy`, path: ".github/workflows/artery-watch.yml", role: "watch" },
   { repo: `${OWNER}/Domain`,  path: "marketing/adsmarket.html",            role: "page" }, // R31: the panel page consuming the measured book
 ];
 
@@ -115,10 +121,10 @@ const PATTERNS = [
   { re: /agents\/office-live\.json/g,                     to: () => `${OWNER}/Domain:agents/office-live.json` },
   { re: /office\/state\/office-state\.json/g,             to: () => `${OWNER}/FleetHQ:office/state/office-state.json` },
   { re: /receipts\/office-ci\/[a-z.]+/g,                  to: (m) => `${OWNER}/FleetHQ:${m[0]}` },
-  { re: /ops\/lessons\/ledger\.md/g,                      to: () => `${OWNER}/Sandbox:ops/lessons/ledger.md` },
-  { re: /ops\/flow\/flow-map\.json/g,                     to: () => `${OWNER}/Sandbox:ops/flow/flow-map.json` },
-  { re: /receipts\/(wallet|fleet|grid)\/verdict\.json/g,  to: (m) => `${OWNER}/Sandbox:receipts/${m[1]}/verdict.json` },
-  { re: /receipts\/latest\.json/g,                        to: () => `${OWNER}/Sandbox:receipts/latest.json` },
+  { re: /ops\/lessons\/ledger\.md/g,                      to: () => `${OWNER}/Autonomy:ops/lessons/ledger.md` },
+  { re: /ops\/flow\/flow-map\.json/g,                     to: () => `${OWNER}/Autonomy:ops/flow/flow-map.json` },
+  { re: /receipts\/(wallet|fleet|grid)\/verdict\.json/g,  to: (m) => `${OWNER}/Autonomy:receipts/${m[1]}/verdict.json` },
+  { re: /receipts\/latest\.json/g,                        to: () => `${OWNER}/Autonomy:receipts/latest.json` },
   // R31 (WO-unwired-adsmarket-marketing, trace 1a12…6fd5): the
   // adsmarket measured-view arc. The SOURCE repo is private (raw 404s), so any
   // file touching the private source or the public book lands on the book node

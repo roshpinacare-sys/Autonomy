@@ -36,7 +36,12 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    # 3-a fix (measured 2026-10-12, run 38314448755: chain-next step died mid-sleep
+    # 16m41s into a ~30-min slot-sleep - AFTER the honest verdict had already landed -
+    # so the job ended "cancelled", the lane reddened on a healthy measurement, and the
+    # self-perpetuation chain broke). The 12-min budget predated the chain-next design;
+    # budget now covers setup + verify + publish retries + sleep(<=1740s) + dispatch.
+    timeout-minutes: 45
     steps:
       - name: checkout
         uses: actions/checkout@v4
