@@ -63,7 +63,7 @@ export const LAWS = {
    כפי שנמדדה בקריאה #3 של נספח-א' (ECONOMIC-PLAN-2026-10-11.md · zai-10d 19:54Z):
    עוגן: acct-00 · פוסטרים ×5: acct-01..05 · מיקרו ×3: acct-06..08 · acct-09/10 ·
    חיילים-דור-חי ×3: acct-11/12/13.
-   hcsoldier1/2/3-אין-במפה מחוץ-למניפסט (LOST-NO-CUSTODY, מעוגן בפנקסי-האחוזה). */
+   חיילים 1/2/3 אינם-במפה ומחוץ-למניפסט (LOST-NO-CUSTODY, מעוגן בפנקסי-האחוזה). */
 const ROSTER_REFS = [
   "acct-00",
   "acct-01", "acct-02", "acct-03", "acct-04", "acct-05",

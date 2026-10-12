@@ -89,7 +89,9 @@ jobs:
       - name: public-surface audit (zero fleet names — refs law, fail-closed)
         if: always()
         run: |
-          PAT='cashmachine|hcsoldier|israelnews|macrame|\bwoq\b|\bwog\b|\bwic\b|\bsiq\b|\blsa\b|\bharan\b|\btov\b|cornerstone|headcorner'
+          # דפוס-האיסור נבנה בזמן-ריצה מ-base64 (אפס-שמות-צי בעץ — אחרת-הסריקה-תחסום-את-עצמה;
+          # אותו-דפוס-בית כמו engine/leak-scan.mjs KEY_POINTER_NAMES)
+          PAT=$(printf '%s' 'Y2FzaG1hY2hpbmV8aGNzb2xkaWVyfGlzcmFlbG5ld3N8bWFjcmFtZXxcYndvcVxifFxid29nXGJ8XGJ3aWNcYnxcYnNpcVxifFxibHNhXGJ8XGJoYXJhblxifFxidG92XGJ8Y29ybmVyc3RvbmV8aGVhZGNvcm5lcg==' | base64 -d)
           HITS=$(grep -rEn "$PAT" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=fleet-engine 2>/dev/null || true)
           if [ -n "$HITS" ]; then
             echo "$HITS" | head -20
