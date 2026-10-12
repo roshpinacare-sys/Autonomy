@@ -1,0 +1,75 @@
+# סריקת-ערך אוטונומית: מה הפוטנציאל · מה פתוח · מה יכול לתת ערך — מדידה-בלבד, אפס זיופים [T13]
+# wave-2 port (ריפו-פומבי · חוק-השטח-הפומבי):
+#   · סגל-המפעילים מדובר refs בלבד — השמות נגזרים בזמן-ריצה מסוד FLEET_ROSTER_MAP;
+#     לא-נפתר = degraded כן (roster-map), לעולם לא מילוי.
+#   · פנקס-המכריע חי בריפו-פרטי (Sandbox) — נמשך עם טוקן-קריאה SBX_RAW_TOKEN.
+#   · כל-הארטיפקטים (state.json / FLOORS-LEDGER.md / ledger.jsonl) נכתבים דרך
+#     scrub — כל שם-צי שדוד ממקור-פומבי יוצא כ-ref. audit fail-closed לפני קומיט.
+name: value-scan
+on:
+  schedule:
+    - cron: "17,47 * * * *"  # סגנון-בלוק — דפוס-העורקים-היורים (נמדד)
+  workflow_dispatch: {}
+  repository_dispatch:
+    types: [value-scan-tick]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: value-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: סריקת-ערך (keyless, fail-soft, כנה)
+        env:
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+          SBX_RAW_TOKEN: ${{ secrets.SBX_FLEET_PAT }} # קריאת-פנקס-המכריע מהריפו-הפרטי
+        run: python3 ops/sovereign/VALUE-SCAN/value-scan.py
+      - name: public-surface audit (zero fleet names — refs law, fail-closed)
+        if: always()
+        run: |
+          PAT='cashmachine|hcsoldier|israelnews|macrame|\bwoq\b|\bwog\b|\bwic\b|\bsiq\b|\blsa\b|\bharan\b|\btov\b|cornerstone|headcorner'
+          HITS=$(grep -rEn "$PAT" . --exclude-dir=.git --exclude-dir=node_modules 2>/dev/null || true)
+          if [ -n "$HITS" ]; then
+            echo "$HITS" | head -20
+            echo "fleet-name leak in the public tree — blocked (refs law)"
+            exit 1
+          fi
+          echo "public-surface audit: clean (zero fleet names)"
+      - name: פרסום state + ledger (append-bounded)
+        if: always()
+        run: |
+          git config user.name  "value-scan-bot"
+          git config user.email "value-scan-bot@users.noreply.github.com"
+          git add ops/sovereign/VALUE-SCAN/state.json ops/sovereign/VALUE-SCAN/ledger.jsonl ops/sovereign/VALUE-SCAN/FLOORS-LEDGER.md
+          if git diff --cached --quiet; then
+            echo "no changes — honest skip"
+          else
+            git commit -m "value-scan: $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]"
+            git pull --rebase -q origin main || true
+            git push
+          fi
+      - name: אימות-readback (הפרסום נקרא-חזרה — אנטי-זיופים)
+        if: always()
+        run: |
+          WANT=$(python3 -c "import json;print(json.load(open('ops/sovereign/VALUE-SCAN/state.json'))['generatedAt'])")
+          GOT=""
+          for i in 1 2 3 4 5 6 7 8; do
+            sleep 12
+            GOT=$(curl -sf "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/ops/sovereign/VALUE-SCAN/state.json?cachebust=$(date +%s)" \
+              | python3 -c "import json,sys;print(json.load(sys.stdin).get('generatedAt',''))" 2>/dev/null || echo "")
+            [ "$GOT" = "$WANT" ] && break
+          done
+          if [ "$GOT" = "$WANT" ]; then
+            echo "READBACK-VERIFIED: $WANT מפורסם-ונקרא-חזרה"
+          else
+            echo "READBACK-WARN: want=$WANT got=$GOT — CDN lag כנה; הפעימה-הבאה תאמת שוב"
+          fi

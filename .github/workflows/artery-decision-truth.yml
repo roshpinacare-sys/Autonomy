@@ -1,0 +1,100 @@
+name: artery-decision-truth
+# ═══════════════════════════════════════════════════════════════════════════
+# ARTERY-DECISION-TRUTH · עורק-אמת-ההכרעות (H-series · zai-code-3) · wave-2 port
+# ───────────────────────────────────────────────────────────────────────────
+# החוק (H): כל הכרעה ENFORCED חייבת אימות-עצמאי + צרכן-מדוד; עדויות-שהעולם-
+#   עבר-מעליהן = STALE-TRUTH; מקור-שנפל = UNVERIFIABLE — כנות, לעולם לא "זיוף".
+#
+# wave-2 (ריפו-פומבי · חוק-השטח-הפומבי):
+#   · הצי מדובר refs בלבד — השמות נגזרים בזמן-ריצה מסוד FLEET_ROSTER_MAP.
+#   · פנקס-המכריע חי בריפו-פרטי (Sandbox) — נמשך עם טוקן-קריאה SBX_RAW_TOKEN;
+#     הטוקן לעולם לא נדפס ולא נכתב לארטיפקט.
+#   · audit-שטח-פומבי fail-closed: אפס שמות-צי בעץ — אחרת הריצה אדומה.
+# ═══════════════════════════════════════════════════════════════════════════
+on:
+  schedule:
+    - cron: "16,46 * * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - decision-truth-tick
+
+permissions:
+  contents: write
+
+concurrency:
+  group: artery-decision-truth
+  cancel-in-progress: false
+
+jobs:
+  truth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # שער-עצמי: המנוע מוכיח את-עצמו על וקטורים דטרמיניסטיים לפני כל-ריצה-חיה
+      - name: selftest (fail-closed)
+        run: node engine/decision-truth.mjs --selftest
+
+      - name: re-measure every sovereign decision (never trust, always verify)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+          SBX_RAW_TOKEN: ${{ secrets.SBX_FLEET_PAT }} # קריאת-פנקס-המכריע מהריפו-הפרטי
+        run: node engine/decision-truth.mjs
+
+      - name: leak-scan (fail-closed)
+        if: always()
+        run: |
+          [ -f ops/decision-truth/verdict.json ] && node engine/leak-scan.mjs ops/decision-truth/verdict.json
+          [ -f ops/decision-truth/log.jsonl ] && node engine/leak-scan.mjs ops/decision-truth/log.jsonl
+          [ -f ops/decision-truth/run.log ] && node engine/leak-scan.mjs ops/decision-truth/run.log
+
+      - name: public-surface audit (zero fleet names — refs law, fail-closed)
+        if: always()
+        run: |
+          PAT='cashmachine|hcsoldier|israelnews|macrame|\bwoq\b|\bwog\b|\bwic\b|\bsiq\b|\blsa\b|\bharan\b|\btov\b|cornerstone|headcorner'
+          HITS=$(grep -rEn "$PAT" . --exclude-dir=.git --exclude-dir=node_modules 2>/dev/null || true)
+          if [ -n "$HITS" ]; then
+            echo "$HITS" | head -20
+            echo "fleet-name leak in the public tree — blocked (refs law)"
+            exit 1
+          fi
+          echo "public-surface audit: clean (zero fleet names)"
+
+      # קומיט-ממושפע: רק ops/decision-truth (אף-פעם לא -A) · rebase ×3 · כשל = יציאה 1
+      - name: commit verdict (honest verdicts always land, FAIL included)
+        if: always()
+        run: |
+          git config user.name "decision-truth"
+          git config user.email "decision-truth@users.noreply.github.com"
+          git add ops/decision-truth
+          if git diff --cached --quiet; then
+            echo "verdict unchanged - nothing to commit"
+            exit 0
+          fi
+          git commit -m "decision-truth verdict: $(date -u +%FT%TZ)"
+          OK=0
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin main; then OK=1; echo "push ok (attempt $i)"; break; fi
+            git rebase --abort 2>/dev/null || true
+            git status --short
+            sleep 5
+          done
+          [ "$OK" = "1" ] || { echo "verdict push failed after 3 attempts - honest failure"; exit 1; }
+
+      - name: verdict law (red unless PASS/PASS_WITH_ALERTS — after the verdict landed)
+        if: always()
+        run: |
+          V="$(node -e 'try{console.log(JSON.parse(require("fs").readFileSync("ops/decision-truth/verdict.json","utf8")).overall)}catch{console.log("ERROR")}')"
+          echo "decision-truth verdict: $V"
+          [ "$V" = "PASS" ] || [ "$V" = "PASS_WITH_ALERTS" ] || { echo "decider book unreadable or engine self-fail - run stays red (honesty over comfort)"; exit 1; }

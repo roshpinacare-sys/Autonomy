@@ -1,0 +1,80 @@
+name: artery-participation
+# ═══════════════════════════════════════════════════════════════════════════
+# ARTERY-PARTICIPATION · T-65 — ספר-ההשתתפות של הצי, שתי-שרשרות · wave-2 port
+# ───────────────────────────────────────────────────────────────────────────
+# העורק מודד לכל-חשבון: רשויות-חיות (census-v2 — מפתחות-ציבוריים בלבד), יתרות
+# שתי-השרשרות, SP/HP, RC%, פקודות-פתוחות, פעילות, ורכסות-השתתפות אמיתיות.
+#
+# wave-2 (ריפו-פומבי · חוק-השטח-הפומבי):
+#   · הרוסטר מדובר refs בלבד — השמות נגזרים בזמן-ריצה מסוד FLEET_ROSTER_MAP;
+#     לא-נפתר = FAIL כן (לעולם לא 0/0-ירוק מזויף).
+#   · הקבלה נכתבת דרך scrubAll — כל שם-צי (מה-census/מהשרשרת) יוצא כ-ref.
+#   · audit-שטח-פומבי fail-closed לפני כל קומיט.
+# ═══════════════════════════════════════════════════════════════════════════
+on:
+  schedule:
+    - cron: "13 * * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - participation-tick
+
+permissions:
+  contents: write
+
+concurrency:
+  group: artery-participation
+  cancel-in-progress: false
+
+jobs:
+  book:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Measure the fleet participation book (zero secrets)
+        env:
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+        run: node engine/fleet-participation.mjs
+
+      - name: public-surface audit (zero fleet names — refs law, fail-closed)
+        if: always()
+        run: |
+          PAT='cashmachine|hcsoldier|israelnews|macrame|\bwoq\b|\bwog\b|\bwic\b|\bsiq\b|\blsa\b|\bharan\b|\btov\b|cornerstone|headcorner'
+          HITS=$(grep -rEn "$PAT" . --exclude-dir=.git --exclude-dir=node_modules 2>/dev/null || true)
+          if [ -n "$HITS" ]; then
+            echo "$HITS" | head -20
+            echo "fleet-name leak in the public tree — blocked (refs law)"
+            exit 1
+          fi
+          echo "public-surface audit: clean (zero fleet names)"
+
+      - name: Commit receipts (FF-only with yield, honest on failure)
+        if: always()
+        run: |
+          set -Eeuo pipefail
+          git config user.name "participation[bot]"
+          git config user.email "participation[bot]@users.noreply.github.com"
+          git add receipts/fleet-participation/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no receipt change — clean exit"
+          else
+            git commit -m "fleet-participation receipts: $(node -e "try{const r=require('./receipts/fleet-participation/latest.json');process.stdout.write(r.overall+' · '+r.reason.slice(0,110))}catch(e){process.stdout.write('receipt-read-fail')}") $(date -u +%FT%TZ) [skip ci]"
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin HEAD:main && break || { sleep $((i*5)); git rebase --abort 2>/dev/null || true; }
+            done
+          fi
+
+      - name: Honest verdict gate
+        if: always()
+        run: |
+          node -e "try{const r=require('./receipts/fleet-participation/latest.json');console.log('PARTICIPATION:',r.overall,'·',r.reason);(r.alerts||[]).forEach(a=>console.log('ALERT:',a));}catch(e){console.log('receipt unreadable — honest red');process.exit(1);}"

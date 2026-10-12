@@ -1,0 +1,88 @@
+# RESEARCH & DISCOVERY LANE — task 10-d · wave-2 port
+#
+# "שיהיה גם מחקר וגילוי על דברים בטוחים שיכולים לשפר את המערכת —
+#  קדמה, אבטחה, יעילה, אוטונומיה ריבונית אוטומטית אינטליגנטית שתהיה דוגמא למופת."
+#
+# קריאה-בלבד. אפס-מפתחות. אפס-אימות. אפס-שידור.
+# Weekly safe read-only experiments on public chains + fleet digests.
+# The findings ARE the product — hypothesis → measurement → verdict → next.
+#
+# fail-open-honest: a failed experiment still commits its findings (an
+# inconclusive verdict is a fact) and the job exits non-zero so the truth shows.
+# אף-פעם לא מזויף-הצלחה.
+#
+# wave-2 (ריפו-פומבי · חוק-השטח-הפומבי): הרוסטר מדובר refs בלבד — השמות נגזרים
+# בזמן-ריצה מסוד FLEET_ROSTER_MAP; לא-נפתר = הניסוי מדווח inconclusive בכנות.
+# הממצאים והפנקס נכתבים דרך scrubAll. Baselines cited from sovereign/ECONOMIC-PLAN-2026-10-11 §2.
+
+name: research-lane
+
+on:
+  schedule:
+    - cron: "23 5 * * 1" # שני 05:23 UTC — מחזור-מחקר שבועי
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-lane
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Selftest first (mocked fetch — network-independent gate)
+        run: node research/research-lane.mjs --selftest
+
+      - name: Run research lane (read-only; honest exit codes preserved)
+        env:
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+        run: |
+          set +e
+          node research/research-lane.mjs | tee /tmp/research.out
+          echo ${PIPESTATUS[0]} > /tmp/research.exit
+          echo "research exit=$(cat /tmp/research.exit)"
+
+      - name: public-surface audit (zero fleet names — refs law, fail-closed)
+        if: always()
+        run: |
+          PAT='cashmachine|hcsoldier|israelnews|macrame|\bwoq\b|\bwog\b|\bwic\b|\bsiq\b|\blsa\b|\bharan\b|\btov\b|cornerstone|headcorner'
+          HITS=$(grep -rEn "$PAT" . --exclude-dir=.git --exclude-dir=node_modules 2>/dev/null || true)
+          if [ -n "$HITS" ]; then
+            echo "$HITS" | head -20
+            echo "fleet-name leak in the public tree — blocked (refs law)"
+            exit 1
+          fi
+          echo "public-surface audit: clean (zero fleet names)"
+
+      - name: Commit the findings (receipt = commit)
+        if: always()
+        run: |
+          set -u
+          git config user.name "research-runner[bot]"
+          git config user.email "research-runner[bot]@users.noreply.github.com"
+          git add research/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no findings change — clean exit"
+          else
+            git commit -m "[research] weekly findings: spread-regime · feed-divergence · rc-census $(date -u +%FT%TZ) [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Honest exit (red job = inconclusive research, recorded in committed findings)
+        if: always()
+        run: |
+          r=$(cat /tmp/research.exit)
+          echo "research exit=$r"
+          test "$r" = "0"

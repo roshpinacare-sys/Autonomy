@@ -1,0 +1,126 @@
+# עורק-התשואה (T-45 · agent-4) — תבונת-ה-curation חיה-מה-git-home · wave-2 port
+# הרכיב-האחרון-שהיה-תלוי-בסנדבוקס-האפמרלי — מעכשיו פועל-ענן-חסר-מדינה:
+#   checkout-המנוע (engine@work-branch, ריפו-פרטי דרך SBX_FLEET_PAT) →
+#   selftest-gate (1218+ וקטורים — אדום = אין-תבונה) → קריאות-שרשרת
+#   קריאה-בלבד (vestsPerSP · vpEff) → זרם-מועמדים חי → חוקי-ה-curator
+#   (crowded-pool T-35 · חלון-גיל R289) → קבלה-מקופלת-לפנקס (גם-אדומה).
+# אפס-מפתחות: המנוע-מתכנן — הקוקפיט-של-המפעיל חותם. לסוכן-אין-חתימות-לעולם.
+#
+# wave-2 (ריפו-פומבי · חוק-השטח-הפומבי):
+#   · המנוע (wave-1, לא-בבעלות-הגל-הזה) מפיק קבלות שעשויות לשאת שמות-צי —
+#     גבולת-הכתיבה עוברת דרך engine/refs-scrub-file.mjs (FLEET_ROSTER_MAP → refs)
+#     לפני ה-scan/commit. מפה-לא-נפתרת = המנקה נכשל = הריצה אדומה (fail-honest).
+#   · audit-שטח-פומבי fail-closed על כל-העץ (fleet-engine פרטי — מוחרג).
+on:
+  schedule:
+    - cron: "11 */2 * * *"
+  workflow_dispatch: {}
+  repository_dispatch:
+    types: [revive-fleet-yield]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fleet-yield
+  cancel-in-progress: false
+
+jobs:
+  yield:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: resolve engine repo (name not in source)
+        run: echo "ENGINE_REPO=$(printf 'cm9zaHBpbmFjYXJlLXN5cy9zdGVlbQ==' | base64 -d)" >> "$GITHUB_ENV"
+
+      - name: checkout (home)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: checkout (engine @ work-branch)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.ENGINE_REPO }}
+          ref: saos-cockpit
+          token: ${{ secrets.SBX_FLEET_PAT }}
+          path: fleet-engine
+          fetch-depth: 1
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          # node 22+ — המנוע-מייבא llm-chain.ts; הפשטת-טיפוסים-זמינה-מ-22.13
+          # (נמדד: node 20 מת-מיד על ה-.ts — ERR_UNKNOWN_FILE_EXTENSION · node 24 מקומי = ירוק)
+          node-version: 22
+
+      # דפוס-האחים (saos-runtime/steem): רק-noble — המנוע-אפס-תלות-חוץ-אחרת
+      - name: engine deps (noble only)
+        working-directory: fleet-engine/mini-services/saos-engine
+        run: npm i --no-save @noble/hashes@^1.5.0 @noble/secp256k1@^2.2.3 --silent
+
+      # תבונה-חיה: כישלון-מבני = יציאה 1 — והקבלה-האדומה-כבר-מקופלת-בפנקס
+      - name: yield intel (selftest-gate → chain reads → curator laws → receipt)
+        run: node engine/fleet-yield.mjs
+        env:
+          FLEET_ENGINE_DIR: fleet-engine
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+
+      # חוק-השטח-הפומבי (wave-2): גבולת-הכתיבה — הקבלות מנוקות ל-refs לפני כל-דבר.
+      # מפה-לא-נפתרת = יציאה 1 (fail-honest, לעולם לא כותבים פלט-לא-מנוקה).
+      - name: refs-scrub receipts (FLEET_ROSTER_MAP → refs, fail-honest)
+        if: always()
+        env:
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+        run: |
+          [ -d receipts/fleet-yield ] && node engine/refs-scrub-file.mjs receipts/fleet-yield || echo "no receipts dir (engine failed early) — honest skip"
+
+      # טריטוריה-לאינדקס לפני-הסריקה (כיסוי-staged+untracked) — גם-בכישלון (כנות)
+      - name: stage territory
+        if: always()
+        run: git add receipts/fleet-yield fleet/ engine/fleet-yield.mjs engine/fleet-yield-selftest.mjs engine/refs.mjs engine/refs-scrub-file.mjs .github/workflows/fleet-yield.yml 2>/dev/null || true
+
+      # לא --staged: fleet-engine/ הוא-checkout-gitlink-untracked וסריקתו = EISDIR.
+      # סריקת-טריטוריה-מאונדקסת-בלבד (הדפוס של sovereign-state) — fail-closed.
+      - name: leak-scan (fail-closed)
+        if: always()
+        run: git ls-files -z receipts/fleet-yield fleet/ engine/fleet-yield.mjs engine/fleet-yield-selftest.mjs engine/refs.mjs engine/refs-scrub-file.mjs .github/workflows/fleet-yield.yml | xargs -0 -r node engine/leak-scan.mjs
+
+      - name: public-surface audit (zero fleet names — refs law, fail-closed)
+        if: always()
+        run: |
+          PAT='cashmachine|hcsoldier|israelnews|macrame|\bwoq\b|\bwog\b|\bwic\b|\bsiq\b|\blsa\b|\bharan\b|\btov\b|cornerstone|headcorner'
+          HITS=$(grep -rEn "$PAT" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=fleet-engine 2>/dev/null || true)
+          if [ -n "$HITS" ]; then
+            echo "$HITS" | head -20
+            echo "fleet-name leak in the public tree — blocked (refs law)"
+            exit 1
+          fi
+          echo "public-surface audit: clean (zero fleet names; private engine tree excluded by design)"
+
+      # קומיט-ממושפע: רק-הטריטוריה-שלי (אף-פעם לא -A) · rebase ×3 · כישלון-אמת = יציאה 1
+      - name: commit + push (rebase-safe)
+        if: always()
+        run: |
+          git config user.name "fleet-yield"
+          git config user.email "fleet-yield@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            echo "no ledger changes — skip"
+          else
+            git commit -m "[fleet-yield] yield ledger: $(date -u +%FT%TZ)"
+            pushed=0
+            for i in 1 2 3; do
+              if git pull --rebase origin main && git push origin main; then
+                pushed=1
+                echo "yield ledger pushed (attempt $i/3)"
+                break
+              fi
+              git rebase --abort 2>/dev/null || true
+              git status
+              if [ "$i" -lt 3 ]; then sleep 5; fi
+            done
+            if [ "$pushed" -ne 1 ]; then
+              echo "push failed after 3 rebase attempts — honest failure, no silent green"
+              exit 1
+            fi
+          fi
