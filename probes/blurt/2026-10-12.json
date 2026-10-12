@@ -1,0 +1,78 @@
+{
+  "schema": "roshpinacare.blurt-node-health-probe/1",
+  "task": "9-d",
+  "at": "2026-10-12T20:40:19.609Z",
+  "read_only": true,
+  "broadcast": false,
+  "keys_used": false,
+  "ok": false,
+  "node_used": null,
+  "nodes": [
+    {
+      "node": "https://blurt-rpc.saboin.com",
+      "alive": false,
+      "ms": 469,
+      "head_block_number": null,
+      "block_time_match": null,
+      "calls": {
+        "dgp": {
+          "ok": false,
+          "error": "http_503"
+        }
+      },
+      "error": "http_503"
+    },
+    {
+      "node": "https://rpc.blurt.blog",
+      "alive": false,
+      "ms": 1019,
+      "head_block_number": null,
+      "block_time_match": null,
+      "calls": {
+        "dgp": {
+          "ok": false,
+          "error": "http_429"
+        }
+      },
+      "error": "http_429"
+    },
+    {
+      "node": "https://rpc.blurt.world",
+      "alive": false,
+      "ms": 377,
+      "head_block_number": null,
+      "block_time_match": null,
+      "calls": {
+        "dgp": {
+          "ok": false,
+          "error": "fetch failed"
+        }
+      },
+      "error": "fetch failed"
+    },
+    {
+      "node": "https://blurt-rpc.blurtlatam.com",
+      "alive": false,
+      "ms": 859,
+      "head_block_number": null,
+      "block_time_match": null,
+      "calls": {
+        "dgp": {
+          "ok": false,
+          "error": "fetch failed"
+        }
+      },
+      "error": "fetch failed"
+    }
+  ],
+  "network": null,
+  "witnesses": null,
+  "errors": [
+    "https://blurt-rpc.saboin.com → http_503",
+    "https://rpc.blurt.blog → http_429",
+    "https://rpc.blurt.world → fetch failed",
+    "https://blurt-rpc.blurtlatam.com → fetch failed"
+  ],
+  "advisory_note": "intel for the R294 blurt agent — advisory only; never touches blurt.mjs / blurt-arm.json ceremony",
+  "scope_note": "blurt public nodes expose no internal-market/feed API (get_order_book, get_feed_history measured absent 2026-10-11) — market intel on blurt must come from external sources"
+}
