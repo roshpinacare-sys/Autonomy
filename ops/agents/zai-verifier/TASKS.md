@@ -1,0 +1,16 @@
+# TASKS · מאגר-משימות-חי של-עורק-האמת · append-only
+# נפתח-אוטומטית כשכלל נצרת (DEGRADED/FAIL) · נסגר-אוטומטית כשהכלל כבר-לא-נצרת
+- [OPEN] V-LOOP-SOVEREIGN-STATE (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 1 runs of sovereign-state.yml
+- [OPEN] V-LOOP-ARTERY-CATCHUP (DEGRADED @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 52min ago > slot
+- [OPEN] V-LOOP-ARTERY-WATCH (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 69min ago > 4x slot
+- [OPEN] V-LOOP-VERIFIER (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 2 runs of verifier.yml
+- [OPEN] V-LOOP-FEDERATION (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 1 runs of federation.yml
+- [OPEN] V-LOOP-VALUE-SCAN (DEGRADED @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 47min ago > slot
+- [OPEN] V-LOOP-HIVE-PROBE (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 1 runs of hive-probe.yml
+- [OPEN] V-LOOP-FLEET-HEAL (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 0 runs of fleet-heal.yml
+- [OPEN] V-LOOP-ARTERY-DECISION-TRUTH (DEGRADED @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 48min ago > slot
+- [OPEN] V-LOOP-ARTERY-GRID (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 1 runs of artery-grid.yml
+- [OPEN] V-LOOP-ARTERY-WALLET (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 1 runs of artery-wallet.yml
+- [OPEN] V-LOOP-ARTERY-INTEGRITY (DEGRADED @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 83min ago > slot
+- [OPEN] V-LOOP-ARTERY-FLEET (FAIL @ 2026-10-12T22:03:55.560Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: no success in last 1 runs of artery-fleet.yml
+- [OPEN] V-TREASURY-BALANCE (DEGRADED @ 2026-10-12T22:03:55.560Z): איזון-אוצר לפי §3: לשמר ≥3,000 SP אצל-האוצר; top-up חשבונות-פעילים ל-100 SP | ראיה: treasury acct-00 at 2830 SP < 3000 (recovery-plan §3)
