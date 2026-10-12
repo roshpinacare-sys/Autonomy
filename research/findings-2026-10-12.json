@@ -1,6 +1,6 @@
 {
   "schema": "saos.research.findings/1",
-  "at": "2026-10-12T21:08:38.319Z",
+  "at": "2026-10-12T21:27:54.487Z",
   "lane": "research-and-discovery (10-d)",
   "laws": "read-only · no keys · no broadcast · honest failures recorded",
   "experiments": [
@@ -15,17 +15,17 @@
       },
       "measured": {
         "steem": {
-          "bid": 0.10006003602161297,
+          "bid": 0.10003000900270081,
           "ask": 0.1008,
-          "spreadBps": 73.68
+          "spreadBps": 76.68
         },
         "hive": {
-          "bid": 0.05401563610518834,
+          "bid": 0.05400167947806989,
           "ask": 0.05409281835877472,
-          "spreadBps": 14.28
+          "spreadBps": 16.86
         }
       },
-      "verdict": "spread tightened (73.68 < 93.5 bps) — grid-side liquidity improving",
+      "verdict": "spread tightened (76.68 < 93.5 bps) — grid-side liquidity improving",
       "ok": true,
       "next": "track weekly; correlate with grid-beat placements (saos-dex ledger) before claiming causality"
     },
@@ -41,11 +41,11 @@
       },
       "measured": {
         "feedMedian": 0.10409,
-        "marketMid": 0.10043,
-        "divergenceBps": 364.43,
+        "marketMid": 0.10042,
+        "divergenceBps": 365.47,
         "direction": "feed_above_market"
       },
-      "verdict": "peg stress signal: divergence 364.43 bps > 300 (feed_above_market) — surface to operator",
+      "verdict": "peg stress signal: divergence 365.47 bps > 300 (feed_above_market) — surface to operator",
       "ok": true,
       "next": "if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)"
     },
@@ -64,28 +64,28 @@
       },
       "measured": {
         "rcPct": {
-          "acct-00": 99.28,
-          "acct-01": 99.74,
-          "acct-02": 99.01,
-          "acct-03": 99.79,
-          "acct-04": 99.74,
-          "acct-05": 98.35,
-          "acct-06": 99.94,
-          "acct-07": 67.22,
+          "acct-00": 98.91,
+          "acct-01": 99.78,
+          "acct-02": 99.27,
+          "acct-03": 98.54,
+          "acct-04": 99.81,
+          "acct-05": 98.58,
+          "acct-06": 96.31,
+          "acct-07": 72.23,
           "acct-08": 82.5,
-          "acct-09": 88.71,
-          "acct-10": 97.86,
-          "acct-11": 11.8,
-          "acct-12": 27.77,
-          "acct-13": 11.06
+          "acct-09": 87.43,
+          "acct-10": 95.1,
+          "acct-11": 6.53,
+          "acct-12": 16.97,
+          "acct-13": 6.24
         },
         "starved": [
-          "acct-11 11.8%",
-          "acct-12 27.77%",
-          "acct-13 11.06%"
+          "acct-11 6.53%",
+          "acct-12 16.97%",
+          "acct-13 6.24%"
         ]
       },
-      "verdict": "3 RC-starved accounts (<40%): acct-11 11.8%, acct-12 27.77%, acct-13 11.06% — propose SP delegation top-up or activity cap (owner word for delegation lane)",
+      "verdict": "3 RC-starved accounts (<40%): acct-11 6.53%, acct-12 16.97%, acct-13 6.24% — propose SP delegation top-up or activity cap (owner word for delegation lane)",
       "ok": true,
       "next": "if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)"
     }
