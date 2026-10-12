@@ -60,10 +60,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # 3-a (run 38310764136 measured): dispatches to Sandbox return 404 from Autonomy's repo-scoped
+          # token — the desired path (①) was dead-on-arrival here. The main artery of THIS repo is
+          # Autonomy's own sovereign.yml (listens: sovereign-tick). Target retargeted honestly.
           HTTP="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 -X POST \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/roshpinacare-sys/Sandbox/dispatches \
+            https://api.github.com/repos/roshpinacare-sys/Autonomy/dispatches \
             -d '{"event_type":"sovereign-tick","client_payload":{"from":"catchup"}}')"
           echo "dispatch http=$HTTP"
           echo "dispatch=$HTTP" >> "$GITHUB_OUTPUT"
@@ -75,15 +78,22 @@ jobs:
         run: |
           # artery-watch עצמו נשמר-במקצף 30 דק׳ (המטרונום-נצחי); שלושת-עורקות-ה-cron ששוקקו-ב-T-51 בסף-החיים-שלהם
           # הכל-דרך-/dispatches עם-אירוע-פר-עורק (revive-*) — הנתיב-המוכח-חי · אפס-חצימה-הדדית (חוק-הרשאות-T-51)
+          # 3-a: freshness + revive now target THIS repo (Sandbox queries were measured 404/99999 here).
+          # Event names honored per-lane: Autonomy's artery-watch listens on "artery-watch" only
+          # (no revive-artery-watch listener measured in this repo) — a 204-to-nowhere would be a silent no-op.
           for spec in "artery-watch.yml:1800" "fleet-heal.yml:2700" "federation.yml:2700" "fleet-yield.yml:9900"; do
-            WF="${spec%%:*}"; MAX="${spec##*:}"; EVT="revive-${WF%.yml}"
+            WF="${spec%%:*}"; MAX="${spec##*:}"
+            case "$WF" in
+              artery-watch.yml) EVT="artery-watch" ;;
+              *) EVT="revive-${WF%.yml}" ;;
+            esac
             AGE_S="$(curl -sS --max-time 20 -H "Authorization: Bearer $GH_TOKEN" \
-              "https://api.github.com/repos/roshpinacare-sys/Sandbox/actions/workflows/${WF}/runs?per_page=1" \
+              "https://api.github.com/repos/roshpinacare-sys/Autonomy/actions/workflows/${WF}/runs?per_page=1" \
               | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{try{const r=JSON.parse(d).workflow_runs?.[0];console.log(r?Math.round((Date.now()-Date.parse(r.created_at))/1000):99999)}catch{console.log(99999)}})')"
             if [ "${AGE_S}" -gt "${MAX}" ]; then
               HTTP="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 -X POST \
                 -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/roshpinacare-sys/Sandbox/dispatches" \
+                "https://api.github.com/repos/roshpinacare-sys/Autonomy/dispatches" \
                 -d "{\"event_type\":\"${EVT}\",\"client_payload\":{\"from\":\"catchup\"}}")"
               echo "EXT-ARTERY ${WF} stale ${AGE_S}s > ${MAX}s — re-ignite via ${EVT} http=${HTTP}"
               sleep 3
@@ -101,8 +111,30 @@ jobs:
           git add receipts/
           if git diff --cached --quiet; then
             echo "no receipt changes — skip"
-          else
-            git commit -m "[catchup] direct heartbeat: $(date -u +%FT%TZ)"
-            git pull --rebase origin main
-            git push origin main
+            exit 0
           fi
+          git commit -m "[catchup] direct heartbeat: $(date -u +%FT%TZ)"
+          # ריפו-החם (נמדד 2026-10-12 run 38310764136: טביעת-האח-המקבילה (sovereign-tick) נחתה
+          #  בין-ה-commit-לבין-ה-push → pull --rebase בודד נתקע-בקונפליקט-תוכן על
+          #  receipts/latest.json + receipts/ticks.jsonl והעורק מת אדום). דפוס-הבית (rebase×3
+          #  מ-research-lane/value-scan) + חוק-הוויסות על-מצב-אוטוגני: קונפליקט-מתמשך = origin הוא
+          #  מקור-האמת; הקבלה-המקומית נגזרת-מחדש בכל-טיק (אידמפוטנטית) — מוותרים-עליה, נמדדים-מחדש
+          #  על-העץ-הטרי. אף-ירוק-שקר: כישלון-אחרי-3 = יציאה 1.
+          OK=0
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin main; then OK=1; echo "push ok (attempt $i)"; break; fi
+            git rebase --abort 2>/dev/null || true
+            [ "$i" -lt 3 ] || break
+            sleep $((i * 5))
+            git fetch origin main
+            git reset --hard origin/main
+            node engine/sovereign-tick.mjs || { echo "tick re-derivation failed — honest failure"; break; }
+            git add receipts/
+            if git diff --cached --quiet; then
+              echo "re-derived tick: no delta vs origin (upstream heartbeat already fresher) — nothing to push"
+              OK=1
+              break
+            fi
+            git commit -m "[catchup] direct heartbeat: $(date -u +%FT%TZ)"
+          done
+          [ "$OK" = "1" ] || { echo "push failed after 3 rebase attempts — honest failure, no silent green"; exit 1; }

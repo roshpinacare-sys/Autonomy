@@ -1,0 +1,58 @@
+{
+  "schema": "verifier-config/1",
+  "owner": "roshpinacare-sys",
+  "note": "Autonomy-carried truth lane (task 3-a, 2026-10-12): the private-Sandbox config (ops/agents/zai-verifier/config.json in Sandbox) was measured ABSENT in this repo (run 38305687767 FATAL ENOENT) — this file re-targets the verifier at what Autonomy can honestly measure: its own arteries + the estate's measured public surface. Account identities ride FLEET_ROSTER_MAP as acct-NN refs (wave-2 public-surface law): resolved at runtime, refs-only in every committed artifact. cadence gaps = measured cron slots of this repo.",
+  "sandboxRepo": "Autonomy",
+  "sandbox": {
+    "coreWorkflows": [
+      { "name": "sovereign", "file": "sovereign.yml" },
+      { "name": "sovereign-state", "file": "sovereign-state.yml" },
+      { "name": "artery-catchup", "file": "artery-catchup.yml" },
+      { "name": "artery-watch", "file": "artery-watch.yml" },
+      { "name": "verifier", "file": "verifier.yml" },
+      { "name": "federation", "file": "federation.yml" },
+      { "name": "value-scan", "file": "value-scan.yml" },
+      { "name": "hive-probe", "file": "hive-probe.yml" },
+      { "name": "fleet-heal", "file": "fleet-heal.yml" },
+      { "name": "artery-decision-truth", "file": "artery-decision-truth.yml" },
+      { "name": "artery-grid", "file": "artery-grid.yml" },
+      { "name": "artery-wallet", "file": "artery-wallet.yml" },
+      { "name": "artery-integrity", "file": "artery-integrity.yml" },
+      { "name": "artery-participation", "file": "artery-participation.yml" },
+      { "name": "artery-fleet", "file": "artery-fleet.yml" },
+      { "name": "artery-flow", "file": "artery-flow.yml" }
+    ],
+    "maxGapMinutes": 120,
+    "wfMaxGapMinutes": {
+      "sovereign": 70,
+      "sovereign-state": 15,
+      "artery-catchup": 30,
+      "artery-watch": 15,
+      "verifier": 30,
+      "federation": 30,
+      "value-scan": 30,
+      "hive-probe": 1440,
+      "fleet-heal": 30,
+      "artery-decision-truth": 30,
+      "artery-grid": 30,
+      "artery-wallet": 60,
+      "artery-integrity": 60,
+      "artery-participation": 60,
+      "artery-fleet": 120,
+      "artery-flow": 180
+    }
+  },
+  "monitor": {
+    "repos": ["Autonomy", "Console", "Domain", "Pulse"]
+  },
+  "steem": {
+    "rpc": ["https://api.steemit.com", "https://api.steemitdev.com", "https://api.justyy.com"],
+    "accounts": ["acct-00", "acct-01", "acct-02", "acct-03", "acct-04", "acct-05", "acct-06", "acct-07", "acct-08", "acct-09", "acct-10", "acct-11", "acct-12", "acct-13"],
+    "treasury": "acct-00"
+  },
+  "blurt": {
+    "rpc": ["https://blurt-rpc.saboin.com", "https://rpc.blurt.blog", "https://rpc.blurt.world", "https://blurt-rpc.blurtlatam.com"],
+    "accounts": []
+  },
+  "rules": {}
+}

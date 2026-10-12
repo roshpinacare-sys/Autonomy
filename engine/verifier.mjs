@@ -35,6 +35,7 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, sta
 import { execSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { R, refOf, resolved as rosterResolved } from "./refs.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const sha256 = (s) => createHash("sha256").update(s).digest("hex");
@@ -222,10 +223,12 @@ export async function probeSteem(cfg) {
   const accounts = res?.[0]?.result ?? null;
   const dgpo = res?.[1]?.result ?? null;
   if (!Array.isArray(accounts) || !dgpo?.total_vesting_fund_steem) throw new Error("steem rpc: malformed response");
-  const fleet = computeFleet(accounts, dgpo);
+  /* 3-a חוק-השטח-הפומבי (wave-2): הקבלה/הדוח/עמוד-האמת נושאים refs בלבד — השמות
+   * נשארים-בזיכרון-התהליך בלבד (refOf: שם→acct-NN; לא-מוכר = עובר-כמות-שהוא). */
+  const fleet = computeFleet(accounts, dgpo).map((f) => ({ ...f, account: refOf(f.account) }));
+  const treasury = fleet.find((f) => f.account === refOf(cfg.steem.treasury)) ?? null;
   const now = Date.now();
   const postAges = fleet.filter((f) => f.exists && f.lastPostAgeHours != null).map((f) => f.lastPostAgeHours);
-  const treasury = fleet.find((f) => f.account === cfg.steem.treasury) ?? null;
   return { host, fleet, treasury, fleetNewestPostHours: postAges.length ? Math.min(...postAges) : null, probedAt: new Date(now).toISOString() };
 }
 
@@ -254,13 +257,23 @@ export async function rpcSingle(host, method, params = []) {
 
 /* ── D. Blurt — חי/מת/בלתי-נגיש (כנות-מלאה לכל-מצב) ── */
 export async function probeBlurt(cfg) {
+  /* 3-a: אפס-חשבונות-בלורט-על-העץ-הזה = אין-מה-למדוד — כנה-מלאה, בלי-קריאות-RPC-ריקות-שקריות */
+  if (!Array.isArray(cfg?.blurt?.accounts) || cfg.blurt.accounts.length === 0) {
+    return {
+      reachable: false, host: null, fleet: [], fleetNewestPostHours: null,
+      probedAt: new Date().toISOString(),
+      errors: ["no blurt accounts configured in this repo's verifier config — fleet-intel honestly absent here (nothing measured, nothing claimed)"],
+    };
+  }
   const errs = [];
   for (const host of cfg.blurt.rpc) {
     try {
       const accounts = await rpcSingle(host, "condenser_api.get_accounts", [cfg.blurt.accounts]);
       if (!Array.isArray(accounts) || accounts.length === 0) { errs.push(`${host}: empty`); continue; }
       const now = Date.now();
-      const fleet = accounts.map((a) => ({ account: a.name, lastPostAgeHours: ageHours(a.last_root_post ?? a.last_post ?? a.last_post_time ?? null, now), lastVoteAgeHours: ageHours(a.last_vote_time, now) }));
+      const fleet = accounts
+        .map((a) => ({ account: a.name, lastPostAgeHours: ageHours(a.last_root_post ?? a.last_post ?? a.last_post_time ?? null, now), lastVoteAgeHours: ageHours(a.last_vote_time, now) }))
+        .map((f) => ({ ...f, account: refOf(f.account) })); // 3-a: refs-only on the public tree
       const postAges = fleet.filter((f) => f.lastPostAgeHours != null).map((f) => f.lastPostAgeHours);
       return { host, reachable: true, fleet, fleetNewestPostHours: postAges.length ? Math.min(...postAges) : null, probedAt: new Date(now).toISOString() };
     } catch (e) { errs.push(`${host}: ${String(e.message).slice(0, 60)}`); }
@@ -499,7 +512,7 @@ function renderReport(v, cfg, prev) {
     `- RPC ציבורי keyless: ${cfg.steem.rpc[0]}${blurt?.reachable ? ` · ${blurt.host}` : ""}`,
     `- פנקס: state/verifier/history.jsonl (מרקל) · אימות-עצמי: node engine/verifier.mjs --verify-ledger`,
     `- קוד-הבדיקה: engine/verifier.mjs · כללים: ops/agents/zai-verifier/config.json`,
-    `- עמוד-האמת-הציבורי: status/truth.html (נאפה-בכל-ריצה; Pages-מעלה-אותו ל-roshpinacare-sys.github.io/Sandbox/status/truth.html)`,
+    `- עמוד-האמת-הציבורי: status/truth.html (נאפה-בכל-ריצה מהמדידה-הזו-עצמה; אפס-JS)`,
     ``,
   ].join("\n");
 }
@@ -674,6 +687,14 @@ async function main() {
   cfg.tokens = { gh: process.env.GH_TOKEN ?? "", fed: process.env.FED_TOKEN ?? "" };
   cfg.authMode = cfg.tokens.fed ? "token(fed)" : cfg.tokens.gh ? "token(gh)" : "anonymous";
 
+  /* 3-a חוק-השטח-הפומבי (wave-2): בעץ-הפומבי ה-config מדבר refs (acct-NN); השמות
+   * האמיתיים נגזרים-בזמן-ריצה מ-FLEET_ROSTER_MAP. לא-נפתר = נשארים-refs —
+   * המדידה יורדת-בכנות ל-degraded (שורות exists:false), אף-המצאה. */
+  const rosterOk = rosterResolved();
+  cfg.steem.accounts = cfg.steem.accounts.map((a) => R(a) ?? a);
+  if (cfg.steem.treasury) cfg.steem.treasury = R(cfg.steem.treasury) ?? cfg.steem.treasury;
+  if (Array.isArray(cfg.blurt?.accounts)) cfg.blurt.accounts = cfg.blurt.accounts.map((a) => R(a) ?? a);
+
   const ledgerPath = path.join(ROOT, "state/verifier/history.jsonl");
   const latestPath = path.join(ROOT, "state/verifier/verdict-latest.json");
   const reportPath = path.join(ROOT, "ops/agents/zai-verifier/REPORT.md");
@@ -706,6 +727,7 @@ async function main() {
   /* הבדיקות — כל-אחת מבודדת: כישלון-בדיקה = בדיקה-אדומה, לא-קריסת-כלל */
   let sbx = [], dev = null, steem = null, blurt = null, rot = { scanned: 0, hits: [], capped: false };
   const soft = [];
+  if (!rosterOk) soft.push("roster-map unresolved (FLEET_ROSTER_MAP absent in this process) — account refs left as-refs; fleet rows honestly degraded (אפס-המצאה)");
   try {
     sbx = await checkSandboxWorkflows(cfg, null);
   } catch (e) { sbx = [{ id: "sbx.self", level: "FAIL", why: "sandbox actions unreadable: " + String(e.message).slice(0, 120), evidence: null }]; }

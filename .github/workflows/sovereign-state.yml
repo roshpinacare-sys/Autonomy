@@ -90,7 +90,7 @@ jobs:
             HTTP="$(curl -sS -o /dev/null -w '%{http_code}' -X POST \
               -H "Authorization: Bearer $GITHUB_TOKEN" \
               -H "Accept: application/vnd.github+json" \
-              https://api.github.com/repos/roshpinacare-sys/Sandbox/dispatches \
+              https://api.github.com/repos/roshpinacare-sys/Autonomy/dispatches \
               -d '{"event_type":"sovereign-tick","client_payload":{"from":"state-rescue"}}')"
             echo "tick-artery stale ${STALE_MS}ms — rescue dispatch http=$HTTP"
             if [ "$HTTP" != "204" ]; then
@@ -170,7 +170,7 @@ jobs:
           HTTP="$(curl -sS -o /dev/null -w '%{http_code}' -X POST \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/roshpinacare-sys/Sandbox/dispatches \
+            https://api.github.com/repos/roshpinacare-sys/Autonomy/dispatches \
             -d '{"event_type":"sovereign-state-tick","client_payload":{"from":"chain"}}')"
           echo "dispatch http=$HTTP"
           if [ "$HTTP" != "204" ]; then

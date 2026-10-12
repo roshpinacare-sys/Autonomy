@@ -53,6 +53,9 @@ jobs:
         env:
           FED_TOKEN: ${{ secrets.SBX_FLEET_PAT }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 3-a: wave-2 refs law — acct-NN refs in config.json resolve to real chain
+          # accounts ONLY inside the process; committed artifacts stay refs-only.
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
         run: node engine/verifier.mjs --guard-minutes 22
 
       # חסם-הדחיפה (fail-closed) על-הטריטוריה-שלי בלבד (דפוס-sovereign.yml).
@@ -61,9 +64,16 @@ jobs:
       - name: leak-scan (fail-closed, territory-only)
         if: always()
         run: |
-          node engine/leak-scan.mjs ops/agents/zai-verifier/REPORT.md ops/agents/zai-verifier/TASKS.md
-          for f in ops/agents/zai-verifier/config.json ops/agents/zai-verifier/README.md state/verifier/history.jsonl state/verifier/verdict-latest.json; do
-            [ -f "$f" ] && node engine/leak-scan.mjs "$f"
+          # חוק-המטרות-הכנה (3-a · נמדד run 38305687767: המטרות היו נתיבי-זיכרון-פרטיים
+          #  שאינם-קיימים-בריפו-זה → fail-closed על-עצמו). מטרה-חסרה = קובץ-זיכרון-פרטי
+          #  שלא-נישא-הנה — מסומנת-בכנות-ומדולגת; קובץ-קיים נסרק fail-closed כתמיד.
+          #  הסורק-עצמו (engine/leak-scan.mjs) אינו-נוגע-ואינו-מוחלש.
+          for f in ops/agents/zai-verifier/REPORT.md ops/agents/zai-verifier/TASKS.md ops/agents/zai-verifier/config.json ops/agents/zai-verifier/README.md state/verifier/history.jsonl state/verifier/verdict-latest.json; do
+            if [ -f "$f" ]; then
+              node engine/leak-scan.mjs "$f"
+            else
+              echo "[leak-scan] ⊘ target absent (private-memory file) — not scanned here: $f"
+            fi
           done
 
       - name: commit + push (rebase-safe, territory-only)
@@ -127,7 +137,7 @@ jobs:
           HTTP="$(curl -sS -o /dev/null -w '%{http_code}' -X POST \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/roshpinacare-sys/Sandbox/dispatches \
+            https://api.github.com/repos/roshpinacare-sys/Autonomy/dispatches \
             -d '{"event_type":"verifier-next","client_payload":{"from":"chain"}}')"
           echo "dispatch http=$HTTP"
           if [ "$HTTP" != "204" ]; then
