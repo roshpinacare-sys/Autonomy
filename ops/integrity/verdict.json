@@ -1,0 +1,86 @@
+{
+  "schema": "integrity-guard/2",
+  "at": "2026-10-12T20:40:47.022Z",
+  "overall": "PASS_WITH_ALERTS",
+  "summary": {
+    "sources": 9,
+    "verified": 3,
+    "findings": 8,
+    "counts": {
+      "MEDIUM": 1,
+      "FLAG": 7
+    }
+  },
+  "provenance": {
+    "runId": "38305759419",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38305759419",
+    "sha": "264f42f61e1829c4fb56ea6baf46e25753f95031"
+  },
+  "verified": [
+    {
+      "where": "self:ops/integrity/verdict.json",
+      "law": "first-run",
+      "detail": "אין-קבלה-קודמת — ריצה-ראשונה"
+    },
+    {
+      "where": "FleetHQ:receipts/office-ci/verdict.json",
+      "law": "verified",
+      "detail": "run=38303811191 conc=success repo=FleetHQ"
+    },
+    {
+      "where": "Domain:office/data.json",
+      "law": "verified",
+      "detail": "run=38269593418 conc=success repo=FleetHQ"
+    }
+  ],
+  "findings": [
+    {
+      "level": "MEDIUM",
+      "where": "Sandbox",
+      "law": "tree-unreachable",
+      "detail": "HTTP 404 — גילוי-דינמי דולג (לא-זיוף)"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/wallet/verdict.json",
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/fleet/verdict.json",
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/grid/verdict.json",
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/latest.json",
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:ops/flow/receipt.json",
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:state/verifier/verdict-latest.json",
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
+      "where": "Domain:agents/office-live.json",
+      "law": "unprovenanced",
+      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane"
+    }
+  ]
+}
