@@ -511,6 +511,15 @@ export function renderVerdictMd(run) {
 
 /* ══════════════════ selftest — וקטורים, אפס-רשת ══════════════════ */
 export async function selftest() {
+  // selftest הוא אפס-סביבה-מעוצב: כשהמפה-האמיתית חסרה, נזרע רוסטר-פיקסצ'ר
+  // ניטרלי (selftest-acct-N — לעולם לא נשלח לרשת; כל-ה-fetchers מדומים).
+  // הריצה-החיה מחייבת את הסוד האמיתי — לא-נפתר = UNKNOWN כן (למעלה).
+  if (!ROSTER.length) {
+    process.env.FLEET_ROSTER_MAP = JSON.stringify(
+      Object.fromEntries(ROSTER_REFS.map((r, i) => [r, "selftest-acct-" + i])),
+    );
+    ROSTER = fleetNames(ROSTER_REFS);
+  }
   const vectors = [];
   const vec = (name, pass, detail = "") => vectors.push({ name, pass: !!pass, detail: String(detail).slice(0, 140) });
 

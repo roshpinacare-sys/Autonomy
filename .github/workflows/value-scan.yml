@@ -46,7 +46,7 @@ jobs:
             exit 1
           fi
           echo "public-surface audit: clean (zero fleet names)"
-      - name: פרסום state + ledger (append-bounded)
+      - name: פרסום state + ledger (append-bounded · rebase×3 — הריפו-חם-לקומיטים-מקבילים)
         if: always()
         run: |
           git config user.name  "value-scan-bot"
@@ -56,8 +56,13 @@ jobs:
             echo "no changes — honest skip"
           else
             git commit -m "value-scan: $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]"
-            git pull --rebase -q origin main || true
-            git push
+            OK=0
+            for i in 1 2 3; do
+              if git pull --rebase -q origin main && git push; then OK=1; echo "push ok (attempt $i)"; break; fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 5))
+            done
+            [ "$OK" = "1" ] || { echo "push failed after 3 rebase attempts — honest failure"; exit 1; }
           fi
       - name: אימות-readback (הפרסום נקרא-חזרה — אנטי-זיופים)
         if: always()

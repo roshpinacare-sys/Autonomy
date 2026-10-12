@@ -48,11 +48,13 @@ function loadPair(obj) {
 }
 
 function load() {
-  if (loaded) return;
+  // resolved-once caching; an UNRESOLVED process keeps retrying (cheap) so a map
+  // seeded later into process.env (selftest fixture roster) is picked up honestly.
+  if (loaded && REF_TO_NAME.size) return;
   loaded = true;
   try {
     const env = process.env.FLEET_ROSTER_MAP;
-    if (env && env.trim().startsWith("{")) { loadPair(JSON.parse(env)); return; }
+    if (env && env.trim().startsWith("{")) { loadPair(JSON.parse(env)); if (REF_TO_NAME.size) return; }
   } catch { /* fall through to local file */ }
   try {
     const local = join(HERE, ".roster-map.local.json");
