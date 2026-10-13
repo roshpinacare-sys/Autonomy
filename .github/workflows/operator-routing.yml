@@ -1,0 +1,59 @@
+# operator-routing (Autonomy) — הריבונות-היא-המפעיל (T-77)
+#
+# WHY (owner-trace 1a1374bc626866c9): "הריבונות היא המפעיל אז טענות למפעיל
+# צריכות להיות מנותבות לאוטונומיה ולוודא שהיא מספיק אינטליגנטית כדי באמת
+# לקבל החלטות חכמות ולבדוק ולבחון ולהיות יותר בטוחה ומודעת."
+#
+# המסלול: טענה (claims-book / intake owner-decision) → ניתוב-דטרמיניסטי
+# → repository_dispatch לעורק-ה-artery המתאים → העורק מודד/מכריע/מפרסם קבלה.
+# keyless בקריאה · GITHUB_TOKEN לדיספאץ' ולקומיט · fail-soft (אף-זרם-מיילים).
+name: operator-routing
+
+on:
+  schedule:
+    - cron: "23,53 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: operator-routing
+  cancel-in-progress: false
+
+jobs:
+  route:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - name: Route operator-claims to the autonomy's lanes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node tools/operator-routing.mjs
+
+      - name: Publish routing receipt (race-proof, honest)
+        run: |
+          set -euo pipefail
+          git config user.name  "roshpinacare-sys"
+          git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
+          git add ops/sovereign/CLAIMS/
+          if git diff --cached --quiet; then
+            echo "no routing change — honest skip"
+            exit 0
+          fi
+          git commit -m "operator-routing: claims → autonomy lanes $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]"
+          OK=0
+          for i in 1 2 3 4 5; do
+            git pull --rebase -q origin main 2>/dev/null || true
+            if git push -q origin main 2>/dev/null; then OK=1; break; fi
+            sleep 5
+          done
+          echo "push=$OK (lost pushes live in the run log — anti-flood exit 0)"
+          exit 0
