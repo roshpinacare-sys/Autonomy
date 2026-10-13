@@ -6,19 +6,46 @@
   "sentinel": "Sandbox",
   "canaryWorkflow": "compute-canary.yml",
   "cooldownHours": 6,
-  "lastCanaryAttempt": null,
+  "lastCanaryAttempt": "2026-10-13T22:56:12.188Z",
   "repos": [
-    "Sandbox", "saos-dex", "Zip", "roshpina", "Project-files", "Saosmartwallet",
-    "saos-jummper", "saos-control-center", "saos-sovereign-platform",
-    "saos-sovereign-foundry", "sandbox-private", "SovereignConsole", "Sdk",
-    "anchor-baseline", "Adsmarket", "TruthRail", "saos-agents", "Defi"
+    "Sandbox",
+    "saos-dex",
+    "Zip",
+    "roshpina",
+    "Project-files",
+    "Saosmartwallet",
+    "saos-jummper",
+    "saos-control-center",
+    "saos-sovereign-platform",
+    "saos-sovereign-foundry",
+    "sandbox-private",
+    "SovereignConsole",
+    "Sdk",
+    "anchor-baseline",
+    "Adsmarket",
+    "TruthRail",
+    "saos-agents",
+    "Defi"
   ],
   "excluded": [
-    { "repo": "steem", "why": "processes honest skips without runners — zero failures measured; stays alive by law" }
+    {
+      "repo": "steem",
+      "why": "processes honest skips without runners — zero failures measured; stays alive by law"
+    }
   ],
   "layers": [
-    { "layer": "repo-level Actions park (this ledger)", "who": "zai-code T-REARM", "act": "Actions enabled=false ×18 via permissions API", "reversible": "compute-rearm.yml staged revival" },
-    { "layer": "workflow-level park", "who": "parallel lane T23 (ops-forge/ops/flood-cure)", "act": "19 private workflows disabled with receipts; law: private repo = memory only", "note": "survives repo re-arm — the two layers compose" }
+    {
+      "layer": "repo-level Actions park (this ledger)",
+      "who": "zai-code T-REARM",
+      "act": "Actions enabled=false ×18 via permissions API",
+      "reversible": "compute-rearm.yml staged revival"
+    },
+    {
+      "layer": "workflow-level park",
+      "who": "parallel lane T23 (ops-forge/ops/flood-cure)",
+      "act": "19 private workflows disabled with receipts; law: private repo = memory only",
+      "note": "survives repo re-arm — the two layers compose"
+    }
   ],
   "revivalPlan": "staged: sentinel first (canary must go green), then the rest; on any blockage re-park all (agents/compute-rearm.mjs)",
   "canonicalCompute": "heavy recurring compute lives in public repos (Domain dex-beat/grid twins, office pulses, Autonomy arteries) — unaffected by this park"
