@@ -92,7 +92,7 @@ const FLEET = [
 ];
 
 // חוקי-צי אחידים — כל-ריפו-קריטי נבדק מולם (החוזה של הסקירות, הופך-מכונה)
-function fleetLaws(wdir) {
+function fleetLaws(wdir, headScanned) {
   const laws = [];
   // 1) תיאטרון-CI אסור: אין דפוס skipped-עובר באף-workflow
   const wfDir = join(wdir, ".github/workflows");
@@ -114,7 +114,7 @@ function fleetLaws(wdir) {
   if (existsSync(glPath)) {
     const glTxt = readFileSync(glPath, "utf8");
     const anyTrigger = glTxt.includes("push:") || glTxt.includes("pull_request:") || glTxt.includes("workflow_dispatch:");
-    const arteryScannedHead = laws.some((l) => l.id === "law-no-secrets-at-head");
+    const arteryScannedHead = headScanned === true;
     const ok = anyTrigger && arteryScannedHead;
     laws.push({ id: "law-gitleaks-push", verdict: ok ? "pass" : "fail", detail: ok ? "scan capability present + this artery scanned HEAD this run (billing-wall covenant: the artery is the push layer for walled repos)" : "gitleaks.yml present but no trigger at all, or HEAD not scanned this run" });
   } else laws.push({ id: "law-gitleaks-push", verdict: "flag", detail: "no gitleaks.yml in repo — no in-repo secret scan" });
@@ -127,7 +127,7 @@ function fleetLaws(wdir) {
 /* חוקי-הארנק כחוזה-צי (T-64): חמשת-החוקים של wallet-verify נאכפים גם כאן —
  * מדידה-כפולה בלתי-תלויה. אם מישהו יחליש את עורק-הארנק או את קוד-השער,
  * העורק-הזה יצעק. severity זהה למקור (provenance = flag, השאר fail). */
-function walletFleetLaws(wdir) {
+function walletFleetLaws(wdir, headScanned) {
   const laws = [];
   const read = (p) => (existsSync(join(wdir, p)) ? readFileSync(join(wdir, p), "utf8") : null);
   const push = (id, ok, detail, severity = "fail") => laws.push({ id, verdict: ok ? "pass" : severity, detail });
@@ -214,8 +214,9 @@ for (const repo of FLEET) {
         out(`${repo.name}/${c.id}=FAIL — ${r.reason}`);
       }
     }
-    r.laws.push(...fleetLaws(wdir));
-    if (repo.walletLaws) r.laws.push(...walletFleetLaws(wdir));
+    const headScannedOk = !!scanLaw && (scanLaw.verdict === "pass" || (scanLaw.verdict === "flag" && !String(scanLaw.detail || "").includes("unavailable")));
+    r.laws.push(...fleetLaws(wdir, headScannedOk));
+    if (repo.walletLaws) r.laws.push(...walletFleetLaws(wdir, headScannedOk));
     for (const l of r.laws) {
       if (l.verdict === "flag") r.alerts.push(`${l.id}: ${l.detail}`);
       out(`${repo.name}/${l.id}: ${l.verdict} — ${l.detail}`);
