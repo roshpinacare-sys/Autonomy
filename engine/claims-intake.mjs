@@ -73,7 +73,7 @@ export function suggestLane(title, body, cls) {
 // ─── עזרי-רשת (timeout בכל-קריאה — לקח ה-pulse התלוי) ───────────────────────
 function makeGh(token) {
   const calls = { n: 0, errors: 0, rateLimited: false };
-  async function gh(method, pathname, body, tries = 2) {
+  async function gh(method, pathname, body, tries = 3) {
     calls.n++;
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), 20_000);
@@ -92,7 +92,8 @@ function makeGh(token) {
       if ((res.status === 403 || res.status === 429) && res.headers.get("x-ratelimit-remaining") === "0") calls.rateLimited = true;
       if (res.status >= 500 || res.status === 403 || res.status === 429) {
         if (tries > 0) {
-          await new Promise((r) => setTimeout(r, 1500));
+          // backoff מדורג — abuse-detection של GitHub אכזרי על פרצי-POST (נמדד 23:0x)
+          await new Promise((r) => setTimeout(r, tries === 3 ? 5000 : tries === 2 ? 8000 : 12000));
           return gh(method, pathname, body, tries - 1);
         }
       }
@@ -111,6 +112,8 @@ function makeGh(token) {
   }
   return { gh, calls };
 }
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function loadJson(file, fallback) {
   try {
@@ -166,7 +169,7 @@ async function main() {
     console.log(`selftest: ${r.ok ? "GREEN" : "RED"} (${r.total - r.failed}/${r.total})`);
     process.exit(r.ok ? 0 : 1);
   }
-  const token = process.env.GITHUB_TOKEN || "";
+  const token = process.env.CLAIMS_TOKEN || process.env.GITHUB_TOKEN || "";
   if (!token) {
     console.log("BLOCKED: no GITHUB_TOKEN — designed waiting state, nothing measured");
     process.exit(0);
@@ -218,11 +221,13 @@ async function main() {
       if (!already) {
         const post = await gh("POST", `/repos/roshpinacare-sys/${repo}/issues/${issue.number}/comments`, { body: commentBody(claim) });
         if (post.status !== 201) {
+          console.error(`comment-fail ${key}: http=${post.status} (מתועד, לא מושתק)`);
           log.push({ at: new Date().toISOString(), ev: "comment-fail", key, status: post.status });
           failed++;
           continue; // בלי-תגובה אין-ניתוב גלוי — לא מזייפים הצלחה
         }
         await gh("POST", `/repos/roshpinacare-sys/${repo}/issues/${issue.number}/labels`, { labels: ["claims/routed", `claims/${cls.toLowerCase()}`] });
+        await sleep(2500); // throttle — לא לרגז את abuse-detection
       }
       ledger.routed[key] = { at: claim.routedAt, class: cls, lane };
       if (cls === "DEFECT") {

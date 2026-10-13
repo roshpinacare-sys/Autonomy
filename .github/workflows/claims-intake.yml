@@ -45,7 +45,9 @@ jobs:
 
       - name: sweep + route open claims (fail-soft per issue, never silent)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # טוקן-מועדף: PAT-צי (SBX_FLEET_PAT — כמו selfhood) — github-actions[bot] נחסם
+          # ב-abuse-detection על פרצי-תגובות (נמדד 2 ריצות רצופות 23:0x). fallback = github.token
+          CLAIMS_TOKEN: ${{ secrets.SBX_FLEET_PAT || secrets.GITHUB_TOKEN }}
         run: node engine/claims-intake.mjs
 
       - name: leak-scan (fail-closed, on new artifacts)
