@@ -55,9 +55,10 @@ jobs:
       - name: leak-scan (fail-closed)
         if: always()
         run: |
-          [ -f ops/decision-truth/verdict.json ] && node engine/leak-scan.mjs ops/decision-truth/verdict.json
-          [ -f ops/decision-truth/log.jsonl ] && node engine/leak-scan.mjs ops/decision-truth/log.jsonl
-          [ -f ops/decision-truth/run.log ] && node engine/leak-scan.mjs ops/decision-truth/run.log
+          # absent file = skip (fresh-checkout race); present file = scan result propagates (fail-closed kept)
+          for f in verdict.json log.jsonl run.log; do
+            if [ -f "ops/decision-truth/$f" ]; then node engine/leak-scan.mjs "ops/decision-truth/$f"; fi
+          done
 
       - name: public-surface audit (zero fleet names — refs law, fail-closed)
         if: always()
