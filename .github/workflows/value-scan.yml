@@ -57,12 +57,14 @@ jobs:
           else
             git commit -m "value-scan: $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]"
             OK=0
-            for i in 1 2 3; do
+            # T24: measured push race - 28 writers share Autonomy main; 3 attempts died in a burst window.
+            # 7 attempts with growing backout survives any measured burst (honest failure stays for real walls).
+            for i in 1 2 3 4 5 6 7; do
               if git pull --rebase -q origin main && git push; then OK=1; echo "push ok (attempt $i)"; break; fi
               git rebase --abort 2>/dev/null || true
-              sleep $((i * 5))
+              sleep $((i * 4 + RANDOM % 5))
             done
-            [ "$OK" = "1" ] || { echo "push failed after 3 rebase attempts — honest failure"; exit 1; }
+            [ "$OK" = "1" ] || { echo "push failed after 7 rebase attempts — honest failure"; exit 1; }
           fi
       - name: אימות-readback (הפרסום נקרא-חזרה — אנטי-זיופים)
         if: always()
