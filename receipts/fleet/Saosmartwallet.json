@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-13T10:37:27.354Z",
+  "at": "2026-10-13T10:43:54.888Z",
   "slug": "roshpinacare-sys/Saosmartwallet",
   "head": "6eaf197783bffbfa3b3caf72954a0f1f652dbe34",
   "checks": {},
@@ -7,7 +7,7 @@
     {
       "id": "law-no-secrets-at-head",
       "verdict": "flag",
-      "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-KlcfNL/saos-wallet/tools/vault-zk-check.ts"
+      "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83yzzV/saos-wallet/tools/vault-zk-check.ts"
     },
     {
       "id": "law-no-skipped-pass",
@@ -16,8 +16,8 @@
     },
     {
       "id": "law-gitleaks-push",
-      "verdict": "pass",
-      "detail": "gitleaks scan present (push, or PR+dispatch with this artery as the push layer for billing-walled repos)"
+      "verdict": "fail",
+      "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
     },
     {
       "id": "law-r11-head-absent",
@@ -51,9 +51,9 @@
     }
   ],
   "alerts": [
-    "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-KlcfNL/saos-wallet/tools/vault-zk-check.ts",
+    "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83yzzV/saos-wallet/tools/vault-zk-check.ts",
     "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "overall": "FAIL",
+  "reason": ""
 }

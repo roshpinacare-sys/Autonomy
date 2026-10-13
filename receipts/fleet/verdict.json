@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-13T10:37:27.354Z",
+  "at": "2026-10-13T10:43:54.888Z",
   "repos": {
     "steem-cockpit": {
-      "head": "e90a716afa66b91a60001cd1ec7b6cf84ddb2636",
+      "head": "c5c796764740a1cba8986f88edd82190355bb394",
       "overall": "FAIL",
       "checks": {
         "install": "pass",
@@ -12,51 +12,51 @@
       "reason": ""
     },
     "saos-dex": {
-      "head": "27806c0382343619b7ddc17dff165282a2e9aab4",
-      "overall": "PASS",
+      "head": "5262c8a244201acdb6bd29e71385ec0c0d5e8d62",
+      "overall": "FAIL",
       "checks": {
         "install": "pass",
         "typecheck": "pass"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": ""
     },
     "saos-agents": {
       "head": "f312ce876a2dce9e928469889e6beb9ca117ec3c",
-      "overall": "PASS",
+      "overall": "FAIL",
       "checks": {
         "agentsSelftest": "pass"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": ""
     },
     "saos-wallet": {
       "head": "6eaf197783bffbfa3b3caf72954a0f1f652dbe34",
-      "overall": "PASS",
+      "overall": "FAIL",
       "checks": {},
-      "reason": "all checks and fleet laws pass"
+      "reason": ""
     },
     "adsmarket": {
       "head": "c307d566fbd722ab27d35b37b38295b159226ccb",
-      "overall": "PASS",
+      "overall": "FAIL",
       "checks": {},
-      "reason": "all checks and fleet laws pass"
+      "reason": ""
     }
   },
   "alerts": [
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-KlcfNL/saos-wallet/tools/vault-zk-check.ts",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83yzzV/saos-wallet/tools/vault-zk-check.ts",
     "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
   "overall": "FAIL",
-  "reason": "steem=FAIL · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "reason": "steem=FAIL · saos-dex=FAIL · saos-agents=FAIL · Saosmartwallet=FAIL · Adsmarket=FAIL",
   "provenance": {
-    "runId": "38384605482",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38384605482",
-    "sha": "23ae61ab9939ba6e1682a878c0443c65b9a23f78"
+    "runId": "38385338386",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38385338386",
+    "sha": "37bb7bf2d5e4429cabbde929a21999928be1013a"
   },
   "details": [
     {
-      "at": "2026-10-13T10:37:27.354Z",
+      "at": "2026-10-13T10:43:54.888Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "e90a716afa66b91a60001cd1ec7b6cf84ddb2636",
+      "head": "c5c796764740a1cba8986f88edd82190355bb394",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
@@ -76,7 +76,7 @@
         {
           "id": "law-gitleaks-push",
           "verdict": "fail",
-          "detail": "gitleaks.yml exists but PR-only — pushes unscanned"
+          "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
         },
         {
           "id": "law-r11-head-absent",
@@ -89,9 +89,9 @@
       "reason": ""
     },
     {
-      "at": "2026-10-13T10:37:27.354Z",
+      "at": "2026-10-13T10:43:54.888Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "27806c0382343619b7ddc17dff165282a2e9aab4",
+      "head": "5262c8a244201acdb6bd29e71385ec0c0d5e8d62",
       "checks": {
         "install": "pass",
         "typecheck": "pass"
@@ -109,8 +109,8 @@
         },
         {
           "id": "law-gitleaks-push",
-          "verdict": "pass",
-          "detail": "gitleaks scan present (push, or PR+dispatch with this artery as the push layer for billing-walled repos)"
+          "verdict": "fail",
+          "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
         },
         {
           "id": "law-r11-head-absent",
@@ -119,11 +119,11 @@
         }
       ],
       "alerts": [],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": ""
     },
     {
-      "at": "2026-10-13T10:37:27.354Z",
+      "at": "2026-10-13T10:43:54.888Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "f312ce876a2dce9e928469889e6beb9ca117ec3c",
       "checks": {
@@ -142,8 +142,8 @@
         },
         {
           "id": "law-gitleaks-push",
-          "verdict": "pass",
-          "detail": "gitleaks scan present (push, or PR+dispatch with this artery as the push layer for billing-walled repos)"
+          "verdict": "fail",
+          "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
         },
         {
           "id": "law-r11-head-absent",
@@ -152,11 +152,11 @@
         }
       ],
       "alerts": [],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": ""
     },
     {
-      "at": "2026-10-13T10:37:27.354Z",
+      "at": "2026-10-13T10:43:54.888Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
       "head": "6eaf197783bffbfa3b3caf72954a0f1f652dbe34",
       "checks": {},
@@ -164,7 +164,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-KlcfNL/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83yzzV/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
@@ -173,8 +173,8 @@
         },
         {
           "id": "law-gitleaks-push",
-          "verdict": "pass",
-          "detail": "gitleaks scan present (push, or PR+dispatch with this artery as the push layer for billing-walled repos)"
+          "verdict": "fail",
+          "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
         },
         {
           "id": "law-r11-head-absent",
@@ -208,14 +208,14 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-KlcfNL/saos-wallet/tools/vault-zk-check.ts",
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83yzzV/saos-wallet/tools/vault-zk-check.ts",
         "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
       ],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": ""
     },
     {
-      "at": "2026-10-13T10:37:27.354Z",
+      "at": "2026-10-13T10:43:54.888Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "c307d566fbd722ab27d35b37b38295b159226ccb",
       "checks": {},
@@ -232,8 +232,8 @@
         },
         {
           "id": "law-gitleaks-push",
-          "verdict": "pass",
-          "detail": "gitleaks scan present (push, or PR+dispatch with this artery as the push layer for billing-walled repos)"
+          "verdict": "fail",
+          "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
         },
         {
           "id": "law-r11-head-absent",
@@ -242,8 +242,8 @@
         }
       ],
       "alerts": [],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": ""
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-13T10:37:27.354Z",
+  "at": "2026-10-13T10:43:54.888Z",
   "slug": "roshpinacare-sys/saos-agents",
   "head": "f312ce876a2dce9e928469889e6beb9ca117ec3c",
   "checks": {
@@ -18,8 +18,8 @@
     },
     {
       "id": "law-gitleaks-push",
-      "verdict": "pass",
-      "detail": "gitleaks scan present (push, or PR+dispatch with this artery as the push layer for billing-walled repos)"
+      "verdict": "fail",
+      "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
     },
     {
       "id": "law-r11-head-absent",
@@ -28,6 +28,6 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "overall": "FAIL",
+  "reason": ""
 }
