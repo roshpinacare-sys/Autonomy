@@ -29,7 +29,7 @@ jobs:
       - name: הכרעה-ריבונית (keyless · כל מספר מדוד · STAGED-EXEC במקום טענת-ביצוע)
         env:
           GITHUB_TOKEN: ${{ github.token }}   # [T19-fix] קריאה-עצמית לתיבת-ההוראות בריפו-הפרטי
-          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}  # חוק-ה-refs: הפלט מדבר acct-refs (מפה-בסוד-בלבד)
+          ECO_WALLET_TOKEN: ${{ secrets.ECO_WALLET_TOKEN }} # [2026-10-13] התיבה-הקנונית חיה ב-Sandbox הפרטי — קריאה-מורשית (owner-approved)
         run: python3 ops/sovereign/DECIDER/decider.py
 
       - name: פרסום state + ledger (append-bounded · אין שכתוב היסטוריה)

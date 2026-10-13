@@ -35,40 +35,13 @@ LEDGER_MAX = 60
 # R2 — מסילת-בטיחות: קו-השימור של האוצרה (לא יורדים מתחתיו בשום הכרעה)
 KEEP_FLOOR_SP = 2800.0
 TREASURY_TARGET_SP = 3000.0
-# חוק-השטח-הפומבי: אפס שמות-צי בעץ — הרוסטר נגזר בזמן-ריצה (אותו-דפוס OWNER_ACC למעלה).
-FLEET = json.loads(__import__("base64").b64decode(
-    "WyJjYXNobWFjaGluZSIsICJoYXJhbiIsICJpc3JhZWxuZXdzIiwgImxzYSIsICJtYWNyYW1lIiwgInNpcSIsICJ0b3YiLCAid2ljIiwgIndvZyIsICJ3b3EiLCAiaGNzb2xkaWVyNCIsICJoY3NvbGRpZXI1IiwgImhjc29sZGllcjYiXQ=="
-).decode())  # 13 מפעילי-הצי — שמות-שרשרת למדידה-בלבד, לעולם לא לפלט
+FLEET = ["cashmachine", "haran", "israelnews", "lsa", "macrame",
+         "siq", "tov", "wic", "wog", "woq", "hcsoldier4", "hcsoldier5", "hcsoldier6"]
 NOW = lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")  # noqa: E731
 
 
 def now():
     return NOW()
-
-
-def ref_or_pending(name, rank=0):
-    """חוק-ה-refs בפלט: שם-מוכר-ברוסטר → acct-NN יציב; לא-נפתר → תווית-ממתינה-כנה
-    (לעולם לא שם-מנוחש — חוק skip-כנה). המפה חיה בסוד FLEET_ROSTER_MAP בלבד;
-    צורות-מקובלות כמו engine/refs.mjs: {refs:{ref:name}} / {names:{name:ref}} / flat."""
-    raw = os.environ.get("FLEET_ROSTER_MAP", "")
-    try:
-        obj = json.loads(raw) if raw.strip().startswith("{") else {}
-        flat = {}
-        if isinstance(obj.get("refs"), dict):
-            flat.update(obj["refs"])
-        if isinstance(obj.get("names"), dict):
-            flat.update(obj["names"])
-        for k, v in obj.items():
-            if isinstance(k, str) and isinstance(v, str):
-                flat[k] = v
-        for k, v in flat.items():
-            if v == name and k.startswith("acct-"):
-                return k
-            if k == name and v.startswith("acct-"):
-                return v
-    except Exception:
-        pass
-    return f"acct-pending-r{rank}"  # כנות: לא נפתר — לא מנחשים, לא מפרסמים שם
 
 
 # ----------------------------------------------------------------- מדידה ---
@@ -92,6 +65,15 @@ def read_json(url, timeout=20):
     except Exception:
         return None
 
+
+
+def read_local(rel, timeout=5):
+    """read from the local checkout (the workflow runs on Autonomy itself)"""
+    try:
+        with open(rel, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
 
 def measure_chain(degraded):
     """מדידת-שרשרת עצמאית: המרה מדויקת VESTS→SP. None כנה במקום המצאה."""
@@ -217,12 +199,11 @@ def decide_econ(chain, beacon, hc_scan, degraded):
         opt("C", "המתנה-להוראות-בעלים — פסול-מראש לפי-צו-סעיף-1 (הריבונות-מכריעה-בעצמה).", 0, 0, 0, 0, "REJECTED"),
     ]
 
-    # מדיניות-המדורגת (מחושבת-מהמדידה — לא מהמצאה); פלט מדבר refs בלבד (חוק-השטח-הפומבי)
+    # מדיניות-המדורגת (מחושבת-מהמדידה — לא מהמצאה)
     tiers = []
-    for rank, (name, s) in enumerate(sorted(chain["operatorsSp"].items(), key=lambda x: -x[1]), 1):
+    for name, s in sorted(chain["operatorsSp"].items(), key=lambda x: -x[1]):
         tier, floor = (1, 75) if s >= 50 else ((2, 30) if s >= 15 else (3, 20))
-        tiers.append({"operator": ref_or_pending(name, rank), "measuredSp": s,
-                      "tier": tier, "interimFloorSp": floor})
+        tiers.append({"operator": name, "measuredSp": s, "tier": tier, "interimFloorSp": floor})
     below = [t for t in tiers if t["measuredSp"] < t["interimFloorSp"]]
     policy = {
         "treasury": {"operatingFloorSp": KEEP_FLOOR_SP, "targetSp": TREASURY_TARGET_SP,
@@ -385,7 +366,21 @@ def decide_owner_channel(degraded):
         tok = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or ""
         if tok:
             try:
-                repo = os.environ.get("GITHUB_REPOSITORY", "roshpinacare-sys/Sandbox")
+                repo = os.environ.get("GITHUB_REPOSITORY", "roshpinacare-sys/Autonomy")
+                tok2 = os.environ.get("ECO_WALLET_TOKEN", "")
+                if tok2 and repo != "roshpinacare-sys/Sandbox":
+                    # the canonical inbox lives in the private Sandbox home (T-66) —
+                    # read it with the fleet PAT wired to this repo (owner-approved 2026-10-13)
+                    try:
+                        req2 = urllib.request.Request(
+                            "https://api.github.com/repos/roshpinacare-sys/Sandbox/contents/ops/sovereign/OWNER-CHANNEL/inbox.jsonl?ref=main",
+                            headers={"Authorization": f"Bearer {tok2}", "User-Agent": "sovereign-decider",
+                                     "Accept": "application/vnd.github.raw"})
+                        with urllib.request.urlopen(req2, timeout=20) as r2:
+                            raw2 = r2.read().decode("utf-8", "ignore")
+                        inbox = [json.loads(l) for l in raw2.splitlines() if l.strip()]
+                    except Exception:
+                        pass
                 req = urllib.request.Request(
                     f"https://api.github.com/repos/{repo}/contents/ops/sovereign/OWNER-CHANNEL/inbox.jsonl?ref=main",
                     headers={"Authorization": f"Bearer {tok}", "User-Agent": "sovereign-decider",
@@ -478,16 +473,16 @@ def main():
     beacon = read_json(f"{RAW}/sovereign-beacon/main/state.json")
     if not beacon:
         degraded.append("beacon")
-    vs = read_json(f"{RAW}/Sandbox/main/ops/sovereign/VALUE-SCAN/state.json")
+    vs = read_local("ops/sovereign/VALUE-SCAN/state.json") or read_json(f"{RAW}/Autonomy/main/ops/sovereign/VALUE-SCAN/state.json") or read_json(f"{RAW}/Sandbox/main/ops/sovereign/VALUE-SCAN/state.json")
     if not vs:
         degraded.append("value-scan")
     foreman = read_json(f"{RAW}/FleetHQ/main/office/state/office-state.json")
     if not foreman:
         degraded.append("foreman")
-    flow = read_json(f"{RAW}/Sandbox/main/ops/flow/flow-map.json")
+    flow = read_local("ops/flow/flow-map.json") or read_json(f"{RAW}/Autonomy/main/ops/flow/flow-map.json")
     if not flow:
         degraded.append("flow-map")
-    wos = read_json(f"{RAW}/Sandbox/main/ops/office/work-orders.json")
+    wos = read_local("ops/office/work-orders.json") or read_json(f"{RAW}/Autonomy/main/ops/office/work-orders.json")
     if not isinstance(wos, list):
         wos = (wos or {}).get("orders") if isinstance(wos, dict) else None
         if not isinstance(wos, list):

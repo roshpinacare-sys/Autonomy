@@ -35,7 +35,8 @@ const LEDGER_MAX = 60;
 
 const RAW = "https://raw.githubusercontent.com/roshpinacare-sys";
 const STEEM_RPC = "https://api.steemit.com";
-const DECIDER_REMOTE = `${RAW}/Sandbox/main/ops/sovereign/DECIDER/state.json`; // מקור-האמת הפומבי (wave-2: הריפו-הזה אינו נושא את פנקס-המכריע)
+const DECIDER_LOCAL = "ops/sovereign/DECIDER/state.json"; // הריפו-הזה הוא בית-המכריע (ported 2026-10-13 — Sandbox quota-gated)
+const DECIDER_REMOTE = `${RAW}/Autonomy/main/ops/sovereign/DECIDER/state.json`; // גיבוי-מרוחק (Sandbox legacy נשמר בהערה-היסטורית)
 // חוק-השטח-הפומבי (wave-2): הצי מדובר ב-refs ניטרליים בלבד — השמות-האמיתיים
 // נגזרים בזמן-ריצה מסוד FLEET_ROSTER_MAP. אף שם-צי לא נמצא כליטרל כאן.
 const FLEET_REFS = ["acct-01", "acct-02", "acct-03", "acct-04", "acct-05",
@@ -243,11 +244,11 @@ async function run() {
   log(`selftest: ${st.vectors} vectors, ok=${st.ok}${st.bad.length ? " BAD: " + st.bad.map((b) => b.name).join(",") : ""}`);
 
   // 1) פנקס-ההכרעות — מקומי אם-קיים, אחרת מקור-האמת הפומבי (Sandbox raw)
-  let decider = readLocalJson(DECIDER_STATE);
+  let decider = readLocalJson(DECIDER_LOCAL) || readLocalJson(DECIDER_REMOTE);
   let deciderSource = "local-checkout";
   if (!decider) {
     const rem = await fetchJson(DECIDER_REMOTE, 20000, SBX_HEADERS);
-    if (rem.ok && rem.data && Array.isArray(rem.data.decisions)) { decider = rem.data; deciderSource = "sandbox-raw (public source of truth)"; }
+    if (rem.ok && rem.data && Array.isArray(rem.data.decisions)) { decider = rem.data; deciderSource = "autonomy-raw (sovereign public home)"; }
     else log(`decider remote fetch: ${rem.http ? "http " + rem.http : rem.error || "failed"} (honest skip)`);
   }
   log(`roster: ${resolved() ? "resolved from FLEET_ROSTER_MAP" : "UNRESOLVED — operator measurements degraded (honest)"}`);
