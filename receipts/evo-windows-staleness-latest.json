@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "at": "2026-10-13T14:32:14Z",
+  "agent": "evo-windows-staleness-gate v1 (zai-13d — WO-unwired-evo-windows: weekly keyless staleness tombstone over the Domain/agents evo chain)",
+  "summary": {
+    "GREEN": 3,
+    "AMBER": 0,
+    "RED": 0,
+    "UNKNOWN": 0
+  },
+  "runs": [
+    {
+      "at": "2026-10-13T14:32:14Z",
+      "trigger": "workflow_dispatch",
+      "checks": [
+        {
+          "id": "V-EVO-BOOK-FRESH",
+          "verdict": "GREEN",
+          "detail": "book.at 2026-10-11T23:46:55Z (38.8h) · cadence 20h · windows 132 (complete 1) · lastComplete 2026-10-11T23:46:55Z (38.8h) · nextDue 2026-10-12T19:46:55Z · ladder GREEN≤48h/AMBER≤168h/RED>168h"
+        },
+        {
+          "id": "V-EVO-DESK-BOOK",
+          "verdict": "GREEN",
+          "detail": "CR-0030 desk book present: at 2026-10-11T23:46:55Z · winner v1-incumbent · rows 10 (informational — the child's measured state)"
+        },
+        {
+          "id": "V-EVO-ENGINE-ALIVE",
+          "verdict": "GREEN",
+          "detail": "7 white-box pins PASS · live SKIP_RUN invocation booked 133 (was 132), decisionKind=SKIPPED-EVAL-CONTEXT, exit 0"
+        }
+      ],
+      "summary": {
+        "GREEN": 3,
+        "AMBER": 0,
+        "RED": 0,
+        "UNKNOWN": 0
+      }
+    }
+  ],
+  "note": "prior runs preserved verbatim (append-only, cap 12). The book's single room is Domain — this gate measures truth, it does not fork books."
+}
