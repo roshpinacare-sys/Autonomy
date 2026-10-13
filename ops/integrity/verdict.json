@@ -1,30 +1,30 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-10-13T11:32:28.120Z",
+  "at": "2026-10-13T13:49:30.860Z",
   "overall": "PASS",
   "summary": {
     "sources": 11,
     "verified": 6,
-    "findings": 9,
+    "findings": 10,
     "counts": {
-      "FLAG": 9
+      "FLAG": 10
     }
   },
   "provenance": {
-    "runId": "38390899648",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38390899648",
-    "sha": "4aed12aee7395526bbe170efe0e13293b9a085ae"
+    "runId": "38408104138",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38408104138",
+    "sha": "c642d8f49f5f2918939d444220df74b8fc3cf792"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=38386712937 conc=failure repo=Autonomy"
+      "detail": "run=38390899648 conc=success repo=Autonomy"
     },
     {
       "where": "FleetHQ:receipts/office-ci/verdict.json",
       "law": "verified",
-      "detail": "run=38389996110 conc=success repo=FleetHQ"
+      "detail": "run=38403996165 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
@@ -83,6 +83,12 @@
       "where": "Sandbox:state/verifier/verdict-latest.json",
       "law": "source-unreachable",
       "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
+      "where": "Domain:office/data.json",
+      "law": "stale",
+      "detail": "2h > 2h — office-pulse"
     },
     {
       "level": "FLAG",
