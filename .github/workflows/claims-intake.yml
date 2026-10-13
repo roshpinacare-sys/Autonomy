@@ -60,7 +60,10 @@ jobs:
         run: |
           git config user.name  "roshpinacare-sys"
           git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
-          git add state/claims-ledger.json state/claims-owner-words.json ops/sovereign/CLAIMS/queue.json receipts/claims
+          # הוספות-סלחניות: המנוע כותב קובץ רק כשיש מה לכתוב — נתיב-חסר אינו כשל (לקח DEX)
+          for f in state/claims-ledger.json state/claims-owner-words.json ops/sovereign/CLAIMS/queue.json receipts/claims; do
+            [ -e "$f" ] && git add "$f" || echo "[commit] ⊘ $f absent this run (honest)"
+          done
           if git diff --cached --quiet; then
             echo "no delta - no new claims to route"; exit 0
           fi
