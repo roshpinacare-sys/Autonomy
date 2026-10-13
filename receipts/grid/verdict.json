@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-13T11:23:40.688Z",
+  "measuredAt": "2026-10-13T12:35:01.254Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -16,16 +16,16 @@
     {
       "id": "law-grid-fresh",
       "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 4min)",
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 1min)",
       "severity": "fail",
       "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": true,
-      "detail": "grid executable: lastVerdict=CYCLE-IN-FLIGHT opsToday=2302",
+      "ok": false,
+      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
       "severity": "fail",
-      "verdict": "pass"
+      "verdict": "fail"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,22 +36,23 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "overall": "BLOCKED",
+  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
   "provenance": {
-    "stateBlobSha": "8d5ec62e79d2b7a1b7e39f519a1a4a4278e24589",
+    "stateBlobSha": "351d59a8b38fe077f9cc22c2cbf655105c5650c9",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "38389881310",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38389881310",
-    "sha": "e26bd2672d84b6f2d34cea0f218db207172a2138"
+    "runId": "38398326218",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38398326218",
+    "sha": "2ab61a99b2cb64b9db46982f3c6036bacc2308d1"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-13T11:19:24.272Z",
-    "ageMin": 4,
-    "ticks": 44506,
-    "lastVerdict": "CYCLE-IN-FLIGHT",
-    "opsToday": 2302,
-    "lastTxid": "ef19900f7e6bbd86947762ccb36eb91c40fc2033"
-  }
+    "lastTickAt": "2026-10-13T12:34:05.549Z",
+    "ageMin": 1,
+    "ticks": 45533,
+    "lastVerdict": "CREDENTIAL-MISSING",
+    "opsToday": 3404,
+    "lastTxid": "5e4d13318d0c44437eb53cd21690f6bdb48c5341"
+  },
+  "credBlocked": true
 }
