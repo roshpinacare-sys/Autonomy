@@ -143,8 +143,8 @@ const FEEDS = [
   ['ops-forge', 'ops/RECEIPTS.jsonl', 'קבלות-ביצוע'],
   ['saos-dex', 'grids/state/state.json', 'גריד-DEX'],
   ['saos-dex', 'db/dex-metrics.json', 'מדדי-DEX'],
-  ['Pulse', 'public/pulse.json', 'דופק-ציבורי'],
-  ['GridWatch', 'public/fleet-health.json', 'בריאות-צי'],
+  ['Pulse', 'state/network.json', 'דופק-ציבורי'],
+  ['GridWatch', 'state/fleet-health.json', 'בריאות-צי'],
 ];
 const SITES = [
   'https://roshpinacare-sys.github.io/',
@@ -277,7 +277,7 @@ function reasonDeterministic(claimText, cap, journalTail) {
   const t = String(claimText || '');
   const alive = cap.feeds.filter((f) => f.alive);
   const dead = cap.feeds.filter((f) => !f.alive);
-  const wallBroken = cap.compute.activePrivateWorkflows.length;
+  const wallBroken = cap.compute.activePrivateWorkflows.filter((w) => !w.endsWith('/pages-build-deployment')).length;
   const q = /\?|למה|איך|מתי|מה\s|כמה|איפה/.test(t);
   const complaint = /לא\sעובד|קרס|שקט|נשבר|תקוע|נפל|בעיה|כשל/.test(t);
   const directive = /בצע|הפעל|תקן|בנה|הוסיף|שנה|הפסק/.test(t);
@@ -295,7 +295,12 @@ function reasonDeterministic(claimText, cap, journalTail) {
   } else {
     verdictHe = `הפנייה נרשמה ונקראה. המדידה-הטרייה: ${alive.length}/${cap.feeds.length} פידים חיים · ${cap.organs.length} איברים-נמדדו ב-7 ימים. אין-בכוחי-הדטרמיניסטי לבצע-פעולה — הפנייה עוברת-לתור-העבודה (ops-intake/QUEUE) לביצוע-מנותב.`;
   }
-  if (wallBroken > 0) steps.push(`חוק-עצירת-הדימום נשבר: ${wallBroken} וורקפלו-פעילים בריפו-פרטי — להשבית (הם רק-מייצרים אימיילי-כשל)`);
+  if (wallBroken > 0) {
+    const realBreak = cap.compute.activePrivateWorkflows.filter((w) => !w.endsWith('/pages-build-deployment'));
+    steps.push(realBreak.length === 0
+      ? `חוק-עצירת-הדימום מקויף (${cap.compute.activePrivateWorkflows.length} פעילים = חריג-Pages-מערכתי-מתועד בלבד)`
+      : `חוק-עצירת-הדימום נשבר: ${realBreak.length} וורקפלו-פעילים בריפו-פרטי (${realBreak.join(', ')}) — להשבית (מייצרים אימיילי-כשל)`);
+  }
   if (dead.length) steps.push(`פידים-לא-זמינים: ${dead.map((f) => f.label).join(', ')} — ראוי לחקירת-מקור`);
   steps.push('לאמת-עצמאית: לקרוא state/selfhood/capabilities.json מהריפו הציבורי ולהשוות לפנייה');
   return { verdictHe, stepsHe: steps, confidence: hit ? 'high' : 'medium', needMore: !hit, engine: 'deterministic-v1' };
