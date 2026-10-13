@@ -1,16 +1,16 @@
-# דוח-שומר-השלמות — 2026-10-13T10:56:06.284Z
+# דוח-שומר-השלמות — 2026-10-13T11:32:28.120Z
 
-**פסק-דין: FAIL** · מקורות=11 · טענות-שאומתו=5 · ממצאים=10
+**פסק-דין: PASS** · מקורות=11 · טענות-שאומתו=6 · ממצאים=9
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=38386305240 conc=failure repo=Autonomy
-- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38385808131 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=38383659104 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=38382954494 conc=failure repo=Autonomy
-- ✅ `Domain:office/data.json` — run=38384153131 conc=failure repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=38386712937 conc=failure repo=Autonomy
+- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38389996110 conc=success repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38389996110 conc=success repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38389877794 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38389881310 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38389874056 conc=success repo=Autonomy
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
-- **CRITICAL** `Domain:office/data.json` — conclusion-contradiction — receipt=PASS run=failure
 - **FLAG** `Sandbox:receipts/wallet/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:receipts/fleet/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:receipts/grid/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
