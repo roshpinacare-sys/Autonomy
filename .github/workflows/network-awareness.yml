@@ -1,0 +1,37 @@
+#
+# network-awareness — הרשת מביטה בעצמה (T24, מילת-הבעלים: "הרשת לא מודעת לעצמה
+# וליכולות הריבוניות האוטונומיות שלה").
+# כל 30 דק': קנסוס-מלא של המשק (גילוי-ריפואים-וזרימות-חדשות שהבעלים בונה) ·
+# מבחן-עצמאות-מלאה-מסנדבוקס (schedule+dispatch לכל-critical) · תלונות-כישלונות
+# לתיבת-הלאוטונומיה (לא למייל-הבעלים) · פנקס-מודעות מתפרסם ב-HEAD.
+# אפס-מפתחות · אפס-סודות-בפלט · זהות-אחת · כשל-כן.
+#
+name: network-awareness
+
+on:
+  schedule:
+    - cron: '13,43 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: network-awareness
+  cancel-in-progress: false
+
+jobs:
+  awareness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: the network looks at itself (census + independence + claims + manifest)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/network-awareness.mjs
