@@ -37,4 +37,4 @@ jobs:
       - name: Loud verify marker
         run: |
           test -f state/selfhood/self-check.json || { echo "FATAL: אין-בדיקה-עצמית"; exit 1; }
-          node -e "const s=require('./state/selfhood/self-check.json'); if(!s.allVerified){console.error('FATAL: קריאה-חזרה-נכשלה');process.exit(1);} console.log('selfhood verified:',s.at,'discoveries:',s.discoveries,'claims:',s.claimsProcessed,'brain:',s.brain);"
+          node -e "const s=require('./state/selfhood/self-check.json'); if(!s.allVerified){console.error('FATAL: קריאה-חזרה-נכשלה');process.exit(1);} console.log('selfhood verified:',s.at,'| discoveries:',s.discoveries,'| claims:',s.claimsProcessed,'| brain-chain:',(s.brain&&s.brain.chain||[]).join('+')||'deterministic-only');"

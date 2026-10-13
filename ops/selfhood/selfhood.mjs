@@ -18,6 +18,7 @@
  *        המוח לא-מחליף-מדידה — הוא מנסח-הכרעה על-גבי-מדידה בלבד · כנות-מלאה.
  */
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 const OWNER = 'roshpinacare-sys';
 const REPO = 'Autonomy';
@@ -37,6 +38,13 @@ function redact(s) {
     .replace(/[A-Za-z0-9+/=]{96,}/g, '[REDACTED]');
 }
 function tryJson(t) { try { return JSON.parse(t); } catch { return null; } }
+/** git blob sha — אימות-קבלה דטרמיניסטי מול-השרת (עמיד ל-lag של קריאה-חזרה) */
+function gitBlobSha(content) {
+  // eslint-disable-next-line no-undef
+  const buf = Buffer.concat([Buffer.from(`blob ${Buffer.byteLength(content)}\0`, 'utf8'), Buffer.from(content, 'utf8')]);
+  // eslint-disable-next-line no-undef
+  return createHash('sha1').update(buf).digest('hex');
+}
 
 async function gh(path, opts = {}) {
   const res = await fetch(`${API}${path}`, {
@@ -66,8 +74,11 @@ async function putVerified(repo, path, content, message) {
     const body = { message, content: Buffer.from(content, 'utf8').toString('base64'), branch: BRANCH, ...(sha ? { sha } : {}) };
     const r = await gh(`/repos/${OWNER}/${repo}/contents/${path}`, { method: 'PUT', body: JSON.stringify(body) });
     if (r && r.content && r.content.sha) {
-      const back = await rawRead(repo, path);
-      if (back !== null && redact(back) === redact(content)) return { ok: true, sha: r.content.sha };
+      // אימות-קבלה: ה-sha שהשרת חישב מהתוכן שלנו === git-blob-sha מקומי (דטרמיניסטי)
+      if (r.content.sha === gitBlobSha(content)) {
+        const back = await rawRead(repo, path); // קריאה-חזרה מרחמת (lag אפשרי) — לא-קובעת
+        return { ok: true, sha: r.content.sha, readback: back !== null && redact(back) === redact(content) };
+      }
     }
     if (r && r.__err === 409) {
       head = await gh(`/repos/${OWNER}/${repo}/contents/${path}?ref=${BRANCH}`);
@@ -201,21 +212,13 @@ const SYSTEM_PROMPT = [
   '{"verdictHe":"...","stepsHe":["..."],"confidence":"high|medium|low","needMore":true|false}',
 ].join('\n');
 
-async function brain(userContent) {
-  if (!AI || !AI.baseUrl || !AI.apiKey) return { ok: false, why: 'no-config' };
-  const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 60000);
+async function callOpenAiCompat(url, apiKey, extraHeaders, model, system, user) {
+  const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 45000);
   try {
-    const res = await fetch(`${AI.baseUrl}/chat/completions`, {
+    const res = await fetch(url, {
       method: 'POST', signal: ctrl.signal,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${AI.apiKey}`,
-        'X-Z-AI-From': 'Z',
-        ...(AI.chatId ? { 'X-Chat-Id': AI.chatId } : {}),
-        ...(AI.userId ? { 'X-User-Id': AI.userId } : {}),
-        ...(AI.token ? { 'X-Token': AI.token } : {}),
-      },
-      body: JSON.stringify({ messages: [{ role: 'system', content: SYSTEM_PROMPT }, { role: 'user', content: redact(userContent) }], thinking: { type: 'disabled' } }),
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}`, ...extraHeaders },
+      body: JSON.stringify({ model, messages: [{ role: 'system', content: system }, { role: 'user', content: redact(user) }], thinking: { type: 'disabled' }, temperature: 0.2 }),
     });
     clearTimeout(t);
     if (!res.ok) return { ok: false, why: `http-${res.status}` };
@@ -224,8 +227,78 @@ async function brain(userContent) {
     const m = String(txt).match(/\{[\s\S]*\}/);
     const v = m ? tryJson(m[0]) : null;
     if (!v || !v.verdictHe) return { ok: false, why: 'unparseable' };
-    return { ok: true, verdict: v };
+    return { ok: true, verdict: v, engine: `llm:${model}` };
   } catch (e) { clearTimeout(t); return { ok: false, why: redact(String(e?.message || e)).slice(0, 120) }; }
+}
+
+/** שרשרת-מוח: z-ai (config) → GROQ → GEMINI → fail-closed. השדרוג = מפתח-בעלים חדש, אפס-קוד. */
+async function brain(userContent) {
+  if (AI && AI.baseUrl && AI.apiKey) {
+    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 45000);
+    try {
+      const res = await fetch(`${AI.baseUrl}/chat/completions`, {
+        method: 'POST', signal: ctrl.signal,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${AI.apiKey}`,
+          'X-Z-AI-From': 'Z',
+          ...(AI.chatId ? { 'X-Chat-Id': AI.chatId } : {}),
+          ...(AI.userId ? { 'X-User-Id': AI.userId } : {}),
+          ...(AI.token ? { 'X-Token': AI.token } : {}),
+        },
+        body: JSON.stringify({ messages: [{ role: 'system', content: SYSTEM_PROMPT }, { role: 'user', content: redact(userContent) }], thinking: { type: 'disabled' } }),
+      });
+      clearTimeout(t);
+      if (res.ok) {
+        const j = await res.json();
+        const txt = j?.choices?.[0]?.message?.content ?? '';
+        const m = String(txt).match(/\{[\s\S]*\}/);
+        const v = m ? tryJson(m[0]) : null;
+        if (v && v.verdictHe) return { ok: true, verdict: v, engine: 'llm:z-ai' };
+      }
+    } catch { clearTimeout(t); /* נמשיך לספק-הבא — כנות בפלט */ }
+  }
+  const groq = (process.env.GROQ_API_KEY || '').trim();
+  if (groq) {
+    const r = await callOpenAiCompat('https://api.groq.com/openai/v1/chat/completions', groq, {}, process.env.BRAIN_MODEL_GROQ || 'llama-3.3-70b-versatile', SYSTEM_PROMPT, userContent);
+    if (r.ok) return r;
+  }
+  const gem = (process.env.GEMINI_API_KEY || '').trim();
+  if (gem) {
+    const r = await callOpenAiCompat('https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', gem, {}, process.env.BRAIN_MODEL_GEMINI || 'gemini-2.0-flash', SYSTEM_PROMPT, userContent);
+    if (r.ok) return r;
+  }
+  return { ok: false, why: AI ? 'providers-unreachable' : 'no-config' };
+}
+
+/** מנוע-הכרעה דטרמיניסטי (v1) — אינטליגנציה-אמיתית-בלי-מוח: סיווג + ראיות-מדודות + צעדים.
+ *  חוק: אסור-להמציא — כל-משפט נשען על המדידות שבהקשר בלבד. */
+function reasonDeterministic(claimText, cap, journalTail) {
+  const t = String(claimText || '');
+  const alive = cap.feeds.filter((f) => f.alive);
+  const dead = cap.feeds.filter((f) => !f.alive);
+  const wallBroken = cap.compute.activePrivateWorkflows.length;
+  const q = /\?|למה|איך|מתי|מה\s|כמה|איפה/.test(t);
+  const complaint = /לא\sעובד|קרס|שקט|נשבר|תקוע|נפל|בעיה|כשל/.test(t);
+  const directive = /בצע|הפעל|תקן|בנה|הוסיף|שנה|הפסק/.test(t);
+  const mention = (word) => dead.find((f) => (f.label + f.repo).includes(word)) || alive.find((f) => (f.label + f.repo).includes(word));
+  const hit = ['משרד', 'גריד', 'דקס', 'דופק', 'צי', 'בריאות', 'פעימה', 'זרימה', 'תור', 'קבלות'].map(mention).find(Boolean);
+  const steps = [];
+  let verdictHe;
+  if (hit) {
+    verdictHe = hit.alive
+      ? `${hit.label} (${hit.repo}) נמדד חי · גיל-פעימה ${hit.ageH ?? '?'}h — המקור הקנוני עובד ומפרסם.`
+      : `${hit.label} (${hit.repo}/${hit.path}) לא-זמין במדידה זו — זהו-כשל-אמיתי של האיבר-המזין, לא-עמדת-הרשת.`;
+    if (!hit.alive) steps.push(`לבדוק את ה-workflow המזין את ${hit.repo}/${hit.path} ב-Actions (רץ? איזה-שלב נפל?)`);
+  } else if (complaint || q) {
+    verdictHe = `המדידה-הטרייה: ${alive.length}/${cap.feeds.length} פידי-אמת חיים · ${cap.sites.filter((s) => s.status === 200).length}/${cap.sites.length} אתרים 200 · חוק-עצירת-הדימום ${wallBroken === 0 ? 'מקויף (0 וורקפלו-פרטי-פעיל)' : `נשבר (${wallBroken} פעילים)`}. התשובה-המדויקת לפנייה דורשת מדידה-ממוקדת שלא-בוצעה-עדיין.`;
+  } else {
+    verdictHe = `הפנייה נרשמה ונקראה. המדידה-הטרייה: ${alive.length}/${cap.feeds.length} פידים חיים · ${cap.organs.length} איברים-נמדדו ב-7 ימים. אין-בכוחי-הדטרמיניסטי לבצע-פעולה — הפנייה עוברת-לתור-העבודה (ops-intake/QUEUE) לביצוע-מנותב.`;
+  }
+  if (wallBroken > 0) steps.push(`חוק-עצירת-הדימום נשבר: ${wallBroken} וורקפלו-פעילים בריפו-פרטי — להשבית (הם רק-מייצרים אימיילי-כשל)`);
+  if (dead.length) steps.push(`פידים-לא-זמינים: ${dead.map((f) => f.label).join(', ')} — ראוי לחקירת-מקור`);
+  steps.push('לאמת-עצמאית: לקרוא state/selfhood/capabilities.json מהריפו הציבורי ולהשוות לפנייה');
+  return { verdictHe, stepsHe: steps, confidence: hit ? 'high' : 'medium', needMore: !hit, engine: 'deterministic-v1' };
 }
 
 function contextFor(cap, journalTail) {
@@ -250,11 +323,20 @@ async function loadJsonl(repo, path, cap = 400) {
   return { lines: lines.slice(-cap), all: lines.length };
 }
 
+/** הכרעה = מוח (LLM אם-זמין) → מנוע-דטרמיניסטי (תמיד-עובד). הכל על-גבי-מדידות. */
+async function decide(claimText, ctx, cap, journalTail) {
+  const b = await brain(`${ctx}\n\n=== פנייה/דוח ===\n${redact(claimText)}`);
+  if (b.ok) return { brainUsed: true, brainWhy: null, engine: b.engine || 'llm', verdict: { verdictHe: redact(b.verdict.verdictHe), stepsHe: (b.verdict.stepsHe || []).map(redact), confidence: b.verdict.confidence, needMore: !!b.verdict.needMore } };
+  const d = reasonDeterministic(claimText, cap, journalTail);
+  return { brainUsed: false, brainWhy: b.why, engine: d.engine, verdict: d };
+}
+
 async function processClaims(cap, journalTail) {
   const processed = await loadJsonl(REPO, `${DIR}/claims-processed.jsonl`);
   const seen = new Set(processed.lines.map((l) => { const j = tryJson(l); return j ? j.key : null; }).filter(Boolean));
   const local = await loadJsonl(REPO, `${DIR}/claims.jsonl`, 50);
   const ctx = contextFor(cap, journalTail);
+  const jTail = journalTail;
   const out = [];
   const replies = [];
 
@@ -263,8 +345,8 @@ async function processClaims(cap, journalTail) {
     const c = tryJson(l); if (!c || !c.text) continue;
     const key = `claim:${(c.at || '') + '|' + String(c.text).slice(0, 60)}`;
     if (seen.has(key)) continue;
-    const b = await brain(`${ctx}\n\n=== פנייה (${c.role || 'לא-מזוהה'} · ${c.at}) ===\n${redact(c.text)}`);
-    out.push({ key, at: now(), claimAt: c.at, from: c.role || c.source || 'unknown', claim: redact(String(c.text)).slice(0, 400), brainUsed: b.ok, brainWhy: b.ok ? null : b.why, verdict: b.ok ? { verdictHe: redact(b.verdict.verdictHe), stepsHe: (b.verdict.stepsHe || []).map(redact), confidence: b.verdict.confidence, needMore: !!b.verdict.needMore } : { verdictHe: 'OBSERVING — המוח לא-היה-זמין (' + b.why + '); הפנייה נרשמה מדודה וממתינה-למחזור-עם-מוח.', stepsHe: [], confidence: 'low', needMore: true }, evidence: { feedsAlive: cap.feeds.filter((f) => f.alive).length, sitesOk: cap.sites.filter((s) => s.status === 200).length + '/' + cap.sites.length } });
+    const d = await decide(String(c.text), ctx, cap, jTail);
+    out.push({ key, at: now(), claimAt: c.at, from: c.role || c.source || 'unknown', claim: redact(String(c.text)).slice(0, 400), brainUsed: d.brainUsed, brainWhy: d.brainWhy, engine: d.engine, verdict: d.verdict, evidence: { feedsAlive: cap.feeds.filter((f) => f.alive).length, sitesOk: cap.sites.filter((s) => s.status === 200).length + '/' + cap.sites.length } });
     replies.push({ replyTo: key, text: out[out.length - 1].verdict.verdictHe });
   }
 
@@ -277,14 +359,14 @@ async function processClaims(cap, journalTail) {
       if (e.role === 'autonomy') continue; // תשובה-שלנו — לא-פנייה
       const key = `owner-channel:${e.at}|${String(e.source || '')}`;
       if (seen.has(key)) continue;
-      const b = await brain(`${ctx}\n\n=== דוח/פנייה מ-${e.source || 'סוכן'} (${e.at}) ===\n${redact(JSON.stringify(e).slice(0, 900))}`);
-      out.push({ key, at: now(), claimAt: e.at, from: e.source || 'agent', claim: redact(String(e.text || JSON.stringify(e).slice(0, 300))).slice(0, 400), brainUsed: b.ok, brainWhy: b.ok ? null : b.why, verdict: b.ok ? { verdictHe: redact(b.verdict.verdictHe), stepsHe: (b.verdict.stepsHe || []).map(redact), confidence: b.verdict.confidence, needMore: !!b.verdict.needMore } : { verdictHe: 'OBSERVING — המוח לא-היה-זמין (' + b.why + '); הדוח נרשם מדוד.', stepsHe: [], confidence: 'low', needMore: true }, evidence: { source: 'OWNER-CHANNEL' } });
+      const d = await decide(String(e.text || JSON.stringify(e).slice(0, 500)), ctx, cap, jTail);
+      out.push({ key, at: now(), claimAt: e.at, from: e.source || 'agent', claim: redact(String(e.text || JSON.stringify(e).slice(0, 300))).slice(0, 400), brainUsed: d.brainUsed, brainWhy: d.brainWhy, engine: d.engine, verdict: d.verdict, evidence: { source: 'OWNER-CHANNEL' } });
       replies.push({ replyTo: key, text: out[out.length - 1].verdict.verdictHe });
     }
     // תשובה-חזרה לערוץ (dedup לפי replyTo)
     if (replies.length) {
-      const newLines = replies.map((r) => JSON.stringify({ at: now(), role: 'autonomy', source: 'selfhood', replyTo: r.replyTo, text: redact(r.text).slice(0, 500) }));
-      await putVerified('Sandbox', 'ops/sovereign/OWNER-CHANNEL/inbox.jsonl', inboxTxt.trimEnd() + '\n' + newLines.join('\n') + '\n', `selfhood: ${replies.length} תשובות-ריבונות לפניות (role autonomy, dedup)`);
+      const newLines = replies.map((r) => JSON.stringify({ at: now(), role: 'autonomy', source: 'selfhood', replyTo: r.replyTo, engine: 'route', text: redact(r.text).slice(0, 500) }));
+      await putVerified('Sandbox', 'ops/sovereign/OWNER-CHANNEL/inbox.jsonl', inboxTxt.trimEnd() + '\n' + newLines.join('\n') + '\n', `selfhood: ${replies.length} הכרעות-ריבונות לפניות (role autonomy, dedup)`);
     }
   }
   return { processed: [...processed.lines, ...out.map((o) => JSON.stringify(o))].slice(-200), newCount: out.length, replies: replies.length };
@@ -340,7 +422,7 @@ async function main() {
   ].join('\n');
   results['CAPABILITIES.md'] = await putVerified(REPO, `${DIR}/CAPABILITIES.md`, md, 'selfhood: מפת-יכולות (MD נמדד)');
   results['claims-processed.jsonl'] = await putVerified(REPO, `${DIR}/claims-processed.jsonl`, claims.processed.join('\n') + (claims.processed.length ? '\n' : ''), `selfhood: ${claims.newCount} פניות-הוכרעו (כנות+מדידה)`);
-  const selfCheck = { schema: 'selfhood.self-check/1', at: now(), durationMs: Date.now() - t0, commits: results, allVerified: Object.values(results).every((r) => r.ok), discoveries: discoveries.length, claimsProcessed: claims.newCount, brain: AI ? 'wired' : 'off' };
+  const selfCheck = { schema: 'selfhood.self-check/1', at: now(), durationMs: Date.now() - t0, commits: results, allVerified: Object.values(results).every((r) => r.ok), discoveries: discoveries.length, claimsProcessed: claims.newCount, brain: { chain: [AI ? 'z-ai' : null, process.env.GROQ_API_KEY ? 'groq' : null, process.env.GEMINI_API_KEY ? 'gemini' : null].filter(Boolean), wired: !!(AI || process.env.GROQ_API_KEY || process.env.GEMINI_API_KEY), note: 'z-ai זמין-רק-מרשת-פנימית; מפתח-ציבורי (GROQ/GEMINI) משדרג-אוטומטית' } };
   results['self-check.json'] = await putVerified(REPO, `${DIR}/self-check.json`, JSON.stringify(selfCheck, null, 1), 'selfhood: בדיקה-עצמית (קריאה-חזרה לכל-קובץ)');
   const failed = Object.entries(results).filter(([, r]) => !r.ok);
   if (failed.length) { console.error('VERIFY FAILED:', failed.map(([k]) => k).join(',')); process.exit(1); }
