@@ -12,6 +12,15 @@ on:
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
+  # T-REARM-hardening (measured 2026-10-13): the hourly cron tick 23:23Z never
+  # landed (only one run in history — the manual dispatch). A recovery ring whose
+  # heartbeat can silently skip is not a ring. Two VERIFIED hourly beats in this
+  # repo (fleet-yield 23:42:35Z, artery-integrity 23:21:35Z) now double as the
+  # pulse: every successful run of either wakes this ring. Cheap by law — the
+  # mjs exits instantly while the canary is in cooldown, on public minutes.
+  workflow_run:
+    workflows: ["fleet-yield", "artery-integrity"]
+    types: [completed]
 
 permissions:
   contents: write

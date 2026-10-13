@@ -29,7 +29,18 @@ const api = async (p, method = "GET", body) => {
 const setActions = (repo, enabled) => api(`/repos/${ORG}/${repo}/actions/permissions`, "PUT", { enabled });
 
 async function canaryOnce() {
-  const d = await api(`/repos/${ORG}/${ledger.sentinel}/actions/workflows/${ledger.canaryWorkflow}/dispatches`, "POST", { ref: "main" });
+  // T-REARM-hardening (measured 2026-10-13T22:56Z, journal still-walled http:422):
+  // dispatching seconds AFTER enabling the sentinel's Actions races the enable
+  // propagation — GitHub answers 422 (workflow not triggerable yet) and the ring
+  // mis-recorded a probe that never fired. Law: retry, never infer the wall from
+  // a propagation artifact. 3 attempts, 20s apart (measured: enable→triggerable ≲ 60s).
+  let d = { status: 0 };
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    d = await api(`/repos/${ORG}/${ledger.sentinel}/actions/workflows/${ledger.canaryWorkflow}/dispatches`, "POST", { ref: "main" });
+    if (d.status === 204) break;
+    journal("dispatch-retry", { attempt, http: d.status, repo: ledger.sentinel });
+    await new Promise((r) => setTimeout(r, 20_000));
+  }
   if (d.status !== 204) return { dispatched: false, http: d.status };
   const t0 = Date.now();
   while (Date.now() - t0 < 200_000) {
@@ -68,9 +79,21 @@ if (!ledger.armed) {
       journal("RE-ARMED", { canary: c, results });
       console.log("compute-rearm: THE WALL IS OPEN — all parked repos re-armed (staged revival complete)");
     } else {
-      for (const repo of ledger.repos) await setActions(repo, false);
-      journal("still-walled", { canary: c });
-      console.log("compute-rearm: billing wall still closed — parked again, cooldown timer armed");
+      // T-REARM-hardening: the park itself must be verified, not assumed — the
+      // probe re-enabled the sentinel, so a failed re-park leaves the #1 email
+      // source (identity-guard on push) armed against a closed wall.
+      const results = [];
+      for (const repo of ledger.repos) {
+        const en = await setActions(repo, false);
+        results.push(`${repo}:${en.status}`);
+      }
+      const sentinelAfter = await api(`/repos/${ORG}/${ledger.sentinel}/actions/permissions`);
+      journal("still-walled", { canary: c, rePark: results, sentinelEnabledAfter: sentinelAfter.json?.enabled ?? null });
+      if (sentinelAfter.json?.enabled !== false) {
+        journal("park-verification-failed", { repo: ledger.sentinel, http: sentinelAfter.status });
+        console.log("compute-rearm: WARNING — sentinel not verifiably re-parked (see journal park-verification-failed)");
+      }
+      console.log("compute-rearm: billing wall still closed — parked again + verified, cooldown timer armed");
     }
   }
 } else {
