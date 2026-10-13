@@ -91,15 +91,20 @@ result.provenance.sha = process.env.GITHUB_SHA || null;
         `grid enabled=true: lastTickAt must be ≤ ${FRESH_MAX_MIN}min old (measured ${result.measured.ageMin ?? "NaN"}min)`
       );
       // T-65 law-grid-exec-alive (owner law verbatim: "אין מצב כזה שהוא לא עובד"):
-      // a ticking grid that CANNOT execute (credential blocked) is a dead grid in slow motion.
+      // a ticking grid that CANNOT execute is a dead grid in slow motion. BLOCKED-SILENT
+      // LAW v2 (owner word 2026-10-13): credential-blocked is a DESIGNED waiting state —
+      // the owner words decide it, the receipt records it, the decider routes it. The
+      // artery reports verdict=BLOCKED (green run, honest record) instead of paging the
+      // owner red every cycle; a stale tick or unreadable state stays a loud FAIL.
       const credBlocked = String(st.lastVerdict ?? "").includes("CREDENTIAL-MISSING");
       assertLaw(
         "law-grid-exec-alive",
         !credBlocked,
         credBlocked
-          ? "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — owner law: no such state where the grid does not work"
+          ? "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider"
           : "grid executable: lastVerdict=" + (st.lastVerdict ?? "none") + " opsToday=" + (st.opsToday ?? "?")
       );
+      if (credBlocked) result.credBlocked = true;
     } else {
       result.alerts.push("grid-paused-by-operator: conf.enabled !== true — watchdog honest-idle, no red (the operator switch decides)");
     }
@@ -116,9 +121,13 @@ result.provenance.sha = process.env.GITHUB_SHA || null;
   }
 
   const vals = result.asserts.map((a) => a.verdict);
-  result.overall = vals.includes("fail") ? "FAIL" : "PASS";
+  const failedLaws = result.asserts.filter((a) => a.verdict === "fail");
+  const onlyCredBlocked = failedLaws.length > 0 && failedLaws.every((a) => a.id === "law-grid-exec-alive") && result.credBlocked === true;
+  result.overall = vals.includes("fail") ? (onlyCredBlocked ? "BLOCKED" : "FAIL") : "PASS";
   result.reason = vals.includes("fail")
-    ? `grid-law failed: ${result.asserts.filter((a) => a.verdict === "fail").map((a) => a.id).join(",")}`
+    ? (onlyCredBlocked
+      ? "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide"
+      : `grid-law failed: ${failedLaws.map((a) => a.id).join(",")}`)
     : `grid state measured from git; laws pass${result.alerts.length ? ` — ${result.alerts.length} flag(s)` : ""}`;
   }
 } catch (e) {
