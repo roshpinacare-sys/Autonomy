@@ -268,6 +268,14 @@ async function main() {
       if (!runTable[key]) {
         const { code, body } = await gh("/repos/" + OWNER + "/" + pu.repo + "/actions/runs/" + pu.id);
         runTable[key] = code === 200 ? body : code === 404 ? { notFound: true } : { unreachable: true };
+        // 3-a: 404-once is eventual-consistency, not forgery — a receipt published seconds ago
+        // cites a run the API may not have indexed yet (measured: run 38383656887 flagged
+        // ghost-run at 09:31, resolved 200 at 10:31). Re-check once after a short settle.
+        if (code === 404) {
+          await sleep(4000);
+          const second = await gh("/repos/" + OWNER + "/" + pu.repo + "/actions/runs/" + pu.id);
+          runTable[key] = second.code === 200 ? second.body : { notFound: true };
+        }
       }
       const j = judge({ url: g.url, overall: g.overall, sha: g.sha, at: g.at || at }, runTable);
       if (j.law === "verified") ver(where, "verified", j.detail);
