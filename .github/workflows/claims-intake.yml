@@ -1,0 +1,73 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# CLAIMS-INTAKE · מסלול-הטענות של הריבונות (owner word 2026-10-13)
+# ───────────────────────────────────────────────────────────────────────────
+# הבעלים: "הריבונות היא המפעיל אז טענות למפעיל צריכות להיות מנותבות
+# לאוטונומיה ולוודא שהיא מספיק אינטילגנטית כדי באמת לקבל החלטות חכמות."
+# מה: כל-4 שעות נסרקים כל-ה-issues הפתוחים בריפואי-הליבה; כל-טענה מסווגת
+# דטרמיניסטית (defect / owner-words / observation), מנותבת למסילת-תיקון ידועה
+# (מפת-מסילות מהידע-המדוד של-האחוזה), מקבלת תגובת-ניתוב על ה-issue, תוויות,
+# ונרשמת בלד + בתור-ההכרעה (ops/sovereign/CLAIMS/queue.json — קריאה-בלבד
+# למסילות-ההכרעה). אידמפוטנטי: אף-טענה לא מנותבת פעמיים.
+# כנות: rate-limit = BLOCKED מתוכנן (חוק v2); fail-soft לכל-issue; אפס-סודות.
+# ═══════════════════════════════════════════════════════════════════════════
+name: claims-intake
+
+on:
+  schedule:
+    - cron: "41 */4 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: claims-intake
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: selftest (טהור, ללא-רשת)
+        run: node engine/claims-intake.mjs --selftest
+
+      - name: sweep + route open claims (fail-soft per issue, never silent)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node engine/claims-intake.mjs
+
+      - name: leak-scan (fail-closed, on new artifacts)
+        if: always()
+        run: |
+          for f in state/claims-ledger.json state/claims-owner-words.json ops/sovereign/CLAIMS/queue.json receipts/claims/verdict.json; do
+            [ -f "$f" ] && node engine/leak-scan.mjs "$f" || echo "[leak-scan] ⊘ $f absent"
+          done
+
+      - name: commit routing ledger (honest verdicts always land)
+        if: always()
+        run: |
+          git config user.name  "roshpinacare-sys"
+          git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
+          git add state/claims-ledger.json state/claims-owner-words.json ops/sovereign/CLAIMS/queue.json receipts/claims
+          if git diff --cached --quiet; then
+            echo "no delta - no new claims to route"; exit 0
+          fi
+          git commit -m "claims routing refresh: $(python3 -c "import json;print(json.load(open('receipts/claims/verdict.json'))['verdict'])" 2>/dev/null || echo unknown) $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          ok=0
+          for i in 1 2 3; do
+            if git pull --rebase -q origin main && git push -q origin main; then ok=1; echo "PUSH-OK attempt $i"; break; fi
+            echo "push attempt $i failed (concurrent lane), retrying"; sleep 5
+          done
+          if [ "$ok" != "1" ]; then echo "PUSH-FAILED"; exit 1; fi

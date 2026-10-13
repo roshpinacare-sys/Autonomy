@@ -1,0 +1,75 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# NETWORK-SELF-AWARENESS · המודעות-העצמית של הרשת (owner word 2026-10-13)
+# ───────────────────────────────────────────────────────────────────────────
+# הבעלים: "אני כל הזמן בונה דברים והרשת לא מודעת אליהם, לא בודקת את עצמה,
+# לא מודעת לעצמה וליכולות הריבונויות האוטונומיות שלה... שכל הגיט מתקשר
+# מודע לכוח וליכולות שלו."
+# מה: כל-6 שעות הרשת ממפה את עצמה מחדש (כל-הריפואים, כל-ה-workflows,
+# כל-המנועים), מזהה מה חדש (כולל מה שהבעלים בנה מאז), מה דום, מה נכשל —
+# ומפרסמת דיוקן-עצמי (NETWORK-MANIFEST.md + state/network-inventory.json).
+# כנות: rate-limit/טוקן-חסר = BLOCKED מתוכנן (חוק v2, יציאה 0); אפס-המצאה;
+# שמות-ריפואים-פרטיים לעולם לא נחתמים (hash-ref יציב בתוך-המנוע).
+# מצב-מלא (ריפואים-פרטיים) נדלק אוטומטית כשסוד INV_TOKEN/ZIP_PAT קיים.
+# ═══════════════════════════════════════════════════════════════════════════
+name: network-self-awareness
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: network-self-awareness
+  cancel-in-progress: false
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: selftest (טהור, ללא-רשת)
+        run: node engine/network-inventory.mjs --selftest
+
+      - name: measure the whole estate (fail-marked, never silent)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INV_TOKEN: ${{ secrets.INV_TOKEN || secrets.ZIP_PAT }}
+        run: node engine/network-inventory.mjs
+
+      - name: leak-scan (fail-closed, on new artifacts)
+        if: always()
+        run: |
+          for f in state/network-inventory.json NETWORK-MANIFEST.md receipts/network-inventory/verdict.json; do
+            [ -f "$f" ] && node engine/leak-scan.mjs "$f" || echo "[leak-scan] ⊘ $f absent"
+          done
+
+      - name: commit self-portrait (honest verdicts always land)
+        if: always()
+        run: |
+          git config user.name  "roshpinacare-sys"
+          git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
+          git add state/network-inventory.json NETWORK-MANIFEST.md receipts/network-inventory
+          if git diff --cached --quiet; then
+            echo "no delta - the network looks the same as last measurement"; exit 0
+          fi
+          git commit -m "network self-portrait refresh: $(python3 -c "import json;print(json.load(open('receipts/network-inventory/verdict.json'))['verdict'])" 2>/dev/null || echo unknown) $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          ok=0
+          for i in 1 2 3; do
+            if git pull --rebase -q origin main && git push -q origin main; then ok=1; echo "PUSH-OK attempt $i"; break; fi
+            echo "push attempt $i failed (concurrent lane), retrying"; sleep 5
+          done
+          if [ "$ok" != "1" ]; then echo "PUSH-FAILED"; exit 1; fi
