@@ -22,8 +22,10 @@ if (!TOKEN) {
   // receipt existed - breaking this lane's own receipt law ("honest verdicts always
   // land, FAIL included") downstream: leak-scan exited 1 on the absent file, the commit
   // step crashed (fatal pathspec on receipts/wallet, exit 128), and the verdict gate
-  // had nothing honest to read. The alarm itself stays EXACTLY as loud: same BLOCKED
-  // line, same exit 2, verdict=BLOCKED (never PASS) - but the honest receipt now lands.
+  // had nothing honest to read. BLOCKED-SILENT LAW v2 (owner word 2026-10-13): the
+  // receipt keeps landing, verdict=BLOCKED (never PASS) — but the run no longer pages
+  // the owner red. An owner-word gate is a designed waiting state; loud red is for
+  // FAIL/ERROR. The alarm lives on in the receipt + office-pulse + GridWatch census.
   out("BLOCKED: ECO_WALLET_TOKEN absent — nothing measured, nothing claimed");
   const blocked = {
     at: new Date().toISOString(),
@@ -48,7 +50,7 @@ if (!TOKEN) {
     writeFileSync("receipts/wallet/verdict.json", JSON.stringify(blocked, null, 2) + "\n");
     appendFileSync("receipts/wallet/log.jsonl", JSON.stringify(blocked) + "\n");
   } catch (e) { out("receipt-write error:", String(e.message || e).slice(0, 200)); }
-  process.exit(2);
+  process.exit(0); // BLOCKED = designed waiting state — receipt carries the truth, run stays green
 }
 
 

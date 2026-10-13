@@ -78,4 +78,5 @@ jobs:
         run: |
           V="$(node -e 'try{console.log(JSON.parse(require("fs").readFileSync("receipts/grid/verdict.json","utf8")).overall)}catch{console.log("ERROR")}')"
           echo "grid verdict: $V"
-          [ "$V" = "PASS" ] || { echo "grid tick is stalled or state unreadable — run stays red (honesty over comfort)"; exit 1; }
+          [ "$V" = "PASS" ] || [ "$V" = "BLOCKED" ] || { echo "grid tick is stalled or state unreadable — run stays red (honesty over comfort)"; exit 1; }
+          [ "$V" = "BLOCKED" ] && echo "grid BLOCKED — owner word absent; receipt landed, alarm lives in the state board (BLOCKED-SILENT LAW v2)"

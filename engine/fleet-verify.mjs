@@ -18,11 +18,12 @@ const TOKEN = process.env.ECO_WALLET_TOKEN || "";
 const out = (...a) => console.log(...a);
 
 if (!TOKEN) {
-  // 3-a fix (measured run 38305751418): token gate died before any receipt existed - the
-  // lane's own "commit receipts (honest verdicts always land, FAIL included)" step then
-  // crashed (fatal pathspec on receipts/fleet, exit 128) and leak-scan failed on absent
-  // files. Alarm stays EXACTLY as loud: same BLOCKED line, same exit 2, verdict=BLOCKED
-  // (never PASS) - the honest receipt now lands in git where the law says it must.
+  // BLOCKED-SILENT LAW v2 (owner word 2026-10-13): an owner-word gate is a DESIGNED state,
+  // not a malfunction. The lane measured the one thing it can (the gate itself), wrote the
+  // honest BLOCKED receipt, and must NOT page the owner with a red run every cycle.
+  // Loud red is reserved for FAIL/ERROR (real defects). The alarm lives on in the receipt,
+  // the office-pulse freshness board and the GridWatch census — they read receipts, not colors.
+  // History: 3-a fix (measured run 38305751418) made the receipt land even on the gate path.
   out("BLOCKED: ECO_WALLET_TOKEN absent — nothing measured, nothing claimed");
   const blocked = {
     at: new Date().toISOString(),
@@ -43,7 +44,7 @@ if (!TOKEN) {
     writeFileSync("receipts/fleet/verdict.json", JSON.stringify({ ...blocked, details: [] }, null, 2) + "\n");
     appendFileSync("receipts/fleet/log.jsonl", JSON.stringify(blocked) + "\n");
   } catch (e) { out("receipt-write error:", String(e.message || e).slice(0, 200)); }
-  process.exit(2);
+  process.exit(0); // BLOCKED = designed waiting state — receipt carries the truth, run stays green
 }
 
 

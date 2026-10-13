@@ -42,7 +42,13 @@ const gh = async (path) => {
 };
 
 try {
-  if (!TOKEN) throw new Error("ECO_WALLET_TOKEN absent — nothing measured, nothing claimed");
+  if (!TOKEN) {
+    // BLOCKED-SILENT LAW v2 (owner word 2026-10-13): owner-word gate = designed waiting
+    // state. Honest BLOCKED receipt, run green. Loud red stays for real defects (FAIL/ERROR).
+    result.overall = "BLOCKED";
+    result.reason = "ECO_WALLET_TOKEN absent — nothing measured, nothing claimed";
+    out("BLOCKED: ECO_WALLET_TOKEN absent — nothing measured, nothing claimed");
+  } else {
 
   // 1) מדידה: מצב-ה-grid ב-HEAD
   const { url: stateUrl, res: stateRes } = await gh(
@@ -114,6 +120,7 @@ result.provenance.sha = process.env.GITHUB_SHA || null;
   result.reason = vals.includes("fail")
     ? `grid-law failed: ${result.asserts.filter((a) => a.verdict === "fail").map((a) => a.id).join(",")}`
     : `grid state measured from git; laws pass${result.alerts.length ? ` — ${result.alerts.length} flag(s)` : ""}`;
+  }
 } catch (e) {
   result.overall = "ERROR";
   result.reason = String(e.message || e).slice(0, 300);
@@ -125,4 +132,5 @@ mkdirSync("receipts/grid", { recursive: true });
 writeFileSync("receipts/grid/verdict.json", JSON.stringify(result, null, 2) + "\n");
 appendFileSync("receipts/grid/log.jsonl", JSON.stringify(result) + "\n");
 out(`VERDICT: ${result.overall} — ${result.reason}`);
-process.exit(result.overall === "PASS" ? 0 : 1);
+// BLOCKED = designed waiting state (owner word absent) — green run, honest receipt.
+process.exit(result.overall === "PASS" || result.overall === "BLOCKED" ? 0 : 1);

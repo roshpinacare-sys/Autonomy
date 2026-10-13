@@ -35,7 +35,7 @@ const H = { accept: "application/vnd.github+json", "user-agent": "integrity-guar
 if (TOKEN) H.authorization = "Bearer " + TOKEN;
 const out = (s) => process.stdout.write(s + "\n");
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const VERDICTS = { PASS: "success", PASS_WITH_ALERTS: "success", FAIL: "failure", BLOCKED: "failure" };
+const VERDICTS = { PASS: "success", PASS_WITH_ALERTS: "success", FAIL: "failure", BLOCKED: "success" };
 const LEVELS = { INFO: 0, FLAG: 1, MEDIUM: 2, HIGH: 3, CRITICAL: 4 };
 
 const STATIC_SOURCES = [
