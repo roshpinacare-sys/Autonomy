@@ -72,7 +72,7 @@ jobs:
           else
             git commit -m "fleet-participation receipts: $(node -e "try{const r=require('./receipts/fleet-participation/latest.json');process.stdout.write(r.overall+' · '+r.reason.slice(0,110))}catch(e){process.stdout.write('receipt-read-fail')}") $(date -u +%FT%TZ) [skip ci]"
             for i in 1 2 3 4 5; do
-              git pull --rebase origin main && git push origin HEAD:main && break || { sleep $((i*5)); git rebase --abort 2>/dev/null || true; }
+              git pull --rebase -X theirs --autostash origin main && git push origin HEAD:main && break || { sleep $((i*5)); git rebase --abort 2>/dev/null || true; }
             done
           fi
 

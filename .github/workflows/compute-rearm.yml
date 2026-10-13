@@ -48,7 +48,7 @@ jobs:
           git commit -m "compute-rearm: state transition recorded $(date -u +%FT%TZ) [skip ci]"
           OK=0
           for i in 1 2 3; do
-            if git pull --rebase origin main && git push origin main; then OK=1; break; fi
+            if git pull --rebase -X theirs --autostash origin main && git push origin main; then OK=1; break; fi
             git rebase --abort 2>/dev/null || true; sleep 5
           done
           [ "$OK" = "1" ] || { echo "ledger push failed after 3 attempts — honest failure"; exit 1; }

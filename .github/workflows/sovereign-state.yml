@@ -128,7 +128,7 @@ jobs:
             git commit -m "[state] tick#$N ${SBX_ACTION:-auto}: $(date -u +%FT%TZ)"
             pushed=0
             for i in 1 2 3; do
-              if git pull --rebase origin main && git push origin main; then
+              if git pull --rebase -X theirs --autostash origin main && git push origin main; then
                 pushed=1
                 echo "state pushed (attempt $i/3)"
                 break

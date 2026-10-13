@@ -69,7 +69,7 @@ jobs:
           git commit -m "network self-portrait refresh: $(python3 -c "import json;print(json.load(open('receipts/network-inventory/verdict.json'))['verdict'])" 2>/dev/null || echo unknown) $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           ok=0
           for i in 1 2 3; do
-            if git pull --rebase -q origin main && git push -q origin main; then ok=1; echo "PUSH-OK attempt $i"; break; fi
+            if git pull --rebase -X theirs --autostash -q origin main && git push -q origin main; then ok=1; echo "PUSH-OK attempt $i"; break; fi
             echo "push attempt $i failed (concurrent lane), retrying"; sleep 5
           done
           if [ "$ok" != "1" ]; then echo "PUSH-FAILED"; exit 1; fi

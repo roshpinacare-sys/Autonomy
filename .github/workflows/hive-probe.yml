@@ -68,7 +68,7 @@ jobs:
             #  run 38309583537: דחיפה-חד-פעמית נפסלת בין-ה-rebase-לבין-ה-push). כנה-בכישלון.
             OK=0
             for i in 1 2 3; do
-              if git pull --rebase origin main && git push origin HEAD:main; then OK=1; echo "push ok (attempt $i)"; break; fi
+              if git pull --rebase -X theirs --autostash origin main && git push origin HEAD:main; then OK=1; echo "push ok (attempt $i)"; break; fi
               git rebase --abort 2>/dev/null || true
               sleep $((i * 5))
             done

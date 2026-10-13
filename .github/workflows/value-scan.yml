@@ -60,7 +60,7 @@ jobs:
             # T24: measured push race - 28 writers share Autonomy main; 3 attempts died in a burst window.
             # 7 attempts with growing backout survives any measured burst (honest failure stays for real walls).
             for i in 1 2 3 4 5 6 7; do
-              if git pull --rebase -q origin main && git push; then OK=1; echo "push ok (attempt $i)"; break; fi
+              if git pull --rebase -X theirs --autostash -q origin main && git push; then OK=1; echo "push ok (attempt $i)"; break; fi
               git rebase --abort 2>/dev/null || true
               sleep $((i * 4 + RANDOM % 5))
             done

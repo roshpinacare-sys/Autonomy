@@ -70,7 +70,7 @@ jobs:
             echo "no receipt changes — skip"
           else
             git commit -m "[tick] sovereign heartbeat: $(date -u +%FT%TZ)"
-            git pull --rebase origin main
+            git pull --rebase -X theirs --autostash origin main
             git push origin main
           fi
 

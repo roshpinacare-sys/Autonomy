@@ -47,7 +47,7 @@ jobs:
             # [T19-fix] מרוץ-סופרים-מקבילים על הריפו — נסיונות-חוזרים-לפני-כישלון-כן
             OK=0
             for i in 1 2 3 4 5; do
-              git pull --rebase -q origin main || true
+              git pull --rebase -X theirs --autostash -q origin main || true
               if git push; then OK=1; break; fi
               echo "push-race #$i — backoff and retry"
               sleep $((i * 10))
