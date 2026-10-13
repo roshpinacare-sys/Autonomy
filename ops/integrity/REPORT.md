@@ -1,16 +1,16 @@
-# דוח-שומר-השלמות — 2026-10-13T09:32:09.721Z
+# דוח-שומר-השלמות — 2026-10-13T10:48:03.157Z
 
-**פסק-דין: FAIL** · מקורות=9 · טענות-שאומתו=3 · ממצאים=10
+**פסק-דין: FAIL** · מקורות=11 · טענות-שאומתו=5 · ממצאים=10
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=38375179537 conc=failure repo=Autonomy
-- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38368672577 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=38368672577 conc=success repo=FleetHQ
+- ✅ `self:ops/integrity/verdict.json` — run=38376988694 conc=failure repo=Autonomy
+- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38385627957 conc=success repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38383659104 conc=success repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38382954494 conc=failure repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38384153131 conc=failure repo=Autonomy
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
-- **CRITICAL** `Domain:office/data.json` — ghost-run — run 38242234259 אינו-קיים ב-Sandbox (404 מוכח)
-- **CRITICAL** `Domain:office/data.json` — ghost-run — run 38226675048 אינו-קיים ב-Sandbox (404 מוכח)
-- **MEDIUM** `Sandbox` — tree-unreachable — HTTP 404 — גילוי-דינמי דולג (לא-זיוף)
+- **CRITICAL** `Domain:office/data.json` — conclusion-contradiction — receipt=PASS run=failure
 - **FLAG** `Sandbox:receipts/wallet/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:receipts/fleet/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:receipts/grid/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
@@ -18,5 +18,7 @@
 - **FLAG** `Sandbox:ops/flow/receipt.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:state/verifier/verdict-latest.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Domain:agents/office-live.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane
+- **FLAG** `Sandbox:ops/decision-truth/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
+- **FLAG** `Sandbox:ops/integrity/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 
 [owner-directive]
