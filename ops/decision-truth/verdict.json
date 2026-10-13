@@ -1,26 +1,26 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-13T09:45:32Z",
- "durationMs": 2152,
+ "generatedAt": "2026-10-13T10:57:19Z",
+ "durationMs": 2318,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
-  "generatedAt": "2026-10-13T03:11:08Z",
-  "stateAgeMin": 394,
-  "source": "sandbox-raw (public source of truth)",
+  "generatedAt": "2026-10-13T10:35:48Z",
+  "stateAgeMin": 21,
+  "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
-   "lastRunAt": "2026-10-13T09:43:49Z",
-   "ageS": 102,
+   "lastRunAt": "2026-10-13T10:35:40Z",
+   "ageS": 1297,
    "stalled": false
   }
  },
  "measures": {
   "chain": {
-   "head": 110400836,
-   "treasuryNetSp": 2810.8,
-   "mult": 0.0006202677939172104
+   "head": 110402265,
+   "treasuryNetSp": 2791.4,
+   "mult": 0.0006202698891711911
   },
   "beaconPulse": {
    "treasuryNetSp": 2810.8
@@ -28,7 +28,7 @@
   "faultedAgentsNow": [],
   "flowSummary": {
    "nodes": 35,
-   "edges": 97,
+   "edges": 98,
    "orphans": 0,
    "ghosts": null
   },
@@ -39,23 +39,23 @@
    "id": "D0-owner-channel",
    "area": "הנהגה",
    "status": "OBSERVING",
-   "decidedAt": "2026-10-13T03:11:07Z",
-   "truth": "STALE-TRUTH",
+   "decidedAt": "2026-10-13T10:35:48Z",
+   "truth": "VERIFIED",
    "checks": [
     {
      "law": "decider-state-age",
-     "result": "mismatch",
-     "detail": "state age 394min (limit 120)"
+     "result": "ok",
+     "detail": "state age 21min (limit 120)"
     }
    ],
-   "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
+   "note": "evidence re-measured independently + execution present"
   },
   {
    "id": "D1-econ-treasury-floor",
    "area": "כלכלה",
    "status": "ENFORCED",
    "priority": "P1",
-   "decidedAt": "2026-10-13T03:11:08Z",
+   "decidedAt": "2026-10-13T10:35:48Z",
    "truth": "STALE-TRUTH",
    "checks": [
     {
@@ -65,23 +65,23 @@
     },
     {
      "law": "treasury-basis-fresh-measure",
-     "result": "ok",
-     "detail": "claimed=2810.7 fresh=2810.8 tol=1"
+     "result": "mismatch",
+     "detail": "claimed=2810.8 fresh=2791.4 tol=1"
     },
     {
      "law": "beacon-vs-fresh",
-     "result": "ok",
+     "result": "mismatch",
      "detail": "beacon=2810.8"
     },
     {
      "law": "operators-basis",
-     "result": "ok",
-     "detail": "all 13 operators within ±2SP"
+     "result": "mismatch",
+     "detail": "[{\"op\":\"acct-09\",\"policySp\":31.2,\"freshSp\":11.9},{\"op\":\"acct-06\",\"policySp\":11.8,\"freshSp\":31.2}]"
     },
     {
      "law": "below-floor-list",
-     "result": "ok",
-     "detail": "fresh-below=[\"acct-10\",\"acct-11\",\"acct-12\",\"acct-13\",\"acct-06\"] declared=[\"acct-10\",\"acct-11\",\"acct-12\",\"acct-13\",\"acct-06\"]"
+     "result": "mismatch",
+     "detail": "fresh-below=[\"acct-10\",\"acct-09\",\"acct-11\",\"acct-12\",\"acct-13\"] declared=[\"acct-10\",\"acct-11\",\"acct-12\",\"acct-13\",\"acct-06\"]"
     },
     {
      "law": "execution-existence",
@@ -95,8 +95,8 @@
     },
     {
      "law": "decider-state-age",
-     "result": "mismatch",
-     "detail": "state age 394min (limit 120)"
+     "result": "ok",
+     "detail": "state age 21min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -106,7 +106,7 @@
    "area": "הנדסה",
    "status": "ENFORCED",
    "priority": "P0",
-   "decidedAt": "2026-10-13T03:11:08Z",
+   "decidedAt": "2026-10-13T10:35:48Z",
    "truth": "STALE-TRUTH",
    "checks": [
     {
@@ -122,7 +122,7 @@
     {
      "law": "fleethq-reds-persist",
      "result": "ok",
-     "detail": "failure runs in last 48h: 1 - routed WO-FleetHQ-reds subject persists (work pending)"
+     "detail": "failure runs in last 48h: 2 - routed WO-FleetHQ-reds subject persists (work pending)"
     },
     {
      "law": "faulted-agents-fix",
@@ -131,8 +131,8 @@
     },
     {
      "law": "decider-state-age",
-     "result": "mismatch",
-     "detail": "state age 394min (limit 120)"
+     "result": "ok",
+     "detail": "state age 21min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -141,7 +141,7 @@
    "id": "D3-flow-weave",
    "area": "רשת",
    "status": "OBSERVING",
-   "decidedAt": "2026-10-13T03:11:08Z",
+   "decidedAt": "2026-10-13T10:35:48Z",
    "truth": "STALE-TRUTH",
    "checks": [
     {
@@ -156,8 +156,8 @@
     },
     {
      "law": "decider-state-age",
-     "result": "mismatch",
-     "detail": "state age 394min (limit 120)"
+     "result": "ok",
+     "detail": "state age 21min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -167,24 +167,24 @@
    "area": "אימות-עצמי",
    "status": "ENFORCED",
    "priority": "P1",
-   "decidedAt": "2026-10-13T03:11:08Z",
-   "truth": "STALE-TRUTH",
+   "decidedAt": "2026-10-13T10:35:48Z",
+   "truth": "VERIFIED",
    "checks": [
     {
      "law": "decider-state-age",
-     "result": "mismatch",
-     "detail": "state age 394min (limit 120)"
+     "result": "ok",
+     "detail": "state age 21min (limit 120)"
     }
    ],
-   "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
+   "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "38378581352",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38378581352",
-  "sha": "c1ab1cecb88c7616f48a9d0bb997de6adfebc4d9",
+  "runId": "38386836127",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38386836127",
+  "sha": "19be8e968578761c7888eb0b51e6e73a746b5be0",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-13T09:45:32Z"
+  "generatedAt": "2026-10-13T10:57:19Z"
  },
  "selftest": {
   "vectors": 16,
