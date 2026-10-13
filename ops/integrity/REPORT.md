@@ -1,9 +1,9 @@
-# דוח-שומר-השלמות — 2026-10-13T09:17:08.713Z
+# דוח-שומר-השלמות — 2026-10-13T09:32:09.721Z
 
 **פסק-דין: FAIL** · מקורות=9 · טענות-שאומתו=3 · ממצאים=10
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=38360526203 conc=failure repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=38375179537 conc=failure repo=Autonomy
 - ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38368672577 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=38368672577 conc=success repo=FleetHQ
 
