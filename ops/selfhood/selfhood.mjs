@@ -40,9 +40,7 @@ function redact(s) {
 function tryJson(t) { try { return JSON.parse(t); } catch { return null; } }
 /** git blob sha — אימות-קבלה דטרמיניסטי מול-השרת (עמיד ל-lag של קריאה-חזרה) */
 function gitBlobSha(content) {
-  // eslint-disable-next-line no-undef
   const buf = Buffer.concat([Buffer.from(`blob ${Buffer.byteLength(content)}\0`, 'utf8'), Buffer.from(content, 'utf8')]);
-  // eslint-disable-next-line no-undef
   return createHash('sha1').update(buf).digest('hex');
 }
 
