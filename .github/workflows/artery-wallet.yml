@@ -81,4 +81,4 @@ jobs:
           V="$(node -e 'try{console.log(JSON.parse(require("fs").readFileSync("receipts/wallet/verdict.json","utf8")).overall)}catch{console.log("ERROR")}')"
           echo "wallet verdict: $V"
           [ "$V" = "PASS" ] || [ "$V" = "BLOCKED" ] || { echo "wallet is NOT verified — run stays red (honesty over comfort)"; exit 1; }
-          [ "$V" = "BLOCKED" ] && echo "wallet BLOCKED — owner word absent; receipt landed, alarm lives in the state board (BLOCKED-SILENT LAW v2)"
+          [ "$V" = "BLOCKED" ] && echo "wallet BLOCKED — owner word absent; receipt landed, alarm lives in the state board (BLOCKED-SILENT LAW v2)" || true

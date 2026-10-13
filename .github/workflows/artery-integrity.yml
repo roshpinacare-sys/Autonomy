@@ -81,4 +81,4 @@ jobs:
           V="$(node -e 'try{console.log(JSON.parse(require("fs").readFileSync("ops/integrity/verdict.json","utf8")).overall)}catch{console.log("ERROR")}')"
           echo "integrity verdict: $V"
           [ "$V" = "PASS" ] || [ "$V" = "PASS_WITH_ALERTS" ] || [ "$V" = "BLOCKED" ] || { echo "integrity guard found CRITICAL/HIGH evidence — run stays red (honesty over comfort)"; exit 1; }
-          [ "$V" = "BLOCKED" ] && echo "integrity BLOCKED — sources unreadable this cycle; alarm lives in the state board (BLOCKED-SILENT LAW v2)"
+          [ "$V" = "BLOCKED" ] && echo "integrity BLOCKED — sources unreadable this cycle; alarm lives in the state board (BLOCKED-SILENT LAW v2)" || true

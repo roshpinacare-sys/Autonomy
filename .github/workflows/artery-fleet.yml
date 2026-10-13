@@ -80,4 +80,4 @@ jobs:
           V="$(node -e 'try{console.log(JSON.parse(require("fs").readFileSync("receipts/fleet/verdict.json","utf8")).overall)}catch{console.log("ERROR")}')"
           echo "fleet verdict: $V"
           [ "$V" = "PASS" ] || [ "$V" = "BLOCKED" ] || { echo "fleet is NOT verified — run stays red (honesty over comfort)"; exit 1; }
-          [ "$V" = "BLOCKED" ] && echo "fleet BLOCKED — owner word absent; receipt landed, alarm lives in the state board (BLOCKED-SILENT LAW v2)"
+          [ "$V" = "BLOCKED" ] && echo "fleet BLOCKED — owner word absent; receipt landed, alarm lives in the state board (BLOCKED-SILENT LAW v2)" || true
