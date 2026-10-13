@@ -1,0 +1,54 @@
+name: compute-rearm
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPUTE-REARM — טבעת-ההתאוששות-מקיר-החיוב (T-REARM · agents/compute-policy.md)
+# ───────────────────────────────────────────────────────────────────────────
+# הרשת מנהלת-בעצמה את-תקציב-המחשוב-הפרטי שלה:
+#   · חונה-את-עצמה-בשקט כשהקיר סגור (בלי-הצפת-אימיילים — canary פעם-ב-6ש בלבד).
+#   · מתעוררת-לבד (התעוררות-מדורגת) כשהבעלים פותח-את-תקרת-ההוצאה.
+#   · מתעדת-כל-מעבר-מדינה ב-agents/compute-journal.jsonl.
+# רץ-על-דקות-ציבוריות (הריפו-הזה) — לא-צורך-מהתקציב-הפרטי-החסום.
+# ═══════════════════════════════════════════════════════════════════════════
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: compute-rearm
+  cancel-in-progress: false
+
+jobs:
+  rearm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: measure the wall · staged revival or honest silence
+        env:
+          REARM_TOKEN: ${{ secrets.SBX_FLEET_PAT }}
+        run: node agents/compute-rearm.mjs
+
+      - name: commit the ledger + journal (rebase-first, estate identity)
+        if: always()
+        run: |
+          git config user.name "roshpinacare-sys"
+          git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
+          git add agents/compute-park-ledger.json agents/compute-journal.jsonl
+          if git diff --cached --quiet; then echo "nothing changed"; exit 0; fi
+          git commit -m "compute-rearm: state transition recorded $(date -u +%FT%TZ) [skip ci]"
+          OK=0
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin main; then OK=1; break; fi
+            git rebase --abort 2>/dev/null || true; sleep 5
+          done
+          [ "$OK" = "1" ] || { echo "ledger push failed after 3 attempts — honest failure"; exit 1; }
