@@ -35,9 +35,54 @@ LEDGER_MAX = 60
 # R2 — מסילת-בטיחות: קו-השימור של האוצרה (לא יורדים מתחתיו בשום הכרעה)
 KEEP_FLOOR_SP = 2800.0
 TREASURY_TARGET_SP = 3000.0
-FLEET = ["cashmachine", "haran", "israelnews", "lsa", "macrame",
-         "siq", "tov", "wic", "wog", "woq", "hcsoldier4", "hcsoldier5", "hcsoldier6"]
+# [refs-law repair 2026-10-13] סגל-המפעילים מדובר refs בלבד בעץ (חוק-השטח-הפומבי) —
+# השמות נגזרים בזמן-ריצה מסוד FLEET_ROSTER_MAP (דפוס-הבית של value-scan.py). לא-נפתר =
+# מדידה-כנה-מתדרגת (degraded), לעולם לא מילוי-בהמצאה ולעולם לא שם-צי בעץ/בפלט.
+FLEET_REFS = ["acct-01", "acct-02", "acct-03", "acct-04", "acct-05",
+              "acct-06", "acct-07", "acct-08", "acct-09", "acct-10",
+              "acct-11", "acct-12", "acct-13"]
 NOW = lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")  # noqa: E731
+
+
+def load_roster_map():
+    """FLEET_ROSTER_MAP (JSON: {refs:{ref:name}} / {names:{name:ref}} / flat) → dict ref→name.
+    לא-נפתר = dict ריק — המדידה מתדרגת בכנות (degraded), לעולם לא ממולאת בהמצאה."""
+    raw = (os.environ.get("FLEET_ROSTER_MAP") or "").strip()
+    if not raw.startswith("{"):
+        return {}
+    try:
+        doc = json.loads(raw)
+    except Exception:
+        return {}
+    flat = {}
+    if isinstance(doc, dict):
+        if isinstance(doc.get("refs"), dict):
+            flat.update(doc["refs"])
+        if isinstance(doc.get("names"), dict):
+            for _n, _r in doc["names"].items():
+                flat[_r] = _n
+        for k, v in doc.items():
+            if isinstance(k, str) and isinstance(v, str):
+                if k.startswith("acct-"):
+                    flat[k] = v
+                else:
+                    flat[v] = k
+    return {k: v for k, v in flat.items() if isinstance(k, str) and k.startswith("acct-") and v}
+
+
+REF_TO_NAME = load_roster_map()
+NAME_TO_REF = {v: k for k, v in REF_TO_NAME.items()}
+FLEET = [REF_TO_NAME[r] for r in FLEET_REFS if r in REF_TO_NAME]
+ROSTER_RESOLVED = len(FLEET) == len(FLEET_REFS)
+
+
+def scrub(text):
+    """חוק-השטח-הפומבי: כל שם-צי מוכר → ref-היציב שלו (גבולות-מילה, הארוך-קודם).
+    כל-ארטיפקט (state.json / ledger.jsonl / board.json) עובר כאן לפני כתיבה."""
+    for name in sorted(NAME_TO_REF, key=len, reverse=True):
+        text = re.sub(r"(?<![A-Za-z0-9_])" + re.escape(name) + r"(?![A-Za-z0-9_])",
+                      NAME_TO_REF[name], str(text))
+    return text
 
 
 def now():
@@ -76,8 +121,11 @@ def read_local(rel, timeout=5):
         return None
 
 def measure_chain(degraded):
-    """מדידת-שרשרת עצמאית: המרה מדויקת VESTS→SP. None כנה במקום המצאה."""
+    """מדידת-שרשרת עצמאית: המרה מדויקת VESTS→SP. None כנה במקום המצאה.
+    [refs-law] מפתחות-המפעילים בפלט = refs (acct-XX) — השמות חיים בזיכרון בלבד."""
     gp = rpc("condenser_api.get_dynamic_global_properties", [])
+    if not ROSTER_RESOLVED:
+        degraded.append("fleet-roster:FLEET_ROSTER_MAP-unresolved")
     names = [OWNER_ACC] + FLEET
     accs = rpc("condenser_api.get_accounts", [names])
     if not gp or not accs or len(accs) != len(names):
@@ -102,7 +150,7 @@ def measure_chain(degraded):
     ops = {}
     for n in FLEET:
         s, _, _ = sp(by[n])
-        ops[n] = s
+        ops[NAME_TO_REF.get(n, n)] = s  # [refs-law] refs בלבד בפלט
     return {
         "head": gp.get("head_block_number"),
         "time": gp.get("time"),
@@ -185,7 +233,7 @@ def decide_econ(chain, beacon, hc_scan, degraded):
             if name in FLEET:
                 deleg_to_fleet_sp += sp
             else:
-                deleg_other.append(f"{name}:{sp}SP@{d['ts']}")
+                deleg_other.append(scrub(f"{name}:{sp}SP@{d['ts']}"))  # [refs-law] scrub
         deleg_evidence.append(f"האצלות-אחרונות למפעילי-הצי: ~{round(deleg_to_fleet_sp, 1)} SP (רגלי-הצי — חיוניות, אין-לשחרר)")
         if deleg_other:
             deleg_evidence.append(f"האצלות-יוצאות-שאינן-מפעילים (מדוד): {', '.join(deleg_other[:8])}")
@@ -541,6 +589,7 @@ def main():
     }
 
     body = json.dumps(state, ensure_ascii=False, indent=1)
+    body = scrub(body)  # [refs-law] scrub-at-write — אפס שמות-צי בארטיפקט הפומבי
     path = os.path.join(OUT_DIR, "state.json")
     with open(path, "w", encoding="utf-8") as f:
         f.write(body + "\n")
@@ -553,14 +602,13 @@ def main():
             bp = _board_path_holder
             board["lastAckPulseAt"] = now()
             with open(bp, "w", encoding="utf-8") as f:
-                json.dump(board, f, ensure_ascii=False, indent=1)
-                f.write("\n")
+                f.write(scrub(json.dumps(board, ensure_ascii=False, indent=1)) + "\n")  # [refs-law] scrub-at-write
             print("DIRECTIVE-ACK-WRITTEN", [d.get("id") for d in board_acked])
         except Exception as e:
             print("DIRECTIVE-ACK-WRITE-FAIL (כנה):", str(e)[:120])
 
     # פנקס append-bounded (ההיסטוריה נקראה-כבר-למעלה — ledger_lines)
-    entry = json.dumps({
+    entry = scrub(json.dumps({  # [refs-law] scrub-at-write
         "at": state["generatedAt"], "head": chain["head"] if chain else None,
         "treasuryNetSp": chain["treasuryNetSp"] if chain else None,
         "beaconChainMatch": match,
@@ -570,7 +618,7 @@ def main():
         "decided": [d["id"] + ":" + d["status"] for d in decisions],
         "directivesAck": len(board_acked),  # [15a-merge] קבלות-פקודות-מנהל-בפעימה
         "degraded": state["degraded"],
-    }, ensure_ascii=False)
+    }, ensure_ascii=False))
     ledger_lines.append(entry)
     with open(lpath, "w", encoding="utf-8") as f:
         f.write("\n".join(ledger_lines[-LEDGER_MAX:]) + "\n")
