@@ -1,37 +1,36 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-10-13T02:39:36.742Z",
-  "overall": "FAIL",
+  "at": "2026-10-13T04:55:03.634Z",
+  "overall": "PASS_WITH_ALERTS",
   "summary": {
     "sources": 9,
     "verified": 3,
-    "findings": 10,
+    "findings": 8,
     "counts": {
       "MEDIUM": 1,
-      "FLAG": 7,
-      "CRITICAL": 2
+      "FLAG": 7
     }
   },
   "provenance": {
-    "runId": "38337914920",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38337914920",
-    "sha": "97daef7b4fddd153cf701942e6093c4df921df3d"
+    "runId": "38348756769",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38348756769",
+    "sha": "08a70d683e3e1e328e1229f92a9446f4129de524"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=38335913762 conc=success repo=Autonomy"
+      "detail": "run=38337914920 conc=failure repo=Autonomy"
     },
     {
       "where": "FleetHQ:receipts/office-ci/verdict.json",
       "law": "verified",
-      "detail": "run=38335819755 conc=success repo=FleetHQ"
+      "detail": "run=38347382314 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=38335819755 conc=success repo=FleetHQ"
+      "detail": "run=38347382314 conc=success repo=FleetHQ"
     }
   ],
   "findings": [
@@ -76,18 +75,6 @@
       "where": "Sandbox:state/verifier/verdict-latest.json",
       "law": "source-unreachable",
       "detail": "raw 404 — דגל-כנה, לא-מילוי"
-    },
-    {
-      "level": "CRITICAL",
-      "where": "Domain:office/data.json",
-      "law": "ghost-run",
-      "detail": "run 38242234259 אינו-קיים ב-Sandbox (404 מוכח)"
-    },
-    {
-      "level": "CRITICAL",
-      "where": "Domain:office/data.json",
-      "law": "ghost-run",
-      "detail": "run 38226675048 אינו-קיים ב-Sandbox (404 מוכח)"
     },
     {
       "level": "FLAG",
