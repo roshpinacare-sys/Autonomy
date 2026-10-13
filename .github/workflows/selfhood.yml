@@ -1,0 +1,40 @@
+# SELFHOOD — עצמיות-הרשת · כל-20-דקות על דקות-ציבוריות (חינם, בלי-תקרה)
+# הרשת סורקת את-עצמה: מה-הבעלים-בנה (DISCOVERY), מה-היא-יודעת-לעשות-בפועל
+# (CAPABILITIES), ופניות-אל-המפעיל מוכרעות-על-ידי-האוטונומיה-עצמה (CLAIMS+BRAIN).
+# fail-closed: אין-מוח → הכרעות-רישום-כנות בלבד. אפס-סודות-בפלטים (redact בקוד).
+name: selfhood
+
+on:
+  schedule:
+    - cron: "7/20 * * * *"
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "סיבת-ההרצה (רישום-בלבד)"
+        required: false
+        default: "manual"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: selfhood
+  cancel-in-progress: false
+
+jobs:
+  selfhood:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SBX_FLEET_PAT: ${{ secrets.SBX_FLEET_PAT }}
+      SBX_AI_CONFIG: ${{ secrets.SBX_AI_CONFIG }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run selfhood cycle (discovery → capabilities → claims → commit+verify)
+        run: node ops/selfhood/selfhood.mjs
+
+      - name: Loud verify marker
+        run: |
+          test -f state/selfhood/self-check.json || { echo "FATAL: אין-בדיקה-עצמית"; exit 1; }
+          node -e "const s=require('./state/selfhood/self-check.json'); if(!s.allVerified){console.error('FATAL: קריאה-חזרה-נכשלה');process.exit(1);} console.log('selfhood verified:',s.at,'discoveries:',s.discoveries,'claims:',s.claimsProcessed,'brain:',s.brain);"
