@@ -1,20 +1,20 @@
 {
  "schema": "verifier/1",
- "at": "2026-10-13T03:15:31.109Z",
+ "at": "2026-10-13T03:45:03.590Z",
  "overall": "FAIL",
  "authMode": "token(fed)",
  "counts": {
   "checks": 21,
-  "degraded": 9,
-  "fail": 4
+  "degraded": 10,
+  "fail": 3
  },
  "levels": {
   "sbx.wf-sovereign": "OK",
   "sbx.wf-sovereign-state": "DEGRADED",
   "sbx.wf-artery-catchup": "DEGRADED",
-  "sbx.wf-artery-watch": "FAIL",
+  "sbx.wf-artery-watch": "DEGRADED",
   "sbx.wf-verifier": "OK",
-  "sbx.wf-federation": "DEGRADED",
+  "sbx.wf-federation": "OK",
   "sbx.wf-value-scan": "DEGRADED",
   "sbx.wf-hive-probe": "OK",
   "sbx.wf-fleet-heal": "DEGRADED",
@@ -22,7 +22,7 @@
   "sbx.wf-artery-grid": "FAIL",
   "sbx.wf-artery-wallet": "FAIL",
   "sbx.wf-artery-integrity": "DEGRADED",
-  "sbx.wf-artery-participation": "OK",
+  "sbx.wf-artery-participation": "DEGRADED",
   "sbx.wf-artery-fleet": "FAIL",
   "sbx.wf-artery-flow": "OK",
   "dev.rate": "DEGRADED",
@@ -44,16 +44,16 @@
   {
    "id": "sbx.wf-sovereign-state",
    "level": "DEGRADED",
-   "why": "last success 27min ago > slot",
+   "why": "last success 28min ago > slot",
    "evidence": {
-    "at": "2026-10-13T02:48:49Z",
-    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38338680517"
+    "at": "2026-10-13T03:17:17Z",
+    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38340986934"
    }
   },
   {
    "id": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
-   "why": "last success 44min ago > slot",
+   "why": "last success 74min ago > slot",
    "evidence": {
     "at": "2026-10-13T02:31:12Z",
     "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38337266895"
@@ -61,11 +61,11 @@
   },
   {
    "id": "sbx.wf-artery-watch",
-   "level": "FAIL",
-   "why": "last success 61min ago > 4x slot",
+   "level": "DEGRADED",
+   "why": "last success 41min ago > slot",
    "evidence": {
-    "at": "2026-10-13T02:14:06Z",
-    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38335910286"
+    "at": "2026-10-13T03:04:19Z",
+    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38339939881"
    }
   },
   {
@@ -73,23 +73,23 @@
    "level": "OK",
    "why": "success recent",
    "evidence": {
-    "at": "2026-10-13T02:45:41Z",
-    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38338429689"
+    "at": "2026-10-13T03:15:19Z",
+    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38340827623"
    }
   },
   {
    "id": "sbx.wf-federation",
-   "level": "DEGRADED",
-   "why": "last success 60min ago > slot",
+   "level": "OK",
+   "why": "success recent",
    "evidence": {
-    "at": "2026-10-13T02:15:49Z",
-    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38336047531"
+    "at": "2026-10-13T03:26:36Z",
+    "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38341726347"
    }
   },
   {
    "id": "sbx.wf-value-scan",
    "level": "DEGRADED",
-   "why": "last success 40min ago > slot",
+   "why": "last success 70min ago > slot",
    "evidence": {
     "at": "2026-10-13T02:35:31Z",
     "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38337604816"
@@ -107,7 +107,7 @@
   {
    "id": "sbx.wf-fleet-heal",
    "level": "DEGRADED",
-   "why": "last success 44min ago > slot",
+   "why": "last success 74min ago > slot",
    "evidence": {
     "at": "2026-10-13T02:31:22Z",
     "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38337279260"
@@ -116,7 +116,7 @@
   {
    "id": "sbx.wf-artery-decision-truth",
    "level": "DEGRADED",
-   "why": "last success 40min ago > slot",
+   "why": "last success 70min ago > slot",
    "evidence": {
     "at": "2026-10-13T02:35:05Z",
     "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38337570384"
@@ -125,7 +125,7 @@
   {
    "id": "sbx.wf-artery-grid",
    "level": "FAIL",
-   "why": "no success in last 7 runs of artery-grid.yml",
+   "why": "no success in last 8 runs of artery-grid.yml",
    "evidence": null
   },
   {
@@ -137,7 +137,7 @@
   {
    "id": "sbx.wf-artery-integrity",
    "level": "DEGRADED",
-   "why": "last success 61min ago > slot",
+   "why": "last success 91min ago > slot",
    "evidence": {
     "at": "2026-10-13T02:14:08Z",
     "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38335913762"
@@ -145,8 +145,8 @@
   },
   {
    "id": "sbx.wf-artery-participation",
-   "level": "OK",
-   "why": "success recent",
+   "level": "DEGRADED",
+   "why": "last success 71min ago > slot",
    "evidence": {
     "at": "2026-10-13T02:33:49Z",
     "url": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38337470279"
@@ -170,7 +170,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 7% < 10% over 331 commits/24h",
+   "why": "heartbeat-without-building: codeShare 2% < 10% over 333 commits/24h",
    "evidence": {
     "windowHours": 24
    }
@@ -178,9 +178,9 @@
   {
    "id": "steem.fleet",
    "level": "OK",
-   "why": "fleet posted 0.6h ago",
+   "why": "fleet posted 0.1h ago",
    "evidence": {
-    "newestPostHours": 0.6
+    "newestPostHours": 0.1
    }
   },
   {
@@ -211,14 +211,14 @@
   }
  ],
  "dev": {
-  "totalCommits": 331,
-  "codeRatePercent": 7,
+  "totalCommits": 333,
+  "codeRatePercent": 2,
   "classified": 42,
   "repos": [
    {
     "name": "Autonomy",
     "visibility": "public",
-    "pushedAt": "2026-10-13T03:04:48Z",
+    "pushedAt": "2026-10-13T03:31:43Z",
     "commits24h": 100,
     "redWorkflowEcho": null,
     "codeShare": 0,
@@ -227,16 +227,16 @@
    {
     "name": "Console",
     "visibility": "public",
-    "pushedAt": "2026-10-13T03:04:38Z",
-    "commits24h": 97,
+    "pushedAt": "2026-10-13T03:20:21Z",
+    "commits24h": 98,
     "redWorkflowEcho": null,
-    "codeShare": 17,
+    "codeShare": 8,
     "sampleSize": 12
    },
    {
     "name": "Domain",
     "visibility": "public",
-    "pushedAt": "2026-10-13T03:15:07Z",
+    "pushedAt": "2026-10-13T03:41:57Z",
     "commits24h": 100,
     "redWorkflowEcho": null,
     "codeShare": 0,
@@ -245,10 +245,10 @@
    {
     "name": "Pulse",
     "visibility": "public",
-    "pushedAt": "2026-10-13T03:00:22Z",
-    "commits24h": 34,
+    "pushedAt": "2026-10-13T03:30:23Z",
+    "commits24h": 35,
     "redWorkflowEcho": null,
-    "codeShare": 17,
+    "codeShare": 0,
     "sampleSize": 6
    }
   ]
@@ -260,122 +260,122 @@
    "exists": true,
    "sp": 2811,
    "vpPercent": 41,
-   "lastPostAgeHours": 0.6,
-   "lastVoteAgeHours": 0.3
+   "lastPostAgeHours": 0.1,
+   "lastVoteAgeHours": 0.8
   },
-  "fleetNewestPostHours": 0.6,
+  "fleetNewestPostHours": 0.1,
   "fleet": [
    {
     "account": "acct-00",
     "exists": true,
     "sp": 2811,
     "vpPercent": 41,
-    "lastPostAgeHours": 0.6,
-    "lastVoteAgeHours": 0.3
+    "lastPostAgeHours": 0.1,
+    "lastVoteAgeHours": 0.8
    },
    {
     "account": "acct-01",
     "exists": true,
     "sp": 75,
     "vpPercent": 77,
-    "lastPostAgeHours": 4.1,
-    "lastVoteAgeHours": 3.6
+    "lastPostAgeHours": 4.6,
+    "lastVoteAgeHours": 4
    },
    {
     "account": "acct-02",
     "exists": true,
     "sp": 78,
     "vpPercent": 77,
-    "lastPostAgeHours": 4.1,
-    "lastVoteAgeHours": 3.5
+    "lastPostAgeHours": 4.6,
+    "lastVoteAgeHours": 4
    },
    {
     "account": "acct-03",
     "exists": true,
     "sp": 94,
     "vpPercent": 76,
-    "lastPostAgeHours": 4,
-    "lastVoteAgeHours": 3.5
+    "lastPostAgeHours": 4.5,
+    "lastVoteAgeHours": 4
    },
    {
     "account": "acct-04",
     "exists": true,
     "sp": 80,
     "vpPercent": 75,
-    "lastPostAgeHours": 4.6,
-    "lastVoteAgeHours": 3.5
+    "lastPostAgeHours": 5.1,
+    "lastVoteAgeHours": 4
    },
    {
     "account": "acct-05",
     "exists": true,
     "sp": 75,
     "vpPercent": 77,
-    "lastPostAgeHours": 21.7,
-    "lastVoteAgeHours": 3.5
+    "lastPostAgeHours": 22.2,
+    "lastVoteAgeHours": 4
    },
    {
     "account": "acct-06",
     "exists": true,
     "sp": 12,
     "vpPercent": 50,
-    "lastPostAgeHours": 4,
-    "lastVoteAgeHours": 3.5
+    "lastPostAgeHours": 4.5,
+    "lastVoteAgeHours": 4
    },
    {
     "account": "acct-07",
     "exists": true,
     "sp": 31,
     "vpPercent": 81,
-    "lastPostAgeHours": 5.3,
-    "lastVoteAgeHours": 3.5
+    "lastPostAgeHours": 5.8,
+    "lastVoteAgeHours": 3.9
    },
    {
     "account": "acct-08",
     "exists": true,
     "sp": 33,
     "vpPercent": 80,
-    "lastPostAgeHours": 5.3,
-    "lastVoteAgeHours": 3.4
+    "lastPostAgeHours": 5.8,
+    "lastVoteAgeHours": 3.9
    },
    {
     "account": "acct-09",
     "exists": true,
     "sp": 31,
     "vpPercent": 74,
-    "lastPostAgeHours": 5.3,
-    "lastVoteAgeHours": 3.4
+    "lastPostAgeHours": 5.8,
+    "lastVoteAgeHours": 3.9
    },
    {
     "account": "acct-10",
     "exists": true,
     "sp": 70,
     "vpPercent": 86,
-    "lastPostAgeHours": 5.3,
-    "lastVoteAgeHours": 3.4
+    "lastPostAgeHours": 5.7,
+    "lastVoteAgeHours": 3.9
    },
    {
     "account": "acct-11",
     "exists": true,
     "sp": 17,
     "vpPercent": 93,
-    "lastPostAgeHours": 24.1,
-    "lastVoteAgeHours": 3.4
+    "lastPostAgeHours": 24.6,
+    "lastVoteAgeHours": 3.9
    },
    {
     "account": "acct-12",
     "exists": true,
     "sp": 17,
     "vpPercent": 95,
-    "lastPostAgeHours": 5.2,
-    "lastVoteAgeHours": 3.4
+    "lastPostAgeHours": 5.7,
+    "lastVoteAgeHours": 3.8
    },
    {
     "account": "acct-13",
     "exists": true,
     "sp": 17,
     "vpPercent": 93,
-    "lastPostAgeHours": 22.6,
-    "lastVoteAgeHours": 3.3
+    "lastPostAgeHours": 23.1,
+    "lastVoteAgeHours": 3.8
    }
   ]
  },
@@ -386,17 +386,17 @@
   "errors": [
    "no blurt accounts configured in this repo's verifier config — fleet-intel honestly absent here (nothing measured, nothing claimed)"
   ],
-  "probedAt": "2026-10-13T03:15:49.842Z"
+  "probedAt": "2026-10-13T03:45:21.011Z"
  },
  "rot": {
   "scanned": 51,
   "hits": []
  },
  "soft": [],
- "tookMs": 18755,
- "prevChain": "36af7ec11e74d48bc6b74a88b90d8169cf0560fb09252ddfe665a54bad370abe",
+ "tookMs": 17442,
+ "prevChain": "4f6dc871d1c152b5e673da37c53873c04c9c0c2e8c9bec9fa5c68bd56e11a813",
  "chain": {
-  "prev": "36af7ec11e74d48bc6b74a88b90d8169cf0560fb09252ddfe665a54bad370abe",
-  "cur": "4f6dc871d1c152b5e673da37c53873c04c9c0c2e8c9bec9fa5c68bd56e11a813"
+  "prev": "4f6dc871d1c152b5e673da37c53873c04c9c0c2e8c9bec9fa5c68bd56e11a813",
+  "cur": "b631064a7ee1eb8eb2b77c46f605fc465497d7a9fbd086343cceccd395400947"
  }
 }
