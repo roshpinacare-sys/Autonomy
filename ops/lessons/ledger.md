@@ -125,3 +125,30 @@
 - PROPOSAL(law): decision D3-flow-weave evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 - PROPOSAL(law): decision D4-truth-network evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 
+
+## scribe #5 · 2026-10-13T13:51:15.874Z
+- wallet 24h verdicts: {"BLOCKED":7,"PASS":7} · failing laws: {}
+- fleet 24h verdicts: {"BLOCKED":6,"FAIL":4,"PASS":5} · alerts: 24
+- fleet actions 24h: 100 runs · failures: artery-decision-truth:failure×3, sovereign-tick:failure×3, .github/workflows/fleet-yield.yml:failure×2, artery-integrity:failure×3, artery-grid:failure×1, artery-fleet:failure×3, artery-wallet:failure×3
+- sovereign tick last pulse: 6min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":95,"github-actions[bot]":1,"z-user":1,"artery-fix":1,"Z User":2}
+- office-ci (FleetHQ) verdict: PASS · 31min ago
+- Domain book office/data.json: 145min old (law <=60min)
+- Domain book agents/office-live.json: 145min old (law <=180min)
+- Domain book dex/office-feed.json: 164min old (law <=1560min)
+- flow map: nodes=35 edges=98 page-integrated=15 plane-internal=19 orphans=0 ghosts=0 density=2.8
+- integrity guard: overall=PASS sources=11 claims-verified=6 findings=10 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=17570 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=0h
+- dex book dex/showcase.json: ok sig=pair=unknown age=0h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=5 truth={"VERIFIED":4,"STALE-TRUTH":1} decider-stalled=false
+- PROPOSAL(law): wallet carried 14 trust-flag(s)/24h (out-of-band PASS mints) — owner P0: make wallet CI the only minter
+- PROPOSAL(law): Domain book office/data.json stale (145min > 60min) - its producer workflow may be stalled
+- PROPOSAL(law): 11 feed(s) past their freshness law while being read by live code
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+
