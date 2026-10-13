@@ -23,7 +23,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, append
 const OWNER_ACC = Buffer.from("aGVhZGNvcm5lcg==","base64").toString("utf8"); // אוצר-הבעלים — נגזר בזמן-ריצה, אפס-קישור-זהות במקור
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { scrubAll, resolved, fleetNames } from "./refs.mjs";
+import { scrubAll, resolved, fleetNames, R } from "./refs.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = process.env.OUT_DIR || join(ROOT, "ops", "decision-truth");
@@ -251,6 +251,19 @@ async function run() {
     else log(`decider remote fetch: ${rem.http ? "http " + rem.http : rem.error || "failed"} (honest skip)`);
   }
   log(`roster: ${resolved() ? "resolved from FLEET_ROSTER_MAP" : "UNRESOLVED — operator measurements degraded (honest)"}`);
+  // חוק-השטח-הפומבי בפעולה: פנקס-המכריע מדבר refs (acct-NN) — האימות מתנהל בשמות-אמת,
+  // אחרת operators-basis/below-floor-list משתווים refs-מול-שמות ונופלים ואקואוס/שקרי.
+  // (R לא-מזוהה או שם-אמת ממקור-פרטי = עובר-ללא-שינוי — כנות נשמרת.)
+  if (decider && Array.isArray(decider.decisions)) {
+    for (const d of decider.decisions) {
+      const pol = d.policy || {};
+      if (Array.isArray(pol.operatorInterimFloors))
+        for (const f of pol.operatorInterimFloors)
+          if (typeof f.operator === "string") f.operator = R(f.operator) ?? f.operator;
+      if (Array.isArray(pol.operatorsBelowInterimFloor))
+        pol.operatorsBelowInterimFloor = pol.operatorsBelowInterimFloor.map((n) => R(n) ?? n);
+    }
+  }
   if (!decider || !Array.isArray(decider.decisions) || decider.decisions.length === 0) {
     const verdict = {
       schema: "sandbox/decision-truth/1", generatedAt: NOW(), overall: "FAIL",

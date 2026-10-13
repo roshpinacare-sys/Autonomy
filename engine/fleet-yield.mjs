@@ -27,6 +27,7 @@
  */
 import fs from "node:fs";
 const OWNER_ACC = Buffer.from("aGVhZGNvcm5lcg==","base64").toString("utf8"); // אוצר-הבעלים — נגזר בזמן-ריצה, אפס-קישור-זהות במקור
+import { R } from "./refs.mjs"; // חוק-ה-refs: פנקס-המכריע מדבר acct-NN — המדידה בשמות-אמת
 import path from "node:path";
 import crypto from "node:crypto";
 import { spawnSync } from "node:child_process";
@@ -268,7 +269,7 @@ async function main() {
   const d1 = ((decState && Array.isArray(decState.decisions)) ? decState.decisions : [])
     .find((d) => d && d.id === "D1-econ-treasury-floor");
   const floorRows = ((d1?.policy?.operatorInterimFloors || []))
-    .map((f) => ({ op: f.operator, floorSp: Number(f.interimFloorSp) || 0 }))
+    .map((f) => ({ op: R(f.operator) ?? f.operator, floorSp: Number(f.interimFloorSp) || 0 }))
     .filter((f) => f.op);
   const keepFloorSp = d1?.policy?.treasury?.operatingFloorSp ?? null;
   let capitalPolicy = { check: "POLICY-UNAVAILABLE", decidedAt: d1?.decidedAt ?? null, keepFloorSp, note: "decider-state.json חסר/בלי D1 — כנות" };
