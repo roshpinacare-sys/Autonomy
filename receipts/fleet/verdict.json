@@ -1,15 +1,249 @@
 {
-  "at": "2026-10-13T09:46:00.892Z",
-  "repos": {},
-  "alerts": [
-    "ECO_WALLET_TOKEN absent - owner secret not wired to this repo; nothing measured, nothing claimed"
-  ],
-  "overall": "BLOCKED",
-  "reason": "ECO_WALLET_TOKEN absent — nothing measured, nothing claimed",
-  "provenance": {
-    "runId": "38378636868",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38378636868",
-    "sha": "d1fde64f6bce4d3831b78e73663c572bfb7ba946"
+  "at": "2026-10-13T10:14:19.890Z",
+  "repos": {
+    "steem-cockpit": {
+      "head": "a6a50bbb9432d86d57d43e6d1bdadfee614e4a2f",
+      "overall": "FAIL",
+      "checks": {
+        "install": "pass",
+        "engineInstall": "pass",
+        "engineSelftest": "pass"
+      },
+      "reason": ""
+    },
+    "saos-dex": {
+      "head": "27806c0382343619b7ddc17dff165282a2e9aab4",
+      "overall": "PASS",
+      "checks": {
+        "install": "pass",
+        "typecheck": "pass"
+      },
+      "reason": "all checks and fleet laws pass"
+    },
+    "saos-agents": {
+      "head": "f312ce876a2dce9e928469889e6beb9ca117ec3c",
+      "overall": "PASS",
+      "checks": {
+        "agentsSelftest": "pass"
+      },
+      "reason": "all checks and fleet laws pass"
+    },
+    "saos-wallet": {
+      "head": "6eaf197783bffbfa3b3caf72954a0f1f652dbe34",
+      "overall": "PASS",
+      "checks": {},
+      "reason": "all checks and fleet laws pass"
+    },
+    "adsmarket": {
+      "head": "c307d566fbd722ab27d35b37b38295b159226ccb",
+      "overall": "PASS",
+      "checks": {},
+      "reason": "all checks and fleet laws pass"
+    }
   },
-  "details": []
+  "alerts": [
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-10G4ff/saos-wallet/tools/vault-zk-check.ts",
+    "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
+  ],
+  "overall": "FAIL",
+  "reason": "steem=FAIL · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "provenance": {
+    "runId": "38381950563",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38381950563",
+    "sha": "a6510da0dfa8031835c0d385075d6d0d5cb39a7f"
+  },
+  "details": [
+    {
+      "at": "2026-10-13T10:14:19.890Z",
+      "slug": "roshpinacare-sys/steem",
+      "head": "a6a50bbb9432d86d57d43e6d1bdadfee614e4a2f",
+      "checks": {
+        "install": "pass",
+        "engineInstall": "pass",
+        "engineSelftest": "pass"
+      },
+      "laws": [
+        {
+          "id": "law-no-secrets-at-head",
+          "verdict": "pass",
+          "detail": "gitleaks HEAD scan: 0 findings"
+        },
+        {
+          "id": "law-no-skipped-pass",
+          "verdict": "pass",
+          "detail": "workflows scanned: 5, theater patterns: 0"
+        },
+        {
+          "id": "law-gitleaks-push",
+          "verdict": "fail",
+          "detail": "gitleaks.yml exists but PR-only — pushes unscanned"
+        },
+        {
+          "id": "law-r11-head-absent",
+          "verdict": "pass",
+          "detail": "absent at HEAD"
+        }
+      ],
+      "alerts": [],
+      "overall": "FAIL",
+      "reason": ""
+    },
+    {
+      "at": "2026-10-13T10:14:19.890Z",
+      "slug": "roshpinacare-sys/saos-dex",
+      "head": "27806c0382343619b7ddc17dff165282a2e9aab4",
+      "checks": {
+        "install": "pass",
+        "typecheck": "pass"
+      },
+      "laws": [
+        {
+          "id": "law-no-secrets-at-head",
+          "verdict": "pass",
+          "detail": "gitleaks HEAD scan: 0 findings"
+        },
+        {
+          "id": "law-no-skipped-pass",
+          "verdict": "pass",
+          "detail": "workflows scanned: 9, theater patterns: 0"
+        },
+        {
+          "id": "law-gitleaks-push",
+          "verdict": "pass",
+          "detail": "gitleaks scans every push"
+        },
+        {
+          "id": "law-r11-head-absent",
+          "verdict": "pass",
+          "detail": "absent at HEAD"
+        }
+      ],
+      "alerts": [],
+      "overall": "PASS",
+      "reason": "all checks and fleet laws pass"
+    },
+    {
+      "at": "2026-10-13T10:14:19.890Z",
+      "slug": "roshpinacare-sys/saos-agents",
+      "head": "f312ce876a2dce9e928469889e6beb9ca117ec3c",
+      "checks": {
+        "agentsSelftest": "pass"
+      },
+      "laws": [
+        {
+          "id": "law-no-secrets-at-head",
+          "verdict": "pass",
+          "detail": "gitleaks HEAD scan: 0 findings"
+        },
+        {
+          "id": "law-no-skipped-pass",
+          "verdict": "pass",
+          "detail": "workflows scanned: 2, theater patterns: 0"
+        },
+        {
+          "id": "law-gitleaks-push",
+          "verdict": "pass",
+          "detail": "gitleaks scans every push"
+        },
+        {
+          "id": "law-r11-head-absent",
+          "verdict": "pass",
+          "detail": "absent at HEAD"
+        }
+      ],
+      "alerts": [],
+      "overall": "PASS",
+      "reason": "all checks and fleet laws pass"
+    },
+    {
+      "at": "2026-10-13T10:14:19.890Z",
+      "slug": "roshpinacare-sys/Saosmartwallet",
+      "head": "6eaf197783bffbfa3b3caf72954a0f1f652dbe34",
+      "checks": {},
+      "laws": [
+        {
+          "id": "law-no-secrets-at-head",
+          "verdict": "flag",
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-10G4ff/saos-wallet/tools/vault-zk-check.ts"
+        },
+        {
+          "id": "law-no-skipped-pass",
+          "verdict": "pass",
+          "detail": "workflows scanned: 3, theater patterns: 0"
+        },
+        {
+          "id": "law-gitleaks-push",
+          "verdict": "pass",
+          "detail": "gitleaks scans every push"
+        },
+        {
+          "id": "law-r11-head-absent",
+          "verdict": "pass",
+          "detail": "absent at HEAD"
+        },
+        {
+          "id": "law-unlock-ratelimit",
+          "verdict": "pass",
+          "detail": "unlock endpoint must gate online passphrase guessing"
+        },
+        {
+          "id": "law-no-skipped-pass",
+          "verdict": "pass",
+          "detail": "CI verdict law: skipped is never pass + push trigger present"
+        },
+        {
+          "id": "law-gitleaks-push",
+          "verdict": "pass",
+          "detail": "secret scan must run on every push, not only PRs"
+        },
+        {
+          "id": "law-r11-head-absent",
+          "verdict": "pass",
+          "detail": "R11 key-material metadata file must stay absent at HEAD"
+        },
+        {
+          "id": "law-pass-provenance",
+          "verdict": "flag",
+          "detail": "PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
+        }
+      ],
+      "alerts": [
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-10G4ff/saos-wallet/tools/vault-zk-check.ts",
+        "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
+      ],
+      "overall": "PASS",
+      "reason": "all checks and fleet laws pass"
+    },
+    {
+      "at": "2026-10-13T10:14:19.890Z",
+      "slug": "roshpinacare-sys/Adsmarket",
+      "head": "c307d566fbd722ab27d35b37b38295b159226ccb",
+      "checks": {},
+      "laws": [
+        {
+          "id": "law-no-secrets-at-head",
+          "verdict": "pass",
+          "detail": "gitleaks HEAD scan: 0 findings"
+        },
+        {
+          "id": "law-no-skipped-pass",
+          "verdict": "pass",
+          "detail": "workflows scanned: 3, theater patterns: 0"
+        },
+        {
+          "id": "law-gitleaks-push",
+          "verdict": "pass",
+          "detail": "gitleaks scans every push"
+        },
+        {
+          "id": "law-r11-head-absent",
+          "verdict": "pass",
+          "detail": "absent at HEAD"
+        }
+      ],
+      "alerts": [],
+      "overall": "PASS",
+      "reason": "all checks and fleet laws pass"
+    }
+  ]
 }

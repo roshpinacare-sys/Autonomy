@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-13T10:14:19.890Z",
+  "slug": "roshpinacare-sys/steem",
+  "head": "a6a50bbb9432d86d57d43e6d1bdadfee614e4a2f",
+  "checks": {
+    "install": "pass",
+    "engineInstall": "pass",
+    "engineSelftest": "pass"
+  },
+  "laws": [
+    {
+      "id": "law-no-secrets-at-head",
+      "verdict": "pass",
+      "detail": "gitleaks HEAD scan: 0 findings"
+    },
+    {
+      "id": "law-no-skipped-pass",
+      "verdict": "pass",
+      "detail": "workflows scanned: 5, theater patterns: 0"
+    },
+    {
+      "id": "law-gitleaks-push",
+      "verdict": "fail",
+      "detail": "gitleaks.yml exists but PR-only — pushes unscanned"
+    },
+    {
+      "id": "law-r11-head-absent",
+      "verdict": "pass",
+      "detail": "absent at HEAD"
+    }
+  ],
+  "alerts": [],
+  "overall": "FAIL",
+  "reason": ""
+}
