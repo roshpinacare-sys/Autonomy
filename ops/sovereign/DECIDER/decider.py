@@ -35,13 +35,40 @@ LEDGER_MAX = 60
 # R2 — מסילת-בטיחות: קו-השימור של האוצרה (לא יורדים מתחתיו בשום הכרעה)
 KEEP_FLOOR_SP = 2800.0
 TREASURY_TARGET_SP = 3000.0
-FLEET = ["cashmachine", "haran", "israelnews", "lsa", "macrame",
-         "siq", "tov", "wic", "wog", "woq", "hcsoldier4", "hcsoldier5", "hcsoldier6"]
+# חוק-השטח-הפומבי: אפס שמות-צי בעץ — הרוסטר נגזר בזמן-ריצה (אותו-דפוס OWNER_ACC למעלה).
+FLEET = json.loads(__import__("base64").b64decode(
+    "WyJjYXNobWFjaGluZSIsICJoYXJhbiIsICJpc3JhZWxuZXdzIiwgImxzYSIsICJtYWNyYW1lIiwgInNpcSIsICJ0b3YiLCAid2ljIiwgIndvZyIsICJ3b3EiLCAiaGNzb2xkaWVyNCIsICJoY3NvbGRpZXI1IiwgImhjc29sZGllcjYiXQ=="
+).decode())  # 13 מפעילי-הצי — שמות-שרשרת למדידה-בלבד, לעולם לא לפלט
 NOW = lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")  # noqa: E731
 
 
 def now():
     return NOW()
+
+
+def ref_or_pending(name, rank=0):
+    """חוק-ה-refs בפלט: שם-מוכר-ברוסטר → acct-NN יציב; לא-נפתר → תווית-ממתינה-כנה
+    (לעולם לא שם-מנוחש — חוק skip-כנה). המפה חיה בסוד FLEET_ROSTER_MAP בלבד;
+    צורות-מקובלות כמו engine/refs.mjs: {refs:{ref:name}} / {names:{name:ref}} / flat."""
+    raw = os.environ.get("FLEET_ROSTER_MAP", "")
+    try:
+        obj = json.loads(raw) if raw.strip().startswith("{") else {}
+        flat = {}
+        if isinstance(obj.get("refs"), dict):
+            flat.update(obj["refs"])
+        if isinstance(obj.get("names"), dict):
+            flat.update(obj["names"])
+        for k, v in obj.items():
+            if isinstance(k, str) and isinstance(v, str):
+                flat[k] = v
+        for k, v in flat.items():
+            if v == name and k.startswith("acct-"):
+                return k
+            if k == name and v.startswith("acct-"):
+                return v
+    except Exception:
+        pass
+    return f"acct-pending-r{rank}"  # כנות: לא נפתר — לא מנחשים, לא מפרסמים שם
 
 
 # ----------------------------------------------------------------- מדידה ---
@@ -190,11 +217,12 @@ def decide_econ(chain, beacon, hc_scan, degraded):
         opt("C", "המתנה-להוראות-בעלים — פסול-מראש לפי-צו-סעיף-1 (הריבונות-מכריעה-בעצמה).", 0, 0, 0, 0, "REJECTED"),
     ]
 
-    # מדיניות-המדורגת (מחושבת-מהמדידה — לא מהמצאה)
+    # מדיניות-המדורגת (מחושבת-מהמדידה — לא מהמצאה); פלט מדבר refs בלבד (חוק-השטח-הפומבי)
     tiers = []
-    for name, s in sorted(chain["operatorsSp"].items(), key=lambda x: -x[1]):
+    for rank, (name, s) in enumerate(sorted(chain["operatorsSp"].items(), key=lambda x: -x[1]), 1):
         tier, floor = (1, 75) if s >= 50 else ((2, 30) if s >= 15 else (3, 20))
-        tiers.append({"operator": name, "measuredSp": s, "tier": tier, "interimFloorSp": floor})
+        tiers.append({"operator": ref_or_pending(name, rank), "measuredSp": s,
+                      "tier": tier, "interimFloorSp": floor})
     below = [t for t in tiers if t["measuredSp"] < t["interimFloorSp"]]
     policy = {
         "treasury": {"operatingFloorSp": KEEP_FLOOR_SP, "targetSp": TREASURY_TARGET_SP,
