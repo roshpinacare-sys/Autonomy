@@ -103,7 +103,10 @@ async function repoSignature(repo, branch) {
   const wfs = await gh(`/repos/${OWNER}/${repo}/actions/workflows?per_page=100`);
   const topBlobs = tree && tree.tree ? tree.tree.filter((t) => t.type === 'blob').map((t) => t.path).sort() : [];
   const wf = wfs && wfs.workflows ? wfs.workflows.map((w) => `${w.name}:${w.state}`).sort() : [];
-  return { topBlobs, topHash: tree && tree.sha ? tree.sha.slice(0, 12) : null, workflows: wf };
+  // leak-scan חי (sovereign-state כל-15 דק'): שמות-ארטיפקטים-אטומים (.env.enc/.tar.enc)
+  // לעולם לא נחתמים בספר-הזיכרון הציבורי — הם מצביעי-חומר; המלאי נשמר כ-refs יציבים.
+  const blobRedact = (p) => (/\.(env|tar)\.enc$/i.test(p) ? '\u2039sealed-artifact\u203a' : p);
+  return { topBlobs: topBlobs.map(blobRedact), topHash: tree && tree.sha ? tree.sha.slice(0, 12) : null, workflows: wf };
 }
 
 async function discovery(memory) {
