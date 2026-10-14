@@ -27,6 +27,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { pubScrubObj } from "./pub-scrub.mjs";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const STATE_FILE = path.join(ROOT, "state", "network-inventory.json");
@@ -389,9 +390,11 @@ async function main() {
     dormantWorkflows: inventory.reduce((a, r) => a + r.dormant.length, 0),
     failingWorkflows: inventory.reduce((a, r) => a + r.failing.length, 0),
   };
-  const nextInv = { schema: "network-inventory/1", generatedAt: nowIso, mode, counts, repos: inventory, discoveries: prev ? diffInventories(prev, { repos: inventory }) : null, refLaw: "private names -> priv-h<sha256[:8]> stable refs; map never stored" };
+  // חוק-השטח-הפומבי (נמדד 2026-10-14): כל-הספר-עובר-טיהור-לפני-כתיבה —
+  // גם נתיבי-engineFiles של-ריפו-פרטיים נושאים טוקני-זהות (verify-*-key.ts וכו').
+  const nextInv = pubScrubObj({ schema: "network-inventory/1", generatedAt: nowIso, mode, counts, repos: inventory, discoveries: prev ? diffInventories(prev, { repos: inventory }) : null, refLaw: "private names -> priv-h<sha256[:8]> stable refs; map never stored" });
   const diff = nextInv.discoveries;
-  const md = renderManifest(nextInv, diff);
+  const md = pubScrubObj(renderManifest(nextInv, diff));
   atomicWrite(STATE_FILE, JSON.stringify(nextInv, null, 2) + "\n");
   atomicWrite(MANIFEST, md);
 

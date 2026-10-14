@@ -12,6 +12,16 @@ on:
   schedule:
     - cron: '13,43 * * * *'
   workflow_dispatch:
+  # trigger-hardening (measured 2026-10-14): the '13,43' cron has exactly ONE run
+  # in history — the manual dispatch (22:22Z); scheduled ticks 22:43/23:13/23:43/00:13
+  # never landed. Same measured disease as compute-rearm (T-REARM hardening): a
+  # self-awareness heart that can silently skip is not a heart. Two VERIFIED
+  # frequent beats in this repo now double as the pulse: artery-watch
+  # (repository_dispatch ~30min) and artery-flow (hourly schedule). Cheap by law —
+  # the run re-measures and publishes honestly even when nothing changed.
+  workflow_run:
+    workflows: ["artery-watch", "artery-flow"]
+    types: [completed]
 
 permissions:
   contents: write

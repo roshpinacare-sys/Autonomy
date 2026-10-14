@@ -45,4 +45,6 @@ jobs:
           echo "$CHECK" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{const j=JSON.parse(s);console.log('selfhood verified:',j.at,'| discoveries:',j.discoveries,'| claims:',j.claimsProcessed,'| brain-chain:',((j.brain&&j.brain.chain)||[]).join('+')||'deterministic-only');});"
 
       - name: "Keys awareness - demands vs keys registry (no blind demand law)"
+        env:
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
         run: node tools/keys-awareness.mjs

@@ -17,6 +17,7 @@
 import { execSync } from "node:child_process";
 import { writeFileSync, readFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
+import { pubScrubText } from "../engine/pub-scrub.mjs";
 
 const ROOT = process.cwd();
 const OUT = join(ROOT, "ops", "sovereign", "AWARENESS");
@@ -109,9 +110,9 @@ const md = [
   "",
 ].join("\n");
 
-writeFileSync(join(OUT, "manifest.md"), md);
-writeFileSync(join(OUT, "census.json"), JSON.stringify({ at: book.at, repos: repos && Array.isArray(repos) ? repos.map((r) => r.name) : [], workflows: Object.fromEntries(CORE.map((r) => [r, (book.independence.find((i) => i.repo === r) || {}).workflows || 0])) }, null, 1));
-writeFileSync(join(OUT, "claims.jsonl"), book.claims.map((c) => JSON.stringify(c)).join("\n") + (book.claims.length ? "\n" : ""));
+writeFileSync(join(OUT, "manifest.md"), pubScrubText(md));
+writeFileSync(join(OUT, "census.json"), pubScrubText(JSON.stringify({ at: book.at, repos: repos && Array.isArray(repos) ? repos.map((r) => r.name) : [], workflows: Object.fromEntries(CORE.map((r) => [r, (book.independence.find((i) => i.repo === r) || {}).workflows || 0])) }, null, 1)));
+writeFileSync(join(OUT, "claims.jsonl"), book.claims.map((c) => pubScrubText(JSON.stringify(c))).join("\n") + (book.claims.length ? "\n" : ""));
 console.log(`awareness: ${book.repos} repos · new ${book.newRepos.length + book.newWorkflows.length} · claims ${book.claims.length} · errors ${book.errors.length}`);
 
 // publish (rebase-hardy, identity-stamped)
@@ -124,7 +125,7 @@ try {
   if (!st) { console.log("awareness: no delta — quiet tick"); process.exit(0); }
   git(`git commit -m "network-awareness: self-portrait ${book.at.slice(0, 16)} [skip ci]"`);
   for (let i = 1; i <= 7; i++) {
-    try { git("git pull --rebase -q origin main"); git("git push -q origin HEAD:main"); console.log("awareness: published"); process.exit(0); }
+    try { git("git pull --rebase -X theirs --autostash -q origin main"); git("git push -q origin HEAD:main"); console.log("awareness: published"); process.exit(0); } // T-78 publish-conflict law
     catch { execSync("git rebase --abort 2>/dev/null || true", { shell: "/bin/bash", stdio: "ignore" }); execSync(`sleep ${i * 4}`, { stdio: "ignore" }); }
   }
   console.log("awareness: push failed after 7 attempts — honest failure"); process.exit(1);

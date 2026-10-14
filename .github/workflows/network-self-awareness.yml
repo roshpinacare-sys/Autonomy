@@ -48,6 +48,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INV_TOKEN: ${{ secrets.INV_TOKEN || secrets.ZIP_PAT }}
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
         run: node engine/network-inventory.mjs
 
       - name: leak-scan (fail-closed, on new artifacts)

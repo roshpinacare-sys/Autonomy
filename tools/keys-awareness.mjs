@@ -9,6 +9,7 @@
  * · כשל-תשתית = ריצה-אדומה כנה. אין-הצלחות-מזויפות.
  */
 import { createHash } from 'node:crypto';
+import { pubScrubObj } from '../engine/pub-scrub.mjs';
 
 const OWNER = 'roshpinacare-sys';
 const REPO = 'Autonomy';
@@ -122,7 +123,9 @@ async function main() {
     secretNamesMeasured: autSecrets ? true : false,
     sources: [`state/keys/REGISTRY.json@${BRANCH}`, 'actions/secrets (שמות-בלבד)'],
   };
-  const js = JSON.stringify(body, null, 1) + '\n';
+  // חוק-השטח-הפומבי (נמדד 2026-10-14): הספר נגזר-מהרישום — כל-המחרוזות עוברות
+  // טיהור-refs לפני-פרסום (ids, needs, receipts — אותו-חוק-כמו-כל-ספר-פומבי).
+  const js = JSON.stringify(pubScrubObj(body), null, 1) + '\n';
   const put = await putVerified(REPO, 'state/selfhood/keys.json', js, 'keys-awareness: מדידת-דרישות-מול-מלאי-המפתחות (T24)');
   if (!put.ok) { console.error('FATAL: פרסום-נכשל', put.path ?? ''); process.exit(1); }
   console.log(`keys-awareness: ${body.satisfied}/${body.demandsChecked} satisfied · upgrades: ${upgrades.join(',') || '—'} · sha ${put.sha.slice(0, 10)} · readback ${put.readback ? 'MATCH' : 'lag'}`);
