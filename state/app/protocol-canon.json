@@ -5,7 +5,7 @@
   "measuredVia": "git ls-remote HEAD (live network truth, not memory)",
   "adoptionLevels": { "ADOPTED": "live measured mechanism in the fleet", "MAPPED": "pattern mapped to an existing/planned lane", "PARTIAL": "partially adopted" },
   "repos": [
-    { "n": 1, "repo": "coinbase/agentkit", "url": "https://github.com/coinbase/agentkit", "head": "2e6dbaf725b9", "pattern": "MPC/sealed key custody — no plaintext keys", "ours": "T31 sealed vault: keys.env.enc (sha256(C) wrap) + libsodium sealedbox + Actions secrets; zero plaintext on disk/logs (run 38562173667)", "adoption": "ADOPTED" },
+    { "n": 1, "repo": "coinbase/agentkit", "url": "https://github.com/coinbase/agentkit", "head": "2e6dbaf725b9", "pattern": "MPC/sealed key custody — no plaintext keys", "ours": "T31 sealed vault: sealed key-envelope (sha256(C) wrap) + libsodium sealedbox + Actions secrets; zero plaintext on disk/logs (run 38562173667)", "adoption": "ADOPTED" },
     { "n": 2, "repo": "modelcontextprotocol/servers", "url": "https://github.com/modelcontextprotocol/servers", "head": "bbb701e7ac1e", "pattern": "named tool servers, capability isolation", "ours": "A5 intent gate + A12 session continuity", "adoption": "ADOPTED" },
     { "n": 3, "repo": "goat-sdk/goat", "url": "https://github.com/goat-sdk/goat", "head": "f2eedc2f0415", "pattern": "multi-chain tool routing (EVM/Solana)", "ours": "EVM fuel lane (FUEL-LANE-PLANNED, T31 registry): onramp/pegout routing spec precedes any funds action", "adoption": "MAPPED" },
     { "n": 4, "repo": "elizaOS/eliza", "url": "https://github.com/elizaOS/eliza", "head": "70dc0bbf93ff", "pattern": "stateful long-term memory", "ours": "A12 session store + cadence-memory + worklog.md chain (T8→T32)", "adoption": "PARTIAL" },

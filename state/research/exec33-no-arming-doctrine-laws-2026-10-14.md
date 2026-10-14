@@ -20,7 +20,7 @@ No state closes on cache. Live values are read at the moment of decision; mutati
 
 ## R341 — atomic-receipt law (P4, extends R337)
 
-Every systemic action = **one clean atomic commit + one shared-worklog receipt**. Commits never mix unrelated concerns; parallel sessions **MUST** receipt to the shared worklog (`/home/z/my-project/worklog.md`) — the R337 clobber incident proved worklog bypass is the root cause of cross-session corruption. A session that lands commits without a worklog receipt has not finished its task, regardless of what landed.
+Every systemic action = **one clean atomic commit + one shared-worklog receipt**. Commits never mix unrelated concerns; parallel sessions **MUST** receipt to the shared worklog (the workspace-root `worklog.md`) — the R337 clobber incident proved worklog bypass is the root cause of cross-session corruption. A session that lands commits without a worklog receipt has not finished its task, regardless of what landed.
 
 ## R342 — self-heal-mandate law (the owner's autonomy mandate)
 
