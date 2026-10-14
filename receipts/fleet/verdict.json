@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-14T14:27:00.071Z",
+  "at": "2026-10-14T17:21:48.106Z",
   "repos": {
     "steem-cockpit": {
-      "head": "e817a95e630df9507e69b76f9297f564203e58cc",
+      "head": "5c1bf236b1a1e49d3aac489d623b75456e2906af",
       "overall": "PASS",
       "checks": {
         "install": "pass",
@@ -12,13 +12,13 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-dex": {
-      "head": "84c7f9e424b0207603b2715157d839dd4f104d31",
-      "overall": "PASS",
+      "head": "93fe2c8e99b6705550a46fde8fe9f08904d97d4b",
+      "overall": "FAIL",
       "checks": {
         "install": "pass",
-        "typecheck": "pass"
+        "typecheck": "fail"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": "typecheck failed: st on type '{}'. | src/app/api/dex/desk-ledger/route.ts(81,64): error TS2339: Property 'positionId' does not exist on type '{}'. | src/app/api/dex/desk-ledger/route.ts(84,24): error TS2339: Property 'prevSig' does not exist on type '{}'. | "
     },
     "saos-agents": {
       "head": "83555a78cfab2da69b1a8bbb682559062566d8f0",
@@ -42,22 +42,22 @@
     }
   },
   "alerts": [
-    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-eX2S31/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-eX2S31/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-eX2S31/saos-wallet/tools/vault-zk-check.ts",
+    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/saos-wallet/tools/vault-zk-check.ts",
     "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
-  "overall": "PASS",
-  "reason": "steem=PASS · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "overall": "FAIL",
+  "reason": "steem=PASS · saos-dex=FAIL · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "38580580061",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38580580061",
-    "sha": "c42cff6b5982a2a614c16839b9d4de945ea0252e"
+    "runId": "38605992668",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38605992668",
+    "sha": "df2b53e4eb6ba27395161a579398d40689066660"
   },
   "details": [
     {
-      "at": "2026-10-14T14:27:00.071Z",
+      "at": "2026-10-14T17:21:48.106Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "e817a95e630df9507e69b76f9297f564203e58cc",
+      "head": "5c1bf236b1a1e49d3aac489d623b75456e2906af",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
@@ -67,7 +67,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-eX2S31/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-eX2S31/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+          "detail": "gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
         },
         {
           "id": "law-no-skipped-pass",
@@ -86,18 +86,18 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-eX2S31/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-eX2S31/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+        "law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-14T14:27:00.071Z",
+      "at": "2026-10-14T17:21:48.106Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "84c7f9e424b0207603b2715157d839dd4f104d31",
+      "head": "93fe2c8e99b6705550a46fde8fe9f08904d97d4b",
       "checks": {
         "install": "pass",
-        "typecheck": "pass"
+        "typecheck": "fail"
       },
       "laws": [
         {
@@ -122,11 +122,11 @@
         }
       ],
       "alerts": [],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": "typecheck failed: st on type '{}'. | src/app/api/dex/desk-ledger/route.ts(81,64): error TS2339: Property 'positionId' does not exist on type '{}'. | src/app/api/dex/desk-ledger/route.ts(84,24): error TS2339: Property 'prevSig' does not exist on type '{}'. | "
     },
     {
-      "at": "2026-10-14T14:27:00.071Z",
+      "at": "2026-10-14T17:21:48.106Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "83555a78cfab2da69b1a8bbb682559062566d8f0",
       "checks": {
@@ -159,7 +159,7 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-14T14:27:00.071Z",
+      "at": "2026-10-14T17:21:48.106Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
       "head": "d61db0813607c11a3a573754a124b47904c557d8",
       "checks": {},
@@ -167,7 +167,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-eX2S31/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
@@ -211,14 +211,14 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-eX2S31/saos-wallet/tools/vault-zk-check.ts",
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/saos-wallet/tools/vault-zk-check.ts",
         "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-14T14:27:00.071Z",
+      "at": "2026-10-14T17:21:48.106Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "43e5ba5a701b8c204f6e0b9937326b6fa4428a47",
       "checks": {},
