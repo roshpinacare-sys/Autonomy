@@ -40,7 +40,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Selftest gate (zero network — must be ALL GREEN)
         run: node ops/evo-windows-staleness/gate.mjs --selftest
