@@ -34,6 +34,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           node - <<'NODE'
+          (async () => {
           const { readFileSync } = require('node:fs');
           const { createHash } = require('node:crypto');
           const checks = [];
@@ -108,4 +109,5 @@ jobs:
             }),
           }).catch(() => {});
           process.exit(failed.length ? 1 : 0);
+          })().catch((e) => { console.error('contract-check crashed:', String(e).slice(0, 200)); process.exit(1); });
           NODE
