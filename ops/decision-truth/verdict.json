@@ -1,26 +1,26 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-14T04:53:12Z",
- "durationMs": 2136,
+ "generatedAt": "2026-10-14T06:12:29Z",
+ "durationMs": 1790,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-14T04:52:54Z",
-  "stateAgeMin": 0,
+  "stateAgeMin": 80,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-14T04:52:40Z",
-   "ageS": 31,
+   "ageS": 4788,
    "stalled": false
   }
  },
  "measures": {
   "chain": {
-   "head": 110423561,
+   "head": 110425146,
    "treasuryNetSp": 2841.7,
-   "mult": 0.0006203010720637893
+   "mult": 0.0006203033947620279
   },
   "beaconPulse": {
    "treasuryNetSp": 2841.7
@@ -33,9 +33,8 @@
    "ghosts": null
   },
   "workOrderIds": [
-   "WO-Domain-reds",
-   "WO-Sandbox-reds",
-   "WO-saos-agents-revive"
+   "WO-FleetHQ-reds",
+   "WO-Sandbox-reds"
   ]
  },
  "decisions": [
@@ -49,7 +48,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 0min (limit 120)"
+     "detail": "state age 80min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -100,7 +99,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 0min (limit 120)"
+     "detail": "state age 80min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -115,18 +114,18 @@
    "checks": [
     {
      "law": "routed-orders-exist",
-     "result": "ok",
-     "detail": "routed=[\"WO-Domain-reds\",\"WO-Sandbox-reds\",\"WO-saos-agents-revive\"] missing=[]"
+     "result": "mismatch",
+     "detail": "routed=[\"WO-Domain-reds\",\"WO-Sandbox-reds\",\"WO-saos-agents-revive\"] missing=[\"WO-Domain-reds\",\"WO-saos-agents-revive\"]"
     },
     {
      "law": "orders-status-tracking",
      "result": "unverifiable",
-     "detail": "orders without status field (done-ness unverifiable): [\"WO-Domain-reds\",\"WO-Sandbox-reds\",\"WO-saos-agents-revive\"] - route: growth engine add status lifecycle"
+     "detail": "orders without status field (done-ness unverifiable): [\"WO-Sandbox-reds\"] - route: growth engine add status lifecycle"
     },
     {
      "law": "fleethq-reds-persist",
      "result": "ok",
-     "detail": "failure runs in last 48h: 2 - routed WO-FleetHQ-reds subject persists (work pending)"
+     "detail": "failure runs in last 48h: 3 - routed WO-FleetHQ-reds subject persists (work pending)"
     },
     {
      "law": "faulted-agents-fix",
@@ -136,7 +135,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 0min (limit 120)"
+     "detail": "state age 80min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -161,7 +160,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 0min (limit 120)"
+     "detail": "state age 80min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -177,7 +176,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 0min (limit 120)"
+     "detail": "state age 80min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -193,18 +192,18 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 0min (limit 120)"
+     "detail": "state age 80min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "38513693757",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38513693757",
-  "sha": "b44d5c1e8a6ba34d63daf79afad5ee7f9b36c0ad",
+  "runId": "38520845667",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38520845667",
+  "sha": "9d8b50f70046aebf8e63ace6314c52d7b1a6cf48",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-14T04:53:12Z"
+  "generatedAt": "2026-10-14T06:12:29Z"
  },
  "selftest": {
   "vectors": 16,
