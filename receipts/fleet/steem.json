@@ -1,17 +1,17 @@
 {
-  "at": "2026-10-14T17:21:48.106Z",
+  "at": "2026-10-14T20:16:03.758Z",
   "slug": "roshpinacare-sys/steem",
-  "head": "5c1bf236b1a1e49d3aac489d623b75456e2906af",
+  "head": "14002b3c8e75eb01932b4d04a3ee367aeac91a8d",
   "checks": {
     "install": "pass",
     "engineInstall": "pass",
-    "engineSelftest": "pass"
+    "engineSelftest": "fail"
   },
   "laws": [
     {
       "id": "law-no-secrets-at-head",
       "verdict": "flag",
-      "detail": "gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+      "detail": "gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-E78mOI/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-E78mOI/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
     },
     {
       "id": "law-no-skipped-pass",
@@ -30,8 +30,8 @@
     }
   ],
   "alerts": [
-    "law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-cfGJwU/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+    "law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-E78mOI/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-E78mOI/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
   ],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "overall": "FAIL",
+  "reason": "engineSelftest failed: {\"ev\":\"saos.llm_chain.selected\",\"purpose\":\"drill\",\"selected\":\"drill-provider-1t\",\"ms\":0} |  | SELFTEST 1821/1822 FAIL | "
 }
