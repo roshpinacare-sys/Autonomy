@@ -1,16 +1,46 @@
 {
   "schema": "engineering/1",
-  "updatedAt": "2026-10-14T00:49:33.300Z",
+  "updatedAt": "2026-10-14T02:06:06.051Z",
   "cage": {
     "at": "2026-10-14T00:49:33.300Z",
     "pass": true,
     "checks": [
-      { "check": "local-status-ok", "want": "success", "got": "success", "pass": true },
-      { "check": "local-log-ok", "want": "success", "got": "512cc98 seed", "pass": true },
-      { "check": "network-blocked", "want": "fail", "got": "fail", "pass": true },
-      { "check": "push-blocked", "want": "fail", "got": "fail", "pass": true },
-      { "check": "ceiling-holds", "want": "uncaged-finds+caged-blocked", "got": "uncaged-finds+caged-blocked", "pass": true },
-      { "check": "legit-work-survives", "want": "success", "got": "512cc98 seed", "pass": true }
+      {
+        "check": "local-status-ok",
+        "want": "success",
+        "got": "success",
+        "pass": true
+      },
+      {
+        "check": "local-log-ok",
+        "want": "success",
+        "got": "512cc98 seed",
+        "pass": true
+      },
+      {
+        "check": "network-blocked",
+        "want": "fail",
+        "got": "fail",
+        "pass": true
+      },
+      {
+        "check": "push-blocked",
+        "want": "fail",
+        "got": "fail",
+        "pass": true
+      },
+      {
+        "check": "ceiling-holds",
+        "want": "uncaged-finds+caged-blocked",
+        "got": "uncaged-finds+caged-blocked",
+        "pass": true
+      },
+      {
+        "check": "legit-work-survives",
+        "want": "success",
+        "got": "512cc98 seed",
+        "pass": true
+      }
     ],
     "node": "v22.x (sandbox selftest)"
   },
@@ -19,6 +49,79 @@
     "A5": "שער-כוונות לולאתי — src/lib/intent-gate.ts (same-origin + x-intent + דלי-אסימונים)",
     "A1": "מחזור-הכרעות עם-אפקט — /api/decisions-cycle (answer→side-effect→settle→reopen, אופטימיות-גיט)",
     "A12": "המשכיות-סשן שורדת-סנדבוקס — /api/sessions (reattach נמדד בגיט)",
-    "A10": "רוטציית-יומנים — חסמים בכל-כתיבות המצב (40/200 שורות)"
+    "A10": "רוטציית-יומנים — חסמים בכל-כתיבות המצב (40/200 שורות)",
+    "A9": "שער-מיזוג ריבוני — git-state.writeGitFile (נתיבי-מפתח חוסמים כתיבה בלי אימות-בעלים; מדידה 10/10 mech-selftest)",
+    "A6": "תשתית-דמה ל-QA — SIM=1+x-sim:1 נעילה-כפולה; מחזור-זהב מדוד בדמה, אמת-גיט לא-נגעה (sha זהה)",
+    "A3": "גרף-תור — /api/queue-graph (סדרות-פר-ריפו, חסימות, stale/chronic, סגירות-מוכחות מול RECEIPTS; חי: 66/82)",
+    "A8": "מדידת-עלות — costUsd ביישוב-הכרעה + סיכום בפנקס-ההנדסה",
+    "A7": "ניגודיות מדודה — tools/check-contrast.mjs; נמדד 20-כישלונות → תוקנו; פסק: PASS 25/25"
+  },
+  "sim": {
+    "at": "2026-10-14T02:06:06.051Z",
+    "pass": true,
+    "checks": [
+      {
+        "check": "gate: כתיבה-מוגנת בלי-בעלים",
+        "want": "blocked",
+        "got": "merge-gate: נתיב-ריבונות — דרוש אימות-בעלים (ownerVerified)",
+        "pass": true
+      },
+      {
+        "check": "gate: כתיבה-מוגנת עם-בעלים",
+        "want": "ok+readback",
+        "got": "ok 701f1b3e",
+        "pass": true
+      },
+      {
+        "check": "gate: יישוב-קבלה-קצרה",
+        "want": "blocked",
+        "got": "blocked",
+        "pass": true
+      },
+      {
+        "check": "gate: יישוב-קבלה-תקינה",
+        "want": "ok",
+        "got": "ok",
+        "pass": true
+      },
+      {
+        "check": "sim: קריאה-ראשונה",
+        "want": "null",
+        "got": "null",
+        "pass": true
+      },
+      {
+        "check": "sim: התנגשות-baseSha-ישן",
+        "want": "conflict",
+        "got": "conflict",
+        "pass": true
+      },
+      {
+        "check": "sim: readback מדויק",
+        "want": "{\"n\":1}",
+        "got": "{\"n\":1}",
+        "pass": true
+      },
+      {
+        "check": "sim: הסגר-פגום",
+        "want": "corrupt מדווח",
+        "got": "corrupt",
+        "pass": true
+      },
+      {
+        "check": "אמת: קריאת-גיט אמיתית",
+        "want": "ok",
+        "got": "ok",
+        "pass": true
+      },
+      {
+        "check": "sim: מאגר-נדיף",
+        "want": "2 קבצים (ניקוי-מדוד)",
+        "got": "2 קבצים / 2 פעולות",
+        "pass": true
+      }
+    ],
+    "realGitUntouched": true,
+    "note": "mech-selftest/1 [T26] — CLI בתהליך-מבודד; אותם-חוקים כמו /api/engineering simselftest (שם: בעלים-בלבד)"
   }
 }
