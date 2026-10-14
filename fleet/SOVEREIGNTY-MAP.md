@@ -23,7 +23,7 @@ Autonomy · saos-runtime · Domain · Federation) ואחרי-סריקה-חיה �
 | בית-git-שני (GitLab, חוצה-מארח) | Autonomy/engine/gitlab-mirror.mjs | חי-אך-חלקי: **3/34 ריפואים בלבד** · דורש GITLAB_TOKEN |
 | עורקי-ענן (Supabase/Vercel/Render probes) | Autonomy/engine/key-probe.mjs | חי · fail-closed בלי-מפתחות |
 | **תמונת-מצב-שוטפת-של-האחוזה (bundles)** | **Autonomy/engine/estate-vault.mjs → vault-home/vault-chain/bundles/** | **חדש session-17 · יומי · גלגול + MANIFEST.json חי** |
-| **משוך-ציבורי לבדיקות-הפרטיים** | **Autonomy/engine/estate-relay.mjs → ops/sovereign/RELAY/** | **חדש session-17 · יומי · gitleaks tree-scan + yaml-guard** |
+| **משוך-ציבורי לבדיקות-הפרטיים** | **Autonomy/engine/estate-relay.mjs → ops/sovereign/RELAY/** | **חדש session-17 · יומי · gitleaks tree-scan + yaml-guard · טיסה-ראשונה-חיה: 20 ריפואים-פרטיים נסרקו, 4-עם-gitleaks-FINDINGS (ספירות-בלבד, מוסר: priv-h68f58d82:1 · priv-hea2461aa:150 · priv-h7cc2c942:6 · priv-h13720b34:6)** |
 
 ## §2 · הפערים-שנמדדו-היום (ומה-נסגר-מתוכם-עכשיו)
 
