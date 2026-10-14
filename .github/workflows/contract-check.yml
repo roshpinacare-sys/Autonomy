@@ -94,11 +94,17 @@ jobs:
           try {
             const q = JSON.parse(await raw('ops-intake', 'ops/QUEUE.json'));
             const closed = (q.orders || []).filter((o) => o.status === 'CLOSED');
-            // union of both closure schemas: the queue-close lane [T29] writes
-            // closureReceipt (measured: both 2026-10-14 CLOSED orders carried a full
-            // {law,at,result} receipt there) while this check expected closedReceipt/
-            // receipt/closedVia — the mismatch produced a false red at 07:16Z.
-            const noReceipt = closed.filter((o) => !(o.closedReceipt || o.receipt || o.closureReceipt || '').length && !o.closedVia);
+            // union of both closure schemas: the queue-close lane [T29] stamps
+            // closureReceipt as an OBJECT {law,at,result} (measured: both 2026-10-14
+            // CLOSED orders carry it) while closedReceipt/receipt are strings in
+            // other lanes' convention. Receipt = non-empty string OR non-null
+            // object — first repair passed the object into `.length` (undefined)
+            // and still read noReceipt=2. Types-aware now.
+            const hasReceipt = (o) => !!(o.closedVia
+              || (typeof o.closedReceipt === 'string' && o.closedReceipt.length)
+              || (typeof o.receipt === 'string' && o.receipt.length)
+              || (o.closureReceipt && typeof o.closureReceipt === 'object'));
+            const noReceipt = closed.filter((o) => !hasReceipt(o));
             add('live: closed orders carry receipts', closed.length > 0 ? noReceipt.length === 0 : true, `closed=${closed.length} noReceipt=${noReceipt.length}`);
           } catch (e) { add('live: ops-intake QUEUE', false, String(e).slice(0, 120)); }
 
