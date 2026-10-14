@@ -1,15 +1,15 @@
 # fresh-oracle — פסק-עדכני (שער-אימות-עומד)
 
-> נמדד: 2026-10-11T23:45:08.034Z · מפעיל: local-heal · סיכום: 5 ירוק · 1 כתום · 0 אדום · 0 לא-ידוע
+> נמדד: 2026-10-14T10:04:12.022Z · מפעיל: schedule · סיכום: 4 ירוק · 0 כתום · 2 אדום · 0 לא-ידוע
 
 | בדיקה | פסק | ראיות | הערה |
 |---|---|---|---|
 | 🟢 V-FLEETHQ-FRESH | GREEN | 4/4 MATCH | 🟢 שוויון-בתים מלא: 4/4 MATCH — הדף החי הוא הבתים שנדחפו |
-| 🟢 V-KEYPROOF-FRESH | GREEN | generatedAt 2026-10-11 · 0.111d | טרי: 0.11d ≤ 8d |
-| 🟢 V-RESEARCH-FRESH | GREEN | research/findings-2026-10-11.json · 0.147d | טרי: 0.15d ≤ 9d |
-| 🟢 V-BUS-HEALTH | GREEN | 16/16 הזנות · 16G/0A/0R/0Gr | 🟢 זרימה חיה: 16/16 הזנות נמדדו (≥80%), 0 RED (16 ירוק / 0 כתום-כנה / 0 אפור-פרטי) |
+| 🟢 V-KEYPROOF-FRESH | GREEN | generatedAt 2026-10-14 · 0.019d | טרי: 0.02d ≤ 8d |
+| 🟢 V-RESEARCH-FRESH | GREEN | research/findings-2026-10-12.json · 1.525d | טרי: 1.53d ≤ 9d |
+| 🔴 V-BUS-HEALTH | RED | 11/17 הזנות · 10G/1A/6R/0Gr | 🔴 מפיק-ציבורי מת: 6 RED — הזרימה שבורה בגלוי |
 | 🟢 V-DOMAIN-LIVE | GREEN | http 200 · title=true · #p-research=true | 🟢 חי: 200 + title מכיל "מפקדת הצי" + פאנל #p-research קיים |
-| 🟠 V-FLEET-HEARTBEAT | AMBER | 7G/1A/0R/0U מתוך 8 עורקים · heal: 1/1 dispatched | עורקים מיושנים: 1/8 AMBER — חיים-אבל-מפספסים-מחזורים · heal: 1/1 dispatch נשלחו |
+| 🔴 V-FLEET-HEARTBEAT | RED | 4G/1A/3R/0U מתוך 8 עורקים | 🔴 עורק(ים) מתים/מוזנחים: 3/8 RED — המפיקים שלהם דורשים-עין |
 
 **חוק:** אין ירוק בלי מדידה-עצמאית (R1) · כשל-רשת = UNKNOWN + סיבה, לעולם לא ירוק-מנוחש (R5).
 
