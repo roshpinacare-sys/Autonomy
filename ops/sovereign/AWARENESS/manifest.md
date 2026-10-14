@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T17:34:49.262Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T17:52:30.066Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -34,7 +34,7 @@
 - [DEFECT] Autonomy/.github/workflows/selfhood.yml @ 2026-10-14T00:18 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-13T23:59 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/claims-intake @ 2026-10-13T23:33 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] FleetHQ/office-ci @ 2026-10-14T17:23 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] FleetHQ/office-ci @ 2026-10-14T17:47 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/.github/workflows/office-heartbeat.yml @ 2026-10-14T16:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/opens-closer @ 2026-10-14T15:00 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/runtime-pacemaker @ 2026-10-14T14:59 — autonomy triage: read the log, fix root, land, verify
