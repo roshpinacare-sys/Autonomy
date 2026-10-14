@@ -45,7 +45,7 @@ jobs:
               commit -m "estate-relay receipts @ $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]" --allow-empty || true
             ok=0
             for i in 1 2 3 4 5; do
-              if git pull --rebase -q && git push -q origin HEAD:main; then ok=1; break; fi
+              if git pull --rebase --autostash -q && git push -q origin HEAD:main; then ok=1; break; fi
               sleep $((i*3))
             done
             [ "${ok}" = "1" ] || echo "named terminal: receipt-deferred (next flight re-lands)"
