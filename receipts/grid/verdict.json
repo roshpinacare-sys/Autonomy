@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-14T01:46:18.710Z",
+  "measuredAt": "2026-10-14T03:02:24.188Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -22,10 +22,10 @@
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": false,
-      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
+      "ok": true,
+      "detail": "grid executable: lastVerdict=BROADCAST-FAIL opsToday=0",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,23 +36,22 @@
     }
   ],
   "alerts": [],
-  "overall": "BLOCKED",
-  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
+  "overall": "PASS",
+  "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "90485d0fc37141c03cd778bd904dd3959a77ac36",
+    "stateBlobSha": "daf7b6373a5c73ccaebec71421e0ff9675f9236e",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "38497482547",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38497482547",
-    "sha": "916f4e00bcbeb0d89bc8c044fc4140fe14ef98c3"
+    "runId": "38504159178",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38504159178",
+    "sha": "1e69bc1d860142a16abceb62c5f98a9a508dcb0c"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-14T01:41:13.084Z",
+    "lastTickAt": "2026-10-14T02:57:43.022Z",
     "ageMin": 5,
-    "ticks": 2103,
-    "lastVerdict": "CREDENTIAL-MISSING",
+    "ticks": 3451,
+    "lastVerdict": "BROADCAST-FAIL",
     "opsToday": 0,
     "lastTxid": null
-  },
-  "credBlocked": true
+  }
 }
