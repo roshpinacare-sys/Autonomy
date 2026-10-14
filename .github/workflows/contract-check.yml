@@ -94,7 +94,11 @@ jobs:
           try {
             const q = JSON.parse(await raw('ops-intake', 'ops/QUEUE.json'));
             const closed = (q.orders || []).filter((o) => o.status === 'CLOSED');
-            const noReceipt = closed.filter((o) => !(o.closedReceipt || o.receipt || '').length && !o.closedVia);
+            // union of both closure schemas: the queue-close lane [T29] writes
+            // closureReceipt (measured: both 2026-10-14 CLOSED orders carried a full
+            // {law,at,result} receipt there) while this check expected closedReceipt/
+            // receipt/closedVia — the mismatch produced a false red at 07:16Z.
+            const noReceipt = closed.filter((o) => !(o.closedReceipt || o.receipt || o.closureReceipt || '').length && !o.closedVia);
             add('live: closed orders carry receipts', closed.length > 0 ? noReceipt.length === 0 : true, `closed=${closed.length} noReceipt=${noReceipt.length}`);
           } catch (e) { add('live: ops-intake QUEUE', false, String(e).slice(0, 120)); }
 
