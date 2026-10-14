@@ -1,0 +1,25 @@
+{
+  "kind": "protocol-canon",
+  "law": "T32 — canonical URL resolution + pattern adoption map for the truncated SYSTEM PROTOCOL (trace 1a13a4d8034989cd)",
+  "measuredAt": "2026-10-14T12:47:00Z",
+  "measuredVia": "git ls-remote HEAD (live network truth, not memory)",
+  "adoptionLevels": { "ADOPTED": "live measured mechanism in the fleet", "MAPPED": "pattern mapped to an existing/planned lane", "PARTIAL": "partially adopted" },
+  "repos": [
+    { "n": 1, "repo": "coinbase/agentkit", "url": "https://github.com/coinbase/agentkit", "head": "2e6dbaf725b9", "pattern": "MPC/sealed key custody — no plaintext keys", "ours": "T31 sealed vault: keys.env.enc (sha256(C) wrap) + libsodium sealedbox + Actions secrets; zero plaintext on disk/logs (run 38562173667)", "adoption": "ADOPTED" },
+    { "n": 2, "repo": "modelcontextprotocol/servers", "url": "https://github.com/modelcontextprotocol/servers", "head": "bbb701e7ac1e", "pattern": "named tool servers, capability isolation", "ours": "A5 intent gate + A12 session continuity", "adoption": "ADOPTED" },
+    { "n": 3, "repo": "goat-sdk/goat", "url": "https://github.com/goat-sdk/goat", "head": "f2eedc2f0415", "pattern": "multi-chain tool routing (EVM/Solana)", "ours": "EVM fuel lane (FUEL-LANE-PLANNED, T31 registry): onramp/pegout routing spec precedes any funds action", "adoption": "MAPPED" },
+    { "n": 4, "repo": "elizaOS/eliza", "url": "https://github.com/elizaOS/eliza", "head": "70dc0bbf93ff", "pattern": "stateful long-term memory", "ours": "A12 session store + cadence-memory + worklog.md chain (T8→T32)", "adoption": "PARTIAL" },
+    { "n": 5, "repo": "fetchai/uAgents", "url": "https://github.com/fetchai/uAgents", "head": "90e2f6a477af", "pattern": "Almanac decentralized handshake/discovery", "ours": "artery heartbeat (health-guard 30s) + fleet-health.json truth registry (34 repos / 311 workflows measured)", "adoption": "MAPPED" },
+    { "n": 6, "repo": "valory-xyz/open-autonomy", "url": "https://github.com/valory-xyz/open-autonomy", "head": "62033a2b371d", "pattern": "off-chain consensus + gated writes", "ours": "A9 sovereign merge gate: SOVEREIGN_PATHS need authority=sovereign + ownerVerified; anonymous writes 403 fail-closed", "adoption": "ADOPTED" },
+    { "n": 7, "repo": "SWE-agent/SWE-agent", "url": "https://github.com/SWE-agent/SWE-agent", "head": "3ea751c087f3", "pattern": "guardrailed long-horizon terminal sandbox", "ours": "A2 agent cage: cageEnv (protocol.allow=never + insteadOf trap + TERMINAL_PROMPT=0) + cagePreflight fail-closed (caged=128 vs free=0 measured)", "adoption": "ADOPTED" },
+    { "n": 8, "repo": "All-Hands-AI/OpenHands", "url": "https://github.com/All-Hands-AI/OpenHands", "head": "bf483c12efbf", "pattern": "isolated containerized factory + QA sim", "ours": "A6 sim lane (SIM=1 env AND x-sim:1 header dual-gate) + mech-selftest 13/13 zero-network", "adoption": "ADOPTED" },
+    { "n": 9, "repo": "langchain-ai/social-media-agent", "url": "https://github.com/langchain-ai/social-media-agent", "head": "a2d2229f92fc", "pattern": "stateful cron graph + HITL", "ours": "cadence workflow net (*/30 intake, daily bake, hourly mirror) + full readyPrompt handoff + T31 brain review (temp-0, logs-don't-decide)", "adoption": "ADOPTED" },
+    { "n": 10, "repo": "SWE-bench/SWE-bench", "url": "https://github.com/SWE-bench/SWE-bench", "head": "02e7a74ffd0b", "pattern": "assertion-verified repair success", "ours": "assertion closure loop: exposure-scan (813 files, 0 violations), mech-selftest 13/13, contract-check CI (sha256 + 14 laws), readback-MD5 on every write", "adoption": "ADOPTED" }
+  ],
+  "t32Laws": [
+    { "law": "receipt-first merge", "repo": "ops-intake", "commit": "04ef835", "text": "CLOSED orders are never resurrected by re-detection; closure carried + reDetectedAt flag; resurrection requires owner voiding the receipt" },
+    { "law": "text-not-markup version detection", "repo": "ops-intake", "commit": "04ef835", "text": "strip HTML tags before matching; accept colon/date stamps; digit adjacency required (no 'build and deployment' false positive)" },
+    { "law": "Hebrew design-language detection", "repo": "ops-intake", "commit": "6d241f8", "text": "נבנה+date and גרסה+sha stamps are valid version identifiers" },
+    { "law": "version stamp on published pages", "repo": "FleetHQ", "commit": "9c59368", "text": "footer carries גרסה: v{pkg} · build: {render date} — P3 version-info root cure" }
+  ]
+}
