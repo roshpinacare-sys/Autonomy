@@ -1,0 +1,51 @@
+#
+#
+
+name: run-score
+
+on:
+  schedule:
+    - cron: '37 */3 * * *' # כל 3 שעות בדקה-אי-זוגית — ציון-ביצועים 1..5 לכל-ערוץ ריבוני (תבנית aeon מדודה)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: run-score
+  cancel-in-progress: false
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Score the sovereign lanes (measured, deterministic)
+        env:
+          INV_TOKEN: ${{ secrets.INV_TOKEN }}
+        run: node engine/run-score.mjs
+
+      - name: Publish scores (the repair chain's priority signal)
+        run: |
+          git config user.name "roshpinacare-sys"
+          git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
+          git add ops/sovereign/SCORES/scores.json ops/sovereign/SCORES/SCORES.md
+          if git diff --cached --quiet; then
+            echo "no score change — fleet steady"
+          else
+            git commit -m "run-score: fleet $(python3 -c "import json;print(json.load(open('ops/sovereign/SCORES/scores.json'))['fleetScore'])")/5 · $(python3 -c "import json;d=json.load(open('ops/sovereign/SCORES/scores.json'));print(len(d['repairChainInput']))") repairs flagged [skip ci]"
+            OK=0
+            for i in 1 2 3; do
+              if git pull --rebase -X theirs --autostash -q origin main && git push -q origin main; then OK=1; break; fi
+              sleep $((i * 4))
+            done
+            [ "$OK" = "1" ] && echo "scores published" || echo "named terminal: scores-deferred — next 3h flight re-scores (record, not alarm)"
+          fi

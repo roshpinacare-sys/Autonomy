@@ -1,0 +1,44 @@
+{
+  "schema": "saos.agents-manifest/1",
+  "standard": {
+    "ref": "ERC-8004 Trustless Agents (eips.ethereum.org/EIPS/eip-8004, verified 2026-10-13)",
+    "adopted": "identity registry + capability manifest + validation receipts, git-native tier",
+    "onchainTier": "full ERC-8004 IdentityRegistry registration blocked on gas funds (owner-words) — identityProof carries the live day-root anchoring txs until then"
+  },
+  "accessPatterns": {
+    "getManifest": "GET https://raw.githubusercontent.com/roshpinacare-sys/Autonomy/main/fleet/agents-manifest.json",
+    "getNetworkSelfPortrait": "GET https://raw.githubusercontent.com/roshpinacare-sys/Autonomy/main/NETWORK-MANIFEST.md",
+    "getPublicBeacon": "GET https://raw.githubusercontent.com/roshpinacare-sys/Console/main/status.json",
+    "getDayBook": "GET https://raw.githubusercontent.com/roshpinacare-sys/Console/main/proof/pipeline.json",
+    "getAnchorReceipt": "GET https://raw.githubusercontent.com/roshpinacare-sys/Console/main/proof/anchor-receipt.json",
+    "getClaimsQueue": "GET https://raw.githubusercontent.com/roshpinacare-sys/Autonomy/main/ops/sovereign/CLAIMS/queue.json",
+    "getRunScores": "GET https://raw.githubusercontent.com/roshpinacare-sys/Autonomy/main/ops/sovereign/SCORES/scores.json"
+  },
+  "agentRegistry": "git-native (pending on-chain ERC-8004 registration when funded)",
+  "identityProof": {
+    "method": "daily day-root anchoring on Optimism relay via verify-then-sign (key in runtime memory only, EOA hard gate)",
+    "latestAnchors": [
+      { "chain": "OPTIMISM", "block": 158168179, "txHash": "0xda7614efdd5f7b468cd2aeb23d9c4c66e09bbe7d75ab8795d519e3211de683", "dayRoot": "0x8ad399d6ce799f9a75be2d3e5b4126a12fa22e0d5acad655df99746850cb88b4", "at": "2026-10-13T23:45:37Z" },
+      { "chain": "OPTIMISM", "block": 158168506, "txHash": "0x2b0a67207027a45c206ba647064ed8427eca6667384af5d503f46dadd2a489f5", "dayRoot": "0x7b0f2166a284a9fc87ecde49065c9d120af5c41ebeafc1c24f52068acc9ac92c", "at": "2026-10-13T23:56:31Z" }
+    ]
+  },
+  "agents": [
+    { "id": "sovereign-decider", "repo": "FleetHQ", "capabilities": ["sense", "decide", "record"], "endpoint": "fleet/office/state/operator-inbox.jsonl", "policy": "advisory" },
+    { "id": "network-self-awareness", "repo": "Autonomy", "capabilities": ["estate-inventory", "discovery", "self-portrait"], "endpoint": "NETWORK-MANIFEST.md", "cadence": "23 */6 * * *" },
+    { "id": "claims-intake", "repo": "Autonomy", "capabilities": ["claim-routing", "issue-classification", "receipts"], "endpoint": "state/claims-ledger.json", "cadence": "41 */4 * * *" },
+    { "id": "grid-watchdog", "repo": "GridWatch", "capabilities": ["heal-reversible-failures"], "endpoint": "receipts/", "cadence": "*/30 * * * *" },
+    { "id": "ops-intake", "repo": "ops-intake", "capabilities": ["work-queue", "escalation"], "endpoint": "ops/QUEUE.json", "cadence": "*/30 * * * *" },
+    { "id": "proof-pipeline", "repo": "Domain", "capabilities": ["day-book", "ready-to-sign-calldata", "kpi-measurement"], "endpoint": "Console/proof/pipeline.json", "cadence": "44 4 * * *" },
+    { "id": "anchor-execute", "repo": "Domain", "capabilities": ["verify-then-sign", "on-chain-anchoring", "read-back-verification"], "endpoint": "Console/proof/anchor-receipt.json", "cadence": "8 */4 * * *", "policy": "fleet/policy.json" },
+    { "id": "wallet-artery", "repo": "Autonomy", "capabilities": ["treasury-measurement", "receipts"], "endpoint": "receipts/", "cadence": "pulse" },
+    { "id": "dex-flow", "repo": "Console", "capabilities": ["dex-beat", "sweep-fills", "volume-ledger"], "endpoint": "receipts/", "cadence": "minutes" },
+    { "id": "pacemaker", "repo": "FleetHQ", "capabilities": ["heartbeat", "receipts"], "endpoint": "receipts/", "cadence": "minutes" },
+    { "id": "run-score", "repo": "Autonomy", "capabilities": ["performance-scoring", "repair-chain-input"], "endpoint": "ops/sovereign/SCORES/scores.json", "cadence": "37 */3 * * *", "policy": "advisory" }
+  ],
+  "mcpTier": {
+    "status": "manifest + stable GET endpoints live (MCP-compatible tool surface); live MCP HTTP gateway requires an always-on host (owner-words: aeon.fun hosts theirs; a free Cloudflare Worker could host ours) — not fabricable on Actions minutes",
+    "note": "every endpoint above is a stable raw-GET — consumable by any MCP client via fetch tools today"
+  },
+  "generatedAt": "2026-10-13T23:59:00Z",
+  "generatedBy": "agent (self-audit lane) — measured values only, nothing faked"
+}
