@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-14T03:02:24.188Z",
+  "measuredAt": "2026-10-14T04:17:40.623Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -16,14 +16,14 @@
     {
       "id": "law-grid-fresh",
       "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 5min)",
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 10min)",
       "severity": "fail",
       "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
       "ok": true,
-      "detail": "grid executable: lastVerdict=BROADCAST-FAIL opsToday=0",
+      "detail": "grid executable: lastVerdict=CYCLE-IN-FLIGHT opsToday=0",
       "severity": "fail",
       "verdict": "pass"
     },
@@ -39,18 +39,18 @@
   "overall": "PASS",
   "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "daf7b6373a5c73ccaebec71421e0ff9675f9236e",
+    "stateBlobSha": "9eb4117bcaaaa749433a9529a837246a32fb9320",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "38504159178",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38504159178",
-    "sha": "1e69bc1d860142a16abceb62c5f98a9a508dcb0c"
+    "runId": "38510624466",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38510624466",
+    "sha": "5eea122f1016a56f089b4ed890a2d9276b087a93"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-14T02:57:43.022Z",
-    "ageMin": 5,
-    "ticks": 3451,
-    "lastVerdict": "BROADCAST-FAIL",
+    "lastTickAt": "2026-10-14T04:07:48.307Z",
+    "ageMin": 10,
+    "ticks": 4586,
+    "lastVerdict": "CYCLE-IN-FLIGHT",
     "opsToday": 0,
     "lastTxid": null
   }
