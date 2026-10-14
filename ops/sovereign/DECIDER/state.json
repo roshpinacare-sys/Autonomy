@@ -1,16 +1,16 @@
 {
  "schema": "roshpina.sovereign-decider/1",
- "generatedAt": "2026-10-14T12:51:04Z",
+ "generatedAt": "2026-10-14T17:58:47Z",
  "publisher": "sovereign-decider.yml (GitHub Actions, keyless, T14)",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "charterMandateAt": "2026-10-11T21:20Z",
  "ownerMandateVerbatim": "[owner-directive]",
  "degraded": [],
  "chainVerify": {
-  "head": 110433083,
-  "mult": 0.0006203150228689635,
+  "head": 110439209,
+  "mult": 0.000620323996661204,
   "treasuryNetSp": 2810.7,
-  "minOperatorSp": 17.0,
+  "minOperatorSp": 11.9,
   "beaconChainMatch": true
  },
  "decisions": [
@@ -24,7 +24,7 @@
     "inbox.jsonl: 0 הוראות · נקראו 5 אחרונות · board.json: 3 פקודות · ACK-חדשות: 0"
    ],
    "boardMeasured": true,
-   "decidedAt": "2026-10-14T12:51:02Z",
+   "decidedAt": "2026-10-14T17:58:41Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
@@ -76,11 +76,11 @@
     "A"
    ],
    "evidence": [
-    "אוצרה נמדדת 2810.7 SP (ראש 110433083, מכפיל 0.000620315)",
+    "אוצרה נמדדת 2810.7 SP (ראש 110439209, מכפיל 0.000620324)",
     "יעד 3000 · פער 189.3 SP · מסילת-שימור 2800 (R2)",
     "האצלה-יוצאת-נמדדת 1460.3 SP · נכנסת-נמדדת 244.2 SP",
     "משואה מפרסמת 2810.7 SP · תואם=True",
-    "סריקת-היסטוריה: 3000 ops-אחרונים (עד idx 102172)",
+    "סריקת-היסטוריה: 3000 ops-אחרונים (עד idx 102202)",
     "האצלות-אחרונות למפעילי-הצי: ~0.0 SP (רגלי-הצי — חיוניות, אין-לשחרר)"
    ],
    "policy": {
@@ -127,12 +127,6 @@
       "interimFloorSp": 75
      },
      {
-      "operator": "acct-09",
-      "measuredSp": 42.9,
-      "tier": 2,
-      "interimFloorSp": 30
-     },
-     {
       "operator": "acct-08",
       "measuredSp": 32.7,
       "tier": 2,
@@ -167,13 +161,20 @@
       "measuredSp": 17.0,
       "tier": 2,
       "interimFloorSp": 30
+     },
+     {
+      "operator": "acct-09",
+      "measuredSp": 11.9,
+      "tier": 3,
+      "interimFloorSp": 20
      }
     ],
     "operatorsBelowInterimFloor": [
      "acct-10",
      "acct-11",
      "acct-12",
-     "acct-13"
+     "acct-13",
+     "acct-09"
     ],
     "soldiersFloorSp": 20,
     "yieldEngines": {
@@ -183,23 +184,23 @@
     "basis": "measured-only (CHARTER סעיף 2)",
     "review": "RE-MEASURE בכל פעימה; שינוי-רק-דרך-הפנקס (REVOKED/עדכון-גרסה)"
    },
-   "decidedAt": "2026-10-14T12:51:04Z",
+   "decidedAt": "2026-10-14T17:58:42Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
    "id": "D2-eng-errors",
    "area": "הנדסה",
-   "status": "ENFORCED",
+   "status": "OBSERVING",
    "titleHe": "תקלות-הצוות",
-   "verdictHe": "הצוות נמדד נקי (רצף 2<3) — ההכרעה נשארת-אוכפת עד-רצף-מלא, ממשיכים-למדוד בלי-להכריז-הצלחה-מוקדמת.",
+   "verdictHe": "הנושא-שנותב נמדד-נקי 3 פעימות רצופות — ההכרעה עוברת-ניטור (RE-MEASURE כנה; חזרת-תקלה תחזור-מיד-ל-P0) — אפס-המתנה, אפס-זיופים.",
    "evidence": [
-    "אפס סוכנים ב-state=error · אפס משימות blocked · רצף-נקי=2"
+    "אפס סוכנים ב-state=error · אפס משימות blocked · רצף-נקי=3 (מהפנקס)"
    ],
-   "decidedAt": "2026-10-14T12:51:04Z",
+   "decidedAt": "2026-10-14T17:58:42Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)",
    "reMeasure": {
-    "cleanStreak": 2,
-    "subjectResolved": false
+    "cleanStreak": 3,
+    "subjectResolved": true
    }
   },
   {
@@ -211,24 +212,20 @@
    "evidence": [
     "orphans=0 · ghosts=0"
    ],
-   "decidedAt": "2026-10-14T12:51:04Z",
+   "decidedAt": "2026-10-14T17:58:42Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
    "id": "D4-truth-network",
    "area": "אימות-עצמי",
-   "status": "ENFORCED",
-   "priority": "P1",
-   "titleHe": "רשת-האמת — כשל-בדיקה-עצמית מנותב מיד",
-   "verdictHe": "הריבונות מכריעה: 3 כשלי-אימות-עצמי מנותבים למסילת-התיקון מיד (fail-closed: כל-הצהרה-נבדקת מול מדידה) — אין-המתנה-להוראות.",
+   "status": "OBSERVING",
+   "titleHe": "רשת-האמת",
+   "verdictHe": "הגוף מאמת-את-עצמו ירוק בפומבי (51/51 + שער-ירוק) — ממשיכים-למדוד",
    "evidence": [
-    "מאמת-הרשת: 48/51 HAS_FAILURES (2026-10-14T05:42:04.212Z)",
-    "שער-האמת: ALL-GREEN (pass=7 fail=0)",
-    "A10: field \"freshness.verdict\" = \"STALE\", expected \"FRESH\"",
-    "A14: pattern matched 3 time(s), first match \"—\"",
-    "A43: markets.1.bestAsk = 0, minimum is 1"
+    "מאמת-הרשת: 51/51 ALL_PASS (2026-10-14T15:56:11.761Z)",
+    "שער-האמת: ALL-GREEN (pass=7 fail=0)"
    ],
-   "decidedAt": "2026-10-14T12:51:04Z",
+   "decidedAt": "2026-10-14T17:58:42Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
@@ -240,24 +237,24 @@
    "verdictHe": "הריבונות אוכפת מצבה-חברתית — אפס-טביעת-רגל: אין-שידור-חברתי-רב-חשבונות של הצי על STEEM (SOCIAL-STANDBY.md, R6). השער-הקשיח fail-closed STANDBY; חימוש-רק-דרך SOCIAL-ARMING.json שנכתב-בידי-הבעלים — הריבונות אינה-מחמשת-בעצמה. צ'קליסט-כשירות כנה: 4/6 PASS.",
    "evidence": [
     "gate (readiness.json · token): status=STANDBY · עודכן 2026-10-14T01:56:13Z",
-    "presence (presence-matrix-digest.json · token): verdict=GREEN · גיל-נמדד 0.6ש׳ (טרי <12ש׳)",
-    "beat (beat/ci-last-heartbeat.json · token): custody=14/14 · socialExecuted=0 · social=SOCIAL-STANDBY · גיל-נמדד 0.6ש׳"
+    "presence (presence-matrix-digest.json · token): verdict=GREEN · גיל-נמדד 0.2ש׳ (טרי <12ש׳)",
+    "beat (beat/ci-last-heartbeat.json · token): custody=14/14 · socialExecuted=0 · social=SOCIAL-STANDBY · גיל-נמדד 0.3ש׳"
    ],
    "readinessScorecard": [
     {
      "item": "נוכחות-שרשרת 14/14",
      "state": "PASS",
-     "measured": "14/14 נמדדו-על-השרשרת בפעימה-זו (ראש 110433083)"
+     "measured": "14/14 נמדדו-על-השרשרת בפעימה-זו (ראש 110439209)"
     },
     {
      "item": "פריסת-תצוגה מרובת-רשתות ירוקה (presence-matrix <12ש׳)",
      "state": "PASS",
-     "measured": "verdict=GREEN · גיל 0.6ש׳"
+     "measured": "verdict=GREEN · גיל 0.2ש׳"
     },
     {
      "item": "custody ≥13/14 נמדד 48ש׳",
      "state": "PASS",
-     "measured": "custody=14/14 · גיל-הפעימה 0.6ש׳"
+     "measured": "custody=14/14 · גיל-הפעימה 0.3ש׳"
     },
     {
      "item": "חוקי-האנטי-חווה חיים-בקונפיג (8%±5 · ≤1/יום · anti-herd)",
@@ -278,7 +275,7 @@
    "socialStandby": {
     "gateState": "STANDBY",
     "presenceVerdict": "GREEN",
-    "presenceAgeHours": 0.6,
+    "presenceAgeHours": 0.2,
     "custody": "14/14",
     "socialExecuted": 0,
     "arming": {
@@ -288,13 +285,13 @@
     }
    },
    "law": "ops/sovereign/DIRECTIVES/SOCIAL-STANDBY.md (R6) · trace 1a13803b8739c2d5 · 2026-10-14",
-   "decidedAt": "2026-10-14T12:51:04Z",
+   "decidedAt": "2026-10-14T17:58:42Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   }
  ],
  "brain": {
   "mode": "error",
-  "reason": "HTTP Error 502: Bad Gateway",
+  "reason": "expected string or bytes-like object, got 'NoneType'",
   "failSoft": true
  },
  "workOrderStatus": {
