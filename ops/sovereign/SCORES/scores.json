@@ -1,0 +1,139 @@
+{
+  "schema": "saos.run-scores/1",
+  "generatedAt": "2026-10-14T00:12:13.444Z",
+  "scale": "aeon-pattern 1..5 (deterministic: success+fresh=5, success-stale=4, mixed=3, failing-streak=2, storm=1)",
+  "fleetScore": 3.25,
+  "lanes": [
+    {
+      "agent": "network-self-awareness",
+      "repo": "Autonomy",
+      "wf": "network-self-awareness",
+      "score": 5,
+      "why": "success · last 0.2h ago · window 3/3",
+      "lastRun": "success"
+    },
+    {
+      "agent": "claims-intake",
+      "repo": "Autonomy",
+      "wf": "claims-intake",
+      "score": 3,
+      "why": "mixed window 4/6 · last success",
+      "lastRun": "success"
+    },
+    {
+      "agent": "run-score",
+      "repo": "Autonomy",
+      "wf": "run-score",
+      "score": 1,
+      "why": "storm · window 0/0 success",
+      "lastRun": "none"
+    },
+    {
+      "agent": "sovereign-decider",
+      "repo": "FleetHQ",
+      "wf": "sovereign-decider",
+      "score": 5,
+      "why": "success · last 0.1h ago · window 6/6",
+      "lastRun": "success"
+    },
+    {
+      "agent": "pacemaker",
+      "repo": "FleetHQ",
+      "wf": "pacemaker",
+      "score": 3,
+      "why": "measure-error HTTP 404 /repos/roshpinacare-sys/FleetHQ",
+      "lastRun": "unknown"
+    },
+    {
+      "agent": "identity-patrol",
+      "repo": "FleetHQ",
+      "wf": "identity-patrol",
+      "score": 2,
+      "why": "failing-streak · window 1/5",
+      "lastRun": "success"
+    },
+    {
+      "agent": "proof-pipeline",
+      "repo": "Domain",
+      "wf": "proof-pipeline",
+      "score": 3,
+      "why": "mixed window 5/6 · last success",
+      "lastRun": "success"
+    },
+    {
+      "agent": "anchor-execute",
+      "repo": "Domain",
+      "wf": "anchor-execute",
+      "score": 2,
+      "why": "failing-streak · window 1/5",
+      "lastRun": "none"
+    },
+    {
+      "agent": "estate-scrub",
+      "repo": "Domain",
+      "wf": "estate-scrub",
+      "score": 3,
+      "why": "mixed window 4/6 · last success",
+      "lastRun": "success"
+    },
+    {
+      "agent": "operator-console",
+      "repo": "Domain",
+      "wf": "operator-console",
+      "score": 2,
+      "why": "failing-streak · window 2/6",
+      "lastRun": "success"
+    },
+    {
+      "agent": "dex-flow",
+      "repo": "Console",
+      "wf": "dex-watch",
+      "score": 5,
+      "why": "success · last 2.8h ago · window 6/6",
+      "lastRun": "success"
+    },
+    {
+      "agent": "grid-pulse",
+      "repo": "Console",
+      "wf": "grid-pulse",
+      "score": 5,
+      "why": "success · last 3.5h ago · window 6/6",
+      "lastRun": "success"
+    }
+  ],
+  "repairChainInput": [
+    {
+      "agent": "run-score",
+      "repo": "Autonomy",
+      "workflow": "run-score",
+      "score": 1,
+      "why": "storm · window 0/0 success",
+      "openedAt": "2026-10-14T00:12:13.444Z"
+    },
+    {
+      "agent": "identity-patrol",
+      "repo": "FleetHQ",
+      "workflow": "identity-patrol",
+      "score": 2,
+      "why": "failing-streak · window 1/5",
+      "openedAt": "2026-10-14T00:12:13.444Z"
+    },
+    {
+      "agent": "anchor-execute",
+      "repo": "Domain",
+      "workflow": "anchor-execute",
+      "score": 2,
+      "why": "failing-streak · window 1/5",
+      "openedAt": "2026-10-14T00:12:13.444Z"
+    },
+    {
+      "agent": "operator-console",
+      "repo": "Domain",
+      "workflow": "operator-console",
+      "score": 2,
+      "why": "failing-streak · window 2/6",
+      "openedAt": "2026-10-14T00:12:13.444Z"
+    }
+  ],
+  "note": "score≤2 lanes are the repair chain's priority signal — ops-intake work-orders + GridWatch healing consume this file; nothing here is a model opinion, all measured"
+}
