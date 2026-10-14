@@ -1,0 +1,24 @@
+{
+  "schema": "engineering/1",
+  "updatedAt": "2026-10-14T00:49:33.300Z",
+  "cage": {
+    "at": "2026-10-14T00:49:33.300Z",
+    "pass": true,
+    "checks": [
+      { "check": "local-status-ok", "want": "success", "got": "success", "pass": true },
+      { "check": "local-log-ok", "want": "success", "got": "512cc98 seed", "pass": true },
+      { "check": "network-blocked", "want": "fail", "got": "fail", "pass": true },
+      { "check": "push-blocked", "want": "fail", "got": "fail", "pass": true },
+      { "check": "ceiling-holds", "want": "uncaged-finds+caged-blocked", "got": "uncaged-finds+caged-blocked", "pass": true },
+      { "check": "legit-work-survives", "want": "success", "got": "512cc98 seed", "pass": true }
+    ],
+    "node": "v22.x (sandbox selftest)"
+  },
+  "adopted": {
+    "A2": "כלוב-גיט לתהליכי-סוכן — tools/git-cage.mjs (protocol=never, מלכודת-insteadOf, תקרה)",
+    "A5": "שער-כוונות לולאתי — src/lib/intent-gate.ts (same-origin + x-intent + דלי-אסימונים)",
+    "A1": "מחזור-הכרעות עם-אפקט — /api/decisions-cycle (answer→side-effect→settle→reopen, אופטימיות-גיט)",
+    "A12": "המשכיות-סשן שורדת-סנדבוקס — /api/sessions (reattach נמדד בגיט)",
+    "A10": "רוטציית-יומנים — חסמים בכל-כתיבות המצב (40/200 שורות)"
+  }
+}
