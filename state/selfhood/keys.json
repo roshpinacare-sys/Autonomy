@@ -1,10 +1,10 @@
 {
  "schema": "selfhood.keys/1",
- "measuredAt": "2026-10-14T00:19:49.597Z",
- "durationMs": 328,
- "registryGeneratedAt": "2026-10-14T00:05:00Z",
+ "measuredAt": "2026-10-14T00:24:39.537Z",
+ "durationMs": 401,
+ "registryGeneratedAt": "2026-10-14T00:22:00Z",
  "demandsChecked": 11,
- "satisfied": 4,
+ "satisfied": 6,
  "checks": [
   {
    "id": "D1",
@@ -18,17 +18,17 @@
    "id": "D2",
    "component": "פידי-אמת מריפו-פרטי (gh-truth/network-self/world-broadcast)",
    "needs": "github-pat עותק-מקומי",
-   "state": "DEGRADED",
-   "evidence": "העותק-המקומי מת-בניתוק; תוקן-הסשן: נפילה-לאנונימי-לריפו-ציבורי (חוק-מקור-כפול)",
-   "ok": false
+   "state": "SATISFIED",
+   "evidence": "אסימון-הסשן חי (אומת 200 ב-00:16Z); בנוסף חוק-מקור-כפול: ריפו-ציבורי=אנונימי-raw — האיבר-נראה גם-בלי-אסימון · קבלת-רישום: רישום-הדרישה",
+   "ok": true
   },
   {
    "id": "D3",
    "component": "כתיבת-פניות/קבלות לגיט מהאפליקציה (network-claim, owner-chat)",
    "needs": "github-pat עותק-מקומי",
-   "state": "BLOCKED",
-   "evidence": "כשל-סגור כן (fail-closed); האימוץ-הענני מוכן ב-t24/keys-cloud — צעד-הפעלה אחד של מסילה-מאומתת",
-   "ok": false
+   "state": "SATISFIED",
+   "evidence": "אסימון-חי + אימוץ-בוצע: REGISTRY.json+keys-awareness+workflow נדחפו-ל-Autonomy עם קריאה-חוזרת (e1862991/d11b3f21/b4c44576→46933b8b); המחזור-ירוק 38489434103 · קבלת-רישום: רישום-הדרישה",
+   "ok": true
   },
   {
    "id": "D4",
@@ -96,16 +96,6 @@
   }
  ],
  "unsatisfied": [
-  {
-   "id": "D2",
-   "needs": "github-pat עותק-מקומי",
-   "state": "DEGRADED"
-  },
-  {
-   "id": "D3",
-   "needs": "github-pat עותק-מקומי",
-   "state": "BLOCKED"
-  },
   {
    "id": "D6",
    "needs": "groq-gemini-key",
