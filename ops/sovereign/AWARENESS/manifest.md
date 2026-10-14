@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T23:53:19.758Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T23:58:51.832Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -25,9 +25,9 @@
 - [DEFECT] Domain/operator-console @ 2026-10-13T23:09 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/published-ledger @ 2026-10-13T22:58 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-pulse-twin @ 2026-10-13T22:25 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-10-14T22:31 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-14T22:30 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-14T22:30 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-grid @ 2026-10-14T23:54 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-14T23:53 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-14T23:53 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/identity-guard @ 2026-10-14T16:18 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/sovereign-state @ 2026-10-14T15:51 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sovereign-tick @ 2026-10-14T14:35 — autonomy triage: read the log, fix root, land, verify
