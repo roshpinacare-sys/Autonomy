@@ -44,6 +44,6 @@ jobs:
       - name: Node
         uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
       - name: Scan + verdicts (close merged · archive unmerged) + publish book
         run: node tools/floating-builds.mjs ${{ github.event.inputs.dry == 'true' && '--dry-run' || '' }}
