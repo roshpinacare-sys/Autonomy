@@ -100,7 +100,10 @@ if (DRYRUN) {
 
 // ── 4. land into vault-home (clone → bundles/ + MANIFEST.json → push) ───────
 const VAULT_DIR = `${WORK}/vault-home`;
-sh("git", ["clone", "--quiet", `https://github.com/${OWNER}/vault-home.git`, VAULT_DIR], { env: { ...process.env, GIT_CONFIG_COUNT: "1", GIT_CONFIG_KEY_0: credHeader.split("=")[0], GIT_CONFIG_VALUE_0: credHeader.split("=").slice(1).join("=") }, timeout: 120_000 });
+// the credential env must ride EVERY git call on the vault clone (clone, pull,
+// push) — a lesson measured live: env passed only to clone left pull/push keyless
+const vaultEnv = { ...process.env, GIT_CONFIG_COUNT: "1", GIT_CONFIG_KEY_0: credHeader.split("=")[0], GIT_CONFIG_VALUE_0: credHeader.split("=").slice(1).join("=") };
+sh("git", ["clone", "--quiet", `https://github.com/${OWNER}/vault-home.git`, VAULT_DIR], { env: vaultEnv, timeout: 120_000 });
 
 // bundles: rolling — keep latest per repo
 const B_DIR = `${VAULT_DIR}/vault-chain/bundles`;
@@ -148,27 +151,27 @@ prev.push(JSON.stringify({ at: snap.generatedAt, bundled: okBundles.length, skip
 writeFileSync(LEDGER, prev.join("\n") + "\n");
 
 // push with bounded rebase-retry (fleet law — never force)
-sh("git", ["-C", VAULT_DIR, "config", "user.email", "estate-vault@fleet"]);
-sh("git", ["-C", VAULT_DIR, "config", "user.name", "estate-vault"]);
-sh("git", ["-C", VAULT_DIR, "add", "-A"]);
+sh("git", ["-C", VAULT_DIR, "config", "user.email", "estate-vault@fleet"], { env: vaultEnv });
+sh("git", ["-C", VAULT_DIR, "config", "user.name", "estate-vault"], { env: vaultEnv });
+sh("git", ["-C", VAULT_DIR, "add", "-A"], { env: vaultEnv });
 let pushed = false;
 for (let i = 1; i <= 5 && !pushed; i++) {
   try {
-    sh("git", ["-C", VAULT_DIR, "commit", "-m", `estate-vault snapshot: ${okBundles.length} bundles ${totalMb}MB + live MANIFEST @ ${snap.generatedAt}`, "--allow-empty"], { timeout: 60_000 });
-    sh("git", ["-C", VAULT_DIR, "pull", "--rebase", "-q"], { timeout: 60_000 });
-    sh("git", ["-C", VAULT_DIR, "push", "-q", "origin", "HEAD:main"], { timeout: 300_000 });
+    sh("git", ["-C", VAULT_DIR, "commit", "-m", `estate-vault snapshot: ${okBundles.length} bundles ${totalMb}MB + live MANIFEST @ ${snap.generatedAt}`, "--allow-empty"], { env: vaultEnv, timeout: 60_000 });
+    sh("git", ["-C", VAULT_DIR, "pull", "--rebase", "-q"], { env: vaultEnv, timeout: 120_000 });
+    sh("git", ["-C", VAULT_DIR, "push", "-q", "origin", "HEAD:main"], { env: vaultEnv, timeout: 600_000 });
     pushed = true;
   } catch (e) {
     log(`push attempt ${i} failed: ${String(e.message || e).slice(0, 120)}`);
-    if (i < 5) { try { sh("git", ["-C", VAULT_DIR, "rebase", "--abort"], { timeout: 10_000 }); } catch { /* not rebasing */ } await sleep(3000 * i); }
+    if (i < 5) { try { sh("git", ["-C", VAULT_DIR, "rebase", "--abort"], { env: vaultEnv, timeout: 10_000 }); } catch { /* not rebasing */ } await sleep(3000 * i); }
   }
 }
 if (!pushed) {
   // named terminal — the snapshot exists locally in the runner; next daily flight re-lands it
   const note = `PUBLISH-DEFERRED: budget exhausted after 5 bounded attempts (never force). Next daily flight re-lands. Census ${repos.length} repos, bundles OK ${okBundles.length} (${totalMb}MB).`;
   log(note);
-  writeFileSync("ops/sovereign/ESTATE-VAULT/receipt.md", `# estate-vault receipt\n\n${snap.generatedAt}\n\n- verdict: **PUBLISH-DEFERRED** (named terminal, exit-0)\n- ${note}\n- bundles.json (runner-side) totals: ${JSON.stringify(snap.totals)}\n`);
   mkdirSync("ops/sovereign/ESTATE-VAULT", { recursive: true });
+  writeFileSync("ops/sovereign/ESTATE-VAULT/receipt.md", `# estate-vault receipt\n\n${snap.generatedAt}\n\n- verdict: **PUBLISH-DEFERRED** (named terminal, exit-0)\n- ${note}\n- bundles.json (runner-side) totals: ${JSON.stringify(snap.totals)}\n`);
   process.exit(0);
 }
 log(`pushed to vault-home ✓ (${okBundles.length} bundles, ${totalMb}MB, MANIFEST refreshed ${repos.length} repos)`);
