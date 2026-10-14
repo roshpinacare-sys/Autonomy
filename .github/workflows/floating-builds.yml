@@ -1,10 +1,16 @@
 # ═══════════════════════════════════════════════════════════════════════════
-# FLOATING-BUILDS — אף-בנייה-לא-מרחפת-בשקט [R41 · "הבנות מעופפות באוויר"]
+# FLOATING-BUILDS — אף-בנייה-לא-מרחפת [R41 · "הבנות מעופפות באוויר"]
+# v3 [R54 · "הן לא צריכות לרחף"]: אפס-רחיפה — PUBLICATION פטור ·
+# MERGED-CONTENT נסגר · UNMERGED/ORPHAN → תג-ארכיון + מחיקת-ענף.
 # ═══════════════════════════════════════════════════════════════════════════
-# כל-שעתיים: סריקת-כל-הריפו לענפים≠main · השוואה-mol-main · פסקי-דין.
-# MERGED-CONTENT → נסגר-אוטומטית (אפס-תוכן-ייחודי-אבד, קבלה-בספר).
-# UNMERGED/ORPHAN → נשמרים-ומתועדים ב-state/floating-builds.json.
-# הספר-החי: הבעלים והרשת רואים תמיד מה-תלוי-ולמה.
+# כל-שעתיים: סריקת-כל-הריפו לענפים≠main · השוואה מול-main · פסקי-דין.
+# הספר-החי: state/floating-builds.json.
+#
+# trigger-hardening (R54, measured): cron "17 */2" landed exactly ONCE in
+# history (the manual dispatch 02:29Z); scheduled ticks 04:17/06:17 never
+# fired. Same measured disease as compute-rearm + network-awareness (R39/R40):
+# a law-engine that silently skips is not a law. Two VERIFIED frequent beats
+# in this repo double as the pulse (artery-watch ~30min, artery-flow hourly).
 name: floating-builds
 
 on:
@@ -16,6 +22,9 @@ on:
         description: "dry-run (סריקה-בלי-סגירות)"
         required: false
         default: "false"
+  workflow_run:
+    workflows: ["artery-watch", "artery-flow"]
+    types: [completed]
 
 permissions:
   contents: write
@@ -35,6 +44,6 @@ jobs:
       - name: Node
         uses: actions/setup-node@v5
         with:
-          node-version: 22
-      - name: Scan + close merged-content + publish book
+          node-version: 20
+      - name: Scan + verdicts (close merged · archive unmerged) + publish book
         run: node tools/floating-builds.mjs ${{ github.event.inputs.dry == 'true' && '--dry-run' || '' }}
