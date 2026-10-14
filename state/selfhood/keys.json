@@ -1,10 +1,21 @@
 {
- "schema": "selfhood.keys/1",
- "measuredAt": "2026-10-14T01:38:34.306Z",
- "durationMs": 641,
+ "schema": "selfhood.keys/2",
+ "measuredAt": "2026-10-14T02:15:50.363Z",
+ "durationMs": 1278,
  "registryGeneratedAt": "2026-10-14T00:22:00Z",
  "demandsChecked": 11,
  "satisfied": 6,
+ "satisfiableViaVault": [
+  {
+   "id": "D6",
+   "slots": [
+    "NVIDIA_API_KEY",
+    "NVIDIA_BASE_URL",
+    "NVIDIA_MODELS"
+   ],
+   "recipe": "vault-open→NVIDIA_API_KEY→סוד-ענן/סביבה-ריצה (אפס-הדפסות)"
+  }
+ ],
  "checks": [
   {
    "id": "D1",
@@ -12,7 +23,20 @@
    "needs": "owner-posting-steem",
    "state": "SATISFIED",
    "evidence": "קובץ-בעלים קיים-מקומית; KEY-FIT-CONFIRMED מול-השרשרת · קבלת-רישום: T11: on-chain adoption verified from 2 nodes; keyfit law ripemd160(pub) corrected",
-   "ok": true
+   "ok": true,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": "owner-anchor",
+    "match": [
+     "HEAD_CORNER_MASTER",
+     "HEAD_CORNER_KEY_B64"
+    ],
+    "note": "HEAD_CORNER_MASTER/KEY_B64 בכספת"
+   }
   },
   {
    "id": "D2",
@@ -20,7 +44,19 @@
    "needs": "github-pat עותק-מקומי",
    "state": "SATISFIED",
    "evidence": "אסימון-הסשן חי (אומת 200 ב-00:16Z); בנוסף חוק-מקור-כפול: ריפו-ציבורי=אנונימי-raw — האיבר-נראה גם-בלי-אסימון · קבלת-רישום: רישום-הדרישה",
-   "ok": true
+   "ok": true,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": "infra-pat",
+    "match": [
+     "GITHUB_PAT"
+    ],
+    "note": "GITHUB_PAT בכספת"
+   }
   },
   {
    "id": "D3",
@@ -28,7 +64,19 @@
    "needs": "github-pat עותק-מקומי",
    "state": "SATISFIED",
    "evidence": "אסימון-חי + אימוץ-בוצע: REGISTRY.json+keys-awareness+workflow נדחפו-ל-Autonomy עם קריאה-חוזרת (e1862991/d11b3f21/b4c44576→46933b8b); המחזור-ירוק 38489434103 · קבלת-רישום: רישום-הדרישה",
-   "ok": true
+   "ok": true,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": "infra-pat",
+    "match": [
+     "GITHUB_PAT"
+    ],
+    "note": "GITHUB_PAT בכספת"
+   }
   },
   {
    "id": "D4",
@@ -36,7 +84,27 @@
    "needs": "acct-00-active-steem",
    "state": "SATISFIED-CLOUD",
    "evidence": "סוד-חי; נשק-עם-חיכוך-ARM; fail-closed על-חוסר-התאמה · קבלת-רישום: T11 recon: secret listed names-only; adoption pipeline G1→G2→G3 proven",
-   "ok": true
+   "ok": true,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": "steem-custody",
+    "match": [
+     "STEEM_ACCOUNT",
+     "STEEM_OWNER_WIF_A",
+     "STEEM_ACTIVE_WIF_A",
+     "STEEM_POSTING_WIF_A",
+     "STEEM_MEMO_WIF_A",
+     "STEEM_OWNER_WIF_B",
+     "STEEM_ACTIVE_WIF_B",
+     "STEEM_POSTING_WIF_B",
+     "STEEM_MEMO_WIF_B"
+    ],
+    "note": "STEEM_ACTIVE_WIF_A/B בכספת (chain-judged: rotated-out — קבלה-בקובץ-MANIFEST-T57)"
+   }
   },
   {
    "id": "D5",
@@ -44,15 +112,40 @@
    "needs": "blurt-army-gen2",
    "state": "SATISFIED-CLOUD",
    "evidence": "ריצות-ירוקות רציפות · קבלת-רישום: t19b/25: 10/10 army accounts rotated via official blurtjs broadcast; on-chain judged",
-   "ok": true
+   "ok": true,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": null,
+    "match": [],
+    "note": "אין-סלוטי-blurt בכספת (סקר-שלילי-כן)"
+   }
   },
   {
    "id": "D6",
    "component": "מוח-ההכרעות מהענן (selfhood)",
    "needs": "groq-gemini-key",
-   "state": "MISSING-OWNER",
-   "evidence": "אין-סוד-מוח בשמות-הסודות (נמדד); המנוע-הדטרמיניסטי-v1 מכריע-בכנות",
-   "ok": false
+   "state": "SATISFIABLE-VIA-VAULT",
+   "evidence": "הכספת מחזיקה מוח-LLM חי (NVIDIA_API_KEY,NVIDIA_BASE_URL,NVIDIA_MODELS) — דורש-חיבור-ריצה, לא-אספקת-בעלים; vault-open→NVIDIA_API_KEY→סוד-ענן/סביבה-ריצה (אפס-הדפסות)",
+   "ok": false,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": "llm-brain",
+    "match": [
+     "NVIDIA_API_KEY",
+     "NVIDIA_BASE_URL",
+     "NVIDIA_MODELS"
+    ],
+    "note": "NVIDIA_API_KEY+NVIDIA_MODELS מלאים-בכספת — מוח-LLM אפשרי-מהכספת-עצמה",
+    "recipe": "vault-open→NVIDIA_API_KEY→סוד-ענן/סביבה-ריצה (אפס-הדפסות)"
+   }
   },
   {
    "id": "D7",
@@ -60,7 +153,17 @@
    "needs": "owner-hive",
    "state": "MISSING-OWNER",
    "evidence": "— הוכח-שלילה",
-   "ok": false
+   "ok": false,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": null,
+    "match": [],
+    "note": "אין-סלוטי-hive בכספת (סקר-שלילי-כן)"
+   }
   },
   {
    "id": "D8",
@@ -68,7 +171,17 @@
    "needs": "cex-operator-keys",
    "state": "MISSING-OWNER",
    "evidence": "—",
-   "ok": false
+   "ok": false,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": null,
+    "match": [],
+    "note": "אין-סלוטי-CEX בכספת (סקר-שלילי-כן)"
+   }
   },
   {
    "id": "D9",
@@ -76,7 +189,20 @@
    "needs": "סיסמאות-מעטפת",
    "state": "MISSING-KNOWLEDGE",
    "evidence": "פער-ידע-בעלים; החוק-החדש: ROTATION-LAW",
-   "ok": false
+   "ok": false,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": "shards",
+    "match": [
+     "GEN3_SHARD_B64"
+    ],
+    "note": "GEN3_SHARD_B64 קיים-בכספת — רסק-דור-3 נמצא; ידע-דורות-ישנים עדיין-חלקי",
+    "recipe": "שילוב-רסק+החלטת-רוטציה"
+   }
   },
   {
    "id": "D10",
@@ -84,7 +210,17 @@
    "needs": "דלק-גז (לא מפתח!)",
    "state": "MISSING-FUEL",
    "evidence": "מפתחות-קיימים; הלב-מורעב 3.674e-7 ETH",
-   "ok": false
+   "ok": false,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": null,
+    "match": [],
+    "note": "דלק-גז אינו-מפתח — מחוץ-לכספת (מדוד)"
+   }
   },
   {
    "id": "D11",
@@ -92,14 +228,24 @@
    "needs": "z-ai-brain-config",
    "state": "SATISFIED-SANDBOX",
    "evidence": "/etc/.z-ai-config חי · קבלת-רישום: T23 brain measurement",
-   "ok": true
+   "ok": true,
+   "vault": {
+    "measured": true,
+    "opened": true,
+    "slotsTotal": 25,
+    "filled": 25,
+    "censusAt": "2026-10-14T02:13:26.902Z",
+    "family": null,
+    "match": [],
+    "note": "config-מוח-סנדבוקס אינו-בכספת (SBX_AI_CONFIG סוד-ענן)"
+   }
   }
  ],
  "unsatisfied": [
   {
    "id": "D6",
    "needs": "groq-gemini-key",
-   "state": "MISSING-OWNER"
+   "state": "SATISFIABLE-VIA-VAULT"
   },
   {
    "id": "D7",
@@ -122,6 +268,12 @@
    "state": "MISSING-FUEL"
   }
  ],
+ "vaultCensus": {
+  "opened": true,
+  "slotsTotal": 25,
+  "filled": 25,
+  "measuredAt": "2026-10-14T02:13:26.902Z"
+ },
  "ownerGaps": [
   "סוד-מוח-אחד (GROQ_API_KEY או GEMINI_API_KEY) → ההכרעות מדברות-מהענן",
   "owner-hive (+alt) → אוצרת-HIVE עוברת OBSERVED-UNCONTROLLED→KEYED",
@@ -129,10 +281,13 @@
   "סיסמאות-מעטפת ל-5 דורות-ישנים (או החלטה-רוטציה-להשמדה)",
   "דלק-גז ל-EVM (לא מפתח — דלק)"
  ],
- "upgrades": [],
+ "upgrades": [
+  "D6"
+ ],
  "secretNamesMeasured": true,
  "sources": [
   "state/keys/REGISTRY.json@main",
+  "state/keys/VAULT-CENSUS.json@main (R41: חוק-איסור-דרישה-עיוורת)",
   "actions/secrets (שמות-בלבד)"
  ]
 }
