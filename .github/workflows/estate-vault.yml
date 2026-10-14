@@ -1,0 +1,59 @@
+name: estate-vault
+
+# ═══════════════════════════════════════════════════════════════════════════
+# estate-vault — תמונת-מצב-שוטפת-של-האחוזה אל-הכספת (SOVEREIGNTY.md §1 tier).
+# יומית: bundle-git של-כל-ריפו (≤40MB) אל vault-home/vault-chain/bundles/ +
+# MANIFEST.json חי מה-API. השכבה-בתוך-האחוזה של-הבית-השני (חוצה-המארח =
+# gitlab-mirror, דורש GITLAB_TOKEN — owner-words). חוקים: bounded · receipt ·
+# אף-ערך-סוד-לא-נדפס · כשל-דחיפה = PUBLISH-DEFERRED exit-0 (טיסה-הבאה-משלימה).
+# ═══════════════════════════════════════════════════════════════════════════
+on:
+  schedule:
+    - cron: "23 2 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: estate-vault
+  cancel-in-progress: false
+
+jobs:
+  vault:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: checkout Autonomy (engine + receipt home)
+        uses: actions/checkout@v4
+
+      - name: estate snapshot → vault-home
+        env:
+          INV_TOKEN: ${{ secrets.INV_TOKEN }}
+          ZIP_PAT: ${{ secrets.ZIP_PAT }}
+        run: |
+          set -uo pipefail
+          timeout 1300 node engine/estate-vault.mjs
+          CODE=$?
+          echo "engine exit: ${CODE}"
+          # receipt-is-the-alarm: the engine itself exits 0 on designed terminals
+
+      - name: publish receipt to Autonomy
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          if [ -f ops/sovereign/ESTATE-VAULT/receipt.md ]; then
+            git add ops/sovereign/ESTATE-VAULT/receipt.md
+            git -c user.email=estate-vault@fleet -c user.name=estate-vault \
+              commit -m "estate-vault receipt @ $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]" --allow-empty || true
+            ok=0
+            for i in 1 2 3 4 5; do
+              if git pull --rebase -q && git push -q origin HEAD:main; then ok=1; break; fi
+              sleep $((i*3))
+            done
+            [ "${ok}" = "1" ] || echo "named terminal: receipt-deferred (next flight re-lands)"
+          else
+            echo "no receipt produced — engine output above is the evidence"
+          fi

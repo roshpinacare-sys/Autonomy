@@ -1,0 +1,54 @@
+name: estate-relay
+
+# ═══════════════════════════════════════════════════════════════════════════
+# estate-relay — minutes-wall breaker: הבדיקות-חסרות-המפתח של-הריפואים-הפרטיים
+# רצות-על-רץ-ציבורי (קריאה-בלבד) ומפרסמות-קבלות-כנות. הקיר-האדום-הפרטי נשאר
+# גלוי (P0 owner-words) — היכולת-חוזרת-לידינו בלי-שקל-אחד. bounded · receipts.
+# ═══════════════════════════════════════════════════════════════════════════
+on:
+  schedule:
+    - cron: "47 3 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: estate-relay
+  cancel-in-progress: false
+
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: checkout Autonomy
+        uses: actions/checkout@v4
+
+      - name: relay keyless checks across the private estate
+        env:
+          INV_TOKEN: ${{ secrets.INV_TOKEN }}
+          ZIP_PAT: ${{ secrets.ZIP_PAT }}
+        run: |
+          set -uo pipefail
+          timeout 1600 node engine/estate-relay.mjs || echo "::error::estate-relay unexpected exit (crash stays loud)"
+
+      - name: publish receipts
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          if [ -f ops/sovereign/RELAY/RELAY-RECEIPTS.md ]; then
+            git add ops/sovereign/RELAY/
+            git -c user.email=estate-relay@fleet -c user.name=estate-relay \
+              commit -m "estate-relay receipts @ $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]" --allow-empty || true
+            ok=0
+            for i in 1 2 3 4 5; do
+              if git pull --rebase -q && git push -q origin HEAD:main; then ok=1; break; fi
+              sleep $((i*3))
+            done
+            [ "${ok}" = "1" ] || echo "named terminal: receipt-deferred (next flight re-lands)"
+          else
+            echo "no receipt produced — engine output above is the evidence"
+          fi
