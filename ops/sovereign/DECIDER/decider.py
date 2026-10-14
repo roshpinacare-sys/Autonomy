@@ -703,6 +703,43 @@ def decide_verify(av, tg, degraded):
 
 
 # ------------------------------------------------------------ פרסום ---
+
+def brain_review(decisions):
+    """[T31] וו-מוח-ההכרעות מהכספת (vault-open→סוד) — fail-soft לחלוטין:
+    בלי NVIDIA_API_KEY → keyless (התנהגות-T14 נשמרת-במלואה); עם מפתח —
+    סקירה-שנייה אחת (עצורה-בזמן, temperature-0) שמתעדת הסכמה/דגלים.
+    לעולם לא משנה הכרעות-דטרמיניסטיות — רק רושם חוות-דעת ב-state.json."""
+    key = (os.environ.get("NVIDIA_API_KEY") or "").strip()
+    if not key:
+        return {"mode": "keyless", "reason": "NVIDIA_API_KEY absent — keyless full (T14)"}
+    models = [m.strip() for m in (os.environ.get("NVIDIA_MODELS") or "").split(",") if m.strip()]
+    base = (os.environ.get("NVIDIA_BASE_URL") or "https://integrate.api.nvidia.com/v1").rstrip("/")
+    model = models[0] if models else "meta/llama-3.1-8b-instruct"
+    brief = [{"id": d.get("id"), "status": d.get("status"), "chosen": d.get("chosen"),
+              "verdict": scrub(d.get("verdictHe") or "")[:220]} for d in decisions]
+    prompt = ("אתה סוקר-שני של הכרעות-ריבונות דטרמיניסטיות. ענה ב-JSON בלבד: "
+              '{"agreement": 0-100, "flags": ["..."]}. agreement=מידת-הסכמה עם '
+              "ההכרעות לפי-העדויות; flags=הסתייגויות-קצרות בעברית (או רשימה-ריקה). "
+              "ההכרעות: " + json.dumps(brief, ensure_ascii=False))
+    try:
+        req = urllib.request.Request(
+            base + "/chat/completions",
+            data=json.dumps({"model": model, "temperature": 0, "max_tokens": 300,
+                             "messages": [{"role": "user", "content": prompt}]}).encode("utf-8"),
+            headers={"Authorization": "Bearer " + key, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = json.loads(r.read().decode("utf-8"))
+        text = ((data.get("choices") or [{}])[0].get("message") or {}).get("content", "")
+        m = re.search(r"\{.*\}", text, re.S)
+        verdict = json.loads(m.group(0)) if m else {}
+        return {"mode": "wired", "model": model, "checked": len(brief),
+                "agreement": int(verdict.get("agreement", -1)),
+                "flags": [scrub(str(f))[:160] for f in (verdict.get("flags") or [])][:5],
+                "reviewedAt": now()}
+    except Exception as e:
+        return {"mode": "error", "reason": scrub(str(e))[:140], "failSoft": True}
+
+
 def main():
     degraded = []
     chain = measure_chain(degraded)
@@ -760,6 +797,8 @@ def main():
         decide_social_standby(social, chain, degraded),  # [exec29] מצבה-חברתית — R6 fail-closed + צ'קליסט-כנה
     ]
 
+    brain = brain_review(decisions)  # [T31] וו-מוח fail-soft — מתעד, לא משנה
+
     state = {
         "schema": "roshpina.sovereign-decider/1",
         "generatedAt": now(),
@@ -774,6 +813,8 @@ def main():
             "beaconChainMatch": match,
         }),
         "decisions": decisions,
+        "brain": brain,  # [T31] vault-open→סוד — חיבור-מוח-הכרעות
+
         "workOrderStatus": wo_status,  # [T16] done-ness מדוד למה-שניתן-למידה; כנות לשאר
         "noAction": [],
         "law": "MEASURE→OPTIONS→SCORE→DECIDE→PUBLISH→VERIFY→RE-MEASURE · R1-R6 ב-CHARTER",
@@ -807,6 +848,8 @@ def main():
             not [a for a in (foreman.get("agents") or []) if a.get("state") == "error"]
             and not [t for t in (foreman.get("tasks") or []) if t.get("status") == "blocked"])),
         "decided": [d["id"] + ":" + d["status"] for d in decisions],
+        "brain": (state.get("brain") or {}).get("mode"),  # [T31]
+
         "directivesAck": len(board_acked),  # [15a-merge] קבלות-פקודות-מנהל-בפעימה
         "degraded": state["degraded"],
     }, ensure_ascii=False))
