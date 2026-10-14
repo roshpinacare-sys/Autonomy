@@ -59,8 +59,13 @@ while (true) {
   page++;
 }
 log(`census: ${repos.length} repos, estate=${Math.round(repos.reduce((s, r) => s + r.size, 0) / 1024)}MB`);
-const bundleable = repos.filter((r) => r.size <= MAX_REPO_MB * 1024);
-const skipped = repos.filter((r) => r.size > MAX_REPO_MB * 1024);
+// self-exclusion law (measured live 2026-10-14): vault-home carries the bundles —
+// bundling it into itself is recursion (88.9MB → 165MB → +88MB/day explosion).
+// vault-home is recovered by cloning vault-home itself; excluded from its own snapshot.
+const VAULT_REPO = "vault-home";
+const selfExcluded = repos.filter((r) => r.name === VAULT_REPO);
+const bundleable = repos.filter((r) => r.size <= MAX_REPO_MB * 1024 && r.name !== VAULT_REPO);
+const skipped = repos.filter((r) => r.size > MAX_REPO_MB * 1024 || r.name === VAULT_REPO);
 log(`bundleable: ${bundleable.length} (<=${MAX_REPO_MB}MB) · skipped: ${skipped.length}`);
 
 // ── 2. clone bare + bundle each (bounded) ────────────────────────────────────
