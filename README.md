@@ -1,5 +1,10 @@
 # Autonomy — המוח-הריבוני על דקות-ציבור
 
+[![SAOS office](https://roshpinacare-sys.github.io/Domain/badge/office.svg)](https://roshpinacare-sys.github.io/Domain/office3d/)
+[![SAOS fleet](https://roshpinacare-sys.github.io/Domain/badge/fleet.svg)](https://roshpinacare-sys.github.io/Domain/status/)
+[![steem-edge](https://roshpinacare-sys.github.io/Domain/badge/edge.svg)](https://roshpinacare-sys.github.io/Domain/money.html)
+
+
 > **Public compute, private memory.** הריפו הזה הוא שכבת-ההרצה של הריבונות:
 > עורקי-ההחלטה, הלמידה, הצמיחה והבקרה רצים כאן 24/7 על דקות-Actions ציבוריות
 > (חינם, ללא מכסה), ללא שום תלות בשום סנדבוקס, שום סשן, שום סוכן ער.
