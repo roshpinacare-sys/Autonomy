@@ -344,3 +344,37 @@
 - PROPOSAL(law): 11 feed(s) past their freshness law while being read by live code
 - PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 
+
+## scribe #13 · 2026-10-14T17:22:04.363Z
+- wallet 24h verdicts: {"PASS":10} · failing laws: {}
+- fleet 24h verdicts: {"PASS":9} · alerts: 27
+- fleet actions 24h: 100 runs · failures: identity-guard:failure×2, sovereign-state:failure×7, sovereign-tick:failure×1
+- sovereign tick last pulse: 11min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":89,"exec36-registry-lane":2,"saos-fleet":2,"exec35-registry-lane":2,"exec34-registry-lane":1,"exec34-audit-lane":1,"exec33-registry-lane":3}
+- office-ci (FleetHQ) verdict: FAIL · 37min ago
+- Domain book office/data.json: 17min old (law <=60min)
+- Domain book agents/office-live.json: 72min old (law <=180min)
+- Domain book dex/office-feed.json: 1815min old (law <=1560min)
+- flow map: nodes=37 edges=103 page-integrated=15 plane-internal=21 orphans=0 ghosts=0 density=2.78
+- integrity guard: overall=PASS sources=11 claims-verified=6 findings=9 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=27888 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=0h
+- dex book dex/showcase.json: ok sig=pair=unknown age=0h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=6 truth={"STALE-TRUTH":6} decider-stalled=true
+- PROPOSAL(law): wallet carried 10 trust-flag(s)/24h (out-of-band PASS mints) — owner P0: make wallet CI the only minter
+- PROPOSAL(law): office-ci (FleetHQ) is FAIL — the office build artery is red; measure before touching the office
+- PROPOSAL(law): Domain book dex/office-feed.json stale (1815min > 1560min) - its producer workflow may be stalled
+- PROPOSAL(law): 15 feed(s) past their freshness law while being read by live code
+- PROPOSAL(law): decision D0-owner-channel evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D1-econ-treasury-floor evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D3-flow-weave evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D4-truth-network evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D5-social-standby evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
+
