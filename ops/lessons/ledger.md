@@ -180,3 +180,29 @@
 - PROPOSAL(law): 23 feed(s) past their freshness law while being read by live code
 - PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 
+
+## scribe #7 · 2026-10-14T00:00:08.122Z
+- wallet 24h verdicts: {"BLOCKED":6,"PASS":11} · failing laws: {}
+- fleet 24h verdicts: {"BLOCKED":5,"FAIL":4,"PASS":9} · alerts: 35
+- fleet actions 24h: 100 runs · failures: artery-decision-truth:failure×1, claims-intake:failure×2, sovereign-state:failure×3
+- sovereign tick last pulse: 20min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":92,"Z User":3,"selfhood[bot]":5}
+- office-ci (FleetHQ) verdict: PASS · 19min ago
+- Domain book office/data.json: 0min old (law <=60min)
+- Domain book agents/office-live.json: 83min old (law <=180min)
+- Domain book dex/office-feed.json: 773min old (law <=1560min)
+- flow map: nodes=37 edges=102 page-integrated=15 plane-internal=21 orphans=0 ghosts=0 density=2.76
+- integrity guard: overall=PASS sources=11 claims-verified=6 findings=9 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=34835 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=1h
+- dex book dex/showcase.json: ok sig=pair=unknown age=1h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=5 truth={"VERIFIED":4,"STALE-TRUTH":1} decider-stalled=false
+- PROPOSAL(law): wallet carried 17 trust-flag(s)/24h (out-of-band PASS mints) — owner P0: make wallet CI the only minter
+- PROPOSAL(law): 11 feed(s) past their freshness law while being read by live code
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+
