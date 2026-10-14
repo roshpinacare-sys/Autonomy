@@ -1,0 +1,148 @@
+{
+ "schema": "selfhood.keys/1",
+ "measuredAt": "2026-10-14T00:19:49.597Z",
+ "durationMs": 328,
+ "registryGeneratedAt": "2026-10-14T00:05:00Z",
+ "demandsChecked": 11,
+ "satisfied": 4,
+ "checks": [
+  {
+   "id": "D1",
+   "component": "שער-הבעלים + צ'אט-מנהל (כניסה)",
+   "needs": "owner-posting-steem",
+   "state": "SATISFIED",
+   "evidence": "קובץ-בעלים קיים-מקומית; KEY-FIT-CONFIRMED מול-השרשרת · קבלת-רישום: T11: on-chain adoption verified from 2 nodes; keyfit law ripemd160(pub) corrected",
+   "ok": true
+  },
+  {
+   "id": "D2",
+   "component": "פידי-אמת מריפו-פרטי (gh-truth/network-self/world-broadcast)",
+   "needs": "github-pat עותק-מקומי",
+   "state": "DEGRADED",
+   "evidence": "העותק-המקומי מת-בניתוק; תוקן-הסשן: נפילה-לאנונימי-לריפו-ציבורי (חוק-מקור-כפול)",
+   "ok": false
+  },
+  {
+   "id": "D3",
+   "component": "כתיבת-פניות/קבלות לגיט מהאפליקציה (network-claim, owner-chat)",
+   "needs": "github-pat עותק-מקומי",
+   "state": "BLOCKED",
+   "evidence": "כשל-סגור כן (fail-closed); האימוץ-הענני מוכן ב-t24/keys-cloud — צעד-הפעלה אחד של מסילה-מאומתת",
+   "ok": false
+  },
+  {
+   "id": "D4",
+   "component": "מסילת-ההאצלה (Domain treasury-arm.yml, ענן)",
+   "needs": "headcorner-active-steem",
+   "state": "SATISFIED-CLOUD",
+   "evidence": "סוד-חי; נשק-עם-חיכוך-ARM; fail-closed על-חוסר-התאמה · קבלת-רישום: T11 recon: secret listed names-only; adoption pipeline G1→G2→G3 proven",
+   "ok": true
+  },
+  {
+   "id": "D5",
+   "component": "blurt-revival (ענן)",
+   "needs": "blurt-army-gen2",
+   "state": "SATISFIED-CLOUD",
+   "evidence": "ריצות-ירוקות רציפות · קבלת-רישום: t19b/25: 10/10 army accounts rotated via official blurtjs broadcast; on-chain judged",
+   "ok": true
+  },
+  {
+   "id": "D6",
+   "component": "מוח-ההכרעות מהענן (selfhood)",
+   "needs": "groq-gemini-key",
+   "state": "MISSING-OWNER",
+   "evidence": "אין-סוד-מוח בשמות-הסודות (נמדד); המנוע-הדטרמיניסטי-v1 מכריע-בכנות",
+   "ok": false
+  },
+  {
+   "id": "D7",
+   "component": "פעולות-אוצרת-HIVE",
+   "needs": "owner-hive",
+   "state": "MISSING-OWNER",
+   "evidence": "— הוכח-שלילה",
+   "ok": false
+  },
+  {
+   "id": "D8",
+   "component": "מסחר-CEX אמיתי (R7-R9)",
+   "needs": "cex-operator-keys",
+   "state": "MISSING-OWNER",
+   "evidence": "—",
+   "ok": false
+  },
+  {
+   "id": "D9",
+   "component": "עטיפה-מחדש של 5 דורות-כספת-ישנים",
+   "needs": "סיסמאות-מעטפת",
+   "state": "MISSING-KNOWLEDGE",
+   "evidence": "פער-ידע-בעלים; החוק-החדש: ROTATION-LAW",
+   "ok": false
+  },
+  {
+   "id": "D10",
+   "component": "פעולות-EVM",
+   "needs": "דלק-גז (לא מפתח!)",
+   "state": "MISSING-FUEL",
+   "evidence": "מפתחות-קיימים; הלב-מורעב 3.674e-7 ETH",
+   "ok": false
+  },
+  {
+   "id": "D11",
+   "component": "מוח-סוכן מקומי (סנדבוקס)",
+   "needs": "z-ai-brain-config",
+   "state": "SATISFIED-SANDBOX",
+   "evidence": "/etc/.z-ai-config חי · קבלת-רישום: T23 brain measurement",
+   "ok": true
+  }
+ ],
+ "unsatisfied": [
+  {
+   "id": "D2",
+   "needs": "github-pat עותק-מקומי",
+   "state": "DEGRADED"
+  },
+  {
+   "id": "D3",
+   "needs": "github-pat עותק-מקומי",
+   "state": "BLOCKED"
+  },
+  {
+   "id": "D6",
+   "needs": "groq-gemini-key",
+   "state": "MISSING-OWNER"
+  },
+  {
+   "id": "D7",
+   "needs": "owner-hive",
+   "state": "MISSING-OWNER"
+  },
+  {
+   "id": "D8",
+   "needs": "cex-operator-keys",
+   "state": "MISSING-OWNER"
+  },
+  {
+   "id": "D9",
+   "needs": "סיסמאות-מעטפת",
+   "state": "MISSING-KNOWLEDGE"
+  },
+  {
+   "id": "D10",
+   "needs": "דלק-גז (לא מפתח!)",
+   "state": "MISSING-FUEL"
+  }
+ ],
+ "ownerGaps": [
+  "סוד-מוח-אחד (GROQ_API_KEY או GEMINI_API_KEY) → ההכרעות מדברות-מהענן",
+  "owner-hive (+alt) → אוצרת-HIVE עוברת OBSERVED-UNCONTROLLED→KEYED",
+  "מפתחות-CEX (R7-R9) → מסילת-נזילות-אמיתית",
+  "סיסמאות-מעטפת ל-5 דורות-ישנים (או החלטה-רוטציה-להשמדה)",
+  "דלק-גז ל-EVM (לא מפתח — דלק)"
+ ],
+ "upgrades": [],
+ "secretNamesMeasured": true,
+ "sources": [
+  "state/keys/REGISTRY.json@main",
+  "actions/secrets (שמות-בלבד)"
+ ]
+}
