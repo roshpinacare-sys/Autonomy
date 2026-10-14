@@ -44,5 +44,5 @@ jobs:
           echo "$CHECK" | grep -q '"allVerified": true' || { echo "FATAL: קריאה-חזרה-נכשלה (remote self-check)"; echo "$CHECK" | head -5; exit 1; }
           echo "$CHECK" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{const j=JSON.parse(s);console.log('selfhood verified:',j.at,'| discoveries:',j.discoveries,'| claims:',j.claimsProcessed,'| brain-chain:',((j.brain&&j.brain.chain)||[]).join('+')||'deterministic-only');});"
 
-      - name: Keys awareness (חוק-הדרישה: אין-דרישת-מפתח-עיוורת — מלאי-מול-דרישות כל-מחזור)
+      - name: "Keys awareness - demands vs keys registry (no blind demand law)"
         run: node tools/keys-awareness.mjs
