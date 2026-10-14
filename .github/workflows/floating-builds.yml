@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# FLOATING-BUILDS — אף-בנייה-לא-מרחפת-בשקט [R41 · "הבנות מעופפות באוויר"]
+# ═══════════════════════════════════════════════════════════════════════════
+# כל-שעתיים: סריקת-כל-הריפו לענפים≠main · השוואה-mol-main · פסקי-דין.
+# MERGED-CONTENT → נסגר-אוטומטית (אפס-תוכן-ייחודי-אבד, קבלה-בספר).
+# UNMERGED/ORPHAN → נשמרים-ומתועדים ב-state/floating-builds.json.
+# הספר-החי: הבעלים והרשת רואים תמיד מה-תלוי-ולמה.
+name: floating-builds
+
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "dry-run (סריקה-בלי-סגירות)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: floating-builds
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SBX_FLEET_PAT: ${{ secrets.SBX_FLEET_PAT }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Scan + close merged-content + publish book
+        run: node tools/floating-builds.mjs ${{ github.event.inputs.dry == 'true' && '--dry-run' || '' }}
