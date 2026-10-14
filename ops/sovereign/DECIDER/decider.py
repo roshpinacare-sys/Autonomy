@@ -16,7 +16,11 @@ SOVEREIGN DECIDER v1 — מנוע-ההכרעה-הריבוני (keyless · T14)
 
 מקורות: chain (ראשי) · sovereign-beacon state.json · VALUE-SCAN state.json ·
         FleetHQ office-state.json (פורמן) · ops/flow/flow-map.json (F-series) ·
-        ops/office/work-orders.json (מנוע-הצמיחה) — כולם keyless ציבוריים.
+        ops/office/work-orders.json (מנוע-הצמיחה) · steem@saos-cockpit saos-engine state
+        (readiness.json · presence-matrix-digest.json · beat/ci-last-heartbeat.json — D5 מצבה-חברתית).
+
+חוק-מצבה-חברתית [exec29]: אין-שידור-חברתי-רב-חשבונות של הצי — SOCIAL-STANDBY.md (R6).
+הריבונות מכינה-מודדת-מאמתת; חימוש-רק-דרך SOCIAL-ARMING.json שנכתב-בידי-הבעלים (אף-פעם לא בידי-מנוע-זה).
 """
 import hashlib
 import json
@@ -476,6 +480,190 @@ def decide_owner_channel(degraded):
             "decidedAt": now(), "decidedBy": "sovereign-decider-v1 (CHARTER)"}, acked
 
 
+# ------------------------------------------- מצבה-חברתית [exec29 · R6] ---
+STEEM_ENGINE_STATE = f"{RAW}/steem/saos-cockpit/mini-services/saos-engine/state"
+GREEN_VERDICTS = {"PASS", "GREEN", "OK", "LIVE", "READY", "ALL_PASS", "HEALTHY"}
+
+
+def read_fleet_state(rel, degraded, tag):
+    """קריאת-state ממנוע-הצי (steem@saos-cockpit): keyless קודם; fallback Contents-API עם
+    הטוקן-המחויט-לריפו-זה (דפוס-D0, owner-approved 2026-10-13 — קריאה-בלבד).
+    לא-נמדד = (None, "none") + דגל-דירדג — כנות, אין המצאות (R5)."""
+    data = read_json(f"{STEEM_ENGINE_STATE}/{rel}")
+    if data is not None:
+        return data, "keyless"
+    tok = os.environ.get("ECO_WALLET_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
+    if tok:
+        try:
+            req = urllib.request.Request(
+                f"https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/{rel}?ref=saos-cockpit",
+                headers={"Authorization": f"Bearer {tok}", "User-Agent": "sovereign-decider",
+                         "Accept": "application/vnd.github.raw"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                return json.loads(r.read().decode()), "token"
+        except Exception:
+            pass
+    degraded.append(tag)
+    return None, "none"
+
+
+def _h_age_hours(iso):
+    """גיל-נמדד בשעות של חותמת ISO; לא-ניתן-לניתוח = None (כנות)."""
+    try:
+        dt = datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return round((datetime.now(timezone.utc) - dt).total_seconds() / 3600.0, 1)
+    except Exception:
+        return None
+
+
+def _digest_field(doc, keys):
+    """מחלץ שדה-ראשון-קיים ממסמך-digest (הקבצים-עתידיים — סבלנות-לשדות, כנות-לחוסרם)."""
+    for k in keys:
+        v = doc.get(k)
+        if isinstance(v, str) and v.strip():
+            return v.strip()
+    return None
+
+
+def measure_social_standby(degraded):
+    """[exec29] מדידת-המצבה-החברתית: שלושת-מקורות-האמת של השער-הקשיח.
+    מקור-שנפל → OBSERVING לקלט-ההוא (כנות), אף-פעם לא PASS-מזויף (R1/R5)."""
+    gate, gate_how = read_fleet_state("readiness.json", degraded, "social-gate-readiness")
+    presence, presence_how = read_fleet_state("presence-matrix-digest.json", degraded, "social-presence-matrix")
+    beat, beat_how = read_fleet_state("beat/ci-last-heartbeat.json", degraded, "social-beat-heartbeat")
+    return {"gate": gate, "gateHow": gate_how,
+            "presence": presence, "presenceHow": presence_how,
+            "beat": beat, "beatHow": beat_how}
+
+
+def decide_social_standby(social, chain, degraded):
+    """D5 [exec29] — מצבה-חברתית: אפס-טביעת-רגל. החוק: אין-שידור-חברתי-רב-חשבונות
+    בברירת-מחדל (SOCIAL-STANDBY.md, R6). ההכרעה מאמתת fail-closed-מקומית (אין-קובץ-חימוש),
+    נושאת-את-שלושת-הערכים-שנמדדו, ומפרסמת צ'קליסט-כשירות כנה (PASS/PENDING — אף-פעם לא מדומה)."""
+    armed_path = os.path.join(os.path.dirname(BASE), "DIRECTIVES", "SOCIAL-ARMING.json")
+    armed = None
+    if os.path.exists(armed_path):
+        try:
+            with open(armed_path, encoding="utf-8") as f:
+                armed = json.load(f)
+        except Exception:
+            armed = {"status": "UNPARSEABLE"}  # קובץ-קיים-שלא-ניתן-לקריאה — כנות
+
+    gate, presence, beat = social.get("gate"), social.get("presence"), social.get("beat")
+
+    # --- שלושת-הערכים-שנמדדו (evidence-line לכל-קלט; OBSERVING לקלט-שלא-נמדד) ---
+    ev = []
+    if gate is not None:
+        g_state = _digest_field(gate, ("status", "gate", "state")) or "?"
+        g_at = _digest_field(gate, ("at", "generatedAt", "updatedAt", "checkedAt")) or "?"
+        ev.append(f"gate (readiness.json · {social['gateHow']}): status={g_state} · עודכן {g_at}")
+    else:
+        ev.append("gate (readiness.json): לא-נמדד — OBSERVING לקלט-זה; השער fail-closed STANDBY "
+                  "בברירת-מחדל (בלי SOCIAL-ARMING.json השער-אינו-נפתח)")
+    p_verdict = p_age = None
+    if presence is not None:
+        p_verdict = _digest_field(presence, ("verdict", "status", "state", "result"))
+        p_at = _digest_field(presence, ("at", "generatedAt", "updatedAt", "checkedAt", "timestamp"))
+        p_age = _h_age_hours(p_at) if p_at else None
+        ev.append(f"presence (presence-matrix-digest.json · {social['presenceHow']}): "
+                  f"verdict={p_verdict or '?'} · גיל-נמדד {p_age if p_age is not None else '?'}ש׳ (טרי <12ש׳)")
+    else:
+        ev.append("presence (presence-matrix-digest.json): לא-נמדד — OBSERVING לקלט-זה (המקור טרם-פורסם)")
+    custody = social_exec = None
+    if beat is not None:
+        custody = beat.get("custody")
+        social_exec = beat.get("socialExecuted")
+        b_at = _digest_field(beat, ("at", "generatedAt", "updatedAt", "timestamp"))
+        b_age = _h_age_hours(b_at) if b_at else None
+        ev.append(f"beat (beat/ci-last-heartbeat.json · {social['beatHow']}): custody={custody or '?'} · "
+                  f"socialExecuted={social_exec if social_exec is not None else '?'} · "
+                  f"social={beat.get('social', '?')} · גיל-נמדד {b_age if b_age is not None else '?'}ש׳")
+    else:
+        ev.append("beat (beat/ci-last-heartbeat.json): לא-נמדד — OBSERVING לקלט-זה")
+
+    # --- צ'קליסט-כשירות (SOCIAL-STANDBY.md סעיף ג) — PASS/PENDING בלבד, אף-פעם לא מדומה ---
+    score = []
+    # 1. נוכחות-שרשרת 14/14 — מהמדידה-העצמאית-של-הפעימה (אוצרה + מפעילים-שנמדדו)
+    if chain:
+        n_present = 1 + len(chain.get("operatorsSp") or {})
+        ok = n_present == 14
+        score.append({"item": "נוכחות-שרשרת 14/14", "state": "PASS" if ok else "PENDING",
+                      "measured": f"{n_present}/14 נמדדו-על-השרשרת בפעימה-זו (ראש {chain.get('head')})"})
+    else:
+        score.append({"item": "נוכחות-שרשרת 14/14", "state": "PENDING",
+                      "measured": "אין-מדידת-שרשרת בריצה-זו — כנות"})
+    # 2. פריסת-תצוגה מרובת-רשתות ירוקה (presence-matrix · <12ש׳)
+    if p_verdict and p_age is not None and str(p_verdict).upper() in GREEN_VERDICTS and p_age < 12:
+        score.append({"item": "פריסת-תצוגה מרובת-רשתות ירוקה (presence-matrix <12ש׳)", "state": "PASS",
+                      "measured": f"verdict={p_verdict} · גיל {p_age}ש׳"})
+    else:
+        score.append({"item": "פריסת-תצוגה מרובת-רשתות ירוקה (presence-matrix <12ש׳)", "state": "PENDING",
+                      "measured": f"verdict={p_verdict or 'לא-נמדד'} · גיל={p_age if p_age is not None else 'לא-נמדד'}ש׳ — כנות"})
+    # 3. custody ≥13/14 נמדד 48ש׳ — מהפעימה-של-מנוע-הצי
+    try:
+        have, total = str(custody).split("/")
+        have, total = int(have), int(total)
+    except Exception:
+        have = total = None
+    b_age_all = _h_age_hours(_digest_field(beat or {}, ("at", "generatedAt", "updatedAt", "timestamp")))
+    if have is not None and have >= 13 and total == 14 and b_age_all is not None and b_age_all <= 48:
+        score.append({"item": "custody ≥13/14 נמדד 48ש׳", "state": "PASS",
+                      "measured": f"custody={have}/{total} · גיל-הפעימה {b_age_all}ש׳"})
+    else:
+        score.append({"item": "custody ≥13/14 נמדד 48ש׳", "state": "PENDING",
+                      "measured": f"custody={custody or 'לא-נמדד'} · גיל={b_age_all if b_age_all is not None else 'לא-נמדד'}ש׳ — כנות"})
+    # 4. חוקי-האנטי-חווה חיים-בקונפיג (8%±5 · ≤1/יום · anti-herd) — מה-gate-המפורסם
+    cfg_ok = None
+    if isinstance(gate, dict):
+        cfg = gate.get("config") or gate.get("antiFarm") or gate.get("laws")
+        if isinstance(cfg, dict):
+            need = [k for k in ("fleetWeightPct", "maxPostsPerDay", "antiHerd") if k in cfg]
+            cfg_ok = len(need) == 3
+    if cfg_ok is True:
+        score.append({"item": "חוקי-האנטי-חווה חיים-בקונפיג (8%±5 · ≤1/יום · anti-herd)", "state": "PASS",
+                      "measured": "שלושת-החוקים נמדדו בקונפיג-המפורסם (readiness.json)"})
+    else:
+        score.append({"item": "חוקי-האנטי-חווה חיים-בקונפיג (8%±5 · ≤1/יום · anti-herd)", "state": "PENDING",
+                      "measured": "הקונפיג-המפורסם (readiness.json) טרם-נמדד — החוקים-חיים-בקוד (28-steem: fleetWeightPct 8) אך-האימות-מהקונפיג ממתין — כנות"})
+    # 5. הצטננות ≥7 ימים מאז-פעולה-חברתית-אחרונה של הצי
+    if social_exec == 0 and isinstance(beat, dict) and beat.get("digest") == "COOLDOWN":
+        score.append({"item": "הצטננות ≥7 ימים מאז-פעולה-חברתית-אחרונה של הצי", "state": "PENDING",
+                      "measured": f"socialExecuted=0 + digest=COOLDOWN (דגימה-אחת-נמדדת) — נדרשים ≥7 ימים-רצופים-מאומתים — כנות"})
+    else:
+        score.append({"item": "הצטננות ≥7 ימים מאז-פעולה-חברתית-אחרונה של הצי", "state": "PENDING",
+                      "measured": f"socialExecuted={social_exec if social_exec is not None else 'לא-נמדד'} — אין-רצף-הצטננות-מאומת — כנות"})
+    # 6. אישור-בעלים מפורש (SOCIAL-ARMING.json — נכתב-רק-בידי-הבעלים)
+    if isinstance(armed, dict) and armed.get("status") == "ARMED":
+        score.append({"item": "אישור-בעלים מפורש (SOCIAL-ARMING.json)", "state": "PASS",
+                      "measured": f"ARMED · directiveRef={armed.get('directiveRef', '?')} · issuedAt={armed.get('issuedAt', '?')}"})
+    else:
+        score.append({"item": "אישור-בעלים מפורש (SOCIAL-ARMING.json)", "state": "PENDING",
+                      "measured": "הקובץ אינו-קיים — ברירת-המחדל-המתוכננת; השער fail-closed STANDBY (R6)"})
+    pass_n = sum(1 for s in score if s["state"] == "PASS")
+
+    verdict = (f"הריבונות אוכפת מצבה-חברתית — אפס-טביעת-רגל: אין-שידור-חברתי-רב-חשבונות של הצי על STEEM "
+               f"(SOCIAL-STANDBY.md, R6). השער-הקשיח fail-closed STANDBY; חימוש-רק-דרך SOCIAL-ARMING.json "
+               f"שנכתב-בידי-הבעלים — הריבונות אינה-מחמשת-בעצמה. צ'קליסט-כשירות כנה: {pass_n}/6 PASS.")
+    if isinstance(armed, dict) and armed.get("status") == "ARMED" and pass_n < 6:
+        verdict += (f" חימוש-נרשם (directiveRef={armed.get('directiveRef', '?')}) אך-הצ'קליסט-לא-מלא "
+                    f"({pass_n}/6) — השער-נשאר-fail-closed עד-כשירות-מלאה.")
+    return {"id": "D5-social-standby", "area": "רשת-חברתית", "status": "ENFORCED",
+            "priority": "P1", "titleHe": "מצבה-חברתית — אפס-טביעת-רגל",
+            "verdictHe": verdict,
+            "evidence": ev,
+            "readinessScorecard": score,
+            "socialStandby": {"gateState": (_digest_field(gate, ("status", "gate", "state")) if isinstance(gate, dict) else None),
+                              "presenceVerdict": p_verdict, "presenceAgeHours": p_age,
+                              "custody": custody, "socialExecuted": social_exec,
+                              "arming": {"present": isinstance(armed, dict),
+                                         "status": (armed or {}).get("status"),
+                                         "directiveRef": (armed or {}).get("directiveRef")}},
+            "law": "ops/sovereign/DIRECTIVES/SOCIAL-STANDBY.md (R6) · trace 1a13803b8739c2d5 · 2026-10-14",
+            "decidedAt": now(), "decidedBy": "sovereign-decider-v1 (CHARTER)"}
+
+
 def decide_verify(av, tg, degraded):
     """D4 [T15] — רשת-האמת: ההכרעה רואה את הבדיקה-העצמית של הגוף (המאמת-העצמאי
     של הקונסולה 51-טענות + שער-האמת-הציבורי). כשל → הכרעה-מנותבת (P0/P1) מיד —
@@ -544,6 +732,8 @@ def main():
     tg = read_json(f"{RAW}/Console/main/truth/latest.json")
     if not tg:
         degraded.append("console-truth-gate")
+    # [exec29] מצבה-חברתית — שלושת-מקורות-השער-הקשיח (R6; fail-soft, כנות לשלא-נמדד)
+    social = measure_social_standby(degraded)
 
     # [T16] פנקס-עצמי לרצף-הנקי (לפני-ההכרעות — ההכרעה קוראת-היסטוריה)
     lpath = os.path.join(OUT_DIR, "ledger.jsonl")
@@ -567,6 +757,7 @@ def main():
         decide_eng(foreman, wos, degraded, ledger_lines),
         decide_flow(flow, degraded),
         decide_verify(av, tg, degraded),  # [T15] רשת-האמת — בדיקה-עצמית נראית-ומוכרעת
+        decide_social_standby(social, chain, degraded),  # [exec29] מצבה-חברתית — R6 fail-closed + צ'קליסט-כנה
     ]
 
     state = {
@@ -585,7 +776,7 @@ def main():
         "decisions": decisions,
         "workOrderStatus": wo_status,  # [T16] done-ness מדוד למה-שניתן-למידה; כנות לשאר
         "noAction": [],
-        "law": "MEASURE→OPTIONS→SCORE→DECIDE→PUBLISH→VERIFY→RE-MEASURE · R1-R5 ב-CHARTER",
+        "law": "MEASURE→OPTIONS→SCORE→DECIDE→PUBLISH→VERIFY→RE-MEASURE · R1-R6 ב-CHARTER",
     }
 
     body = json.dumps(state, ensure_ascii=False, indent=1)
