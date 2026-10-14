@@ -27,3 +27,9 @@ Multi-persona decision machinery (`cabinet.mjs` @ `4f869f6b`) is lawful only as 
 
 ---
 *R350, R351 · exec35 cabinet laws · registered under DECISIONS #21/R337 registry discipline (queue-note→registration adjudication recorded above) · standby gates untouched (SOCIAL-STANDBY / CHARTER R6 / R330 / R333).*
+
+---
+
+## RENUMBERING ANNEX — live R350 race adjudicated (first-registration-wins): bounded-schema validation renumbers to R352
+
+Registered twice in one afternoon, honestly. The sections above were first pushed as "R350 bounded-schema + R351 cabinet" (Autonomy `d3c47d7`, 2026-10-14T15:49:15Z). The mandatory mid-write CAS re-read then caught that the parallel saos-desk session **T-95** had registered **R350** FIRST — Pulse DECISIONS row #35 @ `9ed7a15`, committed 2026-10-14T15:45:56Z (3m19s earlier): the saos-desk sovereign-book / DeFi-ledger desk law, itself born "R347" in its LAWS.md #13 and migrated to R350 per first-registration-wins when exec34/34-e registered R347 = sanitized-ingest. **First-registration-wins** (exec32/32-b + 34-e + T-95 precedents) is therefore honored a third time: **R350 = T-95's sovereign-book law**, and the bounded-schema validation law above renumbers **R350 → R352** (CAS at renumbering time: R352 verified free on Autonomy origin/main, Pulse origin/main DECISIONS.md, steem origin/saos-cockpit, saos-desk LAWS.md). **R351 (cabinet law) STANDS** — first claimed by this lane at `d3c47d7` with no competing claim at any head. This annex is append-only: the superseded "R350" wording above is left byte-intact as history (the R337 ledger of this file), and steem's `kernel-isolation.mjs` code label "R350 (exec35, lane 35-a)" is a historical pending-annotation of the queued number — its migration to R352 belongs to a future beat by a lane that owns steem (T-95's own label-migration precedent, DECISIONS #30/#35), since steem is read-only for registry lanes.
