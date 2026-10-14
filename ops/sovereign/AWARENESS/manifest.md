@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T05:39:45.519Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T06:40:17.768Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -11,7 +11,7 @@
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
 - Domain: 89 workflows · schedule 79 · dispatch 88 · both 79 → **PASS**
-- Autonomy: 38 workflows · schedule 37 · dispatch 37 · both 37 → **PASS**
+- Autonomy: 39 workflows · schedule 38 · dispatch 38 · both 38 → **PASS**
 - FleetHQ: 19 workflows · schedule 18 · dispatch 18 · both 18 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
@@ -24,6 +24,7 @@
 - [DEFECT] Domain/economy-engine @ 2026-10-13T21:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-10-13T21:31 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-13T19:13 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/contract-check @ 2026-10-14T06:29 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sovereign-state @ 2026-10-14T02:50 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/estate-vault @ 2026-10-14T00:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/selfhood.yml @ 2026-10-14T00:18 — autonomy triage: read the log, fix root, land, verify
@@ -34,7 +35,7 @@
 - [DEFECT] Autonomy/sovereign-tick @ 2026-10-13T22:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-13T21:52 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-13T21:03 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] FleetHQ/office-3d @ 2026-10-14T05:07 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] FleetHQ/office-3d @ 2026-10-14T05:51 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-heartbeat @ 2026-10-14T02:00 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] FleetHQ/identity-patrol @ 2026-10-13T22:58 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] FleetHQ/office-ci @ 2026-10-13T22:48 — autonomy triage: read the log, fix root, land, verify
