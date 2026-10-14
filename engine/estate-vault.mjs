@@ -180,14 +180,16 @@ log(`pushed to vault-home ✓ (${okBundles.length} bundles, ${totalMb}MB, MANIFE
 mkdirSync("ops/sovereign/ESTATE-VAULT", { recursive: true });
 // exact convention of network-inventory.mjs (cross-manifest stable refs):
 const h = (n) => `priv-h${createHash("sha256").update(`priv:${n}`).digest("hex").slice(0, 8)}`;
-const pubSafe = (r) => (r.private ? h(r.repo) : r.repo);
+const pubSafe = (name, isPrivate) => (isPrivate ? h(name) : name);
+// oversize-skip entries are raw API objects (.name/.private/.size) — normalize
+const skipNorm = skipped.map((r) => ({ repo: r.name, private: r.private, size: r.size }));
 const receipt = [
   `# estate-vault receipt`,
   ``,
   `- at: ${snap.generatedAt}`,
   `- verdict: **LANDED** — ${okBundles.length}/${bundleable.length} bundles (${totalMb}MB) pushed to vault-home/vault-chain/bundles/`,
   `- MANIFEST.json refreshed live: ${repos.length} repos (roles preserved, pushedAt fresh)`,
-  `- oversize-skipped (honest): ${skipped.map((r) => `${pubSafe(r)} ${Math.round(r.size / 1024)}MB`).join(", ") || "none"}`,
+  `- oversize-skipped (honest): ${skipNorm.map((r) => `${pubSafe(r.repo, r.private)} ${Math.round(r.size / 1024)}MB`).join(", ") || "none"}`,
   `- failures (honest): ${results.filter((r) => r.error).map((r) => `${pubSafe(r)}: ${r.error}`).join("; ") || "none"}`,
   `- recovery one-liner: \`git clone vault-home && git clone vault-chain/bundles/<repo>.bundle\``,
   `- tier honesty: in-estate copy (survives repo-loss/corruption/force-push); cross-host tier = gitlab-mirror (GITLAB_TOKEN = owner-words)`,
