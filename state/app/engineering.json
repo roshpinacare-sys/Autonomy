@@ -1,6 +1,6 @@
 {
   "schema": "engineering/1",
-  "updatedAt": "2026-10-14T02:06:06.051Z",
+  "updatedAt": "2026-10-14T07:16:29.022Z",
   "cage": {
     "at": "2026-10-14T00:49:33.300Z",
     "pass": true,
@@ -56,10 +56,10 @@
     "A8": "מדידת-עלות — costUsd ביישוב-הכרעה + סיכום בפנקס-ההנדסה",
     "A7": "ניגודיות מדודה — tools/check-contrast.mjs; נמדד 20-כישלונות → תוקנו; פסק: PASS 25/25",
     "A4": "חוזה-מיוצר ונבדק — src/lib/contract-facts.ts (מקור-אמת) + tools/gen-contract.mjs (מחולל דטרמיניסטי, selftest PASS, sha256 54d8ab3628cb) + Autonomy .github/workflows/contract-check.yml (CI כל-30 דק: שלמות-החוזה + המצב-החי מול-החוזה); במחזור-הראשון תפס סטייה-אמיתית (missing A4,A11) והיא נסגרה",
-    "A11": "הסגר-פגום — git-state.ts: JSON שאינו-תקני אינו-מושתק-בשקט, מדווח corrupt עם-הקשר, אין-אתחול-שקט (mech-selftest: הסגר-פגום PASS); נרשם-כעת-במפת-האימוצים אחרי-שהחוזה תפס את היעדר-הרישום"
+    "A11": "הסגר-מצב-פגום מלא [T29] — עדות <path>.corrupt-<ts> + אתחול-מדווח {_reinit} + דיווח-תיבה (quarantineCorruptState); תוקן-קוד-מת ב-updateJsonState (נמדד)"
   },
   "sim": {
-    "at": "2026-10-14T02:06:06.051Z",
+    "at": "2026-10-14T07:16:29.022Z",
     "pass": true,
     "checks": [
       {
@@ -111,6 +111,24 @@
         "pass": true
       },
       {
+        "check": "sim: הסגר-מלא מופעל",
+        "want": "עדות+אתחול+תיבה",
+        "got": "q=true/true/true",
+        "pass": true
+      },
+      {
+        "check": "sim: עדות-גולמית",
+        "want": "{\"x\":[1,",
+        "got": "{\"x\":[1,",
+        "pass": true
+      },
+      {
+        "check": "sim: אתחול-מדווח",
+        "want": "_reinit.law=A11",
+        "got": "A11",
+        "pass": true
+      },
+      {
         "check": "אמת: קריאת-גיט אמיתית",
         "want": "ok",
         "got": "ok",
@@ -118,12 +136,12 @@
       },
       {
         "check": "sim: מאגר-נדיף",
-        "want": "2 קבצים (ניקוי-מדוד)",
-        "got": "2 קבצים / 2 פעולות",
+        "want": "5 קבצים (ניקוי-מדוד)",
+        "got": "5 קבצים / 6 פעולות",
         "pass": true
       }
     ],
     "realGitUntouched": true,
-    "note": "mech-selftest/1 [T26] — CLI בתהליך-מבודד; אותם-חוקים כמו /api/engineering simselftest (שם: בעלים-בלבד)"
+    "source": "CLI mech-selftest/2 [T29] — אפס-רשת, אפס-נגיעה בגיט-אמת"
   }
 }
