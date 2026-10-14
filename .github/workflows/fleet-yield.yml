@@ -34,12 +34,12 @@ jobs:
         run: echo "ENGINE_REPO=$(printf 'cm9zaHBpbmFjYXJlLXN5cy9zdGVlbQ==' | base64 -d)" >> "$GITHUB_ENV"
 
       - name: checkout (home)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
       - name: checkout (engine @ work-branch)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ env.ENGINE_REPO }}
           ref: saos-cockpit
@@ -48,7 +48,7 @@ jobs:
           fetch-depth: 1
 
       - name: setup-node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           # node 22+ — המנוע-מייבא llm-chain.ts; הפשטת-טיפוסים-זמינה-מ-22.13
           # (נמדד: node 20 מת-מיד על ה-.ts — ERR_UNKNOWN_FILE_EXTENSION · node 24 מקומי = ירוק)

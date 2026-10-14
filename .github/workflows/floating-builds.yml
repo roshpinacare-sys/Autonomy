@@ -31,9 +31,9 @@ jobs:
     env:
       SBX_FLEET_PAT: ${{ secrets.SBX_FLEET_PAT }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
       - name: Scan + close merged-content + publish book

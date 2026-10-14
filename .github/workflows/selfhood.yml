@@ -29,7 +29,7 @@ jobs:
       SBX_FLEET_PAT: ${{ secrets.SBX_FLEET_PAT }}
       SBX_AI_CONFIG: ${{ secrets.SBX_AI_CONFIG }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Run selfhood cycle (discovery → capabilities → claims → commit+verify)
         run: node ops/selfhood/selfhood.mjs
