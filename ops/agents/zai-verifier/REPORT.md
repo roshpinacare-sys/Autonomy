@@ -1,6 +1,6 @@
-# דוח-אמת (verifier) · 2026-10-14T11:18:19.879Z
+# דוח-אמת (verifier) · 2026-10-14T11:47:53.152Z
 
-**overall: FAIL** · auth: token(fed) · took: 21437ms · כללים: config.json (אפס-דעה-אישית)
+**overall: FAIL** · auth: token(fed) · took: 20067ms · כללים: config.json (אפס-דעה-אישית)
 
 > יש-דברים-שבורים-ממש — זה הדוח-הכן, בלי-קישוטים.
 
@@ -8,19 +8,19 @@
 | בדיקה | דרגה | ראיה |
 |---|---|---|
 | `sbx.wf-sovereign` | **OK** | success recent |
-| `sbx.wf-sovereign-state` | **DEGRADED** | last success 25min ago > slot |
+| `sbx.wf-sovereign-state` | **DEGRADED** | last success 26min ago > slot |
 | `sbx.wf-artery-catchup` | **OK** | success recent |
-| `sbx.wf-artery-watch` | **DEGRADED** | last success 54min ago > slot |
+| `sbx.wf-artery-watch` | **DEGRADED** | last success 30min ago > slot |
 | `sbx.wf-verifier` | **OK** | success recent |
-| `sbx.wf-federation` | **OK** | success recent |
-| `sbx.wf-value-scan` | **FAIL** | last success 305min ago > 4x slot |
+| `sbx.wf-federation` | **DEGRADED** | last success 30min ago > slot |
+| `sbx.wf-value-scan` | **FAIL** | last success 334min ago > 4x slot |
 | `sbx.wf-hive-probe` | **OK** | success recent |
-| `sbx.wf-fleet-heal` | **DEGRADED** | last success 40min ago > slot |
-| `sbx.wf-artery-decision-truth` | **DEGRADED** | last success 72min ago > slot |
-| `sbx.wf-artery-grid` | **DEGRADED** | last success 72min ago > slot |
-| `sbx.wf-artery-wallet` | **DEGRADED** | last success 199min ago > slot |
-| `sbx.wf-artery-integrity` | **DEGRADED** | last success 72min ago > slot |
-| `sbx.wf-artery-participation` | **DEGRADED** | last success 69min ago > slot |
+| `sbx.wf-fleet-heal` | **OK** | success recent |
+| `sbx.wf-artery-decision-truth` | **OK** | success recent |
+| `sbx.wf-artery-grid` | **OK** | success recent |
+| `sbx.wf-artery-wallet` | **OK** | success recent |
+| `sbx.wf-artery-integrity` | **DEGRADED** | last success 102min ago > slot |
+| `sbx.wf-artery-participation` | **DEGRADED** | last success 98min ago > slot |
 | `sbx.wf-artery-fleet` | **OK** | success recent |
 | `sbx.wf-artery-flow` | **OK** | success recent |
 
@@ -28,32 +28,32 @@
 | ריפו | נראות | commits-24h | code-חלק | הערה |
 |---|---|---|---|---|
 | Autonomy | public | 100+ | 0% | ok |
-| Console | public | 100+ | 0% | ok |
+| Console | public | 100+ | 8% | ok |
 | Domain | public | 100+ | 8% | ok |
 | Pulse | public | 69 | 17% | ok |
 
-**מדד-מסכם:** codeShare = 5% (42 commits מסווגים מתוך 369)
-> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 5% < 10% over 369 commits/24h
+**מדד-מסכם:** codeShare = 7% (42 commits מסווגים מתוך 369)
+> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 7% < 10% over 369 commits/24h
 
 ## 3. אמת-על-השרשרת · Steem (https://api.steemit.com)
 | חשבון | SP אפקטיבי | VP% | פוסט-אחרון | הצבעה-אחרונה |
 |---|---|---|---|---|
-| @acct-00 | 2811 | 42% | 2.2h | 0h |
-| @acct-01 | 75 | 79% | 36.1h | 6.7h |
-| @acct-02 | 78 | 80% | 36.1h | 7.2h |
-| @acct-03 | 94 | 77% | 36.1h | 7.2h |
-| @acct-04 | 80 | 81% | 36.6h | 7.2h |
-| @acct-05 | 75 | 79% | 53.8h | 7.2h |
-| @acct-06 | 31 | 95% | 36h | 0h |
-| @acct-07 | 31 | 80% | 37.3h | 7.2h |
-| @acct-08 | 33 | 79% | 37.3h | 7.2h |
-| @acct-09 | 43 | 84% | 37.3h | 6.7h |
-| @acct-10 | 70 | 80% | 37.3h | 6.7h |
-| @acct-11 | 17 | 93% | 56.2h | 35.4h |
-| @acct-12 | 17 | 95% | 37.3h | 35.4h |
-| @acct-13 | 17 | 93% | 54.7h | 35.4h |
+| @acct-00 | 2811 | 41% | 2.7h | 0h |
+| @acct-01 | 75 | 79% | 36.6h | 7.2h |
+| @acct-02 | 78 | 80% | 36.6h | 7.7h |
+| @acct-03 | 94 | 77% | 36.6h | 7.7h |
+| @acct-04 | 80 | 81% | 37.1h | 7.7h |
+| @acct-05 | 75 | 79% | 54.3h | 7.7h |
+| @acct-06 | 31 | 91% | 36.5h | 0h |
+| @acct-07 | 31 | 80% | 37.8h | 7.7h |
+| @acct-08 | 33 | 79% | 37.8h | 7.7h |
+| @acct-09 | 43 | 84% | 37.8h | 7.1h |
+| @acct-10 | 70 | 80% | 37.8h | 7.1h |
+| @acct-11 | 17 | 93% | 56.7h | 35.9h |
+| @acct-12 | 17 | 95% | 37.8h | 35.9h |
+| @acct-13 | 17 | 93% | 55.2h | 35.9h |
 
-> `steem.fleet` = **OK** — fleet posted 2.2h ago
+> `steem.fleet` = **OK** — fleet posted 2.7h ago
 > `steem.treasury` = **DEGRADED** — treasury acct-00 at 2811 SP < 3000 (recovery-plan §3)
 
 ## 4. Blurt (UNREACHABLE)
@@ -64,19 +64,17 @@ RPC בלתי-נגיש מהרץ: no blurt accounts configured in this repo's veri
 נסרקו 108 קבצים; פגומים: 0
 
 ## 6. דלתא-מול-הריצה-הקודמת
-- ↗ השתפר: `sbx.wf-federation` DEGRADED → **OK**
-- ↘ התדרדר: `sbx.wf-fleet-heal` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-artery-integrity` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-artery-participation` OK → **DEGRADED**
+- ↘ התדרדר: `sbx.wf-federation` OK → **DEGRADED**
+- ↗ השתפר: `sbx.wf-fleet-heal` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-decision-truth` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-grid` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-wallet` DEGRADED → **OK**
 
 ## 7. משימות-שנצרתו-עכשיו
 - **V-LOOP-SOVEREIGN-STATE** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-WATCH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-FEDERATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-VALUE-SCAN** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-FLEET-HEAL** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-DECISION-TRUTH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-GRID** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-WALLET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-INTEGRITY** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-PARTICIPATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-DEV-FOCUS** — דופק-בלי-בנייה: להפנות-משאב-סוכנים מטביעות-מצב לבניית-מוצר/תיקונים אמתיים
