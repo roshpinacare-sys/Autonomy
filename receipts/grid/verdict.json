@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-14T04:17:40.623Z",
+  "measuredAt": "2026-10-14T05:29:29.676Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -16,16 +16,16 @@
     {
       "id": "law-grid-fresh",
       "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 10min)",
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 20min)",
       "severity": "fail",
       "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": true,
-      "detail": "grid executable: lastVerdict=CYCLE-IN-FLIGHT opsToday=0",
+      "ok": false,
+      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
       "severity": "fail",
-      "verdict": "pass"
+      "verdict": "fail"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,22 +36,23 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "overall": "BLOCKED",
+  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
   "provenance": {
-    "stateBlobSha": "9eb4117bcaaaa749433a9529a837246a32fb9320",
+    "stateBlobSha": "2508c0f094dbf9026701a2de54a552d67095d50c",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "38510624466",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38510624466",
-    "sha": "5eea122f1016a56f089b4ed890a2d9276b087a93"
+    "runId": "38516891877",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38516891877",
+    "sha": "3882fc80f20f91da303844405a5cbfa5b35c96f0"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-14T04:07:48.307Z",
-    "ageMin": 10,
-    "ticks": 4586,
-    "lastVerdict": "CYCLE-IN-FLIGHT",
+    "lastTickAt": "2026-10-14T05:09:32.472Z",
+    "ageMin": 20,
+    "ticks": 5023,
+    "lastVerdict": "CREDENTIAL-MISSING",
     "opsToday": 0,
     "lastTxid": null
-  }
+  },
+  "credBlocked": true
 }
