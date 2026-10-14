@@ -1,15 +1,15 @@
 {
   "schema": "saos.run-scores/1",
-  "generatedAt": "2026-10-14T00:12:13.444Z",
+  "generatedAt": "2026-10-14T05:16:36.332Z",
   "scale": "aeon-pattern 1..5 (deterministic: success+fresh=5, success-stale=4, mixed=3, failing-streak=2, storm=1)",
-  "fleetScore": 3.25,
+  "fleetScore": 4,
   "lanes": [
     {
       "agent": "network-self-awareness",
       "repo": "Autonomy",
       "wf": "network-self-awareness",
       "score": 5,
-      "why": "success · last 0.2h ago · window 3/3",
+      "why": "success · last 0.2h ago · window 5/5",
       "lastRun": "success"
     },
     {
@@ -24,8 +24,8 @@
       "agent": "run-score",
       "repo": "Autonomy",
       "wf": "run-score",
-      "score": 1,
-      "why": "storm · window 0/0 success",
+      "score": 5,
+      "why": "success · last 5.1h ago · window 1/1",
       "lastRun": "none"
     },
     {
@@ -33,7 +33,7 @@
       "repo": "FleetHQ",
       "wf": "sovereign-decider",
       "score": 5,
-      "why": "success · last 0.1h ago · window 6/6",
+      "why": "success · last 0.0h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -48,8 +48,8 @@
       "agent": "identity-patrol",
       "repo": "FleetHQ",
       "wf": "identity-patrol",
-      "score": 2,
-      "why": "failing-streak · window 1/5",
+      "score": 5,
+      "why": "success · last 0.0h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -64,9 +64,9 @@
       "agent": "anchor-execute",
       "repo": "Domain",
       "wf": "anchor-execute",
-      "score": 2,
-      "why": "failing-streak · window 1/5",
-      "lastRun": "none"
+      "score": 3,
+      "why": "mixed window 4/6 · last success",
+      "lastRun": "success"
     },
     {
       "agent": "estate-scrub",
@@ -80,8 +80,8 @@
       "agent": "operator-console",
       "repo": "Domain",
       "wf": "operator-console",
-      "score": 2,
-      "why": "failing-streak · window 2/6",
+      "score": 3,
+      "why": "mixed window 3/6 · last success",
       "lastRun": "success"
     },
     {
@@ -89,7 +89,7 @@
       "repo": "Console",
       "wf": "dex-watch",
       "score": 5,
-      "why": "success · last 2.8h ago · window 6/6",
+      "why": "success · last 4.0h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -97,43 +97,10 @@
       "repo": "Console",
       "wf": "grid-pulse",
       "score": 5,
-      "why": "success · last 3.5h ago · window 6/6",
+      "why": "success · last 0.7h ago · window 6/6",
       "lastRun": "success"
     }
   ],
-  "repairChainInput": [
-    {
-      "agent": "run-score",
-      "repo": "Autonomy",
-      "workflow": "run-score",
-      "score": 1,
-      "why": "storm · window 0/0 success",
-      "openedAt": "2026-10-14T00:12:13.444Z"
-    },
-    {
-      "agent": "identity-patrol",
-      "repo": "FleetHQ",
-      "workflow": "identity-patrol",
-      "score": 2,
-      "why": "failing-streak · window 1/5",
-      "openedAt": "2026-10-14T00:12:13.444Z"
-    },
-    {
-      "agent": "anchor-execute",
-      "repo": "Domain",
-      "workflow": "anchor-execute",
-      "score": 2,
-      "why": "failing-streak · window 1/5",
-      "openedAt": "2026-10-14T00:12:13.444Z"
-    },
-    {
-      "agent": "operator-console",
-      "repo": "Domain",
-      "workflow": "operator-console",
-      "score": 2,
-      "why": "failing-streak · window 2/6",
-      "openedAt": "2026-10-14T00:12:13.444Z"
-    }
-  ],
+  "repairChainInput": [],
   "note": "score≤2 lanes are the repair chain's priority signal — ops-intake work-orders + GridWatch healing consume this file; nothing here is a model opinion, all measured"
 }
