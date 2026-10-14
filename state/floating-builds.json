@@ -1,119 +1,48 @@
 {
- "schema": "fleet.floating-builds/2",
- "measuredAt": "2026-10-14T02:30:20.769Z",
- "durationMs": 14538,
+ "schema": "fleet.floating-builds/3",
+ "measuredAt": "2026-10-14T07:13:55.159Z",
+ "durationMs": 40757,
  "reposScanned": 34,
- "law": "אף-בנייה-לא-מרחפת-בשקט: כל-ענף-שאינו-main נמדד ומקבל-פסק-דין. MERGED-CONTENT=סגירה-אוטומטית-עם-קבלה (אפס-תוכן-אבד). UNMERGED/ORPHAN=שימור-ותיעוד.",
+ "law": "אפס-רחיפה (R54): כל-ענף-שאינו-main נמדד ומקבל-פסק-דין. PUBLICATION=ענף-הגשה-פטור. MERGED-CONTENT=סגירה-עם-קבלה. UNMERGED/ORPHAN=תג-ארכיון archive/<branch> ואז מחיקת-הענף (העבודה-נשמרת-בתג; החזרה=ענף-מהתג). ERR=רישום-כן-בלי-מחיקה.",
  "now": {
-  "floatingMeasured": 16,
+  "floatingMeasured": 3,
   "closedThisRun": 0,
-  "closedThisRunList": []
+  "archivedThisRun": 13,
+  "closedThisRunList": [],
+  "archivedThisRunList": [
+   "Domain/vault-transfer",
+   "steem/fix/claim-role-batch-split",
+   "steem/security/audit-2026-09-28",
+   "saos-dex/fleet/r130",
+   "Zip/security/audit-2026-09-28",
+   "Saosmartwallet/sandbox-flow-71",
+   "saos-sovereign-foundry/cockpit-zai",
+   "saos-sovereign-foundry/security/audit-2026-09-28",
+   "saos-sovereign-platform/deployment/saos-anchoring-core",
+   "saos-sovereign-platform/fleet/r130",
+   "saos-sovereign-platform/sandbox-flow-71",
+   "saos-sovereign-platform/sandbox-flow-75",
+   "saos-sovereign-platform/security/audit-2026-09-28"
+  ]
  },
  "floating": [
   {
-   "repo": "Domain",
-   "branch": "vault-transfer",
-   "verdict": "UNMERGED",
-   "detail": "+1/-3183 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "vault-transfer: sealed blob 2026-10-03T18:50:37Z · ECDH P-256 · zero plaintext"
-  },
-  {
-   "repo": "steem",
-   "branch": "fix/claim-role-batch-split",
-   "verdict": "ORPHAN",
-   "detail": "אין-אב-משותף (היסטוריית-ארכיון)"
+   "repo": "FleetHQ",
+   "branch": "office-pages",
+   "verdict": "PUBLICATION",
+   "detail": "ענף-הגשה חי (Pages/digest) — פטור מחוק-הרחיפה"
   },
   {
    "repo": "steem",
    "branch": "saos-cockpit",
-   "verdict": "ORPHAN",
-   "detail": "אין-אב-משותף (היסטוריית-ארכיון)"
-  },
-  {
-   "repo": "steem",
-   "branch": "security/audit-2026-09-28",
-   "verdict": "UNMERGED",
-   "detail": "+1/-312 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "security: key material OUT of HEAD + fail-closed gateway allowlist (audit 2026-09-28)\n\nC1:"
-  },
-  {
-   "repo": "Saosmartwallet",
-   "branch": "sandbox-flow-71",
-   "verdict": "ORPHAN",
-   "detail": "אין-אב-משותף (היסטוריית-ארכיון)"
-  },
-  {
-   "repo": "saos-sovereign-foundry",
-   "branch": "cockpit-zai",
-   "verdict": "ORPHAN",
-   "detail": "אין-אב-משותף (היסטוריית-ארכיון)"
-  },
-  {
-   "repo": "saos-sovereign-foundry",
-   "branch": "security/audit-2026-09-28",
-   "verdict": "UNMERGED",
-   "detail": "+1/-29 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "security: pin CI permissions to contents:read (audit 2026-09-28)\n\nWithout a permissions bl"
-  },
-  {
-   "repo": "saos-sovereign-platform",
-   "branch": "deployment/saos-anchoring-core",
-   "verdict": "UNMERGED",
-   "detail": "+1/-339 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "chore(deploy): harden gitignore for keys/vault/upload + fix verify-pack never[] inference\n"
-  },
-  {
-   "repo": "saos-sovereign-platform",
-   "branch": "fleet/r130",
-   "verdict": "UNMERGED",
-   "detail": "+2/-134 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "[agent:Z] R132 contracts (operator directive: solutions from existing, multi-domain value)"
-  },
-  {
-   "repo": "saos-sovereign-platform",
-   "branch": "sandbox-flow-71",
-   "verdict": "ORPHAN",
-   "detail": "אין-אב-משותף (היסטוריית-ארכיון)"
-  },
-  {
-   "repo": "saos-sovereign-platform",
-   "branch": "sandbox-flow-75",
-   "verdict": "ORPHAN",
-   "detail": "אין-אב-משותף (היסטוריית-ארכיון)"
-  },
-  {
-   "repo": "saos-sovereign-platform",
-   "branch": "security/audit-2026-09-28",
-   "verdict": "UNMERGED",
-   "detail": "+1/-136 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "security: fail-closed operator gate on ALL mainnet broadcast + smartvault routes (audit 20"
-  },
-  {
-   "repo": "saos-dex",
-   "branch": "fleet/r130",
-   "verdict": "UNMERGED",
-   "detail": "+1/-1018 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "[agent:A] A-5: mover — offer.json -> real orders on STEEM internal market (fleet/r130)\n\n- "
-  },
-  {
-   "repo": "Zip",
-   "branch": "security/audit-2026-09-28",
-   "verdict": "UNMERGED",
-   "detail": "+1/-1255 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "security + honesty: selfTest count, genesis semantics, workflow input hardening (audit 202"
-  },
-  {
-   "repo": "FleetHQ",
-   "branch": "office-pages",
-   "verdict": "ORPHAN",
-   "detail": "אין-אב-משותף (היסטוריית-ארכיון)"
+   "verdict": "ERR",
+   "detail": "tag-ok/delete-HTTP-422 (ינוסה-בריצה-הבאה; התג כבר שומר)"
   },
   {
    "repo": "TruthRail",
    "branch": "pages",
-   "verdict": "UNMERGED",
-   "detail": "+1/-4 — עבודה-אמת-שלא-נחתה",
-   "lastMessage": "exec-17 (Z-17-b): public truth page — static, fail-honest, raw-anchor only; pages branch, "
+   "verdict": "PUBLICATION",
+   "detail": "ענף-הגשה חי (Pages/digest) — פטור מחוק-הרחיפה"
   }
  ],
  "closedHistory": [
@@ -132,6 +61,25 @@
   {
    "at": "2026-10-14T02:30:20.769Z",
    "closed": []
+  },
+  {
+   "at": "2026-10-14T07:13:55.159Z",
+   "closed": [],
+   "archived": [
+    "Domain/vault-transfer",
+    "steem/fix/claim-role-batch-split",
+    "steem/security/audit-2026-09-28",
+    "saos-dex/fleet/r130",
+    "Zip/security/audit-2026-09-28",
+    "Saosmartwallet/sandbox-flow-71",
+    "saos-sovereign-foundry/cockpit-zai",
+    "saos-sovereign-foundry/security/audit-2026-09-28",
+    "saos-sovereign-platform/deployment/saos-anchoring-core",
+    "saos-sovereign-platform/fleet/r130",
+    "saos-sovereign-platform/sandbox-flow-71",
+    "saos-sovereign-platform/sandbox-flow-75",
+    "saos-sovereign-platform/security/audit-2026-09-28"
+   ]
   }
  ],
  "dryRun": false
