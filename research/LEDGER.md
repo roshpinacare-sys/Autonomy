@@ -34,3 +34,7 @@
   - next: if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)
 - **E3 rc-census** · 2026-10-12 — measured: 3 RC-starved accounts (<40%): acct-11 6.53%, acct-12 16.97%, acct-13 6.24% — propose SP delegation top-up or activity cap (owner word for delegation lane)
   - next: if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)
+
+## 2026-10-14T07:47:08.072Z
+- **exec31 frontier-absorption** · 2026-10-14 — measured: 10 external repos read statically (agentic-pantheon 5 · Zen7-Labs 4 · legion_agi · Artificial-Superintelligence), 10/10 real by git-log; verdicts RESEARCH-ONLY across the board; patterns harvested as laws R330-R333 (registry-checked free on origin; R308-R311 taken per DECISIONS #22, R328-R329 taken mid-flight by T-87/T-88); ASI repo rejected as vaporware — full dossier in `state/research/exec31-frontier-super-agent-asi-zerotrust-2026-10-14.md`, DECISIONS exec31 row registered
+  - next: patterns only until owner-armed; any future value-move pipeline must implement the R328 gate shape before it exists; wallet surfaces stay behind R331 (Class C, not activated)
