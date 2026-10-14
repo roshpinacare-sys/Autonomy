@@ -1,6 +1,6 @@
 {
  "schema": "roshpina.value-scan/1",
- "generatedAt": "2026-10-14T17:14:48Z",
+ "generatedAt": "2026-10-14T20:45:36Z",
  "publisher": "value-scan.yml (GitHub Actions, keyless, T13)",
  "degraded": [],
  "sources": {
@@ -13,30 +13,30 @@
   "decider-d1-policy": true
  },
  "metrics": {
-  "treasuryNetSp": 2810.7,
+  "treasuryNetSp": 2810.8,
   "treasuryFloor": 3000.0,
-  "treasuryGapSp": 189.3,
+  "treasuryGapSp": 189.2,
   "minOperatorSp": 11.9,
   "operatorFloor": 100.0,
   "operatorGapSp": 88.1,
-  "steemHead": 110438336,
-  "chainTreasurySp": 2810.7,
+  "steemHead": 110442536,
+  "chainTreasurySp": 2810.8,
   "beaconChainMatch": true,
-  "arteriesFresh": 6,
+  "arteriesFresh": 7,
   "arteriesTotal": 7,
   "blockedTasks": 0,
   "errorAgents": 0,
   "flowNodes": 37,
   "flowOrphans": 5,
   "flowGhosts": 0,
-  "flowStale": 12,
+  "flowStale": 13,
   "dexVerdict": "ARMED-WAITING",
   "dexOpenOrders": 9,
   "d1Consumer": {
-   "policyBasis": "2026-10-14T13:05:34Z",
+   "policyBasis": "2026-10-14T17:59:34Z",
    "deciderStateAgeOk": true,
    "operatingFloorSp": 2800.0,
-   "treasuryVsKeepSp": 10.7,
+   "treasuryVsKeepSp": 10.8,
    "operatorInterimFloors": [
     {
      "operator": "acct-01",
@@ -97,8 +97,8 @@
     {
      "operator": "acct-09",
      "measuredSp": 11.9,
-     "policyFloorSp": 30,
-     "gapSp": 18.1,
+     "policyFloorSp": 20,
+     "gapSp": 8.1,
      "ok": false
     },
     {
@@ -139,19 +139,19 @@
    ]
   }
  },
- "verdictHe": "1 עורקים לא-טריים · פער-רצפת-אוצרה 189.3 SP · פער-רצפת-מפעילים 88.1 SP",
+ "verdictHe": "פער-רצפת-אוצרה 189.2 SP · פער-רצפת-מפעילים 88.1 SP · 5 יתומים + 0 רוחות-רפאים במפת-הזרימה",
  "topIds": [
-  "ops-arteries",
   "econ-treasury-floor",
-  "econ-operator-floor"
+  "econ-operator-floor",
+  "net-weave"
  ],
  "opportunities": [
   {
    "id": "econ-treasury-floor",
    "area": "כלכלה",
-   "titleHe": "פער-רצפת-אוצרה 189.3 SP",
+   "titleHe": "פער-רצפת-אוצרה 189.2 SP",
    "valueHe": "השלמת הרצפה = יציבות-אוצרה מלאה; אופציות מתועדות: שחרור-האצלה-אסורה (244.2 SP, 7 ימים) / רצפות-מדורגות / הכנסות-DEX — הכרעת-בעלים",
-   "evidence": "אוצרה 2810.7 < 3,000 · נמדד במשואה keyless",
+   "evidence": "אוצרה 2810.8 < 3,000 · נמדד במשואה keyless",
    "source": "sovereign-beacon state.json",
    "effort": "M"
   },
@@ -165,20 +165,11 @@
    "effort": "M"
   },
   {
-   "id": "ops-arteries",
-   "area": "תפעול",
-   "titleHe": "1 עורקים לא-טריים",
-   "valueHe": "עורק-טרי = איבר-חי; החזרת-עורקים לטריות = האורגניזם שלם",
-   "evidence": "לא-טריים: wallet-artery",
-   "source": "Domain office/data.json",
-   "effort": "S"
-  },
-  {
    "id": "net-weave",
    "area": "רשת",
    "titleHe": "5 יתומים + 0 רוחות-רפאים במפת-הזרימה",
    "valueHe": "חיבור-יתומים = everything-uses-everything מלא; כל-חיבור מגדיל-ערך-הדדי",
-   "evidence": "flow-map: 37 צמתים · stale=12",
+   "evidence": "flow-map: 37 צמתים · stale=13",
    "source": "Sandbox ops/flow/flow-map.json",
    "effort": "M"
   },
@@ -187,7 +178,7 @@
    "area": "עסקים",
    "titleHe": "DEX חי (ARMED-WAITING) · 9 פקודות פתוחות",
    "valueHe": "הרחבת-עומק-ספר-הפקודות = הכנסה-מיקרו-מסחרית מתמשכת (ראה 1,480 order-ops ביום-שעבר)",
-   "evidence": "verdict=ARMED-WAITING · publishedAt=2026-10-14T14:36:18.064Z",
+   "evidence": "verdict=ARMED-WAITING · publishedAt=2026-10-14T19:33:14.249Z",
    "source": "Domain dex/grid.json",
    "effort": "M"
   },
