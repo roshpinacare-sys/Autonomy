@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T14:23:56.283Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-14T14:35:25.209Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -10,7 +10,7 @@
 - אין-workflow-חדש מאז-המדידה-הקודמת
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
-- Domain: 91 workflows · schedule 81 · dispatch 90 · both 81 → **PASS**
+- Domain: 92 workflows · schedule 82 · dispatch 91 · both 82 → **PASS**
 - Autonomy: 39 workflows · schedule 38 · dispatch 38 · both 38 → **PASS**
 - FleetHQ: 19 workflows · schedule 18 · dispatch 18 · both 18 → **PASS**
 
@@ -26,7 +26,7 @@
 - [DEFECT] Domain/treasury-route @ 2026-10-13T21:31 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-13T19:13 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sovereign-tick @ 2026-10-14T14:13 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/sovereign-state @ 2026-10-14T13:57 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/sovereign-state @ 2026-10-14T14:12 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/contract-check @ 2026-10-14T07:30 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/estate-vault @ 2026-10-14T00:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/selfhood.yml @ 2026-10-14T00:18 — autonomy triage: read the log, fix root, land, verify
