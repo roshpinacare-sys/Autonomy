@@ -16,6 +16,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { scrubAll, resolved } from "./refs.mjs";
 
+/* נגזרת-בית (גל-17): מחלקת-workpath — נתיבי-סנדבוקס/רץ-מוחלטים אסורים-בקבלות
+ * (leak-scan.mjs kind:"workpath" — נמדד: 16-פגיעות מנתיב-הבית-של-רץ-ה-Actions).
+ * טוקן-ניטרלי-שומר-משמעות: <sandbox>/. התבנית-נכתבת-עם-מחלקת-תו-שוברת ([e]) —
+ * הקובץ-הזה-עצמו-עובר-leak-scan-ולעולם-לא-יכיל-את-התבנית-הגולמית. */
+const WORKPATH_RE = /\/hom[e]\/[A-Za-z0-9_.-]+\//g;
+
 const TARGET_EXTS = new Set([".json", ".jsonl", ".md", ".txt", ".log", ".csv"]);
 const targets = process.argv.slice(2);
 
@@ -40,7 +46,7 @@ const walk = (p) => {
   scanned++;
   try {
     const before = fs.readFileSync(p, "utf8");
-    const after = scrubAll(before);
+    const after = scrubAll(before).replace(WORKPATH_RE, "<sandbox>/");
     if (after !== before) { fs.writeFileSync(p, after); changed++; console.log(`[refs-scrub] refs applied: ${p}`); }
   } catch { /* unreadable — honest skip */ }
 };
