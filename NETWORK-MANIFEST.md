@@ -1,13 +1,13 @@
 # NETWORK-MANIFEST — דיוקן-העצמי של הרשת
 
-נוצר 2026-10-15T17:14:21.749Z · מנוע network-inventory/1.0 · מדוד מה-API של הגיט, אפס-המצאה.
+נוצר 2026-10-15T21:35:25.520Z · מנוע network-inventory/1.0 · מדוד מה-API של הגיט, אפס-המצאה.
 חוק-הבעלים (2026-10-13): "הרשת תבדוק את עצמה, תהיה מודעת לעצמה וליכולות הריבוניות האוטונומיות שלה, ותדע לזהות כל דבר חדש שהבעלים בונה."
 
 ## מה הרשת כוללת עכשיו
 
 - ריפואים: **39** (פומביים 14 · פרטיים 25 מוסרים ל-ref-יציב)
 - workflows: **319** · קבצי-מנוע/סוכן: **848**
-- מצב: פעילים 31 · דוממים (48h+) 22 · נכשלים-אחרון 81
+- מצב: פעילים 31 · דוממים (48h+) 23 · נכשלים-אחרון 78
 - מצב-מדידה: **FULL**
 
 ## מה נתגלה מאז המדידה הקודמת (מודעות לחדש)
@@ -20,26 +20,26 @@
 
 | ריפו | workflows | מנועים | יכולות | פעילות-אחרונה | דומם | נכשל |
 |---|---|---|---|---|---|---|
-| `Console` | 22 | 17 | dex,grid,artery,content,economy,verify,retro | 2026-10-15 17:12Z | 2 | 1 |
-| `sovereign-beacon` | 2 | 0 | artery,decider | 2026-10-15 17:11Z | 1 | — |
-| `Domain` | 95 | 333 | dex,grid,office,wallet,artery,decider,content,economy,intake,witness,verify,retro | 2026-10-15 17:11Z | 11 | 4 |
-| `Autonomy` | 41 | 49 | grid,office,wallet,artery,decider,economy,intake,witness,verify,retro | 2026-10-15 17:12Z | 1 | 3 |
-| `priv-h8068b020` 🔒 | 13 | 79 | dex,wallet,artery,decider,content,witness,verify,retro | 2026-10-13 10:53Z | — | 10 |
-| `priv-h54671ac9` 🔒 | 3 | 0 | verify | 2026-10-15 11:41Z | — | 2 |
-| `FleetHQ` | 20 | 4 | grid,office,artery,decider,intake,verify,retro | 2026-10-15 17:06Z | — | — |
-| `saos-runtime` | 15 | 5 | grid,wallet,decider,content | 2026-10-15 17:03Z | 3 | — |
+| `Autonomy` | 41 | 49 | grid,office,wallet,artery,decider,economy,intake,witness,verify,retro | 2026-10-15 21:33Z | 2 | — |
+| `FleetHQ` | 20 | 4 | grid,office,artery,decider,intake,verify,retro | 2026-10-15 21:32Z | — | — |
+| `saos-runtime` | 15 | 5 | grid,wallet,decider,content | 2026-10-15 21:30Z | 3 | — |
+| `Pulse` | 4 | 2 | artery,decider,content,verify | 2026-10-15 21:30Z | — | — |
 | `priv-heda61fc2` 🔒 | 8 | 40 | office,wallet,decider,content,intake,witness,verify,retro | 2026-10-14 03:17Z | — | 5 |
-| `Pulse` | 4 | 2 | artery,decider,content,verify | 2026-10-15 17:00Z | — | — |
-| `GridWatch` | 4 | 0 | grid,verify | 2026-10-15 16:59Z | — | — |
-| `sovereign-lighthouse` | 3 | 0 | artery,decider | 2026-10-15 17:13Z | 1 | — |
-| `giant` | 1 | 6 | artery,decider,witness | 2026-10-15 16:00Z | — | — |
+| `Domain` | 95 | 333 | dex,grid,office,wallet,artery,decider,content,economy,intake,witness,verify,retro | 2026-10-15 21:34Z | 11 | 4 |
+| `priv-h54671ac9` 🔒 | 3 | 0 | verify | 2026-10-15 11:41Z | — | 2 |
+| `Console` | 22 | 17 | dex,grid,artery,content,economy,verify,retro | 2026-10-15 21:34Z | 2 | 1 |
+| `sovereign-lighthouse` | 3 | 0 | artery,decider | 2026-10-15 21:34Z | 1 | — |
+| `priv-hea2461aa` 🔒 | 34 | 47 | grid,office,wallet,artery,decider,content,economy,witness,verify,retro | 2026-10-15 16:58Z | 1 | 15 |
+| `priv-h8068b020` 🔒 | 13 | 79 | dex,wallet,artery,decider,content,witness,verify,retro | 2026-10-13 10:53Z | — | 10 |
+| `ops-forge` | 1 | 2 | intake | 2026-10-15 21:13Z | — | — |
+| `GridWatch` | 4 | 0 | grid,verify | 2026-10-15 21:18Z | — | — |
 | `priv-h483d57f5` 🔒 | 10 | 43 | dex,grid,wallet,artery,decider,witness,verify,retro | 2026-10-15 01:11Z | — | 9 |
 | `priv-hb3fe6cc4` 🔒 | 3 | 0 | verify | 2026-10-13 04:37Z | — | 3 |
-| `priv-hea2461aa` 🔒 | 34 | 47 | grid,office,wallet,artery,decider,content,economy,witness,verify,retro | 2026-10-15 16:58Z | 1 | 15 |
-| `ops-intake` | 1 | 5 | intake | 2026-10-15 14:41Z | — | — |
-| `priv-h7d07bc4a` 🔒 | 0 | 0 | — | מעולם-לא | — | — |
+| `giant` | 1 | 6 | artery,decider,witness | 2026-10-15 20:45Z | — | — |
+| `sovereign-beacon` | 2 | 0 | artery,decider | 2026-10-15 20:25Z | 1 | — |
 | `priv-h68f58d82` 🔒 | 4 | 0 | decider,verify,retro | 2026-10-13 02:12Z | 1 | 3 |
-| `ops-forge` | 1 | 2 | intake | 2026-10-15 12:48Z | — | — |
+| `ops-intake` | 1 | 5 | intake | 2026-10-15 18:53Z | — | — |
+| `priv-h7d07bc4a` 🔒 | 0 | 0 | — | מעולם-לא | — | — |
 | `priv-h469de745` 🔒 | 0 | 0 | wallet | מעולם-לא | — | — |
 | `priv-hd31e424c` 🔒 | 0 | 0 | — | מעולם-לא | — | — |
 | `roshpinacare-sys.github.io` | 1 | 0 | — | 2026-10-14 20:07Z | — | — |
@@ -62,30 +62,31 @@
 
 ## דורש-תשומת-לב (הרשת רואה ומצהירה, לא משתיקה)
 
-- דוממים (22):
-  - `Console` ← `gitleaks.yml` (ראן אחרון לפני 221.8h)
-  - `Console` ← `workflow-yaml-guard.yml` (ראן אחרון לפני 221.8h)
-  - `sovereign-beacon` ← `pages-build-deployment` (ראן אחרון לפני 78.1h)
-  - `Domain` ← `adsmarket-panel.yml` (ראן אחרון לפני 75.7h)
-  - `Domain` ← `audience-analyst.yml` (ראן אחרון לפני 155.5h)
-  - `Domain` ← `canary.yml` (ראן אחרון לפני 179.4h)
-  - `Domain` ← `cloud-heart.yml` (ראן אחרון לפני 221.7h)
-  - `Domain` ← `content-truth-wave.yml` (ראן אחרון לפני 317.6h)
-  - `Domain` ← `evo-windows.yml` (ראן אחרון לפני 90.1h)
-  - `Domain` ← `social-audit.yml` (ראן אחרון לפני 156.6h)
-  - `Domain` ← `steem-posting-repair.yml` (ראן אחרון לפני 87.6h)
-  - `Domain` ← `token-forge.yml` (ראן אחרון לפני 91.5h)
-  - `Domain` ← `vault-transfer.yml` (ראן אחרון לפני 286.4h)
-  - `Domain` ← `workflow-yaml-guard.yml` (ראן אחרון לפני 221.4h)
+- דוממים (23):
+  - `Autonomy` ← `research-lane.yml` (ראן אחרון לפני 72.1h)
   - `Autonomy` ← `retro.yml` (מעולם-לא-רץ)
-  - `saos-runtime` ← `escrow-payroll.yml` (ראן אחרון לפני 85.8h)
-  - `saos-runtime` ← `gen2-rotation.yml` (ראן אחרון לפני 73.5h)
-  - `saos-runtime` ← `owner-key-adopt.yml` (ראן אחרון לפני 72.4h)
-  - `sovereign-lighthouse` ← `pages-build-deployment` (ראן אחרון לפני 78h)
+  - `saos-runtime` ← `escrow-payroll.yml` (ראן אחרון לפני 90.2h)
+  - `saos-runtime` ← `gen2-rotation.yml` (ראן אחרון לפני 77.9h)
+  - `saos-runtime` ← `owner-key-adopt.yml` (ראן אחרון לפני 76.8h)
+  - `Domain` ← `adsmarket-panel.yml` (ראן אחרון לפני 80h)
+  - `Domain` ← `audience-analyst.yml` (ראן אחרון לפני 159.9h)
+  - `Domain` ← `canary.yml` (ראן אחרון לפני 183.8h)
+  - `Domain` ← `cloud-heart.yml` (ראן אחרון לפני 226.1h)
+  - `Domain` ← `content-truth-wave.yml` (ראן אחרון לפני 321.9h)
+  - `Domain` ← `evo-windows.yml` (ראן אחרון לפני 94.4h)
+  - `Domain` ← `social-audit.yml` (ראן אחרון לפני 161h)
+  - `Domain` ← `steem-posting-repair.yml` (ראן אחרון לפני 91.9h)
+  - `Domain` ← `token-forge.yml` (ראן אחרון לפני 95.9h)
+  - `Domain` ← `vault-transfer.yml` (ראן אחרון לפני 290.7h)
+  - `Domain` ← `workflow-yaml-guard.yml` (ראן אחרון לפני 225.7h)
+  - `Console` ← `gitleaks.yml` (ראן אחרון לפני 226.2h)
+  - `Console` ← `workflow-yaml-guard.yml` (ראן אחרון לפני 226.2h)
+  - `sovereign-lighthouse` ← `pages-build-deployment` (ראן אחרון לפני 82.3h)
   - `priv-hea2461aa` ← `sovereign-invariants.yml` (מעולם-לא-רץ)
+  - `sovereign-beacon` ← `pages-build-deployment` (ראן אחרון לפני 82.5h)
   - `priv-h68f58d82` ← `sovereign-invariants-i38.yml` (מעולם-לא-רץ)
-  - `priv-ha63e8e09` ← `pages-build-deployment` (ראן אחרון לפני 89.6h)
-- ראן-אחרון-נכשל (81): `Console`←`estate-scrub.yml`, `Domain`←`dex-mirror.yml`, `Domain`←`estate-scrub.yml`, `Domain`←`exposure-gate.yml`, `Domain`←`treasury-route.yml`, `Autonomy`←`artery-decision-truth.yml`, `Autonomy`←`artery-participation.yml`, `Autonomy`←`fleet-yield.yml`, `priv-h8068b020`←`fleet-audit.yml`, `priv-h8068b020`←`gitleaks.yml`, `priv-h8068b020`←`weave-anchor-lines.yml`, `priv-h8068b020`←`weave-brain-restore.yml`, `priv-h8068b020`←`weave-ecosystem.yml`, `priv-h8068b020`←`weave-heart.yml`, `priv-h8068b020`←`web-probe.yml`, `priv-h8068b020`←`web-probe2.yml`, `priv-h8068b020`←`web-publish.yml`, `priv-h8068b020`←`workflow-yaml-guard.yml`, `priv-h54671ac9`←`gitleaks.yml`, `priv-h54671ac9`←`workflow-yaml-guard.yml` ...
+  - `priv-ha63e8e09` ← `pages-build-deployment` (ראן אחרון לפני 94h)
+- ראן-אחרון-נכשל (78): `priv-heda61fc2`←`gitleaks.yml`, `priv-heda61fc2`←`social-cadence.yml`, `priv-heda61fc2`←`sovereign-cycle.yml`, `priv-heda61fc2`←`ci-probe.yml`, `priv-heda61fc2`←`token-forge.yml`, `Domain`←`dex-mirror.yml`, `Domain`←`estate-scrub.yml`, `Domain`←`exposure-gate.yml`, `Domain`←`treasury-route.yml`, `priv-h54671ac9`←`gitleaks.yml`, `priv-h54671ac9`←`workflow-yaml-guard.yml`, `Console`←`estate-scrub.yml`, `priv-hea2461aa`←`artery-catchup.yml`, `priv-hea2461aa`←`artery-decision-truth.yml`, `priv-hea2461aa`←`artery-flow.yml`, `priv-hea2461aa`←`artery-grid.yml`, `priv-hea2461aa`←`artery-integrity.yml`, `priv-hea2461aa`←`artery-scribe.yml`, `priv-hea2461aa`←`artery-wallet.yml`, `priv-hea2461aa`←`compute-canary.yml` ...
 
 ## חוקי-כנות של הדיוקן הזה
 
