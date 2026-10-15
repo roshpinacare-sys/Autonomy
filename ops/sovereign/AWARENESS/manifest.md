@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T09:23:17.818Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T09:38:16.292Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -25,7 +25,7 @@
 - [DEFECT] Domain/pages build and deployment @ 2026-10-14T23:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/grid-sentinel @ 2026-10-14T21:55 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-10-14T20:19 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/sovereign-state @ 2026-10-15T09:07 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/sovereign-state @ 2026-10-15T09:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-15T08:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-defi @ 2026-10-15T08:45 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-15T08:20 — autonomy triage: read the log, fix root, land, verify
