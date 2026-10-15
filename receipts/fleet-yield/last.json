@@ -1,27 +1,123 @@
 {
   "schema": "fleet-yield/1",
-  "at": "2026-10-15T01:12:07.443Z",
-  "verdict": "SELFTEST-GATE-RED",
-  "engineHead": "14002b3c8e75",
+  "at": "2026-10-15T02:25:59.414Z",
+  "verdict": "INTEL-OK",
+  "engineHead": "7d886d0008d8",
   "selftest": {
-    "passed": 1821,
+    "passed": 1822,
     "total": 1822,
-    "status": "FAIL",
-    "code": 1,
-    "timedOut": false
+    "status": "PASS"
   },
-  "tail": [
-    "{\"ev\":\"saos.llm_chain.candidate_failed\",\"purpose\":\"drill\",\"candidate\":\"drill-forced-fail\",\"errorClass\":\"unknown\"}",
-    "{\"ev\":\"saos.llm_chain.selected\",\"purpose\":\"drill\",\"selected\":\"drill-provider-1t\",\"ms\":0}",
-    "SELFTEST 1821/1822 FAIL",
-    "(node:2496) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/Autonomy/Autonomy/fleet-engine/src/lib/llm-chain.ts is not specified and it doesn't parse as CommonJS.",
-    "Reparsing as ES module because module syntax was detected. This incurs a performance overhead.",
-    "To eliminate this warning, add \"type\": \"module\" to /home/runner/work/Autonomy/Autonomy/fleet-engine/package.json.",
-    "(Use `node --trace-warnings ...` to show where the warning was created)",
-    "FAIL 49.49 receipt fixtures cleaned by readback (the REAL state ledger is never written by this selftest)"
-  ],
+  "state": {
+    "vestsPerSP": 1612.022315,
+    "tvs": 325241891860.9247,
+    "tvf": 201760167.231,
+    "head": "110449324"
+  },
+  "voter": {
+    "account": "acct-00",
+    "status": "read-ok",
+    "vestsEff": 4530889.323762,
+    "vpEff": 40.9,
+    "votesRead": "get_account_history:100x5",
+    "recentVotes": [
+      {
+        "k": "treasure01/the-diary-game-my-daily-activities-from-a-busy-day-at-school-to-intense-studying-at-home-14-11-26",
+        "w": 5495,
+        "at": "2026-10-15T01:43:06"
+      },
+      {
+        "k": "minisupportive/minisupportive-report-2026-10-14-20261015t001357z",
+        "w": 5809,
+        "at": "2026-10-15T01:43:03"
+      },
+      {
+        "k": "love-speeder/how-i-have-doubled-90-000-steem-within-57-days-for-you-20261015t011324",
+        "w": 6714,
+        "at": "2026-10-15T01:42:57"
+      }
+    ]
+  },
+  "candidates": {
+    "scanned": 480,
+    "selected": [
+      {
+        "author": "steemburnup",
+        "permlink": "burn-pool-1792029830588",
+        "weight": 6814,
+        "ageMinutes": 22,
+        "tag": "steem"
+      },
+      {
+        "author": "stefant2007",
+        "permlink": "selfnote-14-10-26",
+        "weight": 6720,
+        "ageMinutes": 28,
+        "tag": "steem"
+      },
+      {
+        "author": "kryptonita",
+        "permlink": "standard-chartered-abre-custodio-de-bitcoin-en-eau-y-yo-revi-mv8uxvre",
+        "weight": 6239,
+        "ageMinutes": 60,
+        "tag": "crypto"
+      }
+    ],
+    "rejectedTop": [
+      "abandi/are-investments-into-steem-a-good-choice-20261015t022204:too-young",
+      "swan1/45pknl-cm:short-body",
+      "fuli/fuli-freebooming-10-15-2026:short-body",
+      "btcstmtrckr/market-update-1792028946:short-body",
+      "love-speeder/how-i-have-doubled-90-000-steem-within-57-days-for-you-20261015t011324:day-cap",
+      "anfcjfja/6wq6bv:spam-title",
+      "votebroker/daily-fees-2026-10-15:day-cap",
+      "tagai-sync3/coe0f9f3710ca86467e4:short-body",
+      "minisupportive/minisupportive-report-2026-10-14-20261015t001357z:day-cap",
+      "the.journal/global-capital-reallocation-amidst-persistent-rate-expectations-1792023033:crowded",
+      "steemburnup/burn-pool-1792022630544:author-cap",
+      "cryptocoinkb/cryptocoinkb-1792022510:crowded",
+      "pixel-craft/pixelcraft-daily-20261015-1792022449216:day-cap",
+      "new.chain-stats/steem-blockchain-report-2026-10-15-680b88h0:day-cap"
+    ],
+    "rejectedCount": 436,
+    "crowded": 2,
+    "dayCapReached": true,
+    "votedOnChain": [],
+    "dedup": "on-chain"
+  },
+  "laws": {
+    "maxPostVotes": 100,
+    "maxPerDay": 30,
+    "ageWindow": [
+      10,
+      240
+    ],
+    "minVpEffPct": 35,
+    "weights": [
+      70,
+      35
+    ],
+    "ref": "docs/measured/t35-probe.json — SP/G-rshares peak 0.000416 @10-30 votes · -55% @150+ (T-35, 96 chain ops)"
+  },
+  "capitalPolicy": {
+    "check": "MEASURED",
+    "decidedAt": "2026-10-15T00:06:57Z",
+    "keepFloorSp": 2800,
+    "operatorsWatched": 13,
+    "treasuryNetSp": 2810.7,
+    "treasuryAboveFloor": true,
+    "operatorsBelowFloor": [
+      "acct-10:70SP<75",
+      "acct-11:17SP<30",
+      "acct-12:17SP<30",
+      "acct-13:17SP<30",
+      "acct-09:12SP<20"
+    ],
+    "floorAlert": true
+  },
+  "tookMs": 14650,
   "chain": {
-    "prev": "512473456761e4004af30f824c9b40bd2d6858c5c4d5348af9af932f5480c7e4",
-    "cur": "544ffce221c9794ea95176dd9abe8cfacdf4704520731de7bd883e4d3af81120"
+    "prev": "544ffce221c9794ea95176dd9abe8cfacdf4704520731de7bd883e4d3af81120",
+    "cur": "be2fe11129c74fa8b7b668e30d2dad26d519f68f3a3051ff51aca8d2d9335218"
   }
 }
