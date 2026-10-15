@@ -1,27 +1,27 @@
 {
   "schema": "fleet-yield/1",
-  "at": "2026-10-15T00:00:50.786Z",
+  "at": "2026-10-15T00:30:00.084Z",
   "verdict": "SELFTEST-GATE-RED",
   "engineHead": "14002b3c8e75",
   "selftest": {
-    "passed": 1820,
+    "passed": 1821,
     "total": 1822,
     "status": "FAIL",
     "code": 1,
     "timedOut": false
   },
   "tail": [
-    "{\"ev\":\"saos.llm_chain.selected\",\"purpose\":\"drill\",\"selected\":\"drill-provider-1t\",\"ms\":1}",
-    "SELFTEST 1820/1822 FAIL",
-    "FAIL rs-rebuild healed-state-blocks-interval",
-    "(node:2285) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/Autonomy/Autonomy/fleet-engine/src/lib/llm-chain.ts is not specified and it doesn't parse as CommonJS.",
+    "{\"ev\":\"saos.llm_chain.candidate_failed\",\"purpose\":\"drill\",\"candidate\":\"drill-forced-fail\",\"errorClass\":\"unknown\"}",
+    "{\"ev\":\"saos.llm_chain.selected\",\"purpose\":\"drill\",\"selected\":\"drill-provider-1t\",\"ms\":0}",
+    "SELFTEST 1821/1822 FAIL",
+    "(node:2483) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/Autonomy/Autonomy/fleet-engine/src/lib/llm-chain.ts is not specified and it doesn't parse as CommonJS.",
     "Reparsing as ES module because module syntax was detected. This incurs a performance overhead.",
     "To eliminate this warning, add \"type\": \"module\" to /home/runner/work/Autonomy/Autonomy/fleet-engine/package.json.",
     "(Use `node --trace-warnings ...` to show where the warning was created)",
     "FAIL 49.49 receipt fixtures cleaned by readback (the REAL state ledger is never written by this selftest)"
   ],
   "chain": {
-    "prev": "a0ce3eab88b982f185f996436b41e28cfeffc9ab70127a0e8e31398d3ce3b8d4",
-    "cur": "1b40f3211a1939a512e9b5c1f6be14bda57c774deffd86e833d6a2528c84f229"
+    "prev": "1b40f3211a1939a512e9b5c1f6be14bda57c774deffd86e833d6a2528c84f229",
+    "cur": "512473456761e4004af30f824c9b40bd2d6858c5c4d5348af9af932f5480c7e4"
   }
 }
