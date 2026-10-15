@@ -1,18 +1,18 @@
 # profit-oracle — פסק-רווחיות-עדכני (פעימה-יומית, אפס-מפתחות)
 
-> נמדד: 2026-10-15T13:46:51.361Z · מפעיל: workflow_dispatch · בדיקות: 3 ירוק · 0 כתום · 0 אדום · 0 לא-ידוע
+> נמדד: 2026-10-15T13:57:47.836Z · מפעיל: workflow_dispatch · בדיקות: 3 ירוק · 0 כתום · 0 אדום · 0 לא-ידוע
 
 ## ➖ דלתא-רווחיות: FLAT
 
-- netWorth (own-SP×mid + נזיל-SBD + נזיל-STEEM×mid): **482.346 SBD-equiv**
-- דלתא מול-הריצה-הקודמת: **+0.096%** (חוק: > +0.5% = PROFIT · ±0.5% = FLAT · < −0.5% = LOSS)
+- netWorth (own-SP×mid + נזיל-SBD + נזיל-STEEM×mid): **482.347 SBD-equiv**
+- דלתא מול-הריצה-הקודמת: **+0%** (חוק: > +0.5% = PROFIT · ±0.5% = FLAT · < −0.5% = LOSS)
 - own-SP **4295.5** · eff-SP **3441.3** · נזיל **17.456 STEEM + 45.388 SBD** · mid **0.10131**
 - גריד: verdict **EDGE-NEGATIVE-GRID-HOLD** · postLaw.edgePct **-3%** (חוק-השולחן: ≥+1% = מותר-להציב)
 - סולם-פתוח: **62.405 SBD** על **6 פקודות** (תת-סולם-זומבי: 31.134 SBD)
 
 | בדיקה | פסק | ראיות | הערה |
 |---|---|---|---|
-| 🟢 V-WORTH | GREEN | own 4295.5 · eff 3441.3 · mid 0.10131 · netWorth 482.346 | 🟢 שווי-חי: own-SP 4295.5 · eff-SP 3441.3 · נזיל 17.456 STEEM + 45.388 SBD · mid 0.10131 → |
+| 🟢 V-WORTH | GREEN | own 4295.5 · eff 3441.3 · mid 0.10131 · netWorth 482.347 | 🟢 שווי-חי: own-SP 4295.5 · eff-SP 3441.3 · נזיל 17.456 STEEM + 45.388 SBD · mid 0.10131 → |
 | 🟢 V-GRID-EDGE | GREEN | EDGE-NEGATIVE-GRID-HOLD · edge -3% · realized -0.388666 SBD | 🟢 השולחן נמדד: verdict=EDGE-NEGATIVE-GRID-HOLD · postLaw.edgePct=-3% · lifetime.realizedS |
 | 🟢 V-ZOMBIE-LADDER | GREEN | 6 פקודות · 62.405 SBD (זומבי 31.134 SBD ×3) | 🟢 סולם-עומד: 6 פקודות · 62.405 SBD פתוח (מהם זומבי 31.134 SBD @≤0.0995) — יציב או מתמלא |
 
