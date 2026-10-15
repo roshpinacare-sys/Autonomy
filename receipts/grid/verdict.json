@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-15T01:11:57.976Z",
+  "measuredAt": "2026-10-15T02:25:32.116Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -15,10 +15,10 @@
     },
     {
       "id": "law-grid-fresh",
-      "ok": false,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 425min)",
+      "ok": true,
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 10min)",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
@@ -36,20 +36,20 @@
     }
   ],
   "alerts": [],
-  "overall": "FAIL",
-  "reason": "grid-law failed: law-grid-fresh,law-grid-exec-alive",
+  "overall": "BLOCKED",
+  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
   "provenance": {
-    "stateBlobSha": "d80d1d0f7d765532c6db79eff5ca26f0298e1aa9",
+    "stateBlobSha": "607c780351fbfe1f481118a7fc9d887e857c9707",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "38664317693",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38664317693",
-    "sha": "15867169f1005fa159898101eb79d7b1dbd8dbaf"
+    "runId": "38670898931",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38670898931",
+    "sha": "431054bcde1bbfa39fcd661c026b7b776b594fc4"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-14T18:07:25.462Z",
-    "ageMin": 425,
-    "ticks": 5683,
+    "lastTickAt": "2026-10-15T02:15:45.167Z",
+    "ageMin": 10,
+    "ticks": 5743,
     "lastVerdict": "CREDENTIAL-MISSING",
     "opsToday": 0,
     "lastTxid": null
