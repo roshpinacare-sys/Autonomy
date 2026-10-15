@@ -1,14 +1,14 @@
-# דוח-שומר-השלמות — 2026-10-15T18:28:07.136Z
+# דוח-שומר-השלמות — 2026-10-15T21:01:13.417Z
 
 **פסק-דין: PASS** · מקורות=11 · טענות-שאומתו=6 · ממצאים=9
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=38773337949 conc=success repo=Autonomy
-- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38779070504 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=38779070504 conc=success repo=FleetHQ
+- ✅ `self:ops/integrity/verdict.json` — run=38785834442 conc=success repo=Autonomy
+- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38800179890 conc=success repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38800179890 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=38776387664 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=38773328189 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=38774574388 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38793106788 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38785304941 conc=success repo=Autonomy
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
 - **FLAG** `Sandbox:receipts/wallet/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
