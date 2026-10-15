@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-14T23:54:07.116Z",
+  "at": "2026-10-15T00:00:40.783Z",
   "repos": {
     "steem-cockpit": {
       "head": "14002b3c8e75eb01932b4d04a3ee367aeac91a8d",
@@ -12,7 +12,7 @@
       "reason": "engineSelftest failed: {\"ev\":\"saos.llm_chain.selected\",\"purpose\":\"drill\",\"selected\":\"drill-provider-1t\",\"ms\":0} |  | SELFTEST 1821/1822 FAIL | "
     },
     "saos-dex": {
-      "head": "70bb4b1dcd9564c5430dd54d34103e684c08fa72",
+      "head": "0ddfd43f1b0ed650158a145c9f16b5461b1420d5",
       "overall": "FAIL",
       "checks": {
         "install": "pass",
@@ -42,20 +42,20 @@
     }
   },
   "alerts": [
-    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-WqQ6nm/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-WqQ6nm/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-WqQ6nm/saos-wallet/tools/vault-zk-check.ts",
+    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Pc2cAW/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-Pc2cAW/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Pc2cAW/saos-wallet/tools/vault-zk-check.ts",
     "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
   "overall": "FAIL",
   "reason": "steem=FAIL · saos-dex=FAIL · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "38656851993",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38656851993",
-    "sha": "5bd8b5011aae4b9718da8ab07e3c681af4392c8c"
+    "runId": "38657486019",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38657486019",
+    "sha": "be2319683bfd5a9f76810516dd820c3d25ea136e"
   },
   "details": [
     {
-      "at": "2026-10-14T23:54:07.116Z",
+      "at": "2026-10-15T00:00:40.783Z",
       "slug": "roshpinacare-sys/steem",
       "head": "14002b3c8e75eb01932b4d04a3ee367aeac91a8d",
       "checks": {
@@ -67,7 +67,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-WqQ6nm/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-WqQ6nm/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+          "detail": "gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Pc2cAW/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-Pc2cAW/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
         },
         {
           "id": "law-no-skipped-pass",
@@ -86,15 +86,15 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-WqQ6nm/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-WqQ6nm/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+        "law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Pc2cAW/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-Pc2cAW/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
       ],
       "overall": "FAIL",
       "reason": "engineSelftest failed: {\"ev\":\"saos.llm_chain.selected\",\"purpose\":\"drill\",\"selected\":\"drill-provider-1t\",\"ms\":0} |  | SELFTEST 1821/1822 FAIL | "
     },
     {
-      "at": "2026-10-14T23:54:07.116Z",
+      "at": "2026-10-15T00:00:40.783Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "70bb4b1dcd9564c5430dd54d34103e684c08fa72",
+      "head": "0ddfd43f1b0ed650158a145c9f16b5461b1420d5",
       "checks": {
         "install": "pass",
         "typecheck": "fail"
@@ -126,7 +126,7 @@
       "reason": "typecheck failed: st on type '{}'. | src/app/api/dex/desk-ledger/route.ts(81,64): error TS2339: Property 'positionId' does not exist on type '{}'. | src/app/api/dex/desk-ledger/route.ts(84,24): error TS2339: Property 'prevSig' does not exist on type '{}'. | "
     },
     {
-      "at": "2026-10-14T23:54:07.116Z",
+      "at": "2026-10-15T00:00:40.783Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "83555a78cfab2da69b1a8bbb682559062566d8f0",
       "checks": {
@@ -159,7 +159,7 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-14T23:54:07.116Z",
+      "at": "2026-10-15T00:00:40.783Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
       "head": "d61db0813607c11a3a573754a124b47904c557d8",
       "checks": {},
@@ -167,7 +167,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-WqQ6nm/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Pc2cAW/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
@@ -211,14 +211,14 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-WqQ6nm/saos-wallet/tools/vault-zk-check.ts",
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Pc2cAW/saos-wallet/tools/vault-zk-check.ts",
         "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-14T23:54:07.116Z",
+      "at": "2026-10-15T00:00:40.783Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "43e5ba5a701b8c204f6e0b9937326b6fa4428a47",
       "checks": {},
