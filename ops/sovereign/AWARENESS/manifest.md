@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T11:34:20.613Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T11:43:35.223Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -25,16 +25,15 @@
 - [DEFECT] Domain/pages build and deployment @ 2026-10-14T23:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/grid-sentinel @ 2026-10-14T21:55 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-10-14T20:19 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/sovereign-state @ 2026-10-15T11:28 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-15T11:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-15T11:18 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/sovereign-state @ 2026-10-15T11:14 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-15T10:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/profit-oracle @ 2026-10-15T10:09 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-15T09:51 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-defi @ 2026-10-15T08:45 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-desk @ 2026-10-15T01:37 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-grid @ 2026-10-15T01:11 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-15T01:11 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-ci @ 2026-10-15T01:41 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/.github/workflows/office-heartbeat.yml @ 2026-10-14T16:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/opens-closer @ 2026-10-14T15:00 — autonomy triage: read the log, fix root, land, verify
