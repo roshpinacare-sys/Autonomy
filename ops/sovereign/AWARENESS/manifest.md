@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T18:41:20.756Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T19:06:48.743Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -19,13 +19,12 @@
 - [DEFECT] Domain/dex-mirror @ 2026-10-15T17:23 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-15T15:33 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-15T06:31 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/sovereign-state @ 2026-10-15T18:19 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/sovereign-state @ 2026-10-15T18:48 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-15T16:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-15T16:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-15T15:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-15T12:52 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/profit-oracle @ 2026-10-15T12:30 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-ci @ 2026-10-15T01:41 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] FleetHQ/.github/workflows/office-heartbeat.yml @ 2026-10-14T16:44 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
