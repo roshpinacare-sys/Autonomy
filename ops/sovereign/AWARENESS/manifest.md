@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T02:00:43.786Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-15T02:38:44.561Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -23,13 +23,13 @@
 - [DEFECT] Domain/pages build and deployment @ 2026-10-14T23:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/grid-sentinel @ 2026-10-14T21:55 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-10-14T20:19 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-15T02:25 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-15T01:52 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-15T01:51 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-desk @ 2026-10-15T01:37 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-15T01:30 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-grid @ 2026-10-15T01:11 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-fleet @ 2026-10-15T01:11 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-15T01:11 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/identity-guard @ 2026-10-14T16:18 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/sovereign-state @ 2026-10-14T15:51 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-ci @ 2026-10-15T01:41 — autonomy triage: read the log, fix root, land, verify
