@@ -80,7 +80,7 @@ jobs:
             gate: "chirp — the canary lives in the public artery run log (walled repo, wall bypassed by covenant)",
           };
           writeFileSync("fleet/canary/receipt.json", JSON.stringify(receipt, null, 2) + "\n");
-          console.log("defi fleet truth measured:", JSON.stringify({ kpiSha16, ladder: receipt.ladder, revenue: receipt.revenuePerDayRealUsd, snapshotToday, historyCount: receipt.historyCount }));
+          console.log("defi fleet truth measured:", JSON.stringify({ kpiSha16, ladder: receipt.ladder, revenue: receipt.revenuePerDayRealUsd, snapshotToday: snapshotted, historyCount: receipt.historyCount }));
           NODE
           git config user.name "roshpinacare-sys"
           git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
