@@ -1,10 +1,14 @@
-# דוח-שומר-השלמות — 2026-10-16T11:47:59.703Z
+# דוח-שומר-השלמות — 2026-10-16T12:39:52.629Z
 
-**פסק-דין: PASS** · מקורות=11 · טענות-שאומתו=2 · ממצאים=10
+**פסק-דין: PASS** · מקורות=11 · טענות-שאומתו=6 · ממצאים=9
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=38881655686 conc=success repo=Autonomy
-- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38895981806 conc=success repo=FleetHQ
+- ✅ `self:ops/integrity/verdict.json` — run=38896147680 conc=success repo=Autonomy
+- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38901945773 conc=success repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38897336945 conc=success repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38896686622 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38896285803 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38866555806 conc=success repo=Autonomy
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
 - **FLAG** `Sandbox:receipts/wallet/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
@@ -13,8 +17,7 @@
 - **FLAG** `Sandbox:receipts/latest.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:ops/flow/receipt.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:state/verifier/verdict-latest.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
-- **FLAG** `Domain:office/data.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
-- **FLAG** `Domain:agents/office-live.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
+- **FLAG** `Domain:agents/office-live.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane
 - **FLAG** `Sandbox:ops/decision-truth/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 - **FLAG** `Sandbox:ops/integrity/verdict.json` — source-unreachable — raw 404 — דגל-כנה, לא-מילוי
 
