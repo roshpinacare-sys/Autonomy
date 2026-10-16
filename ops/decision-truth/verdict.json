@@ -1,26 +1,26 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-16T11:47:55Z",
- "durationMs": 1736,
+ "generatedAt": "2026-10-16T13:00:27Z",
+ "durationMs": 1880,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-16T09:43:47Z",
-  "stateAgeMin": 124,
+  "stateAgeMin": 197,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-16T09:43:32Z",
-   "ageS": 7462,
+   "ageS": 11814,
    "stalled": true
   }
  },
  "measures": {
   "chain": {
-   "head": 110489002,
-   "treasuryNetSp": 2810.8,
-   "mult": 0.0006203969361949689
+   "head": 110490446,
+   "treasuryNetSp": 2810.9,
+   "mult": 0.0006203990512124556
   },
   "beaconPulse": {
    "treasuryNetSp": 2810.8
@@ -33,6 +33,7 @@
    "ghosts": null
   },
   "workOrderIds": [
+   "WO-Domain-reds",
    "WO-Sandbox-reds",
    "WO-TruthRail-revive",
    "WO-saos-agents-revive",
@@ -50,7 +51,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 124min (limit 120)"
+     "detail": "state age 197min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -71,7 +72,7 @@
     {
      "law": "treasury-basis-fresh-measure",
      "result": "ok",
-     "detail": "claimed=2810.8 fresh=2810.8 tol=1"
+     "detail": "claimed=2810.8 fresh=2810.9 tol=1"
     },
     {
      "law": "beacon-vs-fresh",
@@ -101,7 +102,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 124min (limit 120)"
+     "detail": "state age 197min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -125,8 +126,8 @@
     },
     {
      "law": "fleethq-reds-persist",
-     "result": "mismatch",
-     "detail": "0 failure runs in 48h - WO-FleetHQ-reds satisfied, world moved past the decision - RE-MEASURE"
+     "result": "ok",
+     "detail": "failure runs in last 48h: 2 - routed WO-FleetHQ-reds subject persists (work pending)"
     },
     {
      "law": "faulted-agents-fix",
@@ -136,7 +137,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 124min (limit 120)"
+     "detail": "state age 197min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -162,7 +163,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 124min (limit 120)"
+     "detail": "state age 197min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -178,7 +179,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 124min (limit 120)"
+     "detail": "state age 197min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -194,18 +195,18 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 124min (limit 120)"
+     "detail": "state age 197min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
   }
  ],
  "provenance": {
-  "runId": "38896143772",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38896143772",
-  "sha": "390425632cf68197cc63c8a29f2d5bf5a20ddc65",
+  "runId": "38904554328",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38904554328",
+  "sha": "1c30c909b6846af41f4e02af720f066e97fd8881",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-16T11:47:55Z"
+  "generatedAt": "2026-10-16T13:00:27Z"
  },
  "selftest": {
   "vectors": 16,
