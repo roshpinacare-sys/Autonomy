@@ -1,50 +1,30 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-10-16T09:37:00.604Z",
+  "at": "2026-10-16T11:47:59.703Z",
   "overall": "PASS",
   "summary": {
     "sources": 11,
-    "verified": 6,
-    "findings": 9,
+    "verified": 2,
+    "findings": 10,
     "counts": {
-      "FLAG": 9
+      "FLAG": 10
     }
   },
   "provenance": {
-    "runId": "38881655686",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38881655686",
-    "sha": "5444c607ffdf23d98b4590faf307a54edf3c0961"
+    "runId": "38896147680",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38896147680",
+    "sha": "390425632cf68197cc63c8a29f2d5bf5a20ddc65"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=38866988626 conc=success repo=Autonomy"
+      "detail": "run=38881655686 conc=success repo=Autonomy"
     },
     {
       "where": "FleetHQ:receipts/office-ci/verdict.json",
       "law": "verified",
-      "detail": "run=38881518475 conc=success repo=FleetHQ"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=38879881325 conc=success repo=FleetHQ"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=38860797971 conc=success repo=Autonomy"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=38875026421 conc=success repo=Autonomy"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=38866555806 conc=success repo=Autonomy"
+      "detail": "run=38895981806 conc=success repo=FleetHQ"
     }
   ],
   "findings": [
@@ -86,9 +66,15 @@
     },
     {
       "level": "FLAG",
+      "where": "Domain:office/data.json",
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+    },
+    {
+      "level": "FLAG",
       "where": "Domain:agents/office-live.json",
-      "law": "unprovenanced",
-      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane"
+      "law": "source-unreachable",
+      "detail": "raw 404 — דגל-כנה, לא-מילוי"
     },
     {
       "level": "FLAG",
