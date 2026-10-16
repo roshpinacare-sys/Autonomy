@@ -1,13 +1,13 @@
-# דוח-שומר-השלמות — 2026-10-16T19:47:10.575Z
+# דוח-שומר-השלמות — 2026-10-16T21:28:08.650Z
 
 **פסק-דין: PASS** · מקורות=11 · טענות-שאומתו=6 · ממצאים=9
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=38940766950 conc=success repo=Autonomy
-- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38957239221 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=38956778219 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=38935686774 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=38956681194 conc=failure repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=38957429430 conc=success repo=Autonomy
+- ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=38969310619 conc=failure repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38967337372 conc=failure repo=FleetHQ
+- ✅ `Domain:office/data.json` — run=38959444332 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=38965522713 conc=success repo=Autonomy
 - ✅ `Domain:office/data.json` — run=38945359508 conc=success repo=Autonomy
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
