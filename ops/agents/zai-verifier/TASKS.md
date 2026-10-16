@@ -926,3 +926,9 @@
 - [CLOSED 2026-10-16T16:00:57.640Z] V-LOOP-FEDERATION — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-10-16T16:00:57.640Z] V-LOOP-FLEET-HEAL — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [OPEN] V-LOOP-FLEET-HEAL (DEGRADED @ 2026-10-16T16:30:29.716Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 46min ago > slot
+- [OPEN] V-LOOP-FEDERATION (DEGRADED @ 2026-10-16T17:00:01.574Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 35min ago > slot
+- [CLOSED 2026-10-16T17:00:01.574Z] V-LOOP-FLEET-HEAL — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-16T17:00:01.574Z] V-LOOP-ARTERY-DECISION-TRUTH — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-16T17:00:01.574Z] V-LOOP-ARTERY-WALLET — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-16T17:00:01.574Z] V-LOOP-ARTERY-PARTICIPATION — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-16T17:00:01.574Z] V-LOOP-ARTERY-FLOW — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
