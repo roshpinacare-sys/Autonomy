@@ -115,9 +115,23 @@ for (const t of targets()) {
   }
 
   // 2) דפוסי-איסור
+  // T-76 · חריגת-מניפסט מתוחמת: state/keys/REGISTRY.json הוא מניפסט-הכספת הריבוני —
+  //   תכליתו-המוצהרת לרשום *שמות*-חברי-הכספת (אפס-תוכן; הכללים האחרים עדיין חלים עליו
+  //   במלואם). כלל-ה-key-pointer נועד למנוע מ-*קבצי-המפתח עצמם* להיכנס לעץ — לא לעוור
+  //   את הרישום מהעדת על קיומם. בלי-החריגה: כל-טיק-מדינה נכשל exit-123 → אימייל-כשל
+  //   כל-~10 דקות → עייפות-התראות — הדבר-היחיד שבאמת הורג ריבונות-מתקנת-את-עצמה.
+  //   החריגה מודפסת (לא-שקטה) — ניתנת-לביקורת בכל לוג.
+  const normPath = t.split(path.sep).join("/");
+  const isVaultManifest = normPath.endsWith("state/keys/REGISTRY.json");
   const text = buf.toString("utf8");
   const lines = text.split("\n");
   for (const { kind, re } of PATTERNS) {
+    if (kind === "key-pointer" && isVaultManifest) {
+      console.log(
+        `[leak-scan] ⊘ key-pointer-מוקפץ-בחריגה על מניפסט-הכספת (שמות-בלבד): ${t}`,
+      );
+      continue;
+    }
     lines.forEach((line, i) => {
       re.lastIndex = 0;
       if (re.test(line)) hit(kind, t, i + 1);
