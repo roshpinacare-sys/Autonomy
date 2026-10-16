@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-16T11:36:25.080Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-16T12:09:41.419Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -10,19 +10,20 @@
 - אין-workflow-חדש מאז-המדידה-הקודמת
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
+- Domain: 95 workflows · schedule 83 · dispatch 94 · both 83 → **PASS**
 - Autonomy: 41 workflows · schedule 40 · dispatch 40 · both 40 → **PASS**
 - FleetHQ: 19 workflows · schedule 18 · dispatch 18 · both 18 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-16T12:08 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/treasury-route @ 2026-10-16T11:50 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/site-link-audit @ 2026-10-16T11:50 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-pulse @ 2026-10-16T11:07 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-worldbeat @ 2026-10-16T10:50 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-16T10:41 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/dex-mirror @ 2026-10-16T10:08 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/treasury-route @ 2026-10-16T08:42 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/estate-scrub @ 2026-10-16T05:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sovereign-state @ 2026-10-16T05:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-heartbeat @ 2026-10-16T10:33 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/opens-closer @ 2026-10-16T10:19 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-ci @ 2026-10-15T20:59 — autonomy triage: read the log, fix root, land, verify
 
-טעויות-מדידה: Domain workflows HTTP 404
+טעויות-מדידה: אף-אחד
