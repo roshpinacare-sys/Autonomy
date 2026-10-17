@@ -151,6 +151,7 @@ for (const e of best.entries) {
 mkdirSync(RECEIPT_DIR, { recursive: true });
 const consumed = [];
 for (const e of directives) {
+  const to = String(e.msg.to ?? "*"); // re-derive locally — filter-loop scope must not leak
   const ref = `d-${e.block}-${e.idx}`;
   const rf = join(RECEIPT_DIR, `${ref}.json`);
   if (existsSync(rf)) { consumed.push({ ref, already: true }); continue; } // git-native dedup
