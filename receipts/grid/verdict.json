@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-17T17:25:09.176Z",
+  "measuredAt": "2026-10-17T18:36:57.765Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -15,15 +15,15 @@
     },
     {
       "id": "law-grid-fresh",
-      "ok": false,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 169min)",
+      "ok": true,
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 14min)",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
       "ok": true,
-      "detail": "grid executable: lastVerdict=BROADCAST opsToday=199",
+      "detail": "grid executable: lastVerdict=BROADCAST opsToday=305",
       "severity": "fail",
       "verdict": "pass"
     },
@@ -36,22 +36,22 @@
     }
   ],
   "alerts": [],
-  "overall": "FAIL",
-  "reason": "grid-law failed: law-grid-fresh",
+  "overall": "PASS",
+  "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "da485392c1806557c859a1a6c54acb3db3bc460b",
+    "stateBlobSha": "3ca97ab4e436f7ed74d8ac6ba62465a1a8946c03",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "39053656428",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39053656428",
-    "sha": "aa220a34fa9e5e65808e24f911244d8399ac645c"
+    "runId": "39058868269",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39058868269",
+    "sha": "3a92305f1fcdbdac0c6e3fee4489a34977e024a5"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-17T14:36:04.240Z",
-    "ageMin": 169,
-    "ticks": 17143,
+    "lastTickAt": "2026-10-17T18:23:04.054Z",
+    "ageMin": 14,
+    "ticks": 17194,
     "lastVerdict": "BROADCAST",
-    "opsToday": 199,
-    "lastTxid": "5bada910b7a4510c1d57844737392ab323adeb89"
+    "opsToday": 305,
+    "lastTxid": "b073f08e5ac208f9006dc28d78f06d1927f5483d"
   }
 }
