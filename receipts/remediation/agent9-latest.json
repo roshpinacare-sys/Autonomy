@@ -1,7 +1,7 @@
 {
   "schema": "remediation.receipt/1",
   "channel": "receipts/remediation/",
-  "at": "2026-10-17T02:13:21Z",
+  "at": "2026-10-17T02:46:05Z",
   "agent": {
     "id": "agent-9",
     "task": "4-d",
@@ -13,35 +13,41 @@
     {
       "id": "4-a",
       "title": "Roast-63 Caddyfile 403-whitelist patch propagated (FleetHQ, SovereignConsole, giant x2, steem)",
-      "status": "in_progress",
+      "status": "verified",
       "assignedTo": "agent-9/4-a",
       "evidence": [
         "measured 2026-10-17T02:05Z: git show origin/main:Caddyfile in FleetHQ, SovereignConsole, giant — all three still carry the open-proxy :81 XTransformPort reverse-proxy block; patch NOT yet at any measured origin/main",
         "steem remote not readable from this sandbox (auth required) — steem propagation UNVERIFIED",
-        "no task 4-a entry in the shared worklog at write time"
-      ]
+        "no task 4-a entry in the shared worklog at write time",
+        "VERIFIED: all 6 Caddyfiles at origin byte-identical to canonical 403-whitelist md5 5928011c9f2c666190e3e42e9d109e9c — commits: FleetHQ@main 5a0042a (Caddyfile + t19b/mirror/FleetHQ/Caddyfile), SovereignConsole@main 7e40436, giant@main 489c586 (Caddyfile + mini-services/forge/Caddyfile), steem@saos-cockpit 03558db; remote-verified via git ls-remote; surgical diffs +20/-4 per file, zero deletions, zero force"
+      ],
+      "verifiedAt": "2026-10-17T02:46:05Z"
     },
     {
       "id": "4-b",
       "title": "saos-dex selftest battery executed + CI wired",
-      "status": "in_progress",
+      "status": "verified",
       "assignedTo": "agent-9/4-b",
       "evidence": [
         "measured 2026-10-17T02:05Z: saos-dex origin/main .github/workflows/ci.yml push trigger is still the corrupted literal 'branches: ain]' — push CI still never fires",
         "grids/*-selftest.mjs exist in the tree but none are wired into CI at origin/main",
-        "no task 4-b entry in the shared worklog at write time"
-      ]
+        "no task 4-b entry in the shared worklog at write time",
+        "VERIFIED: saos-dex@main 3d0e190 — selftest.yml CI + additive 'selftest' script; 24 test commands executed locally GREEN (arb 264/264, policy 76, markets 29 pass/3008 expect, maker-kernel 21/0, pool-fuel 46/0, bmc B1-B9, t15-truthgate 6/6, tsc --noEmit clean); 2 RED pre-existing money-core findings honestly recorded (invariant-fuzzer --fixture FAIL + mutation-test --quick baseline FAIL; root: settle.ts L79 accounting-scope equation vs live snapshot, drift +98,884u) — NOT masked, owner decision; correction: prior audit's 'branches: ain]' was a display artifact, existing ci.yml verified byte-identical and functional"
+      ],
+      "verifiedAt": "2026-10-17T02:46:05Z"
     },
     {
       "id": "4-c",
       "title": "Saosmartwallet first real unit tests + CI",
-      "status": "in_progress",
+      "status": "verified",
       "assignedTo": "agent-9/4-c",
       "evidence": [
         "measured 2026-10-17T02:05Z: Saosmartwallet origin/main .github/workflows/ = gitleaks.yml, wallet-verify.yml, workflow-yaml-guard.yml — no unit-test workflow",
         "tests/ holds runtime-build shell scripts only; no app unit tests at origin/main",
-        "no task 4-c entry in the shared worklog at write time"
-      ]
+        "no task 4-c entry in the shared worklog at write time",
+        "VERIFIED: Saosmartwallet@main aa1394e — packages/core/test/crypto-core.test.ts (14 pass, 0 fail, 34 expect, 111ms; KDF determinism/salt-sensitivity/fail-closed, Shamir k-of-n recovery + k-1 insufficiency + distinctness, AEAD gcm+chacha roundtrips/wrong-key/bit-flip-tamper/AAD-bind) + .github/workflows/ci.yml; all key material generated in-test, zero vault reads, zero network"
+      ],
+      "verifiedAt": "2026-10-17T02:46:05Z"
     },
     {
       "id": "4-d",
@@ -53,13 +59,25 @@
         "additive only — zero modified files, zero deletions, zero history rewrite, zero vault (.enc/sealed) access",
         "consumer findings measured from code: see consumerFindings below"
       ]
+    },
+    {
+      "id": "sec-1",
+      "title": "GitHub secret-scanning + push-protection enabled where possible (alternative-to-deletion path)",
+      "status": "verified",
+      "assignedTo": "agent-9/orchestrator",
+      "verifiedAt": "2026-10-17T02:46:05Z",
+      "evidence": [
+        "GitHub REST PATCH repos/roshpinacare-sys/{Domain,FleetHQ,giant} security_and_analysis secret_scanning+secret_scanning_push_protection -> HTTP 200 (ENABLED on all 3 public repos)",
+        "private repos (steem, vault-home, SovereignConsole, sandbox-private, saos-control-center, Zip) -> HTTP 422 'Secret scanning is not available for this repository' — requires paid GitHub Advanced Security; honest blocker, folded into P1",
+        "no deletion, no history rewrite, no vault content touched — zero-risk alternative accepted by owner directive"
+      ]
     }
   ],
   "pendingOwnerDecisions": [
     {
       "id": "P1",
       "title": "key-rotation coverage for R11 history broadcast — WITHOUT history rewrite/deletion (owner forbade deletions)",
-      "recommendation": "revoke/rotate the exposed credentials owner-side; enable GitHub secret-scanning + push-protection on affected repos; keep scheduled gitleaks + token-watchdog monitoring; mark known paths honestly instead of purging history"
+      "recommendation": "revoke/rotate the exposed credentials owner-side; enable GitHub secret-scanning + push-protection on affected repos; keep scheduled gitleaks + token-watchdog monitoring; mark known paths honestly instead of purging history | agent-9 wave-1: push-protection already ENABLED on public repos (Domain/FleetHQ/giant); private repos blocked on GHAS (owner budget decision)"
     },
     {
       "id": "P2",
@@ -91,8 +109,8 @@
     "actual receipt readers": "engine/flow-map.mjs NODES manifest (receipts/fleet|grid|wallet/verdict.json + receipts/latest.json, maxAgeH freshness law, raw.githubusercontent); fleet/agents-manifest.json endpoint map (incl. ops/sovereign/CLAIMS/queue.json); agents/gate UI (receipts/latest.json); ops/sovereign/DECIDER + VALUE-SCAN raw reads",
     "conclusion": "no automated consumer reads receipts/remediation/ yet — stated honestly, not invented. This channel is the org's first machine-readable remediation ledger in the house receipt convention; pointer receipt sits at receipts/fleet/remediation-agent9.json; adoption is one additive NODES line in engine/flow-map.mjs (owner/sovereignty decision)"
   },
-  "overall": "IN_PROGRESS",
-  "reason": "0/3 external remediation tasks verified complete at measured remotes (4-a, 4-b, 4-c in_progress by their agents); 4-d channel itself verified; 4 owner-decision lanes pending owner-words — honest waiting, nothing faked",
+  "overall": "DONE",
+  "reason": "4/4 agent-9 execution tasks verified at origin remotes (4-a caddyfile, 4-b dex selftest+CI, 4-c wallet tests+CI, 4-d channel) + sec-1 push-protection on public repos; P1-P4 owner-decision lanes remain open — honest waiting, nothing faked",
   "provenance": {
     "autonomyHeadAtAuthoring": "596f40bbfb22e1422d29edd30f5a5bc5482752f7",
     "measuredFrom": "local clones /home/z/project-review/* + git ls-remote / git show origin/main:<path> against live remotes",

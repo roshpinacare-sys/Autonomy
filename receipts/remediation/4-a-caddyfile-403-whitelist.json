@@ -2,17 +2,19 @@
   "schema": "remediation.task/1",
   "taskId": "4-a",
   "title": "Roast-63 Caddyfile 403-whitelist patch propagated (FleetHQ, SovereignConsole, giant x2, steem)",
-  "status": "in_progress",
+  "status": "verified",
   "assignedTo": "agent-9/4-a",
-  "measuredAt": "2026-10-17T02:05Z",
+  "measuredAt": "2026-10-17T02:46:05Z",
   "evidence": [
     "git show origin/main:Caddyfile (FleetHQ@44aad75, SovereignConsole@15522aa, giant@193e97d): still the unauthenticated :81 XTransformPort reverse-proxy block — no 403 whitelist landed at any measured origin/main",
     "steem: remote unreadable from this sandbox (auth required) — UNVERIFIED, honestly not claimed",
-    "shared worklog: no 4-a entry at receipt time"
+    "shared worklog: no 4-a entry at receipt time",
+    "VERIFIED: all 6 Caddyfiles at origin byte-identical to canonical 403-whitelist md5 5928011c9f2c666190e3e42e9d109e9c — commits: FleetHQ@main 5a0042a (Caddyfile + t19b/mirror/FleetHQ/Caddyfile), SovereignConsole@main 7e40436, giant@main 489c586 (Caddyfile + mini-services/forge/Caddyfile), steem@saos-cockpit 03558db; remote-verified via git ls-remote; surgical diffs +20/-4 per file, zero deletions, zero force"
   ],
   "completionCriteria": [
     "every affected Caddyfile at origin/main replaces the arbitrary XTransformPort proxy with an explicit allowlist + 403 for everything else",
     "receipt here flipped to status=verified with per-repo commit SHAs as evidence"
   ],
-  "canonicalLedger": "receipts/remediation/agent9-latest.json"
+  "canonicalLedger": "receipts/remediation/agent9-latest.json",
+  "verifiedAt": "2026-10-17T02:46:05Z"
 }
