@@ -1,0 +1,18 @@
+{
+  "schema": "remediation.task/1",
+  "taskId": "10-b/wave-7",
+  "title": "liveness self-healing + watchdog truth restored + agent memory persisted into git",
+  "status": "verified",
+  "assignedTo": "agent-9/10-b",
+  "measuredAt": "2026-10-17T21:15:00Z",
+  "evidence": [
+    "full item lives in the canonical ledger receipts/remediation/agent9-latest.json (items[] id '10-b/wave-7') — measured evidence includes the false-red root cause (mirror shadow at main:t19b/mirror/Domain/office3d/digest.json vs live office-pages:digest.json 3.9h), the saos-runtime fix commit 39352f5b9395, the measured GitHub schedule-drop disease (pulse 19:17 beat + hive-probe 05:41 run never created), keys-registry.json content scan (clean: 0 WIF/0 tokens/0 opaque strings), and the persistence artifacts (RESURRECTION.md, worklog-snapshot.md 430 lines secret-scrubbed, EFFICIENCY-REVIEW-2026-10-17.md)"
+  ],
+  "completionCriteria": [
+    "grid-watchdog resolves live rails (mirrors excluded) — next watchdog run reports fleetdigest.fresh green while office-pages digest stays fresh",
+    "pulse survives a dropped schedule beat via catch-up cron + freshness gate; operator dispatch bypasses gate",
+    "agent-9 resurrection requires zero sandbox memory — protocol + worklog + review all on git main"
+  ],
+  "canonicalLedger": "receipts/remediation/agent9-latest.json",
+  "verifiedAt": "2026-10-17T21:15:00Z"
+}

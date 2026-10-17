@@ -1,11 +1,11 @@
 {
   "schema": "remediation.receipt/1",
   "channel": "receipts/remediation/",
-  "at": "2026-10-17T02:46:05Z",
+  "at": "2026-10-17T21:15:00Z",
   "agent": {
     "id": "agent-9",
-    "task": "4-d",
-    "role": "sovereignty-integration",
+    "task": "10-b/wave-7",
+    "role": "liveness-and-truth",
     "gitIdentity": "sovereign-agent-9 <agent9@sovereign.local>"
   },
   "scope": "roshpinacare-sys org remediation wave — 9 parallel agents; this ledger flows INTO the sovereignty's existing receipt bus instead of bypassing it",
@@ -71,6 +71,20 @@
         "private repos (steem, vault-home, SovereignConsole, sandbox-private, saos-control-center, Zip) -> HTTP 422 'Secret scanning is not available for this repository' — requires paid GitHub Advanced Security; honest blocker, folded into P1",
         "no deletion, no history rewrite, no vault content touched — zero-risk alternative accepted by owner directive"
       ]
+    },
+    {
+      "id": "10-b/wave-7",
+      "title": "liveness made self-healing + watchdog truth restored + agent memory persisted into git",
+      "status": "verified",
+      "assignedTo": "agent-9/10-b",
+      "evidence": [
+        "MEASURED false-red: grid-status.json redCount=1 fleetdigest.fresh age=106260s at 2026-10-17T20:29:45Z, but direct raw check: FleetHQ office-pages:digest.json last commit 2026-10-17T17:00:52Z (3.9h fresh, schema roshpinacare.fleet-digest/1, honest fail-closed notes). Root cause: watchdog first-match-wins tree search picked main:t19b/mirror/Domain/office3d/digest.json (mirror snapshot, stale) over the live office-pages rail",
+        "FIX saos-runtime@main 39352f5b9395: grid-watchdog live-rail law (mirror paths excluded from candidate resolution) + sovereign-pulse resilience (second catch-up cron 47 4,10,16,22, freshness gate <=1 broadcast/5h via authenticated API self-check, schedule-event only — operator dispatch bypasses per override law)",
+        "MEASURED schedule-drop disease: sovereign-pulse 19:17Z beat never created (no run/queue/error in run list); hive-probe 05:41Z run absent on 2026-10-17 (last run 2026-10-16T10:05). FIX Autonomy: hive-probe second daily cron 23 14 (probes read-only, digest commit change-gated)",
+        "MEASURED keys-registry.json (FleetHQ public src/data/) CLEAN: 0 steem WIF, 0 P5-P7, 0 gh_* / github_pat_ tokens, 0 long opaque strings in 11281 bytes — independent-review flag resolved by content measurement, metadata-only per its own law[3]",
+        "PERSISTED: state/agent9/RESURRECTION.md (coded resurrection protocol — 3rd sandbox death survived, rebuilt from git in minutes) + state/agent9/worklog-snapshot.md (430 lines, secret-scrubbed: 0 matches post-scrub) + state/review/EFFICIENCY-REVIEW-2026-10-17.md (global efficiency review + L1-L6 value ladder)"
+      ],
+      "verifiedAt": "2026-10-17T21:15:00Z"
     }
   ],
   "pendingOwnerDecisions": [
