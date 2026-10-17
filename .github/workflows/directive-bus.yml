@@ -8,6 +8,13 @@ name: directive-bus
 on:
   schedule:
     - cron: "*/30 * * * *"   # heartbeat + directive scan (public repo = free minutes)
+    - cron: "13,43 * * * *"  # resilience lane 1 (wave-7 agent-9, measured 2026-10-17:
+                             # GitHub silently DROPS schedules on this busy repo — the
+                             # consumer sat 18:44→21:20 with zero runs at 19:14/19:44/
+                             # 20:14/20:44/21:14 while directives waited on-chain)
+    - cron: "27,57 * * * *"  # resilience lane 2 — over-fire is SAFE by design:
+                             # git-native dedup (committed receipt = consumed) +
+                             # concurrency queue + idempotent read-only task roster
   workflow_dispatch: {}
 permissions:
   contents: write
