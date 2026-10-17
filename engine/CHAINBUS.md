@@ -49,6 +49,17 @@
 - `minutes-census` — בריאות-צי-החישוב-הציבורי (חסר-מפתחות, API ציבורי בלבד;
   המטוס שהחליף דקות-פרטיות. בסיס: `receipts/minutes/minutes-0-baseline.json`)
 
+## הפעימה-העצמית (sovereign-pulse)
+
+סוכן-9 הוסיף ל-saos-runtime (ציבורי, דקות-חינם) עורק `sovereign-pulse.yml`:
+cron כל 6 שעות UTC שמשדר הנחיה אחת מהרוטציונה הקריאה-בלבד
+(`health-probe`/`minutes-census`/`fleet-report`) — חתימת-posting מהכספת שלך,
+adoption-נשפט-שרשרת, שער-selftest fail-closed, thinkGate. הצרכן החסר-המפתחות
+כאן מבצע ומקבל. **הלופ מקצב את עצמו** — הוכח E2E ב-2026-10-17:
+txid `de1a55fc…` → בלוק 110516064/112671 → קבלה `d-110516064-112671.json`
+(ok:true, fleet-report, 340ms). הוראות-המפעיל שלך (directive-now) עוקפות
+בכל רגע.
+
 ## מה זה פותר
 
 אין מארח דלוק → המארח הוא השרשרת + חינם-ציבורי. הסנדבוקס יכול למות; הציקלוס ממשיך.
