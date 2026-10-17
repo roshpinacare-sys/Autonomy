@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-17T00:35:54.669Z",
+  "at": "2026-10-17T14:23:26.661Z",
   "repos": {
     "steem-cockpit": {
-      "head": "b44eb756b695eada634e475df2a8b5922df73658",
+      "head": "ce043c49ebb23f9721a55a7f44d3397161f26b40",
       "overall": "PASS",
       "checks": {
         "install": "pass",
@@ -12,13 +12,13 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-dex": {
-      "head": "f6a5e01a510bbaabf1fc4cc4ec214eb0cfcfca67",
-      "overall": "PASS",
+      "head": "0588314d927a2424436d218409a3f19918b2c776",
+      "overall": "FAIL",
       "checks": {
         "install": "pass",
-        "typecheck": "pass"
+        "typecheck": "fail"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": "typecheck failed: src/app/api/dex/fuel/route.ts(41,5): error TS2322: Type 'string' is not assignable to type '\"treasury\" | \"arena\" | \"bot-a\" | \"bot-b\" | \"bot-c\" | \"operator\" | \"wash\" | \"sweeper\" | \"rail\" | \"bot-e\"'. | "
     },
     "saos-agents": {
       "head": "83555a78cfab2da69b1a8bbb682559062566d8f0",
@@ -29,7 +29,7 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-wallet": {
-      "head": "d61db0813607c11a3a573754a124b47904c557d8",
+      "head": "aa1394e2123e07fa28038a96a6729f8c321d040a",
       "overall": "PASS",
       "checks": {},
       "reason": "all checks and fleet laws pass"
@@ -42,22 +42,22 @@
     }
   },
   "alerts": [
-    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-QfjCEd/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-QfjCEd/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-QfjCEd/saos-wallet/tools/vault-zk-check.ts",
+    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83XTuH/saos-wallet/tools/vault-zk-check.ts",
     "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
-  "overall": "PASS",
-  "reason": "steem=PASS · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "overall": "FAIL",
+  "reason": "steem=PASS · saos-dex=FAIL · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "38987095966",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/38987095966",
-    "sha": "8607f556aedab1e43d9748637551c0ad0e272582"
+    "runId": "39040529004",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39040529004",
+    "sha": "1a58a7dc2460e2b948cf1fcb3f8ed7a509e15a37"
   },
   "details": [
     {
-      "at": "2026-10-17T00:35:54.669Z",
+      "at": "2026-10-17T14:23:26.661Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "b44eb756b695eada634e475df2a8b5922df73658",
+      "head": "ce043c49ebb23f9721a55a7f44d3397161f26b40",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
@@ -67,43 +67,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-QfjCEd/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-QfjCEd/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
-        },
-        {
-          "id": "law-no-skipped-pass",
-          "verdict": "pass",
-          "detail": "workflows scanned: 8, theater patterns: 0"
-        },
-        {
-          "id": "law-gitleaks-push",
-          "verdict": "pass",
-          "detail": "scan capability present + this artery scanned HEAD this run (billing-wall covenant: the artery is the push layer for walled repos)"
-        },
-        {
-          "id": "law-r11-head-absent",
-          "verdict": "pass",
-          "detail": "absent at HEAD"
-        }
-      ],
-      "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 11 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-QfjCEd/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-QfjCEd/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
-      ],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
-    },
-    {
-      "at": "2026-10-17T00:35:54.669Z",
-      "slug": "roshpinacare-sys/saos-dex",
-      "head": "f6a5e01a510bbaabf1fc4cc4ec214eb0cfcfca67",
-      "checks": {
-        "install": "pass",
-        "typecheck": "pass"
-      },
-      "laws": [
-        {
-          "id": "law-no-secrets-at-head",
-          "verdict": "pass",
-          "detail": "gitleaks HEAD scan: 0 findings"
+          "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
         },
         {
           "id": "law-no-skipped-pass",
@@ -121,12 +85,48 @@
           "detail": "absent at HEAD"
         }
       ],
-      "alerts": [],
+      "alerts": [
+        "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-83XTuH/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+      ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-17T00:35:54.669Z",
+      "at": "2026-10-17T14:23:26.661Z",
+      "slug": "roshpinacare-sys/saos-dex",
+      "head": "0588314d927a2424436d218409a3f19918b2c776",
+      "checks": {
+        "install": "pass",
+        "typecheck": "fail"
+      },
+      "laws": [
+        {
+          "id": "law-no-secrets-at-head",
+          "verdict": "pass",
+          "detail": "gitleaks HEAD scan: 0 findings"
+        },
+        {
+          "id": "law-no-skipped-pass",
+          "verdict": "pass",
+          "detail": "workflows scanned: 12, theater patterns: 0"
+        },
+        {
+          "id": "law-gitleaks-push",
+          "verdict": "pass",
+          "detail": "scan capability present + this artery scanned HEAD this run (billing-wall covenant: the artery is the push layer for walled repos)"
+        },
+        {
+          "id": "law-r11-head-absent",
+          "verdict": "pass",
+          "detail": "absent at HEAD"
+        }
+      ],
+      "alerts": [],
+      "overall": "FAIL",
+      "reason": "typecheck failed: src/app/api/dex/fuel/route.ts(41,5): error TS2322: Type 'string' is not assignable to type '\"treasury\" | \"arena\" | \"bot-a\" | \"bot-b\" | \"bot-c\" | \"operator\" | \"wash\" | \"sweeper\" | \"rail\" | \"bot-e\"'. | "
+    },
+    {
+      "at": "2026-10-17T14:23:26.661Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "83555a78cfab2da69b1a8bbb682559062566d8f0",
       "checks": {
@@ -159,20 +159,20 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-17T00:35:54.669Z",
+      "at": "2026-10-17T14:23:26.661Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
-      "head": "d61db0813607c11a3a573754a124b47904c557d8",
+      "head": "aa1394e2123e07fa28038a96a6729f8c321d040a",
       "checks": {},
       "laws": [
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-QfjCEd/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83XTuH/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
           "verdict": "pass",
-          "detail": "workflows scanned: 3, theater patterns: 0"
+          "detail": "workflows scanned: 4, theater patterns: 0"
         },
         {
           "id": "law-gitleaks-push",
@@ -211,14 +211,14 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-QfjCEd/saos-wallet/tools/vault-zk-check.ts",
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-83XTuH/saos-wallet/tools/vault-zk-check.ts",
         "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-17T00:35:54.669Z",
+      "at": "2026-10-17T14:23:26.661Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "43e5ba5a701b8c204f6e0b9937326b6fa4428a47",
       "checks": {},

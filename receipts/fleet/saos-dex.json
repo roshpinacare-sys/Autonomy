@@ -1,10 +1,10 @@
 {
-  "at": "2026-10-17T00:35:54.669Z",
+  "at": "2026-10-17T14:23:26.661Z",
   "slug": "roshpinacare-sys/saos-dex",
-  "head": "f6a5e01a510bbaabf1fc4cc4ec214eb0cfcfca67",
+  "head": "0588314d927a2424436d218409a3f19918b2c776",
   "checks": {
     "install": "pass",
-    "typecheck": "pass"
+    "typecheck": "fail"
   },
   "laws": [
     {
@@ -15,7 +15,7 @@
     {
       "id": "law-no-skipped-pass",
       "verdict": "pass",
-      "detail": "workflows scanned: 10, theater patterns: 0"
+      "detail": "workflows scanned: 12, theater patterns: 0"
     },
     {
       "id": "law-gitleaks-push",
@@ -29,6 +29,6 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "overall": "FAIL",
+  "reason": "typecheck failed: src/app/api/dex/fuel/route.ts(41,5): error TS2322: Type 'string' is not assignable to type '\"treasury\" | \"arena\" | \"bot-a\" | \"bot-b\" | \"bot-c\" | \"operator\" | \"wash\" | \"sweeper\" | \"rail\" | \"bot-e\"'. | "
 }
