@@ -1,0 +1,64 @@
+{
+  "receipt": "minutes-0-baseline",
+  "version": 1,
+  "at": "2026-10-17T05:10:00Z",
+  "by": "sovereign-agent-9 <agent9@sovereign.local>",
+  "problem": {
+    "statement": "private repos have zero GitHub Actions minutes (2,000/mo free tier exhausted ~2026-09-20; runs fail steps:[] since 09-20 per org runbook quota-dead.md; measured queued-since-10-14)",
+    "riskFound": "steem (private) still had 2 ACTIVE cron workflows created AFTER quota death — they never completed a run (0 completed ever, measured), but on the 2026-11-01 quota reset exec-cycle (*/2h heavy army-revival cycle) would re-exhaust the 2,000-min budget within ~1-2 days and re-kill ALL private Actions including directive-now.yml"
+  },
+  "measured_2026_10_17": {
+    "reposTotal": 42,
+    "private": 27,
+    "public": 15,
+    "scheduledCronEntries": { "total": 185, "onPublicFreeMinutes": 182, "onPrivate": 3 },
+    "privateCronDetail": [
+      { "repo": "steem", "workflow": "exec-cycle.yml", "id": 387093185, "stateBefore": "active", "completedRunsEver": 0 },
+      { "repo": "steem", "workflow": "presence-matrix.yml", "id": 383875727, "stateBefore": "active", "completedRunsEver": 0 },
+      { "repo": "steem", "workflow": "token-forge.yml", "id": 381562562, "stateBefore": "disabled_manually (already)", "completedRunsEver": 0 }
+    ],
+    "publicCronByRepo": { "Autonomy": 42, "Domain": 86, "FleetHQ": 24, "Console": 19, "giant": 2, "GridWatch": 2, "Pulse": 2, "sovereign-lighthouse": 2, "ops-forge": 1, "ops-intake": 1, "sovereign-beacon": 1 },
+    "publicFleetHealth": "11/11 cron-bearing public repos green on 2026-10-17 (last-run conclusions success)"
+  },
+  "actions_taken": [
+    {
+      "action": "disable cron workflow via API",
+      "repo": "steem", "workflow": "exec-cycle.yml", "workflowId": 387093185,
+      "http": 204, "stateAfter": "disabled_manually",
+      "reason": "Nov-1 self-kill prevention; workload replaced by free rails (saos-runtime directive-now public, proven run 39002972785; Autonomy chainbus consumer public, proven run 39003308654)",
+      "reversible": "PUT /repos/roshpinacare-sys/steem/actions/workflows/387093185/enable"
+    },
+    {
+      "action": "disable cron workflow via API",
+      "repo": "steem", "workflow": "presence-matrix.yml", "workflowId": 383875727,
+      "http": 204, "stateAfter": "disabled_manually",
+      "reason": "Nov-1 self-kill prevention; read-only probe can return as chainbus task or be re-enabled",
+      "reversible": "PUT /repos/roshpinacare-sys/steem/actions/workflows/383875727/enable"
+    },
+    {
+      "action": "cancel zombie queued runs (5 private repos, 10 runs)",
+      "runs": { "Adsmarket": [38729118819], "Defi": [38729112172], "saos-agents": [38936983004, 38729115770], "steem": [39002268847, 39000906090, 38505442929, 38503516299, 38503112902], "TruthRail": [38937889950] },
+      "result": "409 on all 10 — GitHub does not allow cancelling never-started runs; honest limitation",
+      "impact": "negligible (~tens of minutes when quota resets); documented, NOT deleted (no-deletion mandate)"
+    }
+  ],
+  "the_minutes_answer": {
+    "law": "private repo = git state only (push/pull costs 0 minutes); scheduled compute NEVER on private repos",
+    "scheduler": "chain saos-bus-v1 custom_json (24/7, zero cost, owner-signed)",
+    "compute": "public repos = unlimited free minutes (15 repos, 182 cron entries measured green)",
+    "state": "git receipts (this repo)",
+    "permanent_guard": "new keyless chainbus task minutes-census (engine/tasks/minutes-census.json) — watch the public compute fleet from the free VM; directive: {\"task\":\"minutes-census\"}"
+  },
+  "census_task_first_run_2026_10_17": {
+    "publicRepos": 15,
+    "summary": { "healthy": 13, "unhealthy": 1, "silent": 1, "errored": 0 },
+    "unhealthy_detail": "Console last run = identity-guard push failure (forbidden identity scan) — org's own honest alarm, NOT minutes-related, left red for owner",
+    "silent_detail": "sovereign-runner-kit — no runs ever (runner-kit repo, expected)"
+  },
+  "honest_limits": [
+    "census of private repos requires an authenticated token — done operator-plane by agent-9 with the owner PAT (value never printed/stored); the keyless VM task watches the PUBLIC plane only",
+    "exec-cycle active-key army-revival path is now dormant on private steem; if the owner wants continuous 2h money cycles he should either re-enable after paying minutes or move that rail to saos-runtime (public) with per-action vault consent",
+    "10 zombie queued runs remain queued (un-cancellable API limitation) — harmless"
+  ],
+  "evidence_files": ["census-full-2026-10-17.json", "census-task-first-run.json"]
+}

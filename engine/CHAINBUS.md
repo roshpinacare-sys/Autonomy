@@ -46,6 +46,8 @@
 
 - `health-probe` — ראש השרשרת + git tip (קריאה-בלבד)
 - `fleet-report` — מלאי מנוע + קבלות אחרונות (קריאה-בלבד)
+- `minutes-census` — בריאות-צי-החישוב-הציבורי (חסר-מפתחות, API ציבורי בלבד;
+  המטוס שהחליף דקות-פרטיות. בסיס: `receipts/minutes/minutes-0-baseline.json`)
 
 ## מה זה פותר
 
