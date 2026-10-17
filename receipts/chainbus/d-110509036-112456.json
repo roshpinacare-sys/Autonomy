@@ -1,0 +1,29 @@
+{
+  "schema": "chainbus.directive.receipt/1",
+  "at": "2026-10-17T04:38:35.034Z",
+  "ok": true,
+  "ref": {
+    "block": 110509036,
+    "idx": 112456,
+    "seq": 1,
+    "from": "headcorner",
+    "to": "*",
+    "runId": "d-1-agent9"
+  },
+  "body": "{\"task\":\"health-probe\",\"runId\":\"d-1-agent9\"}",
+  "task": {
+    "name": "health-probe",
+    "description": "liveness: public chain RPC head block + this repo git tip (read-only)",
+    "commands": 2,
+    "timeoutSec": 60
+  },
+  "exec": {
+    "ok": true,
+    "code": 0,
+    "ms": 545,
+    "receipt": "receipts/execution/bus-d-110509036-112456.json",
+    "outTail": "(e);process.exit(1)})'\nchain head_block: 110509142 time: 2026-10-17T04:38:33\n\n\n=== [1] exit=0 killed=false 102ms ===\n$ git log --oneline -3\n4db24e2 chainbus: fix directive-consume scope bug caught by the FIRST real on-chain directive\n\n\nreceipt: receipts/execution/bus-d-110509036-112456.json ok=true\n",
+    "errTail": ""
+  },
+  "node": "https://api.steemit.com"
+}
