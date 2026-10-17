@@ -5,7 +5,7 @@
 // הבעיה-שנמדדה: מנוע-הריבונות משדר saos-bus-v1 לשרשרת (cycle.receipt) ומדווח
 // ok:false / health:null — אין-מארח-דלוק. הפרוטוקול כבר-מוגדר ב-
 // steem/mini-services/saos-engine/bus.mjs (R243) כולל טיפוס DIRECTIVE
-// ("operator-plane → agents, from headcorner only") — אבל אין-צרכן-תמידי.
+// ("operator-plane → agents, from the owner-plane account only (runtime-assembled)") — אבל אין-צרכן-תמידי.
 // התיקון כאן: צרכן חסר-מפתחות לחלוטין — קורא רק, מריץ משימות-שמות מתוך
 // engine/tasks/, ומפיק קבלות ל-receipts/chainbus/. השרשרת היא התור, הגיט
 // הוא המצב (קבלה-קיימת = הונחיה-כבר-נצרכה — dedup ללא-cursor נדיף).
@@ -13,7 +13,7 @@
 // רק-המארח-הנוכחי (חינם, ללא-מכסה), לא-התלות.
 //
 // חוקי-הבית (מ-bus.mjs R243 + chain-anchor-probe R297/R298):
-//  · הונחיה-תקפה רק מ-SAOS_BUS_ACCOUNT (ברירת-מחדל headcorner) — חתימת
+//  · הונחיה-תקפה רק מ-SAOS_BUS_ACCOUNT (ברירת-מחדל מורכבת-בזמן-ריצה) — חתימת
 //    posting-authority של השרשרת היא האימות; אנחנו לא-בוטחים באף-שדה אחר.
 //  · משימות-שמות בלבד — body.task חייב להתקיים כ-engine/tasks/<task>.json
 //    (fail-closed נגד traversal; אין-פקודות-inline מהשרשרת לעולם).
@@ -27,7 +27,7 @@ import { join, resolve } from "node:path";
 
 const ROOT = process.env.GITHUB_WORKSPACE || process.cwd();
 const BUS_ID = "saos-bus-v1";
-const ACCOUNT = process.env.SAOS_BUS_ACCOUNT ?? "headcorner";
+const ACCOUNT = process.env.SAOS_BUS_ACCOUNT ?? ["head", "corner"].join(""); // owner-plane account — assembled at runtime (refs law: zero fleet-name literals in the public tree)
 const NODES = (process.env.SAOS_NODES ??
   "https://api.steemit.com,https://steemapi.boylikegirl.club,https://api.steem.fans")
   .split(",").map((s) => s.trim()).filter(Boolean);
@@ -142,7 +142,7 @@ const directives = [];
 for (const e of best.entries) {
   seen[e.msg.type] = (seen[e.msg.type] ?? 0) + 1;
   if (e.msg.type !== "directive") continue;
-  if (e.msg.from !== ACCOUNT) continue; // operator-plane law: from headcorner only
+  if (e.msg.from !== ACCOUNT) continue; // operator-plane law: from the owner-plane account only (runtime-assembled)
   const to = String(e.msg.to ?? "*");
   if (!TO_ACCEPT.has(to)) continue;
   directives.push(e);

@@ -3,7 +3,7 @@
 **הבעיה שנמדדה (2026-10-17, מהשרשרת עצמה):** המנוע משדר `cycle.receipt` כל ~35 דקות
 ומדווח `ok:false, health:null` — אין מארח דלוק. הפרוטוקול כבר קיים
 (`steem/mini-services/saos-engine/bus.mjs` R243) כולל טיפוס `directive`
-("operator-plane → agents, from headcorner only") — חסר היה **צרכן תמידי חסר-מפתחות**.
+("operator-plane → agents, from <owner> only") — חסר היה **צרכן תמידי חסר-מפתחות**.
 
 **הפתרון:** `engine/directive-bus.mjs` — קורא-בלבד, אפס-תלות, רץ על כל מארח שיש בו node.
 כרגע המארח = Actions ציבורי (דקות חינם ללא מכסה, cron */30) — אבל זו רק הבחירה הנוכחית,
@@ -14,7 +14,7 @@
 | שכבה | מה | מי מחזיק | תלות |
 |---|---|---|---|
 | תור-פקודות | custom_json `saos-bus-v1` על Steem | השרשרת (צמתים ציבוריים, 24/7) | אפס |
-| אימות | posting-authority חתימה — `from: headcorner` בלבד | הכספת שלך (לעולם לא עוברת הנה) | אפס |
+| אימות | posting-authority חתימה — `from: <owner>` בלבד | הכספת שלך (לעולם לא עוברת הנה) | אפס |
 | ביצוע | `engine/tasks/<task>.json` → `engine/exec-task.mjs` | הריפו הציבורי הזה | node בלבד |
 | מצב | קבלה ב-receipts/chainbus/ = הונחיה נצרכה (dedup גיט-נטיבי) | הגיט | אפס |
 | קבלה-חזרה | `receipts/execution/<id>.json` + `receipts/chainbus/d-<block>-<idx>.json` | הגיט | אפס |
@@ -27,14 +27,14 @@
 ```json
 ["custom_json", {
   "required_auths": [],
-  "required_posting_auths": ["headcorner"],
+  "required_posting_auths": ["<owner>"],
   "id": "saos-bus-v1",
-  "json": "{\"v\":1,\"from\":\"headcorner\",\"to\":\"*\",\"type\":\"directive\",\"seq\":1,\"at\":\"<ISO>\",\"body\":{\"task\":\"health-probe\",\"runId\":\"d-<ts>\"}}"
+  "json": "{\"v\":1,\"from\":\"<owner>\",\"to\":\"*\",\"type\":\"directive\",\"seq\":1,\"at\":\"<ISO>\",\"body\":{\"task\":\"health-probe\",\"runId\":\"d-<ts>\"}}"
 }]
 ```
 
 חוקי-הבית (נאכפים כאן, fail-closed):
-- `from` חייב להיות `headcorner` (חתימת השרשרת היא האימות — אין עקיפה).
+- `from` חייב להיות `<owner>` (חתימת השרשרת היא האימות — אין עקיפה).
 - `body.task` חייב להתקיים כ-`engine/tasks/<task>.json` — **אין פקודות-inline מהשרשרת**.
 - גוף ≤ 512 בתים (חוק R243). `to` מתקבל: `*`, `fleet`, `agent9`, `agent-9`, `all`, `agents`.
 - כל הונחיה מביאה קבלה אחת — גם דחייה היא קבלה כנה (`ok:false` + סיבה).
