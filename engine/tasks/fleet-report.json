@@ -1,0 +1,9 @@
+{
+  "description": "fleet report: engine inventory + latest remediation receipts (read-only)",
+  "timeoutSec": 60,
+  "commands": [
+    "echo '== engine inventory =='; ls engine/ engine/tasks/",
+    "echo '== execution receipts (latest 5) =='; ls -t receipts/execution/ 2>/dev/null | head -5",
+    "echo '== remediation ledger =='; head -c 600 receipts/remediation/agent9-latest.json 2>/dev/null"
+  ]
+}

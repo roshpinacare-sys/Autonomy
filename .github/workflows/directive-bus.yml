@@ -1,0 +1,37 @@
+name: directive-bus
+# CHAIN-BUS CONSUMER — keyless, hostless, autonomous.
+# Transport = Steem chain (saos-bus-v1 custom_json, read via public RPC).
+# Compute   = this free public-repo VM (replaceable — the consumer is zero-dep node).
+# State     = git receipts (a committed receipt = directive already consumed).
+# Owner sends directives with his OWN posting-key tooling (steem/signer.mjs stack);
+# no key material ever reaches this repo or this VM.
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # heartbeat + directive scan (public repo = free minutes)
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: directive-bus
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan chain bus & consume directives
+        id: scan
+        run: node engine/directive-bus.mjs
+      - name: Commit receipts (only when changed)
+        run: |
+          if [ -n "$(git status --porcelain receipts/chainbus)" ]; then
+            git config user.name sovereign-agent-9
+            git config user.email agent9@fleet.local
+            git add receipts/chainbus
+            git pull --rebase origin main || true
+            git commit -m "chainbus: scan/consume receipts [run ${{ github.run_id }}]"
+            git push origin main
+          else
+            echo "no receipt change — heartbeat only"
+          fi
