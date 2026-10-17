@@ -428,3 +428,26 @@ Work Log:
 Stage Summary:
 - The sovereignty is now SELF-PACING: operator → chain → keyless consumer → receipt, 4×/day automatically + operator override anytime; survived sandbox death twice (state lives in git+chain+public CI, never in a sandbox)
 - Honest state: loop alive; content stream starving (owner re-arm call); brain still unfired (needs LLM key decision); 3 irreversible cleanup actions (rotation+history, archive ~20 repos, arm-down) await explicit owner green light per the uploaded review + my P1-P4 lanes
+
+---
+Task ID: 10-b
+Agent: main orchestrator (Z.ai Code) — agent-9 wave-7 (efficiency review + liveness self-healing)
+Task: Owner: review everything done so far — did we do well, how to do MUCH better with sharp sovereignty value; execute and push; work from GIT not the sandbox.
+
+Work Log:
+- SANDBOX DEATH #3 confirmed on arrival (/home/z/project-review gone) — rebuilt from git only via uploaded pat.env (creds rebuilt memory-only, never printed; clones: Autonomy + saos-runtime; identity fixed to agent9@sovereign.local per AGENT9-PROTOCOL §6)
+- LIVE VERIFICATION MATRIX (21:00-21:55Z): bus alive (26→22 entries sliding window, 3-node consensus), consumer active, pulse alive, minutes-0 holding (steem exec-cycle+presence-matrix still disabled_manually), org self-expanded (artery-*, selfhood, federation, executor, compute-rearm all green today)
+- MEASURED FALSE-RED #1 (the fleet's ONLY red): grid-status redCount=1 fleetdigest.fresh age=29.5h — but direct raw check: office-pages:digest.json fresh 3.9h (honest fail-closed schema). Root cause: watchdog first-match-wins tree search picked main:t19b/mirror/Domain/office3d/digest.json (stale mirror snapshot) over the live rail. NOTE: agent-zai/G4 independently found+fixed the same bug 9 minutes after me — convergent validation, both fixes coexist
+- FIX saos-runtime@39352f5: grid-watchdog live-rail law (mirror paths excluded from live-signal resolution) + sovereign-pulse resilience: second catch-up cron + freshness gate (≤1 broadcast/5h via authenticated API self-check; schedule-event only — operator dispatch bypasses per override law); embedded python compiled 6/6 blocks
+- MEASURED FALSE-RED #2 (marginal alarm disease): heartbeat.fresh red at 21:03 (age 59m) while runtime run #699 was merely in-flight (its beat was generated 20:45 but its git push landed 21:10 — 25min push delay on the busy repo; threshold 40m == cadence). FIX saos-runtime@88d7e2e: in-flight grace on heartbeat.fresh + pulse.fresh (red only if missing/failed/age>90m fail-loud OR age>40m with NOTHING in-flight; 40-90m in-flight = visible WATCH, never silent green). agent-zai/W1.5 re-anchored thresholds on measured rhythm (11 gaps 39-46min) in the same window — three independent agents converged on the same flappy alarm
+- MEASURED SILENT SCHEDULE-DROP DISEASE (3rd instance): pulse 19:17 beat never created; hive-probe 05:41 run never created; AND the consumer itself silent 18:44→21:20 (five */30 slots dropped) while a directive waited on-chain. FIX: hive-probe second daily cron (Autonomy@b9493abd) + directive-bus 3 independent schedule lanes (Autonomy@28922791) — over-fire safe by design (git-native dedup, concurrency queue, idempotent roster)
+- E2E PROVEN TWICE on the fixed rails: (1) pulse dispatch → all steps green incl. Broadcast → directive on chain (block 110528832 idx 113531, to="*"); (2) consumer dispatched → first lane failed (push race), second lane SUCCESS → VM committed receipts d-110528832-113531 ok:true + exec receipt (health-probe, 2 commands) — loop closed with self-healing in 13 minutes
+- GRID: redCount 1 → **0** ("watchdog: green @ 21:10:10" commit 9bbc056) — first fully green grid today
+- REVIEW FLAG CLOSED BY MEASUREMENT: keys-registry.json on public FleetHQ scanned: 0 WIF / 0 P5-P7 / 0 gh_*+github_pat_ tokens / 0 long opaque strings in 11,281 bytes — metadata-only per its own law[3]; independent-review flag was name-based, content is clean
+- PERSISTED INTO GIT (the owner's git-first law): Autonomy state/agent9/RESURRECTION.md (coded resurrection protocol — any future sandbox rebuilds to full operation in minutes), state/agent9/worklog-snapshot.md (430 lines, secret-scrubbed 0 matches), state/review/EFFICIENCY-REVIEW-2026-10-17.md (global efficiency review + L1-L6 value ladder), receipts/remediation/10-b-wave7-liveness-truth.json + canonical agent9-latest.json item 6
+- Scope discipline: zero deletions, zero force-pushes, no vaults opened, only additive forward commits; all pushes --no-force with rebase×3 retry; remote-verified via ls-remote after every push (saos-runtime 39352f5/88d7e2e, Autonomy b9493abd/28922791)
+
+Stage Summary:
+- The sovereignty now has: self-healing liveness (every heartbeat signal double-triggered + truthful watchdog aligned with its own fail-loud law), and its agent's memory IN GIT (sandbox death now costs zero context — proven 3rd time)
+- Honest state: loop alive and self-healing; grid green; content stream still starving (owner re-arm call L4); brain still unfired (owner LLM decision L3); ledger unification partial (L5); evolution-loop scaffold is the next build (L2)
+- Efficiency verdict (measured, in the review doc): high — every hour left live evidence and became infrastructure; the gap is built in infrastructure not rhetoric (chain transport + free compute + git memory + fail-closed honesty)
