@@ -1,0 +1,102 @@
+{
+  "schema": "remediation.receipt/1",
+  "channel": "receipts/remediation/",
+  "at": "2026-10-17T02:13:21Z",
+  "agent": {
+    "id": "agent-9",
+    "task": "4-d",
+    "role": "sovereignty-integration",
+    "gitIdentity": "sovereign-agent-9 <agent9@sovereign.local>"
+  },
+  "scope": "roshpinacare-sys org remediation wave — 9 parallel agents; this ledger flows INTO the sovereignty's existing receipt bus instead of bypassing it",
+  "items": [
+    {
+      "id": "4-a",
+      "title": "Roast-63 Caddyfile 403-whitelist patch propagated (FleetHQ, SovereignConsole, giant x2, steem)",
+      "status": "in_progress",
+      "assignedTo": "agent-9/4-a",
+      "evidence": [
+        "measured 2026-10-17T02:05Z: git show origin/main:Caddyfile in FleetHQ, SovereignConsole, giant — all three still carry the open-proxy :81 XTransformPort reverse-proxy block; patch NOT yet at any measured origin/main",
+        "steem remote not readable from this sandbox (auth required) — steem propagation UNVERIFIED",
+        "no task 4-a entry in the shared worklog at write time"
+      ]
+    },
+    {
+      "id": "4-b",
+      "title": "saos-dex selftest battery executed + CI wired",
+      "status": "in_progress",
+      "assignedTo": "agent-9/4-b",
+      "evidence": [
+        "measured 2026-10-17T02:05Z: saos-dex origin/main .github/workflows/ci.yml push trigger is still the corrupted literal 'branches: ain]' — push CI still never fires",
+        "grids/*-selftest.mjs exist in the tree but none are wired into CI at origin/main",
+        "no task 4-b entry in the shared worklog at write time"
+      ]
+    },
+    {
+      "id": "4-c",
+      "title": "Saosmartwallet first real unit tests + CI",
+      "status": "in_progress",
+      "assignedTo": "agent-9/4-c",
+      "evidence": [
+        "measured 2026-10-17T02:05Z: Saosmartwallet origin/main .github/workflows/ = gitleaks.yml, wallet-verify.yml, workflow-yaml-guard.yml — no unit-test workflow",
+        "tests/ holds runtime-build shell scripts only; no app unit tests at origin/main",
+        "no task 4-c entry in the shared worklog at write time"
+      ]
+    },
+    {
+      "id": "4-d",
+      "title": "remediation receipt channel + 9-agent push protocol inside Autonomy",
+      "status": "verified",
+      "assignedTo": "agent-9/4-d",
+      "evidence": [
+        "files added: receipts/remediation/README.md, receipts/remediation/agent9-latest.json, receipts/remediation/4-a-caddyfile-403-whitelist.json, receipts/remediation/4-b-saos-dex-selftest-ci.json, receipts/remediation/4-c-saosmartwallet-unit-tests-ci.json, receipts/fleet/remediation-agent9.json, AGENT9-PROTOCOL.md",
+        "additive only — zero modified files, zero deletions, zero history rewrite, zero vault (.enc/sealed) access",
+        "consumer findings measured from code: see consumerFindings below"
+      ]
+    }
+  ],
+  "pendingOwnerDecisions": [
+    {
+      "id": "P1",
+      "title": "key-rotation coverage for R11 history broadcast — WITHOUT history rewrite/deletion (owner forbade deletions)",
+      "recommendation": "revoke/rotate the exposed credentials owner-side; enable GitHub secret-scanning + push-protection on affected repos; keep scheduled gitleaks + token-watchdog monitoring; mark known paths honestly instead of purging history"
+    },
+    {
+      "id": "P2",
+      "title": "deploy pipeline — 0 exist org-wide",
+      "recommendation": "one guarded deploy lane (Pages or a single VPS runner) gated by the existing leak-scan/identity-guard pattern; needs owner hosting/budget words"
+    },
+    {
+      "id": "P3",
+      "title": "port map dedup (:3000 x ~20 repos, :3010 x 12, :81 x 7)",
+      "recommendation": "one published PORT-MANIFEST + Caddy routes per service; needs owner topology words before any change"
+    },
+    {
+      "id": "P4",
+      "title": "custody / real-money decision for the saos-dex SIM book",
+      "recommendation": "keep SIM funds clearly labeled until owner rules on real custody; washTick/THE-WASH must never touch real money"
+    }
+  ],
+  "constraintsAccepted": [
+    "no-deletion mandate — nothing removed anywhere; pointer/tombstone patterns only",
+    "no vault touching — .enc/sealed/vault contents never opened or moved (paths referenced only)",
+    "--no-force pushes only — fast-forward commits, no history rewrite, no force-push",
+    "flow INTO the sovereignty's own channels (receipts, claims queues, worklog) — no new parallel authority created"
+  ],
+  "consumerFindings": {
+    "measured": true,
+    "measuredAt": "2026-10-17T02:13:21Z",
+    "fleet-heal": "heal/fleet-heal.mjs + .github/workflows/fleet-heal.yml — reads own heal/state.json + GitHub Actions API only; writes heal/latest.json, heal/state.json, heal/ledger.jsonl, heal/receipts/scan-*.json; NOT an inbound receipt consumer",
+    "grid-watchdog": "engine/grid-watch.mjs (artery-grid) — reads steem@saos-cockpit hyper-grid.json via contents API; writes receipts/grid/verdict.json + receipts/grid/log.jsonl; NOT an inbound receipt consumer",
+    "actual receipt readers": "engine/flow-map.mjs NODES manifest (receipts/fleet|grid|wallet/verdict.json + receipts/latest.json, maxAgeH freshness law, raw.githubusercontent); fleet/agents-manifest.json endpoint map (incl. ops/sovereign/CLAIMS/queue.json); agents/gate UI (receipts/latest.json); ops/sovereign/DECIDER + VALUE-SCAN raw reads",
+    "conclusion": "no automated consumer reads receipts/remediation/ yet — stated honestly, not invented. This channel is the org's first machine-readable remediation ledger in the house receipt convention; pointer receipt sits at receipts/fleet/remediation-agent9.json; adoption is one additive NODES line in engine/flow-map.mjs (owner/sovereignty decision)"
+  },
+  "overall": "IN_PROGRESS",
+  "reason": "0/3 external remediation tasks verified complete at measured remotes (4-a, 4-b, 4-c in_progress by their agents); 4-d channel itself verified; 4 owner-decision lanes pending owner-words — honest waiting, nothing faked",
+  "provenance": {
+    "autonomyHeadAtAuthoring": "596f40bbfb22e1422d29edd30f5a5bc5482752f7",
+    "measuredFrom": "local clones /home/z/project-review/* + git ls-remote / git show origin/main:<path> against live remotes",
+    "method": "code-read of heal/fleet-heal.mjs, engine/grid-watch.mjs, engine/flow-map.mjs, engine/claims-intake.mjs, workflows fleet-heal/contract-check/identity-guard; remote state via git show origin/main:<path>",
+    "writeMode": "default-branch fast-forward push --no-force, explicit paths staged"
+  }
+}

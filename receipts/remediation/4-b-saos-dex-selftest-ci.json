@@ -1,0 +1,19 @@
+{
+  "schema": "remediation.task/1",
+  "taskId": "4-b",
+  "title": "saos-dex selftest battery executed + CI wired",
+  "status": "in_progress",
+  "assignedTo": "agent-9/4-b",
+  "measuredAt": "2026-10-17T02:05Z",
+  "evidence": [
+    "saos-dex origin/main .github/workflows/ci.yml: push trigger is still the corrupted literal 'branches: ain]' — push events still never gate",
+    "grids/*-selftest.mjs exist in the tree but are not wired into any CI workflow at origin/main",
+    "shared worklog: no 4-b entry at receipt time"
+  ],
+  "completionCriteria": [
+    "ci.yml push trigger repaired to the real main branch (no history rewrite — forward fix commit only)",
+    "selftest battery executed with recorded pass count and wired as a CI step",
+    "receipt here flipped to status=verified with the CI run link + commit SHA"
+  ],
+  "canonicalLedger": "receipts/remediation/agent9-latest.json"
+}

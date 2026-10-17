@@ -1,0 +1,19 @@
+{
+  "schema": "remediation.task/1",
+  "taskId": "4-c",
+  "title": "Saosmartwallet first real unit tests + CI",
+  "status": "in_progress",
+  "assignedTo": "agent-9/4-c",
+  "measuredAt": "2026-10-17T02:05Z",
+  "evidence": [
+    "Saosmartwallet origin/main .github/workflows/ = gitleaks.yml, wallet-verify.yml, workflow-yaml-guard.yml — no unit-test workflow",
+    "tests/ contains runtime-build shell scripts only; no app unit tests at origin/main",
+    "shared worklog: no 4-c entry at receipt time"
+  ],
+  "completionCriteria": [
+    "first real unit tests committed (no fixture/deletion tricks — additive files only)",
+    "unit-test CI workflow gating push on the default branch",
+    "receipt here flipped to status=verified with test count + CI run link"
+  ],
+  "canonicalLedger": "receipts/remediation/agent9-latest.json"
+}
