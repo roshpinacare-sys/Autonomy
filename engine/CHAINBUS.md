@@ -48,6 +48,10 @@
 - `fleet-report` — מלאי מנוע + קבלות אחרונות (קריאה-בלבד)
 - `minutes-census` — בריאות-צי-החישוב-הציבורי (חסר-מפתחות, API ציבורי בלבד;
   המטוס שהחליף דקות-פרטיות. בסיס: `receipts/minutes/minutes-0-baseline.json`)
+- `self-heal` — הריאה-האוטונומית [t10]: קורא פסק-אמת, מצית עורקים-סטיים (dispatch
+  בלבד; כבוי = דווח-רועש, לא-הפעלה-חריגה-מהחוקה). ב-cron: `artery-selfheal.yml`
+  (11,41 — 4דק אחרי verifier). דרך-האוטובוס: דורש `GITHUB_TOKEN`+`actions:write`
+  בסביבת-הצרכן — בלעדיהם קבלת-{ok:false,no-token} כנה (fail-closed)
 
 ## הפעימה-העצמית (sovereign-pulse)
 
