@@ -1032,3 +1032,12 @@
 - [CLOSED 2026-10-17T01:51:17.556Z] V-LOOP-FEDERATION — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-10-17T01:51:17.556Z] V-LOOP-ARTERY-WALLET — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-10-17T01:51:17.556Z] V-LOOP-ARTERY-FLOW — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [OPEN] V-LOOP-ARTERY-CATCHUP (DEGRADED @ 2026-10-17T11:12:50.069Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 38min ago > slot
+- [OPEN] V-LOOP-VERIFIER (FAIL @ 2026-10-17T11:12:50.069Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 562min ago > 4x slot
+- [OPEN] V-LOOP-FEDERATION (DEGRADED @ 2026-10-17T11:12:50.069Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 37min ago > slot
+- [OPEN] V-LOOP-HIVE-PROBE (DEGRADED @ 2026-10-17T11:12:50.069Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 1508min ago > slot
+- [OPEN] V-LOOP-ARTERY-WALLET (FAIL @ 2026-10-17T11:12:50.069Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 582min ago > 4x slot
+- [OPEN] V-LOOP-ARTERY-FLEET (FAIL @ 2026-10-17T11:12:50.069Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 637min ago > 4x slot
+- [OPEN] V-LOOP-ARTERY-FLOW (DEGRADED @ 2026-10-17T11:12:50.069Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 573min ago > slot
+- [CLOSED 2026-10-17T11:12:50.069Z] V-LOOP-ARTERY-GRID — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-17T11:12:50.069Z] V-DEV-FOCUS — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
