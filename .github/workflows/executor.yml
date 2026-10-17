@@ -1,0 +1,56 @@
+name: executor (real execution substrate)
+# ═══════════════════════════════════════════════════════════════════════════
+# EXECUTOR · agent-9 wave-2 — הרשת מבצעת, לא רק כותבת קבצים.
+# ───────────────────────────────────────────────────────────────────────────
+# ריפו-ציבורי = דקות-Actions חינם וללא-מכסה (הפרטיים מתים ממכסה מאז 09-20,
+# ראה Pulse/runbooks/quota-dead.md). טריגר-יחיד = dispatch עם actions:write
+# על הריפו (PAT בעלים בלבד) — אין-מקור-אחר. ה-payload נרשם בקבלה-פומבית:
+# אף-סוד/מפתח/כספת לא עובר בו לעולם; פקודות שמדפיסות-סודות = אשמה-על-המפעיל.
+# קבלה נחתמת-זמן ונדחפת ל-receipts/execution/ — ערוץ-ה-receipts של הבית.
+# ═══════════════════════════════════════════════════════════════════════════
+on:
+  workflow_dispatch:
+    inputs:
+      task_json:
+        description: 'JSON: {"id":"slug","task":"title","commands":["..."],"timeoutSec":240}'
+        required: true
+        type: string
+  repository_dispatch:
+    types: [exec-task]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exec-task
+  cancel-in-progress: false
+
+jobs:
+  exec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: materialize payload (env→file, no shell eval)
+        env:
+          DISPATCH_JSON: ${{ toJSON(github.event.client_payload) }}
+          INPUT_JSON: ${{ github.event.inputs.task_json }}
+        run: |
+          if [ -n "$DISPATCH_JSON" ] && [ "$DISPATCH_JSON" != "null" ]; then
+            printf '%s' "$DISPATCH_JSON" > payload.json
+          else
+            printf '{"task_json":%s}' "$(node -e 'process.stdout.write(JSON.stringify(process.env.INPUT_JSON || ""))')" > payload.json
+          fi
+
+      - name: execute real commands
+        run: node engine/exec-task.mjs payload.json
+
+      - name: commit time-stamped receipt
+        if: always()
+        run: |
+          git config user.name "sovereign-agent-9"
+          git config user.email "agent9@sovereign.local"
+          git add receipts/execution/
+          git commit -m "[exec] receipt auto: $(date -u +%FT%TZ) run=$GITHUB_RUN_ID" || echo "nothing to commit"
+          git push --no-force
