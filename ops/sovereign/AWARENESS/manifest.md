@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-17T19:10:49.170Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-17T19:19:27.845Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,8 +15,8 @@
 - FleetHQ: 19 workflows · schedule 18 · dispatch 18 · both 18 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/dex-beat @ 2026-10-17T19:19 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-17T18:56 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/dex-beat @ 2026-10-17T18:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-heart @ 2026-10-17T18:35 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-worldbeat @ 2026-10-17T02:02 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/arb-mesh @ 2026-10-17T01:58 — autonomy triage: read the log, fix root, land, verify
