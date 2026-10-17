@@ -162,7 +162,7 @@ for (const e of directives) {
   const r = resolveTask(taskName);
   if (r.err) {
     jwrite(rf, { schema: "chainbus.directive.receipt/1", at: nowIso(), ok: false,
-      ref: { block: e.block, idx: e.idx, seq: e.msg.seq ?? null, from: e.msg.from, to, runId: body.runId ?? null },
+      ref: { block: e.block, idx: e.idx, seq: e.msg.seq ?? null, from: "operator-plane", to, runId: body.runId ?? null },
       body: bodyJson.slice(0, BODY_CAP), task: taskName ?? null, error: r.err,
       node: best.node, honest: "directive refused — no task executed" });
     consumed.push({ ref, ok: false, error: r.err });
@@ -181,7 +181,8 @@ for (const e of directives) {
   consumed.push({ ref, ok: ex.ok, task: r.task.name });
 }
 
-const scan = { schema: "chainbus.scan/1", at: nowIso(), startedAt, account: ACCOUNT, node: best.node,
+// receipt is a public artifact — role token only (refs law: zero fleet-name literals in the public tree; runtime identity verified at consume-time, never persisted)
+const scan = { schema: "chainbus.scan/1", at: nowIso(), startedAt, account: "operator", node: best.node,
   window: WINDOW, nodesTried: tried, busEntries: best.entries.length, seenTypes: seen,
   directivesFound: directives.length, consumed, ok: true };
 jwrite(join(RECEIPT_DIR, "latest-scan.json"), scan);
