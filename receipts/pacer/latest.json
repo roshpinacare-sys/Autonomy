@@ -1,16 +1,64 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-18T21:01:48.411Z",
-  "ok": false,
+  "at": "2026-10-18T21:14:57.030Z",
+  "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": true,
-  "checked": 51,
-  "stale": [],
-  "dispatched": [],
-  "truncated": 0,
-  "reasons": [
-    "last beat 2026-10-18T20:48:21.087Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  "skipped": false,
+  "checked": 63,
+  "stale": [
+    {
+      "wf": "value-scan.yml",
+      "ageMin": 557,
+      "cadenceMin": 30,
+      "why": "last success 557min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "verifier.yml",
+      "ageMin": 56,
+      "cadenceMin": 30,
+      "why": "last success 56min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 557,
+      "cadenceMin": 30,
+      "why": "last success 557min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ageMin": 988,
+      "cadenceMin": 60,
+      "why": "last success 988min ago > cadence 60+10grace"
+    }
   ],
-  "doneAt": "2026-10-18T21:01:48.661Z"
+  "dispatched": [
+    {
+      "wf": "value-scan.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "verifier.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    }
+  ],
+  "truncated": 0,
+  "reasons": [],
+  "doneAt": "2026-10-18T21:15:06.280Z"
 }
