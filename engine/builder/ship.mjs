@@ -32,11 +32,18 @@ export function applyEdits(siteRoot, edits, log = () => {}) {
       writeFileSync(p, after);
       out.push({ path: e.path, ok: true, changed: true, bytes: after.length });
       log(`section ${e.path}: ${before.length}→${after.length} bytes`);
-    } else { // write (new file)
+    } else { // write (new file or full regeneration)
+      const existed = existsSync(p);
+      let prev = null;
+      if (existed) { try { prev = readFileSync(p, 'utf8'); } catch { prev = null; } }
+      if (prev === e.content) { // idempotent-bytes law: identical data → honest no-op
+        out.push({ path: e.path, ok: true, changed: false, why: 'write identical — no-op' });
+        continue;
+      }
       mkdirSync(dirname(p), { recursive: true });
       writeFileSync(p, e.content);
-      out.push({ path: e.path, ok: true, changed: true, bytes: e.content.length, created: !existsSync(p) });
-      log(`write ${e.path}: ${e.content.length} bytes`);
+      out.push({ path: e.path, ok: true, changed: true, bytes: e.content.length, created: !existed });
+      log(`write ${e.path}: ${e.content.length} bytes${existed ? '' : ' (new)'}`);
     }
   }
   return out;
@@ -111,6 +118,8 @@ export async function selftest() {
   ]);
   t('write creates file', w[0].ok && existsSync(join(dir, 'pulse.json')));
   t('write mkdirs parents', w[1].ok && existsSync(join(dir, 'sub/x.html')));
+  const w2 = applyEdits(dir, [{ path: 'pulse.json', mode: 'write', content: '{"schema":"builder-pulse/1"}\n' }]);
+  t('write idempotent (identical bytes → honest no-op)', w2[0].ok && !w2[0].changed);
 
   const host = join(dir, 'index.html');
   writeFileSync(host, '<html><body>\n  <!-- ═══ surfaces ═══ -->\n</body></html>');

@@ -69,6 +69,13 @@ export function pulseHtml(facts, now = new Date()) {
       v: facts?.fleet?.total != null ? `${facts.fleet.total} חשבונות` : dash(facts?.fleet?.ok),
       t: `measured · ${ageLabel(facts?.fleet?.at, now)}`,
     },
+    {
+      l: 'הקצב · דופק-הרשת העצמי (pacer)',
+      v: facts?.pacer?.lastBeatChecked != null
+        ? `${facts.pacer.lastBeatChecked} נבדקו${facts?.pacer?.lastBeatDispatched ? ` · ${facts.pacer.lastBeatDispatched} שוגרו` : ''}`
+        : dash(facts?.pacer?.at),
+      t: `measured · ${ageLabel(facts?.pacer?.lastBeatAt ?? facts?.pacer?.at, now)}`,
+    },
   ];
   const card = c => `<div class="pcard"><div class="v num">${esc(c.v)}</div><div class="l">${esc(c.l)}</div><span class="t">${esc(c.t)}</span></div>`;
   return [
@@ -78,7 +85,7 @@ export function pulseHtml(facts, now = new Date()) {
     `    <div class="proof-grid">`,
     ...cards.map(c => '    ' + card(c)),
     '    </div>',
-    `    <p style="text-align:center;font-size:12px;color:var(--faint);margin-top:14px">פס-זה נבנה אוטונומית על-ידי איבר-הבונה בכל שעה עגולה מהקבלות בגיט · כל מספר מדידה-אמיתית עם גיל-מדידה · בלי מדידה כתוב "אין-מדידה" ולא המצאה · <a href="changelog.html" style="color:var(--fg)">יומן-הבנייה</a> · <a href="tools.html" style="color:var(--fg)">קטלוג-היכולות</a></p>`,
+    `    <p style="text-align:center;font-size:12px;color:var(--faint);margin-top:14px">פס-זה נבנה אוטונומית על-ידי איבר-הבונה בכל שעה עגולה מהקבלות בגיט · כל מספר מדידה-אמיתית עם גיל-מדידה · בלי מדידה כתוב "אין-מדידה" ולא המצאה · <a href="changelog.html" style="color:var(--fg)">יומן-הבנייה</a> · <a href="tools.html" style="color:var(--fg)">קטלוג-היכולות</a> · <a href="receipts.html" style="color:var(--fg)">פנקס-הקבלות</a></p>`,
     '  </section>',
     PULSE_END,
   ].join('\n');
@@ -177,6 +184,70 @@ export function changelogHtml(commits, now = new Date()) {
   <p class="sub">האתר בונה את עצמו — כל ריצת איבר-הבונה נרשמת כאן מהגיט · עודכן ${esc(now.toISOString())}</p>
   ${days.map(dayBlock).join('\n') || '<p class="sub">אין-מדידה — עדיין לא נבנה</p>'}
   <footer>מיוצר אוטונומית מ-git log · אימת כאן שהריבונות באמת בונה ולא רק בודקת</footer>
+</main>
+</body>
+</html>
+`;
+}
+
+/**
+ * receiptsLedgerHtml — פנקס-הקבלות [t15 · owner order: "שיפור שמישות של הכל"]:
+ * the open-ledger page — every organ's latest receipt rendered human-readable.
+ * State sovereignty in public: any citizen can audit who beat, when, and whether
+ * it was honest. Data-driven from real receipts (latest.json per organ dir) — nothing invented.
+ */
+export function receiptsLedgerHtml(streams, now = new Date()) {
+  const list = Array.isArray(streams) ? streams : [];
+  const healthy = list.filter(s => s.status === 'ok').length;
+  const stale = list.filter(s => s.status === 'defect').length;
+  const missing = list.filter(s => s.status === 'missing').length;
+  const rowCls = s => s.status === 'ok' ? 'ok' : s.status === 'defect' ? 'bad' : s.status === 'missing' ? 'faint' : 'warn';
+  const statusHe = s => s.status === 'ok' ? 'תקין' : s.status === 'defect' ? 'פגם-מדוד' : s.status === 'noop' ? 'השהיה-כנה' : s.status === 'skipped' ? 'פעימה-שקטה' : s.status === 'missing' ? 'אין-מדידה' : s.status;
+  const row = s => `<tr class="${rowCls(s)}"><td><code>${esc(s.organ)}</code></td><td>${esc(statusHe(s))}</td><td class="num">${esc(s.age ?? '—')}</td><td class="sub">${esc(s.at ?? '')}</td></tr>`;
+  return `<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>פנקס-הקבלות · ריבונות SAOS</title>
+<style>
+  :root { --fg:#e8e6e1; --faint:#8a877f; --bg:#0d0e11; }
+  body { background:var(--bg); color:var(--fg); font-family:system-ui,'Segoe UI',sans-serif; margin:0; padding:48px 20px; line-height:1.6; }
+  main { max-width:940px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 6px; }
+  .sub { color:var(--faint); font-size:13px; }
+  .sum { display:flex; gap:18px; margin:18px 0; flex-wrap:wrap; }
+  .sum div { background:#14151a; border:1px solid #26272e; border-radius:12px; padding:12px 20px; font-size:14px; }
+  .sum b { font-size:20px; display:block; }
+  table { width:100%; border-collapse:collapse; margin-top:14px; background:#101116; border:1px solid #26272e; border-radius:12px; overflow:hidden; }
+  th { text-align:start; font-size:12px; color:var(--faint); padding:10px 14px; border-bottom:1px solid #26272e; }
+  td { padding:9px 14px; border-bottom:1px dashed #1f2027; font-size:13.5px; }
+  tr:last-child td { border-bottom:none; }
+  td.num { font-variant-numeric:tabular-nums; }
+  td.sub, .sub td { color:var(--faint); font-size:12px; }
+  tr.ok td:nth-child(2) { color:#4cc38a; } tr.bad td:nth-child(2) { color:#e0564a; }
+  tr.warn td:nth-child(2) { color:#d8b46a; } tr.faint td:nth-child(2) { color:var(--faint); }
+  code { color:#d8b46a; font-size:12px; }
+  footer { margin-top:36px; color:var(--faint); font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>פנקס-הקבלות</h1>
+  <p class="sub">כל איבר-מדידה בריבונות מדווח לכאן מהקבלות בגיט · נבנה אוטונומית בכל שעה · עודכן ${esc(now.toISOString())}</p>
+  <div class="sum">
+    <div><b>${healthy}</b>איברים-תקינים</div>
+    <div><b>${stale}</b>פגמים-מדודים</div>
+    <div><b>${missing}</b>בלי-מדידה</div>
+    <div><b>${list.length}</b>זרמי-קבלה</div>
+  </div>
+  <table>
+    <thead><tr><th>איבר</th><th>מצב-אחרון</th><th>גיל-מדידה</th><th>זמן-קבלה (UTC)</th></tr></thead>
+    <tbody>
+      ${list.map(row).join('\n      ') || '<tr><td colspan="4" class="sub">אין-מדידה — עדיין לא זרמו קבלות</td></tr>'}
+    </tbody>
+  </table>
+  <footer>כל שורה נקראת מ-receipts/&lt;איבר&gt;/latest.json בזמן-בנייה · בלי מדידה כתוב "אין-מדידה" · פגם-מדוד לא מוסתר — כך נבנה אמון</footer>
 </main>
 </body>
 </html>
@@ -319,6 +390,7 @@ export function selftest() {
     scout: { ok: true, entries: 8, at: '2026-10-17T20:00:00Z' },
     world: { version: 3, at: null },
     fleet: { ok: true, total: 14, at: '2026-10-18T02:33:00Z' },
+    pacer: { at: '2026-10-18T09:50:00Z', skipped: true, checked: 0, staleN: 0, dispatchedN: 0, lastBeatAt: '2026-10-18T09:35:00Z', lastBeatChecked: 12, lastBeatDispatched: 1 },
   };
 
   const html = pulseHtml(facts, now);
@@ -328,6 +400,20 @@ export function selftest() {
   t('pulse workflows value', html.includes('44 חי'));
   t('pulse honest missing', pulseHtml({ verifier: { overall: null, at: null } }, now).includes('אין-מדידה'));
   t('pulse age label', html.includes('measured · 1 שע׳'));
+  t('pulse heartbeat card', html.includes('דופק-הרשת העצמי') && html.includes('12 נבדקו · 1 שוגרו'));
+  t('pulse strip links receipts', html.includes('receipts.html'));
+
+  // receipts ledger page
+  const rl = receiptsLedgerHtml([
+    { organ: 'builder', status: 'ok', age: '3 דק׳', at: '2026-10-18T09:57:00Z' },
+    { organ: 'pacer', status: 'skipped', age: '1 דק׳', at: '2026-10-18T09:59:00Z' },
+    { organ: 'world', status: 'defect', age: '2 שע׳', at: '2026-10-18T08:00:00Z' },
+    { organ: 'ghost', status: 'missing', age: null, at: null },
+  ], now);
+  t('ledger renders organs', rl.includes('builder') && rl.includes('pacer'));
+  t('ledger honest statuses', rl.includes('תקין') && rl.includes('פעימה-שקטה') && rl.includes('פגם-מדוד') && rl.includes('אין-מדידה'));
+  t('ledger summary counts', rl.includes('<b>1</b>איברים-תקינים') && rl.includes('<b>1</b>פגמים-מדודים') && rl.includes('<b>1</b>בלי-מדידה'));
+  t('ledger honest empty', receiptsLedgerHtml([], now).includes('עדיין לא זרמו קבלות'));
 
   // injectSection: replace path
   const doc = `<html><body>

@@ -21,7 +21,7 @@ export const STALE_DAYS = 2;
 /** the product surfaces the owner judges the site by — freshness here = life */
 export const PRODUCT_PAGES = [
   'index.html', 'console.html', 'products.html', 'truth.html', 'tools.html',
-  'docs/index.html', 'changelog.html', 'pulse.json',
+  'docs/index.html', 'changelog.html', 'pulse.json', 'receipts.html',
 ];
 
 /** load a JSON file fail-honest — missing/corrupt = null, never a throw */
@@ -74,6 +74,34 @@ export function snapshotFacts(root, now = new Date()) {
     scout: { ok: scout?.ok ?? null, entries: scoutEntries(root, scout), at: scout?.at ?? null },
     world: { version: world?.version ?? world?.world?.version ?? null, at: world?.at ?? null },
     fleet: { ok: fleet?.ok ?? null, total: fleet?.summary?.total ?? fleet?.total ?? null, at: fleet?.at ?? null },
+    pacer: pacerHeartbeat(root),
+  };
+}
+
+/**
+ * pacerHeartbeat — the self-chained heartbeat fact [t15]: latest beat may be a
+ * quiet throttle; the honest signal is the last MEANINGFUL beat from the
+ * bounded ledger (checked>0). Every field fail-honest.
+ */
+export function pacerHeartbeat(root) {
+  const latest = loadJson(join(root, 'receipts', 'pacer', 'latest.json'));
+  let lastBeat = null;
+  try {
+    const lines = readFileSync(join(root, 'receipts', 'pacer', 'ledger.jsonl'), 'utf8').split('\n').filter(Boolean);
+    for (let i = lines.length - 1; i >= 0; i--) {
+      const j = JSON.parse(lines[i]);
+      if ((j?.checked ?? 0) > 0) { lastBeat = j; break; }
+    }
+  } catch { /* honest null */ }
+  return {
+    at: latest?.at ?? null,
+    skipped: typeof latest?.skipped === 'boolean' ? latest.skipped : null,
+    checked: latest?.checked ?? null,
+    staleN: Array.isArray(latest?.stale) ? latest.stale.length : null,
+    dispatchedN: Array.isArray(latest?.dispatched) ? latest.dispatched.length : null,
+    lastBeatAt: lastBeat?.at ?? null,
+    lastBeatChecked: lastBeat?.checked ?? null,
+    lastBeatDispatched: Array.isArray(lastBeat?.dispatched) ? lastBeat.dispatched.length : null,
   };
 }
 
@@ -218,7 +246,7 @@ export async function selftest() {
   });
   t('fresh page → no refresh', !bl2.map(x => x.id).includes('REFRESH_PRODUCT_SURFACES'));
 
-  const { mkdtempSync, writeFileSync, rmSync } = await import('node:fs');
+  const { mkdtempSync, writeFileSync, rmSync, mkdirSync } = await import('node:fs');
   const { tmpdir } = await import('node:os');
   const dir = mkdtempSync(join(tmpdir(), 'builder-audit-'));
   writeFileSync(join(dir, 'a.html'), '<a href="b.html">ok</a><a href="missing.html">bad</a><a href="https://x.y">ext</a>');
@@ -232,7 +260,19 @@ export async function selftest() {
   const facts = snapshotFacts(emptyRoot, now);
   t('facts fail-honest verifier', facts.verifier.overall === null);
   t('facts has at', typeof facts.at === 'string');
+  t('facts pacer fail-honest', facts.pacer.checked === null && facts.pacer.lastBeatAt === null);
   rmSync(emptyRoot, { recursive: true, force: true });
+
+  // pacerHeartbeat with a real-shaped fixture
+  const pdir = mkdtempSync(join(tmpdir(), 'builder-pacer-'));
+  mkdirSync(join(pdir, 'receipts', 'pacer'), { recursive: true });
+  writeFileSync(join(pdir, 'receipts', 'pacer', 'latest.json'), JSON.stringify({ at: '2026-10-18T09:50:00Z', ok: false, skipped: true, checked: 0, stale: [], dispatched: [] }));
+  writeFileSync(join(pdir, 'receipts', 'pacer', 'ledger.jsonl'), JSON.stringify({ at: '2026-10-18T09:35:00Z', ok: true, checked: 12, stale: ['verifier.yml'], dispatched: ['verifier.yml'] }) + '\n');
+  const ph = pacerHeartbeat(pdir);
+  t('pacer latest skipped', ph.skipped === true);
+  t('pacer lastBeat meaningful', ph.lastBeatChecked === 12 && ph.lastBeatDispatched === 1);
+  t('pacer lastBeatAt from ledger', ph.lastBeatAt === '2026-10-18T09:35:00Z');
+  rmSync(pdir, { recursive: true, force: true });
 
   return { ok: results.every(r => r.pass), results };
 }

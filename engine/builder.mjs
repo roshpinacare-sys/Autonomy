@@ -29,7 +29,7 @@ import { writeFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSy
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { snapshotFacts, auditSite, selftest as auditSelftest } from './builder/audit.mjs';
-import { pulseHtml, docsIndexHtml, changelogHtml, pulseJson, executableTasks, PULSE_START, toolsCatalogHtml, fixLinks, rewriteLinks } from './builder/craft.mjs';
+import { pulseHtml, docsIndexHtml, changelogHtml, pulseJson, executableTasks, PULSE_START, toolsCatalogHtml, receiptsLedgerHtml, fixLinks, rewriteLinks } from './builder/craft.mjs';
 import { applyEdits, gitLastDates, gitShip, gitLogTail, verifyLive, selftest as shipSelftest } from './builder/ship.mjs';
 
 const ROOT = process.env.GITHUB_WORKSPACE || resolve(join(dirname(fileURLToPath(import.meta.url)), '..'));
@@ -140,6 +140,29 @@ export function collectCapabilityData(root, siteRoot) {
   return data;
 }
 
+/**
+ * collectReceiptStreams — every organ's latest receipt for the open-ledger
+ * page [t15]: { organ, at, age, status } — status mapped fail-honest
+ * (ok/noop/skipped/defect/missing), never invented, refs-only.
+ */
+export function collectReceiptStreams(root, now = new Date()) {
+  const rdir = join(root, 'receipts');
+  const streams = [];
+  for (const d of require_listDir(rdir)) {
+    if (!isDir(join(rdir, d))) continue;
+    const p = join(rdir, d, 'latest.json');
+    if (!existsSync(p)) { streams.push({ organ: d, at: null, age: null, status: 'missing' }); continue; }
+    const j = (() => { try { return JSON.parse(readFileSync(p, 'utf8')); } catch { return null; } })();
+    if (!j) { streams.push({ organ: d, at: null, age: null, status: 'missing' }); continue; }
+    const at = j.doneAt ?? j.at ?? null;
+    const mins = at ? Math.round((now.getTime() - Date.parse(at)) / 60000) : null;
+    const age = mins === null ? null : mins < 1 ? 'עכשיו' : mins < 90 ? `${mins} דק׳` : mins < 2880 ? `${Math.round(mins / 60)} שע׳` : `${Math.round(mins / 1440)} ימ׳`;
+    const status = j.defect ? 'defect' : j.skipped ? 'skipped' : j.ok === false ? 'defect' : j.ok === true ? 'ok' : j.noop ? 'noop' : 'ok';
+    streams.push({ organ: d, at, age, status });
+  }
+  return streams.sort((a, b) => String(a.organ).localeCompare(String(b.organ)));
+}
+
 /** product html files (top-level + docs/) — candidates for link fixing */
 export function listProductHtml(siteRoot) {
   const out = [];
@@ -167,7 +190,7 @@ export async function live() {
       receipt.factsAt = facts.at;
 
       // ── 2. AUDIT: measure the site like the owner does ─────────────────
-      const PRODUCT_PATHS = ['index.html', 'console.html', 'products.html', 'truth.html', 'tools.html', 'docs/index.html', 'changelog.html', 'pulse.json'];
+      const PRODUCT_PATHS = ['index.html', 'console.html', 'products.html', 'truth.html', 'tools.html', 'docs/index.html', 'changelog.html', 'pulse.json', 'receipts.html'];
       const gitDates = gitLastDates(SITE, PRODUCT_PATHS);
       const audit = auditSite(SITE, gitDates, { facts });
       receipt.audit = { pages: audit.pages, missing: audit.missing, links: audit.links, backlog: audit.backlog.map(t => ({ id: t.id, priority: t.priority, why: t.why })) };
@@ -191,6 +214,9 @@ export async function live() {
         }
         if (task.id === 'CREATE_TOOLS_HTML' || task.id === 'CREATE_TOOLS_CATALOG') {
           edits.push({ path: 'tools.html', mode: 'write', content: toolsCatalogHtml(collectCapabilityData(ROOT, SITE), new Date()) });
+        }
+        if (task.id === 'CREATE_RECEIPTS_HTML') {
+          edits.push({ path: 'receipts.html', mode: 'write', content: receiptsLedgerHtml(collectReceiptStreams(ROOT, new Date()), new Date()) });
         }
         if (task.id === 'FIX_RELATIVE_LINKS') {
           // t14: the builder now FIXES broken relative links — safe unambiguous
@@ -216,6 +242,13 @@ export async function live() {
       if (th?.exists && !tasks.some(t => t.id.startsWith('CREATE_TOOLS')) && (th.days === null || th.days >= 1)) {
         edits.push({ path: 'tools.html', mode: 'write', content: toolsCatalogHtml(collectCapabilityData(ROOT, SITE), new Date()) });
         receipt.tasks.push('REFRESH_TOOLS_CATALOG');
+      }
+      // receipts.html: the public open-ledger — regenerated EVERY run (hourly
+      // receipts change its bytes; identical data → write-mode honest no-op,
+      // the idempotency lives in applyEdits now). Covers first-creation too.
+      if (!edits.some(e => e.path === 'receipts.html')) {
+        edits.push({ path: 'receipts.html', mode: 'write', content: receiptsLedgerHtml(collectReceiptStreams(ROOT, new Date()), new Date()) });
+        receipt.tasks.push('RECEIPTS_LEDGER');
       }
       // changelog freshness: refresh it whenever the page exists but is stale
       const cl = audit.pages.find(p => p.path === 'changelog.html');
