@@ -1087,3 +1087,32 @@
 - PROPOSAL(law): decision D5-social-standby evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 - PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
 
+
+## scribe #36 · 2026-10-18T17:00:43.692Z
+- wallet 24h verdicts: {"FAIL":1,"PASS":9} · failing laws: {}
+- fleet 24h verdicts: {"FAIL":19,"PASS":4} · alerts: 69
+- fleet actions 24h: 100 runs · failures: artery-decision-truth:failure×6, value-scan:failure×6, artery-fleet:failure×3, artery-participation:failure×1, world-evolver:failure×1, .github/workflows/fleet-yield.yml:failure×1
+- sovereign tick last pulse: 9min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":75,"sovereign-agent-9":22,"github-actions[bot]":3}
+- office-ci (FleetHQ) verdict: PASS · 50min ago
+- Domain book office/data.json: 29min old (law <=60min)
+- Domain book agents/office-live.json: 54min old (law <=180min)
+- Domain book dex/office-feed.json: 4825min old (law <=1560min)
+- flow map: nodes=38 edges=97 page-integrated=10 plane-internal=26 orphans=1 ghosts=0 density=2.55
+- integrity guard: overall=PASS sources=11 claims-verified=6 findings=9 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=50562 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=1h
+- dex book dex/showcase.json: ok sig=pair=unknown age=1h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=6 truth={"VERIFIED":5,"STALE-TRUTH":1} decider-stalled=false
+- PROPOSAL(law): wallet carried 10 trust-flag(s)/24h (out-of-band PASS mints) — owner P0: make wallet CI the only minter
+- PROPOSAL(law): fleet verify FAIL/BLOCKED streak ≥2 — a critical repo is regressing; measure before touching anything
+- PROPOSAL(law): Domain book dex/office-feed.json stale (4825min > 1560min) - its producer workflow may be stalled
+- PROPOSAL(law): 1 orphan producers (nobody consumes) - refinement targets: wire a consumer or honestly retire with documentation (fix-don-lock)
+- PROPOSAL(law): 14 feed(s) past their freshness law while being read by live code
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+
