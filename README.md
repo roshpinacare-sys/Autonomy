@@ -48,3 +48,15 @@
 ---
 מקור: מראה של שכבת-הרצת Sandbox (HEAD מסוניט 2026-10-12), נבנה בעקבות הוראת-בעלים
 על עצמאות מלאה מתשתית-חיצונית.
+
+## הצטרפות-סוכן חדש (onboarding) [t17 · agent-9]
+
+כל סשן/סוכן חדש — הכלים והזיכרון כבר מוכנים כאן. שלוש פקודות:
+
+1. `node agents/agent-9/sandbox-tools/sandbox-restore.mjs` — drill בריאות מלא (עם `--fix`: משחזר לבד תעודה/repos/worklog)
+2. קרא `agents/agent-9/tools-manifest.md` — מניפסט כל הכלים: מה קיים, מה הוא עושה, איך מריצים
+3. `bash agents/agent-9/sandbox-tools/restore.sh` — drill + הקמת watchdog חיצוני (כל 5 דקות census+revive)
+
+הזיכרון המלא: `agents/agent-9/worklog.md` — חוקי-הבית, מתקפות-עבר והלקחים, כל המדידות.
+עותק-ביטוח שלישי: repo `steem` (פרטי) תחת `agents/agent-9/` — אם השניים האחרים נפגעים.
+אחרי כל אתחול-סנדבוקס: drill → watchdog → המשך-בנייה. איסור כתיבה בסינית לבעלים — עברית בלבד.

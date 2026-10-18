@@ -15,7 +15,10 @@
 |---|---|
 | `sandbox-restore.mjs` | drill שחזור מלא: בודק .git-creds (ובונה מ-pat.env), מאמת token מול repo פרטי (steem), מ-clone Autonomy/Domain ל-`/home/z/project-review/`, מחווט credential.helper, משחזר worklog מהביטוח, בודק שלמות תיקיית הביטוח. בדיקה בלבד כברירת מחדל; `--fix` = שחזור אקטיבי. PASS/DEGRADED כנה בסוף |
 | `mass-revive.mjs` | היפוך מתקפת סגירה: census כל ה-workflows ב-repos שבארגומנטים (ברירת מחדל Autonomy+Domain) ו-re-enable לכל מנוטרל; שומר פורנזיקה 100% ל-tmp/attack2-forensics.json. נולד במתקפה #2 (t16): 100/100 הוחזרו |
-| `watchdog.mjs` | שכבת-הגנה 3 — חיצוני ל-GitHub: לולאה כל 5 דקות, census+revive מיידי + קבלות jsonl + הצתת שרשרת אחרי חזרת-חיים. הרצה: `nohup node watchdog.mjs > /home/z/my-project/tmp/watchdog.log 2>&1 &` (חובה אחרי כל drill שחזור) |
+| `watchdog.mjs` (v2) | שכבת-הגנה 3 — חיצוני ל-GitHub: לולאה כל 5 דקות, census+revive מיידי + קבלות jsonl + הצתת שרשרת אחרי חזרת-חיים. **v2 (t17)**: כל fetch עם AbortSignal.timeout(20s) — התיקון שנכפה אחרי שה-drill המבוקר תפס את v1 נתלה לנצח ב-proxy. הרצה: `nohup node watchdog.mjs > /home/z/my-project/tmp/watchdog.log 2>&1 &` (חובה אחרי כל drill שחזור) |
+| `restore.sh` | פקודת-שחזור אחת (t17): drill (ו--fix אם חסר) + הקמת watchdog אם אינו חי + פסק-דין. שימוש: `bash agents/agent-9/sandbox-tools/restore.sh`. אומת חי: PASS 8/8 + watchdog ALIVE |
+
+עותקי-ביטוח (t17): 1) repo זה (Autonomy, ציבורי) 2) ה-worklog המקומי בסנדבוקס 3) **repo `steem` (פרטי) תחת agents/agent-9/** — אם שניים נפגעים, השלישי משחזר.
 
 ## עורקי-הגנה ב-GitHub (לא כלים מקומיים — חלק מהמערכת האוטונומית)
 
