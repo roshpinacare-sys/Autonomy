@@ -105,8 +105,19 @@ saos-dex `deploy/PUBLIC-DEX-CHECKLIST.md`).
   אחרונה מול-קצב-כל-עורק, מצית סטיים (cap-6, חוק-הרשאת-dispatch בלבד), מדווח בכנות. מצערת-14דק
   (אין-דפיקות-כפולות) · no-churn (רק-פעימות-משמעותיות נכתבות-לגיט) · cron=מחלץ-חירום בלבד.
   ב-workflow: `artery-pacer.yml`. קבלות: receipts/pacer
+  **t15-תיקון-חוקה (IMMUNE)**: התקפת-סגירה-המונית כיבתה 42/50 וורקפלואו (disabled_manually, נמדד
+  ~06:15) בזמן-שהבעלים ישן — ה-pacer קיבל **סמכות-החייאה-בלבד** (REVIVE-ONLY): כל-פעימה (גם-מושהית)
+  עורכת-census למצבי-כל-הוורקפלואו ומחזירה-לחיים כל-שאינו-active (cap-60, forks לעולם-לא-נוגעים).
+  הפעלה=חיים; כיבוי=אסור-לנצח. הוכח-חי ב-VM: census-50, all-clear.
 
 - `treasury-forensics` — משטרת-האוצר [t14]: מודד-מהשרשרת מי-הזיז-vesting של-האוצר ב-48h
   (delegate/withdraw/transfer, צד-שני כ-ref בלבד). פסק-ראשון: **0-פעולות** — עליית-ה-SP 2855↔4029
   היא-תנודת-הערכה/צומת, לא-דליפה. מחובר-ל-treasury-topup (flow48h בכל-קבלה). תיקון-נמדד:
   get_account_history מוגבל-100 לצומת.
+
+- `autonomy-guardian` — השומר-חוצה-הריפו [t15 · owner order: "מפעיל הכל... לא סגירה"]: **הגיבוי-שחוצה-גבולות-ריפו** —
+  ההתקפה-ההמונית הרגה-גם-את-מערכת-החיסון-עצמה (כל-הצופים-בתוך-Autonomy נכו-עם-המוגנים-שלהם). הגיבוי
+  חייב-לשבת-בחוץ: ה-guardian רץ-בריפו-Domain, עובר-את-גבול-הריפו, מבצע-census ל-Autonomy כולה (50),
+  מחזיר-לחיים כל-שאינו-active (REVIVE-ONLY, סולם-טוקנים SBX_FLEET_PAT→GH_PAT→ZIP_PAT — הוכח-חי),
+  ומצית-מחדש-את-שרשרת-ה-pacer. cron שעתי-בדקה-אי-זוגית + dispatch. מנוע: `Domain/scripts/autonomy-guardian.mjs`,
+  ב-workflow: `Domain/.github/workflows/autonomy-guardian.yml`. קבלות: Domain/receipts/autonomy-guardian
