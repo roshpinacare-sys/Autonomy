@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-18T21:02:11.467Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-18T21:25:08.270Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -23,13 +23,11 @@
 - [DEFECT] Domain/fleet-census-cron @ 2026-10-18T00:10 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/arb-mesh @ 2026-10-18T00:01 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-beat @ 2026-10-17T19:42 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/value-scan @ 2026-10-18T20:48 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-18T20:48 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-18T20:48 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/world-evolver @ 2026-10-18T20:26 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-participation @ 2026-10-18T19:55 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-selfheal @ 2026-10-18T18:36 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-18T18:36 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/world-evolver @ 2026-10-18T21:25 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-18T21:15 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-18T21:15 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/value-scan @ 2026-10-18T21:15 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-participation @ 2026-10-18T21:02 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/opens-closer @ 2026-10-18T07:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-3d @ 2026-10-18T07:37 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/.github/workflows/office-ifixai-audit.yml @ 2026-10-18T01:58 — autonomy triage: read the log, fix root, land, verify
