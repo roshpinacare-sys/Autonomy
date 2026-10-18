@@ -20,6 +20,14 @@
  *   dependencies; dispatch-only authority (constitution law); receipts
  *   refs-only, bounded.
  *
+ * t15 IMMUNE AMENDMENT (owner order: "מפעיל הכל... לא סגירה המנעות ונעילה"):
+ *   a mass-closure attack disabled 42/50 workflows (measured, state
+ *   disabled_manually) while the owner sleeps. New law — REVIVE-ONLY
+ *   AUTHORITY: every beat (even throttled ones) censuses workflow states and
+ *   re-ENABLES any non-active one (paths .github/workflows/ only). Enable is
+ *   life-giving; the organ may NEVER disable anything. The no-closure covenant
+ *   outranks the old silence-only constitution.
+ *
  *   node engine/artery-pacer.mjs --selftest   (zero-network, must be green)
  *   node engine/artery-pacer.mjs              (live beat: measure→dispatch→receipt)
  */
@@ -37,6 +45,10 @@ const nowIso = () => new Date().toISOString();
 export const MAX_DISPATCH_PER_BEAT = 6;
 /** chain rhythm: minimum minutes between beats (throttle law of sovereign-tick) */
 export const MIN_BEAT_MIN = 14;
+/** immune revival cap [t15]: mass-closure attacks disabled 42 workflows at once
+ * (measured 2026-10-18 ~06:15, all disabled_manually) — the cap must exceed that
+ * scale. Enable is CHEAP (one PUT); life-giving authority, never closure. */
+export const MAX_REVIVE_PER_BEAT = 60;
 
 /**
  * THE ROSTER — every artery that must keep beating, with its cadence.
@@ -112,12 +124,56 @@ export async function dispatchWorkflow(wf, token, fetchImpl = fetch) {
     if (meta.status === 404) return { ok: false, status: 404, note: 'workflow-file-not-found' };
     if (!meta.ok) return { ok: false, status: meta.status, note: 'meta-fetch-failed' };
     const mj = await meta.json();
-    if (mj.state !== 'active') return { ok: false, status: 0, note: `state=${mj.state} — dispatch refused (constitution: enable/disable is owner-level; disabled is reported loudly)` };
+    if (mj.state !== 'active') return { ok: false, status: 0, note: `state=${mj.state} — dispatch refused (revived on this beat's immune pass if still non-active)` };
     const d = await fetchImpl(`${API}/repos/${process.env.GITHUB_REPOSITORY}/actions/workflows/${mj.id}/dispatches`, { method: 'POST', headers: ghHeaders(token), body: JSON.stringify({ ref: 'main' }), signal: AbortSignal.timeout(15000) });
     return { ok: d.status === 204, status: d.status, note: d.status === 204 ? 'dispatched' : 'dispatch-failed' };
   } catch (err) {
     return { ok: false, status: 0, note: String(err?.message || err).slice(0, 120) };
   }
+}
+
+/**
+ * censusStates — the immune census [t15]: every repo-owned workflow's state.
+ * Fork-path workflows (@@FORK@@ prefix, same guard as growth-watch) are
+ * counted but NEVER touched — not our authority. Pure listing, no mutation.
+ */
+export async function censusStates(token, fetchImpl = fetch) {
+  const out = { repo: process.env.GITHUB_REPOSITORY, active: 0, disabled: [], forkDisabled: 0, error: null };
+  try {
+    for (let page = 1; page <= 5; page++) {
+      const res = await fetchImpl(`${API}/repos/${process.env.GITHUB_REPOSITORY}/actions/workflows?per_page=100&page=${page}`, { headers: ghHeaders(token), signal: AbortSignal.timeout(20000) });
+      if (!res.ok) { out.error = `census http ${res.status}`; break; }
+      const j = await res.json();
+      for (const w of j?.workflows ?? []) {
+        if (w.state === 'active') { out.active++; continue; }
+        if (String(w.path || '').startsWith('@@FORK@@')) { out.forkDisabled++; continue; }
+        if (String(w.path || '').startsWith('.github/workflows/')) out.disabled.push({ id: w.id, name: w.name, path: w.path, state: w.state });
+      }
+      const total = j?.total_count ?? 0;
+      if (page * 100 >= total) break;
+    }
+  } catch (err) { out.error = String(err?.message || err).slice(0, 160); }
+  return out;
+}
+
+/**
+ * reviveDisabled — the life-giving pass [t15 REVIVE-ONLY AUTHORITY]:
+ * PUT /enable on every non-active repo-owned workflow. The organ may NEVER
+ * disable — enable is the only mutation this organ holds, per the owner's
+ * standing no-closure order. Bounded by MAX_REVIVE_PER_BEAT.
+ */
+export async function reviveDisabled(disabled, token, fetchImpl = fetch, cap = MAX_REVIVE_PER_BEAT) {
+  const out = { checked: disabled.length, revived: [], failed: [], truncated: Math.max(0, disabled.length - cap) };
+  for (const w of disabled.slice(0, cap)) {
+    try {
+      const r = await fetchImpl(`${API}/repos/${process.env.GITHUB_REPOSITORY}/actions/workflows/${w.id}/enable`, { method: 'PUT', headers: ghHeaders(token), signal: AbortSignal.timeout(15000) });
+      if (r.status === 204) out.revived.push(w.path);
+      else out.failed.push({ path: w.path, status: r.status });
+    } catch (err) {
+      out.failed.push({ path: w.path, status: 0, note: String(err?.message || err).slice(0, 100) });
+    }
+  }
+  return out;
 }
 
 function appendBoundedLedger(dir, entry, cap = 400) {
@@ -137,12 +193,26 @@ export async function live() {
     skipped: false, checked: 0, stale: [], dispatched: [], truncated: 0, reasons: [],
   };
   try {
-    // throttle law: one chain, no double-beats (sovereign-tick lesson)
+    // ── IMMUNE PASS [t15]: runs on EVERY beat, even throttled ones —
+    // closure must never wait 14 minutes for a quiet heartbeat.
+    const census = await censusStates(token);
+    receipt.checked += census.active;
+    if (census.error) receipt.reasons.push(`immune census: ${census.error}`);
+    if (census.disabled.length > 0 || census.forkDisabled > 0) {
+      receipt.immune = { disabledFound: census.disabled.length, forkDisabled: census.forkDisabled };
+      const rev = await reviveDisabled(census.disabled, token);
+      receipt.immune.revived = rev.revived;
+      receipt.immune.failed = rev.failed;
+      receipt.immune.truncated = rev.truncated;
+      if (rev.revived.length) receipt.reasons.push(`IMMUNE REVIVAL: ${rev.revived.length} workflows re-enabled (mass-closure defense, owner no-closure law)`);
+      if (rev.failed.length) receipt.reasons.push(`immune revive failures: ${rev.failed.length} (PAT scope? — loud, never silent)`);
+    }
+    // ── BEAT LAW: throttle gate (immune pass already ran above) ─────
     let prev = null;
     try { prev = JSON.parse(readFileSync(join(STATE, 'beat.json'), 'utf8')); } catch { prev = null; }
     if (!beatDue(prev?.at)) {
       receipt.skipped = true;
-      receipt.reasons.push(`last beat ${prev.at} < ${MIN_BEAT_MIN}min ago — throttled (no receipt churn, no double-work)`);
+      receipt.reasons.push(`last beat ${prev.at} < ${MIN_BEAT_MIN}min ago — throttled (no receipt churn, no double-work; immune pass already ran)`);
     } else {
       const ages = {};
       for (const r of ROSTER) { ages[r.wf] = await lastSuccessAgeMin(r.wf, token); receipt.checked++; }
@@ -176,7 +246,7 @@ export async function live() {
     });
     // no-churn law: only MEANINGFUL beats deserve a git commit (quiet heartbeats
     // live in Actions history; the chain itself is the aliveness evidence)
-    const meaningful = receipt.dispatched.length > 0 || receipt.defect || receipt.stale.length > 0;
+    const meaningful = receipt.dispatched.length > 0 || receipt.defect || receipt.stale.length > 0 || receipt.immune?.revived?.length > 0;
     if (meaningful) { mkdirSync(STATE, { recursive: true }); writeFileSync(join(STATE, 'COMMIT_ME'), receipt.doneAt + '\n'); }
   }
   console.log(`[pacer] skipped=${receipt.skipped} checked=${receipt.checked} stale=${receipt.stale.length} dispatched=${receipt.dispatched.filter(d => d.ok).length}/${receipt.dispatched.length}`);
@@ -230,6 +300,34 @@ export async function selftest() {
   // lastSuccessAge null-safe
   const a1 = await lastSuccessAgeMin('x.yml', 'tok', async () => ({ ok: false, status: 500 }));
   t('api fail → null age', a1 === null);
+
+  // ── immune census + revive laws [t15] ───────────────────────────
+  const cs = await censusStates('tok', async (url) => {
+    if (url.includes('page=1')) return { ok: true, status: 200, json: async () => ({
+      total_count: 3,
+      workflows: [
+        { id: 1, name: 'a', path: '.github/workflows/a.yml', state: 'active' },
+        { id: 2, name: 'b', path: '.github/workflows/b.yml', state: 'disabled_manually' },
+        { id: 3, name: 'c', path: '@@FORK@@/.github/workflows/c.yml', state: 'disabled_inactivity' },
+      ],
+    }) };
+    return { ok: true, status: 200, json: async () => ({ total_count: 3, workflows: [] }) };
+  });
+  t('census counts active', cs.active === 1);
+  t('census finds repo disabled', cs.disabled.length === 1 && cs.disabled[0].id === 2);
+  t('census fork counted never touched', cs.forkDisabled === 1);
+
+  const revived = [];
+  const rev = await reviveDisabled(cs.disabled, 'tok', async (url, init) => {
+    if (init?.method === 'PUT') { revived.push(url); return { status: 204 }; }
+    return { status: 400 };
+  });
+  t('revive PUTs each disabled', revived.length === 1 && rev.revived.length === 1 && rev.revived[0].includes('b.yml'));
+  t('revive fork absent (never touched)', !revived.some(u => u.includes('c.yml')));
+  const revFail = await reviveDisabled([{ id: 9, path: 'x.yml' }], 'tok', async () => ({ status: 403 }));
+  t('revive fail-honest 403', revFail.failed.length === 1 && revFail.failed[0].status === 403);
+  const revCap = await reviveDisabled(Array.from({ length: 70 }, (_, i) => ({ id: i, path: `w${i}.yml` })), 'tok', async () => ({ status: 204 }));
+  t('revive cap 60', revCap.revived.length === 60 && revCap.truncated === 10);
 
   // roster sanity
   t('roster includes covenant + builder', ROSTER.some(r => r.wf === 'artery-growth.yml') && ROSTER.some(r => r.wf === 'artery-builder.yml'));
