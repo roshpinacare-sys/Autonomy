@@ -36,9 +36,19 @@ jobs:
             git config user.name sovereign-agent-9
             git config user.email agent9@fleet.local
             git add receipts/chainbus receipts/execution
-            git pull --rebase origin main || true
             git commit -m "chainbus: scan/consume receipts [run ${{ github.run_id }}]"
-            git push origin main
+            # publish idiom (wave-15/17): commit BEFORE pull — the old order
+            # (pull --rebase on a dirty index, masked by || true, then push) died
+            # on every concurrent push ("cannot pull with rebase: Your index
+            # contains uncommitted changes" -> push rejected -> red x2). Fresh
+            # artifact wins publish-only conflicts (-X theirs), retried 3x.
+            OK=0
+            for i in 1 2 3; do
+              if git pull --rebase -X theirs --autostash origin main && git push origin main; then OK=1; echo "push ok (attempt $i)"; break; fi
+              git rebase --abort 2>/dev/null || true
+              sleep 5
+            done
+            [ "$OK" = "1" ] || { echo "receipt push failed after 3 attempts — honest failure"; exit 1; }
           else
             echo "no receipt change — heartbeat only"
           fi
