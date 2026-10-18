@@ -570,3 +570,25 @@ Stage Summary:
 - The treasury drain question is answered by the chain itself, every run, forever: no leak — valuation noise
 - The site gained its usability product: the full capability catalog, human-readable, hourly-refreshed, from real files
 - Honest boundaries: pacer full-beat cadence settles ~28min (throttle + skip interleave) — robust over fast; link-fixer conservative (only unambiguous basename matches; ambiguous ones recorded, not touched)
+
+---
+Task ID: 14-b
+Agent: agent-9
+Task: Owner order — "אתה עושה הכל מפעיל הכל... ודא דחיפה והכל שלא יעלם לנו עם הסנדבוקס שימחק תמשיך" — sandbox-deletion insurance + verify everything pushed + continue autonomous building.
+
+Work Log:
+- MEASURED sandbox-loss exposure: Autonomy + Domain repos 0 untracked, 0 unpushed (clean); the ONLY irreplaceable local assets were worklog.md (572 lines coordination memory) + 20 tmp/*.mjs operational tools
+- SECRET-SCANNED all 20 tools before archiving: every one reads token at RUNTIME from /home/z/.git-creds regex — zero embedded secrets (verified rg for ghp_/github_pat_/literal assignments)
+- BUILT the insurance: agents/agent-9/{README.md,worklog.md,sandbox-tools/*.mjs} committed to Autonomy — a fresh sandbox clone now restores BOTH the memory and the operating tools; the organs themselves already survive by design (they run on GitHub VMs)
+- ORIGIN-VERIFIED recovery: GitHub API contents check 200 on worklog.md (102,427 bytes), README, 2 tool samples at ref=main — the backup is real, not local theater
+- PUSH law exercised: push rejected (sibling pushed meanwhile) → pull --rebase + retry per conflict law → 52673b1d landed, integrating pacer beat a4cf2d9f that arrived during rebase (the chain beat WHILE I was pushing — proof of autonomous life)
+- OFFICE3D LIVE VERIFICATION (owner's 0/10 item) with agent-browser on production URL: page loads, title correct, ZERO console errors, ZERO page errors; canvas rendered; presence "חי · עכשיו" green
+- TRUTH WALL measured live in-browser: bus scan fresh 4min, 107 shifts, 5920 journal events, 8/13 books fresh, lung 6 arteries — all real chain data, honest ages
+- INTERACTIVE GOLDEN PATH all verified by real clicks: חגיגת-קבלה → crew dances (screenshot shows mid-flip poses, retargeted Mixamo clips playing); התפתחות-העולם → world-touches popup (agent-9 world/2 baseline + world-evolver v3 14-trees); כינוס-צוות → crew converges to round table; mobile iPhone 14 viewport → name bubbles (tamar/shachar/yarden), toolbar wraps, truth-wall hidden by design
+- FULL CENSUS from origin: 50/50 workflows active, 0 disabled, every cron intact (builder :17, world-evolver :19/2h, pacer reviver) — earlier "world-evolver missing" was pagination truncation, honestly corrected
+- All live surfaces re-verified 200: pulse.json, tools.html, changelog, office3d full asset chain (main.js, crew.js, three.module, GLTFLoader, retarget.js, world.json, motion/index.json, Xbot.glb)
+
+Stage Summary:
+- Sandbox-deletion insurance is DONE and PROVEN from origin: losing the sandbox now loses nothing — memory + tools are in-repo, organs run on GitHub VMs, sites deploy from git
+- office3d living world is objectively ALIVE and interactive on production: real chain data on the wall, real retargeted animation, real world-evolution history, mobile-responsive — the 0/10 item has its evidence
+- Honest boundary: builder 05:17 cron slot not yet observed in runs at census time; the pacer chain (proven beat during this very session) is the designed catch-up — not a silent assumption
