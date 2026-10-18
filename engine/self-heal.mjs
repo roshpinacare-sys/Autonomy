@@ -100,6 +100,13 @@ async function live() {
     (r.ok ? receipt.dispatched : receipt.refused).push(rec);
   }
   receipt.ok = true; // הריצה-עצמה-אמתה; כל-סירוב-מתועד-כנה בתוכה
+  // מפקד-שעונים (t10-נותר): מצב-הפעלה-של-כל-השעונים — הריאה-מדווחת-על-כיבויים
+  // (נמדד 17/10: 9-שעונים-כבו-בשקט-ואף-ביקורת-לא-כיסתה — עכשיו-הריאה-מפרסמת-זאת-בכל-ריצה)
+  try {
+    const wl = await fetch(`${API}/actions/workflows?per_page=100`, { headers: ghHeaders(token) }).then((x) => x.json());
+    const all = (wl.workflows || []).map((w) => ({ path: w.path, state: w.state }));
+    receipt.workflows = { total: all.length, active: all.filter((w) => w.state === 'active').length, disabled: all.filter((w) => w.state !== 'active').map((w) => w.path) };
+  } catch (e) { receipt.workflows = { error: String(e?.message || e).slice(0, 120) }; }
   publish(receipt);
   // יציאה 0 תמיד-כשהריאה-רצה: אדומיות-של-עורקים-היא-מצב-מדידה, לא-כישלון-הריאה
   return 0;
