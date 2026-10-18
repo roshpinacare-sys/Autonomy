@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-18T11:58:20.607Z",
+ "at": "2026-10-18T12:51:33.234Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-18T07:55:04.835Z",
+ "verdictAt": "2026-10-18T12:27:47.026Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -28,14 +28,6 @@
    "status": 204,
    "note": "dispatched",
    "ok": true
-  },
-  {
-   "workflow": "artery-flow.yml",
-   "check": "sbx.wf-artery-flow",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
   }
  ],
  "refused": [],
@@ -43,14 +35,14 @@
  "notHealable": [
   {
    "id": "dev.rate",
-   "level": "NOTICE",
-   "why": "mixed activity: codeShare 13%",
+   "level": "DEGRADED",
+   "why": "heartbeat-without-building: codeShare 5% < 10% over 304 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
    "level": "DEGRADED",
-   "why": "treasury acct-00 at 2855 SP < 3000 (recovery-plan §3)",
+   "why": "treasury acct-00 at 2875 SP < 3000 (recovery-plan §3)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
