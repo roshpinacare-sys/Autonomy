@@ -41,8 +41,8 @@ jobs:
           echo '```json' >> "$GITHUB_STEP_SUMMARY"
           cat /tmp/revival-summary.json >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+          mkdir -p agents/agent-9/state   # התיקייה-עשויה-שלא-להתקיים-ב-repo (הלקח-מהפעימה-הראשונה)
           if [ -s /tmp/revive-org-receipts.jsonl ]; then
-            mkdir -p agents/agent-9/state
             { echo "# org-revival receipts (last beat) · $(date -u +%FT%TZ)"; cat /tmp/revive-org-receipts.jsonl; } > agents/agent-9/state/org-revival-latest.json
           else
             echo "# org-revival receipts (last beat) · $(date -u +%FT%TZ) · nothing-to-revive (clean beat)" > agents/agent-9/state/org-revival-latest.json
