@@ -24,7 +24,7 @@ jobs:
         env:
           NVIDIA_NIM_KEY: ${{ secrets.NVIDIA_NIM_KEY }}
         run: node engine/world-evolver.mjs
-      - name: Commit evolved world to Domain (grow-only, rebase-safe)
+      - name: Commit evolved world to Domain (grow-only, rebase-safe, HONEST push)
         if: hashFiles('receipts/world/latest.json') != ''
         run: |
           V=$(node -p "JSON.parse(require('fs').readFileSync('receipts/world/latest.json','utf8')).ok")
@@ -37,18 +37,17 @@ jobs:
           git config user.email agent9@fleet.local
           git add office3d/world/world.json
           if git diff --cached --quiet; then echo "world unchanged"; exit 0; fi
-          for i in 1 2 3; do git pull --rebase origin main && break || sleep $((i*7)); done
-          git add office3d/world/world.json
-          git commit -m "world-evolver: the crew grows its world (grow-only) [from Autonomy run ${{ github.run_id }}]"
-          for i in 1 2 3; do git push origin main && break || sleep $((i*7)); done
+          ok=0
+          for i in 1 2 3; do git pull --rebase origin main && git add office3d/world/world.json && git commit -m "world-evolver: the crew grows its world (grow-only) [from Autonomy run ${{ github.run_id }}]" && git push origin main && { ok=1; break; } || sleep $((i*7)); done
+          [ "$ok" = 1 ] || { echo "Domain push failed after 3 rebase-retries — FAILING LOUDLY (measured 18/10: silent-green loop bug)"; exit 1; }
           echo "world pushed: $(git rev-parse --short HEAD)"
-      - name: Commit receipt here (only when changed)
+      - name: Commit receipt here (only when changed · honest push)
         run: |
           if [ -n "$(git status --porcelain receipts/world)" ]; then
             git config user.name sovereign-agent-9
             git config user.email agent9@fleet.local
             git add receipts/world
-            git pull --rebase origin main || true
-            git commit -m "world-evolver: receipt [run ${{ github.run_id }}]"
-            for i in 1 2 3; do git push origin main && break || sleep $((i*7)); done
+            ok=0
+            for i in 1 2 3; do git pull --rebase origin main && git commit -m "world-evolver: receipt [run ${{ github.run_id }}]" && git push origin main && { ok=1; break; } || sleep $((i*7)); done
+            [ "$ok" = 1 ] || { echo "receipt push failed after 3 retries — FAILING LOUDLY"; exit 1; }
           fi
