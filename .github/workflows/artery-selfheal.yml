@@ -24,6 +24,7 @@ jobs:
       - name: Read verdict & re-ignite stale arteries (dispatch-only)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FLEET_PAT: ${{ secrets.FLEET_PAT }}   # t12: keys census needs admin scope (403 on GITHUB_TOKEN, measured)
         run: node engine/self-heal.mjs
       - name: Commit receipt (only when changed · rebase-safe · HONEST push)
         run: |

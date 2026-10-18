@@ -108,11 +108,12 @@ async function live() {
     receipt.workflows = { total: all.length, active: all.filter((w) => w.state === 'active').length, disabled: all.filter((w) => w.state !== 'active').map((w) => w.path) };
   } catch (e) { receipt.workflows = { error: String(e?.message || e).slice(0, 120) }; }
   // מפקד-מפתחות (t12-P1): סקר-שמות-סודות בלבד (GitHub מעולם-לא-מחזיר ערכים) —
-  // נוכחות/היעדר = קבלה-רועשת; איברים-עם-צורך-מוצהר עוברים PENDING→LIVE לפי-זה
+  // נוכחות/היעדר = קבלה-רועשת; איברים-עם-צורך-מוצהר עוברים PENDING→LIVE לפי-זה.
+  // FLEET_PAT קודם (GITHUB_TOKEN נענה 403 — אין-סקופ-admin; נמדד בריצה-הראשונה)
   try {
     const { censusSecrets } = await import('./runtime/keys.mjs');
-    const c = await censusSecrets(token);
-    receipt.keys = c.ok ? { total: c.total, required: c.required.map((r) => ({ name: r.name, present: r.present })) } : { error: c.reason };
+    const c = await censusSecrets(process.env.FLEET_PAT || token);
+    receipt.keys = c.ok ? { total: c.total, required: c.required.map((r) => ({ name: r.name, present: r.present })), via: process.env.FLEET_PAT ? 'FLEET_PAT' : 'GITHUB_TOKEN' } : { error: c.reason };
   } catch (e) { receipt.keys = { error: String(e?.message || e).slice(0, 120) }; }
   publish(receipt);
   // יציאה 0 תמיד-כשהריאה-רצה: אדומיות-של-עורקים-היא-מצב-מדידה, לא-כישלון-הריאה
