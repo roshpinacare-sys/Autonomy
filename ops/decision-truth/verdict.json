@@ -1,26 +1,26 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-18T02:12:40Z",
- "durationMs": 2215,
+ "generatedAt": "2026-10-18T03:28:13Z",
+ "durationMs": 2010,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-18T01:30:36Z",
-  "stateAgeMin": 42,
+  "stateAgeMin": 118,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-18T01:30:20Z",
-   "ageS": 2539,
-   "stalled": false
+   "ageS": 7072,
+   "stalled": true
   }
  },
  "measures": {
   "chain": {
-   "head": 110534868,
+   "head": 110536375,
    "treasuryNetSp": 2854.8,
-   "mult": 0.000620464013561186
+   "mult": 0.0006204662160958378
   },
   "beaconPulse": {
    "treasuryNetSp": 3064.8
@@ -49,7 +49,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 42min (limit 120)"
+     "detail": "state age 118min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -100,7 +100,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 42min (limit 120)"
+     "detail": "state age 118min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -124,8 +124,8 @@
     },
     {
      "law": "fleethq-reds-persist",
-     "result": "ok",
-     "detail": "failure runs in last 48h: 1 - routed WO-FleetHQ-reds subject persists (work pending)"
+     "result": "mismatch",
+     "detail": "0 failure runs in 48h - WO-FleetHQ-reds satisfied, world moved past the decision - RE-MEASURE"
     },
     {
      "law": "faulted-agents-fix",
@@ -135,7 +135,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 42min (limit 120)"
+     "detail": "state age 118min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -161,7 +161,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 42min (limit 120)"
+     "detail": "state age 118min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -177,7 +177,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 42min (limit 120)"
+     "detail": "state age 118min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -193,18 +193,18 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 42min (limit 120)"
+     "detail": "state age 118min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "39089264265",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39089264265",
-  "sha": "c077df26abb6271a0e7a6a9c7a6ac2e612041b9a",
+  "runId": "39093718701",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39093718701",
+  "sha": "a440b9adcef06df5a7926e31a4003c70f881d594",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-18T02:12:40Z"
+  "generatedAt": "2026-10-18T03:28:13Z"
  },
  "selftest": {
   "vectors": 16,
