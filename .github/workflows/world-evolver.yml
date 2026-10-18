@@ -37,8 +37,9 @@ jobs:
           git config user.email agent9@fleet.local
           git add office3d/world/world.json
           if git diff --cached --quiet; then echo "world unchanged"; exit 0; fi
+          git commit -m "world-evolver: the crew grows its world (grow-only) [from Autonomy run ${{ github.run_id }}]"
           ok=0
-          for i in 1 2 3; do git pull --rebase origin main && git add office3d/world/world.json && git commit -m "world-evolver: the crew grows its world (grow-only) [from Autonomy run ${{ github.run_id }}]" && git push origin main && { ok=1; break; } || sleep $((i*7)); done
+          for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
           [ "$ok" = 1 ] || { echo "Domain push failed after 3 rebase-retries — FAILING LOUDLY (measured 18/10: silent-green loop bug)"; exit 1; }
           echo "world pushed: $(git rev-parse --short HEAD)"
       - name: Commit receipt here (only when changed · honest push)
@@ -47,7 +48,8 @@ jobs:
             git config user.name sovereign-agent-9
             git config user.email agent9@fleet.local
             git add receipts/world
+            git commit -m "world-evolver: receipt [run ${{ github.run_id }}]"
             ok=0
-            for i in 1 2 3; do git pull --rebase origin main && git commit -m "world-evolver: receipt [run ${{ github.run_id }}]" && git push origin main && { ok=1; break; } || sleep $((i*7)); done
+            for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
             [ "$ok" = 1 ] || { echo "receipt push failed after 3 retries — FAILING LOUDLY"; exit 1; }
           fi
