@@ -25,14 +25,20 @@ jobs:
           ZIP_PAT: ${{ secrets.ZIP_PAT }}
         run: |
           set -e
-          TOKEN=""
-          for T in "$SBX_FLEET_PAT" "$GH_PAT" "$ZIP_PAT"; do [ -n "$T" ] && TOKEN="$T" && break; done
-          [ -n "$TOKEN" ] || { echo "NO_TOKEN — FAIL LOUD"; exit 1; }
+          WORK=""
+          for T in "$SBX_FLEET_PAT" "$ZIP_PAT" "$GH_PAT"; do
+            [ -n "$T" ] || continue
+            if git ls-remote "https://x-access-token:${T}@github.com/roshpinacare-sys/steem.git" HEAD >/dev/null 2>&1; then
+              WORK="$T"; echo "token ok (ls-remote steem)"; break
+            fi
+            echo "token rejected for steem — trying next"
+          done
+          [ -n "$WORK" ] || { echo "NO_WORKING_TOKEN for steem — FAIL LOUD"; exit 1; }
           git config user.name sovereign-agent-9
           git config user.email agent9@fleet.local
-          git clone --depth 1 --branch agent-9-insurance "https://x-access-token:${TOKEN}@github.com/roshpinacare-sys/steem.git" vault || {
+          git clone --depth 1 --branch agent-9-insurance "https://x-access-token:${WORK}@github.com/roshpinacare-sys/steem.git" vault || {
             echo "vault branch missing — creating orphan snapshot"
-            git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/roshpinacare-sys/steem.git" vault-src
+            git clone --depth 1 "https://x-access-token:${WORK}@github.com/roshpinacare-sys/steem.git" vault-src
             cd vault-src; git checkout --orphan agent-9-insurance; git rm -rfq .; cd ..
             mv vault-src vault
           }
