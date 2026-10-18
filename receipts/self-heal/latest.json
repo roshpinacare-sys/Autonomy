@@ -1,10 +1,18 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-18T06:56:11.758Z",
+ "at": "2026-10-18T07:49:22.745Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-18T05:52:45.792Z",
+ "verdictAt": "2026-10-18T07:25:36.604Z",
  "dispatched": [
+  {
+   "workflow": "sovereign-state.yml",
+   "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
   {
    "workflow": "artery-watch.yml",
    "check": "sbx.wf-artery-watch",
@@ -14,17 +22,17 @@
    "ok": true
   },
   {
-   "workflow": "value-scan.yml",
-   "check": "sbx.wf-value-scan",
+   "workflow": "federation.yml",
+   "check": "sbx.wf-federation",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
-   "level": "DEGRADED",
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
+   "level": "FAIL",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -32,15 +40,7 @@
   {
    "workflow": "artery-decision-truth.yml",
    "check": "sbx.wf-artery-decision-truth",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-integrity.yml",
-   "check": "sbx.wf-artery-integrity",
-   "level": "DEGRADED",
+   "level": "FAIL",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -48,7 +48,7 @@
   {
    "workflow": "artery-participation.yml",
    "check": "sbx.wf-artery-participation",
-   "level": "DEGRADED",
+   "level": "FAIL",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -59,8 +59,8 @@
  "notHealable": [
   {
    "id": "dev.rate",
-   "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 0% < 10% over 302 commits/24h",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 15%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,8 +76,8 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
- "verdictOverall": "DEGRADED",
+ "truncated": 1,
+ "verdictOverall": "FAIL",
  "workflows": {
   "total": 50,
   "active": 50,
