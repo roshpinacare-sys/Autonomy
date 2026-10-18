@@ -1,0 +1,51 @@
+name: agent-9-vault-sync
+# [t18 · agent-9] סנכרון-אוטומטי של עותק-הביטוח השלישי (כספת):
+# agents/agent-9 מ-Autonomy (עותק 1) → ענף agent-9-insurance ב-steem (עותק 3).
+# חוק: append-only, FF-only — אף-פעם לא force (אותו חוק כמו SOVEREIGN-WRITER-LAW).
+# למה: עותק-ביטוח שרקב = אין ביטוח. כל-יום הכספת מתעדכנת ל-worklog הטרי.
+on:
+  schedule:
+    - cron: "31 3 * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: agent-9-vault-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: push insurance snapshot to steem vault branch (FF-only)
+        env:
+          SBX_FLEET_PAT: ${{ secrets.SBX_FLEET_PAT }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          ZIP_PAT: ${{ secrets.ZIP_PAT }}
+        run: |
+          set -e
+          TOKEN=""
+          for T in "$SBX_FLEET_PAT" "$GH_PAT" "$ZIP_PAT"; do [ -n "$T" ] && TOKEN="$T" && break; done
+          [ -n "$TOKEN" ] || { echo "NO_TOKEN — FAIL LOUD"; exit 1; }
+          git config user.name sovereign-agent-9
+          git config user.email agent9@fleet.local
+          git clone --depth 1 --branch agent-9-insurance "https://x-access-token:${TOKEN}@github.com/roshpinacare-sys/steem.git" vault || {
+            echo "vault branch missing — creating orphan snapshot"
+            git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/roshpinacare-sys/steem.git" vault-src
+            cd vault-src; git checkout --orphan agent-9-insurance; git rm -rfq .; cd ..
+            mv vault-src vault
+          }
+          rm -rf vault/agents
+          mkdir -p vault/agents
+          cp -r agents/agent-9 vault/agents/
+          cd vault
+          git add -A
+          if git diff --cached --quiet; then echo "vault already fresh — quiet beat"; exit 0; fi
+          git commit -q -m "vault-sync: agent-9 insurance refresh from Autonomy @ $(git -C .. rev-parse HEAD)"
+          for i in 1 2 3; do
+            git push origin agent-9-insurance -q && { echo "VAULT SYNCED ok"; exit 0; }
+            git pull --rebase origin agent-9-insurance -q || true
+            sleep $((i*7))
+          done
+          echo "VAULT PUSH FAILED after 3 retries — FAILING LOUDLY"; exit 1
