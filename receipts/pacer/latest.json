@@ -1,16 +1,88 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-18T06:10:46.543Z",
-  "ok": false,
+  "at": "2026-10-18T06:29:25.345Z",
+  "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": true,
-  "checked": 0,
-  "stale": [],
-  "dispatched": [],
-  "truncated": 0,
-  "reasons": [
-    "last beat 2026-10-18T05:57:28.426Z < 14min ago — throttled (no receipt churn, no double-work)"
+  "skipped": false,
+  "checked": 12,
+  "stale": [
+    {
+      "wf": "value-scan.yml",
+      "ageMin": 111,
+      "cadenceMin": 30,
+      "why": "last success 111min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-grid.yml",
+      "ageMin": 58,
+      "cadenceMin": 30,
+      "why": "last success 58min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 58,
+      "cadenceMin": 30,
+      "why": "last success 58min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 109,
+      "cadenceMin": 30,
+      "why": "last success 109min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ageMin": 102,
+      "cadenceMin": 60,
+      "why": "last success 102min ago > cadence 60+10grace"
+    },
+    {
+      "wf": "artery-builder.yml",
+      "ageMin": 111,
+      "cadenceMin": 70,
+      "why": "last success 111min ago > cadence 70+10grace"
+    }
   ],
-  "doneAt": "2026-10-18T06:10:46.550Z"
+  "dispatched": [
+    {
+      "wf": "value-scan.yml",
+      "ok": false,
+      "status": 0,
+      "note": "state=disabled_manually — dispatch refused (constitution: enable/disable is owner-level; disabled is reported loudly)"
+    },
+    {
+      "wf": "artery-grid.yml",
+      "ok": false,
+      "status": 0,
+      "note": "state=disabled_manually — dispatch refused (constitution: enable/disable is owner-level; disabled is reported loudly)"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ok": false,
+      "status": 0,
+      "note": "state=disabled_manually — dispatch refused (constitution: enable/disable is owner-level; disabled is reported loudly)"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ok": false,
+      "status": 0,
+      "note": "state=disabled_manually — dispatch refused (constitution: enable/disable is owner-level; disabled is reported loudly)"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ok": false,
+      "status": 0,
+      "note": "state=disabled_manually — dispatch refused (constitution: enable/disable is owner-level; disabled is reported loudly)"
+    },
+    {
+      "wf": "artery-builder.yml",
+      "ok": false,
+      "status": 0,
+      "note": "state=disabled_manually — dispatch refused (constitution: enable/disable is owner-level; disabled is reported loudly)"
+    }
+  ],
+  "truncated": 0,
+  "reasons": [],
+  "doneAt": "2026-10-18T06:29:29.796Z"
 }
