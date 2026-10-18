@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-18T14:11:06.687Z",
+  "at": "2026-10-18T15:04:02.760Z",
   "repos": {
     "steem-cockpit": {
-      "head": "e93949c5fb93a2667181070f2e5f7c572910c733",
+      "head": "bbed25f9028bfe3e5a0df86b9d07fb4eb992ea23",
       "overall": "PASS",
       "checks": {
         "install": "pass",
@@ -12,13 +12,13 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-dex": {
-      "head": "4ef16fc2eae9d272c36bb641810732dcc1798eb0",
+      "head": "c2d8dc50edc2d9b0812d8ae11a84dd24453cd92e",
       "overall": "FAIL",
       "checks": {
         "install": "pass",
         "typecheck": "fail"
       },
-      "reason": "typecheck failed: ic/cmvdq26s/middleware-ts-dex.ts(58,36): error TS1127: Invalid character. | fabric/cmvdq26s/middleware-ts-dex.ts(58,39): error TS1109: Expression expected. | fabric/cmvdq26s/middleware-ts-dex.ts(58,42): error TS1109: Expression expected. | "
+      "reason": "typecheck failed: re-ts-dex.ts(58,42): error TS1109: Expression expected. | fabric/cmvdxs6w/saos-control-center-src-lib-db-ts.ts(40,18): error TS1005: ';' expected. | fabric/cmvdxs6w/saos-control-center-src-lib-db-ts.ts(40,84): error TS1005: ';' expected. | "
     },
     "saos-agents": {
       "head": "9651187d2e0b65c929983bb086290a097b139204",
@@ -42,22 +42,22 @@
     }
   },
   "alerts": [
-    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-XYZTGH/saos-wallet/tools/vault-zk-check.ts",
+    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Q2pfam/saos-wallet/tools/vault-zk-check.ts",
     "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
   "overall": "FAIL",
   "reason": "steem=PASS · saos-dex=FAIL · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "39134833494",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39134833494",
-    "sha": "75f64e599753d88dbe15e668958d94ba57b6aafb"
+    "runId": "39138781159",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39138781159",
+    "sha": "6374a455c4520848e211170c81d08edaa304adc5"
   },
   "details": [
     {
-      "at": "2026-10-18T14:11:06.687Z",
+      "at": "2026-10-18T15:04:02.760Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "e93949c5fb93a2667181070f2e5f7c572910c733",
+      "head": "bbed25f9028bfe3e5a0df86b9d07fb4eb992ea23",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
@@ -67,7 +67,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+          "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
         },
         {
           "id": "law-no-skipped-pass",
@@ -86,15 +86,15 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-XYZTGH/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+        "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-Q2pfam/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-18T14:11:06.687Z",
+      "at": "2026-10-18T15:04:02.760Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "4ef16fc2eae9d272c36bb641810732dcc1798eb0",
+      "head": "c2d8dc50edc2d9b0812d8ae11a84dd24453cd92e",
       "checks": {
         "install": "pass",
         "typecheck": "fail"
@@ -123,10 +123,10 @@
       ],
       "alerts": [],
       "overall": "FAIL",
-      "reason": "typecheck failed: ic/cmvdq26s/middleware-ts-dex.ts(58,36): error TS1127: Invalid character. | fabric/cmvdq26s/middleware-ts-dex.ts(58,39): error TS1109: Expression expected. | fabric/cmvdq26s/middleware-ts-dex.ts(58,42): error TS1109: Expression expected. | "
+      "reason": "typecheck failed: re-ts-dex.ts(58,42): error TS1109: Expression expected. | fabric/cmvdxs6w/saos-control-center-src-lib-db-ts.ts(40,18): error TS1005: ';' expected. | fabric/cmvdxs6w/saos-control-center-src-lib-db-ts.ts(40,84): error TS1005: ';' expected. | "
     },
     {
-      "at": "2026-10-18T14:11:06.687Z",
+      "at": "2026-10-18T15:04:02.760Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "9651187d2e0b65c929983bb086290a097b139204",
       "checks": {
@@ -159,7 +159,7 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-18T14:11:06.687Z",
+      "at": "2026-10-18T15:04:02.760Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
       "head": "0f5e81230bf6108e21c9e5596d2b8028c40a64e1",
       "checks": {},
@@ -167,7 +167,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-XYZTGH/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Q2pfam/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
@@ -211,14 +211,14 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-XYZTGH/saos-wallet/tools/vault-zk-check.ts",
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-Q2pfam/saos-wallet/tools/vault-zk-check.ts",
         "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-18T14:11:06.687Z",
+      "at": "2026-10-18T15:04:02.760Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "43e5ba5a701b8c204f6e0b9937326b6fa4428a47",
       "checks": {},
