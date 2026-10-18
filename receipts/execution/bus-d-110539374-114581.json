@@ -1,0 +1,40 @@
+{
+  "schema": "exec.receipt/1",
+  "id": "bus-d-110539374-114581",
+  "task": "bus-d-110539374-114581",
+  "at": "2026-10-18T06:19:33.389Z",
+  "runner": "github-actions:ubuntu-latest",
+  "repo": "roshpinacare-sys/Autonomy",
+  "runId": "39103616729",
+  "ok": true,
+  "commandCount": 3,
+  "results": [
+    {
+      "i": 0,
+      "cmd": "echo '== engine inventory =='; ls engine/ engine/tasks/",
+      "exit": 0,
+      "killed": false,
+      "ms": 100,
+      "out": "== engine inventory ==\nengine/:\nCHAINBUS.md\nagent-gate.mjs\nartery-pacer.mjs\nbuilder\nbuilder.mjs\ncandidates-export.mjs\nclaims-intake.mjs\ncloud-echo.mjs\ndecision-truth.mjs\ndirective-bus.mjs\nestate-relay.mjs\nestate-vault.mjs\nexec-task.mjs\nfederation-scan.mjs\nfederation-selftest.mjs\nfleet-participation.mjs\nfleet-verify.mjs\nfleet-yield-selftest.mjs\nfleet-yield.mjs\nflow-map.mjs\ngitlab-mirror.mjs\ngrid-watch.mjs\ngrowth-watch.mjs\nintegrity-guard.mjs\nkey-probe.mjs\nleak-scan.mjs\nnetwork-inventory.mjs\nnetwork-probe.mjs\noperator.mjs\npub-scrub.mjs\nrefs-scrub-file.mjs\nrefs.mjs\nrender-home.mjs\nrun-score.mjs\nruntime\nscout\nscout.mjs\nscribe.mjs\nseal-selftest.mjs\nself-heal.mjs\nsovereign-tick.mjs\nstate-lib.mjs\nstate-tick.mjs\ntasks\ntreasury-forensics.mjs\ntreasury-topup.mjs\nvault-census.mjs\nvein-probe.mjs\nvercel-deploy.mjs\nverifier.mjs\nwallet-verify.mjs\nworld-evolver.mjs\n\nengine/tasks/:\nfleet-report.json\nhealth-probe.json\nminutes-census.json\nscout.json\nscripts\nself-heal.json\ntreasury.json\n",
+      "err": ""
+    },
+    {
+      "i": 1,
+      "cmd": "echo '== execution receipts (latest 5) =='; ls -t receipts/execution/ 2>/dev/null | head -5",
+      "exit": 0,
+      "killed": false,
+      "ms": 84,
+      "out": "== execution receipts (latest 5) ==\nbus-d-110523229-113117.json\nbus-d-110528832-113528.json\nbus-d-110528832-113531.json\nlatest.json\nwave2-exec-001.json\n",
+      "err": ""
+    },
+    {
+      "i": 2,
+      "cmd": "echo '== remediation ledger =='; head -c 600 receipts/remediation/agent9-latest.json 2>/dev/null",
+      "exit": 0,
+      "killed": false,
+      "ms": 83,
+      "out": "== remediation ledger ==\n{\n \"schema\": \"remediation.receipt/1\",\n \"channel\": \"receipts/remediation/\",\n \"at\": \"2026-10-18T01:25:00Z\",\n \"agent\": {\n  \"id\": \"agent-9\",\n  \"task\": \"11/wave-7\",\n  \"role\": \"living-world-and-continuation\",\n  \"gitIdentity\": \"sovereign-agent-9 <agent9@fleet.local>\"\n },\n \"scope\": \"owner order t11: finish t10 remainders; the 3D office is 0/10 (dead, disconnected, stuck agents) — rebuild it strong as a living evolving world; learn from Motion2MixamoRig; agents develop the world themselves; a second key (NVIDIA NIM) provided for their autonomous use\",\n \"sandboxDeathNote\": \"sandbox wiped again mid-tas",
+      "err": ""
+    }
+  ]
+}
