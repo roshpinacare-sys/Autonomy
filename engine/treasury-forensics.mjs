@@ -56,8 +56,8 @@ export function parseFlow(entries, { resolver = (n) => refOf(n), treasuryRef = '
   return out;
 }
 
-/** live: chain query for the treasury flow window (hours) */
-export async function treasuryFlow(treasuryName, hosts, { hours = 48, limit = 500, fetchImpl = fetch, resolver } = {}) {
+/** live: chain query for the treasury flow window (hours) — node cap: limit ≤ 100 */
+export async function treasuryFlow(treasuryName, hosts, { hours = 48, limit = 100, fetchImpl = fetch, resolver } = {}) {
   const cutoffIso = new Date(Date.now() - hours * 3600000).toISOString();
   for (const h of hosts ?? []) {
     try {
