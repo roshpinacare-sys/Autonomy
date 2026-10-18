@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-18T01:32:04.884Z",
+ "at": "2026-10-18T02:07:58.843Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-18T01:27:39.379Z",
+ "verdictAt": "2026-10-18T01:57:08.020Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -22,32 +30,16 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "value-scan.yml",
-   "check": "sbx.wf-value-scan",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "hive-probe.yml",
-   "check": "sbx.wf-hive-probe",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
+   "workflow": "artery-fleet.yml",
+   "check": "sbx.wf-artery-fleet",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -60,7 +52,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 8% < 10% over 302 commits/24h",
+   "why": "heartbeat-without-building: codeShare 0% < 10% over 301 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -79,8 +71,11 @@
  "truncated": 0,
  "verdictOverall": "DEGRADED",
  "workflows": {
-  "total": 45,
-  "active": 45,
+  "total": 47,
+  "active": 47,
   "disabled": []
+ },
+ "keys": {
+  "error": "forbidden-403 (census needs admin PAT)"
  }
 }
