@@ -1,0 +1,54 @@
+name: world-evolver
+# THE-GROWING-WORLD [t11 · agent-9 · owner: "הם צריכים לפתח את העולם הזה בעצמם"]
+# Every 2h the crew's world GROWS: engine/world-evolver.mjs reads the live truth
+# (office-live, verdict, self-heal), evolves Domain/office3d/world/world.json
+# (grow-only law, version++, append-only evolutionLog), and pushes to Domain.
+# LLM mode auto-activates when the NVIDIA NIM catalog revives (measured 2026-10-18:
+# account catalog dead — 12 models 410/404; kingdom mode keeps the world alive).
+# Receipts: receipts/world/ in this repo. Zero secret material ever leaves env.
+on:
+  schedule:
+    - cron: "19 */2 * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: world-evolver
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Evolve the world from live truth
+        env:
+          NVIDIA_NIM_KEY: ${{ secrets.NVIDIA_NIM_KEY }}
+        run: node engine/world-evolver.mjs
+      - name: Commit evolved world to Domain (grow-only, rebase-safe)
+        if: hashFiles('receipts/world/latest.json') != ''
+        run: |
+          V=$(node -p "JSON.parse(require('fs').readFileSync('receipts/world/latest.json','utf8')).ok")
+          [ "$V" = "true" ] || { echo "evolver reported failure — nothing lands (honest)"; exit 0; }
+          REPO_DIR=$(mktemp -d)
+          git clone --depth 3 "https://x-access-token:${{ secrets.FLEET_PAT }}@github.com/roshpinacare-sys/Domain.git" "$REPO_DIR"
+          cp receipts/world/world-next.json "$REPO_DIR/office3d/world/world.json"
+          cd "$REPO_DIR"
+          git config user.name sovereign-agent-9
+          git config user.email agent9@fleet.local
+          git add office3d/world/world.json
+          if git diff --cached --quiet; then echo "world unchanged"; exit 0; fi
+          for i in 1 2 3; do git pull --rebase origin main && break || sleep $((i*7)); done
+          git add office3d/world/world.json
+          git commit -m "world-evolver: the crew grows its world (grow-only) [from Autonomy run ${{ github.run_id }}]"
+          for i in 1 2 3; do git push origin main && break || sleep $((i*7)); done
+          echo "world pushed: $(git rev-parse --short HEAD)"
+      - name: Commit receipt here (only when changed)
+        run: |
+          if [ -n "$(git status --porcelain receipts/world)" ]; then
+            git config user.name sovereign-agent-9
+            git config user.email agent9@fleet.local
+            git add receipts/world
+            git pull --rebase origin main || true
+            git commit -m "world-evolver: receipt [run ${{ github.run_id }}]"
+            for i in 1 2 3; do git push origin main && break || sleep $((i*7)); done
+          fi
