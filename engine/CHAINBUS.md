@@ -52,6 +52,18 @@
   בלבד; כבוי = דווח-רועש, לא-הפעלה-חריגה-מהחוקה). ב-cron: `artery-selfheal.yml`
   (11,41 — 4דק אחרי verifier). דרך-האוטובוס: דורש `GITHUB_TOKEN`+`actions:write`
   בסביבת-הצרכן — בלעדיהם קבלת-{ok:false,no-token} כנה (fail-closed)
+  · t12: מפקד-מפתחות בקבלה — סקר-שמות-סודות (FLEET_PAT/NVIDIA_NIM_KEY/CI_ADOPT_WIF_ACTIVE
+  נוכחות-בלבד; ערכים-מעולם-לא)
+
+- `scout` — איבר-הצייד [t12 · owner order]: צינור-הלמידה — sources (pinoyfreecoder
+  github-finds + github-trending) → סולם-אחזור (direct→wayback→jina) → חילוץ-מועמדים →
+  ביקורת-אספקה-קורפוס-קוד-זדוני (קריאה-בלבד; critical=BLOCKED-הסגר-בשם) → רשומות-ידע
+  (clean-room). חוקה: `knowledge/LEARNING.md`. ב-cron: `artery-scout.yml` (5,14 @ :18)
+
+- `treasury-topup` — מבצע-איזון-האוצר [P2 · t12 · owner-approved]: §3 — אוצר ≥3000 SP.
+  מדידה-קריאה-בלבד + תוכנית-delegate מעודפי-הצי (מעל-רצפת-100SP) + נכונות-מפתח
+  (CI_ADOPT_WIF_ACTIVE). קבלות-refs-בלבד (refOf — שמות-אחוזה בזיכרון-בלבד).
+  ב-cron: `artery-treasury.yml` (יומי 06:33)
 
 ## הפעימה-העצמית (sovereign-pulse)
 

@@ -1,0 +1,35 @@
+name: artery-treasury
+# מבצע-איזון-האוצר [P2 · t12 · owner-approved]. recovery-plan §3: treasury ≥3000 SP.
+# Read-only chain measurement + top-up plan + key readiness receipt.
+# Real roster names stay memory-only (FLEET_ROSTER_MAP secret → env → refs in receipts).
+on:
+  schedule:
+    - cron: "33 6 * * *"   # daily
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: artery-treasury
+  cancel-in-progress: false
+jobs:
+  treasury:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Measure treasury & publish top-up plan (refs-only receipts)
+        env:
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+          CI_ADOPT_WIF_ACTIVE: ${{ secrets.CI_ADOPT_WIF_ACTIVE }}
+        run: node engine/treasury-topup.mjs
+      - name: Commit receipt (only when changed · rebase-safe · honest push)
+        run: |
+          if [ -n "$(git status --porcelain receipts/treasury)" ]; then
+            git config user.name sovereign-agent-9
+            git config user.email agent9@fleet.local
+            git add receipts/treasury
+            git commit -m "treasury: §3 measurement + plan [run ${{ github.run_id }}]"
+            ok=0
+            for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
+            [ "$ok" = 1 ] || { echo "push failed after 3 retries — FAILING LOUDLY"; exit 1; }
+          fi

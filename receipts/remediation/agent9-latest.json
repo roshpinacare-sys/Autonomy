@@ -58,12 +58,38 @@
    "title": "live production verification",
    "evidence": "https://roshpinacare-sys.github.io/Domain/office3d/ — fresh headless session: 0 errors, 8 clips, 6 real agents animating, world v2 7 desks (v3 lands via the evolver loop)",
    "status": "DONE"
+  },
+  {
+   "id": "12-1",
+   "title": "learning pipeline (scout organ) — owner order t12",
+   "evidence": "engine/scout.mjs + engine/scout/{signals,parse,fetch,vet,learn}.mjs — 6 modules, selftest PASS; LIVE E2E measured: 15 candidates from trending (direct), 8 vetted read-only, 8 knowledge entries, 0 blocked; pinoyfreecoder CF-blocked from sandbox IP recorded honestly (fetch ladder direct→wayback→jina on VM); knowledge/scout/INDEX.md committed",
+   "status": "DONE"
+  },
+  {
+   "id": "12-2",
+   "title": "P1 approved: fleet keys → VM runtime",
+   "evidence": "engine/runtime/keys.mjs (loadKey memory-only + REQUIRED_SECRETS registry law + censusSecrets names-only); ops/FLEET-KEYS-VM-RUNTIME.md design; keys census wired into self-heal receipt (additive, fail-soft)",
+   "status": "DONE"
+  },
+  {
+   "id": "12-3",
+   "title": "P2 approved: treasury recovery §3 executor",
+   "evidence": "engine/treasury-topup.mjs (vests math selftest PASS, §3 plan: fleet surplus above 100SP floor → treasury 3000, refs-only receipts via refOf); live measured: roster-unresolved in sandbox = honest PENDING; artery-treasury.yml daily 06:33 with FLEET_ROSTER_MAP + CI_ADOPT_WIF_ACTIVE env",
+   "status": "DONE"
+  },
+  {
+   "id": "12-4",
+   "title": "P3 verified already-closed",
+   "evidence": "enable-state census existed in self-heal receipt since t11 (workflows.active/disabled per run) — earlier claim confirmed in code, not re-built",
+   "status": "DONE"
   }
  ],
  "honestLimits": [
   "NVIDIA NIM catalog dead for this account (12 models measured 410/404) — LLM world-proposals dormant until revived; deterministic growth runs now",
   "the auto-bake source that committed stale bundles was not identified (org code-search empty; check-runs only show Pages deploy) — the guard makes it irrelevant",
-  "old static bundle assets left in place (no-deletion law; unreferenced)"
+  "old static bundle assets left in place (no-deletion law; unreferenced)",
+  "scout: pinoyfreecoder behind Cloudflare — fetch ladder + trending fallback keeps pipeline alive; CF pass not guaranteed, all attempts logged",
+  "treasury broadcast (signed delegate op) lands only after CI_ADOPT_WIF_ACTIVE present on runner — plan+readiness are real, broadcast is not faked"
  ],
  "constraintsAccepted": [
   "no-deletion mandate",
@@ -71,5 +97,6 @@
   "dispatch-only autonomous authority",
   "grow-only world law"
  ],
- "overall": "DONE"
+ "overall": "DONE",
+ "itemsCount": 12
 }
