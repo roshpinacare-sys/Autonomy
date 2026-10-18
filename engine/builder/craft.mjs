@@ -1,0 +1,281 @@
+#!/usr/bin/env node
+/**
+ * builder/craft.mjs — איבר-הבונה · יוצר-המוצר [t13 · owner order:
+ * "אני רוצה בניה שיפור תמיד ולא רק בדיקות · אין מוצר אמיתי ·
+ * צריך תוצאות אמיתיות טובות איכותיות"]
+ * ═══════════════════════════════════════════════════════════════════════════
+ * CRAFT PHASE: turns audit tasks into REAL product deltas — pure functions
+ * returning {path, mode, content, anchor?}. Every generator renders honest
+ * data (facts snapshot from git receipts) and degrades to "אין-מדידה" —
+ * never invents a number. Collision law: only NEW files + marker-scoped
+ * sections in shared files — 8 sibling agents work in parallel.
+ *
+ * Selftest: zero-network, zero-git, pure.
+ */
+import { join } from 'node:path';
+
+export const PULSE_START = '<!--builder:pulse v1-->';
+export const PULSE_END = '<!--/builder:pulse-->';
+
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const dash = v => (v === null || v === undefined || v === '' ? 'אין-מדידה' : v);
+
+/** human age string from ISO; null-safe, honest */
+export function ageLabel(iso, now = new Date()) {
+  if (!iso) return 'לא-נמדד';
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return 'לא-נמדד';
+  const mins = Math.max(0, Math.round((now.getTime() - t) / 60000));
+  if (mins < 60) return `${mins} דק׳`;
+  const hrs = Math.round(mins / 60);
+  if (hrs < 48) return `${hrs} שע׳`;
+  return `${Math.round(hrs / 24)} ימ׳`;
+}
+
+/** the live sovereignty pulse strip — injected between markers in index.html */
+export function pulseHtml(facts, now = new Date()) {
+  const cards = [
+    {
+      l: 'דופק-האמת · פסק-הדין האחרון של המאמת',
+      v: dash(facts?.verifier?.overall),
+      t: `measured · ${ageLabel(facts?.verifier?.at, now)}`,
+    },
+    {
+      l: 'הקופה הריבונית · בריאות-אוצר נמדדת',
+      v: facts?.treasury?.acct00sp != null
+        ? `${dash(facts.treasury.health)} · ${Math.round(facts.treasury.acct00sp)} SP`
+        : dash(facts?.treasury?.health),
+      t: `measured · ${ageLabel(facts?.treasury?.at, now)}`,
+    },
+    {
+      l: 'העורקים · וורקפלואו חי מול כבוי',
+      v: facts?.selfHeal?.workflowsActive != null
+        ? `${facts.selfHeal.workflowsActive} חי${facts?.selfHeal?.workflowsDisabled ? ` · ${facts.selfHeal.workflowsDisabled} כבוי` : ''}`
+        : 'אין-מדידה',
+      t: `measured · ${ageLabel(facts?.selfHeal?.at, now)}`,
+    },
+    {
+      l: 'הידע · רשומות-למידה נקיות-חדר',
+      v: facts?.scout?.entries != null ? `${facts.scout.entries} רשומות` : dash(facts?.scout?.ok),
+      t: `measured · ${ageLabel(facts?.scout?.at, now)}`,
+    },
+    {
+      l: 'העולם החי · גרסת-office3d מתפתחת',
+      v: facts?.world?.version != null ? `v${facts.world.version}` : 'אין-מדידה',
+      t: `measured · ${ageLabel(facts?.world?.at, now)}`,
+    },
+    {
+      l: 'הצי · מדידת-צי אחרונה',
+      v: facts?.fleet?.total != null ? `${facts.fleet.total} חשבונות` : dash(facts?.fleet?.ok),
+      t: `measured · ${ageLabel(facts?.fleet?.at, now)}`,
+    },
+  ];
+  const card = c => `<div class="pcard"><div class="v num">${esc(c.v)}</div><div class="l">${esc(c.l)}</div><span class="t">${esc(c.t)}</span></div>`;
+  return [
+    PULSE_START,
+    '  <!-- איבר-הבונה [artery-builder]: פס-דופק חי, נבנה-מחדש בכל ריצה מהקבלות בגיט — אסור-לערוך-ידנית בתוך המרקרים -->',
+    `  <section class="wrap proof" aria-label="דופק-הריבונות החי" style="padding-top:0">`,
+    `    <div class="proof-grid">`,
+    ...cards.map(c => '    ' + card(c)),
+    '    </div>',
+    `    <p style="text-align:center;font-size:12px;color:var(--faint);margin-top:14px">פס-זה נבנה אוטונומית על-ידי איבר-הבונה בכל שעה עגולה מהקבלות בגיט · כל מספר מדידה-אמיתית עם גיל-מדידה · בלי מדידה כתוב "אין-מדידה" ולא המצאה · <a href="changelog.html" style="color:var(--fg)">יומן-הבנייה המלא</a></p>`,
+    '  </section>',
+    PULSE_END,
+  ].join('\n');
+}
+
+/** replace or inject the marker-scoped section inside an HTML document */
+export function injectSection(html, section) {
+  const start = html.indexOf(PULSE_START);
+  const end = html.indexOf(PULSE_END);
+  if (start !== -1 && end !== -1 && end > start) {
+    return html.slice(0, start) + section + html.slice(end + PULSE_END.length);
+  }
+  // first-time injection: before the surfaces anchor (stable landmark)
+  const anchor = html.indexOf('<!-- ═══ surfaces ═══ -->');
+  if (anchor === -1) return null; // refuse blind edits — honest failure
+  return html.slice(0, anchor) + section + '\n\n  ' + html.slice(anchor);
+}
+
+/** docs/index.html — the missing entry into the docs forest */
+export function docsIndexHtml(docFiles, now = new Date()) {
+  const rows = docFiles
+    .map(f => `<li><a href="${esc(f.href)}">${esc(f.title)}</a> — ${esc(f.desc || '')}</li>`)
+    .join('\n      ');
+  return `<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מרכז-התיעוד · ריבונות SAOS</title>
+<style>
+  :root { --fg:#e8e6e1; --faint:#8a877f; --bg:#0d0e11; }
+  body { background:var(--bg); color:var(--fg); font-family:system-ui,'Segoe UI',sans-serif; margin:0; padding:48px 20px; line-height:1.7; }
+  main { max-width:820px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 6px; } h2 { font-size:20px; margin-top:34px; }
+  .sub { color:var(--faint); font-size:13px; }
+  ul { padding-inline-start:22px; } li { margin:7px 0; }
+  a { color:#d8b46a; text-decoration:none; } a:hover { text-decoration:underline; }
+  .card { background:#14151a; border:1px solid #26272e; border-radius:12px; padding:18px 22px; margin-top:22px; }
+  footer { margin-top:44px; color:var(--faint); font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>מרכז-התיעוד</h1>
+  <p class="sub">נבנה אוטונומית על-ידי איבר-הבונה · ${esc(now.toISOString())} · ${docFiles.length} מסמכים חיים מהגיט</p>
+  <div class="card">
+    <h2 style="margin-top:0">מפת-המסמכים</h2>
+    <ul>
+      ${rows || '<li>אין-מדידה — לא נמצאו מסמכים</li>'}
+    </ul>
+  </div>
+  <footer>איבר-הבונה · כל מסמך כאן נסרק מהעץ בזמן-בנייה · בלי המצאות</footer>
+</main>
+</body>
+</html>
+`;
+}
+
+/** changelog.html — the site's own evolution, rendered from git truth */
+export function changelogHtml(commits, now = new Date()) {
+  const byDay = new Map();
+  for (const c of commits) {
+    const day = (c.date || '').slice(0, 10);
+    if (!byDay.has(day)) byDay.set(day, []);
+    byDay.get(day).push(c);
+  }
+  const days = [...byDay.entries()].slice(0, 10);
+  const dayBlock = ([day, list]) => `
+    <section class="day">
+      <h2>${esc(day)} <span class="n">${list.length} בניינים</span></h2>
+      <ul>${list.map(c => `<li><code>${esc(c.sha)}</code> ${esc(c.msg)}</li>`).join('\n')}</ul>
+    </section>`;
+  return `<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>יומן-הבנייה · ריבונות SAOS</title>
+<style>
+  :root { --fg:#e8e6e1; --faint:#8a877f; --bg:#0d0e11; }
+  body { background:var(--bg); color:var(--fg); font-family:system-ui,'Segoe UI',sans-serif; margin:0; padding:48px 20px; line-height:1.65; }
+  main { max-width:900px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 6px; }
+  .sub { color:var(--faint); font-size:13px; }
+  .day { background:#14151a; border:1px solid #26272e; border-radius:12px; padding:16px 22px; margin-top:16px; }
+  h2 { font-size:17px; margin:0 0 8px; } .n { color:var(--faint); font-size:12px; font-weight:400; }
+  ul { list-style:none; padding:0; margin:0; } li { padding:3px 0; border-bottom:1px dashed #1f2027; font-size:13.5px; }
+  li:last-child { border-bottom:none; }
+  code { color:#d8b46a; font-size:12px; margin-inline-end:8px; }
+  footer { margin-top:36px; color:var(--faint); font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>יומן-הבנייה</h1>
+  <p class="sub">האתר בונה את עצמו — כל ריצת איבר-הבונה נרשמת כאן מהגיט · עודכן ${esc(now.toISOString())}</p>
+  ${days.map(dayBlock).join('\n') || '<p class="sub">אין-מדידה — עדיין לא נבנה</p>'}
+  <footer>מיוצר אוטונומית מ-git log · אימת כאן שהריבונות באמת בונה ולא רק בודקת</footer>
+</main>
+</body>
+</html>
+`;
+}
+
+/** pulse.json — machine-readable snapshot for any consumer (console, agents) */
+export function pulseJson(facts, audit, now = new Date()) {
+  return JSON.stringify({
+    schema: 'builder-pulse/1',
+    at: now.toISOString(),
+    builder: { organ: 'artery-builder', cadence: 'hourly', law: 'fail-honest, refs-only, marker-scoped' },
+    facts,
+    audit: {
+      pages: audit?.pages ?? [],
+      missing: audit?.missing ?? [],
+      linksChecked: audit?.links?.checked ?? null,
+      brokenCount: audit?.links?.brokenCount ?? null,
+      backlog: (audit?.backlog ?? []).map(t => ({ id: t.id, priority: t.priority, why: t.why })),
+    },
+  }, null, 2) + '\n';
+}
+
+/** which tasks this craft generation executes (collision-safe set) */
+export function executableTasks(backlog) {
+  const ok = new Set(['PULSE_SNAPSHOT', 'REFRESH_PRODUCT_SURFACES', 'CREATE_DOCS_INDEX_HTML', 'CREATE_CHANGELOG_HTML', 'CREATE_PULSE_JSON', 'RECORD_BROKEN_LINKS']);
+  return (backlog || []).filter(t => ok.has(t.id));
+}
+
+export function selftest() {
+  const results = [];
+  const t = (name, cond) => results.push({ name, pass: !!cond });
+  const now = new Date('2026-10-18T10:00:00Z');
+  const facts = {
+    at: now.toISOString(),
+    verifier: { overall: 'GREEN', at: '2026-10-18T09:00:00Z' },
+    treasury: { health: 'HEALTHY', acct00sp: 4029.05, at: '2026-10-18T08:00:00Z' },
+    selfHeal: { ok: true, workflowsActive: 44, workflowsDisabled: 0, at: '2026-10-18T07:00:00Z' },
+    scout: { ok: true, entries: 8, at: '2026-10-17T20:00:00Z' },
+    world: { version: 3, at: null },
+    fleet: { ok: true, total: 14, at: '2026-10-18T02:33:00Z' },
+  };
+
+  const html = pulseHtml(facts, now);
+  t('pulse has start marker', html.startsWith(PULSE_START));
+  t('pulse verifier value', html.includes('GREEN'));
+  t('pulse treasury value', html.includes('4029 SP'));
+  t('pulse workflows value', html.includes('44 חי'));
+  t('pulse honest missing', pulseHtml({ verifier: { overall: null, at: null } }, now).includes('אין-מדידה'));
+  t('pulse age label', html.includes('measured · 1 שע׳'));
+
+  // injectSection: replace path
+  const doc = `<html><body>
+  <!-- ═══ surfaces ═══ -->
+  <section id="s">x</section>
+</body></html>`;
+  const withSec = injectSection(doc, pulseHtml(facts, now));
+  t('inject first time', withSec.includes(PULSE_START) && withSec.includes('surfaces'));
+  const replaced = injectSection(withSec, pulseHtml({ ...facts, verifier: { overall: 'DEGRADED', at: null } }, now));
+  t('inject replaces (no dup markers)', (replaced.match(new RegExp(PULSE_START, 'g')) || []).length === 1);
+  t('inject updated value', replaced.includes('DEGRADED'));
+  t('inject refuses blind doc', injectSection('<html>nothing here</html>', html) === null);
+
+  // docs index
+  const d = docsIndexHtml([
+    { href: 'CHAINBUS.md', title: 'שרשרת-העורקים', desc: 'רוסטר האיברים' },
+    { href: 'LEARNING.md', title: 'חוקי-הלמידה', desc: '' },
+  ], now);
+  t('docs index lists files', d.includes('CHAINBUS.md') && d.includes('LEARNING.md'));
+  t('docs index honest empty', docsIndexHtml([], now).includes('אין-מדידה'));
+
+  // changelog
+  const c = changelogHtml([
+    { sha: 'abc1234', date: '2026-10-18T02:33:00Z', msg: 'builder: pulse run' },
+    { sha: 'def5678', date: '2026-10-17T10:00:00Z', msg: 'older' },
+  ], now);
+  t('changelog groups days', c.includes('2026-10-18') && c.includes('abc1234'));
+  t('changelog honest empty', changelogHtml([], now).includes('אין-מדידה'));
+
+  // pulse.json
+  const pj = JSON.parse(pulseJson(facts, { pages: [], missing: [], links: { checked: 10, brokenCount: 1 }, backlog: [{ id: 'PULSE_SNAPSHOT', priority: 0, why: 'w' }] }, now));
+  t('pulse.json parses', pj.schema === 'builder-pulse/1' && pj.facts.verifier.overall === 'GREEN');
+  t('pulse.json backlog', pj.audit.backlog.length === 1);
+
+  // executableTasks filter
+  const et = executableTasks([
+    { id: 'PULSE_SNAPSHOT' }, { id: 'SOMETHING_ELSE' }, { id: 'CREATE_DOCS_INDEX_HTML' },
+  ]);
+  t('executable filter', et.length === 2);
+
+  // ageLabel
+  t('ageLabel hour', ageLabel('2026-10-18T09:00:00Z', now) === '1 שע׳');
+  t('ageLabel null', ageLabel(null, now) === 'לא-נמדד');
+
+  return { ok: results.every(r => r.pass), results };
+}
+
+if (process.argv[1] && process.argv[1].endsWith('craft.mjs') && process.argv.includes('--selftest')) {
+  const r = await selftest();
+  for (const x of r.results) console.log(`${x.pass ? 'PASS' : 'FAIL'} ${x.name}`);
+  process.exit(r.ok ? 0 : 1);
+}

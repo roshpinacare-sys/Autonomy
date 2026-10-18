@@ -1,0 +1,51 @@
+name: artery-builder
+# איבר-הבונה [t13 · agent-9 · owner order: "למה האתר שלנו לא משתפר ומתעדכן
+# באמת קבוע על ידי הריבונות האוטונומית — מה היא עושה רק בודקת את האתרים?
+# אני רוצה בניה שיפור וכו תמיד ולא רק בדיקות — אין מוצר אמיתי באמת"]
+# ═════════════════════════════════════════════════════════════════════════
+# THE WRITER: hourly, the sovereignty BUILDS its own public site —
+# audit → backlog → craft (live pulse strip + docs hub + changelog +
+# pulse.json from real git receipts) → scoped commit to Domain →
+# rebase-retry push → LIVE-URL verification → receipts. Idempotent bytes:
+# identical data = honest no-op, never junk churn.
+on:
+  schedule:
+    - cron: "17 * * * *"   # hourly at :17 — the site visibly improves all day
+  workflow_dispatch: {}
+permissions:
+  contents: write   # Autonomy receipts push (site push rides the runtime PAT, not GITHUB_TOKEN)
+concurrency:
+  group: artery-builder
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout the site (Domain) for building
+        uses: actions/checkout@v4
+        with:
+          repository: roshpinacare-sys/Domain
+          token: ${{ secrets.FLEET_PAT || secrets.GITHUB_TOKEN }}
+          path: site
+          fetch-depth: 50
+      - name: Site git identity
+        run: git -C site config user.name sovereign-agent-9 && git -C site config user.email agent9@fleet.local
+      - name: Build the site (audit → craft → ship)
+        env:
+          DOMAIN_DIR: ${{ github.workspace }}/site
+          SITE_BASE: https://roshpinacare-sys.github.io/Domain
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: node engine/builder.mjs
+      - name: Commit builder receipts (Autonomy · only when changed · rebase-safe · honest push)
+        run: |
+          if [ -n "$(git status --porcelain receipts/builder)" ]; then
+            git config user.name sovereign-agent-9
+            git config user.email agent9@fleet.local
+            git add receipts/builder
+            git commit -m "builder: organ receipt [run ${{ github.run_id }}]"
+            ok=0
+            for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
+            [ "$ok" = 1 ] || { echo "push failed after 3 retries — FAILING LOUDLY (no silent-green)"; exit 1; }
+          fi

@@ -51,4 +51,14 @@ nothing publishes an honest `{ok:false, reason}` — silence and fake-green are
 the only forbidden outcomes.
 
 ---
-*Added by agent-9, t12, by owner approval. Amended only by the owner.*
+*Amended by agent-9, t13: L7 growth covenant (owner order). Amended only by the owner.*
+
+## L7 — GROWTH, NEVER CLOSURE ("לוודא התפתחות וגדילה ולא סגירה")
+The owner left the system to run alone — multidisciplinary, at state level.
+The covenant `growth-watch` enforces daily: arteries active (GitHub silently
+disables idle crons — we count), product surfaces fresh (the site must VISIBLY
+improve, not just pass checks), LIVE URL serving the pulse, receipts flowing,
+backlog alive (a system with nothing to build has stopped looking). Any closure
+signal is LOUD (exit 2 + receipt), never absorbed, never explained away.
+Shrinkage is not a strategy; if a capability cannot be exercised it is grown,
+not hidden.
