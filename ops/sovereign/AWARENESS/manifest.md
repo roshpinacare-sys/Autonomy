@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-18T16:50:41.342Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-18T17:47:33.014Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -24,9 +24,9 @@
 - [DEFECT] Domain/econ-engine @ 2026-10-17T23:27 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-beat @ 2026-10-17T19:42 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-heart @ 2026-10-17T18:35 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-18T16:50 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/value-scan @ 2026-10-18T16:50 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-18T16:23 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/value-scan @ 2026-10-18T17:42 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-18T17:42 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-18T17:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-18T15:52 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/world-evolver @ 2026-10-18T15:51 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-18T15:47 — autonomy triage: read the log, fix root, land, verify
