@@ -97,3 +97,16 @@ txid `de1a55fc…` → בלוק 110516064/112671 → קבלה `d-110516064-11267
 לתשלום אמת: השוק הפנימי של השרשרת (limit_order_create) הוא ה-DEX הציבורי הבטוח —
 חתימה מהכספת שלך, escrow של הקונצנזוס, בלי שלישי, בלי חשיפה (ראה
 saos-dex `deploy/PUBLIC-DEX-CHECKLIST.md`).
+
+- `artery-pacer` — איבר-הקצב [t14 · owner order: "תמשיך ודחוף"]: **הלב שאינו-בוטח-במתזמן** —
+  נמדד-חי: GitHub משמיט-משבצות-cron בשקט (value-scan: 0 הרצות-meschedule מ-01:32; artery-fleet: 0
+  מ-5-האחרונות; גם-משבצות-ה-self-heal אבדו אחרי-02:12) ו-6 עורקים ישבו DEGRADED על-סטיות-זמן
+  בלבד. ה-pacer משרשר-עצמו ב-repository_dispatch (הדפוס-המוכח של sovereign-state): מודד גיל-הצלחה
+  אחרונה מול-קצב-כל-עורק, מצית סטיים (cap-6, חוק-הרשאת-dispatch בלבד), מדווח בכנות. מצערת-14דק
+  (אין-דפיקות-כפולות) · no-churn (רק-פעימות-משמעותיות נכתבות-לגיט) · cron=מחלץ-חירום בלבד.
+  ב-workflow: `artery-pacer.yml`. קבלות: receipts/pacer
+
+- `treasury-forensics` — משטרת-האוצר [t14]: מודד-מהשרשרת מי-הזיז-vesting של-האוצר ב-48h
+  (delegate/withdraw/transfer, צד-שני כ-ref בלבד). פסק-ראשון: **0-פעולות** — עליית-ה-SP 2855↔4029
+  היא-תנודת-הערכה/צומת, לא-דליפה. מחובר-ל-treasury-topup (flow48h בכל-קבלה). תיקון-נמדד:
+  get_account_history מוגבל-100 לצומת.
