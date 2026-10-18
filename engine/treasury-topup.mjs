@@ -25,6 +25,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { R, refOf } from './refs.mjs';
 import { loadKey, REQUIRED_SECRETS } from './runtime/keys.mjs';
+import { treasuryFlow } from './treasury-forensics.mjs';
 
 const ROOT = process.env.GITHUB_WORKSPACE || join(dirname(fileURLToPath(import.meta.url)), '..');
 const CFG_PATH = join(ROOT, 'ops', 'agents', 'zai-verifier', 'config.json');
@@ -114,7 +115,13 @@ async function live() {
   receipt.fleet = fleetRefs; // refs only — estate names never enter the receipt
   receipt.plan = planTopup({ treasurySp: receipt.treasurySp, fleet: fleetRefs.map((f, i) => ({ name: f.ref, sp: f.sp })) });
   // NOTE: plan ops use refs — the executor (with key present) re-resolves names in memory
-  // 3. key readiness (declared name; the value itself never printed/persisted)
+  // 3. DRAIN FORENSICS (t14): who moved the treasury's vesting? measured from
+  //    the chain every run — the 4029→2855 drop will never be a mystery again.
+  const fx = await treasuryFlow(treasuryName, hosts, { hours: 48, resolver: R });
+  receipt.flow48h = fx.ok
+    ? { ok: true, host: fx.host, windowHours: fx.windowHours, outEvents: fx.events.filter(e => e.dir === 'out').length, inEvents: fx.events.filter(e => e.dir === 'in').length, events: fx.events, note: 'vests strings as-returned · counterparty refs-only' }
+    : { ok: false, reason: fx.reason };
+  // 4. key readiness (declared name; the value itself never printed/persisted)
   const k = loadKey('CI_ADOPT_WIF_ACTIVE');
   receipt.keyStatus = k.ok ? 'READY (present at runtime, memory-only)' : 'PENDING — cloud secret CI_ADOPT_WIF_ACTIVE not present on this runner (keys REGISTRY: exists in saos-runtime cloud)';
   receipt.ready = Boolean(k.ok) && receipt.healthy === false;

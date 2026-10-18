@@ -29,7 +29,7 @@ import { writeFileSync, mkdirSync, existsSync, readFileSync, readdirSync, statSy
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { snapshotFacts, auditSite, selftest as auditSelftest } from './builder/audit.mjs';
-import { pulseHtml, docsIndexHtml, changelogHtml, pulseJson, executableTasks, PULSE_START } from './builder/craft.mjs';
+import { pulseHtml, docsIndexHtml, changelogHtml, pulseJson, executableTasks, PULSE_START, toolsCatalogHtml, fixLinks, rewriteLinks } from './builder/craft.mjs';
 import { applyEdits, gitLastDates, gitShip, gitLogTail, verifyLive, selftest as shipSelftest } from './builder/ship.mjs';
 
 const ROOT = process.env.GITHUB_WORKSPACE || resolve(join(dirname(fileURLToPath(import.meta.url)), '..'));
@@ -81,6 +81,76 @@ export function docListings(siteRoot) {
 const isDir = p => { try { return statSync(p).isDirectory(); } catch { return false; } };
 const require_listDir = d => { try { return readdirSync(d).filter(f => !f.startsWith('.')); } catch { return []; } };
 
+/**
+ * collectCapabilityData — the real inputs for the usability catalog [t14]:
+ * organs from CHAINBUS.md, knowledge entries from scout, arteries from
+ * workflows, receipt liveness — every cell measured from real files,
+ * nothing hand-written.
+ */
+export function collectCapabilityData(root, siteRoot) {
+  const data = { organs: [], knowledge: [], arteries: [], receiptSummary: [] };
+  // 1. organs: CHAINBUS.md roster lines "- `name` — desc"
+  try {
+    const md = readFileSync(join(root, 'engine', 'CHAINBUS.md'), 'utf8');
+    for (const m of md.matchAll(/^- `([\w-]+)` —\s*(.+)$/gm)) {
+      data.organs.push({ name: m[1], desc: m[2].replace(/\[|\]|\*/g, '').slice(0, 110) });
+    }
+  } catch { /* honest empty */ }
+  // liveness column: last receipt per organ dir (fail-honest)
+  const rdir = join(root, 'receipts');
+  try {
+    for (const d of require_listDir(rdir)) {
+      if (!isDir(join(rdir, d))) continue;
+      const j = (() => { try { return JSON.parse(readFileSync(join(rdir, d, 'latest.json'), 'utf8')); } catch { return null; } })();
+      if (!j) continue;
+      const at = j.doneAt ?? j.at;
+      const mins = at ? Math.round((Date.now() - Date.parse(at)) / 60000) : null;
+      const age = mins === null ? '?' : mins < 90 ? `${mins} דק׳` : mins < 2880 ? `${Math.round(mins / 60)} שע׳` : `${Math.round(mins / 1440)} ימ׳`;
+      data.receiptSummary.push({ organ: d, age, ok: typeof j.ok === 'boolean' ? j.ok : null });
+    }
+    data.receiptSummary.sort((a, b) => String(a.age).localeCompare(String(b.age)));
+  } catch { /* honest empty */ }
+  // 2. knowledge: scout entries (repo, verdict, lesson summary, url)
+  try {
+    const kdir = join(root, 'knowledge', 'scout');
+    for (const f of require_listDir(kdir)) {
+      if (!f.startsWith('entries-') || !f.endsWith('.json')) continue;
+      const j = (() => { try { return JSON.parse(readFileSync(join(kdir, f), 'utf8')); } catch { return null; } })();
+      for (const e of j?.entries ?? []) {
+        data.knowledge.push({
+          repo: e.repo ?? 'unknown', verdict: e.verdict ?? '—',
+          summary: (e.lesson?.summary ?? '').slice(0, 140),
+          url: `https://github.com/${e.repo ?? ''}`,
+        });
+      }
+    }
+    data.knowledge = data.knowledge.slice(0, 20);
+  } catch { /* honest empty */ }
+  // 3. arteries: workflow files + their crons (names-only)
+  try {
+    const wdir = join(root, '.github', 'workflows');
+    for (const f of require_listDir(wdir).sort()) {
+      if (!f.endsWith('.yml') && !f.endsWith('.yaml')) continue;
+      const src = readFileSync(join(wdir, f), 'utf8');
+      const crons = [...src.matchAll(/cron:\s*["']?([^"'\n]+)["']?/g)].map(m => m[1].trim());
+      data.arteries.push({ name: f, crons });
+    }
+  } catch { /* honest empty */ }
+  void siteRoot;
+  return data;
+}
+
+/** product html files (top-level + docs/) — candidates for link fixing */
+export function listProductHtml(siteRoot) {
+  const out = [];
+  try {
+    for (const f of require_listDir(siteRoot)) if (f.endsWith('.html')) out.push(f);
+    const docs = join(siteRoot, 'docs');
+    for (const f of require_listDir(docs)) if (f.endsWith('.html')) out.push(`docs/${f}`);
+  } catch { /* honest empty */ }
+  return out;
+}
+
 export async function live() {
   const started = nowIso();
   const receipt = {
@@ -97,7 +167,8 @@ export async function live() {
       receipt.factsAt = facts.at;
 
       // ── 2. AUDIT: measure the site like the owner does ─────────────────
-      const gitDates = gitLastDates(SITE, ['index.html', 'console.html', 'products.html', 'truth.html', 'docs/index.html', 'changelog.html', 'pulse.json']);
+      const PRODUCT_PATHS = ['index.html', 'console.html', 'products.html', 'truth.html', 'tools.html', 'docs/index.html', 'changelog.html', 'pulse.json'];
+      const gitDates = gitLastDates(SITE, PRODUCT_PATHS);
       const audit = auditSite(SITE, gitDates, { facts });
       receipt.audit = { pages: audit.pages, missing: audit.missing, links: audit.links, backlog: audit.backlog.map(t => ({ id: t.id, priority: t.priority, why: t.why })) };
 
@@ -118,6 +189,33 @@ export async function live() {
         if (task.id === 'CREATE_CHANGELOG_HTML') {
           edits.push({ path: 'changelog.html', mode: 'write', content: changelogHtml(gitLogTail(SITE, 40), new Date()) });
         }
+        if (task.id === 'CREATE_TOOLS_HTML' || task.id === 'CREATE_TOOLS_CATALOG') {
+          edits.push({ path: 'tools.html', mode: 'write', content: toolsCatalogHtml(collectCapabilityData(ROOT, SITE), new Date()) });
+        }
+        if (task.id === 'FIX_RELATIVE_LINKS') {
+          // t14: the builder now FIXES broken relative links — safe unambiguous
+          // matches only (unique basename among product pages), cap 5/run.
+          const candidates = listProductHtml(SITE);
+          const { fixes, skipped } = fixLinks(audit.links.broken ?? [], candidates);
+          for (const f of fixes) {
+            const p = join(SITE, f.file);
+            if (!existsSync(p)) continue;
+            const before = readFileSync(p, 'utf8');
+            const after = rewriteLinks(before, [f]);
+            if (after !== before) {
+              edits.push({ path: f.file, mode: 'raw', before, after });
+              (receipt.linkFixes ??= []).push({ file: f.file, from: f.from, to: f.to });
+              console.log(`[builder] link-fix ${f.file}: ${f.from} → ${f.to}`);
+            }
+          }
+          if (skipped.length) (receipt.linkSkipped ??= []).push(...skipped.slice(0, 10));
+        }
+      }
+      // tools.html freshness: regenerate whenever it exists but is ≥1 day stale
+      const th = audit.pages.find(p => p.path === 'tools.html');
+      if (th?.exists && !tasks.some(t => t.id.startsWith('CREATE_TOOLS')) && (th.days === null || th.days >= 1)) {
+        edits.push({ path: 'tools.html', mode: 'write', content: toolsCatalogHtml(collectCapabilityData(ROOT, SITE), new Date()) });
+        receipt.tasks.push('REFRESH_TOOLS_CATALOG');
       }
       // changelog freshness: refresh it whenever the page exists but is stale
       const cl = audit.pages.find(p => p.path === 'changelog.html');
@@ -127,9 +225,15 @@ export async function live() {
       }
 
       // ── 4. SHIP: scoped commit + rebase-retry push ─────────────────────
-      const applied = applyEdits(SITE, edits, m => console.log(`[builder] ${m}`));
-      receipt.edits = applied;
-      const touched = applied.filter(a => a.ok && a.changed).map(a => a.path);
+      // 'raw' edits (link fixes) apply first — the rest go through applyEdits
+      const rawTouched = [];
+      for (const e of edits.filter(e => e.mode === 'raw')) {
+        writeFileSync(join(SITE, e.path), e.after);
+        rawTouched.push(e.path);
+      }
+      const applied = applyEdits(SITE, edits.filter(e => e.mode !== 'raw'), m => console.log(`[builder] ${m}`));
+      receipt.edits = [...applied, ...rawTouched.map(p => ({ path: p, ok: true, changed: true }))];
+      const touched = [...applied.filter(a => a.ok && a.changed).map(a => a.path), ...rawTouched];
       if (touched.length) {
         const ids = receipt.tasks.join('+') || 'audit';
         const ship = gitShip(SITE, {

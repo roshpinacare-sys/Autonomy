@@ -20,7 +20,7 @@ export const STALE_DAYS = 2;
 
 /** the product surfaces the owner judges the site by — freshness here = life */
 export const PRODUCT_PAGES = [
-  'index.html', 'console.html', 'products.html', 'truth.html',
+  'index.html', 'console.html', 'products.html', 'truth.html', 'tools.html',
   'docs/index.html', 'changelog.html', 'pulse.json',
 ];
 
@@ -131,17 +131,17 @@ export function buildBacklog({ pages, missing, links, facts }) {
       why: `משטחי-מוצר קפואים ${STALE_DAYS}+ ימים בזמן שהרשת פועמת מתחת — בדיוק התלונה שנמדדה`,
     });
   }
-  const missingCore = missing.filter(m => ['docs/index.html', 'changelog.html', 'pulse.json'].includes(m));
+  const missingCore = missing.filter(m => ['docs/index.html', 'changelog.html', 'pulse.json', 'tools.html'].includes(m));
   for (const m of missingCore) {
     tasks.push({
-      id: `CREATE_${m.replace(/[/.]/g, '_').toUpperCase()}`, priority: m === 'docs/index.html' ? 2 : 3,
+      id: `CREATE_${m.replace(/[/.]/g, '_').toUpperCase()}`, priority: m === 'docs/index.html' || m === 'tools.html' ? 2 : 3,
       paths: [m], why: 'משטח חסר במוצר — כניסה שאינה קיימת (סגור/חסר, כפי שהבעלים מדד)',
     });
   }
   if (links.broken.length) {
     tasks.push({
-      id: 'RECORD_BROKEN_LINKS', priority: 4, paths: [],
-      why: `${links.broken.length} קישורים-פנימיים שבורים — נרשמים לתיקון ממוקד (לא נוגעים בקבצי סוכנים-אחרים בריצה זו)`,
+      id: 'FIX_RELATIVE_LINKS', priority: 4, paths: [],
+      why: `${links.broken.length} קישורים-פנימיים שבורים — מתוקנים בבטחה (רק-התאמה-חד-משמעית, מוגבל-ל-5 לריצה), השאר נרשמים`,
       broken: links.broken,
     });
   }
@@ -200,14 +200,15 @@ export async function selftest() {
 
   const bl = buildBacklog({
     pages: [{ path: 'index.html', exists: true, days: 3 }],
-    missing: ['docs/index.html'],
+    missing: ['docs/index.html', 'tools.html'],
     links: { broken: [{ from: 'a.html', href: 'x.html' }] },
     facts: null,
   });
   const ids = bl.map(x => x.id);
   t('backlog refresh task', ids.includes('REFRESH_PRODUCT_SURFACES'));
   t('backlog docs task', ids.includes('CREATE_DOCS_INDEX_HTML'));
-  t('backlog links task', ids.includes('RECORD_BROKEN_LINKS'));
+  t('backlog tools task', ids.includes('CREATE_TOOLS_HTML'));
+  t('backlog links task', ids.includes('FIX_RELATIVE_LINKS'));
   t('backlog pulse always', ids.includes('PULSE_SNAPSHOT'));
   t('priority sort', bl[0].id === 'PULSE_SNAPSHOT');
 

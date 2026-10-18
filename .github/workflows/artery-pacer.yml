@@ -1,0 +1,63 @@
+name: artery-pacer
+# איבר-הקצב [t14 · agent-9 · owner order: "תמשיך ודחוף" + t13: "לוודא פעילות
+# תקינה כי הארכיטקטורה נשארת לבד"]
+# ═════════════════════════════════════════════════════════════════════════
+# MEASURED (t14 forensics): GitHub silently drops most cron slots in this
+# repo (value-scan zero schedule-runs since 01:32 · artery-fleet zero in
+# last 5 · self-heal's own slots lost after 02:12) while 6 arteries sat
+# DEGRADED on staleness alone. This organ is the heartbeat that does NOT
+# trust the scheduler: it self-chains via repository_dispatch (the proven
+# sovereign-state pattern), measures each artery's last success, dispatches
+# stale ones (cap 6, dispatch-only law), and reports honestly.
+on:
+  schedule:
+    - cron: "7 2 * * *"        # reviver only — the chain is the real driver
+  workflow_dispatch: {}
+  repository_dispatch:
+    types: [artery-pace]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: artery-pacer
+  cancel-in-progress: false
+jobs:
+  beat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Beat (measure → dispatch stale → receipt)
+        id: beat
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node engine/artery-pacer.mjs
+      - name: Commit pacer receipts (meaningful beats only · rebase-safe · honest push)
+        run: |
+          if [ -f state/pacer/COMMIT_ME ]; then
+            git config user.name sovereign-agent-9
+            git config user.email agent9@fleet.local
+            git add receipts/pacer state/pacer
+            git commit -m "pacer: beat receipt [run ${{ github.run_id }}]"
+            ok=0
+            for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
+            [ "$ok" = 1 ] || { echo "push failed after 3 retries — FAILING LOUDLY (no silent-green)"; exit 1; }
+          else
+            echo "quiet beat — no churn (law: only meaningful beats commit)"
+          fi
+      - name: chain-next (the heartbeat that ignores the scheduler)
+        if: steps.beat.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # sovereign-state's proven law: only a healthy beat begets a successor.
+          # A failed beat stops the chain here LOUDLY — cron + manual dispatch
+          # are the revivers (no runaway loops on defects).
+          sleep 780   # ~13min — total beat interval ≈ 15min, matching the throttle law
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type":"artery-pace","client_payload":{"from":"${{ github.run_id }}"}}')
+          echo "dispatch http=$code"
+          [ "$code" = "204" ] || { echo "chain-next failed — revivers: cron + manual dispatch"; exit 1; }

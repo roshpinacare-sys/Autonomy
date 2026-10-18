@@ -78,7 +78,7 @@ export function pulseHtml(facts, now = new Date()) {
     `    <div class="proof-grid">`,
     ...cards.map(c => '    ' + card(c)),
     '    </div>',
-    `    <p style="text-align:center;font-size:12px;color:var(--faint);margin-top:14px">פס-זה נבנה אוטונומית על-ידי איבר-הבונה בכל שעה עגולה מהקבלות בגיט · כל מספר מדידה-אמיתית עם גיל-מדידה · בלי מדידה כתוב "אין-מדידה" ולא המצאה · <a href="changelog.html" style="color:var(--fg)">יומן-הבנייה המלא</a></p>`,
+    `    <p style="text-align:center;font-size:12px;color:var(--faint);margin-top:14px">פס-זה נבנה אוטונומית על-ידי איבר-הבונה בכל שעה עגולה מהקבלות בגיט · כל מספר מדידה-אמיתית עם גיל-מדידה · בלי מדידה כתוב "אין-מדידה" ולא המצאה · <a href="changelog.html" style="color:var(--fg)">יומן-הבנייה</a> · <a href="tools.html" style="color:var(--fg)">קטלוג-היכולות</a></p>`,
     '  </section>',
     PULSE_END,
   ].join('\n');
@@ -202,8 +202,109 @@ export function pulseJson(facts, audit, now = new Date()) {
 
 /** which tasks this craft generation executes (collision-safe set) */
 export function executableTasks(backlog) {
-  const ok = new Set(['PULSE_SNAPSHOT', 'REFRESH_PRODUCT_SURFACES', 'CREATE_DOCS_INDEX_HTML', 'CREATE_CHANGELOG_HTML', 'CREATE_PULSE_JSON', 'RECORD_BROKEN_LINKS']);
+  const ok = new Set(['PULSE_SNAPSHOT', 'REFRESH_PRODUCT_SURFACES', 'CREATE_DOCS_INDEX_HTML', 'CREATE_CHANGELOG_HTML', 'CREATE_PULSE_JSON', 'RECORD_BROKEN_LINKS', 'CREATE_TOOLS_CATALOG', 'CREATE_TOOLS_HTML', 'FIX_RELATIVE_LINKS']);
   return (backlog || []).filter(t => ok.has(t.id));
+}
+
+/**
+ * toolsCatalogHtml — השמישות-כמוצר [t14 · owner order: "יש לנו מלא כלים
+ * שאספנו... חשוב לשפר שמישות של הכל"]: the architecture's full capability
+ * surface, human-readable, data-driven from real repo files — organs
+ * (CHAINBUS), live receipts (who beat last), arteries (cron cadences),
+ * learning entries (scout knowledge). Regenerated hourly by the builder.
+ */
+export function toolsCatalogHtml({ organs = [], knowledge = [], arteries = [], receiptSummary = [] }, now = new Date()) {
+  const organRow = (o) => `<tr><td><code>${esc(o.name)}</code></td><td>${esc(o.desc)}</td><td class="${o.live ? 'ok' : 'warn'}">${esc(o.live ?? '—')}</td></tr>`;
+  const artRow = (a) => `<tr><td><code>${esc(a.name)}</code></td><td>${esc(a.crons.join(' · ') || 'dispatch-only')}</td></tr>`;
+  const knowRow = (k) => `<tr><td><a href="${esc(k.url)}" target="_blank" rel="noopener">${esc(k.repo)}</a></td><td>${esc(k.verdict)}</td><td>${esc(k.summary)}</td></tr>`;
+  const recRow = (r) => `<li><code>${esc(r.organ)}</code> — ${esc(r.age ?? '?')} · ${r.ok === true ? 'ok' : r.ok === false ? 'בעיה-מדודה' : 'אין-מדידה'}</li>`;
+  return `<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>קטלוג-היכולות · ריבונות SAOS</title>
+<style>
+  :root { --fg:#e8e6e1; --faint:#8a877f; --bg:#0d0e11; }
+  body { background:var(--bg); color:var(--fg); font-family:system-ui,'Segoe UI',sans-serif; margin:0; padding:48px 20px; line-height:1.65; }
+  main { max-width:1000px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 6px; } h2 { font-size:19px; margin-top:36px; }
+  .sub { color:var(--faint); font-size:13px; }
+  table { width:100%; border-collapse:collapse; background:#14151a; border:1px solid #26272e; border-radius:12px; overflow:hidden; margin-top:14px; }
+  th, td { padding:8px 12px; text-align:right; border-bottom:1px solid #1f2027; font-size:13.5px; vertical-align:top; }
+  th { color:var(--faint); font-weight:600; font-size:12px; }
+  tr:last-child td { border-bottom:none; }
+  code { color:#d8b46a; font-size:12px; } a { color:#d8b46a; text-decoration:none; }
+  .ok { color:#7dd087; } .warn { color:#e0b45e; }
+  ul { padding-inline-start:20px; } li { margin:5px 0; font-size:13.5px; }
+  footer { margin-top:40px; color:var(--faint); font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>קטלוג-היכולות</h1>
+  <p class="sub">מה הריבונות יודעת לעשות — כל איבר, עורק, וידע · נבנה אוטונומית · ${esc(now.toISOString())}</p>
+
+  <h2>האיברים (organs) · מה כל אחד עושה ומתי פעם אחרונה</h2>
+  <table><tr><th>איבר</th><th>תפקיד</th><th>דופק-אחרון</th></tr>
+  ${organs.map(organRow).join('\n  ') || '<tr><td colspan="3">אין-מדידה</td></tr>'}
+  </table>
+
+  <h2>העורקים (workflows) · קצב-הפעמעום</h2>
+  <table><tr><th>עורק</th><th>cron</th></tr>
+  ${arteries.map(artRow).join('\n  ') || '<tr><td colspan="2">אין-מדידה</td></tr>'}
+  </table>
+
+  <h2>הידע שנאסף · סקירה-והנדסה (clean-room)</h2>
+  <table><tr><th>מקור</th><th>פסק</th><th>מה לומדים ממנו</th></tr>
+  ${knowledge.map(knowRow).join('\n  ') || '<tr><td colspan="3">אין-מדידה</td></tr>'}
+  </table>
+
+  <h2>קבלות-חיות · מי פעם אחרונה</h2>
+  <ul>
+  ${receiptSummary.map(recRow).join('\n  ') || '<li>אין-מדידה</li>'}
+  </ul>
+
+  <footer>נבנה על-ידי איבר-הבונה מהקבצים האמיתיים בגיט · השמישות היא חוק, לא מותרות</footer>
+</main>
+</body>
+</html>
+`;
+}
+
+/**
+ * fixLinks — safe, unambiguous relative-link repair (t14: the builder now
+ * FIXES, not just records). Law: only when exactly ONE product-page candidate
+ * matches the broken href's basename; never touches churn dirs; bounded.
+ * Returns {fixes:[{file, from, to}], skipped:[{file, href, why}]}.
+ */
+export function fixLinks(broken, candidates, { max = 5 } = {}) {
+  const byBase = new Map();
+  for (const c of candidates) {
+    const base = c.split('/').pop().toLowerCase();
+    if (!byBase.has(base)) byBase.set(base, []);
+    byBase.get(base).push(c);
+  }
+  const fixes = [], skipped = [];
+  for (const b of broken ?? []) {
+    if (fixes.length >= max) { skipped.push({ ...b, why: 'cap reached' }); continue; }
+    const base = b.href.split('?')[0].split('#')[0].split('/').pop().toLowerCase();
+    if (!base) { skipped.push({ ...b, why: 'no basename' }); continue; }
+    const cands = byBase.get(base) ?? [];
+    if (cands.length !== 1) { skipped.push({ ...b, why: cands.length === 0 ? 'no candidate' : `ambiguous (${cands.length})` }); continue; }
+    fixes.push({ file: b.from, from: b.href, to: cands[0] });
+  }
+  return { fixes, skipped };
+}
+
+/** apply link fixes to an html file's content (pure string transform) */
+export function rewriteLinks(html, fixesForFile) {
+  let out = html;
+  for (const f of fixesForFile) {
+    const needle = `href="${f.from}"`;
+    if (out.includes(needle)) out = out.split(needle).join(`href="${f.to}"`);
+  }
+  return out;
 }
 
 export function selftest() {
@@ -268,8 +369,34 @@ export function selftest() {
   t('executable filter', et.length === 2);
 
   // ageLabel
-  t('ageLabel hour', ageLabel('2026-10-18T09:00:00Z', now) === '1 שע׳');
+  t('ageLabel minutes→hour', ageLabel('2026-10-18T09:00:00Z', now) === '1 שע׳');
   t('ageLabel null', ageLabel(null, now) === 'לא-נמדד');
+
+  // tools catalog
+  const tc = toolsCatalogHtml({
+    organs: [{ name: 'builder', desc: 'הכותב', live: '3 דק׳' }],
+    knowledge: [{ repo: 'x/y', verdict: 'SAFE_TO_STUDY', summary: 'learn s', url: 'https://github.com/x/y' }],
+    arteries: [{ name: 'artery-pacer.yml', crons: ['7 2 * * *'] }],
+    receiptSummary: [{ organ: 'pacer', age: '1 דק׳', ok: true }],
+  }, now);
+  t('catalog renders organs', tc.includes('builder') && tc.includes('הכותב'));
+  t('catalog renders knowledge', tc.includes('SAFE_TO_STUDY'));
+  t('catalog renders arteries + receipts', tc.includes('artery-pacer.yml') && tc.includes('pacer'));
+  t('catalog honest empty', toolsCatalogHtml({}, now).includes('אין-מדידה'));
+
+  // fixLinks law
+  const fl = fixLinks(
+    [{ from: 'a.html', href: 'tools.html' }, { from: 'a.html', href: 'ghost.html' }, { from: 'b.html', href: 'index.html' }, { from: 'c.html', href: 'dup.html' }],
+    ['tools.html', 'index.html', 'dup.html', 'x/dup.html'],
+  );
+  t('unambiguous fixed', fl.fixes.length === 2 && fl.fixes[0].to === 'tools.html');
+  t('no-candidate skipped', fl.skipped.some(s => s.href === 'ghost.html'));
+  t('ambiguous skipped', fl.skipped.some(s => s.href === 'dup.html'));
+  t('cap honored', fixLinks(Array.from({ length: 8 }, (_, i) => ({ from: `f${i}.html`, href: 'tools.html' })), ['tools.html']).fixes.length === 5);
+
+  // rewriteLinks
+  const html2 = '<a href="tools.html">x</a> <a href="other.html">y</a>';
+  t('rewrite replaces only target', rewriteLinks(html2, [{ from: 'tools.html', to: 'tools2.html' }]).includes('href="tools2.html"') && rewriteLinks(html2, [{ from: 'tools.html', to: 'tools2.html' }]).includes('href="other.html"'));
 
   return { ok: results.every(r => r.pass), results };
 }

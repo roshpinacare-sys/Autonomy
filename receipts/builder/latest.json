@@ -1,6 +1,6 @@
 {
   "schema": "builder/1",
-  "at": "2026-10-18T02:53:14.809Z",
+  "at": "2026-10-18T04:36:47.721Z",
   "ok": true,
   "organ": "artery-builder",
   "siteRef": "roshpinacare-sys/Domain",
@@ -10,37 +10,42 @@
       {
         "path": "index.html",
         "exists": true,
-        "days": 0.1203106712962963
+        "days": 0.19221998842592591
       },
       {
         "path": "console.html",
         "exists": true,
-        "days": 0.1203106712962963
+        "days": 2.192219988425926
       },
       {
         "path": "products.html",
         "exists": true,
-        "days": 0.1203106712962963
+        "days": 2.192219988425926
       },
       {
         "path": "truth.html",
         "exists": true,
-        "days": 0.1203106712962963
+        "days": 2.192219988425926
+      },
+      {
+        "path": "tools.html",
+        "exists": true,
+        "days": 0.19221998842592591
       },
       {
         "path": "docs/index.html",
         "exists": true,
-        "days": 0.1203106712962963
+        "days": 0.19221998842592591
       },
       {
         "path": "changelog.html",
         "exists": true,
-        "days": 0.1203106712962963
+        "days": 0.19221998842592591
       },
       {
         "path": "pulse.json",
         "exists": true,
-        "days": 0.1203106712962963
+        "days": 0.19221998842592591
       }
     ],
     "missing": [],
@@ -54,25 +59,37 @@
         "id": "PULSE_SNAPSHOT",
         "priority": 0,
         "why": "דופק-מדידה חי של הריבונות — מתעדכן בכל ריצה מהקבלות בגיט"
+      },
+      {
+        "id": "REFRESH_PRODUCT_SURFACES",
+        "priority": 1,
+        "why": "משטחי-מוצר קפואים 2+ ימים בזמן שהרשת פועמת מתחת — בדיוק התלונה שנמדדה"
       }
     ]
   },
   "tasks": [
-    "PULSE_SNAPSHOT"
+    "PULSE_SNAPSHOT",
+    "REFRESH_PRODUCT_SURFACES"
   ],
   "edits": [
     {
       "path": "pulse.json",
       "ok": true,
       "changed": true,
-      "bytes": 1935,
+      "bytes": 2212,
       "created": false
+    },
+    {
+      "path": "index.html",
+      "ok": true,
+      "changed": true,
+      "bytes": 22536
     }
   ],
   "ship": {
     "pushed": true,
     "why": "ok",
-    "commit": "fef8b60"
+    "commit": "c0748cdc3"
   },
   "verify": [
     {
@@ -80,11 +97,11 @@
       "status": 200,
       "ok": true,
       "hasMarker": true,
-      "bytes": 22479
+      "bytes": 22476
     }
   ],
   "reasons": [],
-  "factsAt": "2026-10-18T02:53:14.814Z",
+  "factsAt": "2026-10-18T04:36:47.721Z",
   "liveVerified": true,
-  "doneAt": "2026-10-18T02:53:16.275Z"
+  "doneAt": "2026-10-18T04:36:50.050Z"
 }
