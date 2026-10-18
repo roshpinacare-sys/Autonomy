@@ -1,7 +1,7 @@
 {
   "schema": "builder/1",
-  "at": "2026-10-18T06:28:02.714Z",
-  "ok": false,
+  "at": "2026-10-18T07:22:54.148Z",
+  "ok": true,
   "organ": "artery-builder",
   "siteRef": "roshpinacare-sys/Domain",
   "siteBase": "https://roshpinacare-sys.github.io/Domain",
@@ -10,54 +10,52 @@
       {
         "path": "index.html",
         "exists": true,
-        "days": 0.26947836805555553
+        "days": 0.3075716666666667
       },
       {
         "path": "console.html",
         "exists": true,
-        "days": 2.2694783680555557
+        "days": 0.3075716666666667
       },
       {
         "path": "products.html",
         "exists": true,
-        "days": 2.2694783680555557
+        "days": 0.3075716666666667
       },
       {
         "path": "truth.html",
         "exists": true,
-        "days": 2.2694783680555557
+        "days": 0.3075716666666667
       },
       {
         "path": "tools.html",
         "exists": true,
-        "days": 0.26947836805555553
+        "days": 0.3075716666666667
       },
       {
         "path": "docs/index.html",
         "exists": true,
-        "days": 0.26947836805555553
+        "days": 0.3075716666666667
       },
       {
         "path": "changelog.html",
         "exists": true,
-        "days": 0.26947836805555553
+        "days": 0.3075716666666667
       },
       {
         "path": "pulse.json",
         "exists": true,
-        "days": 0.26947836805555553
+        "days": 0.3075716666666667
       },
       {
         "path": "receipts.html",
-        "exists": false,
-        "days": null
+        "exists": true,
+        "days": 0.3075716666666667
       }
     ],
-    "missing": [
-      "receipts.html"
-    ],
+    "missing": [],
     "links": {
-      "checked": 311,
+      "checked": 312,
       "brokenCount": 0,
       "broken": []
     },
@@ -66,17 +64,11 @@
         "id": "PULSE_SNAPSHOT",
         "priority": 0,
         "why": "דופק-מדידה חי של הריבונות — מתעדכן בכל ריצה מהקבלות בגיט"
-      },
-      {
-        "id": "REFRESH_PRODUCT_SURFACES",
-        "priority": 1,
-        "why": "משטחי-מוצר קפואים 2+ ימים בזמן שהרשת פועמת מתחת — בדיוק התלונה שנמדדה"
       }
     ]
   },
   "tasks": [
     "PULSE_SNAPSHOT",
-    "REFRESH_PRODUCT_SURFACES",
     "RECEIPTS_LEDGER"
   ],
   "edits": [
@@ -84,32 +76,33 @@
       "path": "pulse.json",
       "ok": true,
       "changed": true,
-      "bytes": 2594,
+      "bytes": 2406,
       "created": false
-    },
-    {
-      "path": "index.html",
-      "ok": true,
-      "changed": true,
-      "bytes": 22763
     },
     {
       "path": "receipts.html",
       "ok": true,
       "changed": true,
-      "bytes": 4560,
-      "created": true
+      "bytes": 4569,
+      "created": false
     }
   ],
   "ship": {
-    "pushed": false,
-    "why": "push failed after 3 retries: Command failed: cd \"<workpath>\" && git pull --rebase origin main\nerror: Pulling is not possible because you have unmerged files.\nhint: Fix them up in the work tree, and then use 'git add/rm <file>'\nhint: as appropriate to mark resolution and make a commit.\nfatal: Exiting because o",
-    "commit": "d311beffc"
+    "pushed": true,
+    "why": "ok",
+    "commit": "fc706b1"
   },
-  "verify": null,
-  "reasons": [
-    "ship: push failed after 3 retries: Command failed: cd \"<workpath>\" && git pull --rebase origin main\nerror: Pulling is not possible because you have unmerged files.\nhint: Fix them up in the work tree, and then use 'git add/rm <file>'\nhint: as appropriate to mark resolution and make a commit.\nfatal: Exiting because o"
+  "verify": [
+    {
+      "url": "https://roshpinacare-sys.github.io/Domain/",
+      "status": 200,
+      "ok": true,
+      "hasMarker": true,
+      "bytes": 22763
+    }
   ],
-  "factsAt": "2026-10-18T06:28:02.714Z",
-  "doneAt": "2026-10-18T06:28:07.044Z"
+  "reasons": [],
+  "factsAt": "2026-10-18T07:22:54.153Z",
+  "liveVerified": true,
+  "doneAt": "2026-10-18T07:22:55.556Z"
 }
