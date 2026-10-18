@@ -39,14 +39,14 @@ jobs:
             echo "token rejected — trying next on ladder"
           done
           [ -n "$WORK" ] || { echo "NO_WORKING_TOKEN for saos-runtime — FAIL LOUD"; exit 1; }
-          git config user.name sovereign-agent-9
-          git config user.email agent9@fleet.local
           test -d agents/agent-9 || { echo "INSURANCE_SOURCE_MISSING (agents/agent-9) — FAIL LOUD"; exit 1; }
           git clone --depth 1 "https://x-access-token:${WORK}@github.com/roshpinacare-sys/saos-runtime.git" vault
           rm -rf vault/agents/agent-9-insurance
           mkdir -p vault/agents/agent-9-insurance
           cp -r agents/agent-9/. vault/agents/agent-9-insurance/
           cd vault
+          git config user.name sovereign-agent-9
+          git config user.email agent9@fleet.local
           git add agents/agent-9-insurance
           if git diff --cached --quiet; then echo "vault already fresh — quiet beat (v2 converged first)"; exit 0; fi
           git commit -q -m "vault-sync v3 (from Autonomy): agent-9 insurance snapshot (worklog+tools+manifest)"
