@@ -1,0 +1,81 @@
+{
+ "schema": "self-heal/1",
+ "at": "2026-10-18T00:12:34.108Z",
+ "repo": "roshpinacare-sys/Autonomy",
+ "ok": true,
+ "verdictAt": "2026-10-17T23:59:19.201Z",
+ "dispatched": [
+  {
+   "workflow": "sovereign-state.yml",
+   "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-watch.yml",
+   "check": "sbx.wf-artery-watch",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "hive-probe.yml",
+   "check": "sbx.wf-hive-probe",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "fleet-heal.yml",
+   "check": "sbx.wf-fleet-heal",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-wallet.yml",
+   "check": "sbx.wf-artery-wallet",
+   "level": "FAIL",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-integrity.yml",
+   "check": "sbx.wf-artery-integrity",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  }
+ ],
+ "refused": [],
+ "skipped": [],
+ "notHealable": [
+  {
+   "id": "dev.rate",
+   "level": "DEGRADED",
+   "why": "heartbeat-without-building: codeShare 2% < 10% over 306 commits/24h",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "steem.treasury",
+   "level": "DEGRADED",
+   "why": "treasury acct-00 at 2929 SP < 3000 (recovery-plan §3)",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "blurt.alive",
+   "level": "NOTICE",
+   "why": "blurt RPC unreachable from runner (1 hosts tried) — UNREACHABLE, לא \"מת\" עד-שיימד",
+   "reason": "not-a-dispatchable-workflow"
+  }
+ ],
+ "truncated": 0,
+ "verdictOverall": "FAIL"
+}
