@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-17T23:35:13.925Z",
+  "at": "2026-10-18T02:08:13.504Z",
   "repos": {
     "steem-cockpit": {
-      "head": "1921b3a3617c331cf14dcac3465e9d8726be008f",
+      "head": "6e1facc7171a211ed469b38c154bb93a3199c6fa",
       "overall": "PASS",
       "checks": {
         "install": "pass",
@@ -12,13 +12,13 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-dex": {
-      "head": "10ba0eca4c20fd22e4fc445959919b301f2a1808",
-      "overall": "PASS",
+      "head": "7a976af6365639f47f07ece4702c899879ebe2a3",
+      "overall": "FAIL",
       "checks": {
         "install": "pass",
-        "typecheck": "pass"
+        "typecheck": "fail"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": "typecheck failed: ): error TS7006: Parameter 'e' implicitly has an 'any' type. | fabric/cmvd4adr/api-dex.ts(88,20): error TS18046: 'error' is of type 'unknown'. | fabric/cmvd4adr/api-dex.ts(88,37): error TS7006: Parameter 'e' implicitly has an 'any' type. | "
     },
     "saos-agents": {
       "head": "83555a78cfab2da69b1a8bbb682559062566d8f0",
@@ -29,7 +29,7 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-wallet": {
-      "head": "aa1394e2123e07fa28038a96a6729f8c321d040a",
+      "head": "0f5e81230bf6108e21c9e5596d2b8028c40a64e1",
       "overall": "PASS",
       "checks": {},
       "reason": "all checks and fleet laws pass"
@@ -42,22 +42,22 @@
     }
   },
   "alerts": [
-    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-6DRTbM/saos-wallet/tools/vault-zk-check.ts",
+    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-G1EcXq/saos-wallet/tools/vault-zk-check.ts",
     "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
-  "overall": "PASS",
-  "reason": "steem=PASS · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "overall": "FAIL",
+  "reason": "steem=PASS · saos-dex=FAIL · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "39079589508",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39079589508",
-    "sha": "b0054d266acc24fd18cc7fe01c5314b208bda088"
+    "runId": "39088987735",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39088987735",
+    "sha": "4a613097a71d89cfefb2ec24def0dafbf249e6d8"
   },
   "details": [
     {
-      "at": "2026-10-17T23:35:13.925Z",
+      "at": "2026-10-18T02:08:13.504Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "1921b3a3617c331cf14dcac3465e9d8726be008f",
+      "head": "6e1facc7171a211ed469b38c154bb93a3199c6fa",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
@@ -67,7 +67,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+          "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
         },
         {
           "id": "law-no-skipped-pass",
@@ -86,18 +86,18 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-6DRTbM/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+        "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-G1EcXq/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-17T23:35:13.925Z",
+      "at": "2026-10-18T02:08:13.504Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "10ba0eca4c20fd22e4fc445959919b301f2a1808",
+      "head": "7a976af6365639f47f07ece4702c899879ebe2a3",
       "checks": {
         "install": "pass",
-        "typecheck": "pass"
+        "typecheck": "fail"
       },
       "laws": [
         {
@@ -122,11 +122,11 @@
         }
       ],
       "alerts": [],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": "typecheck failed: ): error TS7006: Parameter 'e' implicitly has an 'any' type. | fabric/cmvd4adr/api-dex.ts(88,20): error TS18046: 'error' is of type 'unknown'. | fabric/cmvd4adr/api-dex.ts(88,37): error TS7006: Parameter 'e' implicitly has an 'any' type. | "
     },
     {
-      "at": "2026-10-17T23:35:13.925Z",
+      "at": "2026-10-18T02:08:13.504Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "83555a78cfab2da69b1a8bbb682559062566d8f0",
       "checks": {
@@ -159,15 +159,15 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-17T23:35:13.925Z",
+      "at": "2026-10-18T02:08:13.504Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
-      "head": "aa1394e2123e07fa28038a96a6729f8c321d040a",
+      "head": "0f5e81230bf6108e21c9e5596d2b8028c40a64e1",
       "checks": {},
       "laws": [
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-6DRTbM/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-G1EcXq/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
@@ -211,14 +211,14 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-6DRTbM/saos-wallet/tools/vault-zk-check.ts",
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-G1EcXq/saos-wallet/tools/vault-zk-check.ts",
         "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-17T23:35:13.925Z",
+      "at": "2026-10-18T02:08:13.504Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "43e5ba5a701b8c204f6e0b9937326b6fa4428a47",
       "checks": {},
