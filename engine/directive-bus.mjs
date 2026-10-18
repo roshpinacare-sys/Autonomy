@@ -172,7 +172,7 @@ for (const e of directives) {
   const execId = `bus-${ref}`.replace(/[^a-zA-Z0-9._-]/g, "-").slice(0, 64);
   const ex = await runExecutor({ id: execId, commands: r.task.commands, timeoutSec: r.task.timeoutSec });
   jwrite(rf, { schema: "chainbus.directive.receipt/1", at: nowIso(), ok: ex.ok,
-    ref: { block: e.block, idx: e.idx, seq: e.msg.seq ?? null, from: e.msg.from, to, runId: body.runId ?? null },
+    ref: { block: e.block, idx: e.idx, seq: e.msg.seq ?? null, from: "operator-plane", to, runId: body.runId ?? null },
     body: bodyJson.slice(0, BODY_CAP),
     task: { name: r.task.name, description: r.task.description, commands: r.task.commands.length, timeoutSec: r.task.timeoutSec },
     exec: { ok: ex.ok, code: ex.code ?? null, ms: ex.ms, receipt: `receipts/execution/${execId}.json`,
