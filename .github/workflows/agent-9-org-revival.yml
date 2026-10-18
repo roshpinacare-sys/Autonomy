@@ -1,0 +1,61 @@
+name: agent-9-org-revival
+
+# איבר-החייה-הארגונית [t22 · הוראת-בעלים: "להחיות את הארכיטקטורה... ולא לכבות"]
+# ═══════════════════════════════════════════════════════════════════════════════
+# הפער-שנסגר: מערכת-החיסון (artery-pacer/Domain-guardian) מחייה-רק-את-ריפו-שבבעלותה;
+# מחוץ-לסקופ נשארו 89 מנוטרלים (שארית-קריסת-billing + מתקפות-הסגירה) ואף-איבר-לא-החזירם.
+# האיבר-הזה: סקר-יומי-של-כל-ה-org + החייה enable-only + קבלות-לגיט.
+#
+# חוקים (מקודדים-ב-script):
+#   · enable בלבד — disable-אסור-לעולם (חוקת-אי-הסגירה)
+#   · forks — מעולם-לא-נוגעים
+#   · fail-closed: כישלון-חלקי = יציאה-2 = ריצה-אדומה = רועש
+#   · כלכלה: הסקר-וההחייה-אפס-ריצות-workflow — עלות-דקות-אפסית
+# כלים: agents/agent-9/sandbox-tools/revive-org.mjs (--selftest ירוק t22)
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # יומי 06:17 — אחרי token-watchdog 05:40
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  revival:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (for the tool)
+        uses: actions/checkout@v4
+
+      - name: Revive all disabled workflows across the org (enable-only)
+        env:
+          PAT: ${{ secrets.SBX_FLEET_PAT }}
+          RECEIPTS: /tmp/revive-org-receipts.jsonl
+        run: |
+          set -euo pipefail
+          git config user.name "agent-9"
+          git config user.email "agent9@sovereign.local"
+          node agents/agent-9/sandbox-tools/revive-org.mjs | tee /tmp/revival-summary.json
+          echo "## org-revival beat" >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/revival-summary.json >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          if [ -s /tmp/revive-org-receipts.jsonl ]; then
+            mkdir -p agents/agent-9/state
+            { echo "# org-revival receipts (last beat) · $(date -u +%FT%TZ)"; cat /tmp/revive-org-receipts.jsonl; } > agents/agent-9/state/org-revival-latest.json
+          else
+            echo "# org-revival receipts (last beat) · $(date -u +%FT%TZ) · nothing-to-revive (clean beat)" > agents/agent-9/state/org-revival-latest.json
+          fi
+
+      - name: Commit receipts (idempotent — quiet on clean beats)
+        run: |
+          set -euo pipefail
+          git add agents/agent-9/state/org-revival-latest.json
+          if git diff --cached --quiet; then
+            echo "clean beat — nothing to commit"
+          else
+            git commit -q -m "[agent-9/org-revival] beat receipts (enable-only, forks-never) $(date -u +%FT%TZ)"
+            for i in 1 2 3; do git pull --rebase origin main && break || sleep 3; done
+            git push origin main
+          fi
