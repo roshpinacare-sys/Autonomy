@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-18T05:57:44.609Z",
+  "at": "2026-10-18T07:22:54.364Z",
   "repos": {
     "steem-cockpit": {
-      "head": "4238a05eda0138a86cd9a83e51e1bb5a51ec72fd",
+      "head": "738d55164d641ec6b0d0117bacd63e5125dfa7b9",
       "overall": "PASS",
       "checks": {
         "install": "pass",
@@ -12,13 +12,13 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-dex": {
-      "head": "84c630523cf23d903080191c360728b58aaa3d70",
+      "head": "96c101c698b983944505bf9ca72469df5f7794c8",
       "overall": "FAIL",
       "checks": {
         "install": "pass",
         "typecheck": "fail"
       },
-      "reason": "typecheck failed:  ...values: any[]) => PrismaPromise<number>' is not assignable to type '(this: PrismaClient<PrismaClientOptions, never, DefaultArgs>) => Promise<unknown>'. |     Target signature provides too few arguments. Expected 1 or more, but got 0. | "
+      "reason": "typecheck failed: fabric/cmvdg33u/dex.ts(212,5): error TS1005: ',' expected. | fabric/cmvdg33u/dex.ts(217,4): error TS1128: Declaration or statement expected. | fabric/cmvdg33u/dex.ts(218,1): error TS1128: Declaration or statement expected. | "
     },
     "saos-agents": {
       "head": "9651187d2e0b65c929983bb086290a097b139204",
@@ -42,22 +42,22 @@
     }
   },
   "alerts": [
-    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-kJdkkG/saos-wallet/tools/vault-zk-check.ts",
+    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-odUP6Q/saos-wallet/tools/vault-zk-check.ts",
     "saos-wallet: law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
   ],
   "overall": "FAIL",
   "reason": "steem=PASS · saos-dex=FAIL · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "39102330092",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39102330092",
-    "sha": "279f4a748330fc891f01af4115e24f836287db59"
+    "runId": "39107436420",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39107436420",
+    "sha": "685e1ad807892c117cdf55976725556728269a46"
   },
   "details": [
     {
-      "at": "2026-10-18T05:57:44.609Z",
+      "at": "2026-10-18T07:22:54.364Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "4238a05eda0138a86cd9a83e51e1bb5a51ec72fd",
+      "head": "738d55164d641ec6b0d0117bacd63e5125dfa7b9",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
@@ -67,7 +67,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+          "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
         },
         {
           "id": "law-no-skipped-pass",
@@ -86,15 +86,15 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-kJdkkG/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+        "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-odUP6Q/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-18T05:57:44.609Z",
+      "at": "2026-10-18T07:22:54.364Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "84c630523cf23d903080191c360728b58aaa3d70",
+      "head": "96c101c698b983944505bf9ca72469df5f7794c8",
       "checks": {
         "install": "pass",
         "typecheck": "fail"
@@ -123,10 +123,10 @@
       ],
       "alerts": [],
       "overall": "FAIL",
-      "reason": "typecheck failed:  ...values: any[]) => PrismaPromise<number>' is not assignable to type '(this: PrismaClient<PrismaClientOptions, never, DefaultArgs>) => Promise<unknown>'. |     Target signature provides too few arguments. Expected 1 or more, but got 0. | "
+      "reason": "typecheck failed: fabric/cmvdg33u/dex.ts(212,5): error TS1005: ',' expected. | fabric/cmvdg33u/dex.ts(217,4): error TS1128: Declaration or statement expected. | fabric/cmvdg33u/dex.ts(218,1): error TS1128: Declaration or statement expected. | "
     },
     {
-      "at": "2026-10-18T05:57:44.609Z",
+      "at": "2026-10-18T07:22:54.364Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "9651187d2e0b65c929983bb086290a097b139204",
       "checks": {
@@ -159,7 +159,7 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-18T05:57:44.609Z",
+      "at": "2026-10-18T07:22:54.364Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
       "head": "0f5e81230bf6108e21c9e5596d2b8028c40a64e1",
       "checks": {},
@@ -167,7 +167,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-kJdkkG/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-odUP6Q/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
@@ -211,14 +211,14 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-kJdkkG/saos-wallet/tools/vault-zk-check.ts",
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-odUP6Q/saos-wallet/tools/vault-zk-check.ts",
         "law-pass-provenance: PASS receipt minted out-of-band — flagged; artery measurement is the authoritative verdict"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-18T05:57:44.609Z",
+      "at": "2026-10-18T07:22:54.364Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "43e5ba5a701b8c204f6e0b9937326b6fa4428a47",
       "checks": {},
