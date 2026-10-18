@@ -12,7 +12,7 @@ on:
     - cron: "19 6 * * *"   # daily 06:19 UTC — Jerusalem 09:19, before the day starts
   workflow_dispatch: {}
 permissions:
-  contents: read
+  contents: write   # growth receipt push (covenant read-only vs code; census uses API via PAT)
 concurrency:
   group: artery-growth
   cancel-in-progress: false
