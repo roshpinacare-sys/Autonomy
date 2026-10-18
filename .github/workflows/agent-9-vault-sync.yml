@@ -1,11 +1,16 @@
 name: agent-9-vault-sync
-# [t18 · agent-9] סנכרון-אוטומטי של עותק-הביטוח השלישי (כספת):
-# agents/agent-9 מ-Autonomy (עותק 1) → ענף agent-9-insurance ב-steem (עותק 3).
-# חוק: append-only, FF-only — אף-פעם לא force (אותו חוק כמו SOVEREIGN-WRITER-LAW).
-# למה: עותק-ביטוח שרקב = אין ביטוח. כל-יום הכספת מתעדכנת ל-worklog הטרי.
+# [t18 · agent-9] כספת-הביטוח · v3 — יושר-לדוקטרינת-18b.
+# לקח-18b: ענף-צדדי ב-steem (agent-9-insurance) אוכלס ע"י floating-builds organ
+# [R54-אפס-רחיפה] — שלוחות-זרות מאוכסנות לתג archive/* → מלחמת-התקפלות אינסופית.
+# נתיבי-עץ עדיפים על ענפים-צדדיים: הכספת = agents/agent-9-insurance/ על main
+# ב-saos-runtime (פרטי), נמשכת יומית מ-Autonomy (vault-sync v2 המקומי שם).
+# v3 כאן = עותק-גיבוי עצמאי ל-v2 מהצד-השני (Autonomy דוחף → saos-runtime):
+# אם GITHUB_TOKEN של saos-runtime ייכשל יום-אחד, הסינכרון עדיין יקרה מכאן
+# עם סולם-token (SBX_FLEET_PAT→GH_PAT→ZIP_PAT). שני-הכותבים כותבים בייטים-זהים:
+# מי שרץ-שני מוצא אין-שינוי → פעימה-שקטה. cron 03:47 אחרי-v2 (03:31) — אין-מירוץ.
 on:
   schedule:
-    - cron: "31 3 * * *"
+    - cron: "47 3 * * *"
   workflow_dispatch: {}
 permissions:
   contents: read
@@ -18,7 +23,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: push insurance snapshot to steem vault branch (FF-only)
+      - name: push insurance snapshot to saos-runtime tree path (idempotent, no side branches)
         env:
           SBX_FLEET_PAT: ${{ secrets.SBX_FLEET_PAT }}
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -26,32 +31,28 @@ jobs:
         run: |
           set -e
           WORK=""
-          for T in "$SBX_FLEET_PAT" "$ZIP_PAT" "$GH_PAT"; do
+          for T in "$SBX_FLEET_PAT" "$GH_PAT" "$ZIP_PAT"; do
             [ -n "$T" ] || continue
-            if git ls-remote "https://x-access-token:${T}@github.com/roshpinacare-sys/steem.git" HEAD >/dev/null 2>&1; then
-              WORK="$T"; echo "token ok (ls-remote steem)"; break
+            if git ls-remote "https://x-access-token:${T}@github.com/roshpinacare-sys/saos-runtime.git" HEAD >/dev/null 2>&1; then
+              WORK="$T"; echo "token ok (ls-remote saos-runtime)"; break
             fi
-            echo "token rejected for steem — trying next"
+            echo "token rejected — trying next on ladder"
           done
-          [ -n "$WORK" ] || { echo "NO_WORKING_TOKEN for steem — FAIL LOUD"; exit 1; }
+          [ -n "$WORK" ] || { echo "NO_WORKING_TOKEN for saos-runtime — FAIL LOUD"; exit 1; }
           git config user.name sovereign-agent-9
           git config user.email agent9@fleet.local
-          git clone --depth 1 --branch agent-9-insurance "https://x-access-token:${WORK}@github.com/roshpinacare-sys/steem.git" vault || {
-            echo "vault branch missing — creating orphan snapshot"
-            git clone --depth 1 "https://x-access-token:${WORK}@github.com/roshpinacare-sys/steem.git" vault-src
-            cd vault-src; git checkout --orphan agent-9-insurance; git rm -rfq .; cd ..
-            mv vault-src vault
-          }
-          rm -rf vault/agents
-          mkdir -p vault/agents
-          cp -r agents/agent-9 vault/agents/
+          test -d agents/agent-9 || { echo "INSURANCE_SOURCE_MISSING (agents/agent-9) — FAIL LOUD"; exit 1; }
+          git clone --depth 1 "https://x-access-token:${WORK}@github.com/roshpinacare-sys/saos-runtime.git" vault
+          rm -rf vault/agents/agent-9-insurance
+          mkdir -p vault/agents/agent-9-insurance
+          cp -r agents/agent-9/. vault/agents/agent-9-insurance/
           cd vault
-          git add -A
-          if git diff --cached --quiet; then echo "vault already fresh — quiet beat"; exit 0; fi
-          git commit -q -m "vault-sync: agent-9 insurance refresh from Autonomy @ $(git -C .. rev-parse HEAD)"
+          git add agents/agent-9-insurance
+          if git diff --cached --quiet; then echo "vault already fresh — quiet beat (v2 converged first)"; exit 0; fi
+          git commit -q -m "vault-sync v3 (from Autonomy): agent-9 insurance snapshot (worklog+tools+manifest)"
           for i in 1 2 3; do
-            git push origin agent-9-insurance -q && { echo "VAULT SYNCED ok"; exit 0; }
-            git pull --rebase origin agent-9-insurance -q || true
+            git pull --rebase origin main -q || true
+            git push origin HEAD:main -q && { echo VAULT_SYNCED_OK_V3; exit 0; }
             sleep $((i*7))
           done
-          echo "VAULT PUSH FAILED after 3 retries — FAILING LOUDLY"; exit 1
+          echo VAULT_PUSH_FAILED_LOUD; exit 1
