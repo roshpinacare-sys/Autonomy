@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-19T22:58:24.344Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-19T23:39:26.336Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,9 +15,9 @@
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/org-gitleaks @ 2026-10-19T22:58 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/artery-integrity-twin @ 2026-10-19T22:57 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/office3d-guard @ 2026-10-19T22:24 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/org-gitleaks @ 2026-10-19T21:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-10-19T21:10 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-19T18:52 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/daily-digest @ 2026-10-19T18:27 — autonomy triage: read the log, fix root, land, verify
