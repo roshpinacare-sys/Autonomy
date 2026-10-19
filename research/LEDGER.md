@@ -60,3 +60,11 @@
 
 ## 2026-10-14T17:18:59Z
 - **exec36 live numbering race — R353 double-claim adjudicated first-registration-wins (no renumbering)** · 2026-10-14 — measurement: the 36-c mid-write CAS re-read on Pulse DECISIONS.md was clean (last row #36 @ `d2b2512`, zero R353–R357 hits), yet the parallel saos-desk session T-96 landed DECISIONS #37 claiming R353 (real-bars kernel-input law, Pulse `242acc0` @ 2026-10-14T17:11:43Z, saos-desk `2ae7e39`+`e0e2fed`, selftest 202/202) ~2 minutes after this registry's own Autonomy law-file commit `ebc8f07` (author-date 17:09:54Z, commit-date 17:10:01Z, pushed + API-200 before T-96's commit; heartbeat `1261b42` @ 17:12:36Z built on top of it). verdict: **held** — first-registration-wins (exec32/32-b + 34-e + 35-b precedents, applied symmetrically in both directions) assigns **R353 = verification-lease**; R354–R357 unshifted; T-96's label migration is a future beat by a surface-owning lane (T-95 precedent, DECISIONS #30/#35); the original Pulse row `9c22fa4` (written as #37) never landed — the shared-clone rebase conflict was resolved by dropping the duplicate NUMBER and re-posting as **#38** with the adjudication recorded. next: T-96's R353→next-free migration; the exec36 DECISIONS #38 row is the authoritative registration of the five watchtower laws. Live-race note appended to `state/research/exec36-watchtower-hardening-laws-2026-10-14.md` (append-only; zero history rewrites).
+
+## 2026-10-19T10:52:35.571Z
+- **E1 spread-regime** · 2026-10-19 — measured: spread tightened (27.08 < 93.5 bps) — grid-side liquidity improving
+  - next: track weekly; correlate with grid-beat placements (saos-dex ledger) before claiming causality
+- **E2 feed-divergence** · 2026-10-19 — measured: healthy band: divergence 285.6 bps ≤ 300 (feed_above_market)
+  - next: if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)
+- **E3 rc-census** · 2026-10-19 — measured: no starved accounts (<40%) — fleet RC healthy this week
+  - next: if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)
