@@ -68,6 +68,13 @@ export const ROSTER = [
   { wf: 'artery-scout.yml', cadenceMin: 13 * 60 },
   { wf: 'artery-treasury.yml', cadenceMin: 26 * 60 },
   { wf: 'artery-growth.yml', cadenceMin: 26 * 60 },
+  // daily maintenance organs [t29-t30]: their organic cron slots are measured
+  // flaky in this repo (t14 forensics; token-watchdog slots lost 10-18+10-19,
+  // org-revival's first 06:17 slot pending past window) — the pacer is the
+  // safety net that bounds the max silent gap at ~26h. The organic cron stays
+  // the primary driver; a 26h cadence never double-fires inside a healthy day.
+  { wf: 'agent-9-org-revival.yml', cadenceMin: 26 * 60 },
+  { wf: 'token-watchdog.yml', cadenceMin: 26 * 60 },
 ];
 
 /** pure: which roster entries are stale given last-success ages (minutes) */
