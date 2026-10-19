@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-19T23:38:20.211Z",
+ "at": "2026-10-19T23:55:52.867Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-19T23:24:01.177Z",
+ "verdictAt": "2026-10-19T23:53:32.365Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -22,32 +22,24 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
+   "workflow": "artery-wallet.yml",
+   "check": "sbx.wf-artery-wallet",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "value-scan.yml",
-   "check": "sbx.wf-value-scan",
+   "workflow": "artery-integrity.yml",
+   "check": "sbx.wf-artery-integrity",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "hive-probe.yml",
-   "check": "sbx.wf-hive-probe",
-   "level": "NOTICE",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
+   "workflow": "artery-participation.yml",
+   "check": "sbx.wf-artery-participation",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -60,13 +52,13 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 0% < 10% over 354 commits/24h",
+   "why": "heartbeat-without-building: codeShare 2% < 10% over 355 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
    "level": "DEGRADED",
-   "why": "treasury acct-00 at 2740 SP < 3000 (recovery-plan §3)",
+   "why": "treasury acct-00 at 2741 SP < 3000 (recovery-plan §3)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,7 +68,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 3,
+ "truncated": 0,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 52,
