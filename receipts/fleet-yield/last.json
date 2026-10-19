@@ -1,27 +1,123 @@
 {
   "schema": "fleet-yield/1",
-  "at": "2026-10-19T02:57:58.877Z",
-  "verdict": "SELFTEST-GATE-RED",
+  "at": "2026-10-19T02:58:21.598Z",
+  "verdict": "INTEL-OK",
   "engineHead": "00823c936e5c",
   "selftest": {
-    "passed": null,
-    "total": null,
-    "status": "UNPARSED",
-    "code": 1,
-    "timedOut": false
+    "passed": 1823,
+    "total": 1823,
+    "status": "PASS"
   },
-  "tail": [
-    "at file://<sandbox>/work/Autonomy/Autonomy/fleet-engine/mini-services/saos-engine/steemtx.mjs:380:32",
-    "at Array.map (<anonymous>)",
-    "at buildTx (file://<sandbox>/work/Autonomy/Autonomy/fleet-engine/mini-services/saos-engine/steemtx.mjs:380:21)",
-    "at file://<sandbox>/work/Autonomy/Autonomy/fleet-engine/mini-services/saos-engine/selftest.mjs:372:15",
-    "at ModuleJob.run (node:internal/modules/esm/module_job:343:25)",
-    "at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)",
-    "at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)",
-    "Node.js v22.23.3"
-  ],
+  "state": {
+    "vestsPerSP": 1611.592314,
+    "tvs": 325381959948.25476,
+    "tvf": 201900913.261,
+    "head": "110562493"
+  },
+  "voter": {
+    "account": "acct-00",
+    "status": "read-ok",
+    "vestsEff": 4539766.093757,
+    "vpEff": 34.5,
+    "votesRead": "get_account_history:100x5",
+    "recentVotes": [
+      {
+        "k": "bokhtiar1444/predator-art",
+        "w": 6327,
+        "at": "2026-10-19T01:45:24"
+      },
+      {
+        "k": "weisser-rabe/a-talk-with-chatgpt-about-steem-or-a-lot-of-text-ein-gespraech-mit-chatgpt-ueber-steem-oder-eine-menge-text",
+        "w": 5798,
+        "at": "2026-10-19T01:45:15"
+      },
+      {
+        "k": "pixel-craft/pixelcraft-daily-20261019-1792368026316",
+        "w": 5573,
+        "at": "2026-10-19T01:45:06"
+      }
+    ]
+  },
+  "candidates": {
+    "scanned": 480,
+    "selected": [
+      {
+        "author": "steem-api-health",
+        "permlink": "steemapps-api-daily-report-2026-10-18",
+        "weight": 6723,
+        "ageMinutes": 28,
+        "tag": "steem"
+      },
+      {
+        "author": "kazi-raihan",
+        "permlink": "3wkvue-or-or-by-kazi-raihan",
+        "weight": 6575,
+        "ageMinutes": 38,
+        "tag": "steem"
+      },
+      {
+        "author": "tasonya",
+        "permlink": "4wtibs-photography-crown-of-thorns-flower-photography",
+        "weight": 6498,
+        "ageMinutes": 43,
+        "tag": "steem"
+      }
+    ],
+    "rejectedTop": [
+      "denver23/a-paddy-field:too-young",
+      "bcs5/btc-price-2026-10-19-1147:short-body",
+      "steemzzang/cadqo:short-body",
+      "cjsdns/3t9yas:crowded",
+      "arman.ithm/sweep-finance-actionfi-join-the-usd150-000-reward-campaign:day-cap",
+      "fuli/fuli-freebooming-10-19-2026:short-body",
+      "abandi/are-investments-into-steem-a-good-choice-20261019t015159:day-cap",
+      "lustcrush2026/custom-ai-girlfriend-platforms-vs-ready-made-chat-apps-in-2026:day-cap",
+      "tasonya/photography-crown-of-thorns-flower-photography:author-cap",
+      "cabbagelover/post-79325f7ca4:spam-title",
+      "acct-04/what-the-post-box-still-knows-on-slowing-20261019-ff59bb86:self-fleet",
+      "steemburnup/burn-pool-1792372641061:day-cap",
+      "mahmudraha21/partida-de-steemhop-games-79-hm0hup:day-cap",
+      "votebroker/daily-fees-2026-10-19:day-cap"
+    ],
+    "rejectedCount": 435,
+    "crowded": 2,
+    "dayCapReached": true,
+    "votedOnChain": [],
+    "dedup": "on-chain"
+  },
+  "laws": {
+    "maxPostVotes": 100,
+    "maxPerDay": 30,
+    "ageWindow": [
+      10,
+      240
+    ],
+    "minVpEffPct": 35,
+    "weights": [
+      70,
+      35
+    ],
+    "ref": "docs/measured/t35-probe.json — SP/G-rshares peak 0.000416 @10-30 votes · -55% @150+ (T-35, 96 chain ops)"
+  },
+  "capitalPolicy": {
+    "check": "MEASURED",
+    "decidedAt": "2026-10-19T01:15:55Z",
+    "keepFloorSp": 2800,
+    "operatorsWatched": 13,
+    "treasuryNetSp": 2816.9,
+    "treasuryAboveFloor": true,
+    "operatorsBelowFloor": [
+      "acct-08:61SP<75",
+      "acct-10:20.5SP<75",
+      "acct-11:17SP<30",
+      "acct-12:17SP<30",
+      "acct-13:17SP<30"
+    ],
+    "floorAlert": true
+  },
+  "tookMs": 13421,
   "chain": {
-    "prev": "355bee94b633e38dbcbb85e201b48dd53ea65d75aff28ae1521d129fb20038e8",
-    "cur": "ed4ff6b2fc80f8b549af382d1ae554b4e4ab3ba27315bd19b99e5d458954a6b5"
+    "prev": "ed4ff6b2fc80f8b549af382d1ae554b4e4ab3ba27315bd19b99e5d458954a6b5",
+    "cur": "f7137052dd630791eeb82bc495b6334d8dc3ee878fd872fe7d922053dcd92603"
   }
 }
