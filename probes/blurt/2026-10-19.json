@@ -1,31 +1,62 @@
 {
   "schema": "roshpinacare.blurt-node-health-probe/1",
   "task": "9-d",
-  "at": "2026-10-19T21:51:17.463Z",
+  "at": "2026-10-19T23:38:40.417Z",
   "read_only": true,
   "broadcast": false,
   "keys_used": false,
-  "ok": false,
-  "node_used": null,
+  "ok": true,
+  "node_used": "https://blurt-rpc.saboin.com",
   "nodes": [
     {
       "node": "https://blurt-rpc.saboin.com",
-      "alive": false,
-      "ms": 406,
-      "head_block_number": null,
-      "block_time_match": null,
+      "alive": true,
+      "ms": 239,
+      "head_block_number": 64625920,
+      "block_time_match": true,
       "calls": {
         "dgp": {
-          "ok": false,
-          "error": "http_500"
+          "ok": true,
+          "ms": 239
+        },
+        "block": {
+          "ok": true,
+          "ms": 39
+        },
+        "top_witnesses": {
+          "ok": true,
+          "ms": 81,
+          "count": 10
+        },
+        "account_count": {
+          "ok": true,
+          "ms": 72
+        },
+        "witness_count": {
+          "ok": true,
+          "ms": 88
         }
       },
-      "error": "http_500"
+      "error": null,
+      "head_block_time": "2026-10-19T23:38:36",
+      "network": {
+        "head_block_number": 64625920,
+        "head_block_id": "03da1d00d3c46ee5b8986b5edc2524d15654b506",
+        "time": "2026-10-19T23:38:36",
+        "current_witness": "blurtconnect-ng",
+        "current_supply": "608852976.029 BLURT",
+        "total_vesting_fund_blurt": "395663751.730 BLURT",
+        "total_vesting_shares": "344312324.139338 VESTS"
+      },
+      "block_skew_s": 0,
+      "top_witness": "khrom",
+      "account_count": 1399443,
+      "witness_count": 245
     },
     {
       "node": "https://rpc.blurt.blog",
       "alive": false,
-      "ms": 780,
+      "ms": 783,
       "head_block_number": null,
       "block_time_match": null,
       "calls": {
@@ -39,7 +70,7 @@
     {
       "node": "https://rpc.blurt.world",
       "alive": false,
-      "ms": 546,
+      "ms": 407,
       "head_block_number": null,
       "block_time_match": null,
       "calls": {
@@ -53,7 +84,7 @@
     {
       "node": "https://blurt-rpc.blurtlatam.com",
       "alive": false,
-      "ms": 91,
+      "ms": 82,
       "head_block_number": null,
       "block_time_match": null,
       "calls": {
@@ -65,10 +96,17 @@
       "error": "fetch failed"
     }
   ],
-  "network": null,
-  "witnesses": null,
+  "network": {
+    "head_block_number": 64625920,
+    "head_block_id": "03da1d00d3c46ee5b8986b5edc2524d15654b506",
+    "time": "2026-10-19T23:38:36",
+    "current_witness": "blurtconnect-ng",
+    "current_supply": "608852976.029 BLURT",
+    "total_vesting_fund_blurt": "395663751.730 BLURT",
+    "total_vesting_shares": "344312324.139338 VESTS"
+  },
+  "witnesses": "khrom",
   "errors": [
-    "https://blurt-rpc.saboin.com → http_500",
     "https://rpc.blurt.blog → http_429",
     "https://rpc.blurt.world → fetch failed",
     "https://blurt-rpc.blurtlatam.com → fetch failed"
