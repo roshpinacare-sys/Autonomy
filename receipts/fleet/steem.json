@@ -1,22 +1,22 @@
 {
-  "at": "2026-10-19T18:02:21.173Z",
+  "at": "2026-10-19T18:18:00.389Z",
   "slug": "roshpinacare-sys/steem",
-  "head": "601807c7ec7aa5280f5d81ed76ef94ebc6ee42dc",
+  "head": "73f6307700a43f230f91c0ae2791d2a0d10bc931",
   "checks": {
     "install": "pass",
     "engineInstall": "pass",
-    "engineSelftest": "fail"
+    "engineSelftest": "pass"
   },
   "laws": [
     {
       "id": "law-no-secrets-at-head",
       "verdict": "flag",
-      "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-HeDPnS/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-HeDPnS/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-HeDPnS/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+      "detail": "gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-hmD9Bv/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-hmD9Bv/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-hmD9Bv/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
     },
     {
       "id": "law-no-skipped-pass",
       "verdict": "pass",
-      "detail": "workflows scanned: 11, theater patterns: 0"
+      "detail": "workflows scanned: 12, theater patterns: 0"
     },
     {
       "id": "law-gitleaks-push",
@@ -30,8 +30,8 @@
     }
   ],
   "alerts": [
-    "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-HeDPnS/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-HeDPnS/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-HeDPnS/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
+    "law-no-secrets-at-head: gitleaks HEAD scan: 12 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-hmD9Bv/steem-cockpit/mini-services/saos-engine/command-hierarchy.mjs, generic-api-key@/tmp/fleet-verify-hmD9Bv/steem-cockpit/mini-services/saos-engine/evidence/t72/probe-out.json, generic-api-key@/tmp/fleet-verify-hmD9Bv/steem-cockpit/mini-services/saos-engine/state/fleet-body-ledger.json"
   ],
-  "overall": "FAIL",
-  "reason": "engineSelftest failed: ced-fail\",\"errorClass\":\"unknown\"} | {\"ev\":\"saos.llm_chain.selected\",\"purpose\":\"drill\",\"selected\":\"drill-provider-1t\",\"ms\":1} |   55.10 SKIP (honest): .secrets/exchange.json absent on this host — vault cache gate runs where the seal lives | "
+  "overall": "PASS",
+  "reason": "all checks and fleet laws pass"
 }
