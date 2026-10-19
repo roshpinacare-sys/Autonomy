@@ -121,7 +121,17 @@ export function applyProposal(world, proposal) {
 async function live() {
   const receipt = { schema: 'world-evolver/1', at: nowIso(), ok: false, mode: null };
   try {
-    const world = await jget(`${RAW}/Domain/main/office3d/world/world.json`);
+    let world;
+    try {
+      world = await jget(`${RAW}/Domain/main/office3d/world/world.json`);
+    } catch {
+      // t26 (measured #4–#15: office-3d bake a87dcdd5 18/10 11:47Z rebuilt office3d/ and
+      // wiped the crew's world → 404 → 12 consecutive reds): the bake deploys a fresh
+      // bundle dir and can remove the world file; the evolver reseeds from its own last
+      // evolved copy — the world never dies from a redeploy (grow-only law preserved).
+      world = await jget(`${RAW}/Autonomy/main/receipts/world/world-next.json`);
+      receipt.reseeded = true;
+    }
     const truth = await gatherTruth();
     receipt.truth = truth;
     const key = process.env.NVIDIA_NIM_KEY;

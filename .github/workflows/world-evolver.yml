@@ -31,6 +31,9 @@ jobs:
           [ "$V" = "true" ] || { echo "evolver reported failure — nothing lands (honest)"; exit 0; }
           REPO_DIR=$(mktemp -d)
           git clone --depth 3 "https://x-access-token:${{ secrets.FLEET_PAT }}@github.com/roshpinacare-sys/Domain.git" "$REPO_DIR"
+          # t26 (measured #4–#15): the office-3d bake wipes office3d/world/ entirely —
+          # cp alone then dies with "No such file or directory" even on a good evolve.
+          mkdir -p "$REPO_DIR/office3d/world"
           cp receipts/world/world-next.json "$REPO_DIR/office3d/world/world.json"
           cd "$REPO_DIR"
           git config user.name sovereign-agent-9

@@ -55,9 +55,11 @@ jobs:
           node-version: 22
 
       # דפוס-האחים (saos-runtime/steem): רק-noble — המנוע-אפס-תלות-חוץ-אחרת
+      # W11-round-2 (t26, נמדד #75 01:47Z): ^2.2.3 הביא-את-v2-ל-runner — signSync
+      # הוסר-שם-וה-selftest-gate-נפל-על-buildTx; הצמדה-מדויקת-1.7.2-כמו-7fad9f6
       - name: engine deps (noble only)
         working-directory: fleet-engine/mini-services/saos-engine
-        run: npm i --no-save @noble/hashes@^1.5.0 @noble/secp256k1@^2.2.3 --silent
+        run: npm i --no-save @noble/hashes@1.7.2 @noble/secp256k1@1.7.2 --silent
 
       # תבונה-חיה: כישלון-מבני = יציאה 1 — והקבלה-האדומה-כבר-מקופלת-בפנקס
       - name: yield intel (selftest-gate → chain reads → curator laws → receipt)
