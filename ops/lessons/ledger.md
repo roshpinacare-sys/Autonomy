@@ -1293,3 +1293,12 @@
 - PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 - PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
 
+
+## weekly-retro 2026-W43 · 2026-10-19T10:46:33.635Z
+- org runs 1w: 1444 · ok=929 · fail=207 · instant-fail(billing-signature)=203
+- red engines: Sandbox(×75), fleet-economy(×26), roshpina(×15), Project-files(×9), steem(×6), Defi(×4), saos-control-center(×3), saos-owner-channel(×3), saos-desk(×1) · healthy: 6 · silent: 6
+- open law-proposals: 10
+- DIRECTIVE(1): billing-wall signature detected: 203 instant-fail runs (<5s) across the org this week — lift the Actions spending limit or migrate the affected engines' cadence to public homes; fleet-heal will re-probe within 24h of release
+- DIRECTIVE(2): red engines (Sandbox, fleet-economy, roshpina, Project-files, steem, Defi, saos-control-center, saos-owner-channel, saos-desk): zero success vs 142 failures — fix root cause before adding features; red CI is not a state, it is a debt
+- DIRECTIVE(3): silent repos (6): saos-console-zai, execution-fabric, saos-coordination, vault-home, ops-control, SovereignConsole ran nothing in 1 week(s) — either wire a real trigger or archive honestly; a repo that never runs is a claim, not a system
+- DIRECTIVE(4): open scribe law-proposals: 10 — review, adopt or refute each with a measured verdict; a proposal older than 2 retro cycles with no verdict becomes a doctrine violation itself

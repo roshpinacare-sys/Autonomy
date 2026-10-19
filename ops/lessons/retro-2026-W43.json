@@ -1,0 +1,125 @@
+{
+  "protocol": "SAOS-WEEKLY-RETRO/1",
+  "at": "2026-10-19T10:46:33.635Z",
+  "window": {
+    "since": "2026-10-12T10:45:49.187Z",
+    "weeks": 1
+  },
+  "measured": {
+    "reposScanned": 30,
+    "totals": {
+      "runs": 1444,
+      "ok": 929,
+      "fail": 207,
+      "instantFail": 203
+    },
+    "redRepos": [
+      {
+        "repo": "Sandbox",
+        "fail": 75,
+        "instantFail": 75
+      },
+      {
+        "repo": "fleet-economy",
+        "fail": 26,
+        "instantFail": 24
+      },
+      {
+        "repo": "roshpina",
+        "fail": 15,
+        "instantFail": 15
+      },
+      {
+        "repo": "Project-files",
+        "fail": 9,
+        "instantFail": 9
+      },
+      {
+        "repo": "steem",
+        "fail": 6,
+        "instantFail": 6
+      },
+      {
+        "repo": "Defi",
+        "fail": 4,
+        "instantFail": 4
+      },
+      {
+        "repo": "saos-control-center",
+        "fail": 3,
+        "instantFail": 3
+      },
+      {
+        "repo": "saos-owner-channel",
+        "fail": 3,
+        "instantFail": 3
+      },
+      {
+        "repo": "saos-desk",
+        "fail": 1,
+        "instantFail": 1
+      }
+    ],
+    "healthy": [
+      {
+        "repo": "sovereign-lighthouse",
+        "ok": 63
+      },
+      {
+        "repo": "Pulse",
+        "ok": 93
+      },
+      {
+        "repo": "FleetHQ",
+        "ok": 91
+      },
+      {
+        "repo": "sovereign-beacon",
+        "ok": 62
+      },
+      {
+        "repo": "GridWatch",
+        "ok": 100
+      },
+      {
+        "repo": "ops-intake",
+        "ok": 28
+      }
+    ],
+    "silent": [
+      "saos-console-zai",
+      "execution-fabric",
+      "saos-coordination",
+      "vault-home",
+      "ops-control",
+      "SovereignConsole"
+    ],
+    "billingSuspect": true,
+    "healLast": {
+      "at": "2026-10-19T10:33:44.028Z",
+      "summary": "{\"at\":\"2026-10-19T10:33:44.028Z\",\"verdict\":\"FLEET-RED\",\"chain\":\"bd667d1f215a542d694bde36\",\"counts\":{\"repos\":45,\"green\":0,\"blocked\":20,\"genuineRed\":2,\"healed\":0,\"probed\":0,\"other\":23},\"blocked\":[\"fleet-economy\",\"steem\",\"Sandbox\",\"saos-desk\","
+    },
+    "federationLast": {
+      "at": "2026-10-19T10:33:59.989Z",
+      "summary": "{\"schema\":\"federation/1\",\"at\":\"2026-10-19T10:33:59.989Z\",\"verdict\":\"FEDERATION-DRIFT\",\"owner\":\"roshpinacare-sys\",\"authMode\":\"token\",\"counts\":{\"manifest\":9,\"github\":45,\"records\":45,\"flags\":40,\"flagsTotal\":87},\"flags\":[{\"repo\":\"Adsmarket\",\"fl"
+    },
+    "openProposals": [
+      "Domain book dex/office-feed.json stale (5704min > 1560min) - its producer workflow may be stalled",
+      "1 orphan producers (nobody consumes) - refinement targets: wire a consumer or honestly retire with documentation (fix-don-lock)",
+      "21 feed(s) past their freshness law while being read by live code",
+      "decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter",
+      "wallet carried 17 trust-flag(s)/24h (out-of-band PASS mints) — owner P0: make wallet CI the only minter",
+      "Domain book dex/office-feed.json stale (5769min > 1560min) - its producer workflow may be stalled",
+      "1 orphan producers (nobody consumes) - refinement targets: wire a consumer or honestly retire with documentation (fix-don-lock)",
+      "21 feed(s) past their freshness law while being read by live code",
+      "decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter",
+      "sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter"
+    ]
+  },
+  "directives": [
+    "billing-wall signature detected: 203 instant-fail runs (<5s) across the org this week — lift the Actions spending limit or migrate the affected engines' cadence to public homes; fleet-heal will re-probe within 24h of release",
+    "red engines (Sandbox, fleet-economy, roshpina, Project-files, steem, Defi, saos-control-center, saos-owner-channel, saos-desk): zero success vs 142 failures — fix root cause before adding features; red CI is not a state, it is a debt",
+    "silent repos (6): saos-console-zai, execution-fabric, saos-coordination, vault-home, ops-control, SovereignConsole ran nothing in 1 week(s) — either wire a real trigger or archive honestly; a repo that never runs is a claim, not a system",
+    "open scribe law-proposals: 10 — review, adopt or refute each with a measured verdict; a proposal older than 2 retro cycles with no verdict becomes a doctrine violation itself"
+  ]
+}
