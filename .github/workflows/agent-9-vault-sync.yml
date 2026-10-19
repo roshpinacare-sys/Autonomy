@@ -41,15 +41,21 @@ jobs:
           [ -n "$WORK" ] || { echo "NO_WORKING_TOKEN for saos-runtime — FAIL LOUD"; exit 1; }
           test -d agents/agent-9 || { echo "INSURANCE_SOURCE_MISSING (agents/agent-9) — FAIL LOUD"; exit 1; }
           git clone --depth 1 "https://x-access-token:${WORK}@github.com/roshpinacare-sys/saos-runtime.git" vault
+          # t24 law: the insurance worklog.md is FULL TRUTH written by agent-9
+          # sessions (private copies only — refs law keeps the public tree
+          # worklog-free). Never mirror a worklog over it: preserve across the rm.
+          [ -f vault/agents/agent-9-insurance/worklog.md ] && cp vault/agents/agent-9-insurance/worklog.md /tmp/ins-worklog.md || true
           rm -rf vault/agents/agent-9-insurance
           mkdir -p vault/agents/agent-9-insurance
           cp -r agents/agent-9/. vault/agents/agent-9-insurance/
+          rm -f vault/agents/agent-9-insurance/worklog.md
+          [ -f /tmp/ins-worklog.md ] && cp /tmp/ins-worklog.md vault/agents/agent-9-insurance/worklog.md || true
           cd vault
           git config user.name sovereign-agent-9
           git config user.email agent9@fleet.local
           git add agents/agent-9-insurance
           if git diff --cached --quiet; then echo "vault already fresh — quiet beat (v2 converged first)"; exit 0; fi
-          git commit -q -m "vault-sync v3 (from Autonomy): agent-9 insurance snapshot (worklog+tools+manifest)"
+          git commit -q -m "vault-sync v3 (from Autonomy): agent-9 insurance snapshot (tools+manifest; worklog preserved per t24)"
           for i in 1 2 3; do
             git pull --rebase origin main -q || true
             git push origin HEAD:main -q && { echo VAULT_SYNCED_OK_V3; exit 0; }
