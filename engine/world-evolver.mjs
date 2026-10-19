@@ -75,7 +75,11 @@ export function evolveKingdom(world, truth) {
 
 /** מצב-A: LLM מציע-התפתחות (מופעל-אוטומטית-כשהקטלוג-חי) */
 export async function evolveLlm(world, truth, key) {
-  const candidates = ['deepseek-ai/deepseek-v4.1-flash', 'meta/llama-3.3-70b-instruct', 'openai/gpt-oss-120b'];
+  // t27 (owner "הכל מאשר" 03:28Z — vault nvapi key activated): candidates re-measured
+  // against the LIVE account catalog — glm-5.3-flash 200/0.8s, gpt-oss-20b 200/14s;
+  // nemotron-70b & mistral-large-2 & kimi-k2.6 404 (listed-not-served); deepseek kept
+  // last (listed, measured slow-000 — harmless fall-through)
+  const candidates = ['z-ai/glm-5.3-flash', 'openai/gpt-oss-20b', 'deepseek-ai/deepseek-v4.1-flash'];
   const prompt = `אתה אדריכל-עולם של משרד-תלת-מימדי חי (Three.js). העולם: ${JSON.stringify({ version: world.version, props: (world.props || []).length, desks: (world.desks || []).length })}. האמת: ${JSON.stringify(truth)}.
 הצע עד-2-שינויים-קטנים-בטוחים ב-json: {"add":[{"kind":"poster|plant|lamp","x":..,"z":..,"title":"..","sub":".."}],"note":".."} — עברית-בלבד, קואורדינטות בתוך חדר 24x15, x∈[-11,11], z∈[-7,7]. רק-json.`;
   for (const model of candidates) {
