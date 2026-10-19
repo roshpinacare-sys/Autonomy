@@ -88,7 +88,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "no defi state change this round (honest)"
           else
-            git commit -m "artery-defi: fleet truth @ $(date -u +%FT%TZ) (measured verbatim · zero synthesis · canary chirp via public artery R362)"
+            git commit -m "artery-defi: fleet truth @ $(date -u +%FT%TZ) (measured verbatim · zero synthesis · canary chirp via public artery R362)" [skip ci]
             for i in 1 2 3; do
               if git pull --rebase -X theirs --autostash origin main && git push origin main; then echo "defi state push ok (attempt $i)"; break; fi
               git rebase --abort 2>/dev/null || true
