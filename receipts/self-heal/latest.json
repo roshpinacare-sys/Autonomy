@@ -1,21 +1,13 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-19T18:02:10.195Z",
+ "at": "2026-10-19T18:55:14.917Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-19T17:58:20.349Z",
+ "verdictAt": "2026-10-19T18:28:35.145Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-catchup.yml",
-   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -30,24 +22,8 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "value-scan.yml",
-   "check": "sbx.wf-value-scan",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -60,13 +36,19 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 2% < 10% over 343 commits/24h",
+   "why": "heartbeat-without-building: codeShare 0% < 10% over 344 commits/24h",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "steem.fleet",
+   "level": "DEGRADED",
+   "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
-   "level": "DEGRADED",
-   "why": "treasury acct-00 at 2740 SP < 3000 (recovery-plan §3)",
+   "level": "NOTICE",
+   "why": "treasury account absent",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,7 +58,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 3,
+ "truncated": 0,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 52,
