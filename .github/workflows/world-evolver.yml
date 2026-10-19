@@ -42,7 +42,11 @@ jobs:
           if git diff --cached --quiet; then echo "world unchanged"; exit 0; fi
           git commit -m "world-evolver: the crew grows its world (grow-only) [from Autonomy run ${{ github.run_id }}]"
           ok=0
-          for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
+          # t26 (measured #17): overlapping dispatches raced their pushes — content
+          # conflict on world.json + bare `pull --rebase || true` leaves the rebase
+          # stuck → red on a green evolve. -X theirs (in rebase: ours=remote base,
+          # theirs=my replayed commit) = last-write-wins for grow-only artifacts.
+          for i in 1 2 3 4 5; do git rebase --abort 2>/dev/null || true; git pull --rebase -X theirs --autostash origin main || true; git push origin main && { ok=1; break; } || sleep $((i*7)); done
           [ "$ok" = 1 ] || { echo "Domain push failed after 3 rebase-retries — FAILING LOUDLY (measured 18/10: silent-green loop bug)"; exit 1; }
           echo "world pushed: $(git rev-parse --short HEAD)"
       - name: Commit receipt here (only when changed · honest push)
@@ -53,6 +57,8 @@ jobs:
             git add receipts/world
             git commit -m "world-evolver: receipt [run ${{ github.run_id }}]"
             ok=0
-            for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
-            [ "$ok" = 1 ] || { echo "receipt push failed after 3 retries — FAILING LOUDLY"; exit 1; }
+            # t26: same race-hardening as the Domain loop (measured #17: receipt-vs-receipt
+            # content conflict) — last-write-wins replay, 5 attempts, autostash.
+            for i in 1 2 3 4 5; do git rebase --abort 2>/dev/null || true; git pull --rebase -X theirs --autostash origin main || true; git push origin main && { ok=1; break; } || sleep $((i*7)); done
+            [ "$ok" = 1 ] || { echo "receipt push failed after 5 rebase-retries — FAILING LOUDLY"; exit 1; }
           fi
