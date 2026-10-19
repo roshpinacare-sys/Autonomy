@@ -1,41 +1,42 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-19T13:09:51Z",
- "durationMs": 1893,
+ "generatedAt": "2026-10-19T14:02:37Z",
+ "durationMs": 2072,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-19T06:48:12Z",
-  "stateAgeMin": 382,
+  "stateAgeMin": 434,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-19T06:47:47Z",
-   "ageS": 22923,
+   "ageS": 26089,
    "stalled": true
   }
  },
  "measures": {
   "chain": {
-   "head": 110573772,
+   "head": 110574764,
    "treasuryNetSp": 2708.9,
-   "mult": 0.0006205208145213726
+   "mult": 0.0006205222664084062
   },
   "beaconPulse": {
    "treasuryNetSp": 2708.9
   },
   "faultedAgentsNow": [],
   "flowSummary": {
-   "nodes": 38,
-   "edges": 97,
-   "orphans": 1,
+   "nodes": 14,
+   "edges": 43,
+   "orphans": 0,
    "ghosts": null
   },
   "workOrderIds": [
    "WO-Domain-reds",
    "WO-Sandbox-reds",
    "WO-TruthRail-revive",
+   "WO-saos-agents-revive",
    "WO-Saosmartwallet-revive"
   ]
  },
@@ -50,7 +51,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 382min (limit 120)"
+     "detail": "state age 434min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -101,7 +102,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 382min (limit 120)"
+     "detail": "state age 434min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -126,7 +127,7 @@
     {
      "law": "fleethq-reds-persist",
      "result": "ok",
-     "detail": "failure runs in last 48h: 12 - routed WO-FleetHQ-reds subject persists (work pending)"
+     "detail": "failure runs in last 48h: 5 - routed WO-FleetHQ-reds subject persists (work pending)"
     },
     {
      "law": "faulted-agents-fix",
@@ -136,7 +137,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 382min (limit 120)"
+     "detail": "state age 434min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -151,8 +152,8 @@
    "checks": [
     {
      "law": "orphans-fresh",
-     "result": "ok",
-     "detail": "claimed=1 fresh=1"
+     "result": "mismatch",
+     "detail": "claimed=1 fresh=0"
     },
     {
      "law": "ghosts-fresh",
@@ -162,7 +163,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 382min (limit 120)"
+     "detail": "state age 434min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -178,7 +179,7 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 382min (limit 120)"
+     "detail": "state age 434min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -194,18 +195,18 @@
     {
      "law": "decider-state-age",
      "result": "mismatch",
-     "detail": "state age 382min (limit 120)"
+     "detail": "state age 434min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
   }
  ],
  "provenance": {
-  "runId": "39257748812",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39257748812",
-  "sha": "2396e149d52bd81e813b163b07924ea0cb99b8d4",
+  "runId": "39265362018",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39265362018",
+  "sha": "0dc4266d8203c288cd192fc789c80a9c269b09ce",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-19T13:09:51Z"
+  "generatedAt": "2026-10-19T14:02:37Z"
  },
  "selftest": {
   "vectors": 16,
