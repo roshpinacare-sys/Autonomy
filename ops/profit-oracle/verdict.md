@@ -1,20 +1,20 @@
 # profit-oracle — פסק-רווחיות-עדכני (פעימה-יומית, אפס-מפתחות)
 
-> נמדד: 2026-10-16T10:00:09.631Z · מפעיל: schedule · בדיקות: 3 ירוק · 0 כתום · 0 אדום · 0 לא-ידוע
+> נמדד: 2026-10-19T10:58:30.107Z · מפעיל: schedule · בדיקות: 3 ירוק · 0 כתום · 0 אדום · 0 לא-ידוע
 
 ## 📈 דלתא-רווחיות: PROFIT
 
-- netWorth (own-SP×mid + נזיל-SBD + נזיל-STEEM×mid): **492.314 SBD-equiv**
-- דלתא מול-הריצה-הקודמת: **+2.066%** (חוק: > +0.5% = PROFIT · ±0.5% = FLAT · < −0.5% = LOSS)
-- own-SP **4296.9** · eff-SP **3442.6** · נזיל **13.332 STEEM + 45.432 SBD** · mid **0.10368**
-- גריד: verdict **EDGE-NEGATIVE-GRID-HOLD** · postLaw.edgePct **-3%** (חוק-השולחן: ≥+1% = מותר-להציב)
-- סולם-פתוח: **62.905 SBD** על **7 פקודות** (תת-סולם-זומבי: 31.134 SBD)
+- netWorth (own-SP×mid + נזיל-SBD + נזיל-STEEM×mid): **501.983 SBD-equiv**
+- דלתא מול-הריצה-הקודמת: **+1.964%** (חוק: > +0.5% = PROFIT · ±0.5% = FLAT · < −0.5% = LOSS)
+- own-SP **4300.2** · eff-SP **3613** · נזיל **633.175 STEEM + 2.789 SBD** · mid **0.10119**
+- גריד: verdict **EDGE-POSITIVE-GRID-MAY-RUN** · postLaw.edgePct **-3%** (חוק-השולחן: ≥+1% = מותר-להציב)
+- סולם-פתוח: **35.858 SBD** על **10 פקודות** (תת-סולם-זומבי: 0 SBD)
 
 | בדיקה | פסק | ראיות | הערה |
 |---|---|---|---|
-| 🟢 V-WORTH | GREEN | own 4296.9 · eff 3442.6 · mid 0.10368 · netWorth 492.314 | 🟢 שווי-חי: own-SP 4296.9 · eff-SP 3442.6 · נזיל 13.332 STEEM + 45.432 SBD · mid 0.10368 → |
-| 🟢 V-GRID-EDGE | GREEN | EDGE-NEGATIVE-GRID-HOLD · edge -3% · realized -0.388666 SBD | 🟢 השולחן נמדד: verdict=EDGE-NEGATIVE-GRID-HOLD · postLaw.edgePct=-3% · lifetime.realizedS |
-| 🟢 V-ZOMBIE-LADDER | GREEN | 7 פקודות · 62.905 SBD (זומבי 31.134 SBD ×3) | 🟢 סולם-עומד: 7 פקודות · 62.905 SBD פתוח (מהם זומבי 31.134 SBD @≤0.0995) — יציב או מתמלא |
+| 🟢 V-WORTH | GREEN | own 4300.2 · eff 3613 · mid 0.10119 · netWorth 501.983 | 🟢 שווי-חי: own-SP 4300.2 · eff-SP 3613 · נזיל 633.175 STEEM + 2.789 SBD · mid 0.10119 → n |
+| 🟢 V-GRID-EDGE | GREEN | EDGE-POSITIVE-GRID-MAY-RUN · edge -3% · realized -0.388666 SBD | 🟢 השולחן נמדד: verdict=EDGE-POSITIVE-GRID-MAY-RUN · postLaw.edgePct=-3% · lifetime.realiz |
+| 🟢 V-ZOMBIE-LADDER | GREEN | 10 פקודות · 35.858 SBD (זומבי 0 SBD ×0) | 🟢 סולם-עומד: 10 פקודות · 35.858 SBD פתוח (מהם זומבי 0 SBD @≤0.0995) — יציב או מתמלא |
 
 **חוקים:** אין ירוק בלי מדידה (R1) · כשל-רשת = UNKNOWN + סיבה (R5) · אפס-מפתחות, קריאות-ציבוריות בלבד · ההכרעה-על-ההצבה ב-pnl-desk (חדר-אחד) — האורקל מודד ומפרסם.
 
