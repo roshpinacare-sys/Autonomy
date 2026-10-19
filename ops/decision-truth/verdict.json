@@ -1,35 +1,35 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-19T15:22:17Z",
- "durationMs": 2051,
+ "generatedAt": "2026-10-19T16:15:47Z",
+ "durationMs": 1719,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-19T14:38:27Z",
-  "stateAgeMin": 44,
+  "stateAgeMin": 97,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-19T14:38:03Z",
-   "ageS": 2653,
-   "stalled": false
+   "ageS": 5863,
+   "stalled": true
   }
  },
  "measures": {
   "chain": {
-   "head": 110576259,
-   "treasuryNetSp": 2740,
-   "mult": 0.0006205244532178082
+   "head": 110577267,
+   "treasuryNetSp": 2740.1,
+   "mult": 0.0006205259285428346
   },
   "beaconPulse": {
    "treasuryNetSp": 2740
   },
   "faultedAgentsNow": [],
   "flowSummary": {
-   "nodes": 14,
-   "edges": 43,
-   "orphans": 0,
+   "nodes": 38,
+   "edges": 97,
+   "orphans": 1,
    "ghosts": null
   },
   "workOrderIds": [
@@ -51,7 +51,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 44min (limit 120)"
+     "detail": "state age 97min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -72,7 +72,7 @@
     {
      "law": "treasury-basis-fresh-measure",
      "result": "ok",
-     "detail": "claimed=2740 fresh=2740 tol=1"
+     "detail": "claimed=2740 fresh=2740.1 tol=1"
     },
     {
      "law": "beacon-vs-fresh",
@@ -102,7 +102,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 44min (limit 120)"
+     "detail": "state age 97min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -137,7 +137,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 44min (limit 120)"
+     "detail": "state age 97min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -147,12 +147,12 @@
    "area": "רשת",
    "status": "ENFORCED",
    "decidedAt": "2026-10-19T14:38:21Z",
-   "truth": "VERIFIED",
+   "truth": "STALE-TRUTH",
    "checks": [
     {
      "law": "orphans-fresh",
-     "result": "ok",
-     "detail": "claimed=0 fresh=0"
+     "result": "mismatch",
+     "detail": "claimed=0 fresh=1"
     },
     {
      "law": "ghosts-fresh",
@@ -162,10 +162,10 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 44min (limit 120)"
+     "detail": "state age 97min (limit 120)"
     }
    ],
-   "note": "evidence re-measured independently + execution present"
+   "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
   },
   {
    "id": "D4-truth-network",
@@ -178,7 +178,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 44min (limit 120)"
+     "detail": "state age 97min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -194,18 +194,18 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 44min (limit 120)"
+     "detail": "state age 97min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "39277275812",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39277275812",
-  "sha": "d218f5c1e72248d451a8f137c75a9179eed70118",
+  "runId": "39284051641",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39284051641",
+  "sha": "9fb4368cdda16612f6a51a49a06a95a48770f7e9",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-19T15:22:17Z"
+  "generatedAt": "2026-10-19T16:15:47Z"
  },
  "selftest": {
   "vectors": 16,
