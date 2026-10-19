@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-19T13:31:47.194Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-19T14:03:54.175Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,9 +15,9 @@
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/org-gitleaks @ 2026-10-19T13:49 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/daily-digest @ 2026-10-19T13:49 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-19T13:16 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/org-gitleaks @ 2026-10-19T12:39 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/daily-digest @ 2026-10-19T12:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-19T11:02 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/office3d-guard @ 2026-10-19T10:50 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/artery-builder @ 2026-10-19T08:43 — autonomy triage: read the log, fix root, land, verify
@@ -30,7 +30,7 @@
 - [DEFECT] Autonomy/artery-participation @ 2026-10-19T00:12 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/agent-9-org-revival @ 2026-10-18T23:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-fleet @ 2026-10-18T22:34 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] FleetHQ/office-3d @ 2026-10-19T14:01 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-ci @ 2026-10-19T12:53 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] FleetHQ/office-3d @ 2026-10-19T12:07 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
