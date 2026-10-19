@@ -1566,3 +1566,15 @@
 - [OPEN] V-LOOP-ARTERY-WALLET (DEGRADED @ 2026-10-19T20:26:46.193Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 65min ago > slot
 - [CLOSED 2026-10-19T20:26:46.193Z] V-LOOP-SOVEREIGN-STATE — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-10-19T20:26:46.193Z] V-LOOP-ARTERY-WATCH — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [OPEN] V-LOOP-SOVEREIGN-STATE (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 16min ago > slot
+- [OPEN] V-LOOP-ARTERY-WATCH (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 42min ago > slot
+- [OPEN] V-LOOP-VERIFIER (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 41min ago > slot
+- [OPEN] V-LOOP-FEDERATION (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 42min ago > slot
+- [OPEN] V-LOOP-ARTERY-DECISION-TRUTH (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 43min ago > slot
+- [OPEN] V-LOOP-ARTERY-GRID (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 51min ago > slot
+- [OPEN] V-LOOP-ARTERY-INTEGRITY (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 68min ago > slot
+- [OPEN] V-LOOP-ARTERY-PARTICIPATION (DEGRADED @ 2026-10-19T20:56:20.563Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 76min ago > slot
+- [CLOSED 2026-10-19T20:56:20.563Z] V-LOOP-ARTERY-CATCHUP — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-19T20:56:20.563Z] V-LOOP-VALUE-SCAN — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-19T20:56:20.563Z] V-LOOP-FLEET-HEAL — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-10-19T20:56:20.563Z] V-LOOP-ARTERY-WALLET — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
