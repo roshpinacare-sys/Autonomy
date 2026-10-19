@@ -1302,3 +1302,35 @@
 - DIRECTIVE(2): red engines (Sandbox, fleet-economy, roshpina, Project-files, steem, Defi, saos-control-center, saos-owner-channel, saos-desk): zero success vs 142 failures — fix root cause before adding features; red CI is not a state, it is a debt
 - DIRECTIVE(3): silent repos (6): saos-console-zai, execution-fabric, saos-coordination, vault-home, ops-control, SovereignConsole ran nothing in 1 week(s) — either wire a real trigger or archive honestly; a repo that never runs is a claim, not a system
 - DIRECTIVE(4): open scribe law-proposals: 10 — review, adopt or refute each with a measured verdict; a proposal older than 2 retro cycles with no verdict becomes a doctrine violation itself
+
+## scribe #44 · 2026-10-19T14:39:36.900Z
+- wallet 24h verdicts: {"PASS":20} · failing laws: {}
+- fleet 24h verdicts: {"FAIL":17,"PASS":13} · alerts: 90
+- fleet actions 24h: 100 runs · failures: artery-builder:failure×1, selfhood:failure×1
+- sovereign tick last pulse: 35min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":74,"sovereign-agent-9":22,"github-actions[bot]":3,"agent-9":1}
+- office-ci (FleetHQ) verdict: FAIL · 106min ago
+- Domain book office/data.json: 9min old (law <=60min)
+- Domain book agents/office-live.json: 44min old (law <=180min)
+- Domain book dex/office-feed.json: 322min old (law <=1560min)
+- flow map: nodes=14 edges=43 page-integrated=9 plane-internal=4 orphans=0 ghosts=0 density=3.07
+- integrity guard: overall=PASS sources=11 claims-verified=5 findings=9 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=17400 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=0h
+- dex book dex/showcase.json: ok sig=pair=unknown age=0h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=6 truth={"STALE-TRUTH":6} decider-stalled=true
+- PROPOSAL(law): wallet carried 20 trust-flag(s)/24h (out-of-band PASS mints) — owner P0: make wallet CI the only minter
+- PROPOSAL(law): office-ci (FleetHQ) is FAIL — the office build artery is red; measure before touching the office
+- PROPOSAL(law): decision D0-owner-channel evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D1-econ-treasury-floor evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D3-flow-weave evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D4-truth-network evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D5-social-standby evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
+
