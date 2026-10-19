@@ -1,0 +1,71 @@
+{
+ "schema": "remediation.receipt/1",
+ "channel": "receipts/remediation/",
+ "at": "2026-10-19T04:55:00Z",
+ "agent": {
+  "id": "agent-9",
+  "task": "28/books-revival",
+  "role": "living-world-and-continuation",
+  "gitIdentity": "sovereign-agent-9 <agent9@sovereign.local>"
+ },
+ "scope": "owner order 'תמשיך ודחוף' (continue and push): the living office truth stood at 9/13 fresh books — 4 estate books dead since 2026-10-04 (curation-book, pnl-book, skill-library, tick-keeper, stale 348-363h). Root-cause all four deaths from the tree, cure what the tree can cure, prove the cure live, keep the honesty law (zero votes cast, zero secrets printed, no vault material touched).",
+ "items": [
+  {
+   "id": "28-1",
+   "title": "tick-keeper death root-caused to a lost main() invocation",
+   "evidence": "agents/tick-keeper.cjs (179 lines) defined main() and exported, never called it — the require.main guard (Z-49, advertised in its own header) was lost in union-cure 7174f49e4. Measured via run 39185130881 logs: the keep step ran 0.05s, printed NOTHING, 'no keeper changes' every hourly run since 10-04T00:29Z. The self-healing resurrection arc (12 watched desks) was dark 15 days.",
+   "status": "DONE"
+  },
+  {
+   "id": "28-2",
+   "title": "curation/pnl/skill-library deaths root-caused to the vault custody break",
+   "evidence": "vault re-sealed 10-04 (R20c-deep), rotated 10-12 to recovery-meta-3 (MASTER-DERIVE): inline keysZipPass left the repo (R-VAULTPASS-1 — bundle = Actions secret STEEM_VAULT_PASSES on steem+saos-runtime, NOT Domain); recoverVault()'s .enc path can never match on Domain again. Hash-verified: exactly one .enc (KEYS-ZIP-2026-10-12-MASTER) matches the meta sha — and the meta has NO inline pass. Domain never carried its own recovery-meta.json (git --all empty). pnl-book.cjs + skill-library-gate.cjs: healthy code, no workflow invokes them (git log --all -S empty) — orphaned in the 10-16 wipe/cure cycles.",
+   "status": "DONE"
+  },
+  {
+   "id": "28-3",
+   "title": "C1: tick-keeper main() invocation restored + arc extended to the revived desks",
+   "evidence": "require.main guard reinstated per the file's own documented contract; ARC + soldiers-curate.yml (curation-book, law 1440m) + books-revival-t28.yml (pnl-book, law 1440m). Pure-core tested: module requires clean (no side effects), keeperDecide judges the new desks correctly.",
+   "status": "DONE"
+  },
+  {
+   "id": "28-4",
+   "title": "C3: chain-is-the-judge bundle custody for soldiers-curate",
+   "evidence": "recoverKeymapFromBundle(): WIFs from CURATE_FLEET_KEYS (=ROT2_FLEET_KEYS estate bundle, T21 owner order 'יש את כל המפתחות — השתמשי בהכל'), each used ONLY if its derived pubkey bit-matches the account's LIVE posting authority (steem.auth.wifToPublic vs posting.key_auths[0][0]); zero vault material, zero secrets printed. Stub battery: no-env→null, wif-free→null, bit-exact-only match PASS, rpc-fail fail-soft PASS, roster-empty→{} (fail-loud book). Live run: keys 10/10 matched.",
+   "status": "DONE"
+  },
+  {
+   "id": "28-5",
+   "title": "C4+C5: workflows wired — curate env + books-revival-t28.yml",
+   "evidence": "soldiers-curate.yml step env: CURATE_FLEET_KEYS + FLEET_ROSTER_MAP + DRYRUN=1 (CR-0065: the cadence owns casting — this desk writes inspection rows only, zero votes). books-revival-t28.yml (hourly + dispatch, STASIS-gated, twin publish idiom) runs the two keyless orphaned desks. First live run exposed the missing roster env ([refs] roster-unresolved, book not written) — cure2 landed: book-always-writes law enforced.",
+   "status": "DONE"
+  },
+  {
+   "id": "28-6",
+   "title": "LIVE PROOF: 4/4 books revived, office truth 13/13",
+   "evidence": "dispatches 204 → runs success: tick-keeper book 04:26:07Z (first in 15 days, fired 10 desks all 204, errors[]); pnl-book 04:26:34Z; skill-library 04:26:35Z; curation-book 04:33:59Z (10/10 keys, 272 casts CHAIN-RECONCILED from the dead window, 0 votes cast). office-artery recomputed: books 13/13 fresh, 0 stale (was 9/13). Commits 698716e0d + 2b395e9b8 on Domain main (push-rejected once → rebase-once-retry per protocol law 3).",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "28-7",
+   "title": "the arc now guards the revived desks against re-starvation",
+   "evidence": "the keeper watches curation-book + pnl-book receipts and re-fires their workflows on starvation (cooldown 720m) — the failure mode that killed them silently for 15 days now has a measured, self-healing tripwire.",
+   "status": "DONE"
+  }
+ ],
+ "honestLimits": [
+  "the .enc vault on Domain remains unrecoverable BY DESIGN until the owner adds STEEM_VAULT_PASSES to Domain or relocates pass custody — the bundle path makes this irrelevant for the curate desk but other legacy .enc consumers (if any remain dark) need the same bundle treatment",
+  "curation revived in DRYRUN inspection (CR-0065 doctrine): the book is fresh and honest, votes remain owned by human-cadence.yml — casting is a lane decision, not a revival decision",
+  "sovereign-tick receipt age 3.6h vs 20m law at measurement — dispatch-paced (GitHub starves its schedule, Z-71 law), the revived keeper now re-fires it",
+  "skill-library has no dedicated ARC row (its writer shares books-revival-t28.yml with pnl-book; the keeper watches the stricter pnl law — workflow liveness covers both)",
+  "sandbox tick#453 had not yet measured the revived books at receipt time; office-live.json 13/13 is the published truth (GitHub-side, keyless)"
+ ],
+ "constraintsAccepted": [
+  "no-deletion mandate (vault fallback path kept verbatim)",
+  "secrets never printed/committed (WIF regex handling in-memory only; masked-log grep discipline)",
+  "vault law: no .enc opened, decrypted, moved, or modified — custody diagnosis by sha256 comparison of sealed blobs only",
+  "dispatch-only authority, single-writer desks, fail-soft with fail-loud books"
+ ],
+ "overall": "VERIFIED",
+ "itemsCount": 7
+}

@@ -1,102 +1,71 @@
 {
  "schema": "remediation.receipt/1",
  "channel": "receipts/remediation/",
- "at": "2026-10-18T01:25:00Z",
+ "at": "2026-10-19T04:55:00Z",
  "agent": {
   "id": "agent-9",
-  "task": "11/wave-7",
+  "task": "28/books-revival",
   "role": "living-world-and-continuation",
-  "gitIdentity": "sovereign-agent-9 <agent9@fleet.local>"
+  "gitIdentity": "sovereign-agent-9 <agent9@sovereign.local>"
  },
- "scope": "owner order t11: finish t10 remainders; the 3D office is 0/10 (dead, disconnected, stuck agents) — rebuild it strong as a living evolving world; learn from Motion2MixamoRig; agents develop the world themselves; a second key (NVIDIA NIM) provided for their autonomous use",
- "sandboxDeathNote": "sandbox wiped again mid-task (project dir gone) — rebuilt creds store from upload, re-cloned per the git-first law; zero work lost (all state was on git)",
+ "scope": "owner order 'תמשיך ודחוף' (continue and push): the living office truth stood at 9/13 fresh books — 4 estate books dead since 2026-10-04 (curation-book, pnl-book, skill-library, tick-keeper, stale 348-363h). Root-cause all four deaths from the tree, cure what the tree can cure, prove the cure live, keep the honesty law (zero votes cast, zero secrets printed, no vault material touched).",
  "items": [
   {
-   "id": "11-1",
-   "title": "office3d diagnosed in a real browser",
-   "evidence": "old page: static mannequins, fake roster (not the real crew), status 'online 1h ago', /api/decisions 404 on static hosting — rendered but DEAD: 0/10 verdict fair",
+   "id": "28-1",
+   "title": "tick-keeper death root-caused to a lost main() invocation",
+   "evidence": "agents/tick-keeper.cjs (179 lines) defined main() and exported, never called it — the require.main guard (Z-49, advertised in its own header) was lost in union-cure 7174f49e4. Measured via run 39185130881 logs: the keep step ran 0.05s, printed NOTHING, 'no keeper changes' every hourly run since 10-04T00:29Z. The self-healing resurrection arc (12 watched desks) was dark 15 days.",
    "status": "DONE"
   },
   {
-   "id": "11-2",
-   "title": "office3d v2 LIVING-WORLD built + deployed",
-   "evidence": "real crew (6 agents from office-live.json: yarden/aluf/shachar/gal/erez/tamar), Mixamo-standard GLB rigs with 8 clips incl. cross-skeleton retargeted SambaDance (rotation-only retarget + tame 0.55 — measured collapse without), life state machine from git truth (typing/walk/coffee/meet/celebrate/asleep-if-stale-honest), Jerusalem day-cycle, live truth wall + in-world moments screenboard, name tags with live state, speech bubbles from real receipts, zero-backend zero-secrets; deployed c4b754b0/9e6fcf4a",
+   "id": "28-2",
+   "title": "curation/pnl/skill-library deaths root-caused to the vault custody break",
+   "evidence": "vault re-sealed 10-04 (R20c-deep), rotated 10-12 to recovery-meta-3 (MASTER-DERIVE): inline keysZipPass left the repo (R-VAULTPASS-1 — bundle = Actions secret STEEM_VAULT_PASSES on steem+saos-runtime, NOT Domain); recoverVault()'s .enc path can never match on Domain again. Hash-verified: exactly one .enc (KEYS-ZIP-2026-10-12-MASTER) matches the meta sha — and the meta has NO inline pass. Domain never carried its own recovery-meta.json (git --all empty). pnl-book.cjs + skill-library-gate.cjs: healthy code, no workflow invokes them (git log --all -S empty) — orphaned in the 10-16 wipe/cure cycles.",
    "status": "DONE"
   },
   {
-   "id": "11-3",
-   "title": "Motion2MixamoRig learnings applied",
-   "evidence": "its output standard (Mixamo-named skeleton GLB + motion clips) is the office's native format: vendor/utils/retarget.js = in-browser retarget layer (bone-name normalization incl. GLTFLoader colon-stripping, rotation-only cross-skeleton, tame); agents can drop mocap GLBs into motion/index.json without touching code",
+   "id": "28-3",
+   "title": "C1: tick-keeper main() invocation restored + arc extended to the revived desks",
+   "evidence": "require.main guard reinstated per the file's own documented contract; ARC + soldiers-curate.yml (curation-book, law 1440m) + books-revival-t28.yml (pnl-book, law 1440m). Pure-core tested: module requires clean (no side effects), keeperDecide judges the new desks correctly.",
    "status": "DONE"
   },
   {
-   "id": "11-4",
-   "title": "world-evolver — the crew grows its own world",
-   "evidence": "engine/world-evolver.mjs (selftest PASS: grow-only, version++, append-log, schema-enforced) + world-evolver.yml every 2h; kingdom mode from live truth (measured live: v2→v3, 2 trees planted at 103-shift milestone); pushes Domain via FLEET_PAT secret; receipt receipts/world/",
+   "id": "28-4",
+   "title": "C3: chain-is-the-judge bundle custody for soldiers-curate",
+   "evidence": "recoverKeymapFromBundle(): WIFs from CURATE_FLEET_KEYS (=ROT2_FLEET_KEYS estate bundle, T21 owner order 'יש את כל המפתחות — השתמשי בהכל'), each used ONLY if its derived pubkey bit-matches the account's LIVE posting authority (steem.auth.wifToPublic vs posting.key_auths[0][0]); zero vault material, zero secrets printed. Stub battery: no-env→null, wif-free→null, bit-exact-only match PASS, rpc-fail fail-soft PASS, roster-empty→{} (fail-loud book). Live run: keys 10/10 matched.",
    "status": "DONE"
   },
   {
-   "id": "11-5",
-   "title": "owner key provisioned for agents",
-   "evidence": "NVIDIA NIM key (upload/ביקורת.txt): auth VALID (410/404 responses, not 401) but account catalog DEAD — 12 models EOL/missing, 1 hangs; key set as Autonomy secret NVIDIA_NIM_KEY (201) — LLM mode auto-activates when catalog revives; kingdom mode keeps the world growing meanwhile (honest, no fake)",
+   "id": "28-5",
+   "title": "C4+C5: workflows wired — curate env + books-revival-t28.yml",
+   "evidence": "soldiers-curate.yml step env: CURATE_FLEET_KEYS + FLEET_ROSTER_MAP + DRYRUN=1 (CR-0065: the cadence owns casting — this desk writes inspection rows only, zero votes). books-revival-t28.yml (hourly + dispatch, STASIS-gated, twin publish idiom) runs the two keyless orphaned desks. First live run exposed the missing roster env ([refs] roster-unresolved, book not written) — cure2 landed: book-always-writes law enforced.",
    "status": "DONE"
   },
   {
-   "id": "11-6",
-   "title": "office3d-guard — self-defending world",
-   "evidence": "hourly keyless workflow restores the v2 living world if the unidentified stale auto-bake overwrites it (Domain c4b754b0)",
-   "status": "DONE"
+   "id": "28-6",
+   "title": "LIVE PROOF: 4/4 books revived, office truth 13/13",
+   "evidence": "dispatches 204 → runs success: tick-keeper book 04:26:07Z (first in 15 days, fired 10 desks all 204, errors[]); pnl-book 04:26:34Z; skill-library 04:26:35Z; curation-book 04:33:59Z (10/10 keys, 272 casts CHAIN-RECONCILED from the dead window, 0 votes cast). office-artery recomputed: books 13/13 fresh, 0 stale (was 9/13). Commits 698716e0d + 2b395e9b8 on Domain main (push-rejected once → rebase-once-retry per protocol law 3).",
+   "status": "VERIFIED"
   },
   {
-   "id": "11-7",
-   "title": "t10 remainders",
-   "evidence": "workflow enable-state census now published in every self-heal receipt (the blind spot that let 9 workflows die silently); fleet-keys→VM design remains the one owner-domain item (vault provisioning), treasury SP climbing (2929)",
-   "status": "DONE"
-  },
-  {
-   "id": "11-8",
-   "title": "live production verification",
-   "evidence": "https://roshpinacare-sys.github.io/Domain/office3d/ — fresh headless session: 0 errors, 8 clips, 6 real agents animating, world v2 7 desks (v3 lands via the evolver loop)",
-   "status": "DONE"
-  },
-  {
-   "id": "12-1",
-   "title": "learning pipeline (scout organ) — owner order t12",
-   "evidence": "engine/scout.mjs + engine/scout/{signals,parse,fetch,vet,learn}.mjs — 6 modules, selftest PASS; LIVE E2E measured: 15 candidates from trending (direct), 8 vetted read-only, 8 knowledge entries, 0 blocked; pinoyfreecoder CF-blocked from sandbox IP recorded honestly (fetch ladder direct→wayback→jina on VM); knowledge/scout/INDEX.md committed",
-   "status": "DONE"
-  },
-  {
-   "id": "12-2",
-   "title": "P1 approved: fleet keys → VM runtime",
-   "evidence": "engine/runtime/keys.mjs (loadKey memory-only + REQUIRED_SECRETS registry law + censusSecrets names-only); ops/FLEET-KEYS-VM-RUNTIME.md design; keys census wired into self-heal receipt (additive, fail-soft)",
-   "status": "DONE"
-  },
-  {
-   "id": "12-3",
-   "title": "P2 approved: treasury recovery §3 executor",
-   "evidence": "engine/treasury-topup.mjs (vests math selftest PASS, §3 plan: fleet surplus above 100SP floor → treasury 3000, refs-only receipts via refOf); live measured: roster-unresolved in sandbox = honest PENDING; artery-treasury.yml daily 06:33 with FLEET_ROSTER_MAP + CI_ADOPT_WIF_ACTIVE env",
-   "status": "DONE"
-  },
-  {
-   "id": "12-4",
-   "title": "P3 verified already-closed",
-   "evidence": "enable-state census existed in self-heal receipt since t11 (workflows.active/disabled per run) — earlier claim confirmed in code, not re-built",
+   "id": "28-7",
+   "title": "the arc now guards the revived desks against re-starvation",
+   "evidence": "the keeper watches curation-book + pnl-book receipts and re-fires their workflows on starvation (cooldown 720m) — the failure mode that killed them silently for 15 days now has a measured, self-healing tripwire.",
    "status": "DONE"
   }
  ],
  "honestLimits": [
-  "NVIDIA NIM catalog dead for this account (12 models measured 410/404) — LLM world-proposals dormant until revived; deterministic growth runs now",
-  "the auto-bake source that committed stale bundles was not identified (org code-search empty; check-runs only show Pages deploy) — the guard makes it irrelevant",
-  "old static bundle assets left in place (no-deletion law; unreferenced)",
-  "scout: pinoyfreecoder behind Cloudflare — fetch ladder + trending fallback keeps pipeline alive; CF pass not guaranteed, all attempts logged",
-  "treasury broadcast (signed delegate op) lands only after CI_ADOPT_WIF_ACTIVE present on runner — plan+readiness are real, broadcast is not faked"
+  "the .enc vault on Domain remains unrecoverable BY DESIGN until the owner adds STEEM_VAULT_PASSES to Domain or relocates pass custody — the bundle path makes this irrelevant for the curate desk but other legacy .enc consumers (if any remain dark) need the same bundle treatment",
+  "curation revived in DRYRUN inspection (CR-0065 doctrine): the book is fresh and honest, votes remain owned by human-cadence.yml — casting is a lane decision, not a revival decision",
+  "sovereign-tick receipt age 3.6h vs 20m law at measurement — dispatch-paced (GitHub starves its schedule, Z-71 law), the revived keeper now re-fires it",
+  "skill-library has no dedicated ARC row (its writer shares books-revival-t28.yml with pnl-book; the keeper watches the stricter pnl law — workflow liveness covers both)",
+  "sandbox tick#453 had not yet measured the revived books at receipt time; office-live.json 13/13 is the published truth (GitHub-side, keyless)"
  ],
  "constraintsAccepted": [
-  "no-deletion mandate",
-  "secrets never printed/committed (key handling: masked ops only; one masked echo leaked to sandbox log only, never to git)",
-  "dispatch-only autonomous authority",
-  "grow-only world law"
+  "no-deletion mandate (vault fallback path kept verbatim)",
+  "secrets never printed/committed (WIF regex handling in-memory only; masked-log grep discipline)",
+  "vault law: no .enc opened, decrypted, moved, or modified — custody diagnosis by sha256 comparison of sealed blobs only",
+  "dispatch-only authority, single-writer desks, fail-soft with fail-loud books"
  ],
- "overall": "DONE",
- "itemsCount": 12
+ "overall": "VERIFIED",
+ "itemsCount": 7
 }
