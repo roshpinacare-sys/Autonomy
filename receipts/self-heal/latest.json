@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-19T15:22:12.423Z",
+ "at": "2026-10-19T16:15:44.839Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-19T15:00:31.217Z",
+ "verdictAt": "2026-10-19T15:59:57.154Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -14,16 +14,40 @@
    "ok": true
   },
   {
-   "workflow": "artery-watch.yml",
-   "check": "sbx.wf-artery-watch",
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
+   "workflow": "artery-watch.yml",
+   "check": "sbx.wf-artery-watch",
+   "level": "FAIL",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "federation.yml",
+   "check": "sbx.wf-federation",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -36,7 +60,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 2% < 10% over 338 commits/24h",
+   "why": "heartbeat-without-building: codeShare 0% < 10% over 339 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -52,8 +76,8 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
- "verdictOverall": "DEGRADED",
+ "truncated": 5,
+ "verdictOverall": "FAIL",
  "workflows": {
   "total": 52,
   "active": 52,
