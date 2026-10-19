@@ -1401,3 +1401,31 @@
 - PROPOSAL(law): decision D5-social-standby evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 - PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
 
+
+## scribe #47 · 2026-10-19T22:28:12.914Z
+- wallet 24h verdicts: {"PASS":19} · failing laws: {}
+- fleet 24h verdicts: {"FAIL":4,"PASS":19} · alerts: 69
+- fleet actions 24h: 100 runs · failures: artery-defi:failure×3, hive-probe:failure×3
+- sovereign tick last pulse: 2min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":75,"sovereign-agent-9":25}
+- office-ci (FleetHQ) verdict: PASS · 41min ago
+- Domain book office/data.json: 2min old (law <=60min)
+- Domain book agents/office-live.json: 73min old (law <=180min)
+- Domain book dex/office-feed.json: 790min old (law <=1560min)
+- flow map: nodes=38 edges=97 page-integrated=10 plane-internal=26 orphans=1 ghosts=0 density=2.55
+- integrity guard: overall=PASS sources=11 claims-verified=6 findings=9 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=24302 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=1h
+- dex book dex/showcase.json: ok sig=pair=unknown age=1h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=6 truth={"VERIFIED":5,"STALE-TRUTH":1} decider-stalled=true
+- PROPOSAL(law): wallet carried 19 trust-flag(s)/24h (out-of-band PASS mints) — owner P0: make wallet CI the only minter
+- PROPOSAL(law): 1 orphan producers (nobody consumes) - refinement targets: wire a consumer or honestly retire with documentation (fix-don-lock)
+- PROPOSAL(law): 18 feed(s) past their freshness law while being read by live code
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
+
