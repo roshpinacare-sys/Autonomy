@@ -218,6 +218,17 @@
     "exit": 0,
     "regex": "attestor ok=True entries=[1-9][0-9]* ledger=True"
    }
+  },
+  {
+   "id": "gate-rail-consistency",
+   "text": "אינווריאנט-חוקתי (R315): אם army-custody מוכיח FLEET-CUSTODY-ALIVE (verified>=total) אז מסילת-ה-yield אינה CUSTODY-FROZEN — הקפאה-שנגרמה-מתמונת-מירוץ-מיושנת מותרת-רק-כשהראיה-עצמה אדומה; ה-attestor מרפא-בעצמו דרך /yield-run",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "python3 -c \"import json,urllib.request\nc=json.load(open('/home/z/audit/steem/mini-services/saos-engine/state/army-custody.json'))\ng=c.get('verdict')=='FLEET-CUSTODY-ALIVE' and c.get('after',{}).get('verified',0)>=c.get('after',{}).get('total',14)>0\nd=json.load(urllib.request.urlopen('http://127.0.0.1:3040/yield',timeout=5)).get('yieldRail',{})\nv=d.get('verdict')\nprint('custodyGreen=%s railVerdict=%s consistent=%s'%(g,v,(v!='CUSTODY-FROZEN') if g else True))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "consistent=True"
+   }
   }
  ]
 }
