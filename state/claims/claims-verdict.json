@@ -1,10 +1,10 @@
 {
   "schema": "claims-ledger/1",
-  "at": "2026-10-20T05:45:40.903Z",
+  "at": "2026-10-20T06:10:19.793Z",
   "overall": "CLAIMS-PARTIAL",
   "counts": {
-    "MEASURED-TRUE": 10,
-    "REFUTED": 4
+    "MEASURED-TRUE": 11,
+    "REFUTED": 3
   },
   "results": [
     {
@@ -12,7 +12,7 @@
       "text": "7 איברי-המערכת (:3037 dex · :3040 engine · :3041 custodian · :3042 metrics · :3043 builder · :3044 dev-keeper · :3047 state-witness) חיים ומשיבים",
       "category": "infrastructure",
       "criticality": "high",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
       "evidence": "7/7 organs alive",
@@ -24,55 +24,55 @@
       "text": "ערוץ-ה-push ל-GitHub חי (לפחות מקור-הרשאה אחד תקף: pat.env / helper / sealed vault)",
       "category": "custody",
       "criticality": "critical",
-      "at": "2026-10-20T05:45:40.903Z",
-      "verdict": "REFUTED",
+      "at": "2026-10-20T06:10:19.793Z",
+      "verdict": "MEASURED-TRUE",
       "exit": 0,
-      "evidence": "PUSH-DEAD",
-      "remedy": "R310: חידוש-הרשאה דרך מסילת ה-memo (chain-memo-custody) או התקנת GitHub-App — אפס-המתנה למפעיל",
-      "ms": 592
+      "evidence": "PUSH-DRYRUN-OK",
+      "remedy": null,
+      "ms": 728
     },
     {
       "id": "sovereign-ledger-readable",
       "text": "הספר-הריבוני fleet-economy (מרכז-הכובד R309-d) נגיש לקריאה מהמוח",
       "category": "economy",
       "criticality": "critical",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
       "evidence": "LEDGER-READABLE",
       "remedy": null,
-      "ms": 628
+      "ms": 648
     },
     {
       "id": "agent-fleet-alive",
       "text": "צי-הסוכנים במנוע חי (אין DEAD-AGENTS, watchdog בין-החיים)",
       "category": "fleet",
       "criticality": "high",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
       "evidence": "alive=12 dead=0 blocked=0 verdict=FLEET-OK",
       "remedy": null,
-      "ms": 23
+      "ms": 21
     },
     {
       "id": "curator-signing-alive",
       "text": "מסילת-החתימה-של-ה-curator חיה: המטריצה מדרגת ALIVE, או IDLE-חוקי-עם-הצבעות-מדודות-היום (NO-CANDIDATES/DAY-CAP/VP-FLOOR עם votesToday>0 = מסילה-חיה-שדחתה-חוקית, לא-מתה). BLOCKED/credential-missing או DEAD = כשל-אמיתי",
       "category": "economy",
       "criticality": "critical",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
       "evidence": "IDLE curator.json at=2026-10-20T05:35:03.208Z verdict=NO-CANDIDATES votesToday=6",
       "remedy": null,
-      "ms": 24
+      "ms": 20
     },
     {
       "id": "yield-rail-live",
       "text": "מסילת-התשואה מחלקת בפועל (executedToday>0 ולא CUSTODY-FROZEN)",
       "category": "economy",
       "criticality": "critical",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "REFUTED",
       "exit": 0,
       "evidence": "verdict=CUSTODY-FROZEN executedToday=0",
@@ -84,96 +84,96 @@
       "text": "שער-ה-social במנוע עקבי-עם-רשות-החימוש-לפי-החוקה-המאומצת (R309-ג · 42c72b28): חימוש-נשען-על-item-6 חוק-הבעלים-בלבד (KEY2 מרוחק, אף-פעם-לא-חימוש-עצמי) · PENDING-COOLDOWN מקומי = רשומת-ה-truth-monitor השמרנית (item-5 אדום עד 2026-10-26T01:49Z) · צורות-חוקיות: PENDING-COOLDOWN⇒ARMED (חוק-בעלים) | PENDING-COOLDOWN⇒STANDBY (עמידה) | ARMED⇒ARMED (צ׳קליסט-מלא). אסור: ARMED⇒STANDBY (דריפט) · gate=? · FILE-MISSING",
       "category": "constitution",
       "criticality": "high",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
-      "evidence": "arming=PENDING-COOLDOWN gate=ARMED",
+      "evidence": "arming=ARMED gate=ARMED",
       "remedy": null,
-      "ms": 41
+      "ms": 39
     },
     {
       "id": "cycle-self-heal",
       "text": "המחזור-היומי של המנוע רץ והושלם בריאות ב-24 השעות האחרונות",
       "category": "fleet",
       "criticality": "high",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
-      "evidence": "ok=True health=ok ageH=0.1",
+      "evidence": "ok=True health=ok ageH=0.5",
       "remedy": null,
-      "ms": 27
+      "ms": 28
     },
     {
       "id": "actions-autonomy",
       "text": "ה-bots האוטונומיים ממשיכים-לפעול ב-Actions (קומיטים טריים ב-Domain ב-48h האחרונות)",
       "category": "autonomy",
       "criticality": "normal",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
-      "evidence": "FRESH last-commit 5098s ago",
+      "evidence": "FRESH last-commit 210s ago",
       "remedy": null,
-      "ms": 3
+      "ms": 2
     },
     {
       "id": "economy-book-growing",
       "text": "ספר-הכלכלה צומח (economy-state seq בגידול מדיד)",
       "category": "economy",
       "criticality": "normal",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
-      "evidence": "seq=7618 stale=False",
+      "evidence": "seq=12987 stale=False",
       "remedy": null,
-      "ms": 730
+      "ms": 756
     },
     {
       "id": "signing-identity-alive",
       "text": "זהות-החתימה (r5) חיה ונטענת במחזור-הכתיבה",
       "category": "custody",
       "criticality": "high",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
       "evidence": "SIGNING-ALREADY-ALIVE 301E5315",
       "remedy": null,
-      "ms": 33
+      "ms": 101
     },
     {
       "id": "federation-workflows-green",
       "text": "אין-דגלים אדומים בפדרציה (45 הריפואים של הבעלים)",
       "category": "federation",
       "criticality": "normal",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "REFUTED",
       "exit": 0,
-      "evidence": "verdict=FEDERATION-DRIFT flagsTotal=83",
+      "evidence": "verdict=FEDERATION-DRIFT flagsTotal=66",
       "remedy": "40 דגלים (WORKFLOW-RED/gitleaks ועוד) = חוב-תחזוקה מוכר; טריאז' לפי-ריפו בתור-התיקון",
-      "ms": 20
+      "ms": 21
     },
     {
       "id": "watchdog-alive",
       "text": "watchdog-המנוע חי (הוא-המוח-המרפא — מותו = אין-תיקון-עצמי)",
       "category": "fleet",
       "criticality": "high",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "MEASURED-TRUE",
       "exit": 0,
       "evidence": "ALIVE",
       "remedy": null,
-      "ms": 21
+      "ms": 39
     },
     {
       "id": "sovereign-network-selfhosted",
       "text": "S5 — הרשת-שלנו מפרנסת-את-עצמה: מסילת-תשואה חיה + ספר-ריבוני קריא + ווליום-דקס מוכח (Class-A)",
       "category": "sovereignty",
       "criticality": "normal",
-      "at": "2026-10-20T05:45:40.903Z",
+      "at": "2026-10-20T06:10:19.793Z",
       "verdict": "REFUTED",
       "exit": 0,
       "evidence": "yield=0 ledger=1",
       "remedy": "S5 דורש: התרת-ה-yield (ראית-משמורת) · ספר-קריא (ציבורי-מאובטח או מראה) · הוכחת-ווליום בדקס — המסלול המדורג בצ'ארטר §5",
-      "ms": 623
+      "ms": 636
     }
   ]
 }
