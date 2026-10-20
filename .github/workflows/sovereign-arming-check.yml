@@ -97,18 +97,32 @@ jobs:
           add('6_ownerApproval', r309, r309 ? 'R309-SOVEREIGN-OPENING present' : 'R309 absent', 'ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md');
 
           const allPass = items.every(i => i.pass);
-          const verdict = { schema: 'sovereign.arming-check/1', at: new Date(NOW).toISOString(), allPass, items, decision: allPass ? 'ARM' : 'HOLD (fail-closed — the checklist is the gate, R309-e supplies item 6 only)' };
+          const ap0 = 'ops/sovereign/DIRECTIVES/SOCIAL-ARMING.json';
+          let currentStatus = 'ABSENT';
+          try { currentStatus = JSON.parse(fs.readFileSync(ap0, 'utf8'))?.status ?? 'ABSENT'; } catch { /* fail-closed read */ }
+          const ownerLawArmed = currentStatus === 'ARMED'; // חוק-העל של הבעלים — לעולם לא מופשל ע"י סוכן
+          const decision = ownerLawArmed
+            ? 'MONITOR (owner-law armed — discrepancies recorded, status never reverted by agent)'
+            : (allPass ? 'ARM' : 'HOLD (fail-closed — the checklist is the gate; R309-e supplies item 6 only)');
+          const discrepancies = ownerLawArmed ? items.filter(i => !i.pass) : [];
+          const verdict = { schema: 'sovereign.arming-check/1', at: new Date(NOW).toISOString(), allPass, ownerLawArmed, items, discrepancies, decision };
           fs.writeFileSync('state/arming-check-last.json', JSON.stringify(verdict, null, 1) + '\n');
-          console.log(`[arming-check] allPass=${allPass}`);
+          console.log(`[arming-check] allPass=${allPass} ownerLawArmed=${ownerLawArmed} decision=${decision}`);
           for (const i of items) console.log(`  [${i.pass ? 'PASS' : 'FAIL'}] ${i.id}: ${i.measured}`);
+          for (const d of discrepancies) console.log(`  [DISCREPANCY] ${d.id}: measured=${d.measured}`);
 
-          // SOCIAAL-ARMING.json refresh — measured fields always; status ARMED only if all green
+          // SOCIAL-ARMING.json refresh — status changes ONLY by the lawful paths:
+          // ARM when the checklist is green AND not already owner-armed; NEVER revert an owner-law ARM.
           const ap = 'ops/sovereign/DIRECTIVES/SOCIAL-ARMING.json';
           try {
             const doc = JSON.parse(fs.readFileSync(ap, 'utf8'));
             doc.at = verdict.at;
-            doc.status = allPass ? 'ARMED' : (doc.status === 'ARMED' ? 'PENDING-RECHECK' : (doc.status || 'PENDING-COOLDOWN'));
-            if (allPass) doc.armedAt = verdict.at;
+            if (ownerLawArmed) {
+              doc.monitor = { at: verdict.at, allPass, discrepancies: discrepancies.map(d => ({ id: d.id, measured: d.measured })) };
+            } else {
+              doc.status = allPass ? 'ARMED' : (doc.status === 'ARMED' ? 'PENDING-RECHECK' : (doc.status || 'PENDING-COOLDOWN'));
+              if (allPass) doc.armedAt = verdict.at;
+            }
             for (const i of items) { const k = Object.keys(doc.checklist ?? {}).find(x => x.startsWith(i.id.split('_')[0] + '_')); if (doc.checklist?.[k]) { doc.checklist[k].measured = i.measured; doc.checklist[k].pass = i.pass; doc.checklist[k].at = verdict.at; } }
             fs.writeFileSync(ap, JSON.stringify(doc, null, 1) + '\n');
           } catch (e) { console.log('ARMING-JSON-ERR', String(e?.message ?? e)); }
