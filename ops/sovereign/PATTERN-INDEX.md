@@ -117,3 +117,13 @@
 ### 28. anti-squat-identity-probe (מפקדה-אנטי-כיבוש)
 **תבנית**: דופק-נמל HTTP-200 אינו הוכחת-חיים-של-איבר — כל-שירות-זר יכול-לכבוש-את-הנמל-ולהיספר-כאיבר (שקר-מדידה #9: guardian.mjs כבש-את-:3024, המפקדה-ספרה-13/13-כוזב, והמנוע-:3016 היה-מת-כל-היום). **המבחן**: כל-בדיקת-נמל-חייבת-לאמת-את-זהות-הגוף-העונה (שדה-host/שירות בתשובת-/health) — לא רק קוד-200; כיבוש-נמל = סטייה-נראית. **המקור**: R318 (sovereign-operator · 2026-10-20) — census anti-squat ב-CLAIMS.json (owner-absence-resilient) + guardian→:3025 + economy-node-host מכוסה-watchdog.
 **מבחן-כוזב**: הרץ את טענת owner-absence-resilient עם כובש-מדומה-על-:3024 → היא חייבת-להידחות עם 3024-squatter.
+
+### 29. public-surface-secret-scan (אפס-סודות-בפומבי)
+- **מקור**: R319 · P0 נמדד-חי — raw.githubusercontent הגיש .secrets/* מ-steem הציבורי (HTTP 200) בזמן-שהצי הניח-שהריפו-פרטי. נסגר: קילוף-tip → 404 מאומת ×4.
+- **מנגנון**: כל-דחיפה-למשטח-ציבורי עוברת-סריקת-שמות-ותבניות-סוד; ריפו-פרטי ≠ הנחה-לכתחילה — נבדק-בפועל (unauth git = המבחן-המכריע, לא-ה-API).
+- **מבחן-הפרכה**: `curl raw.../steem/main/.secrets/headcorner.key` חייב-404 לנצח; unauth `git ls-remote` לריפו-ציבורי-לכאורה חייב-להיכשל.
+
+### 30. validated-atomic-state-commit (קומיט-מצב-מאומת-אטומי)
+- **מקור**: R319 · D9 תפס JSONDecodeError על snapshot.json ציבורי-שבור (union-resolver שיחד-אובייקטים); heal1-שלי עצמו נקרע-מירוץ-כתיבה-של-המנוע-ונתפס-במדידה.
+- **מנגנון**: קובץ-מצב-שמנוע-חי-כותב-לא-נוגעים-בו-ב-add ישיר — מעתיקים-ל-/tmp, מאמתים-JSON, `git hash-object` + `update-index --cacheinfo`, ואז-commit.
+- **מבחן-הפרכה**: `curl raw.../fleet-economy/main/state/snapshot.json | python3 -m json.tool` חייב-להצליח; blob-קרוע-בהיסטוריה = אשם-מתועד-בספר.
