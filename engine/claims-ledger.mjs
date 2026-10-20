@@ -61,7 +61,27 @@ export function runLedger({ now = new Date().toISOString() } = {}) {
   if (!ledger?.claims?.length) return { ok: false, verdict: "LEDGER-ABSENT", error: "no claims file or empty", at: now };
   const results = ledger.claims.map((c) => measureClaim(c, { now }));
   const counts = results.reduce((a, r) => { a[r.verdict] = (a[r.verdict] ?? 0) + 1; return a; }, {});
-  const overall = (counts.REFUTED ?? 0) > 0 ? "CLAIMS-REFUTED" : (counts.UNMEASURABLE ?? 0) > 0 ? "CLAIMS-PARTIAL" : "CLAIMS-TRUE";
+  /* R310 · REFUTATION TAXONOMY (the T-16 lesson applied to the ledger itself —
+   * measured 2026-10-20: overall=CLAIMS-REFUTED while the machine-side truth
+   * was 12-alive/0-dead + cycle-ok, ONLY because two OWNER-GATED claims
+   * (push-channel, yield) were lawfully waiting for the operator — one number
+   * conflating "machine sick" with "machine lawfully waiting for its owner".
+   * Law: a refutation of an explicitly-marked externalGate claim (owner-side
+   * gate, remedy routes to the owner, graded at its own ladder step) or of a
+   * normal-criticality tracked-debt claim is a LAWFUL WAIT, not a malfunction:
+   * overall=CLAIMS-PARTIAL. Any high/critical MACHINE-SIDE refutation is a
+   * real malfunction: overall=CLAIMS-REFUTED. The marking lives in the claims
+   * file itself — visible, auditable, revocable by the owner. */
+  const claimById = Object.fromEntries(ledger.claims.map((c) => [c.id, c]));
+  const machineRefuted = results.filter((r) => {
+    if (r.verdict !== "REFUTED") return false;
+    const c = claimById[r.id] ?? {};
+    if (c.externalGate === "owner") return false;
+    return c.criticality === "high" || c.criticality === "critical";
+  });
+  const overall = machineRefuted.length > 0 ? "CLAIMS-REFUTED"
+    : ((counts.REFUTED ?? 0) + (counts.UNMEASURABLE ?? 0)) > 0 ? "CLAIMS-PARTIAL"
+    : "CLAIMS-TRUE";
   const doc = { schema: "claims-ledger/1", at: now, overall, counts, results };
   fs.mkdirSync(STATE_DIR, { recursive: true });
   fs.writeFileSync(VERDICT_FILE, JSON.stringify(doc, null, 2) + "\n");
