@@ -456,9 +456,22 @@ def decide_owner_channel(degraded):
                     f"ACK בפעימה {now()} — מנותב-למסילות-הביצוע (D2) בעדיפות {d.get('priority', 'P2')}")
                 acked.append(d)
     latest = [d for d in (inbox or []) if isinstance(d, dict)][-5:]
-    ev = [f"inbox.jsonl: {len(inbox or [])} הוראות · נקראו 5 אחרונות · board.json: {len((board or {}).get('directives') or [])} פקודות · ACK-חדשות: {len(acked)}"]
+    # R318 שקר-מדידה #8: ראיות-נפוחות — תשובות-שונות (replyTo שונים) עם אותו טקסט
+    # הודפסו כ-5 ראיות-נפרדות ונראו כשכפול. קבוצה-לפי-טקסט עם ×N + replyTo — כנות.
+    ev = [f"inbox.jsonl: {len(inbox or [])} שורות · נקראו 5 אחרונות · board.json: {len((board or {}).get('directives') or [])} פקודות · ACK-חדשות: {len(acked)}"]
+    seen_txt = {}
     for d in latest:
-        ev.append(f"[inbox {d.get('at', '?')}] {str(d.get('text', ''))[:90]}")
+        txt = str(d.get('text', ''))[:90]
+        if txt in seen_txt:
+            seen_txt[txt]['n'] += 1
+        else:
+            seen_txt[txt] = {'d': d, 'n': 1}
+    for txt, grp in seen_txt.items():
+        d = grp['d']
+        rep = d.get('replyTo') or ''
+        xN = f" ×{grp['n']} (replyTo-שונים)" if grp['n'] > 1 else ""
+        rt = f" → {str(rep)[:44]}" if rep else ""
+        ev.append(f"[inbox {d.get('at', '?')}] {txt}{xN}{rt}")
     for d in acked[:4]:
         ev.append(f"[board ACK {d.get('id')}] {str(d.get('text', ''))[:90]}")
     if not latest and not acked:
@@ -861,6 +874,96 @@ def decide_engineering_synthesis(degraded):
             "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 8 · R317)"}
 
 
+def decide_economic_governance(degraded):
+    """D9 [R318] — החוק-הכלכלי-נמדד: המושל-הריבוני תחת-סרגל-הריבונות (keyless).
+    מודד: (א) דירקטיבת R318 קיימת עם 4 חוקיה; (ב) הצ'רטר נושא סעיף 9;
+    (ג) governor.ts-קנון נושא CONSTITUTION עם הגבולות-המפורסמים;
+    (ד) snapshot-gov חי: המדיניות-הנוכחית בתוך-גבולות-החוקה (כל-מנוף).
+    ירוק → OBSERVING; סטייה → ENFORCED P0 (חוק-חוץ-לחוקה או מושל-לא-נמדד)."""
+    r318_path = os.path.join(BASE, "..", "DIRECTIVES", "R318-ECONOMIC-LAW-MEASURED.md")
+    charter_path = os.path.join(BASE, "CHARTER.md")
+    ev, fails = [], []
+
+    try:
+        r318 = open(r318_path, encoding="utf-8").read()
+        laws = [f"חוק {i}" for i in range(1, 5) if f"### חוק {i}" in r318]
+        ev.append(f"R318: {len(laws)}/4 חוקים")
+        if len(laws) < 4:
+            fails.append(f"R318-חסר-חוקים: {4 - len(laws)}")
+    except Exception as e:
+        degraded.append("r318-doctrine")
+        fails.append(f"R318-לא-נקרא: {type(e).__name__}")
+
+    try:
+        ch = open(charter_path, encoding="utf-8").read()
+        ok = "סעיף 9 — החוק-הכלכלי-נמדד" in ch
+        ev.append(f"צ'רטר סעיף 9: {'נמדד-קיים' if ok else 'חסר'}")
+        if not ok:
+            fails.append("צ'רטר-סעיף-9-חסר")
+    except Exception as e:
+        degraded.append("charter-s9")
+        fails.append(f"צ'רטר-לא-נקרא: {type(e).__name__}")
+
+    # (ג) חוקת-המושל — קנון fleet-economy מה-RAW (keyless)
+    C = {"floorMinUsds": 30, "floorMaxUsds": 250, "taxMinBps": 250,
+         "taxMaxBps": 500, "feeShareMinPct": 50, "feeShareMaxPct": 90,
+         "freezeAfterFails": 3, "reportEveryMs": 6 * 3_600_000}
+    gov_canon = None
+    try:
+        with urllib.request.urlopen(f"{RAW}/fleet-economy/main/lib/governor.ts", timeout=20) as r:
+            gov_canon = r.read().decode("utf-8", "replace")
+        present = [k for k in C if k in gov_canon]
+        ev.append(f"governor.ts-קנון: CONSTITUTION {'נמדדת' if 'CONSTITUTION' in gov_canon else 'חסרה'} · {len(present)}/{len(C)} גבולות-מפורסמים")
+        if "CONSTITUTION" not in gov_canon:
+            fails.append("חוקת-המושל-לא-בקנון")
+        if len(present) < len(C):
+            fails.append(f"גבולות-חסרים-בקנון: {len(C) - len(present)}")
+    except Exception as e:
+        degraded.append("governor-canon")
+        fails.append(f"governor.ts-לא-נקרא: {type(e).__name__}")
+
+    # (ד) מצב-המושל-החי — snapshot פומבי (keyless): המדיניות בתוך-החוקה
+    try:
+        with urllib.request.urlopen(f"{RAW}/fleet-economy/main/state/snapshot.json", timeout=25) as r:
+            snap = json.loads(r.read().decode("utf-8", "replace"))
+        gov = snap.get("gov") or {}
+        pol = gov.get("policy") or {}
+        f_, t_, fe_ = pol.get("wageHourFloorUsds"), pol.get("taxBps"), pol.get("feeToTreasuryPct")
+        if not (isinstance(f_, (int, float)) and isinstance(t_, (int, float)) and isinstance(fe_, (int, float))):
+            fails.append(f"מדיניות-המושל-לא-נמדדה: {json.dumps(pol)[:80]}")
+        else:
+            inb = (C["floorMinUsds"] <= f_ <= C["floorMaxUsds"] and
+                   C["taxMinBps"] <= t_ <= C["taxMaxBps"] and
+                   C["feeShareMinPct"] <= fe_ <= C["feeShareMaxPct"])
+            ev.append(f"מושל-חי: רצפת {f_}$ · מס {t_}bps · עמלות {fe_}% · בתוך-חוקה={'כן' if inb else 'לא'}")
+            if not inb:
+                fails.append(f"מדיניות-חוץ-לחוקה: {f_}/{t_}/{fe_}")
+        pend = len(gov.get("pending") or [])
+        ev.append(f"פסקי-דין-פתוחים: {pend} · seq: {snap.get('seq')}")
+        if not gov:
+            fails.append("gov-חסר-ב-snapshot")
+    except Exception as e:
+        degraded.append("governor-snapshot")
+        fails.append(f"snapshot-לא-נקרא: {type(e).__name__}")
+
+    if not fails:
+        return {"id": "D9-economic-governance", "area": "כלכלה", "status": "OBSERVING",
+                "titleHe": "החוק-הכלכלי-נמדד: המושל תחת-סרגל-הריבונות (R318)",
+                "verdictHe": ("המושל חוקק בתוך-החוקה והריבונות מודדת אותו כמו כל-גוף — "
+                              "חקיקה-כלכלית בספר, גבולות fail-closed, דו\"ח-בעלים כל-6ש'"),
+                "rationale": ("הכלכלה אינה תצורה אלא חוק-חוקתי (סעיף 9); שוויון-הספר (חוק 3 R317) "
+                              "מיושם — המושל כפוף לאותם סרגלי-כנות: מדידה-בלי-אמון, fail-closed"),
+                "evidence": ev, "decidedAt": now(),
+                "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 9 · R318)"}
+    return {"id": "D9-economic-governance", "area": "כלכלה", "status": "ENFORCED", "priority": "P0",
+            "titleHe": "חוק-כלכלי-סטה — הכרעה-מיד",
+            "verdictHe": ("הריבונות מכריעה: החוק-הכלכלי סטה (" + "; ".join(fails[:3]) +
+                          ") — המושל כפוף-לחוקתו; הקנון בלבד משנה-את-החוקה, אפס-המתנה-לבעלים"),
+            "rationale": "חוק-חוץ-לחוקה = P0 מכל-סטייה-תפעולית אחרת (R318 חוק 2)",
+            "evidence": ev + fails, "decidedAt": now(),
+            "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 9 · R318)"}
+
+
 def decide_verify(av, tg, degraded):
     """D4 [T15] — רשת-האמת: ההכרעה רואה את הבדיקה-העצמית של הגוף (המאמת-העצמאי
     של הקונסולה 51-טענות + שער-האמת-הציבורי). כשל → הכרעה-מנותבת (P0/P1) מיד —
@@ -994,6 +1097,7 @@ def main():
         decide_architecture_owner(degraded),  # [R314] הארכיטקטורה-היא-הבעלים — אפס-בקשות + כנות-רמה
         decide_owner_remembrance(degraded),  # [R316] הבעלים-האנושי-הנזכר — הזכר מכני fail-closed
         decide_engineering_synthesis(degraded),  # [R317] הנדסה-משותפת — קנון-התבניות עם מקור-מנוטר
+        decide_economic_governance(degraded),  # [R318] החוק-הכלכלי-נמדד — המושל תחת-סרגל-הריבונות
         decide_social_standby(social, chain, degraded),  # [exec29] מצבה-חברתית — R6 fail-closed + צ'קליסט-כנה
     ]
 

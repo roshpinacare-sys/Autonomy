@@ -244,15 +244,15 @@
   },
   {
    "id": "owner-absence-resilient",
-   "text": "ריבונות-בלי-נוכחות (R316 חוק 2): כל 13 גופי-הריבונות חיים ומשיבים ו-asksToOwner=0 — הסבב רץ מלא בלי כל קלט אנושי",
+   "text": "ריבונות-בלי-נוכחות (R316): כל-13-איברי-הגוף חיים ומזוהים-בגוף-עצמו (בדיקת-גוף-אנטי-כיבוש ל-:3024 אחרי-שקר-מדידה #9 — ה-guardian-הכובש-נספר-כאיבר) · asksToOwner=0 — המכונה מסתדרת עם עצמה",
    "category": "sovereignty",
    "criticality": "high",
-   "cmd": "n=0; for p in 3020 3021 3022 3023 3024 3037 3040 3041 3042 3043 3044 3045 3047; do for try in 1 2; do c=$(curl -s -m 3 -o /dev/null -w '%{http_code}' http://127.0.0.1:$p/health 2>/dev/null); [ \"$c\" = \"200\" ] && break; [ $try = 2 ] || sleep 4; done; [ \"$c\" = \"200\" ] && n=$((n+1)); done; a=$(python3 -c \"import json; print(json.load(open('/home/z/audit/Autonomy/ops/sovereign/LEVEL.json'))['ownerRouting']['asksToOwnerThisRound'])\" 2>/dev/null || echo 99); echo \"absence organs=$n/13 asks=$a\"; [ \"$n\" = 13 ] && [ \"$a\" = 0 ]",
+   "cmd": "python3 -c \"import base64; exec(base64.b64decode('aW1wb3J0IGpzb24sdXJsbGliLnJlcXVlc3QKbj0wOyBiYWQ9W10KZm9yIHAgaW4gKDMwMjAsMzAyMSwzMDIyLDMwMjMsMzAyNCwzMDM3LDMwNDAsMzA0MSwzMDQyLDMwNDMsMzA0NCwzMDQ1LDMwNDcpOgogICAgdHJ5OgogICAgICAgIGI9anNvbi5sb2FkKHVybGxpYi5yZXF1ZXN0LnVybG9wZW4oJ2h0dHA6Ly8xMjcuMC4wLjE6JWQvaGVhbHRoJyVwLHRpbWVvdXQ9NCkpOyBuKz0xCiAgICAgICAgaWYgcD09MzAyNCBhbmQgYi5nZXQoJ2hvc3QnKSE9J2Vjb25vbXktbm9kZS1ob3N0JzogYmFkLmFwcGVuZCgnMzAyNC1zcXVhdHRlcjolcyclYi5nZXQoJ2hvc3QnKSkKICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZTogYmFkLmFwcGVuZCgnJXM6JXMnJShwLHR5cGUoZSkuX19uYW1lX18pKQplPWpzb24ubG9hZChvcGVuKCcvaG9tZS96L2F1ZGl0L0F1dG9ub215L29wcy9zb3ZlcmVpZ24vTEVWRUwuanNvbicpKVsnb3duZXJSb3V0aW5nJ11bJ2Fza3NUb093bmVyVGhpc1JvdW5kJ10KYXNzZXJ0IG49PTEzIGFuZCBub3QgYmFkIGFuZCBlPT0wLCAnb3JnYW5zPSVkIGJhZD0lcyBhc2tzPSVzJyUobixiYWQsZSkKcHJpbnQoJ29yZ2Fucz0xMy8xMyBhbnRpLXNxdWF0LW9rIGFza3M9MCBPSycp').decode())\"",
    "expect": {
     "exit": 0,
-    "regex": "absence organs=13/13 asks=0"
+    "regex": "organs=13/13 anti-squat-ok asks=0 OK$"
    },
-   "remedy": "איבר-שנפל מושלף מקובץ-מצב (boot-organs.sh); בקשה-לבעלים>0 = סטיית-R314/R316 — בנה-מסילה-עצמית"
+   "remedy": "איבר-מת/כבוש: הקמה-מיידית-דרך-ה-watchdog (instrumentation HOSTS) — כיבוש-נמל = שקר-מדידה (#9 נתפס R318)"
   },
   {
    "id": "decider-d7-standing",
@@ -301,6 +301,42 @@
     "regex": "OK$"
    },
    "remedy": "קנון-דל/תבניות-בלי-מקור: השלמת מקורות מ-worklog.md או הסרת התבנית — הקנון אינו מנפח"
+  },
+  {
+   "id": "governor-legislating",
+   "text": "המושל-הריבוני מחוקק בפועל (R318 חוק 1): הספר נושא ≥10 שורות-מדיניות (kind:policy) + ≥5 פסקי-דין (kind:govern-outcome) — חקיקה-כלכלית מדודה בספר, לא סיפור",
+   "category": "economy",
+   "criticality": "high",
+   "cmd": "python3 -c \"import json,collections; kinds=collections.Counter(); [kinds.__setitem__(json.loads(l).get('kind'),kinds[json.loads(l).get('kind')]+1) for l in open('/home/z/audit/fleet-economy/state/ledger.jsonl') if l.strip() and json.loads(l).get('kind') in ('policy','govern','govern-outcome','owner-report')]; p,o=kinds['policy'],kinds['govern-outcome']; assert p>=10 and o>=5, 'governor-quiet: policy=%d outcomes=%d' % (p,o); print('governor policy=%d govern-outcomes=%d OK' % (p,o))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "governor policy=\\d+ govern-outcomes=\\d+ OK$"
+   },
+   "remedy": "מושל-שקט: חקירת-מנוע-הכלכלה (fleet-economy :3020-host) — אין-חקיקה = אין-ריבונות-כלכלית (R318 חוק 1)"
+  },
+  {
+   "id": "governor-constitution-bounds",
+   "text": "חוקת-המושל fail-closed (R318 חוק 2): כל-שורות-המדיניות בספר בתוך-גבולות-ה-CONSTITUTION (רצפת [30,250]$ · מס [250,500]bps · עמלות [50,90]%) — סריקה-מלאה, אפס-חוק-חוץ-לחוקה",
+   "category": "economy",
+   "criticality": "high",
+   "cmd": "python3 -c \"import json; C=(30,250,250,500,50,90); n=inb=0; [None for l in open('/home/z/audit/fleet-economy/state/ledger.jsonl') if l.strip() and (lambda e: e.get('kind')=='policy')(json.loads(l)) for n, inb in [(0,0)]] ; lines=[json.loads(l) for l in open('/home/z/audit/fleet-economy/state/ledger.jsonl') if l.strip()]; pols=[e for e in lines if e.get('kind')=='policy']; vals=[(e.get('policy') or e).get('wageHourFloorUsds',(e.get('policy') or e).get('floorUsds',0)) for e in pols]; import sys; n=len(pols); inb=sum(1 for e in pols for p in [e.get('policy') or e] if C[0]<=p.get('wageHourFloorUsds',p.get('floorUsds',0))<=C[1] and C[2]<=p.get('taxBps',0)<=C[3] and C[4]<=p.get('feeToTreasuryPct',0)<=C[5]); assert n>0 and inb==n, 'out-of-constitution: %d/%d' % (inb,n); print('constitution %d/%d policies in-bounds OK' % (inb,n))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "constitution \\d+/\\d+ policies in-bounds OK$"
+   },
+   "remedy": "חוק-חוץ-לחוקה = P0: הפסקת-המושל + תיקון-שורש — הקנון בלבד משנה-את-החוקה (R318 חוק 2)"
+  },
+  {
+   "id": "governor-owner-report-cadence",
+   "text": "הבעלים-לא-נשכח-בכלכלה (R318 חוק 4): המנוע-החי (:3016) נושא sov.governor עם lastReportAt/lastNetWorthUsds והחוקה-מחייבת דו\"ח-כל-6ש' — מדידה-מהמנוע-עצמו, לא-מנמל-מת",
+   "category": "economy",
+   "criticality": "medium",
+   "cmd": "python3 -c \"import json,urllib.request\nsrc=open('/home/z/audit/fleet-economy/lib/governor.ts',encoding='utf-8').read()\nassert 'reportEveryMs: 6 * 3_600_000' in src, 'no-6h-law'\nm=json.load(urllib.request.urlopen('http://127.0.0.1:3016/metrics',timeout=8))\ng=m['sov']['governor']\nfor f in ('lastReportAt','lastNetWorthUsds','decisions','verified'):\n    assert f in g, 'missing:'+f\nh=json.load(urllib.request.urlopen('http://127.0.0.1:3016/health',timeout=5))\nyoung=h['uptimeMs']<6*3600_000\nlr=g['lastReportAt']\nassert young or lr>0, 'engine-old-no-report'\nprint('owner-report wired OK · uptimeMs=%d · lastReportAt=%d · decisions=%d' % (h['uptimeMs'],lr,g['decisions']))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "owner-report wired OK · uptimeMs=\\d+ · lastReportAt=\\d+ · decisions=\\d+$"
+   },
+   "remedy": "הבעלים-נשכח: חיבור-owner-report-במנוע + הצהרת-הקצב-בחוקה; מנוע-מת = הקמה-דרך-מארח-הצומת-החי (R318)"
   }
  ]
 }
