@@ -1,41 +1,36 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-10-20T12:10:40.049Z",
+  "at": "2026-10-20T13:41:33.862Z",
   "overall": "PASS_WITH_ALERTS",
   "summary": {
     "sources": 11,
-    "verified": 12,
-    "findings": 5,
+    "verified": 11,
+    "findings": 6,
     "counts": {
-      "FLAG": 4,
+      "FLAG": 5,
       "MEDIUM": 1
     }
   },
   "provenance": {
-    "runId": "39420254413",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39420254413",
-    "sha": "8d69e20777f72b407eb18b57c47fef02ca1b66ef"
+    "runId": "39432460647",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39432460647",
+    "sha": "b56ae3fd540a12e1056c6a8eff81e11651fd574b"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=39404631224 conc=success repo=Autonomy"
+      "detail": "run=39420254413 conc=success repo=Autonomy"
     },
     {
       "where": "Sandbox:receipts/wallet/verdict.json",
       "law": "verified",
-      "detail": "run=39410313924 conc=success repo=Sandbox"
+      "detail": "run=39421480834 conc=success repo=Sandbox"
     },
     {
       "where": "Sandbox:receipts/fleet/verdict.json",
       "law": "verified",
       "detail": "run=39414992730 conc=success repo=Sandbox"
-    },
-    {
-      "where": "Sandbox:receipts/grid/verdict.json",
-      "law": "verified",
-      "detail": "run=39419794299 conc=success repo=Sandbox"
     },
     {
       "where": "Sandbox:ops/flow/receipt.json",
@@ -45,40 +40,46 @@
     {
       "where": "FleetHQ:receipts/office-ci/verdict.json",
       "law": "verified",
-      "detail": "run=39420063353 conc=success repo=FleetHQ"
+      "detail": "run=39432281501 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=39400266387 conc=success repo=FleetHQ"
+      "detail": "run=39430116385 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=39408213842 conc=success repo=Autonomy"
+      "detail": "run=39429845051 conc=success repo=Autonomy"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=39414672966 conc=success repo=Autonomy"
+      "detail": "run=39429841512 conc=success repo=Autonomy"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=39408215971 conc=success repo=Autonomy"
+      "detail": "run=39418129562 conc=success repo=Autonomy"
     },
     {
       "where": "Sandbox:ops/decision-truth/verdict.json",
       "law": "verified",
-      "detail": "run=39418180724 conc=success repo=Sandbox"
+      "detail": "run=39432410424 conc=success repo=Sandbox"
     },
     {
       "where": "Sandbox:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=39414648144 conc=success repo=Sandbox"
+      "detail": "run=39426715243 conc=failure repo=Sandbox"
     }
   ],
   "findings": [
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/grid/verdict.json",
+      "law": "unprovenanced",
+      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: artery-grid"
+    },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/latest.json",
@@ -89,7 +90,7 @@
       "level": "FLAG",
       "where": "Sandbox:state/verifier/verdict-latest.json",
       "law": "stale",
-      "detail": "195h > 26h — verifier.yml"
+      "detail": "197h > 26h — verifier.yml"
     },
     {
       "level": "FLAG",
@@ -107,7 +108,7 @@
       "level": "MEDIUM",
       "where": "Sandbox:ops/flow/receipt.json",
       "law": "agent-authored-receipt",
-      "detail": "committer=noreply@github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
+      "detail": "committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
     }
   ]
 }
