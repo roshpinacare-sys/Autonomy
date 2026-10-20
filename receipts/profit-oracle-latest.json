@@ -948,27 +948,110 @@
         "verdict": "PROFIT"
       },
       "deltaNote": "PROFIT: +1.964% מול-הריצה-הקודמת (חוק: > +0.5% / < −0.5%)"
+    },
+    {
+      "at": "2026-10-20T10:12:22.563Z",
+      "trigger": "schedule",
+      "checks": [
+        {
+          "id": "V-WORTH",
+          "measuredAt": "2026-10-20T10:12:22.563Z",
+          "evidence": {
+            "rpc": {
+              "primary": "https://api.steemit.com",
+              "fallback": "https://api.justyy.com"
+            },
+            "dgpo": true,
+            "accounts": true,
+            "orderBook": true,
+            "ratioSpPerVests": 0.000620556481,
+            "ownSp": 4320.7,
+            "effSp": 3556.5,
+            "liquidSteem": 140.912,
+            "liquidSbd": 35.005,
+            "mid": 0.09969,
+            "spreadBps": 10.4,
+            "netWorthSbdEquiv": 479.781,
+            "roster": 14
+          },
+          "verdict": "GREEN",
+          "note": "🟢 שווי-חי: own-SP 4320.7 · eff-SP 3556.5 · נזיל 140.912 STEEM + 35.005 SBD · mid 0.09969 → netWorth 479.781 SBD-equiv"
+        },
+        {
+          "id": "V-GRID-EDGE",
+          "verdict": "GREEN",
+          "measuredAt": "2026-10-20T10:12:23.146Z",
+          "evidence": {
+            "url": "https://roshpinacare-sys.github.io/Domain/dex/pnl-desk.json",
+            "http": 200,
+            "verdict": "EDGE-UNMEASURED-NO-FILLS",
+            "postLawEdgePct": -1.5,
+            "lifetimeRealizedSbd": -0.40379,
+            "generatedAt": "2026-10-19T11:11:41.427Z",
+            "deskLaw": "weekly edge >= +1% or the grid holds (T2, master plan 2026-10-11 — \"edge positive or off\")",
+            "edgeLawPct": 1
+          },
+          "note": "🟢 השולחן נמדד: verdict=EDGE-UNMEASURED-NO-FILLS · postLaw.edgePct=-1.5% · lifetime.realizedSbd=-0.40379 SBD (חוק-השולחן: ≥+1% = מותר-להציב; ההכרעה ב-desk — חדר-אחד)"
+        },
+        {
+          "id": "V-ZOMBIE-LADDER",
+          "verdict": "GREEN",
+          "measuredAt": "2026-10-20T10:12:23.269Z",
+          "evidence": {
+            "method": "database_api.find_limit_orders",
+            "account": "acct-00",
+            "count": 41,
+            "openSbd": 49.32,
+            "openSteem": 503.23,
+            "zombieSbd": 48.009,
+            "zombieCount": 15,
+            "priorCount": 10,
+            "priorOpenSbd": 35.858
+          },
+          "note": "🟢 סולם-עומד: 41 פקודות · 49.32 SBD פתוח (מהם זומבי 48.009 SBD @≤0.0995) — יציב או מתמלא"
+        }
+      ],
+      "summary": {
+        "GREEN": 3,
+        "AMBER": 0,
+        "RED": 0,
+        "UNKNOWN": 0,
+        "ownSp": 4320.7,
+        "effSp": 3556.5,
+        "liquidSteem": 140.912,
+        "liquidSbd": 35.005,
+        "mid": 0.09969,
+        "netWorthSbdEquiv": 479.781,
+        "deltaVsPriorPct": -4.423,
+        "gridVerdict": "EDGE-UNMEASURED-NO-FILLS",
+        "gridEdgePct": -1.5,
+        "ladderOpenSbd": 49.32,
+        "ladderCount": 41,
+        "ladderZombieSbd": 48.009,
+        "verdict": "LOSS"
+      },
+      "deltaNote": "LOSS: -4.423% מול-הריצה-הקודמת (חוק: > +0.5% / < −0.5%)"
     }
   ],
-  "updatedAt": "2026-10-19T10:58:30.107Z",
-  "at": "2026-10-19T10:58:30.107Z",
+  "updatedAt": "2026-10-20T10:12:22.563Z",
+  "at": "2026-10-20T10:12:22.563Z",
   "summary": {
     "GREEN": 3,
     "AMBER": 0,
     "RED": 0,
     "UNKNOWN": 0,
-    "ownSp": 4300.2,
-    "effSp": 3613,
-    "liquidSteem": 633.175,
-    "liquidSbd": 2.789,
-    "mid": 0.10119,
-    "netWorthSbdEquiv": 501.983,
-    "deltaVsPriorPct": 1.964,
-    "gridVerdict": "EDGE-POSITIVE-GRID-MAY-RUN",
-    "gridEdgePct": -3,
-    "ladderOpenSbd": 35.858,
-    "ladderCount": 10,
-    "ladderZombieSbd": 0,
-    "verdict": "PROFIT"
+    "ownSp": 4320.7,
+    "effSp": 3556.5,
+    "liquidSteem": 140.912,
+    "liquidSbd": 35.005,
+    "mid": 0.09969,
+    "netWorthSbdEquiv": 479.781,
+    "deltaVsPriorPct": -4.423,
+    "gridVerdict": "EDGE-UNMEASURED-NO-FILLS",
+    "gridEdgePct": -1.5,
+    "ladderOpenSbd": 49.32,
+    "ladderCount": 41,
+    "ladderZombieSbd": 48.009,
+    "verdict": "LOSS"
   }
 }
