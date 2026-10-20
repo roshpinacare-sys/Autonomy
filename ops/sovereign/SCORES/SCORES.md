@@ -1,18 +1,18 @@
 # Run Scores (aeon-pattern, deterministic)
 
-generated 2026-10-20T12:03:42.879Z · fleet score **3.00/5** · lanes 12
+generated 2026-10-20T17:29:15.761Z · fleet score **4.50/5** · lanes 12
 
 | agent | repo | score | why | last |
 |---|---|---|---|---|
-| network-self-awareness | Autonomy | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Autonom | unknown |
-| claims-intake | Autonomy | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Autonom | unknown |
-| run-score | Autonomy | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Autonom | unknown |
-| sovereign-decider | FleetHQ | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/FleetHQ | unknown |
-| pacemaker | FleetHQ | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/FleetHQ | unknown |
-| identity-patrol | FleetHQ | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/FleetHQ | unknown |
-| proof-pipeline | Domain | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Domain/ | unknown |
-| anchor-execute | Domain | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Domain/ | unknown |
-| estate-scrub | Domain | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Domain/ | unknown |
-| operator-console | Domain | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Domain/ | unknown |
-| dex-flow | Console | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Console | unknown |
-| grid-pulse | Console | 3/5 | measure-error HTTP 401 /repos/roshpinacare-sys/Console | unknown |
+| network-self-awareness | Autonomy | 5/5 | success · last 0.1h ago · window 6/6 | success |
+| claims-intake | Autonomy | 5/5 | success · last 3.7h ago · window 6/6 | success |
+| run-score | Autonomy | 5/5 | success · last 5.4h ago · window 5/5 | none |
+| sovereign-decider | FleetHQ | 5/5 | success · last 0.6h ago · window 6/6 | success |
+| pacemaker | FleetHQ | 3/5 | measure-error HTTP 404 /repos/roshpinacare-sys/FleetHQ | unknown |
+| identity-patrol | FleetHQ | 5/5 | success · last 0.6h ago · window 6/6 | success |
+| proof-pipeline | Domain | 5/5 | success · last 7.9h ago · window 3/3 | success |
+| anchor-execute | Domain | 3/5 | mixed window 5/6 · last success | success |
+| estate-scrub | Domain | 3/5 | mixed window 5/6 · last success | success |
+| operator-console | Domain | 5/5 | success · last 2.1h ago · window 6/6 | success |
+| dex-flow | Console | 5/5 | success · last 0.1h ago · window 6/6 | success |
+| grid-pulse | Console | 5/5 | success · last 9.1h ago · window 6/6 | success |
