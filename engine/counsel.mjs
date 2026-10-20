@@ -11,6 +11,8 @@
  *
  * חוקים:
  *  · fail-honest — אין-מפתח/רשת/מודל = {ok:false, reason} יציאה 0 (PENDING, לא-המצאה)
+ *  · שרשרת-מועמדים (t46): מודד-את-הכל, ראשון-שמצליח-נושא-את-הפסק, כל-כישלון-נרשם-בכנות
+ *    (מדידה-t46: ultra-550b-2048-tokens = 12s/453-תווים · lightning-מנובל-בחשיבה)
  *  · אפס-תלות — node stdlib בלבד
  *  · קלט-קבלות כבר-refs-only (חוק-ה-scrub של refs.mjs בזמן-כתיבה אצל-המקורות);
  *    חגורה-ורתמות: scrubAll נוסף על-הקבלה-הסופית
@@ -19,12 +21,14 @@
  * שימוש:
  *   node engine/counsel.mjs --selftest   (אפס-רשת, חייב ירוק)
  *   node engine/counsel.mjs              (חי: קבלות → NIM → קבלה)
- *   env: NIM_API_KEY · NIM_MODEL (ברירת-מחדל deepseek-v4.1-flash)
+ *   env: NIM_API_KEY · NIM_MODEL (אם-נקבע — מצמצם-את-השרשרת-למודל-אחד);
+ *        ברירת-מחדל: שרשרת-מודלים-שנמדדו-200 (t46: סריקת-קטלוג-מלאה 81 → 13-חיים;
+ *        תבוסת-t44 deepseek-v4.1-flash-הוכחה — תלייה-30s)
  * ═══════════════════════════════════════════════════════════════════════════
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { scrubAll } from "./refs.mjs";
 
 const ROOT = process.env.GITHUB_WORKSPACE || join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -77,14 +81,22 @@ export function composeBriefing(facts) {
   return head + (body.length > FACTS_CAP ? body.slice(0, FACTS_CAP) + "…[חתוך]" : body);
 }
 
-async function nimCall(briefing) {
+/** measured 2026-10-20 (t46, full-catalog sweep 81 models): the only lawful
+ *  candidates — each one returned HTTP 200 with real content THIS round.
+ *  Catalog-listing ≠ entitlement (t44 law) and ≠ invocation (t46 law). */
+const NIM_CHAIN_DEFAULT = [
+  "nvidia/nemotron-3-ultra-550b-a55b",     // direct content, strongest measured
+  "nvidia/nemotron-3.5-lightning-30b-a3b", // reasoning model — needs token headroom
+  "z-ai/glm-5.3-flash",                    // lineage flash, measured 200
+];
+
+async function nimCall(briefing, model) {
   const key = process.env.NIM_API_KEY ?? "";
   if (!key) return { ok: false, reason: "nim-key-absent" };
-  const model = process.env.NIM_MODEL ?? "deepseek-v4.1-flash";
   const body = {
     model,
     messages: [{ role: "user", content: briefing }],
-    max_tokens: 700,
+    max_tokens: 2048, // measured t46: reasoning models spend thousands of thinking tokens before content lands (lightning: 2048 → finish=length, empty)
     temperature: 0.2,
   };
   const t0 = Date.now();
@@ -93,7 +105,7 @@ async function nimCall(briefing) {
       method: "POST",
       headers: { "content-type": "application/json", authorization: `Bearer ${key}` },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(45000),
+      signal: AbortSignal.timeout(75000), // measured t46: ultra@2048 ≈ 12s; heavy reasoners may legibly take ~30s+
     });
     const latencyMs = Date.now() - t0;
     if (res.status === 410) return { ok: false, reason: `model-eol:${model}`, latencyMs };
@@ -115,6 +127,22 @@ async function nimCall(briefing) {
   }
 }
 
+/** candidate chain (failover law): first measured-ok model carries the verdict;
+ *  every failure is recorded honestly — the receipt never invents a fallback. */
+async function nimChain(briefing) {
+  const chain = (process.env.NIM_MODEL ?? "").trim()
+    ? [process.env.NIM_MODEL.trim()]
+    : NIM_CHAIN_DEFAULT;
+  const tried = [];
+  for (const model of chain) {
+    const r = await nimCall(briefing, model);
+    if (r.ok) return { ...r, candidates: chain, tried };
+    tried.push({ model, reason: r.reason ?? "unknown", latencyMs: r.latencyMs ?? null });
+  }
+  const last = tried.length ? tried[tried.length - 1].reason : "nim-chain-empty";
+  return { ok: false, reason: `nim-chain-exhausted:${last}`, candidates: chain, tried };
+}
+
 function publish(receipt) {
   mkdirSync(OUT_DIR, { recursive: true });
   // scrub boundary: belt-and-suspenders over the whole receipt before it touches the public tree
@@ -128,8 +156,10 @@ async function live() {
   const receipt = { schema: "counsel/1", at: nowIso(), ok: false, task: "counsel" };
   receipt.factsSources = facts.sources;
   receipt.accountsMeasured = facts.accounts.length;
-  const r = await nimCall(briefing);
+  const r = await nimChain(briefing);
   receipt.latencyMs = r.latencyMs ?? null;
+  receipt.candidates = r.candidates ?? [];
+  receipt.tried = r.tried ?? [];
   if (!r.ok) {
     receipt.reason = r.reason;
     publish(receipt);
@@ -152,10 +182,15 @@ export function selftest() {
   if (!b.includes("acct-00")) throw new Error("selftest: briefing missing facts");
   if (b.length > FACTS_CAP + 400) throw new Error("selftest: briefing unbounded");
   if (COUNSEL_CAP <= 0) throw new Error("selftest: counsel cap must be positive");
-  console.log(`counsel: selftest green (briefing ${b.length} chars, cap ${COUNSEL_CAP})`);
+  const chain = (process.env.NIM_MODEL ?? "").trim() ? ["override"] : NIM_CHAIN_DEFAULT;
+  if (chain.length < 2) throw new Error("selftest: counsel chain must carry fallbacks");
+  console.log(`counsel: selftest green (briefing ${b.length} chars, cap ${COUNSEL_CAP}, chain ${chain.length})`);
   return 0;
 }
 
 const isSelftest = process.argv.includes("--selftest");
-if (isSelftest) process.exit(selftest());
-process.exit(await live());
+// module-guard law (t28 echo: a lost main-guard left tick-keeper dark 15 days —
+// the file's own documented contract): run live ONLY when executed directly, never on import
+const isDirect = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isSelftest && isDirect) process.exit(selftest());
+if (isDirect) process.exit(await live());
