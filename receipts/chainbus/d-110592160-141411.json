@@ -1,0 +1,29 @@
+{
+  "schema": "chainbus.directive.receipt/1",
+  "at": "2026-10-20T05:13:24.489Z",
+  "ok": true,
+  "ref": {
+    "block": 110592160,
+    "idx": 141411,
+    "seq": 1,
+    "from": "operator-plane",
+    "to": "*",
+    "runId": "t42-loop"
+  },
+  "body": "{\"task\":\"health-probe\",\"runId\":\"t42-loop\"}",
+  "task": {
+    "name": "health-probe",
+    "description": "liveness: public chain RPC head block + this repo git tip (read-only)",
+    "commands": 2,
+    "timeoutSec": 60
+  },
+  "exec": {
+    "ok": true,
+    "code": 0,
+    "ms": 418,
+    "receipt": "receipts/execution/bus-d-110592160-141411.json",
+    "outTail": "\"time:\",j.result.time)).catch(e=>{console.error(e);process.exit(1)})'\nchain head_block: 110592236 time: 2026-10-20T05:13:24\n\n\n=== [1] exit=0 killed=false 112ms ===\n$ git log --oneline -3\n22f9c3f office-growth: VALUE-MAP measured [ci]\n\n\nreceipt: receipts/execution/bus-d-110592160-141411.json ok=true\n",
+    "errTail": ""
+  },
+  "node": "https://steemapi.boylikegirl.club"
+}
