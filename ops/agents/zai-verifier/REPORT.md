@@ -1,6 +1,6 @@
-# דוח-אמת (verifier) · 2026-10-20T13:11:14.388Z
+# דוח-אמת (verifier) · 2026-10-20T13:41:28.735Z
 
-**overall: DEGRADED** · auth: token(fed) · took: 21471ms · כללים: config.json (אפס-דעה-אישית)
+**overall: DEGRADED** · auth: token(fed) · took: 23270ms · כללים: config.json (אפס-דעה-אישית)
 
 > המערכת חיה אך לא בריאה-כולה: יש עורקים/לולאות שאינם מתפקדים — עם ראיות.
 
@@ -8,19 +8,19 @@
 | בדיקה | דרגה | ראיה |
 |---|---|---|
 | `sbx.wf-sovereign` | **OK** | success recent |
-| `sbx.wf-sovereign-state` | **DEGRADED** | last success 25min ago > slot |
+| `sbx.wf-sovereign-state` | **DEGRADED** | last success 27min ago > slot |
 | `sbx.wf-artery-catchup` | **OK** | success recent |
-| `sbx.wf-artery-watch` | **DEGRADED** | last success 42min ago > slot |
-| `sbx.wf-verifier` | **DEGRADED** | last success 42min ago > slot |
-| `sbx.wf-federation` | **OK** | success recent |
-| `sbx.wf-value-scan` | **DEGRADED** | last success 42min ago > slot |
+| `sbx.wf-artery-watch` | **DEGRADED** | last success 19min ago > slot |
+| `sbx.wf-verifier` | **DEGRADED** | last success 38min ago > slot |
+| `sbx.wf-federation` | **DEGRADED** | last success 39min ago > slot |
+| `sbx.wf-value-scan` | **DEGRADED** | last success 73min ago > slot |
 | `sbx.wf-hive-probe` | **OK** | success recent |
-| `sbx.wf-fleet-heal` | **OK** | success recent |
-| `sbx.wf-artery-decision-truth` | **OK** | success recent |
-| `sbx.wf-artery-grid` | **DEGRADED** | last success 42min ago > slot |
-| `sbx.wf-artery-wallet` | **DEGRADED** | last success 62min ago > slot |
-| `sbx.wf-artery-integrity` | **DEGRADED** | last success 61min ago > slot |
-| `sbx.wf-artery-participation` | **DEGRADED** | last success 87min ago > slot |
+| `sbx.wf-fleet-heal` | **DEGRADED** | last success 46min ago > slot |
+| `sbx.wf-artery-decision-truth` | **DEGRADED** | last success 42min ago > slot |
+| `sbx.wf-artery-grid` | **OK** | success recent |
+| `sbx.wf-artery-wallet` | **OK** | success recent |
+| `sbx.wf-artery-integrity` | **DEGRADED** | last success 91min ago > slot |
+| `sbx.wf-artery-participation` | **DEGRADED** | last success 118min ago > slot |
 | `sbx.wf-artery-fleet` | **OK** | success recent |
 | `sbx.wf-artery-flow` | **OK** | success recent |
 
@@ -38,22 +38,22 @@
 ## 3. אמת-על-השרשרת · Steem (https://api.steemit.com)
 | חשבון | SP אפקטיבי | VP% | פוסט-אחרון | הצבעה-אחרונה |
 |---|---|---|---|---|
-| @acct-00 | 2417 | 24% | 6.9h | 0.9h |
-| @acct-01 | 135 | 82% | 45.6h | 7.4h |
-| @acct-02 | 78 | 73% | 38.2h | 8.2h |
-| @acct-03 | 155 | 81% | 36.8h | 8.2h |
-| @acct-04 | 140 | 83% | 35.4h | 8.2h |
-| @acct-05 | 135 | 85% | 199.7h | 0.6h |
-| @acct-06 | 143 | 85% | 181.9h | 6.7h |
-| @acct-07 | 148 | 82% | 183.2h | 7.3h |
-| @acct-08 | 61 | 75% | 183.2h | 5.5h |
-| @acct-09 | 89 | 78% | 183.2h | 7.3h |
-| @acct-10 | 20 | 59% | 183.2h | 7.1h |
-| @acct-11 | 17 | 93% | 45.6h | 181.3h |
-| @acct-12 | 17 | 95% | 183.1h | 181.3h |
-| @acct-13 | 17 | 93% | 200.6h | 181.3h |
+| @acct-00 | 2417 | 24% | 7.4h | 1.4h |
+| @acct-01 | 135 | 82% | 46.1h | 7.9h |
+| @acct-02 | 78 | 73% | 38.7h | 8.7h |
+| @acct-03 | 155 | 81% | 37.3h | 8.7h |
+| @acct-04 | 140 | 83% | 35.9h | 8.7h |
+| @acct-05 | 135 | 85% | 200.2h | 1.1h |
+| @acct-06 | 143 | 85% | 182.4h | 7.2h |
+| @acct-07 | 148 | 82% | 183.7h | 7.8h |
+| @acct-08 | 61 | 75% | 183.7h | 6h |
+| @acct-09 | 89 | 78% | 183.7h | 7.8h |
+| @acct-10 | 20 | 59% | 183.7h | 7.6h |
+| @acct-11 | 17 | 93% | 46.1h | 181.8h |
+| @acct-12 | 17 | 95% | 183.7h | 181.8h |
+| @acct-13 | 17 | 93% | 201.1h | 181.8h |
 
-> `steem.fleet` = **OK** — fleet posted 6.9h ago
+> `steem.fleet` = **OK** — fleet posted 7.4h ago
 > `steem.treasury` = **DEGRADED** — treasury acct-00 at 2417 SP < 3000 (recovery-plan §3)
 
 ## 4. Blurt (UNREACHABLE)
@@ -61,24 +61,23 @@ RPC בלתי-נגיש מהרץ: no blurt accounts configured in this repo's veri
 > `blurt.alive` = **NOTICE** — blurt RPC unreachable from runner (1 hosts tried) — UNREACHABLE, לא "מת" עד-שיימד
 
 ## 5. שלמות-עץ (ריקבון-מצבות)
-נסרקו 222 קבצים; פגומים: 0
+נסרקו 225 קבצים; פגומים: 0
 
 ## 6. דלתא-מול-הריצה-הקודמת
-- ↗ השתפר: `sbx.wf-federation` DEGRADED → **OK**
-- ↘ התדרדר: `sbx.wf-value-scan` OK → **DEGRADED**
-- ↗ השתפר: `sbx.wf-fleet-heal` DEGRADED → **OK**
-- ↘ התדרדר: `sbx.wf-artery-grid` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-artery-wallet` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-artery-integrity` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-artery-participation` OK → **DEGRADED**
+- ↘ התדרדר: `sbx.wf-federation` OK → **DEGRADED**
+- ↘ התדרדר: `sbx.wf-fleet-heal` OK → **DEGRADED**
+- ↘ התדרדר: `sbx.wf-artery-decision-truth` OK → **DEGRADED**
+- ↗ השתפר: `sbx.wf-artery-grid` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-wallet` DEGRADED → **OK**
 
 ## 7. משימות-שנצרתו-עכשיו
 - **V-LOOP-SOVEREIGN-STATE** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-WATCH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-VERIFIER** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-FEDERATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-VALUE-SCAN** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-GRID** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-WALLET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-FLEET-HEAL** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-ARTERY-DECISION-TRUTH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-INTEGRITY** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-PARTICIPATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-DEV-FOCUS** — דופק-בלי-בנייה: להפנות-משאב-סוכנים מטביעות-מצב לבניית-מוצר/תיקונים אמתיים
