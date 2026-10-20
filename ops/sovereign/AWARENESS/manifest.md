@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T22:19:02.519Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T22:25:09.096Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,7 +15,7 @@
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/office3d-guard @ 2026-10-20T18:29 — gate held the line - verify the payload it stopped, then fix the producer
+- [ENFORCEMENT] Domain/office3d-guard @ 2026-10-20T22:20 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/pages build and deployment @ 2026-10-20T18:19 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/econ-engine @ 2026-10-20T17:52 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/saos-act @ 2026-10-20T16:52 — autonomy triage: read the log, fix root, land, verify
