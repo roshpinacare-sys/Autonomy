@@ -91,13 +91,22 @@ jobs:
           fi
           git commit -m "decision-truth verdict: $(date -u +%FT%TZ)"
           OK=0
-          for i in 1 2 3; do
+          # [19.43 · T24-aligned] 28 writers share main — 3 attempts died in the 13:49Z burst; 7 with growing backoff
+          for i in 1 2 3 4 5 6 7; do
             if git pull --rebase -X theirs --autostash origin main && git push origin main; then OK=1; echo "push ok (attempt $i)"; break; fi
             git rebase --abort 2>/dev/null || true
-            git status --short
-            sleep 5
+            sleep $((i * 4 + RANDOM % 5))
           done
-          [ "$OK" = "1" ] || { echo "verdict push failed after 3 attempts - honest failure"; exit 1; }
+          if [ "$OK" != "1" ]; then
+            # [19.43 · DECISIONS #32-E alive-wins] the receipt may already be at origin (a live sibling writer)
+            git fetch -q origin main
+            if git diff --quiet HEAD origin/main -- ops/decision-truth; then
+              echo "alive-wins: verdict content already landed at origin (live sibling writer) — honest skip per DECISIONS #30/#32-E, not a regression"
+              exit 0
+            fi
+            echo "verdict push failed after 7 attempts and content NOT at origin - honest failure"
+            exit 1
+          fi
 
       - name: verdict law (red unless PASS/PASS_WITH_ALERTS — after the verdict landed)
         if: always()

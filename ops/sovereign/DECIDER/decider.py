@@ -237,7 +237,12 @@ def decide_econ(chain, beacon, hc_scan, degraded):
             if name in FLEET:
                 deleg_to_fleet_sp += sp
             else:
-                deleg_other.append(scrub(f"{name}:{sp}SP@{d['ts']}"))  # [refs-law] scrub
+                # [refs-law fail-closed · 19.43] roster-unresolved ⇒ scrub=זהות — שם-גולמי לעולם לא יוצא לעץ
+                # (הריצה-המקומית של R316 בלי סוד-הרוסטר הדליפה 6 שמות דרך כאן). הכותב עצמו מייצר label:
+                # ref-יציב אם-נודע, אחרת acct-ext-N — המדידה (SP/timestamp) נשמרת, הזהות בזיכרון בלבד.
+                _ref = NAME_TO_REF.get(name)
+                _label = _ref if _ref else f"acct-ext-{len(deleg_other) + 1}"
+                deleg_other.append(f"{_label}:{sp}SP@{d['ts']}")  # [refs-law fail-closed] אפס שמות-גולמיים
         deleg_evidence.append(f"האצלות-אחרונות למפעילי-הצי: ~{round(deleg_to_fleet_sp, 1)} SP (רגלי-הצי — חיוניות, אין-לשחרר)")
         if deleg_other:
             deleg_evidence.append(f"האצלות-יוצאות-שאינן-מפעילים (מדוד): {', '.join(deleg_other[:8])}")

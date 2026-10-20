@@ -68,7 +68,16 @@ jobs:
               git rebase --abort 2>/dev/null || true
               sleep $((i * 4 + RANDOM % 5))
             done
-            [ "$OK" = "1" ] || { echo "push failed after 7 rebase attempts — honest failure"; exit 1; }
+            if [ "$OK" != "1" ]; then
+              # [19.43 · DECISIONS #32-E alive-wins] the receipt may already be at origin (a live sibling writer)
+              git fetch -q origin main
+              if git diff --quiet HEAD origin/main -- ops/sovereign/VALUE-SCAN; then
+                echo "alive-wins: value-scan content already landed at origin (live sibling writer) — honest skip per DECISIONS #30/#32-E, not a regression"
+                exit 0
+              fi
+              echo "push failed after 7 rebase attempts and content NOT at origin — honest failure"
+              exit 1
+            fi
           fi
       - name: אימות-readback (הפרסום נקרא-חזרה — אנטי-זיופים)
         if: always()
