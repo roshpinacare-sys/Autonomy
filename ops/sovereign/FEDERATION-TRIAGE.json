@@ -1,0 +1,24 @@
+{
+ "schema": "federation-triage-v1",
+ "at": "2026-10-20T08:22:52Z",
+ "sourceReceipt": { "authMode": "token", "chain": "b356bba43d4b", "tookMs": 24310 },
+ "note": "R312: first AUTHENTICATED scan after machine self-served the dead Actions secret SBX_FLEET_PAT (rotated on Autonomy+Domain+saos-runtime, HTTP 204/201, zero secret exposure). Anonymous-era UNVERIFIED-PRIVATE noise is gone; the remaining flags are real debt, triaged below.",
+ "counts": { "manifest": 9, "github": 45, "records": 45, "flags": 40, "flagsTotal": 54 },
+ "queue": [
+  {
+   "kind": "ADOPT-PENDING",
+   "count": 25,
+   "routing": "ARCHITECTURE-SELF-SERVE",
+   "remedy": "chain adoption via custody channel (chain-memo-custody) — no owner ask; the adoption rail exists and is armed",
+   "repos": ["Adsmarket", "Defi", "Project-files", "Sandbox", "Saosmartwallet", "Sdk", "SovereignConsole", "TruthRail", "(+17 more, full list in federation/LEDGER.jsonl tail receipt)"]
+  },
+  {
+   "kind": "WORKFLOW-RED",
+   "count": 15,
+   "routing": "BOT-MAINTENANCE-DEBT (autonomous)",
+   "remedy": "fleet bots repay per repair queue; red workflows = known tracked debt, triage per repo",
+   "repos": ["Defi", "Sandbox(x2)", "Saosmartwallet", "Zip(x7)", "sandbox-private", "saos-control-center(x2)", "saos-desk"]
+  }
+ ],
+ "debtTrend": { "R311": 66, "R312_authenticated": 54, "direction": "shrinking under autonomous repayment" }
+}

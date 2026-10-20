@@ -76,8 +76,7 @@
     "regex": "verdict=(?!CUSTODY-FROZEN|READ-FAILED|POLICY-INVALID)\\S+"
    },
    "remedy": "CUSTODY-FROZEN=משמורת-לא-ירוקה (בדוק את מכסת-החיים ב-army-custody); BELOW-DUST=הבריכה-צריכה-צמיחה — מסילות-ההכנסה (social→inflow→capital→fees→compound) מגדלות-את-הבריכה-מעל-אבק-לחשבון; POLICY-INVALID=תקן-את-yield-policy.json",
-   "externalGate": "owner",
-   "gateNote": "R310: סירוב-הטענה הזו = המתנה-חוקית-על-הבעלים (השער-שלו, הפתרון-שלו) — מדורגת-במפורש-בשער-S4; אינה-תקלת-מכונה"
+   "gateNote": "R312: externalGate=owner הוסר — R311 הגדיר-מחדש את-הטענה-הזו כאמת-מכונה (שערי-משמורת/מדיניות/בריכה כולל-גלגול-אבק-חוקי); הפרכה על-רמה-קריטית = תקלת-מכונה אמיתית, לעולם-לא המתנה-חוקית-על-הבעלים. הזרימה-הכספית-האמיתית (executedToday) נשארת-השער-של-S5"
   },
   {
    "id": "social-gate-consistent",
@@ -144,7 +143,7 @@
    "text": "אין-דגלים אדומים בפדרציה (45 הריפואים של הבעלים)",
    "category": "federation",
    "criticality": "normal",
-   "cmd": "tail -1 /home/z/audit/Autonomy/federation/LEDGER.jsonl | python3 -c \"import json,sys;d=json.load(sys.stdin);print(f\\\"verdict={d.get('verdict')} flagsTotal={d.get('counts',{}).get('flagsTotal')}\\\")\"",
+   "cmd": "tail -1 /home/z/audit/Autonomy/federation/LEDGER.jsonl | python3 -c \"import json,sys;d=json.load(sys.stdin);e=d.get('error');print(f\\\"verdict={d.get('verdict')} flagsTotal={d.get('counts',{}).get('flagsTotal')} scanError={bool(e)}\\\")\"",
    "expect": {
     "exit": 0,
     "regex": "flagsTotal=0"
