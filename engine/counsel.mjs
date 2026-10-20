@@ -97,6 +97,13 @@ async function nimCall(briefing) {
     });
     const latencyMs = Date.now() - t0;
     if (res.status === 410) return { ok: false, reason: `model-eol:${model}`, latencyMs };
+    if (res.status === 404) {
+      // NIM entitlement law (measured t44): catalog may list a model while the
+      // key's account lacks the function grant — "Not found for account".
+      let detail = "";
+      try { detail = (await res.json())?.detail ?? ""; } catch { /* body unreadable */ }
+      return { ok: false, reason: detail.includes("Not found for account") ? `nim-function-not-entitled:${model}` : `nim-model-unknown:${model}`, latencyMs };
+    }
     if (res.status === 401 || res.status === 403) return { ok: false, reason: `nim-auth-${res.status}`, latencyMs };
     if (!res.ok) return { ok: false, reason: `nim-http-${res.status}`, latencyMs };
     const j = await res.json();
