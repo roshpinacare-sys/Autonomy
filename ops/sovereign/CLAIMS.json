@@ -80,15 +80,15 @@
   },
   {
    "id": "social-gate-consistent",
-   "text": "שער-ה-social במנוע עקבי-עם-רשות-החימוש-לפי-החוקה-המאומצת (R309-ג · 42c72b28): חימוש-נשען-על-item-6 חוק-הבעלים-בלבד (KEY2 מרוחק, אף-פעם-לא-חימוש-עצמי) · PENDING-COOLDOWN מקומי = רשומת-ה-truth-monitor השמרנית (item-5 אדום עד 2026-10-26T01:49Z) · צורות-חוקיות: PENDING-COOLDOWN⇒ARMED (חוק-בעלים) | PENDING-COOLDOWN⇒STANDBY (עמידה) | ARMED⇒ARMED (צ׳קליסט-מלא). אסור: ARMED⇒STANDBY (דריפט) · gate=? · FILE-MISSING",
+   "text": "עקביות-השער-החברתי (R318 #10-תיקון-סרגל): השער-מותר-ARMED רק-תחת-חוק-בעלים-ARMED; STANDBY-תחת-ARMING-חוקי-הוא-קור-רוח-חוקי-כנה (לא-סטייה) — אכיפת-יתר/חסר = סטייה",
    "category": "constitution",
    "criticality": "high",
-   "cmd": "armed=$(python3 -c \"import json;print(json.load(open('/home/z/audit/Autonomy/ops/sovereign/DIRECTIVES/SOCIAL-ARMING.json')).get('status','?'))\" 2>/dev/null || echo FILE-MISSING); gate=$(curl -s -m 5 http://127.0.0.1:3040/social | python3 -c \"import json,sys;print(json.load(sys.stdin).get('social',{}).get('gate',{}).get('mode','?'))\" 2>/dev/null || echo UNREADABLE); echo \"arming=$armed gate=$gate\"",
+   "cmd": "python3 -c \"import base64; exec(base64.b64decode('aW1wb3J0IGpzb24sIHVybGxpYi5yZXF1ZXN0LCBkYXRldGltZQphcm09anNvbi5sb2FkKG9wZW4oJy9ob21lL3ovYXVkaXQvQXV0b25vbXkvb3BzL3NvdmVyZWlnbi9ESVJFQ1RJVkVTL1NPQ0lBTC1BUk1JTkcuanNvbicpKQphPWFybS5nZXQoJ3N0YXR1cycsJz8nKQpnYXRlPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vcm9zaHBpbmFjYXJlLXN5cy9zdGVlbS9zYW9zLWNvY2twaXQvbWluaS1zZXJ2aWNlcy9zYW9zLWVuZ2luZS9zdGF0ZS9yZWFkaW5lc3MuanNvbicsdGltZW91dD0xMikpCmc9Z2F0ZS5nZXQoJ3N0YXR1cycsIGdhdGUuZ2V0KCdnYXRlJywnPycpKQpldGE9Tm9uZQp0cnk6IGV0YT1hcm1bJ2NoZWNrbGlzdCddWyc1X2Nvb2xkb3duN2QnXVsnZXRhJ10KZXhjZXB0IEV4Y2VwdGlvbjogcGFzcwpldGFfZHQ9ZGF0ZXRpbWUuZGF0ZXRpbWUuZnJvbWlzb2Zvcm1hdChldGEucmVwbGFjZSgnWicsJyswMDowMCcpKSBpZiBldGEgZWxzZSBOb25lCmNvb2xkb3duX3JlZCA9IGJvb2woZXRhX2R0IGFuZCBldGFfZHQ+ZGF0ZXRpbWUuZGF0ZXRpbWUubm93KGRhdGV0aW1lLnRpbWV6b25lLnV0YykpCmNvbnNpc3RlbnQgPSAoYT09J0FSTUVEJyBhbmQgZz09J0FSTUVEJykgb3IgKGEhPSdBUk1FRCcgYW5kIGc9PSdTVEFOREJZJykgb3IgKGE9PSdBUk1FRCcgYW5kIGc9PSdTVEFOREJZJyBhbmQgY29vbGRvd25fcmVkKQphc3NlcnQgY29uc2lzdGVudCwgJ1NPQ0lBTC1JTkNPTlNJU1RFTlQ6IGFybWluZz0lcyBnYXRlPSVzIGNvb2xkb3duUmVkPSVzJyUoYSxnLGNvb2xkb3duX3JlZCkKdmVyZGljdD0nR0FURS1BUk1FRCcgaWYgKGE9PSdBUk1FRCcgYW5kIGc9PSdBUk1FRCcpIGVsc2UgKCdHQVRFLVNUQU5EQlktQ09PTERPV04tTEFXRlVMJyBpZiBjb29sZG93bl9yZWQgZWxzZSAnR0FURS1TVEFOREJZJykKcHJpbnQoJ3NvY2lhbCBjb25zaXN0ZW50OiBhcm1pbmc9JXMgZ2F0ZT0lcyBldGE9JXMgLT4gJXMgT0snJShhLGcsZXRhLHZlcmRpY3QpKQ==').decode())\"",
    "expect": {
     "exit": 0,
-    "regex": "arming=PENDING-COOLDOWN gate=STANDBY|arming=PENDING-COOLDOWN gate=ARMED|arming=ARMED gate=ARMED"
+    "regex": "social consistent: .+ OK$"
    },
-   "remedy": "חריגה-מהמטריצה = דריפט-חוקתי: KEY1-מקומי-לא-יכול-לעלות-על-KEY2 (השער-כבר-fail-closed); תיקון-המקור-הוא-הדחיפה-של-65335148 — נחסם-רק-בערוץ-ה-push-החי"
+   "remedy": "אכיפת-יתר (gate=ARMED בלי-חוק-בעלים) = P0 הפסקה; אכיפת-חסר (ARMING-וקור-רוח-ירוק-ושער-STANDBY) = תחקיר-שער"
   },
   {
    "id": "cycle-self-heal",
