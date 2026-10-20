@@ -11,6 +11,12 @@
  *   2777.0 SP (delegated out ≈ 1533 SP to 14 fleet/content accounts). The floor
  *   law is now evaluated on NET; gross kept alongside for continuity (both public,
  *   refs-only — same as before).
+ * t48 EXPLAINABILITY (measured drift: +360 SP delegated out within 15 min, no
+ *   receipt anywhere, values matching no sealed plan): the receipt now measures
+ *   the ACTIVE delegation listing every run (resolved refs ONLY — unresolved
+ *   delegatees aggregate to counts+SP, never names; refOf returns its input for
+ *   unmapped names, so raw passthrough is forbidden here) + the field-vs-listing
+ *   unsettled gap. Drift like today's becomes visible in every future run.
  *
  * Honest ladder:
  *   1. resolve roster refs→real names via engine/refs.mjs (FLEET_ROSTER_MAP env,
@@ -78,6 +84,30 @@ export function effectiveVests(a) {
 }
 
 /**
+ * t48: stats over the treasury's active delegation listing — leak-free by design.
+ *   resolved delegatees → {ref, sp}; unresolved → counted+summed (NO names ever).
+ *   Pure (refOf is env-driven), selftest-anchored.
+ */
+export function delegationStats(rows, props) {
+  const spOf = (v) => Math.round(vestsToSp(v, props) * 1000) / 1000;
+  const out = { count: 0, sumVests: 0, sumSp: 0, list: [], unresolvedCount: 0, unresolvedVests: 0, unresolvedSp: 0 };
+  for (const d of rows ?? []) {
+    const v = parseFloat(d.vesting_shares) || 0;
+    out.count += 1;
+    out.sumVests += v;
+    const name = String(d.delegatee ?? '');
+    const ref = refOf(name);
+    if (ref && ref !== name) out.list.push({ ref, sp: spOf(v) });
+    else { out.unresolvedCount += 1; out.unresolvedVests += v; }
+  }
+  out.sumSp = spOf(out.sumVests);
+  out.unresolvedSp = spOf(out.unresolvedVests);
+  delete out.sumVests;
+  delete out.unresolvedVests;
+  return out;
+}
+
+/**
  * planTopup({treasurySp, fleet:[{name, sp}]}, floor, fleetMin) — PURE, selftest-anchored.
  * Fleet accounts above fleetMin contribute their surplus until need is met.
  * Names in this function's output are whatever the caller passed (callers pass
@@ -124,6 +154,15 @@ async function live() {
     inSp: Math.round(vestsToSp(parseFloat(a0.received_vesting_shares) || 0, dyn.result) * 1000) / 1000,
     outSp: Math.round(vestsToSp(parseFloat(a0.delegated_vesting_shares) || 0, dyn.result) * 1000) / 1000,
   };
+  // t48: explain outSp — active listing (refs-only) + unsettled field-vs-listing gap
+  const delRes = await rpc('condenser_api.get_vesting_delegations', [treasuryName, '', 100], hosts);
+  if (delRes.ok && Array.isArray(delRes.result)) {
+    const stats = delegationStats(delRes.result, dyn.result);
+    receipt.delegation.active = { count: stats.count, sumSp: stats.sumSp, list: stats.list, unresolvedCount: stats.unresolvedCount, unresolvedSp: stats.unresolvedSp };
+    receipt.delegation.unsettledSp = Math.round((receipt.delegation.outSp - stats.sumSp) * 1000) / 1000;
+  } else {
+    receipt.delegation.active = { ok: false, reason: delRes.reason ?? 'listing-unavailable' };
+  }
   receipt.healthy = receipt.treasurySp >= TREASURY_MIN_SP;
   // 2. fleet headroom (real names fetched → scrubbed to refs before receipt)
   const fleetRes = await rpc('condenser_api.get_accounts', [cfg.steem.accounts.map((r) => R(r)).filter(Boolean)], hosts);
@@ -187,6 +226,16 @@ export function selftest() {
   const p4 = planTopup({ treasurySp: 2990, fleet: [{ name: refOf('real-estate-name'), sp: 500 }] });
   if (JSON.stringify(p4.ops).includes('real-estate-name')) throw new Error('scrub law broken — real name in plan');
   if (p4.ops[0]?.delegator !== 'acct-07') throw new Error('call-site refOf pattern broken');
+  // t48: delegationStats — resolved refs listed, unresolved aggregated nameless
+  const s1 = delegationStats([
+    { delegatee: 'real-estate-name', vesting_shares: '2000000 VESTS' },
+    { delegatee: 'stranger-account', vesting_shares: '1000000 VESTS' },
+  ], props);
+  if (s1.count !== 2 || s1.list.length !== 1 || s1.list[0].ref !== 'acct-07') throw new Error('delegationStats resolved listing');
+  if (Math.abs(s1.list[0].sp - 1) > 1e-9) throw new Error('delegationStats resolved SP');
+  if (s1.unresolvedCount !== 1 || Math.abs(s1.unresolvedSp - 0.5) > 1e-9) throw new Error('delegationStats unresolved aggregate');
+  if (JSON.stringify(s1).includes('stranger-account')) throw new Error('refs law broken — unresolved name in stats');
+  if (Math.abs(s1.sumSp - 1.5) > 1e-9) throw new Error('delegationStats sumSp');
   if (!REQUIRED_SECRETS.some((s) => s.name === 'CI_ADOPT_WIF_ACTIVE')) throw new Error('registry missing CI_ADOPT_WIF_ACTIVE');
   console.log('[treasury] selftest: PASS (vests math, feasibility, fleet-min, zero-need, scrub law, registry name)');
   return 0;
