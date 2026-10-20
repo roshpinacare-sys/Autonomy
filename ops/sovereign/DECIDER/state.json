@@ -1,15 +1,15 @@
 {
  "schema": "roshpina.sovereign-decider/1",
- "generatedAt": "2026-10-20T19:11:37Z",
+ "generatedAt": "2026-10-20T22:39:21Z",
  "publisher": "sovereign-decider.yml (GitHub Actions, keyless, T14)",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "charterMandateAt": "2026-10-11T21:20Z",
  "ownerMandateVerbatim": "[owner-directive]",
  "degraded": [],
  "chainVerify": {
-  "head": 110608845,
-  "mult": 0.0006205721265534431,
-  "treasuryNetSp": 2417.1,
+  "head": 110612972,
+  "mult": 0.0006205781645610003,
+  "treasuryNetSp": 2417.2,
   "minOperatorSp": 17.0,
   "beaconChainMatch": true
  },
@@ -74,7 +74,7 @@
     "lane": "state.json-published-first — כל-צרכני-ההכרעות קוראים D0 ראשון (דפוס-D2)"
    },
    "boardMeasured": true,
-   "decidedAt": "2026-10-20T19:11:35Z",
+   "decidedAt": "2026-10-20T22:39:20Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
@@ -99,7 +99,7 @@
     },
     {
      "id": "B",
-     "he": "שחרור-הזרימה-הנכנסת (undelegate ה-244.3 SP-הנכנסים) — נדחה: מוריד-את-האוצרה ל~2172.8 SP מתחת-למסילה (הפרת R2) ושחרור-האצלות-היוצאות עורף-את-רגלי-הצי.",
+     "he": "שחרור-הזרימה-הנכנסת (undelegate ה-244.3 SP-הנכנסים) — נדחה: מוריד-את-האוצרה ל~2172.9 SP מתחת-למסילה (הפרת R2) ושחרור-האצלות-היוצאות עורף-את-רגלי-הצי.",
      "scores": {
       "safety": 1,
       "reversibility": 4,
@@ -126,11 +126,11 @@
     "A"
    ],
    "evidence": [
-    "אוצרה נמדדת 2417.1 SP (ראש 110608845, מכפיל 0.000620572)",
-    "יעד 3000 · פער 582.9 SP · מסילת-שימור 2800 (R2)",
+    "אוצרה נמדדת 2417.2 SP (ראש 110612972, מכפיל 0.000620578)",
+    "יעד 3000 · פער 582.8 SP · מסילת-שימור 2800 (R2)",
     "האצלה-יוצאת-נמדדת 1894.7 SP · נכנסת-נמדדת 244.3 SP",
-    "משואה מפרסמת 2417.1 SP · תואם=True",
-    "סריקת-היסטוריה: 3000 ops-אחרונים (עד idx 150902)",
+    "משואה מפרסמת 2417.2 SP · תואם=True",
+    "סריקת-היסטוריה: 3000 ops-אחרונים (עד idx 151023)",
     "האצלות-אחרונות למפעילי-הצי: ~828.4 SP (רגלי-הצי — חיוניות, אין-לשחרר)"
    ],
    "policy": {
@@ -234,23 +234,23 @@
     "basis": "measured-only (CHARTER סעיף 2)",
     "review": "RE-MEASURE בכל פעימה; שינוי-רק-דרך-הפנקס (REVOKED/עדכון-גרסה)"
    },
-   "decidedAt": "2026-10-20T19:11:36Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
    "id": "D2-eng-errors",
    "area": "הנדסה",
-   "status": "ENFORCED",
+   "status": "OBSERVING",
    "titleHe": "תקלות-הצוות",
-   "verdictHe": "הצוות נמדד נקי (רצף 2<3) — ההכרעה נשארת-אוכפת עד-רצף-מלא, ממשיכים-למדוד בלי-להכריז-הצלחה-מוקדמת.",
+   "verdictHe": "הנושא-שנותב נמדד-נקי 3 פעימות רצופות — ההכרעה עוברת-ניטור (RE-MEASURE כנה; חזרת-תקלה תחזור-מיד-ל-P0) — אפס-המתנה, אפס-זיופים.",
    "evidence": [
-    "אפס סוכנים ב-state=error · אפס משימות blocked · רצף-נקי=2"
+    "אפס סוכנים ב-state=error · אפס משימות blocked · רצף-נקי=3 (מהפנקס)"
    ],
-   "decidedAt": "2026-10-20T19:11:36Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)",
    "reMeasure": {
-    "cleanStreak": 2,
-    "subjectResolved": false
+    "cleanStreak": 3,
+    "subjectResolved": true
    }
   },
   {
@@ -263,7 +263,7 @@
    "evidence": [
     "orphans=1 · ghosts=0 (flow-map.json, F-series — צריכה בלבד)"
    ],
-   "decidedAt": "2026-10-20T19:11:36Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
@@ -272,16 +272,15 @@
    "status": "ENFORCED",
    "priority": "P1",
    "titleHe": "רשת-האמת — כשל-בדיקה-עצמית מנותב מיד",
-   "verdictHe": "הריבונות מכריעה: 4 כשלי-אימות-עצמי מנותבים למסילת-התיקון מיד (fail-closed: כל-הצהרה-נבדקת מול מדידה) — אין-המתנה-להוראות.",
+   "verdictHe": "הריבונות מכריעה: 3 כשלי-אימות-עצמי מנותבים למסילת-התיקון מיד (fail-closed: כל-הצהרה-נבדקת מול מדידה) — אין-המתנה-להוראות.",
    "evidence": [
-    "מאמת-הרשת: 47/51 HAS_FAILURES (2026-10-20T13:53:10.348Z)",
+    "מאמת-הרשת: 48/51 HAS_FAILURES (2026-10-20T20:10:50.032Z)",
     "שער-האמת: ALL-GREEN (pass=7 fail=0)",
-    "A10: field \"freshness.verdict\" = \"STALE\", expected \"FRESH\"",
     "A31: core op saos.weave.core.v1 not found within the 26h window of any witness on the",
     "A39: state.rail.lifetime.wsteem = 0, minimum is 300000",
     "A44: state.rail.lifetime.wsteem = 0, minimum is 300000"
    ],
-   "decidedAt": "2026-10-20T19:11:36Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   },
   {
@@ -296,7 +295,7 @@
     "צ'רטר סעיף 6: נמדד-קיים",
     "LEVEL: current=S4 · asksToOwner=0"
    ],
-   "decidedAt": "2026-10-20T19:11:36Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 6 · R314)"
   },
   {
@@ -312,7 +311,7 @@
     "צ'רטר סעיף 7: נמדד-קיים",
     "פרוטוקול-הכרעות: 6/6 שלבים"
    ],
-   "decidedAt": "2026-10-20T19:11:36Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 7 · R316)"
   },
   {
@@ -327,7 +326,7 @@
     "PATTERN-INDEX: 30 תבניות · 30 עם מקור-מנוטר",
     "צ'רטר סעיף 8: נמדד-קיים"
    ],
-   "decidedAt": "2026-10-20T19:11:36Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 8 · R317)"
   },
   {
@@ -344,7 +343,7 @@
     "מושל-חי: רצפת 30$ · מס 500bps · עמלות 90% · בתוך-חוקה=כן",
     "פסקי-דין-פתוחים: 0 · seq: 52626"
    ],
-   "decidedAt": "2026-10-20T19:11:37Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 9 · R318)"
   },
   {
@@ -356,24 +355,24 @@
    "verdictHe": "הריבונות אוכפת מצבה-חברתית — אפס-טביעת-רגל: אין-שידור-חברתי-רב-חשבונות של הצי על STEEM (SOCIAL-STANDBY.md, R6). השער-הקשיח fail-closed STANDBY; חימוש-רק-דרך SOCIAL-ARMING.json שנכתב-בידי-הבעלים — הריבונות אינה-מחמשת-בעצמה. צ'קליסט-כשירות כנה: 5/6 PASS. חימוש-נרשם (directiveRef=W18-SOCIAL-OPEN-20261020) אך-הצ'קליסט-לא-מלא (5/6) — השער-נשאר-fail-closed עד-כשירות-מלאה.",
    "evidence": [
     "gate (readiness.json · keyless): status=ARMED · עודכן 2026-10-20T16:06:19.943Z",
-    "presence (presence-matrix-digest.json · keyless): verdict=GREEN · גיל-נמדד 0.2ש׳ (טרי <12ש׳)",
-    "beat (beat/ci-last-heartbeat.json · keyless): custody=14/14 · socialExecuted=0 · social=SOCIAL-IDLE · גיל-נמדד 0.7ש׳"
+    "presence (presence-matrix-digest.json · keyless): verdict=GREEN · גיל-נמדד 1.4ש׳ (טרי <12ש׳)",
+    "beat (beat/ci-last-heartbeat.json · keyless): custody=14/14 · socialExecuted=0 · social=SOCIAL-IDLE · גיל-נמדד 1.2ש׳"
    ],
    "readinessScorecard": [
     {
      "item": "נוכחות-שרשרת 14/14",
      "state": "PASS",
-     "measured": "14/14 נמדדו-על-השרשרת בפעימה-זו (ראש 110608845)"
+     "measured": "14/14 נמדדו-על-השרשרת בפעימה-זו (ראש 110612972)"
     },
     {
      "item": "פריסת-תצוגה מרובת-רשתות ירוקה (presence-matrix <12ש׳)",
      "state": "PASS",
-     "measured": "verdict=GREEN · גיל 0.2ש׳"
+     "measured": "verdict=GREEN · גיל 1.4ש׳"
     },
     {
      "item": "custody ≥13/14 נמדד 48ש׳",
      "state": "PASS",
-     "measured": "custody=14/14 · גיל-הפעימה 0.7ש׳"
+     "measured": "custody=14/14 · גיל-הפעימה 1.2ש׳"
     },
     {
      "item": "חוקי-האנטי-חווה חיים-בקונפיג (8%±5 · ≤1/יום · anti-herd)",
@@ -394,7 +393,7 @@
    "socialStandby": {
     "gateState": "ARMED",
     "presenceVerdict": "GREEN",
-    "presenceAgeHours": 0.2,
+    "presenceAgeHours": 1.4,
     "custody": "14/14",
     "socialExecuted": 0,
     "arming": {
@@ -404,7 +403,7 @@
     }
    },
    "law": "ops/sovereign/DIRECTIVES/SOCIAL-STANDBY.md (R6) · trace 1a13803b8739c2d5 · 2026-10-14",
-   "decidedAt": "2026-10-20T19:11:37Z",
+   "decidedAt": "2026-10-20T22:39:21Z",
    "decidedBy": "sovereign-decider-v1 (CHARTER)"
   }
  ],
