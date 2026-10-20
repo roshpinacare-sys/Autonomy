@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T17:10:34.786Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T17:52:16.899Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -29,18 +29,15 @@
 - [DEFECT] Domain/dex-beat @ 2026-10-20T03:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/org-gitleaks @ 2026-10-20T03:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-10-19T21:10 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/value-scan @ 2026-10-20T16:57 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/value-scan @ 2026-10-20T17:50 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-20T17:50 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-20T16:55 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-20T14:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-20T13:33 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/estate-vault @ 2026-10-20T07:42 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sovereign-state @ 2026-10-20T06:30 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-grid @ 2026-10-20T06:29 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-builder @ 2026-10-20T06:15 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/world-evolver @ 2026-10-20T04:50 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-defi @ 2026-10-20T04:50 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/fleet-heal @ 2026-10-20T04:39 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/floating-builds @ 2026-10-20T04:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/runtime-pacemaker @ 2026-10-20T16:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-ci @ 2026-10-20T16:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-3d @ 2026-10-20T16:43 — autonomy triage: read the log, fix root, land, verify
