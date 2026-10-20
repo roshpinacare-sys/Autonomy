@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T04:39:55.247Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T04:43:51.776Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -6,25 +6,7 @@
 - 36 ריפואים במשק · ליבה: Domain / Autonomy / FleetHQ
 
 ## מה-חדש (הבעלים בונה כל-הזמן — הרשת מבחינה עכשיו)
-- ריפו-חדש: roshpina (pushed 2026-10-20T04:39:30Z)
-- ריפו-חדש: Sandbox (pushed 2026-10-20T03:44:11Z)
-- ריפו-חדש: Project-files (pushed 2026-10-20T03:33:51Z)
-- ריפו-חדש: saos-desk (pushed 2026-10-20T02:49:28Z)
-- ריפו-חדש: Zip (pushed 2026-10-20T01:55:45Z)
-- ריפו-חדש: saos-control-center (pushed 2026-10-20T01:07:49Z)
-- ריפו-חדש: Defi (pushed 2026-10-19T18:04:57Z)
-- ריפו-חדש: Adsmarket (pushed 2026-10-19T11:10:15Z)
-- ריפו-חדש: saos-owner-channel (pushed 2026-10-19T06:28:01Z)
-- ריפו-חדש: saos-sovereign-platform (pushed 2026-10-18T12:15:09Z)
-- ריפו-חדש: saos-markets (pushed 2026-10-18T05:21:09Z)
-- ריפו-חדש: saos-agents (pushed 2026-10-18T05:20:44Z)
-- ריפו-חדש: Saosmartwallet (pushed 2026-10-18T00:37:28Z)
-- ריפו-חדש: sandbox-private (pushed 2026-10-17T06:54:31Z)
-- ריפו-חדש: TruthRail (pushed 2026-10-17T06:54:27Z)
-- ריפו-חדש: saos-sovereign-foundry (pushed 2026-10-14T07:13:41Z)
-- ריפו-חדש: anchor-baseline (pushed 2026-10-14T02:26:26Z)
-- ריפו-חדש: saos-jummper (pushed 2026-10-14T02:26:24Z)
-- ריפו-חדש: Sdk (pushed 2026-10-14T02:26:19Z)
+- אין-ריפו-חדש מאז-המדידה-הקודמת
 - אין-workflow-חדש מאז-המדידה-הקודמת
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
@@ -33,6 +15,7 @@
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/saos-act @ 2026-10-20T04:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/anchor-execute @ 2026-10-20T04:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/network-census @ 2026-10-20T04:07 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-pulse @ 2026-10-20T03:58 — autonomy triage: read the log, fix root, land, verify
