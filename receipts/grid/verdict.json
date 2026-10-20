@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-20T03:42:29.974Z",
+  "measuredAt": "2026-10-20T04:29:52.121Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -8,50 +8,22 @@
   "asserts": [
     {
       "id": "law-grid-state-present",
-      "ok": true,
+      "ok": false,
       "detail": "hyper-grid.json must exist and parse at steem@saos-cockpit HEAD",
       "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-fresh",
-      "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 13min)",
-      "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-exec-alive",
-      "ok": true,
-      "detail": "grid executable: lastVerdict=GOVERNOR-ACCUMULATING opsToday=84",
-      "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-revival-wired",
-      "ok": true,
-      "detail": "saos-runtime heartbeat must wire the bounded burst (T-62)",
-      "severity": "flag",
-      "verdict": "pass"
+      "verdict": "fail"
     }
   ],
-  "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "alerts": [
+    "grid-revival-unprovable: saos-runtime workflow unreadable — revival path unverified"
+  ],
+  "overall": "FAIL",
+  "reason": "grid-law failed: law-grid-state-present",
   "provenance": {
-    "stateBlobSha": "43f687f2db84a3e01377e0ea590cfd483a47f6b2",
+    "stateBlobSha": null,
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "39365689510",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39365689510",
-    "sha": "f257c4af378ab47c49a4b8e5420ec483d95f4e82"
-  },
-  "measured": {
-    "enabled": true,
-    "lastTickAt": "2026-10-20T03:29:21.978Z",
-    "ageMin": 13,
-    "ticks": 19706,
-    "lastVerdict": "GOVERNOR-ACCUMULATING",
-    "opsToday": 84,
-    "lastTxid": "5f4af4bc0994b3764d2128b0a67282dc8c176383"
+    "runId": "39369859584",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39369859584",
+    "sha": "3337a8dbe3dba06466110d07b02029298a1a4b3e"
   }
 }
