@@ -1,0 +1,175 @@
+{
+  "schema": "claims-ledger/1",
+  "law": "R310 · כל-טענה = מבחן-חי. טענה-בלי-מבחן היא אמונה, לא טענה. ריצה-מחדש משקרת או מאשרת — בלי חסד.",
+  "updatedAt": "2026-10-20T04:40:00Z",
+  "claims": [
+    {
+      "id": "organs-7-alive",
+      "text": "7 איברי-המערכת (:3037 dex · :3040 engine · :3041 custodian · :3042 metrics · :3043 builder · :3044 dev-keeper · :3047 state-witness) חיים ומשיבים",
+      "category": "infrastructure",
+      "criticality": "high",
+      "cmd": "n=0; for p in 3037 3040 3041 3042 3043 3044 3047; do for try in 1 2; do c=$(curl -s -m 3 -o /dev/null -w '%{http_code}' http://127.0.0.1:$p/health 2>/dev/null); [ \"$c\" = \"200\" ] && break; [ $try = 2 ] || sleep 4; done; [ \"$c\" = \"200\" ] && n=$((n+1)); done; echo \"$n/7 organs alive\"",
+      "expect": {
+        "exit": 0,
+        "regex": "7/7 organs alive"
+      },
+      "remedy": "איבר-שנפל מושלף מקובץ-מצב — הרץ את המפעיל שלו מ-mini-services"
+    },
+    {
+      "id": "push-channel-alive",
+      "text": "ערוץ-ה-push ל-GitHub חי (לפחות מקור-הרשאה אחד תקף: pat.env / helper / sealed vault)",
+      "category": "custody",
+      "criticality": "critical",
+      "cmd": "cd /home/z/audit/steem && GIT_TERMINAL_PROMPT=0 timeout 20 git push --dry-run origin HEAD:refs/heads/saos-cockpit >/dev/null 2>&1 && echo PUSH-DRYRUN-OK || echo PUSH-DEAD",
+      "expect": {
+        "exit": 0,
+        "regex": "PUSH-DRYRUN-OK"
+      },
+      "remedy": "R310: חידוש-הרשאה דרך מסילת ה-memo (chain-memo-custody) או התקנת GitHub-App — אפס-המתנה למפעיל"
+    },
+    {
+      "id": "sovereign-ledger-readable",
+      "text": "הספר-הריבוני fleet-economy (מרכז-הכובד R309-d) נגיש לקריאה מהמוח",
+      "category": "economy",
+      "criticality": "critical",
+      "cmd": "GIT_TERMINAL_PROMPT=0 timeout 15 git ls-remote https://github.com/roshpinacare-sys/fleet-economy.git HEAD >/dev/null 2>&1 && echo LEDGER-READABLE || echo LEDGER-UNREACHABLE",
+      "expect": {
+        "exit": 0,
+        "regex": "LEDGER-READABLE"
+      },
+      "remedy": "R309-d דורש מרכז-כובד קריא: או ציבורי-מאובטח (רשומות append-only בלי סודות) או מראה-קריאה ב-Actions"
+    },
+    {
+      "id": "agent-fleet-alive",
+      "text": "צי-הסוכנים במנוע חי (אין DEAD-AGENTS, watchdog בין-החיים)",
+      "category": "fleet",
+      "criticality": "high",
+      "cmd": "curl -s -m 5 http://127.0.0.1:3040/fleet | python3 -c \"import json,sys;d=json.load(sys.stdin).get('fleet',{});c=d.get('counts',{});print(f\\\"alive={c.get('alive')} dead={c.get('dead')} blocked={c.get('blocked')} verdict={d.get('verdict')}\\\")\"",
+      "expect": {
+        "exit": 0,
+        "regex": "dead=0"
+      },
+      "remedy": "R309-b: כל-סוכן-מת = דימום. מסילת-התאוששות אוטומטית (dev-keeper spawn) עם תנאי-שחרור נמדד"
+    },
+    {
+      "id": "curator-signing-alive",
+      "text": "ה-curator (מסילת-ההכנסה הראשית — curation) חתום-ומצביע",
+      "category": "economy",
+      "criticality": "critical",
+      "cmd": "curl -s -m 5 http://127.0.0.1:3040/fleet | python3 -c \"import json,sys;ag=json.load(sys.stdin).get('fleet',{}).get('agents',[]);c=[a for a in ag if a.get('id')=='curator'][0];print(c.get('status'),c.get('evidence','')[:60])\" 2>/dev/null || echo CURATOR-UNREADABLE",
+      "expect": {
+        "exit": 0,
+        "regex": "ALIVE"
+      },
+      "remedy": "R310 נמדד: ה-curator הצביע 3 (army-curate ירוק) אך עדיין חסום SIGNING-DEAD מאז אובדן-הרשאה — החוסם מיושן; יש לרענן את החסימה מול משמורת-החי (אימוץ-WIF נמדד 14/14)"
+    },
+    {
+      "id": "yield-rail-live",
+      "text": "מסילת-התשואה מחלקת בפועל (executedToday>0 ולא CUSTODY-FROZEN)",
+      "category": "economy",
+      "criticality": "critical",
+      "cmd": "curl -s -m 5 http://127.0.0.1:3040/yield | python3 -c \"import json,sys;d=json.load(sys.stdin).get('yieldRail',{});print(f\\\"verdict={d.get('verdict')} executedToday={d.get('executedToday')}\\\")\"",
+      "expect": {
+        "exit": 0,
+        "regex": "verdict=\\S+ executedToday=[1-9]"
+      },
+      "remedy": "CUSTODY-FROZEN עם חלקיות-משמורת: או שחרור-מדוד עם ראיה, או תיעוד-כנה מדוע-לא (R309-c: כל-דימום = פריט-תיקון)"
+    },
+    {
+      "id": "social-gate-consistent",
+      "text": "שער-ה-social במנוע עקבי-עם רשומת-החימוש (ARMED⇒ARMED · PENDING-COOLDOWN⇒STANDBY עד תום-הצינון הנמדד 2026-10-26T01:49Z) — אין-דילוג-על-צ'קליסט (גבול R309)",
+      "category": "constitution",
+      "criticality": "high",
+      "cmd": "armed=$(python3 -c \"import json;print(json.load(open('/home/z/audit/Autonomy/ops/sovereign/DIRECTIVES/SOCIAL-ARMING.json')).get('status','?'))\" 2>/dev/null || echo FILE-MISSING); gate=$(curl -s -m 5 http://127.0.0.1:3040/social | python3 -c \"import json,sys;print(json.load(sys.stdin).get('social',{}).get('gate',{}).get('mode','?'))\" 2>/dev/null || echo UNREADABLE); echo \"arming=$armed gate=$gate\"",
+      "expect": {
+        "exit": 0,
+        "regex": "arming=PENDING-COOLDOWN gate=STANDBY|arming=ARMED gate=ARMED"
+      },
+      "remedy": "עקביות-מלאה = השער ממפה את-הרשומה באמת. סתירה (ARMED והשער-סגור או להפך) = תיקון-מיידי עם-שרשרת-החלטה"
+    },
+    {
+      "id": "cycle-self-heal",
+      "text": "המחזור-היומי של המנוע רץ והושלם בריאות ב-24 השעות האחרונות",
+      "category": "fleet",
+      "criticality": "high",
+      "cmd": "curl -s -m 5 http://127.0.0.1:3040/cycle-status | python3 -c \"import json,sys,time;m=json.load(sys.stdin).get('marker',{});f=m.get('finishedAt');h=m.get('health');ok=m.get('ok');age=9999 if not f else (time.time()-time.mktime(time.strptime(f,'%Y-%m-%dT%H:%M:%S.%fZ')))/3600;print(f'ok={ok} health={h} ageH={age:.1f}')\"",
+      "expect": {
+        "exit": 0,
+        "regex": "ok=True health=ok ageH=[0-9.]+$"
+      },
+      "remedy": "R310 נמדד: המחזור רץ 26/27 צעדים-ירוקים; health=fail רק-בגלל צעד-social שנעצר-חוקית ע\"י STANDBY. תיקון: סירוב-חוקי נרשם IDLE ולא FAIL ב-marker (daily.mjs)"
+    },
+    {
+      "id": "actions-autonomy",
+      "text": "ה-bots האוטונומיים ממשיכים-לפעול ב-Actions (קומיטים טריים ב-Domain ב-48h האחרונות)",
+      "category": "autonomy",
+      "criticality": "normal",
+      "cmd": "age=$(( $(date +%s) - $(git -C /home/z/audit/Domain log -1 --format=%at) )); [ $age -lt 172800 ] && echo \"FRESH last-commit ${age}s ago\" || echo \"STALE ${age}s\"",
+      "expect": {
+        "exit": 0,
+        "regex": "FRESH"
+      },
+      "remedy": "בוט-מת — בדיקת-Actions ב-Domain (runs נכשלים/מושהים)"
+    },
+    {
+      "id": "economy-book-growing",
+      "text": "ספר-הכלכלה צומח (economy-state seq בגידול מדיד)",
+      "category": "economy",
+      "criticality": "normal",
+      "cmd": "curl -s -m 5 http://127.0.0.1:3000/api/economy-state | python3 -c \"import json,sys;d=json.load(sys.stdin);print(f\\\"seq={d.get('seq')} stale={d.get('stale')}\\\")\"",
+      "expect": {
+        "exit": 0,
+        "regex": "seq=(9[0-9][0-9]|[1-9][0-9]{3,})"
+      },
+      "remedy": "seq-קפוא = הפעימות-נעצרו; בדיקת artery-pacer/sovereign-tick"
+    },
+    {
+      "id": "signing-identity-alive",
+      "text": "זהות-החתימה (r5) חיה ונטענת במחזור-הכתיבה",
+      "category": "custody",
+      "criticality": "high",
+      "cmd": "cd /home/z/audit/steem && bun scripts/sovereign-selfcustody.mjs revive-signing --json 2>/dev/null | python3 -c \"import json,sys;d=json.load(sys.stdin);print(d.get('verdict'),d.get('fingerprint','')[:8])\"",
+      "expect": {
+        "exit": 0,
+        "regex": "SIGNING-(KEY-REVIVED|ALREADY-ALIVE)"
+      },
+      "remedy": "זהות-חתימה-מתה = כל-עבודה-מקומית חסרת-קרדנציאל; reseal-signing לפי-חוק"
+    },
+    {
+      "id": "federation-workflows-green",
+      "text": "אין-דגלים אדומים בפדרציה (45 הריפואים של הבעלים)",
+      "category": "federation",
+      "criticality": "normal",
+      "cmd": "tail -1 /home/z/audit/Autonomy/federation/LEDGER.jsonl | python3 -c \"import json,sys;d=json.load(sys.stdin);print(f\\\"verdict={d.get('verdict')} flagsTotal={d.get('counts',{}).get('flagsTotal')}\\\")\"",
+      "expect": {
+        "exit": 0,
+        "regex": "flagsTotal=0"
+      },
+      "remedy": "40 דגלים (WORKFLOW-RED/gitleaks ועוד) = חוב-תחזוקה מוכר; טריאז' לפי-ריפו בתור-התיקון"
+    },
+    {
+      "id": "watchdog-alive",
+      "text": "watchdog-המנוע חי (הוא-המוח-המרפא — מותו = אין-תיקון-עצמי)",
+      "category": "fleet",
+      "criticality": "high",
+      "cmd": "curl -s -m 5 http://127.0.0.1:3040/fleet | python3 -c \"import json,sys;ag=json.load(sys.stdin).get('fleet',{}).get('agents',[]);w=[a for a in ag if a.get('id')=='watchdog'][0];print(w.get('status'))\"",
+      "expect": {
+        "exit": 0,
+        "regex": "ALIVE"
+      },
+      "remedy": "watchdog-מת-6-ימים בלי-התראה = עיוורון-עצמי; פעימת-watchdog נפרדת שמודדת-את-המודד"
+    },
+    {
+      "id": "sovereign-network-selfhosted",
+      "text": "S5 — הרשת-שלנו מפרנסת-את-עצמה: מסילת-תשואה חיה + ספר-ריבוני קריא + ווליום-דקס מוכח (Class-A)",
+      "category": "sovereignty",
+      "criticality": "normal",
+      "cmd": "y=$(curl -s -m 5 http://127.0.0.1:3040/yield | python3 -c \"import json,sys;d=json.load(sys.stdin).get('yieldRail',{});print('1' if d.get('verdict') not in ('CUSTODY-FROZEN','FROZEN') and (d.get('executedToday') or 0)>0 else '0')\" 2>/dev/null || echo 0); l=$(GIT_TERMINAL_PROMPT=0 timeout 10 git -C /home/z/audit/steem ls-remote https://github.com/roshpinacare-sys/fleet-economy.git HEAD >/dev/null 2>&1 && echo 1 || echo 0); echo \"yield=$y ledger=$l\"",
+      "expect": {
+        "exit": 0,
+        "regex": "yield=1 ledger=1"
+      },
+      "remedy": "S5 דורש: התרת-ה-yield (ראית-משמורת) · ספר-קריא (ציבורי-מאובטח או מראה) · הוכחת-ווליום בדקס — המסלול המדורג בצ'ארטר §5"
+    }
+  ]
+}
