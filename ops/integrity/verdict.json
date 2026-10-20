@@ -1,88 +1,142 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-10-20T01:55:34.081Z",
-  "overall": "PASS",
+  "at": "2026-10-20T04:42:15.901Z",
+  "overall": "PASS_WITH_ALERTS",
   "summary": {
-    "sources": 11,
-    "verified": 6,
-    "findings": 9,
+    "sources": 9,
+    "verified": 0,
+    "findings": 22,
     "counts": {
-      "FLAG": 9
+      "MEDIUM": 11,
+      "FLAG": 11
     }
   },
   "provenance": {
-    "runId": "39356092788",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39356092788",
-    "sha": "c8b4c5ab795cd15ae6f9b46fb2d63eebf9e4fbfd"
+    "runId": "39370958110",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39370958110",
+    "sha": "032dd8641ae23a6e8d884f17f13f93e6cbb19652"
   },
-  "verified": [
-    {
-      "where": "self:ops/integrity/verdict.json",
-      "law": "verified",
-      "detail": "run=39344578979 conc=success repo=Autonomy"
-    },
-    {
-      "where": "FleetHQ:receipts/office-ci/verdict.json",
-      "law": "verified",
-      "detail": "run=39330070597 conc=success repo=FleetHQ"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=39330070597 conc=success repo=FleetHQ"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=39352549616 conc=success repo=Autonomy"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=39350731105 conc=success repo=Autonomy"
-    },
-    {
-      "where": "Domain:office/data.json",
-      "law": "verified",
-      "detail": "run=39353221391 conc=success repo=Autonomy"
-    }
-  ],
+  "verified": [],
   "findings": [
+    {
+      "level": "MEDIUM",
+      "where": "self:ops/integrity/verdict.json",
+      "law": "api-unreachable",
+      "detail": "HTTP לא-אמין עבור run 39356092788 — לא-ניתן-לאימות, לא-זיוף"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "Sandbox",
+      "law": "tree-unreachable",
+      "detail": "HTTP 401 — גילוי-דינמי דולג (לא-זיוף)"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "FleetHQ",
+      "law": "tree-unreachable",
+      "detail": "HTTP 401 — גילוי-דינמי דולג (לא-זיוף)"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "Domain",
+      "law": "tree-unreachable",
+      "detail": "HTTP 401 — גילוי-דינמי דולג (לא-זיוף)"
+    },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/wallet/verdict.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+      "law": "stale",
+      "detail": "157h > 26h — artery-wallet"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/wallet/verdict.json",
+      "law": "unprovenanced",
+      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: artery-wallet"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/fleet/verdict.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+      "law": "stale",
+      "detail": "158h > 26h — artery-fleet"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/fleet/verdict.json",
+      "law": "unprovenanced",
+      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: artery-fleet"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/grid/verdict.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+      "law": "unprovenanced",
+      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: artery-grid"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/latest.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+      "law": "stale",
+      "detail": "4h > 2h — sovereign.yml"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/latest.json",
+      "law": "unprovenanced",
+      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: sovereign.yml"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:ops/flow/receipt.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+      "law": "stale",
+      "detail": "77h > 26h — artery-flow"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "Sandbox:ops/flow/receipt.json",
+      "law": "api-unreachable",
+      "detail": "HTTP לא-אמין עבור run 38983667757 — לא-ניתן-לאימות, לא-זיוף"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:state/verifier/verdict-latest.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+      "law": "stale",
+      "detail": "188h > 26h — verifier.yml"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:state/verifier/verdict-latest.json",
+      "law": "unprovenanced",
+      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: verifier.yml"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "FleetHQ:receipts/office-ci/verdict.json",
+      "law": "api-unreachable",
+      "detail": "HTTP לא-אמין עבור run 39330070597 — לא-ניתן-לאימות, לא-זיוף"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "Domain:office/data.json",
+      "law": "api-unreachable",
+      "detail": "HTTP לא-אמין עבור run 39330070597 — לא-ניתן-לאימות, לא-זיוף"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "Domain:office/data.json",
+      "law": "api-unreachable",
+      "detail": "HTTP לא-אמין עבור run 39367505683 — לא-ניתן-לאימות, לא-זיוף"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "Domain:office/data.json",
+      "law": "api-unreachable",
+      "detail": "HTTP לא-אמין עבור run 39369859584 — לא-ניתן-לאימות, לא-זיוף"
+    },
+    {
+      "level": "MEDIUM",
+      "where": "Domain:office/data.json",
+      "law": "api-unreachable",
+      "detail": "HTTP לא-אמין עבור run 39362860446 — לא-ניתן-לאימות, לא-זיוף"
     },
     {
       "level": "FLAG",
@@ -91,16 +145,10 @@
       "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane"
     },
     {
-      "level": "FLAG",
-      "where": "Sandbox:ops/decision-truth/verdict.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
-    },
-    {
-      "level": "FLAG",
-      "where": "Sandbox:ops/integrity/verdict.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
+      "level": "MEDIUM",
+      "where": "Sandbox:ops/flow/receipt.json",
+      "law": "agent-authored-receipt",
+      "detail": "committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
     }
   ]
 }
