@@ -1,0 +1,29 @@
+{
+  "schema": "chainbus.directive.receipt/1",
+  "at": "2026-10-20T06:33:37.493Z",
+  "ok": true,
+  "ref": {
+    "block": 110593799,
+    "idx": 143976,
+    "seq": 1,
+    "from": "operator-plane",
+    "to": "*",
+    "runId": "t44-treasury"
+  },
+  "body": "{\"task\":\"treasury\",\"runId\":\"t44-treasury\"}",
+  "task": {
+    "name": "treasury",
+    "description": "treasury-topup: read treasury SP, compute §3 top-up plan from fleet headroom, publish key-readiness. Refs-only receipts (names stay memory-only).",
+    "commands": 1,
+    "timeoutSec": 180
+  },
+  "exec": {
+    "ok": true,
+    "code": 0,
+    "ms": 404,
+    "receipt": "receipts/execution/bus-d-110593799-143976.json",
+    "outTail": "\n=== [0] exit=0 killed=false 374ms ===\n$ node engine/treasury-topup.mjs\n[treasury] SP=4044.657 healthy=true key=PENDING — cloud secr… plan.need=0\n\n\nreceipt: receipts/execution/bus-d-110593799-143976.json ok=true\n",
+    "errTail": ""
+  },
+  "node": "https://steemapi.boylikegirl.club"
+}
