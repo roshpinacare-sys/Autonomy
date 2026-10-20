@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T04:43:51.776Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-20T04:44:38.424Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -28,12 +28,12 @@
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-19T18:52 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/daily-digest @ 2026-10-19T18:27 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-19T17:27 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-grid @ 2026-10-20T04:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/fleet-heal @ 2026-10-20T04:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/floating-builds @ 2026-10-20T04:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-20T04:29 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/federation @ 2026-10-20T04:29 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-20T04:29 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-10-20T04:29 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-20T03:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-defi @ 2026-10-20T03:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/hive-probe @ 2026-10-19T21:51 — autonomy triage: read the log, fix root, land, verify
