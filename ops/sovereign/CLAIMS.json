@@ -1,7 +1,7 @@
 {
  "schema": "claims-ledger/1",
  "law": "R310 · כל-טענה = מבחן-חי. טענה-בלי-מבחן היא אמונה, לא טענה. ריצה-מחדש משקרת או מאשרת — בלי חסד.",
- "updatedAt": "2026-10-20T12:20:00Z",
+ "updatedAt": "2026-10-20T14:10:00Z",
  "claims": [
   {
    "id": "organs-7-alive",
@@ -277,6 +277,30 @@
     "regex": "protocol phases=6/6 rationale=True/True"
    },
    "remedy": "שלב-חסר או הכרעה-בלי-rationale = פרוטוקול-הופר — תקן את DECISION-PROTOCOL.md את decider.py"
+  },
+  {
+   "id": "engineering-synthesis-codified",
+   "text": "R317: קנון-ההנדסה-המשותפת מקודד — דירקטיבת R317 (4 חוקים) + PATTERN-INDEX.md + צ'רטר סעיף 8, מנוטר ע״י הכרעה-עומדת D8 (fail-closed P0)",
+   "category": "engineering",
+   "criticality": "high",
+   "cmd": "python3 -c \"import sys; sys.path.insert(0,'/home/z/audit/Autonomy/ops/sovereign/DECIDER'); import decider; dr=[]; d8=decider.decide_engineering_synthesis(dr); print(d8['id'], d8['status'], 'degraded='+str(len(dr)))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "D8-engineering-synthesis (OBSERVING|ENFORCED) degraded=0"
+   },
+   "remedy": "ENFORCED = הקנון נפגע: שחזור R317/PATTERN-INDEX/סעיף-8 מה-git מיד (P0, אפס-המתנה)"
+  },
+  {
+   "id": "pattern-index-standing",
+   "text": "PATTERN-INDEX.md עומד כקנון-חי: >=15 תבניות-הנדסה, כל אחת עם מקור-מנוטר (Task-ID + מסילה) — תבנית-בלי-מקור = שמועה, לא חוק (R317 חוק 2)",
+   "category": "engineering",
+   "criticality": "medium",
+   "cmd": "python3 -c \"p=open('/home/z/audit/Autonomy/ops/sovereign/PATTERN-INDEX.md',encoding='utf-8').read(); blocks=[b for b in p.split('### ') if b.strip()][1:]; sourced=[b for b in blocks if 'מקור' in b and ('Task' in b or 'R3' in b or 'G3' in b or 'T2' in b)]; assert len(blocks)>=15 and len(sourced)==len(blocks), 'canon-weak: %d/%d' % (len(sourced), len(blocks)); print('patterns=%d sourced=%d OK' % (len(blocks), len(sourced)))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "OK$"
+   },
+   "remedy": "קנון-דל/תבניות-בלי-מקור: השלמת מקורות מ-worklog.md או הסרת התבנית — הקנון אינו מנפח"
   }
  ]
 }

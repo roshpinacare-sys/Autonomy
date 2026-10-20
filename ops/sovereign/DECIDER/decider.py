@@ -800,6 +800,67 @@ def decide_owner_remembrance(degraded):
             "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 7 · R316)"}
 
 
+def decide_engineering_synthesis(degraded):
+    """D8 [R317] — הנדסה-משותפת: תעלול-הסוכנים-לקנון (keyless, מדידה-מקומית).
+    מודד: (א) דירקטיבת R317 קיימת עם 4 חוקיה; (ב) PATTERN-INDEX.md נושא ≥15
+    תבניות, כל אחת עם מקור-מנוטר; (ג) הצ'רטר נושא סעיף 8. ירוק → OBSERVING;
+    סטייה → ENFORCED P0 (קנון-התבניות הוא חוק, לא זיכרון-סוכנים)."""
+    r317_path = os.path.join(BASE, "..", "DIRECTIVES", "R317-ENGINEERING-SYNTHESIS.md")
+    patterns_path = os.path.join(BASE, "..", "PATTERN-INDEX.md")
+    charter_path = os.path.join(BASE, "CHARTER.md")
+    ev, fails = [], []
+
+    try:
+        r317 = open(r317_path, encoding="utf-8").read()
+        laws = [f"חוק {i}" for i in range(1, 5) if f"### חוק {i}" in r317]
+        ev.append(f"R317: {len(laws)}/4 חוקים")
+        if len(laws) < 4:
+            fails.append(f"R317-חסר-חוקים: {4 - len(laws)}")
+    except Exception as e:
+        degraded.append("r317-doctrine")
+        fails.append(f"R317-לא-נקרא: {type(e).__name__}")
+
+    try:
+        pat = open(patterns_path, encoding="utf-8").read()
+        blocks = [b for b in pat.split("### ") if b.strip()][1:]
+        sourced = [b for b in blocks if "מקור" in b and ("Task" in b or "R3" in b or "G3" in b or "T2" in b)]
+        ev.append(f"PATTERN-INDEX: {len(blocks)} תבניות · {len(sourced)} עם מקור-מנוטר")
+        if len(blocks) < 15:
+            fails.append(f"קנון-דל: {len(blocks)} תבניות (יעד ≥15)")
+        if len(sourced) < len(blocks):
+            fails.append(f"תבניות-בלי-מקור: {len(blocks) - len(sourced)}")
+    except Exception as e:
+        degraded.append("pattern-index")
+        fails.append(f"PATTERN-INDEX-לא-נקרא: {type(e).__name__}")
+
+    try:
+        ch = open(charter_path, encoding="utf-8").read()
+        ok = "סעיף 8 — הנדסה-משותפת" in ch
+        ev.append(f"צ'רטר סעיף 8: {'נמדד-קיים' if ok else 'חסר'}")
+        if not ok:
+            fails.append("צ'רטר-סעיף-8-חסר")
+    except Exception as e:
+        degraded.append("charter-s8")
+        fails.append(f"צ'רטר-לא-נקרא: {type(e).__name__}")
+
+    if not fails:
+        return {"id": "D8-engineering-synthesis", "area": "הנדסה", "status": "OBSERVING",
+                "titleHe": "הנדסה-משותפת: תעלול-הסוכנים-לקנון (R317)",
+                "verdictHe": ("קנון-התבניות עומד: התבניות-המנצחות של כל-המסילות בגיט עם מקור-מנוטר — "
+                              "סוכן-חדש לומד-מהקנון, לא ממוקשי-העבר"),
+                "rationale": ("הקנון-חי-בגיט עדיף על זיכרון-סוכנים (חוק 2 R317); כל-תבנית נכנסת רק עם "
+                              "מקור+מבחן-כוזב — הקנון כפוף לאותו סרגל-כנות כמו הכל (חוק 3 R317)"),
+                "evidence": ev, "decidedAt": now(),
+                "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 8 · R317)"}
+    return {"id": "D8-engineering-synthesis", "area": "הנדסה", "status": "ENFORCED", "priority": "P0",
+            "titleHe": "קנון-התבניות סטה — שחזור-עצמאי מיד",
+            "verdictHe": ("הריבונות מכריעה: קנון-ההנדסה המשותפת נפגע (" + "; ".join(fails[:3]) +
+                          ") — משוחזר מהיסטוריית-ה-git, אפס-המתנה-לבעלים"),
+            "rationale": "הקנון-הוא-חוק (סעיף 8); סטייתו P0 — סוכן-שלא-לומד-מעמיתיו חוזר-על-כל-מוקש",
+            "evidence": ev + fails, "decidedAt": now(),
+            "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 8 · R317)"}
+
+
 def decide_verify(av, tg, degraded):
     """D4 [T15] — רשת-האמת: ההכרעה רואה את הבדיקה-העצמית של הגוף (המאמת-העצמאי
     של הקונסולה 51-טענות + שער-האמת-הציבורי). כשל → הכרעה-מנותבת (P0/P1) מיד —
@@ -932,6 +993,7 @@ def main():
         decide_verify(av, tg, degraded),  # [T15] רשת-האמת — בדיקה-עצמית נראית-ומוכרעת
         decide_architecture_owner(degraded),  # [R314] הארכיטקטורה-היא-הבעלים — אפס-בקשות + כנות-רמה
         decide_owner_remembrance(degraded),  # [R316] הבעלים-האנושי-הנזכר — הזכר מכני fail-closed
+        decide_engineering_synthesis(degraded),  # [R317] הנדסה-משותפת — קנון-התבניות עם מקור-מנוטר
         decide_social_standby(social, chain, degraded),  # [exec29] מצבה-חברתית — R6 fail-closed + צ'קליסט-כנה
     ]
 
