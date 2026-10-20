@@ -1,6 +1,6 @@
 # Run Scores (aeon-pattern, deterministic)
 
-generated 2026-10-20T05:16:04.247Z · fleet score **3.00/5** · lanes 12
+generated 2026-10-20T12:03:42.879Z · fleet score **3.00/5** · lanes 12
 
 | agent | repo | score | why | last |
 |---|---|---|---|---|
