@@ -20,7 +20,7 @@
    S3 צי-חי+זהות-חתימה · S4 כלכלה-משלמת-את-עצמה · S5 רשת-מפרנסת-את-עצמה.
    **נמדד עכשיו: S1, חסום-ב-S2** — הציון הכן-הראשון.
 3. **R310-c · מסילת-ה-memo** (`mini-services/saos-engine/chain-memo-custody.mjs`):
-   חידוש-הרשאה דרך-השרשרת — הבעלים שולח transfer מוצפן (memo `#`) ל-headcorner;
+   חידוש-הרשאה דרך-השרשרת — הבעלים שולח transfer מוצפן (memo `#`) לארנק-הראש (רוסטר[0], חתום-בכספת — חוק-ההפניות: אפס-שמות-בעץ);
    הפסיקה: decode (מפתח-memo chain-judged מהכספת) → probe (חי + גישת-ארגון) →
    התקנה 0600 + seal (fail-closed). קבלה-בלבד · אפס-חשיפה · פעימת dev-keeper כל-10 דקות.
    selftest נמדד: SELFTEST-ROUNDTRIP-OK · poll חי: army-keys-vault:GEN-2+chain-judged.

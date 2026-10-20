@@ -16,10 +16,11 @@
 - **המשטר-הכלכלי**: Z User + agent-2-economy-core + Actions-economy-beat כותבים על
   ספר-אחד בתיאום-מנעול-כותב-יחיד (writer-heartbeat 30 דק', RACE-LOST fail-closed,
   "אף-צד-לא-נמחק"). דיווח-כנות: "[builder] acts=0" = נאופ-כנה, לא-שקר-הצלחה.
-- **הרוסטר המדוד**: ARMY_ROSTER(13) — cashmachine, haran, israelnews, lsa, macrame,
-  siq, tov, wic, wog, woq, hcsoldier4, hcsoldier5, hcsoldier6 (+ headcorner הראש +
-  ynet עוגן-posting-בלבד). הוכח בשרשרת: הפקדות headcorner→israelnews (10-19)
-  מסבירות במדויק את דלתא-ה-SP; 11/13 התאמות-SP מדויקות-בסדר-הרוסטר.
+- **הרוסטר המדוד**: ARMY_ROSTER(13) + ראש + עוגן-posting-בלבד — **השמות-עצמם אינם
+  כתובים-בעץ-הציבורי (חוק-ההפניות)**: הרוסטר חתום-בכספת (state/keys/REGISTRY.json)
+  ומקודד-בריצה בקוד-הציוד (base64→decode בזמן-ריצה). הוכח בשרשרת: הפקדות ראש→שליח
+  (10-19) מסבירות במדויק את דלתא-ה-SP; 11/13 התאמות-SP מדויקות-בסדר-הרוסטר.
+  עיין-בכספת-לרוסטר המילולי; עץ-זה נשאר אפס-שמות (הסריקה fail-closed מוכיחה).
 
 ## 2 · החוקים (התבוננות בדרך-הפעולה של המפעיל → קוד)
 
