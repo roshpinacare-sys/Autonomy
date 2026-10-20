@@ -19,7 +19,7 @@
 
 1. מסילת-המפתחות-העצמית: כספת (ESTATE-VAULT) → GIT-CRED roundtrip → אימוץ-רנטיים
    (R302: keyless:false + runtime-adopted WIFs, memory-only).
-2. ערוץ-ה-memo-המוצפן: הבעלים נתן ערוץ (headcorner → custody → `upload/pat.env`
+2. ערוץ-ה-memo-המוצפן: הבעלים נתן ערוץ (acct-00 → custody → `upload/pat.env`
    0600 → channel-watch) — הוא-ערוץ-קבלה, לא ערוץ-בקשה.
 3. סיבוב-עצמי: הצפנה (crypto_box_seal) + הצבה-עצמית של Actions secret (נמדד R312).
 
