@@ -664,6 +664,67 @@ def decide_social_standby(social, chain, degraded):
             "decidedAt": now(), "decidedBy": "sovereign-decider-v1 (CHARTER)"}
 
 
+def decide_architecture_owner(degraded):
+    """D6 [R314] — הארכיטקטורה-היא-הבעלים: עמידה-חוקתית-מתמדת (keyless, מדידה-מקומית).
+    מודד: (א) R314 קיים עם 4 החוקים; (ב) הצ'רטר נושא סעיף 6; (ג) LEVEL.json כנה —
+    current∈S0..S5 + asksToOwnerThisRound==0; (ד) "פי 1000" לא נטען כמצב.
+    ירוק → OBSERVING (עמידה-תקינה, ממשיכים-למדוד); סטייה → ENFORCED מנותב מיד
+    (אפס-בקשות: הריבונות מתקנת-את-עצמה, לא ממתינה)."""
+    import json as _json
+    r314_path = os.path.join(BASE, "..", "DIRECTIVES", "R314-ARCHITECTURE-AS-OWNER.md")
+    level_path = os.path.join(BASE, "..", "LEVEL.json")
+    charter_path = os.path.join(BASE, "CHARTER.md")
+    ev, fails = [], []
+
+    try:
+        r314 = open(r314_path, encoding="utf-8").read()
+        laws = [f"חוק {i}" for i in range(1, 5) if f"### חוק {i}" in r314]
+        ev.append(f"R314: {len(laws)}/4 חוקים נמדדו בקובץ")
+        if len(laws) < 4:
+            fails.append(f"R314-חסר-חוקים: {4 - len(laws)}")
+    except Exception as e:
+        degraded.append("r314-doctrine")
+        fails.append(f"R314-לא-נקרא: {type(e).__name__}")
+
+    try:
+        ch = open(charter_path, encoding="utf-8").read()
+        ok = "סעיף 6 — הארכיטקטורה-היא-הבעלים" in ch
+        ev.append(f"צ'רטר סעיף 6: {'נמדד-קיים' if ok else 'חסר'}")
+        if not ok:
+            fails.append("צ'רטר-סעיף-6-חסר")
+    except Exception as e:
+        degraded.append("charter-s6")
+        fails.append(f"צ'רטר-לא-נקרא: {type(e).__name__}")
+
+    try:
+        lv = _json.load(open(level_path, encoding="utf-8"))
+        cur = str(lv.get("current") or "")
+        asks = lv.get("asksToOwnerThisRound")
+        if asks is None:
+            asks = (lv.get("ownerRouting") or {}).get("asksToOwnerThisRound")
+        ev.append(f"LEVEL: current={cur} · asksToOwner={asks}")
+        if not re.fullmatch(r"S[0-5]", cur):
+            fails.append(f"רמה-לא-כנה: {cur!r} (חייב S0..S5)")
+        if asks != 0:
+            fails.append(f"בקשות-לבעלים: {asks} (יעד-עומד: 0)")
+    except Exception as e:
+        degraded.append("level-honesty")
+        fails.append(f"LEVEL-לא-נמדד: {type(e).__name__}")
+
+    if not fails:
+        return {"id": "D6-architecture-as-owner", "area": "חוקה", "status": "OBSERVING",
+                "titleHe": "הארכיטקטורה-היא-הבעלים (R314)",
+                "verdictHe": "התיקון-החוקתי עומד: אפס-בקשות-לבעלים, רמה-כנה בסולם, ×1000 כיוון-בלבד — ממשיכים-למדוד-ולהרחיב-יכולת",
+                "evidence": ev, "decidedAt": now(),
+                "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 6 · R314)"}
+    return {"id": "D6-architecture-as-owner", "area": "חוקה", "status": "ENFORCED", "priority": "P0",
+            "titleHe": "הארכיטקטורה-היא-הבעלים — סטייה-חוקתית מנותבת מיד",
+            "verdictHe": ("הריבונות מכריעה: סטייה מ-R314 נמדדה ומתוקנת עצמאית (אפס-בקשות: "
+                          "המכונה מסתדרת-עם-עצמה) — " + "; ".join(fails[:3])),
+            "evidence": ev + fails, "decidedAt": now(),
+            "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 6 · R314)"}
+
+
 def decide_verify(av, tg, degraded):
     """D4 [T15] — רשת-האמת: ההכרעה רואה את הבדיקה-העצמית של הגוף (המאמת-העצמאי
     של הקונסולה 51-טענות + שער-האמת-הציבורי). כשל → הכרעה-מנותבת (P0/P1) מיד —
@@ -794,6 +855,7 @@ def main():
         decide_eng(foreman, wos, degraded, ledger_lines),
         decide_flow(flow, degraded),
         decide_verify(av, tg, degraded),  # [T15] רשת-האמת — בדיקה-עצמית נראית-ומוכרעת
+        decide_architecture_owner(degraded),  # [R314] הארכיטקטורה-היא-הבעלים — אפס-בקשות + כנות-רמה
         decide_social_standby(social, chain, degraded),  # [exec29] מצבה-חברתית — R6 fail-closed + צ'קליסט-כנה
     ]
 

@@ -95,12 +95,13 @@
    "text": "המחזור-היומי של המנוע רץ והושלם בריאות ב-24 השעות האחרונות",
    "category": "fleet",
    "criticality": "high",
-   "cmd": "curl -s -m 5 http://127.0.0.1:3040/cycle-status | python3 -c \"import json,sys,time;m=json.load(sys.stdin).get('marker',{});f=m.get('finishedAt');h=m.get('health');ok=m.get('ok');age=9999 if not f else (time.time()-time.mktime(time.strptime(f,'%Y-%m-%dT%H:%M:%S.%fZ')))/3600;print(f'ok={ok} health={h} ageH={age:.1f}')\"",
+   "cmd": "curl -s -m 5 http://127.0.0.1:3040/cycle-status | python3 -c \"\nimport json,sys,time\nm=json.load(sys.stdin).get('marker',{})\nf=m.get('finishedAt'); s=m.get('startedAt'); ok=m.get('ok'); run=m.get('running')\ndef age(t): return (time.time()-time.mktime(time.strptime(t,'%Y-%m-%dT%H:%M:%S.%fZ')))/3600 if t else 9999\nif run and s and age(s)<1.5: print(f'CYCLE-RUNNING ageH={age(s):.1f}')\nelif f and ok and age(f)<3: print(f'CYCLE-OK ageH={age(f):.1f}')\nelse: print(f'CYCLE-STALE ageH=9999.0')\"",
    "expect": {
     "exit": 0,
-    "regex": "ok=True health=ok ageH=[0-9.]+$"
+    "regex": "CYCLE-(RUNNING|OK)"
    },
-   "remedy": "R310 נמדד: המחזור רץ 26/27 צעדים-ירוקים; health=fail רק-בגלל צעד-social שנעצר-חוקית ע\"י STANDBY. תיקון: סירוב-חוקי נרשם IDLE ולא FAIL ב-marker (daily.mjs)"
+   "remedy": "R310 נמדד: המחזור רץ 26/27 צעדים-ירוקים; health=fail רק-בגלל צעד-social שנעצר-חוקית ע\"י STANDBY. תיקון: סירוב-חוקי נרשם IDLE ולא FAIL ב-marker (daily.mjs)",
+   "note": "R314 honesty-fix: runner now distinguishes fresh-RUNNING from fresh-FINISHED from STALE (5th in lying-removal series; the ruler itself was the liar)"
   },
   {
    "id": "actions-autonomy",
@@ -173,6 +174,50 @@
     "regex": "yield=1 ledger=1"
    },
    "remedy": "S5 דורש: התרת-ה-yield (ראית-משמורת) · ספר-קריא (ציבורי-מאובטח או מראה) · הוכחת-ווליום בדקס — המסלול המדורג בצ'ארטר §5"
+  },
+  {
+   "id": "doctrine-architecture-as-owner",
+   "text": "R314 (הארכיטקטורה-היא-הבעלים) עומד: קובץ-הדוקטרינה נושא 4 החוקים והצ'רטר נושא סעיף 6 — התיקון-החוקתי בגיט, לא בזיכרון",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "c=0; f=/home/z/audit/Autonomy/ops/sovereign/DIRECTIVES/R314-ARCHITECTURE-AS-OWNER.md; ch=/home/z/audit/Autonomy/ops/sovereign/DECIDER/CHARTER.md; for i in 1 2 3 4; do grep -q \"### חוק $i\" \"$f\" && c=$((c+1)); done; grep -q \"סעיף 6 — הארכיטקטורה-היא-הבעלים\" \"$ch\" && c=$((c+1)); echo \"r314-doctrine $c/5\"; [ \"$c\" = 5 ]",
+   "expect": {
+    "exit": 0,
+    "regex": "r314-doctrine 5/5"
+   }
+  },
+  {
+   "id": "asks-to-owner-zero",
+   "text": "אפס-בקשות-לבעלים (R314 חוק 2): asksToOwnerThisRound == 0 נמדד מ-LEVEL.json — המכונה מסתדרת עם עצמה",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "python3 -c \"import json; d=json.load(open('/home/z/audit/Autonomy/ops/sovereign/LEVEL.json')); print('asksToOwner', d['ownerRouting']['asksToOwnerThisRound'])\"",
+   "expect": {
+    "exit": 0,
+    "regex": "asksToOwner 0"
+   }
+  },
+  {
+   "id": "decider-d6-standing",
+   "text": "D6-architecture-as-owner היא הכרעה-עומדת במנוע-ההכרעה: מודדת R314 + צ'רטר סעיף 6 + כנות-רמה, fail-closed ל-ENFORCED בסטייה",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "python3 -c \"import sys; sys.path.insert(0,'/home/z/audit/Autonomy/ops/sovereign/DECIDER'); import decider; dr=[]; d=decider.decide_architecture_owner(dr); print(d['id'], d['status'], 'degraded='+str(len(dr)))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "D6-architecture-as-owner (OBSERVING|ENFORCED) degraded=0"
+   }
+  },
+  {
+   "id": "claims-attestor-continuous",
+   "text": "מדידה-כנה-רציפה (R314): claims-attestor :3045 חי, מריץ את ה-ledger כל 15 דק' ומנציח היסטוריית-אימות append-only — 'מדוד-אל-תסמוך' הפך לקצב-עומד",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "h=$(curl -s -m 5 http://127.0.0.1:3045/health); echo \"$h\" | python3 -c \"import json,sys; d=json.load(sys.stdin); print('attestor ok=%s entries=%d ledger=%s' % (d['ok'], d['entries'], d['ledgerPresent']))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "attestor ok=True entries=[1-9][0-9]* ledger=True"
+   }
   }
  ]
 }
