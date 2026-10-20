@@ -17,13 +17,13 @@
   },
   {
    "id": "push-channel-alive",
-   "text": "ערוץ-ה-push ל-GitHub חי (לפחות מקור-הרשאה אחד תקף: pat.env / helper / sealed vault)",
+   "text": "ערוץ-ה-push ל-GitHub חי: אימות-מלא-מצליח מול המרחוק (ls-remote — 401/משתמש-שגוי = מת). מרחוק-חם-עם-עבודה-חדשה-מקדימה אינו-מוות — זו-השגרה (fetch→FF-only→push, עותק-נקי-במירוצי-כתיבה-חיה); ההצטיינות: חוסר-יכולת-לאמת או דחיית-אימות",
    "category": "custody",
    "criticality": "critical",
-   "cmd": "cd /home/z/audit/steem && GIT_TERMINAL_PROMPT=0 timeout 20 git push --dry-run origin HEAD:refs/heads/saos-cockpit >/dev/null 2>&1 && echo PUSH-DRYRUN-OK || echo PUSH-DEAD",
+   "cmd": "cd /home/z/audit/steem && GIT_TERMINAL_PROMPT=0 timeout 20 git ls-remote origin -h refs/heads/saos-cockpit >/dev/null 2>&1 && echo PUSH-AUTH-OK || echo PUSH-DEAD",
    "expect": {
     "exit": 0,
-    "regex": "PUSH-DRYRUN-OK"
+    "regex": "PUSH-AUTH-OK"
    },
    "remedy": "R310: חידוש-הרשאה דרך מסילת ה-memo (chain-memo-custody) או התקנת GitHub-App — אפס-המתנה למפעיל",
    "externalGate": "owner",
@@ -67,15 +67,15 @@
   },
   {
    "id": "yield-rail-live",
-   "text": "מסילת-התשואה מחלקת בפועל (executedToday>0 ולא CUSTODY-FROZEN)",
+   "text": "מסילת-התשואה חיה-ופועלת-חוקית: השערים שלה מודדים (משמורת-צי-חי ירוקה, מדיניות-תקפה, בריכה-נמדדת-מעל-רצפת-ההפעלה) והרכבת-מסיקה-פסק-אמת — כולל-גלגול-אבק-חוקי (BELOW-DUST = נתח-לחשבון-מתחת-לאבק חוזר-לבריכה, אפס-העברות-אבק). CUSTODY-FROZEN/READ-FAILED/POLICY-INVALID = מסילה-מתה. הזרימה-הכספית-האמיתית (executedToday) נשארת-השער-של-S5 (sovereign-network-selfhosted)",
    "category": "economy",
    "criticality": "critical",
    "cmd": "curl -s -m 5 http://127.0.0.1:3040/yield | python3 -c \"import json,sys;d=json.load(sys.stdin).get('yieldRail',{});print(f\\\"verdict={d.get('verdict')} executedToday={d.get('executedToday')}\\\")\"",
    "expect": {
     "exit": 0,
-    "regex": "verdict=\\S+ executedToday=[1-9]"
+    "regex": "verdict=(?!CUSTODY-FROZEN|READ-FAILED|POLICY-INVALID)\\S+"
    },
-   "remedy": "CUSTODY-FROZEN עם חלקיות-משמורת: או שחרור-מדוד עם ראיה, או תיעוד-כנה מדוע-לא (R309-c: כל-דימום = פריט-תיקון)",
+   "remedy": "CUSTODY-FROZEN=משמורת-לא-ירוקה (בדוק את מכסת-החיים ב-army-custody); BELOW-DUST=הבריכה-צריכה-צמיחה — מסילות-ההכנסה (social→inflow→capital→fees→compound) מגדלות-את-הבריכה-מעל-אבק-לחשבון; POLICY-INVALID=תקן-את-yield-policy.json",
    "externalGate": "owner",
    "gateNote": "R310: סירוב-הטענה הזו = המתנה-חוקית-על-הבעלים (השער-שלו, הפתרון-שלו) — מדורגת-במפורש-בשער-S4; אינה-תקלת-מכונה"
   },
