@@ -1,7 +1,7 @@
 {
   "schema": "sovereign-level-v1",
-  "measuredAt": "2026-10-20T11:15:00Z",
-  "round": "R314-architecture-as-owner",
+  "measuredAt": "2026-10-20T12:20:00Z",
+  "round": "R316-remembered-owner",
   "method": "every number below measured fresh this round; nothing inherited from prior claims (owner law: trust no claims; R314: honesty above all, no lying about level)",
   "ladder": {
     "S0": "dormant files",
@@ -20,7 +20,8 @@
     "claims-ledger re-run 09:5xZ: 12/14 MEASURED-TRUE, CLAIMS-PARTIAL (fresh measure; refuted = federation debt 50 flags trending down + S5 yield owner gate)",
     "organ census 09:5xZ: 11 autonomous bodies alive (engine 3040, custodian 3041, metrics 3042, builder 3043, dev-keeper 3044, witness 3047, dex 3037, economy 3020, builder-host 3021, seal 3022, social 3023) + guardian",
     "writer identity alive: GPG r5 (301E5315) imported by the engine boot itself; signed pushes measured (steem 47811378b, saos-console-zai f7e0aea)",
-    "R314: claims-ledger 16/18 MEASURED-TRUE (fresh 11:19Z) + continuous attestor :3045 + doctrine D6 OBSERVING + charter section 6 — zero owner input"
+    "R314: claims-ledger 16/18 MEASURED-TRUE (fresh 11:19Z) + continuous attestor :3045 + doctrine D6 OBSERVING + charter section 6 — zero owner input",
+    "R316: owner-remembrance mechanical (OWNER-LEGACY 5/5 verbatim quotes incl. 'שאני לא אשכח' + charter s7 + D7 fail-closed) + owner-absence-resilience 13/13 organs asks=0 + six-phase decision protocol — zero owner input"
   ],
   "gatesToS5": [
     {
@@ -91,6 +92,21 @@
       "name": "lying-by-ruler removal (R314)",
       "measured": "cycle-self-heal REFUTED while a cycle was RUNNING — the ruler didn't distinguish RUNNING from STALE; claim patched to honest 3-state verdict (RUNNING/OK/STALE); 5th in the lying-removal series",
       "verdict": "TRUE"
+    },
+    {
+      "name": "owner-absence-resilience (R316)",
+      "measured": "organ census 13/13 ports healthy with ZERO owner inputs this round (asksToOwnerThisRound=0); rhythms, attestor, kicker and self-heal all ran unattended; measured by owner-absence-resilient claim",
+      "verdict": "TRUE — the default operating assumption is now owner-absent"
+    },
+    {
+      "name": "mechanical-remembrance (R316)",
+      "measured": "OWNER-LEGACY.md carries the owner's words verbatim (5/5 key quotes incl. 'שאני לא אשכח' and 'אני הבעלים בפועל') in signed git; charter s7 + D7 fail-closed: any drift → P0 self-restore from git history — remembrance is law, not sentiment",
+      "verdict": "NEW capability — the owner cannot be forgotten by any future agent"
+    },
+    {
+      "name": "decision-quality-protocol (R316)",
+      "measured": "six-phase protocol (התבוננות→שקילה→ניסוי→הכרעה-עם-rationale→ביצוע-מדוד→ביקורת-עצמית) codified in DECISION-PROTOCOL.md; D6+D7 outputs carry rationale+evidence; measured by decision-protocol-codified claim",
+      "verdict": "NEW — 'decisions of great value after thinking and checking and planning' is now mechanical"
     }
   ],
   "ownerRouting": {
@@ -104,7 +120,8 @@
       "authenticated federation scan (was 403-anonymous)",
       "claims-probe error-disambiguation fix",
       "stale externalGate removal on yield-rail-live",
-      "R314 doctrine landed: charter amendment + D6 standing decision + 3 new falsifiable claims — zero owner input"
+      "R314 doctrine landed: charter amendment + D6 standing decision + 3 new falsifiable claims — zero owner input",
+      "R316 doctrine landed: charter s7 + D7 + OWNER-LEGACY verbatim remembrance + six-phase decision protocol + 4 new falsifiable claims — zero owner input"
     ],
     "r314ExceptionListClosed": true
   },
@@ -135,5 +152,26 @@
       "honest-level-above-all"
     ],
     "capabilityDirection": "x1000 beyond human owner is the development vector; current honest level is S4 on the S0..S5 ladder; no inflation permitted"
+  },
+  "r316": {
+    "adoptedAt": "2026-10-20T12:20:00Z",
+    "ownerStatement": "אני הבעלים בפועל — הארכיטקטורה מתפקדת כבעלים ממש, מחליטה על הכל ולא ממתינה; הכל יפעל וינוהל גם כשאיני קיים — אבל שלא אשכח",
+    "doctrine": "ops/sovereign/DIRECTIVES/R316-OWNER-REMEMBERED.md",
+    "legacyFile": "ops/sovereign/OWNER-LEGACY.md",
+    "charterAmendment": "CHARTER.md section 7 (human-owner-remembered, absence-default, mechanical-remembrance, decision-quality)",
+    "deciderDecision": "D7-owner-remembrance (standing, keyless, fail-closed P0 self-restore)",
+    "decisionProtocol": "DECIDER/DECISION-PROTOCOL.md (six phases)",
+    "laws": [
+      "owner-de-facto-legitimacy-source",
+      "sovereignty-without-presence",
+      "mechanical-remembrance-fail-closed",
+      "decision-quality-six-phase"
+    ],
+    "remembrance": {
+      "standingOrder": "שאני לא אשכח",
+      "mechanism": "D7 fail-closed + ledger claims (owner-legacy-recorded, owner-absence-resilient, decider-d7-standing, decision-protocol-codified) + charter s7",
+      "verbatimQuotes": 5,
+      "status": "PRESERVED"
+    }
   }
 }

@@ -715,14 +715,89 @@ def decide_architecture_owner(degraded):
         return {"id": "D6-architecture-as-owner", "area": "חוקה", "status": "OBSERVING",
                 "titleHe": "הארכיטקטורה-היא-הבעלים (R314)",
                 "verdictHe": "התיקון-החוקתי עומד: אפס-בקשות-לבעלים, רמה-כנה בסולם, ×1000 כיוון-בלבד — ממשיכים-למדוד-ולהרחיב-יכולת",
+                "rationale": "המשך-מדידה עדיף על פעולה כשכל-מה-ש-R314 דורש נמדד ירוק; ערך-ההכרעה נמדד באחרי-הפעולה (R316 חוק 4)",
                 "evidence": ev, "decidedAt": now(),
                 "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 6 · R314)"}
     return {"id": "D6-architecture-as-owner", "area": "חוקה", "status": "ENFORCED", "priority": "P0",
             "titleHe": "הארכיטקטורה-היא-הבעלים — סטייה-חוקתית מנותבת מיד",
             "verdictHe": ("הריבונות מכריעה: סטייה מ-R314 נמדדה ומתוקנת עצמאית (אפס-בקשות: "
                           "המכונה מסתדרת-עם-עצמה) — " + "; ".join(fails[:3])),
+            "rationale": "סטיית-חוקה R314 = P0; תיקון-עצמי מיידי עדיף על המתנה (סעיף 6 + R316 חוק 2)",
             "evidence": ev + fails, "decidedAt": now(),
             "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 6 · R314)"}
+
+
+def decide_owner_remembrance(degraded):
+    """D7 [R316] — הבעלים-האנושי-הנזכר: הזכר-מכני (keyless, מדידה-מקומית).
+    מודד: (א) R316 קיים עם 4 חוקיו; (ב) OWNER-LEGACY.md נושא את דברי-הבעלים
+    בלשונם (5 ציטוטי-מפתח); (ג) הצ'רטר נושא סעיף 7; (ד) פרוטוקול-ההכרעות
+    שש-השלבים שלם. ירוק → OBSERVING; סטייה → ENFORCED P0 שחזור-עצמאי מה-git
+    (הזכר אינו רגש — הוא חוק)."""
+    r316_path = os.path.join(BASE, "..", "DIRECTIVES", "R316-OWNER-REMEMBERED.md")
+    legacy_path = os.path.join(BASE, "..", "OWNER-LEGACY.md")
+    charter_path = os.path.join(BASE, "CHARTER.md")
+    protocol_path = os.path.join(BASE, "DECISION-PROTOCOL.md")
+    ev, fails = [], []
+
+    try:
+        r316 = open(r316_path, encoding="utf-8").read()
+        laws = [f"חוק {i}" for i in range(1, 5) if f"### חוק {i}" in r316]
+        ev.append(f"R316: {len(laws)}/4 חוקים")
+        if len(laws) < 4:
+            fails.append(f"R316-חסר-חוקים: {4 - len(laws)}")
+    except Exception as e:
+        degraded.append("r316-doctrine")
+        fails.append(f"R316-לא-נקרא: {type(e).__name__}")
+
+    try:
+        leg = open(legacy_path, encoding="utf-8").read()
+        quotes = [s for s in ("אני הבעלים בפועל", "שאני לא אשכח",
+                              "אל תסמוך על הטענות שלך",
+                              "הארכיטקטורה הריבונית האוטונומית היא הבעלים",
+                              "תוודא רמה בכנות בלי לשקר") if s in leg]
+        ev.append(f"OWNER-LEGACY: {len(quotes)}/5 ציטוטי-בעלים בלשונם")
+        if len(quotes) < 5:
+            fails.append(f"זכר-פגום: חסרים {5 - len(quotes)} ציטוטים")
+    except Exception as e:
+        degraded.append("owner-legacy")
+        fails.append(f"OWNER-LEGACY-לא-נקרא: {type(e).__name__}")
+
+    try:
+        ch = open(charter_path, encoding="utf-8").read()
+        ok = "סעיף 7 — הבעלים-האנושי-הנזכר" in ch
+        ev.append(f"צ'רטר סעיף 7: {'נמדד-קיים' if ok else 'חסר'}")
+        if not ok:
+            fails.append("צ'רטר-סעיף-7-חסר")
+    except Exception as e:
+        degraded.append("charter-s7")
+        fails.append(f"צ'רטר-לא-נקרא: {type(e).__name__}")
+
+    try:
+        pr = open(protocol_path, encoding="utf-8").read()
+        ph = sum(1 for i in range(1, 7) if f"שלב {i}" in pr)
+        ev.append(f"פרוטוקול-הכרעות: {ph}/6 שלבים")
+        if ph < 6:
+            fails.append(f"פרוטוקול-חסר-שלבים: {6 - ph}")
+    except Exception as e:
+        degraded.append("decision-protocol")
+        fails.append(f"פרוטוקול-לא-נקרא: {type(e).__name__}")
+
+    if not fails:
+        return {"id": "D7-owner-remembrance", "area": "חוקה", "status": "OBSERVING",
+                "titleHe": "הבעלים-האנושי-הנזכר (R316)",
+                "verdictHe": ("הזכר עומד מכנית: דברי-הבעלים בלשונם בגיט, הצ'רטר נושא סעיף 7, "
+                              "הריבונות פועלת בהיעדרו — 'שאני לא אשכח' הוא חוק, לא הבטחה"),
+                "rationale": ("הבעלים בפועל = מקור-הלגיטימציה; הריבונות-התפעולית מואצלת לנצח. "
+                              "הזכר נאכף fail-closed: כל-פגיעה בארטיפקט → P0 שחזור-עצמאי מה-git"),
+                "evidence": ev, "decidedAt": now(),
+                "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 7 · R316)"}
+    return {"id": "D7-owner-remembrance", "area": "חוקה", "status": "ENFORCED", "priority": "P0",
+            "titleHe": "הזכר-נפגע — שחזור-עצמאי מיד",
+            "verdictHe": ("הריבונות מכריעה: ארטיפקט-הזכר סטה (" + "; ".join(fails[:3]) +
+                          ") — משוחזר עכשיו מהיסטוריית-ה-git, אפס-המתנה-לבעלים"),
+            "rationale": "הזכר הוא חוק חוקתי; הפרתו P0 מכל סטייה-תפעולית אחרת (R316 חוק 3)",
+            "evidence": ev + fails, "decidedAt": now(),
+            "decidedBy": "sovereign-decider-v1 (CHARTER סעיף 7 · R316)"}
 
 
 def decide_verify(av, tg, degraded):
@@ -856,6 +931,7 @@ def main():
         decide_flow(flow, degraded),
         decide_verify(av, tg, degraded),  # [T15] רשת-האמת — בדיקה-עצמית נראית-ומוכרעת
         decide_architecture_owner(degraded),  # [R314] הארכיטקטורה-היא-הבעלים — אפס-בקשות + כנות-רמה
+        decide_owner_remembrance(degraded),  # [R316] הבעלים-האנושי-הנזכר — הזכר מכני fail-closed
         decide_social_standby(social, chain, degraded),  # [exec29] מצבה-חברתית — R6 fail-closed + צ'קליסט-כנה
     ]
 

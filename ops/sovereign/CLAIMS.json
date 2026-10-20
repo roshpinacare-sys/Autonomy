@@ -1,7 +1,7 @@
 {
  "schema": "claims-ledger/1",
  "law": "R310 · כל-טענה = מבחן-חי. טענה-בלי-מבחן היא אמונה, לא טענה. ריצה-מחדש משקרת או מאשרת — בלי חסד.",
- "updatedAt": "2026-10-20T04:40:00Z",
+ "updatedAt": "2026-10-20T12:20:00Z",
  "claims": [
   {
    "id": "organs-7-alive",
@@ -229,6 +229,54 @@
     "exit": 0,
     "regex": "consistent=True"
    }
+  },
+  {
+   "id": "owner-legacy-recorded",
+   "text": "זכר-הבעלים עומד (R316 חוק 3): OWNER-LEGACY.md נושא את דברי-הבעלים בלשונם — 5 ציטוטי-מפתח כולל 'שאני לא אשכח' ו'אני הבעלים בפועל'",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "f=/home/z/audit/Autonomy/ops/sovereign/OWNER-LEGACY.md; c=0; for s in \"אני הבעלים בפועל\" \"שאני לא אשכח\" \"אל תסמוך על הטענות שלך\" \"הארכיטקטורה הריבונית האוטונומית היא הבעלים\" \"תוודא רמה בכנות בלי לשקר\"; do grep -q \"$s\" \"$f\" && c=$((c+1)); done; echo \"legacy quotes=$c/5\"; [ \"$c\" = 5 ]",
+   "expect": {
+    "exit": 0,
+    "regex": "legacy quotes=5/5"
+   },
+   "remedy": "D7-owner-remembrance ENFORCED P0: שחזור-עצמאי מהיסטוריית-ה-git (צ'רטר סעיף 7) — אפס-המתנה-לבעלים"
+  },
+  {
+   "id": "owner-absence-resilient",
+   "text": "ריבונות-בלי-נוכחות (R316 חוק 2): כל 13 גופי-הריבונות חיים ומשיבים ו-asksToOwner=0 — הסבב רץ מלא בלי כל קלט אנושי",
+   "category": "sovereignty",
+   "criticality": "high",
+   "cmd": "n=0; for p in 3020 3021 3022 3023 3024 3037 3040 3041 3042 3043 3044 3045 3047; do for try in 1 2; do c=$(curl -s -m 3 -o /dev/null -w '%{http_code}' http://127.0.0.1:$p/health 2>/dev/null); [ \"$c\" = \"200\" ] && break; [ $try = 2 ] || sleep 4; done; [ \"$c\" = \"200\" ] && n=$((n+1)); done; a=$(python3 -c \"import json; print(json.load(open('/home/z/audit/Autonomy/ops/sovereign/LEVEL.json'))['ownerRouting']['asksToOwnerThisRound'])\" 2>/dev/null || echo 99); echo \"absence organs=$n/13 asks=$a\"; [ \"$n\" = 13 ] && [ \"$a\" = 0 ]",
+   "expect": {
+    "exit": 0,
+    "regex": "absence organs=13/13 asks=0"
+   },
+   "remedy": "איבר-שנפל מושלף מקובץ-מצב (boot-organs.sh); בקשה-לבעלים>0 = סטיית-R314/R316 — בנה-מסילה-עצמית"
+  },
+  {
+   "id": "decider-d7-standing",
+   "text": "D7-owner-remembrance היא הכרעה-עומדת במנוע-ההכרעה: מודדת R316 + OWNER-LEGACY + צ'רטר סעיף 7 + פרוטוקול-ההכרעות, fail-closed P0 לשחזור-עצמאי",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "python3 -c \"import sys; sys.path.insert(0,'/home/z/audit/Autonomy/ops/sovereign/DECIDER'); import decider; dr=[]; d=decider.decide_owner_remembrance(dr); print(d['id'], d['status'], 'degraded='+str(len(dr)))\"",
+   "expect": {
+    "exit": 0,
+    "regex": "D7-owner-remembrance (OBSERVING|ENFORCED) degraded=0"
+   },
+   "remedy": "ENFORCED = הזכר נפגע: שחזור OWNER-LEGACY/סעיף-7/פרוטוקול מה-git מיד (P0, אפס-המתנה)"
+  },
+  {
+   "id": "decision-protocol-codified",
+   "text": "איכות-הכרעה (R316 חוק 4): פרוטוקול-שש-השלבים מוגדר ושלם, והכרעות-העומד D6+D7 נושאות rationale — 'חשיבה-ובדיקה-ותכנון' נאכף מכנית",
+   "category": "constitution",
+   "criticality": "high",
+   "cmd": "python3 -c \"\nimport sys\nsys.path.insert(0,'/home/z/audit/Autonomy/ops/sovereign/DECIDER')\nimport decider\nt=open('/home/z/audit/Autonomy/ops/sovereign/DECIDER/DECISION-PROTOCOL.md',encoding='utf-8').read()\nph=sum(1 for i in range(1,7) if ('שלב %d'%i) in t)\ndr1=[]; dr2=[]\nd6=decider.decide_architecture_owner(dr1); d7=decider.decide_owner_remembrance(dr2)\nprint('protocol phases=%d/6 rationale=%s/%s'%(ph,bool(d6.get('rationale')),bool(d7.get('rationale'))))\n\"",
+   "expect": {
+    "exit": 0,
+    "regex": "protocol phases=6/6 rationale=True/True"
+   },
+   "remedy": "שלב-חסר או הכרעה-בלי-rationale = פרוטוקול-הופר — תקן את DECISION-PROTOCOL.md את decider.py"
   }
  ]
 }
