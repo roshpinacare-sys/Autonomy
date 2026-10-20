@@ -1,0 +1,131 @@
+name: sovereign-arming-check
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SOVEREIGN-ARMING-CHECK · מבצע-חוק-הבעלים R309-e — השער נפתח כשהצ'קליסט-שלו ירוק
+# ───────────────────────────────────────────────────────────────────────────
+# R309 (דירקטיבת-בעלים 2026-10-20): "המערכת מגבילה את עצמה... להפך אני רוצה
+# לפתוח" + "כל הטענות תפנה לארכיטקטורה לא אליי". החוק הישן (SOCIAL-STANDBY
+# exec29/29-b) קובע: השער-נפתח רק-כשכל-6 סעיפי-הכשירות נמדדו-ועמדו, וסעיף 6
+# (אישור-בעלים מפורש) מסופק-מעתה ע"י R309-e. האיבר-הזה מודד את הצ'קליסט
+# מחדש-בכל-ריצה (לעולם לא סטיקי — כחוק ה-readiness-gate), וכותב ARMED רק-כש
+# הכל pass=true. כל-כישלון-מדידה = הפריט נשאר אדום-כנה. אין-עקיפה. אין-הצפות.
+# ═══════════════════════════════════════════════════════════════════════════
+
+on:
+  schedule:
+    - cron: "5 2 * * *" # יומי 02:05Z — אחרי סגירת-הצינון המשוערת (25-26.10)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sovereign-arming-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 1 }
+
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+
+      - name: measure readiness checklist fresh + arm only if all green (fail-closed)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > /tmp/arming-check.mjs <<'EOF'
+          import fs from 'node:fs';
+          const NOW = Date.now();
+          const H = 36e5;
+          const UA = 'saos-sovereign-arming-check/1';
+          const RAW = (repo, path, branch = 'main') =>
+            fetch(`https://raw.githubusercontent.com/roshpinacare-sys/${repo}/${branch}/${path}`, { headers: { 'user-agent': UA }, signal: AbortSignal.timeout(15000) });
+          const STEEM_RPC = 'https://api.steemit.com';
+          const ROSTER = ['headcorner','cashmachine','haran','israelnews','lsa','macrame','siq','tov','wic','wog','woq','hcsoldier4','hcsoldier5','hcsoldier6'];
+          const items = [];
+          const add = (id, pass, measured, source) => items.push({ id, pass: !!pass, measured: String(measured).slice(0, 120), source: String(source).slice(0, 140) });
+
+          // (1) chain presence 14/14 — direct chain read, never self-report
+          try {
+            const r = await fetch(STEEM_RPC, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'condenser_api.get_accounts', params: [ROSTER] }), signal: AbortSignal.timeout(15000) });
+            const j = await r.json();
+            const alive = (j?.result ?? []).filter(a => a && a.id != null).length;
+            add('1_chainPresence', alive === 14, `${alive}/14`, 'condenser_api.get_accounts');
+          } catch (e) { add('1_chainPresence', false, `ERR ${String(e?.message ?? e).slice(0, 60)}`, 'condenser_api.get_accounts'); }
+
+          // (2) presence-matrix fresh <12h — steem@saos-cockpit
+          try {
+            const r = await RAW('steem', 'mini-services/saos-engine/state/presence-matrix.json', 'saos-cockpit');
+            if (!r.ok) add('2_presenceMatrix', false, `HTTP ${r.status}`, 'steem@saos-cockpit presence-matrix.json');
+            else { const at = Date.parse((await r.json())?.at); const ageH = Number.isFinite(at) ? (NOW - at) / H : NaN; add('2_presenceMatrix', Number.isFinite(ageH) && ageH < 12, Number.isFinite(ageH) ? `${ageH.toFixed(1)}h` : 'no-ts', 'steem@saos-cockpit presence-matrix.json'); }
+          } catch (e) { add('2_presenceMatrix', false, `ERR ${String(e?.message ?? e).slice(0, 60)}`, 'steem@saos-cockpit presence-matrix.json'); }
+
+          // (3) custody >=13/14 — saos-runtime@main heartbeat
+          try {
+            const r = await RAW('saos-runtime', 'state/beat/ci-last-heartbeat.json');
+            if (!r.ok) add('3_custody', false, `HTTP ${r.status}`, 'saos-runtime@main ci-last-heartbeat.json');
+            else { const m = String((await r.json())?.custody ?? ''); const [v] = m.split('/').map(x => parseInt(x, 10)); add('3_custody', Number.isFinite(v) && v >= 13, m, 'saos-runtime@main ci-last-heartbeat.json'); }
+          } catch (e) { add('3_custody', false, `ERR ${String(e?.message ?? e).slice(0, 60)}`, 'saos-runtime@main ci-last-heartbeat.json'); }
+
+          // (4) anti-farm laws live in config — readiness.json
+          try {
+            const r = await RAW('steem', 'mini-services/saos-engine/state/readiness.json', 'saos-cockpit');
+            if (!r.ok) add('4_antiFarmLaws', false, `HTTP ${r.status}`, 'steem@saos-cockpit readiness.json');
+            else { const laws = (await r.json())?.laws ?? {}; add('4_antiFarmLaws', laws.fleetWeightPct === 8 && laws.maxPostsPerDay <= 1 && laws.maxFleetVotesPerDay === 0, `w=${laws.fleetWeightPct} posts=${laws.maxPostsPerDay} votes=${laws.maxFleetVotesPerDay}`, 'steem@saos-cockpit readiness.json'); }
+          } catch (e) { add('4_antiFarmLaws', false, `ERR ${String(e?.message ?? e).slice(0, 60)}`, 'steem@saos-cockpit readiness.json'); }
+
+          // (5) cooldown >=7d since last fleet social action — published ledger
+          try {
+            const r = await RAW('steem', 'mini-services/saos-engine/state/content-memory/published.jsonl', 'saos-cockpit');
+            if (!r.ok) add('5_cooldown7d', false, `HTTP ${r.status}`, 'steem@saos-cockpit published.jsonl');
+            else {
+              const lines = (await r.text()).trim().split('\n').filter(Boolean);
+              let last = null; for (const l of lines) { try { last = JSON.parse(l); } catch { /* skip */ } }
+              const t = last ? Date.parse(last.at ?? last.ts ?? last.time) : NaN;
+              const days = Number.isFinite(t) ? (NOW - t) / (24 * H) : NaN;
+              add('5_cooldown7d', Number.isFinite(days) && days >= 7, Number.isFinite(days) ? `${days.toFixed(2)}d since ${last.at}` : 'no-ts', 'steem@saos-cockpit published.jsonl last');
+            }
+          } catch (e) { add('5_cooldown7d', false, `ERR ${String(e?.message ?? e).slice(0, 60)}`, 'steem@saos-cockpit published.jsonl'); }
+
+          // (6) owner approval — R309 in THIS repo (checked out)
+          const r309 = fs.existsSync('ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md');
+          add('6_ownerApproval', r309, r309 ? 'R309-SOVEREIGN-OPENING present' : 'R309 absent', 'ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md');
+
+          const allPass = items.every(i => i.pass);
+          const verdict = { schema: 'sovereign.arming-check/1', at: new Date(NOW).toISOString(), allPass, items, decision: allPass ? 'ARM' : 'HOLD (fail-closed — the checklist is the gate, R309-e supplies item 6 only)' };
+          fs.writeFileSync('state/arming-check-last.json', JSON.stringify(verdict, null, 1) + '\n');
+          console.log(`[arming-check] allPass=${allPass}`);
+          for (const i of items) console.log(`  [${i.pass ? 'PASS' : 'FAIL'}] ${i.id}: ${i.measured}`);
+
+          // SOCIAAL-ARMING.json refresh — measured fields always; status ARMED only if all green
+          const ap = 'ops/sovereign/DIRECTIVES/SOCIAL-ARMING.json';
+          try {
+            const doc = JSON.parse(fs.readFileSync(ap, 'utf8'));
+            doc.at = verdict.at;
+            doc.status = allPass ? 'ARMED' : (doc.status === 'ARMED' ? 'PENDING-RECHECK' : (doc.status || 'PENDING-COOLDOWN'));
+            if (allPass) doc.armedAt = verdict.at;
+            for (const i of items) { const k = Object.keys(doc.checklist ?? {}).find(x => x.startsWith(i.id.split('_')[0] + '_')); if (doc.checklist?.[k]) { doc.checklist[k].measured = i.measured; doc.checklist[k].pass = i.pass; doc.checklist[k].at = verdict.at; } }
+            fs.writeFileSync(ap, JSON.stringify(doc, null, 1) + '\n');
+          } catch (e) { console.log('ARMING-JSON-ERR', String(e?.message ?? e)); }
+          process.exit(0);
+          EOF
+          node /tmp/arming-check.mjs
+
+      - name: commit measured verdict (+ARMED only when lawful)
+        run: |
+          git config user.name "roshpinacare-sys"
+          git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
+          git add -A state/arming-check-last.json ops/sovereign/DIRECTIVES/SOCIAL-ARMING.json
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -qm "sovereign-arming-check: $(python3 -c "import json;print(json.load(open('state/arming-check-last.json'))['decision'])") $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]"
+          ok=0
+          for i in 1 2 3; do
+            if git pull --rebase -q origin main && git push -q origin main; then ok=1; break; fi
+            sleep 3
+          done
+          [ "$ok" = "1" ] || { echo "PUSH-FAIL after 3 — honest red, next run retries"; exit 1; }
