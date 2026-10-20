@@ -1,26 +1,26 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-20T10:55:45Z",
- "durationMs": 2916,
+ "generatedAt": "2026-10-20T11:48:17Z",
+ "durationMs": 1984,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
-  "generatedAt": "2026-10-20T09:59:45Z",
-  "stateAgeMin": 56,
+  "generatedAt": "2026-10-20T11:32:15Z",
+  "stateAgeMin": 16,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
-   "lastRunAt": "2026-10-20T09:59:26Z",
-   "ageS": 3378,
+   "lastRunAt": "2026-10-20T11:31:22Z",
+   "ageS": 1014,
    "stalled": false
   }
  },
  "measures": {
   "chain": {
-   "head": 110599010,
-   "treasuryNetSp": 2768,
-   "mult": 0.0006205577336513246
+   "head": 110600051,
+   "treasuryNetSp": 2776.9,
+   "mult": 0.0006205592558444691
   },
   "beaconPulse": {
    "treasuryNetSp": 2760.5
@@ -40,13 +40,13 @@
    "area": "הנהגה",
    "status": "ENFORCED",
    "priority": "P0",
-   "decidedAt": "2026-10-20T09:59:43Z",
+   "decidedAt": "2026-10-20T11:32:13Z",
    "truth": "VERIFIED",
    "checks": [
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 56min (limit 120)"
+     "detail": "state age 16min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -56,7 +56,7 @@
    "area": "כלכלה",
    "status": "ENFORCED",
    "priority": "P1",
-   "decidedAt": "2026-10-20T09:59:44Z",
+   "decidedAt": "2026-10-20T11:32:14Z",
    "truth": "STALE-TRUTH",
    "checks": [
     {
@@ -67,7 +67,7 @@
     {
      "law": "treasury-basis-fresh-measure",
      "result": "mismatch",
-     "detail": "claimed=2760.5 fresh=2768 tol=1"
+     "detail": "claimed=2768 fresh=2776.9 tol=1"
     },
     {
      "law": "beacon-vs-fresh",
@@ -97,7 +97,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 56min (limit 120)"
+     "detail": "state age 16min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -106,7 +106,7 @@
    "id": "D2-eng-errors",
    "area": "הנדסה",
    "status": "OBSERVING",
-   "decidedAt": "2026-10-20T09:59:44Z",
+   "decidedAt": "2026-10-20T11:32:14Z",
    "truth": "STALE-TRUTH",
    "checks": [
     {
@@ -132,7 +132,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 56min (limit 120)"
+     "detail": "state age 16min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -142,7 +142,7 @@
    "area": "רשת",
    "status": "ENFORCED",
    "priority": "P2",
-   "decidedAt": "2026-10-20T09:59:44Z",
+   "decidedAt": "2026-10-20T11:32:14Z",
    "truth": "VERIFIED",
    "checks": [
     {
@@ -158,7 +158,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 56min (limit 120)"
+     "detail": "state age 16min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -168,13 +168,28 @@
    "area": "אימות-עצמי",
    "status": "ENFORCED",
    "priority": "P1",
-   "decidedAt": "2026-10-20T09:59:44Z",
+   "decidedAt": "2026-10-20T11:32:14Z",
    "truth": "VERIFIED",
    "checks": [
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 56min (limit 120)"
+     "detail": "state age 16min (limit 120)"
+    }
+   ],
+   "note": "evidence re-measured independently + execution present"
+  },
+  {
+   "id": "D6-architecture-as-owner",
+   "area": "חוקה",
+   "status": "OBSERVING",
+   "decidedAt": "2026-10-20T11:32:14Z",
+   "truth": "VERIFIED",
+   "checks": [
+    {
+     "law": "decider-state-age",
+     "result": "ok",
+     "detail": "state age 16min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -184,24 +199,24 @@
    "area": "רשת-חברתית",
    "status": "ENFORCED",
    "priority": "P1",
-   "decidedAt": "2026-10-20T09:59:44Z",
+   "decidedAt": "2026-10-20T11:32:14Z",
    "truth": "VERIFIED",
    "checks": [
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 56min (limit 120)"
+     "detail": "state age 16min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "39411312682",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39411312682",
-  "sha": "f38291b518ac9d24e122c8dbc983daf7c3de394f",
+  "runId": "39417555001",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39417555001",
+  "sha": "8858ebb4d67972435f318f9d72cc35340eaf6135",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-20T10:55:45Z"
+  "generatedAt": "2026-10-20T11:48:17Z"
  },
  "selftest": {
   "vectors": 16,
