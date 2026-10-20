@@ -1,27 +1,29 @@
 {
   "schema": "growth/1",
-  "at": "2026-10-20T02:49:25.006Z",
+  "at": "2026-10-20T05:56:45.762Z",
   "ok": true,
   "organ": "growth-watch",
   "covenant": "growth-not-closure · התפתחות-וגדילה-ולא-סגירה",
   "checks": {
     "local": {
-      "builderAgeH": 1,
+      "builderAgeH": 2,
       "verifierAgeH": 0
     },
     "workflows": {
       "repo": "roshpinacare-sys/Autonomy",
-      "active": 52,
+      "active": 0,
       "disabled": [],
-      "error": null
+      "error": "api 401"
     },
     "live": {
       "url": "https://roshpinacare-sys.github.io/Domain/pulse.json",
       "status": 200,
-      "ageH": 1
+      "ageH": 2
     }
   },
   "signals": [],
-  "reasons": [],
-  "doneAt": "2026-10-20T02:49:25.928Z"
+  "reasons": [
+    "census incomplete: api 401 (fail-honest, will retry next run)"
+  ],
+  "doneAt": "2026-10-20T05:56:46.293Z"
 }
