@@ -4,6 +4,13 @@
  * ═══════════════════════════════════════════════════════════════════════════════════
  * LAW: treasury holds ≥3000 SP (verifier: steem.treasury DEGRADED below floor).
  * Measured 2026-10-18: 2855 SP < 3000.
+ * t47 METRIC CORRECTION (owner law: trust no claims — re-measured 2026-10-20):
+ *   every earlier receipt read ONLY acct.vesting_shares — the GROSS field.
+ *   Chain accounting: effective = vesting_shares + received_vesting_shares
+ *   − delegated_vesting_shares. Live proof 2026-10-20: gross 4067.3 SP but net
+ *   2777.0 SP (delegated out ≈ 1533 SP to 14 fleet/content accounts). The floor
+ *   law is now evaluated on NET; gross kept alongside for continuity (both public,
+ *   refs-only — same as before).
  *
  * Honest ladder:
  *   1. resolve roster refs→real names via engine/refs.mjs (FLEET_ROSTER_MAP env,
@@ -61,6 +68,16 @@ export function vestsToSp(vests, props) {
 }
 
 /**
+ * t47: effective vests per the chain's own accounting — own + received − delegated.
+ * Earlier receipts measured gross (own only, delegation ignored) and called it SP;
+ * that inflated the treasury by its own outgoing delegations. Never again.
+ */
+export function effectiveVests(a) {
+  const num = (s) => (typeof s === 'string' ? parseFloat(s) : s) || 0;
+  return num(a.vesting_shares) + num(a.received_vesting_shares) - num(a.delegated_vesting_shares);
+}
+
+/**
  * planTopup({treasurySp, fleet:[{name, sp}]}, floor, fleetMin) — PURE, selftest-anchored.
  * Fleet accounts above fleetMin contribute their surplus until need is met.
  * Names in this function's output are whatever the caller passed (callers pass
@@ -99,8 +116,14 @@ async function live() {
   ]);
   if (!dyn.ok || !acct.ok) { receipt.reason = `rpc-unreachable: ${dyn.reason ?? acct.reason}`; publish(receipt); return 0; }
   if (!Array.isArray(acct.result) || !acct.result[0]) { receipt.reason = `treasury-not-on-chain (ref ${TREASURY_REF} unresolved name) — PENDING owner clarification`; publish(receipt); return 0; }
-  const sp = vestsToSp(parseFloat(acct.result[0].vesting_shares), dyn.result);
-  receipt.treasurySp = Math.round(sp * 1000) / 1000;
+  const a0 = acct.result[0];
+  receipt.treasurySpGross = Math.round(vestsToSp(parseFloat(a0.vesting_shares), dyn.result) * 1000) / 1000;
+  const sp = vestsToSp(effectiveVests(a0), dyn.result);
+  receipt.treasurySp = Math.round(sp * 1000) / 1000; // NET — the floor law metric (t47)
+  receipt.delegation = {
+    inSp: Math.round(vestsToSp(parseFloat(a0.received_vesting_shares) || 0, dyn.result) * 1000) / 1000,
+    outSp: Math.round(vestsToSp(parseFloat(a0.delegated_vesting_shares) || 0, dyn.result) * 1000) / 1000,
+  };
   receipt.healthy = receipt.treasurySp >= TREASURY_MIN_SP;
   // 2. fleet headroom (real names fetched → scrubbed to refs before receipt)
   const fleetRes = await rpc('condenser_api.get_accounts', [cfg.steem.accounts.map((r) => R(r)).filter(Boolean)], hosts);
@@ -109,7 +132,8 @@ async function live() {
     const realAccounts = cfg.steem.accounts.map((r) => R(r)).filter(Boolean);
     fleetRefs = fleetRes.result.map((a, i) => ({
       ref: refOf(realAccounts[i] ?? `acct-unknown-${i}`),
-      sp: Math.round(vestsToSp(parseFloat(a.vesting_shares), dyn.result) * 1000) / 1000,
+      sp: Math.round(vestsToSp(effectiveVests(a), dyn.result) * 1000) / 1000, // net (t47)
+      spGross: Math.round(vestsToSp(parseFloat(a.vesting_shares), dyn.result) * 1000) / 1000,
     }));
   }
   receipt.fleet = fleetRefs; // refs only — estate names never enter the receipt
@@ -140,6 +164,10 @@ function publish(receipt) {
 export function selftest() {
   const props = { total_vesting_fund_steem: '200000000', total_vesting_shares: '400000000000000' }; // 1 VEST = 5e-7 SP
   if (Math.abs(vestsToSp(2e6, props) - 1) > 1e-9) throw new Error('vestsToSp math');
+  // t47: effective = own + received − delegated (string or number, missing = 0)
+  if (effectiveVests({ vesting_shares: '2000000 VESTS' }) !== 2e6) throw new Error('effectiveVests own-only');
+  if (effectiveVests({ vesting_shares: '2000000 VESTS', received_vesting_shares: '500000 VESTS', delegated_vesting_shares: '300000 VESTS' }) !== 2200000) throw new Error('effectiveVests netting');
+  if (Math.abs(vestsToSp(effectiveVests({ vesting_shares: '2000000 VESTS', received_vesting_shares: '500000 VESTS', delegated_vesting_shares: '300000 VESTS' }), props) - 1.1) > 1e-9) throw new Error('net SP math (t47)');
   // below floor, fleet has headroom → feasible plan (refs as names — public-safe)
   const p1 = planTopup({ treasurySp: 2855, fleet: [{ name: 'acct-01', sp: 250 }, { name: 'acct-02', sp: 400 }, { name: 'acct-03', sp: 50 }] });
   if (Math.abs(p1.need - 145) > 0.001) throw new Error(`need wrong: ${p1.need}`);
