@@ -1031,27 +1031,110 @@
         "verdict": "LOSS"
       },
       "deltaNote": "LOSS: -4.423% מול-הריצה-הקודמת (חוק: > +0.5% / < −0.5%)"
+    },
+    {
+      "at": "2026-10-21T10:20:18.779Z",
+      "trigger": "schedule",
+      "checks": [
+        {
+          "id": "V-WORTH",
+          "measuredAt": "2026-10-21T10:20:18.779Z",
+          "evidence": {
+            "rpc": {
+              "primary": "https://api.steemit.com",
+              "fallback": "https://api.justyy.com"
+            },
+            "dgpo": true,
+            "accounts": true,
+            "orderBook": true,
+            "ratioSpPerVests": 0.000620598546,
+            "ownSp": 4451.8,
+            "effSp": 2437.4,
+            "liquidSteem": 346.048,
+            "liquidSbd": 8.381,
+            "mid": 0.10304,
+            "spreadBps": 202.5,
+            "netWorthSbdEquiv": 502.74,
+            "roster": 14
+          },
+          "verdict": "GREEN",
+          "note": "🟢 שווי-חי: own-SP 4451.8 · eff-SP 2437.4 · נזיל 346.048 STEEM + 8.381 SBD · mid 0.10304 → netWorth 502.74 SBD-equiv"
+        },
+        {
+          "id": "V-GRID-EDGE",
+          "verdict": "GREEN",
+          "measuredAt": "2026-10-21T10:20:19.358Z",
+          "evidence": {
+            "url": "https://roshpinacare-sys.github.io/Domain/dex/pnl-desk.json",
+            "http": 200,
+            "verdict": "EDGE-UNMEASURED-NO-FILLS",
+            "postLawEdgePct": -1.5,
+            "lifetimeRealizedSbd": -0.40379,
+            "generatedAt": "2026-10-20T10:23:03.663Z",
+            "deskLaw": "weekly edge >= +1% or the grid holds (T2, master plan 2026-10-11 — \"edge positive or off\")",
+            "edgeLawPct": 1
+          },
+          "note": "🟢 השולחן נמדד: verdict=EDGE-UNMEASURED-NO-FILLS · postLaw.edgePct=-1.5% · lifetime.realizedSbd=-0.40379 SBD (חוק-השולחן: ≥+1% = מותר-להציב; ההכרעה ב-desk — חדר-אחד)"
+        },
+        {
+          "id": "V-ZOMBIE-LADDER",
+          "verdict": "GREEN",
+          "measuredAt": "2026-10-21T10:20:19.490Z",
+          "evidence": {
+            "method": "database_api.find_limit_orders",
+            "account": "acct-00",
+            "count": 6,
+            "openSbd": 33.977,
+            "openSteem": 313.988,
+            "zombieSbd": 0.626,
+            "zombieCount": 2,
+            "priorCount": 41,
+            "priorOpenSbd": 49.32
+          },
+          "note": "🟢 סולם-עומד: 6 פקודות · 33.977 SBD פתוח (מהם זומבי 0.626 SBD @≤0.0995) — יציב או מתמלא"
+        }
+      ],
+      "summary": {
+        "GREEN": 3,
+        "AMBER": 0,
+        "RED": 0,
+        "UNKNOWN": 0,
+        "ownSp": 4451.8,
+        "effSp": 2437.4,
+        "liquidSteem": 346.048,
+        "liquidSbd": 8.381,
+        "mid": 0.10304,
+        "netWorthSbdEquiv": 502.74,
+        "deltaVsPriorPct": 4.785,
+        "gridVerdict": "EDGE-UNMEASURED-NO-FILLS",
+        "gridEdgePct": -1.5,
+        "ladderOpenSbd": 33.977,
+        "ladderCount": 6,
+        "ladderZombieSbd": 0.626,
+        "verdict": "PROFIT"
+      },
+      "deltaNote": "PROFIT: +4.785% מול-הריצה-הקודמת (חוק: > +0.5% / < −0.5%)"
     }
   ],
-  "updatedAt": "2026-10-20T10:12:22.563Z",
-  "at": "2026-10-20T10:12:22.563Z",
+  "updatedAt": "2026-10-21T10:20:18.779Z",
+  "at": "2026-10-21T10:20:18.779Z",
   "summary": {
     "GREEN": 3,
     "AMBER": 0,
     "RED": 0,
     "UNKNOWN": 0,
-    "ownSp": 4320.7,
-    "effSp": 3556.5,
-    "liquidSteem": 140.912,
-    "liquidSbd": 35.005,
-    "mid": 0.09969,
-    "netWorthSbdEquiv": 479.781,
-    "deltaVsPriorPct": -4.423,
+    "ownSp": 4451.8,
+    "effSp": 2437.4,
+    "liquidSteem": 346.048,
+    "liquidSbd": 8.381,
+    "mid": 0.10304,
+    "netWorthSbdEquiv": 502.74,
+    "deltaVsPriorPct": 4.785,
     "gridVerdict": "EDGE-UNMEASURED-NO-FILLS",
     "gridEdgePct": -1.5,
-    "ladderOpenSbd": 49.32,
-    "ladderCount": 41,
-    "ladderZombieSbd": 48.009,
-    "verdict": "LOSS"
+    "ladderOpenSbd": 33.977,
+    "ladderCount": 6,
+    "ladderZombieSbd": 0.626,
+    "verdict": "PROFIT"
   }
 }
