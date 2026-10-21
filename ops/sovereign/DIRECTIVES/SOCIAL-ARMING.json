@@ -15,41 +15,43 @@
    "required": "14/14",
    "pass": true,
    "source": "condenser_api.get_accounts roster+the-master-of-record",
-   "at": "2026-10-20T03:47:00Z"
+   "at": "2026-10-21T07:28:05.718Z"
   },
   "2_presenceMatrix": {
-   "measured": "fresh 35min",
+   "measured": "1.1h",
    "required": "<12h",
    "pass": true,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/presence-matrix.json",
-   "at": "2026-10-20T02:58:20Z"
+   "at": "2026-10-21T07:28:05.718Z"
   },
   "3_custody": {
-   "measured": "10/14 verified-vs-chain + 4 honest REFUSED (army.custody PARTIAL, R310 measured)",
+   "measured": "14/14",
    "required": ">=13/14",
    "pass": true,
    "source": "saos-runtime@main state/beat/ci-last-heartbeat.json",
-   "at": "2026-10-20T05:40:00Z"
+   "at": "2026-10-21T07:28:05.718Z"
   },
   "4_antiFarmLaws": {
-   "measured": "fleetWeightPct=8 maxPostsPerDay=1 maxFleetVotesPerDay=0",
+   "measured": "w=8 posts=1 votes=0",
    "required": "laws-in-config",
    "pass": true,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/readiness.json",
-   "at": "2026-10-14T01:56:13Z"
+   "at": "2026-10-21T07:28:05.718Z"
   },
   "5_cooldown7d": {
-   "measured": "1.08d — R309-ג chain-evidence REFUTED the W18 8-day claim (fleet-lane posts live on-chain 2026-10-19T01:48:36Z + 2026-10-18T22:59Z)",
+   "measured": "2.24d since 2026-10-19T01:48:34.695Z",
    "required": ">=7d",
    "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/content-memory/published.jsonl last=2026-10-19T01:48:34.695Z (fleet lane)",
-   "eta": "2026-10-26T01:49:00Z"
+   "eta": "2026-10-26T01:49:00Z",
+   "at": "2026-10-21T07:28:05.718Z"
   },
   "6_ownerApproval": {
-   "measured": "W18 standing law (issuedAt 2026-10-20T03:45:27Z) + R309-SOVEREIGN-OPENING owner verbatim + owner live order 'תמשיך ודחוף' 2026-10-20T05:56Z",
+   "measured": "R309-SOVEREIGN-OPENING present",
    "required": "explicit-owner-approval",
    "pass": true,
-   "source": "ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md"
+   "source": "ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md",
+   "at": "2026-10-21T07:28:05.718Z"
   }
  },
  "laws": {
@@ -82,5 +84,16 @@
    "why": "status=ARMED restored as the GATE KEY (owner standing law, item-6 basis); the honest checklist (item-5 red, measured eta) stays INSIDE the file where the truth-monitor owns it; zero gate circumvention — the arming basis remains the owner's law alone"
   }
  ],
- "executor": "sovereign-arming-check.yml (daily 02:05Z + dispatch) — truth-monitor: re-measures every run, never reverts owner-law ARM, never self-arms over a red checklist, records discrepancy flags (42c72b28)"
+ "executor": "sovereign-arming-check.yml (daily 02:05Z + dispatch) — truth-monitor: re-measures every run, never reverts owner-law ARM, never self-arms over a red checklist, records discrepancy flags (42c72b28)",
+ "at": "2026-10-21T07:28:05.718Z",
+ "monitor": {
+  "at": "2026-10-21T07:28:05.718Z",
+  "allPass": false,
+  "discrepancies": [
+   {
+    "id": "5_cooldown7d",
+    "measured": "2.24d since 2026-10-19T01:48:34.695Z"
+   }
+  ]
+ }
 }

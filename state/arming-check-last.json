@@ -1,0 +1,53 @@
+{
+ "schema": "sovereign.arming-check/1",
+ "at": "2026-10-21T07:28:05.718Z",
+ "allPass": false,
+ "ownerLawArmed": true,
+ "items": [
+  {
+   "id": "1_chainPresence",
+   "pass": true,
+   "measured": "14/14",
+   "source": "condenser_api.get_accounts"
+  },
+  {
+   "id": "2_presenceMatrix",
+   "pass": true,
+   "measured": "1.1h",
+   "source": "steem@saos-cockpit presence-matrix.json"
+  },
+  {
+   "id": "3_custody",
+   "pass": true,
+   "measured": "14/14",
+   "source": "saos-runtime@main ci-last-heartbeat.json"
+  },
+  {
+   "id": "4_antiFarmLaws",
+   "pass": true,
+   "measured": "w=8 posts=1 votes=0",
+   "source": "steem@saos-cockpit readiness.json"
+  },
+  {
+   "id": "5_cooldown7d",
+   "pass": false,
+   "measured": "2.24d since 2026-10-19T01:48:34.695Z",
+   "source": "steem@saos-cockpit published.jsonl last"
+  },
+  {
+   "id": "6_ownerApproval",
+   "pass": true,
+   "measured": "R309-SOVEREIGN-OPENING present",
+   "source": "ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md"
+  }
+ ],
+ "discrepancies": [
+  {
+   "id": "5_cooldown7d",
+   "pass": false,
+   "measured": "2.24d since 2026-10-19T01:48:34.695Z",
+   "source": "steem@saos-cockpit published.jsonl last"
+  }
+ ],
+ "decision": "MONITOR (owner-law armed — discrepancies recorded, status never reverted by agent)"
+}
