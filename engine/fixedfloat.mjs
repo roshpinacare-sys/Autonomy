@@ -67,8 +67,8 @@ export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = 
   const cur = await listCurrencies(cfgv);
   const curDebug = { http: cur.http, ok: cur.ok, count: cur.rows.length, raw: cur.raw, sample: cur.rows.slice(0, 8).map((c) => c.code || c.name) };
   for (const [from, to] of ccys) {
-    const fromC = resolveCode(cur.rows, from) || from;
-    const toC = resolveCode(cur.rows, to) || to;
+    const fromC = resolveCode(cur.rows, from) || from.toUpperCase(); // docs codes are UPPERCASE (BTC, USDTTRC)
+    const toC = resolveCode(cur.rows, to) || to.toUpperCase();
     for (const direction of ['from', 'to']) {
       const amt = direction === 'from' ? amount : 0.001; // to-mode: 0.001 BTC worth
       const { http, j } = await call(cfgv, 'price', { type: 'fixed', fromCcy: fromC, toCcy: toC, direction, amount: String(amt) });
