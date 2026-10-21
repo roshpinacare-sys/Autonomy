@@ -25,7 +25,21 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { loadKey } from './runtime/keys.mjs';
+import { refOf as houseRefOf, resolved as rosterMapResolved } from './refs.mjs';
+
+// [19.47 refs-cure] כותב-קבלות-מדרגה-כספית — אף-שם-גולמי לעולם לא נוחת בקובץ.
+// houseRefOf (refs.mjs, חוזה-הבית) מחזיר את-הקלט ללא-שינוי כשלא-נפתר — חוזה-פרוזה.
+// קבלת-אוצר היא fail-closed: לא-נפתר = פסבדונים-יציב acct-h-<sha8> (אותו-שם→אותו-
+// ref חוצה-קבלות, מיפוי-האמת נשאר סוד/זיכרון) + rosterResolved:false בקבלה.
+// הבאג-שנמדד (19.47): refOf-מקומי עם map[n] על-מפה {ref:name} = תמיד-לא-מוגדר
+// → קיצוץ-3-אותיות שעדיין-תואם את דפוס-השער (\bcas\b) → 3-מסילות-אדומות.
+const sha8 = (s) => createHash('sha256').update(String(s)).digest('hex').slice(0, 8);
+export function receiptRefOf(n) {
+  const r = houseRefOf(n);
+  return r && r !== n ? r : `acct-h-${sha8(n)}`;
+}
 
 const ROOT = process.env.GITHUB_WORKSPACE || join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'receipts', 'treasury-consolidation');
@@ -82,7 +96,9 @@ export async function measure(treasury) {
 
 /** plan — pure (testable): what to resize + power up. refs resolved by caller's map */
 export function planResize({ treasurySp, liquid, outs, vestsPerSP, map = {} }) {
-  const refOf = (n) => map[n] || n.slice(0, 3) + '…';
+  // [19.47 refs-cure] refOf-קבלות: המפה-החיה דרך refs.mjs (שני-הכיוונים);
+  // לא-נפתר = acct-h-<sha8> יציב — לעולם לא קיצוץ-שם שמתאים לדפוס-השער.
+  const refOf = receiptRefOf;
   const need = Math.max(0, FLOOR - treasurySp);
   const plan = { need: +need.toFixed(3), resizes: [], powerupSp: 0, totalRecoveredSp: 0 };
   let remaining = need;
@@ -107,7 +123,7 @@ export function planResize({ treasurySp, liquid, outs, vestsPerSP, map = {} }) {
 
 export async function execute({ treasury, confirm, map = {} }) {
   const k = loadKey('CI_ADOPT_WIF_ACTIVE');
-  const receipt = { protocol: 'TREASURY-CONSOLIDATION-V2/1', at: new Date().toISOString(), treasuryRef: 'acct-00', armed: Boolean(k.ok), confirm };
+  const receipt = { protocol: 'TREASURY-CONSOLIDATION-V2/1', at: new Date().toISOString(), treasuryRef: 'acct-00', armed: Boolean(k.ok), confirm, rosterResolved: rosterMapResolved() };
   if (!k.ok) { receipt.verdict = 'KEYLESS'; receipt.note = k.reason; publish(receipt); return receipt; }
   const s = await steem();
   const m = await measure(treasury);
@@ -163,6 +179,10 @@ function publish(receipt) {
 
 /** selftest — zero network: the corrected delegation math + resize plan + caps */
 export function selftest() {
+  // [19.47 refs-cure] deterministic roster seeding — refs.mjs re-reads env while
+  // unresolved, so the selftest pins its OWN fixture map (works with or without
+  // the CI secret present; never depends on the live roster's content).
+  process.env.FLEET_ROSTER_MAP = JSON.stringify({ w1: 'acct-01', w4: 'acct-09' });
   // the t47-t50 wrong metric: effectiveVests included received → not delegable.
   // v2 truth: worker draw is bounded by what the TREASURY delegated out (outs vests).
   const vestsPerSP = 1611.381;
@@ -174,6 +194,12 @@ export function selftest() {
   ];
   const p = planResize({ treasurySp: 2417.28, liquid: 207.641, outs, vestsPerSP, map: { w1: 'acct-01', w4: 'acct-09' } });
   if (p.need !== 582.72) throw new Error('need math');
+  // [19.47 refs-cure] receipt-grade pseudonym law: unknown name → stable acct-h
+  // hash-ref (same name → same ref), NEVER a truncated name, NEVER pass-through.
+  const h1 = receiptRefOf('worker-unknown-a'), h1b = receiptRefOf('worker-unknown-a'), h2 = receiptRefOf('worker-unknown-b');
+  if (!/^acct-h-[0-9a-f]{8}$/.test(h1) || h1 !== h1b || h1 === h2) throw new Error('receipt pseudonym law (stable, hashed, unique)');
+  if (receiptRefOf('w1') !== 'acct-01') throw new Error('house roster resolution (name→ref via refs.mjs)');
+  if (h1.includes('…')) throw new Error('no truncation ellipsis ever lands in a receipt');
   // w1: draw = min(146.381−100, remaining, 120) = 46.381 — cap פעיל
   const w1 = p.resizes.find((r) => r.to === 'acct-01');
   if (!w1 || Math.abs(w1.drawSp - 46.381) > 0.001) throw new Error('w1 draw + cap');
@@ -193,7 +219,7 @@ export function selftest() {
   // and a fixture that DOES reach the floor must say so:
   const big = planResize({ treasurySp: 2500, liquid: 400, outs: [{ to: 'w1', vests: 500 * vestsPerSP }, { to: 'w2', vests: 500 * vestsPerSP }], vestsPerSP });
   if (!big.reachesFloor || big.projectedSp < 3000) throw new Error('rich-hands fixture must reach floor');
-  console.log('[consolidation] selftest: PASS (corrected delegable math, per-hand cap, poor-hand protection, powerup bounds, floor reach)');
+  console.log('[consolidation] selftest: PASS (corrected delegable math, per-hand cap, poor-hand protection, powerup bounds, floor reach, receipt-grade pseudonyms)');
   return true;
 }
 
@@ -204,6 +230,13 @@ if (isMain && process.argv.includes('--selftest')) {
 }
 if (isMain) {
   const confirm = process.argv.includes('--confirm') ? 'CONSOLIDATE' : 'DRY';
+  const treasury = process.env.TREASURY_NAME;
+  if (!treasury) {
+    // [19.47 refs-cure] אין-עוד ברירת-מחדל ליטרלית — חוק-השטח-הפומבי (refs.mjs):
+    // שם-אחוזה חי בסוד/סביבה בלבד. חסר = יציאה-כנה, לא שקר.
+    console.error('[consolidation] TREASURY_NAME env missing — fail-honest exit 2 (zero fleet-name literals in the public tree)');
+    process.exit(2);
+  }
   const map = JSON.parse(process.env.FLEET_ROSTER_MAP || '{}');
-  execute({ treasury: process.env.TREASURY_NAME || 'headcorner', confirm, map }).then((r) => process.exit(r.verdict === 'KEYLESS' ? 1 : 0));
+  execute({ treasury, confirm, map }).then((r) => process.exit(r.verdict === 'KEYLESS' ? 1 : 0));
 }
