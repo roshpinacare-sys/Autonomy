@@ -37,7 +37,17 @@ const NODES = ['https://api.steemit.com', 'https://api.steem.fans', 'https://api
 
 let steemMod = null;
 async function steem() {
-  if (!steemMod) steemMod = (await import('steem')).default;
+  if (!steemMod) {
+    // ESM ignores NODE_PATH — resolve the house-pattern install (/tmp/steemjs)
+    // via createRequire, falling back to repo-local node_modules.
+    const { createRequire } = await import('node:module');
+    const candidates = ['/tmp/steemjs/node_modules/', new URL('../node_modules/', import.meta.url).href];
+    let lastErr;
+    for (const base of candidates) {
+      try { steemMod = createRequire(base)('steem'); break; } catch (e) { lastErr = e; }
+    }
+    if (!steemMod) throw lastErr || new Error('steem lib not found');
+  }
   return steemMod;
 }
 
