@@ -4,7 +4,7 @@
 > הסבב שמד: אחוזה-שנפגעה-wipe · דליפת-כספת-בריפו-ציבורי (P0) · ריפוי-משטח-פרסום-שבור · תחיית-13-איברים · ולדגר 26/28→28/30.
 
 ## חוק 1 — אפס-סודות-בפומבי [P0 נמדד]
-- נמדד-חי: `raw.githubusercontent.com/roshpinacare-sys/steem/main/.secrets/*` הגיש HTTP 200 לעולם (headcorner.key · army-keys.json · exec-armed.json · headcorner.text) — כספת-פליינטקסט בריפו-**ציבורי**.
+- נמדד-חי: `raw.githubusercontent.com/roshpinacare-sys/steem/main/.secrets/*` הגיש HTTP 200 לעולם (<מפתח-הקודקוד>.key · army-keys.json · exec-armed.json · <מפתח-הקודקוד>.text — השמות-המדויקים-נגזרים-בזמן-ריצה-מהכספת, אינם-בעץ-הציבורי) — כספת-פליינטקסט בריפו-**ציבורי**.
 - הפצע-נסגר-במדידה: כל-4-הנתיבים מחזירים 404 לאחר-הקילוף (commit 2bbb1843b). הבלובים-בהיסטוריה — **רוטציה = הכרעת-בעלים-בלבד** (תקדים-htx).
 - הכספת-הפליינטקסט עתה-בערוץ-פרטי-בלבד: saos-coordination (פרטי) `vaults/steem-secrets/` (0656e1d). חוזה-GEN-3 לא-נפגע: צופן-בגיט + shard-רנטימי-שמעולם-לא-בגיט.
 - sealOne עתה-אטום-חסין-סודות: אף-פעם לא בוחר upload/ · tool-results/ · agent-ctx/ · .secrets/ · *.env (החוק-האבוד-d28622e-שוחזר-והורחב).
