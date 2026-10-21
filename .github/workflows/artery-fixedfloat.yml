@@ -1,0 +1,57 @@
+# artery-fixedfloat.yml [t52 · agent-9] — שער-ה-FF: מדידת-מחיר-חיה (קריאה-בלבד).
+#
+# מנדט-בעלים (IM trace 1a15c400a63e05d9, 2026-10-21): "שער איכותי... כסף אמיתי
+# שניתן להמיר לביטקוין אמיתי ולא שוק דמה". המפתחות-הוספו-על-ידי-הבעלים
+# (FIXEDFLOAT_API_KEY/SECRET, 2026-10-21T01:52Z). המסילה: /price בלבד
+# (אפס-כסף-זז) — createOrder נעול-מאחורי FIXEDFLOAT_EXEC=1 (לא-חמוש).
+# הקבלה = השער-המדוד: מה-STEEM שווה-בפועל-מול-BTC-אמיתי, מה-הריפוד-מול-הדקס.
+name: artery-fixedfloat
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "37 */4 * * *"   # מדידה-כל-4-שעות — השער-המדוד-נושם
+permissions:
+  contents: write
+concurrency:
+  group: artery-fixedfloat
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      FIXEDFLOAT_API_KEY: ${{ secrets.FIXEDFLOAT_API_KEY }}
+      FIXEDFLOAT_API_SECRET: ${{ secrets.FIXEDFLOAT_API_SECRET }}
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 1 }
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+      - name: Selftest gate (fail-closed, zero network)
+        run: node engine/fixedfloat.mjs --selftest
+      - name: Live price probe (read-only)
+        run: |
+          set -Eeuo pipefail
+          node << 'EOS'
+          (async () => {
+          const ff = await import('./engine/fixedfloat.mjs');
+          const c = ff.cfg();
+          if (!c.ok) { console.log(JSON.stringify({ verdict: 'KEYLESS', reason: c.reason })); process.exit(0); }
+          const quotes = await ff.probe(c, { amount: 100, ccys: [['steem', 'btc'], ['hive', 'btc']] });
+          const receipt = { protocol: 'FIXEDFLOAT-PROBE/1', at: new Date().toISOString(), verdict: quotes.some(q => q.ok) ? 'MEASURED' : 'HONEST-FAIL', quotes, note: 'read-only price probe — no orders created (create armed-gated)' };
+          console.log('FIXEDFLOAT-RECEIPT ' + JSON.stringify(receipt));
+          const { writeFileSync, mkdirSync } = await import('node:fs');
+          mkdirSync('receipts/fixedfloat', { recursive: true });
+          writeFileSync('receipts/fixedfloat/latest.json', JSON.stringify(receipt, null, 1) + '\n');
+          })().catch(e => { console.log(JSON.stringify({ verdict: 'THROW', note: String(e && e.message || e).slice(0, 120) })); process.exit(1); });
+          EOS
+      - name: Commit receipt
+        run: |
+          set -Eeuo pipefail
+          git config user.name sovereign-agent-9
+          git config user.email agent9@fleet.local
+          git pull --rebase -X theirs --autostash origin main || true
+          git add receipts/fixedfloat/latest.json 2>/dev/null || true
+          git diff --cached --quiet && { echo "receipt quiet"; exit 0; }
+          git commit -q -m "fixedfloat probe receipt: $(date -u +%FT%TZ) [skip ci]"
+          for i in 1 2 3; do git pull --rebase -X theirs --autostash origin main && git push origin HEAD:main && break || { sleep $((i*5)); git rebase --abort 2>/dev/null || true; }; done

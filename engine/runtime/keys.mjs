@@ -33,7 +33,9 @@ const API = `https://api.github.com/repos/${REPO}`;
 export const REQUIRED_SECRETS = [
   { name: 'FLEET_PAT', purpose: 'GitHub org PAT for fleet organs (verified live t11)' },
   { name: 'NVIDIA_NIM_KEY', purpose: 'LLM brain fuel — auto-activates when NIM catalog revives (verified auth-valid t11, catalog 410/404 measured)' },
-  { name: 'CI_ADOPT_WIF_ACTIVE', purpose: 'P2: treasury top-up executor — delegate to restore treasury ≥3000 SP (keys REGISTRY: exists as cloud secret in saos-runtime; organ reads it at runtime when present)' },
+  { name: 'CI_ADOPT_WIF_ACTIVE', purpose: 'P2: treasury top-up executor — delegate to restore treasury ≥3000 SP (relayed t52 via key-relay-to-autonomy; verified live in consolidation runs)' },
+  { name: 'FIXEDFLOAT_API_KEY', purpose: 't52 owner-added FF gate (key id) — read-only price probe lane; createOrder armed behind FIXEDFLOAT_EXEC=1' },
+  { name: 'FIXEDFLOAT_API_SECRET', purpose: 't52 owner-added FF gate (HMAC secret) — memory-only, never echoed' },
 ];
 
 /** loadKey(name, env) — memory-only key access, fail-closed, never logged */
