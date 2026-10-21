@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T10:13:57.079Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T10:43:37.875Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,6 +15,7 @@
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/mm-supremacy @ 2026-10-21T10:30 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/agent9-fleet-truth @ 2026-10-21T08:40 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-21T07:50 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/dex-mirror @ 2026-10-21T07:39 — autonomy triage: read the log, fix root, land, verify
