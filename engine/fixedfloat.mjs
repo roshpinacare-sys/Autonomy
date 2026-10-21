@@ -18,7 +18,7 @@
  */
 import { createHmac } from 'node:crypto';
 
-const API = 'https://fixedfloat.com/api/v1';
+const API = 'https://ff.io/api/v2'; // FixedFloat v2 (owner: "מפתח ff" — ff.io; v1 path 404 measured, v2 401=alive)
 
 export function signBody(secret, body) {
   return createHmac('sha256', secret).update(body).digest('hex');
