@@ -338,6 +338,8 @@ export function toolsCatalogHtml({ organs = [], knowledge = [], arteries = [], r
 
   <footer>נבנה על-ידי איבר-הבונה מהקבצים האמיתיים בגיט · השמישות היא חוק, לא מותרות</footer>
 </main>
+<div id="agent9-truth-band"></div>
+<script src="agent9-truth-band.js" defer></script>
 </body>
 </html>
 `;
