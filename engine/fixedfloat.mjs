@@ -44,7 +44,11 @@ async function call(cfgv, path, payload) {
 
 /** listCurrencies — the market's real codebook (STEEM may have a v2-specific code) */
 export async function listCurrencies(cfgv) {
-  const { http, j } = await call(cfgv, 'currencies', {});
+  // v2: the codebook is GET (POST /currencies 404-with-auth measured 03:16)
+  const body = JSON.stringify({});
+  const r = await fetch(`${API}/currencies`, { method: 'GET', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' } });
+  const http = r.status;
+  const j = await r.json().catch(() => ({}));
   const rows = (j?.data || j || []).map?.((c) => ({ code: c.code, name: c.name, ccys: c.ccys })) || [];
   return { http, ok: j?.code === 0 || Array.isArray(j?.data), rows, raw: Array.isArray(rows) && rows.length ? null : JSON.stringify(j).slice(0, 200) };
 }
