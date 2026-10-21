@@ -1,7 +1,7 @@
 {
  "protocol": "saos/key-proof/1",
- "generatedAt": "2026-10-14T09:36:09.541Z",
- "finishedAt": "2026-10-14T09:37:08.722Z",
+ "generatedAt": "2026-10-21T09:26:32.063Z",
+ "finishedAt": "2026-10-21T09:28:05.380Z",
  "mandate": "owner trace 1a12…1b95 — dead-key standing proof for R11 leaked key material (roshpina/anchor-baseline/saos-jummper/Sdk/Adsmarket)",
  "redaction": {
   "law": "hash16-of-material + derived pubkeys + place metadata ONLY; no private material, no passphrases, no file contents; auditor enforced pre-write (violation = hard failure, nothing written)",
@@ -12,54 +12,54 @@
    {
     "repo": "roshpina",
     "reachable": true,
-    "head": "fe95dcec52",
-    "commits": 168,
-    "blobs": 492,
-    "bytes": 2963785,
-    "ms": 2446
+    "head": "0629f4ccda",
+    "commits": 257,
+    "blobs": 5555,
+    "bytes": 44865514,
+    "ms": 14431
    },
    {
     "repo": "anchor-baseline",
     "reachable": true,
-    "head": "38d88b816d",
-    "commits": 128,
-    "blobs": 135,
-    "bytes": 691623,
-    "ms": 1431
+    "head": "0f7836029c",
+    "commits": 130,
+    "blobs": 137,
+    "bytes": 692119,
+    "ms": 716
    },
    {
     "repo": "saos-jummper",
     "reachable": true,
-    "head": "c07e593c17",
-    "commits": 438,
-    "blobs": 512,
-    "bytes": 4645929,
-    "ms": 2264
+    "head": "fed8e83adc",
+    "commits": 439,
+    "blobs": 513,
+    "bytes": 4646179,
+    "ms": 1831
    },
    {
     "repo": "Sdk",
     "reachable": true,
-    "head": "ea86c675ba",
-    "commits": 130,
-    "blobs": 205,
-    "bytes": 765896,
-    "ms": 1152
+    "head": "d10bbb0df6",
+    "commits": 131,
+    "blobs": 206,
+    "bytes": 766191,
+    "ms": 1005
    },
    {
     "repo": "Adsmarket",
     "reachable": true,
-    "head": "43e5ba5a70",
-    "commits": 587,
-    "blobs": 551,
-    "bytes": 11091147,
-    "ms": 2397
+    "head": "c989fc12d8",
+    "commits": 593,
+    "blobs": 558,
+    "bytes": 11107653,
+    "ms": 2206
    }
   ],
-  "totalBlobs": 1895,
-  "totalBytes": 20158380,
+  "totalBlobs": 6969,
+  "totalBytes": 62077656,
   "reachabilityNote": "all 5 repos reachable",
   "noise": {
-   "oversizeBlobs": 0,
+   "oversizeBlobs": 13,
    "skippedBudget": 0,
    "unreadableBlobs": 0
   },
@@ -71,7 +71,7 @@
  "chain": {
   "node": "https://api.steemit.com",
   "fleetAccounts": 14,
-  "fleetAliveKeyBodies": 56,
+  "fleetAliveKeyBodies": 63,
   "keyReferencesAvailable": true,
   "keyReferenceNote": "condenser_api.get_key_references used (global reference census)",
   "rotation": {
@@ -79,29 +79,11 @@
     "from": "2026-10-08T15:00:00",
     "to": "2026-10-08T19:00:00"
    },
-   "opsWalked": 23836,
-   "pages": 236,
-   "reachedWindowEnd": true,
-   "truncated": false,
-   "accountUpdateOps": [
-    {
-     "timestamp": "2026-10-08T17:29:09",
-     "block": 110266615,
-     "trxId": "8edc45ed502c9a6c6f60f29dee7591798f234e1a",
-     "op": "account_update",
-     "newAuthorities": {
-      "owner": [
-       "STM5Ao2voWBnv8Nwfd5hMA4zwjBQZE8a8J8RkLUd8HpuFWhrSQFJ7"
-      ],
-      "active": [
-       "STM5jRfQH9DAF2474UQF1GVarShJZhpSPEYZFiZVr8MHV8cNSXDQf"
-      ],
-      "posting": [
-       "STM7RqZtbL1GQMJz7Lt59qeCkiCgkyRqVSpW59UXX3aTNGjh7QjY3"
-      ]
-     }
-    }
-   ]
+   "opsWalked": 40400,
+   "pages": 400,
+   "reachedWindowEnd": false,
+   "truncated": true,
+   "accountUpdateOps": []
   },
   "acct-00LastOwnerUpdate": "2026-10-12T11:12:33",
   "acct-00ActiveLive": "STM5HhJD5WUXu8vPhDmLaC2fTuuJYkwxF62Rt17HZ5G2PbnBvuHXF",
@@ -112,10 +94,371 @@
   "DEAD": 9,
   "ALIVE-ALERT": 0,
   "UNKNOWN": 0,
-  "UNKNOWN-NOT-CHAIN-TESTABLE": 3,
+  "UNKNOWN-NOT-CHAIN-TESTABLE": 17,
   "incident": false
  },
  "verdicts": [
+  {
+   "hash16": "91b546a96348aa25",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "183874fc1604c777958acc3afae8514f6dcf8e13",
+     "path": "control-plane/mini-services/fleet-runner/scripts/vault-seal.sh"
+    },
+    {
+     "repo": "roshpina",
+     "blob": "8c591cf54489605b843afe9d325e98a8b62b6eb6",
+     "path": "control-plane/vault-sealed/vault.manifest.json"
+    },
+    {
+     "repo": "roshpina",
+     "blob": "7559acffd5ccb6b4784bed71807e4abc859fa567",
+     "path": "vault-sealed/vault.manifest.json"
+    }
+   ],
+   "context": "passphraseHolder\"",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    },
+    {
+     "sha": "78db843668",
+     "date": "2026-10-18"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "1e089e3c5323ad80",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "dfa98a2d4df881e09c303267e823b16cb4d59483",
+     "path": "control-plane/mini-services/fleet-runner/scripts/vault-unseal.sh"
+    }
+   ],
+   "context": "VAULT-UNSEAL-FAIL",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    },
+    {
+     "sha": "78db843668",
+     "date": "2026-10-18"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "2e386c970e2e8b57",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "dfa98a2d4df881e09c303267e823b16cb4d59483",
+     "path": "control-plane/mini-services/fleet-runner/scripts/vault-unseal.sh"
+    }
+   ],
+   "context": "VAULT-UNSEAL-FAIL",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    },
+    {
+     "sha": "78db843668",
+     "date": "2026-10-18"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "78587c41ed99a337",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "dfa98a2d4df881e09c303267e823b16cb4d59483",
+     "path": "control-plane/mini-services/fleet-runner/scripts/vault-unseal.sh"
+    }
+   ],
+   "context": "VAULT-UNSEAL-FAIL",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    },
+    {
+     "sha": "78db843668",
+     "date": "2026-10-18"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "1b2b1cccfb48c653",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "bc57f9569653a401bee77d6669ae2bb592599c7a",
+     "path": "control-plane/skills/design/horizontal-craft/form-validation.md"
+    }
+   ],
+   "context": "password",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "fcf730b6d95236ec",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "be2b0fd4bafe5244ef9a6406de4c4019d0abb13c",
+     "path": "control-plane/skills/pdf/briefs/process.md"
+    }
+   ],
+   "context": "--password",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "455c08a3f7319c74",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "54df5f9afae4f2e63541f3b7f0e0706c11eab486",
+     "path": "control-plane/skills/web-shader-extractor/scripts/fetch-rendered-dom.mjs"
+    }
+   ],
+   "context": "pwDir",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "89e01536ac207279",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "6ad135cb363a65028cf448206cf2476abf0ba242",
+     "path": "control-plane/skills/xlsx/scenes/advanced.md"
+    }
+   ],
+   "context": "ws.protection.password",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "87a3510e508ed094",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "6ad135cb363a65028cf448206cf2476abf0ba242",
+     "path": "control-plane/skills/xlsx/scenes/advanced.md"
+    }
+   ],
+   "context": "wb.security.workbookPassword",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "76bf2a9baf705ff1",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "f87d458fb45981f4010faf28b92ed47d6d0b23f3",
+     "path": "control-plane/src/app/api/ai/route.ts"
+    }
+   ],
+   "context": "unsealed",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "5f394280d80b0c84",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "f87d458fb45981f4010faf28b92ed47d6d0b23f3",
+     "path": "control-plane/src/app/api/ai/route.ts"
+    }
+   ],
+   "context": "passphraseHolder",
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "be10e925a44b0eb4",
+   "kind": "archive",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "f795f3b53122f59123a8187d09f5742c0e542d9d",
+     "path": "control-plane/vault-sealed/nim-api.env.enc"
+    }
+   ],
+   "gitBlobSha": "f795f3b53122f59123a8187d09f5742c0e542d9d",
+   "size": 288,
+   "introducedIn": [
+    {
+     "sha": "e4f95deb4a",
+     "date": "2026-10-21"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE"
+  },
+  {
+   "hash16": "6b8f22536562b5ee",
+   "kind": "archive",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "fcba8ba139c76de55043677572fa0ff0b72232a4",
+     "path": "state/state-2026-10-18T14-56-45.tar.gz"
+    }
+   ],
+   "gitBlobSha": "fcba8ba139c76de55043677572fa0ff0b72232a4",
+   "size": 1712343,
+   "introducedIn": [
+    {
+     "sha": "8d34cbac12",
+     "date": "2026-10-18"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE"
+  },
+  {
+   "hash16": "f1d9f9c95c434438",
+   "kind": "archive",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "a9d14d91c0b09bac58756d02e5c22781eb22076a",
+     "path": "vault-sealed/nim-api.env.enc"
+    }
+   ],
+   "gitBlobSha": "a9d14d91c0b09bac58756d02e5c22781eb22076a",
+   "size": 288,
+   "introducedIn": [
+    {
+     "sha": "78db843668",
+     "date": "2026-10-18"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE"
+  },
   {
    "hash16": "658d061ca1a85765",
    "kind": "archive",
@@ -1086,7 +1429,7 @@
   }
  ],
  "soldierProbe": {
-  "measuredAt": "2026-10-14T09:37:08.722Z",
+  "measuredAt": "2026-10-21T09:28:05.380Z",
   "method": "condenser_api.get_accounts live authorities — facts only, zero key material, zero vault access",
   "rows": [
    {
@@ -1094,25 +1437,25 @@
     "lane": "treasury",
     "ownerPubkey": "STM5aUKyd9LzENnMti5tS478Zu1SLJW51VHyu2gvSNGKhwfyMFpvv",
     "activePubkey": "STM5HhJD5WUXu8vPhDmLaC2fTuuJYkwxF62Rt17HZ5G2PbnBvuHXF",
-    "postingPubkey": "STM8m3rBLd8CA2KkY764fkFBnYGoCaK1ktDjn825HUbq25i52N9cw",
+    "postingPubkey": "STM5AszgPKmjPnm8mrhC66oAHdsegbWDWcK8RA3DmrUHGg2S81Tug",
     "memoPubkey": "STM7mBK98NCE3HfMhqB9ADdxTutE1RSyGzpJQ6xiybr7gbmpQcXM9",
     "ownerEqualsActive": false,
     "lastOwnerUpdate": "2026-10-12T11:12:33",
     "created": "2018-03-02T12:20:24",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
-    "postingAuthCount": 1,
+    "postingAuthCount": 5,
     "note": null
    },
    {
     "account": "acct-01",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM7Rp6auWyWPWRVaafT5CCtoUrHXnYQHesebPnskH3HwyAu8nh8N",
-    "activePubkey": "STM6F6g8zE3rCdsSenpTTZBZ8v4f2bk8RvenrhUdMBcDvWtGBLNwU",
-    "postingPubkey": "STM7RQhCmgHwHVugY2ahbb1Qmz1ZPBz1xhyiCrEYNU7L9mfApveyt",
-    "memoPubkey": "STM6oDMKW1smCikYLe3HzMotGq8jHAbzhzmuJmy6xCiga2uH4c5sJ",
+    "activePubkey": "STM76Eq7oECsDy2AYLTxcNupxKkqhvoRGbGEupTDs1NnPLq1fi8wA",
+    "postingPubkey": "STM7zzixt1a2GrsTfNqJW8fQBxyea3V3tHvsnBje2ERssCvVMsy5v",
+    "memoPubkey": "STM8GSmCPbeb8uWvoRCjnb9NBbqbkpxMB7Z1qsjCKyLVELH2Zrq9Z",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:18",
+    "lastOwnerUpdate": "2026-10-21T04:15:39",
     "created": "2018-03-26T11:18:12",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1123,11 +1466,11 @@
     "account": "acct-02",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM7LK2d2oHw1Bk63fqcpqgVyNUQxbnY3xuT7L554yVKCcY6mywxV",
-    "activePubkey": "STM6Ais6zXqnzzrzrsH3ezhDLom66G9C3FSCyh4zLkhEuXfojhV6v",
-    "postingPubkey": "STM8S1euaPhLsawcuLbrqQx2kff2u12ERTmxgHWmDuTZmtUzWQScw",
-    "memoPubkey": "STM7WgxuQSz9HsBoLVE9XFwtK15VQ8yxsYmxtz7viuFZTN92RAjZQ",
+    "activePubkey": "STM6CEeQnEkbo3xYMc1HBTevxC6bZakpuaBokEEqtPDfV3jb77EKw",
+    "postingPubkey": "STM6j8FxGmiw8KsaVhQ7E1FHrtwjavyoj5s4NLoKFQuS4aZ5za9ns",
+    "memoPubkey": "STM7pN7TMwMfFPcGzyX9XCJHnPrMLKvfteYkxLQpXQb4h2vJRouYV",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:21",
+    "lastOwnerUpdate": "2026-10-21T04:16:24",
     "created": "2018-03-26T10:28:21",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1138,11 +1481,11 @@
     "account": "acct-03",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM7t1VE72QDKW6e7xZDGxgBY6FCruVyA7rbhBmrN6ojK5Q6dwNqT",
-    "activePubkey": "STM8iPwEEngRbZYgxE5f3hgk3rhSjoeHZZM2uAcRr1gkFMtpudf7Y",
-    "postingPubkey": "STM7qRKLp69WbhJ3vTJuqLSzVyR12X63jCVBU7Cj7UbsGznYrxNxg",
-    "memoPubkey": "STM7qaGFrH5wquYwee4yyhaezZVTy9bVbAYWwfyQ6xmpqduEQPzhh",
+    "activePubkey": "STM5928HAKZUKY2G871objiHmw5sbUMPboCa4igyZpkFrnNxjRJjq",
+    "postingPubkey": "STM7jmiorgqLTFyQJYZfFKfVjYCAn6NkadztS7u8x1xhodY8AThLP",
+    "memoPubkey": "STM8CDvkvw6ttBBLtgo7rbHDmyhdujw6xCpEDbTPiRCzDjfy4GK2n",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:21",
+    "lastOwnerUpdate": "2026-10-21T04:16:30",
     "created": "2018-03-12T17:21:15",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1153,11 +1496,11 @@
     "account": "acct-04",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM7M5QQmSXbEh3PxfTUnG9yUFTsnbGvtsMGoEkAwG77i1hychzQ9",
-    "activePubkey": "STM7piCGq42DoRhqM4TomVtvsYMsbzHXtGxQtzjbnCPipvU2td6s3",
-    "postingPubkey": "STM6md5hzKRkyF7f6P1RoSfecUymUk18WJ7gN2J1KDdZRSa3hbfEh",
-    "memoPubkey": "STM5st2wHbxjQtkjxL3FBHsLNoGiNdqwpePEL7g5BjkF9kS5yVsvR",
+    "activePubkey": "STM5W276A4uWCxrC6A7mh9SfSk9fkcuDguANVGLhJJq2AQaNvEqpW",
+    "postingPubkey": "STM83ReX5Y153c3oVEHQvPBDYVWeMiNkLMhq5iioheXtrDfdBia5s",
+    "memoPubkey": "STM5qsWvshtTGPezyGh4zSsagoNatSJYUz7R5HLc1d7BLc1knZzHC",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:21",
+    "lastOwnerUpdate": "2026-10-21T04:16:36",
     "created": "2018-04-12T17:11:12",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1168,11 +1511,11 @@
     "account": "acct-05",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM6ebPT6RWvHXuzq56gw8SxRjEjVNe9JfBf6wPqfvJ6PvvRvxkmL",
-    "activePubkey": "STM5B7wKP5E6oQk7iRxHbskKQCppTe8vcHDxoS29ziwszFs27C8Y6",
-    "postingPubkey": "STM8ZEqLQNxzUMsgvjcE4sV7bUftWkAsLJtKBssiwWTgZou71oaeQ",
-    "memoPubkey": "STM5yXN2bCcGDV8ZTvzPVtSqUN7PYykj1JziXbCvoVErzoxvpjsmc",
+    "activePubkey": "STM7RhKX4fmDkvZtt353SUxe5wu9Hq3meUQcZf7PEgJWjsZeTqocf",
+    "postingPubkey": "STM6S7YU1dz4TW4BCr6jc3yXzksXa9QTPt9FHm2dp7yxCRRABGD8N",
+    "memoPubkey": "STM5nX7UPfW3YVHeEhEdYqDJab9Pju6JhmtCExC12NUdaKAHFHnpN",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:24",
+    "lastOwnerUpdate": "2026-10-21T04:16:42",
     "created": "2018-03-12T15:56:18",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1183,11 +1526,11 @@
     "account": "acct-06",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM69NZih1wNYpMRSfbg8mJgMG1xfoakyfaqRPvyfzbzEfsFJCdUT",
-    "activePubkey": "STM7a8BwYdcn45LQJNTeVUUhkcLEsRe6NCSovLdDMFiA3afBWC6hp",
-    "postingPubkey": "STM6ucW9GYSytLm4rYQeCgoRCDd1RHSsH19nmoikBRyTdMi45xGWc",
-    "memoPubkey": "STM8MCDXUvRURbTY3JznPt3aHngbAZPYVqvSooDXEvnFF5SCBExD6",
+    "activePubkey": "STM728p49t2eugJbKp6F6HZj2FUPq4PXKJfuu3EHJeiHBtNEWsjYo",
+    "postingPubkey": "STM8RM4Lg9qWiT14yM8jbG7SuiEojbEmKMQbSqPn5C75eH3MmF4vd",
+    "memoPubkey": "STM81FQZz13uQsd7jNd55un7f9PUAtBEwiq3oWFw9Qhypn9cYdeZ5",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:27",
+    "lastOwnerUpdate": "2026-10-21T04:16:51",
     "created": "2018-04-12T17:12:00",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1198,11 +1541,11 @@
     "account": "acct-07",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM8FFj1oU3dHHGvJiE5moGJJk7wtjDamrdVeNmYSZQyCP84rmaqd",
-    "activePubkey": "STM5xkXgX5pexZSYFwSfh9YRJPY3PSCXT9KB3njibeDnmjzRKNxcR",
-    "postingPubkey": "STM5WLZFDwYdDrpQYZnn35XftegzV64U9StrPgYsno9mZnQrcSVFd",
-    "memoPubkey": "STM523r2zqmx3kmRaHVMSpwTJM3nUXSVVnENw9fBmp2k9yFMgy7hF",
+    "activePubkey": "STM76sNBhWrMuMKcQ51UumRFTh9xX2scTUwQvyFzFJsdBRtv3F31b",
+    "postingPubkey": "STM53yYxtW5PhKhVbxSzELqpd8Q4akygyG5PvcMcsMEYdb4TGGmTU",
+    "memoPubkey": "STM6Z7uwsd7wRqGoR6K5QavsaySw9JmTT8KmVkJtJrmFgK3PHCmT3",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:27",
+    "lastOwnerUpdate": "2026-10-21T04:16:57",
     "created": "2018-04-12T17:09:09",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1213,11 +1556,11 @@
     "account": "acct-08",
     "lane": "fleet",
     "ownerPubkey": "STM5XScMFug2xXfqTSSqjpdUjJFB7zpTXBKSHvDcCNefTr2ZNGF8t",
-    "activePubkey": "STM7agCwy1LAAzjtt4pN6ULgpo3SCNAVHd3QJYuecWNaSzxV1HKba",
-    "postingPubkey": "STM7H4Z2fdXyHbCe6Wn8MV72BZ8aEPzz9Ju6hKqN4bJFsTHLwZ3Kh",
-    "memoPubkey": "STM5yw2nRqeVFdgVEFFGZe4kp1JvPMPpB7CgASh11nWbjys6wAZtJ",
+    "activePubkey": "STM89eNL2HcGokrdszxn5pTCaNFG6R8xMHZQeBN2t9jJk5iRkewtE",
+    "postingPubkey": "STM5cREEW4XpgsVT9aFF71zSu5SASd7cXLVRXV2MLpaGfERMFzuAg",
+    "memoPubkey": "STM6Rf2LpxtvAJsq2SJCG5H8ityFXq7zAen5AyNLEJxNDfVN8me3k",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:30",
+    "lastOwnerUpdate": "2026-10-21T04:17:03",
     "created": "2018-04-12T17:07:45",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1228,11 +1571,11 @@
     "account": "acct-09",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM7RXg2o2PZk1tqospN11EHNaXVwq7nEPomtZNqkT9YK9c4pmTif",
-    "activePubkey": "STM7yAPMmAsMZ7nAh5L9iasY6GCCYownSu9S9FU7m6Vgp3XAj3h1q",
-    "postingPubkey": "STM8NMmdASkYZMKpLYBAckQZmosbHSkWTNGXZuTysyXC9opXchZRK",
-    "memoPubkey": "STM6uojGX6gtXLhtD2mZwdoC1wCZUyzAkQ5AKhGmevTiep62xppPu",
+    "activePubkey": "STM5K7Jj5i3UNfwTX4Ub1uyamWB1L5rsr1ecdAhCrTmWwgZf3pCtQ",
+    "postingPubkey": "STM5orD328yFi7N4gqFYJrkZcgzTeVtTpiG73y5HPv6vWrfMsjWxN",
+    "memoPubkey": "STM8EizofXJnSgKwjmjAfw938fg2kxiG6eaJkjaQ4BWCJtTDJh4Bz",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:30",
+    "lastOwnerUpdate": "2026-10-21T04:17:12",
     "created": "2018-04-12T17:04:36",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1243,11 +1586,11 @@
     "account": "acct-10",
     "lane": "r11-nine (owner keys not in machine vault — owner-auth ops blocked tx_missing_owner_auth)",
     "ownerPubkey": "STM6jcx7BrzawVR5E1AhmCBKBPDWTq3qDkBDsqY47VGAQxJEAXcyc",
-    "activePubkey": "STM6u8gfvFnnYc9MmmVSsTXs92Bbkaaf1BrECoKsdnVHo9NPTSHPp",
-    "postingPubkey": "STM6gZLJw1ujeQ7fjo5zaZED2qRjdgz54JuP9F12tbAw2qS9G65Bv",
-    "memoPubkey": "STM5KJuusCC6o8tJGVDFkd3arfbArrzumFRPaRXaddcNRoTzgrg6i",
+    "activePubkey": "STM8jNAka7cYdtNSd2DP2A77WPZdSSwuU5BzD293FKWEdXwrqSB14",
+    "postingPubkey": "STM8kN8zkqFJXzUpfkXuYYfhr2xKtcAXsLQZzBgXodL2rn1YkSxiH",
+    "memoPubkey": "STM58fddLUiivau9ne7dkF32jWBJQDiqt7kXVypnYr9X8T6RswQBo",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:33",
+    "lastOwnerUpdate": "2026-10-21T04:17:21",
     "created": "2018-04-12T17:16:03",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1258,11 +1601,11 @@
     "account": "acct-11",
     "lane": "fleet",
     "ownerPubkey": "STM86KbSx7mGNv5EZhs9To6zgNTnR9MbjRxCnoCY4E6cVRSuX2qSp",
-    "activePubkey": "STM69rYxb37rPnSYUy4c23VwMXkEYmSTQgsZ7NSnNXvv3HUABHYuU",
-    "postingPubkey": "STM5FgpZ8Qck43eoN8utcnFWCWBURD5QvLWkbAfn4zPNiJfZ9o87A",
+    "activePubkey": "STM59DR18EpsjTxqmTnH4SayD6dJkXpWyRtqKQJdqFFpYJfesMnDk",
+    "postingPubkey": "STM7GGJVxP5LcZT6SbDWot5AK8yYJ14yMjNVMCVevDuRYXRao9y4L",
     "memoPubkey": "STM8T4ndfFuE1XxHmoY3EVqyod8bH1kYKYnb5emY2M8gPbE4iegYw",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:33",
+    "lastOwnerUpdate": "2026-10-21T04:17:27",
     "created": "2026-10-04T15:25:51",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1273,11 +1616,11 @@
     "account": "acct-12",
     "lane": "fleet",
     "ownerPubkey": "STM79Cu5oMMgp1JnWpRL6iRfnmyBgfw28C5kiAZ1u5cLteLNHQnXe",
-    "activePubkey": "STM5AqUXnu96RMLtp3occYZVdPmzNQKZuSaTBFR48Fb6RgiLDVugM",
-    "postingPubkey": "STM5FkFY3QXUoAAYhNMoJ3883SLEnUQQyCwGY9sLZ7La3v3zTq8BD",
+    "activePubkey": "STM7SrhnUPT92A6GBysRiPfDWVZk5LyKKJ6LQrECMkuZ7MNPcbaK8",
+    "postingPubkey": "STM6m1u6xZgyPYCMJZQmMUjhX5k93YCjSXtjoncDiTt7Zni96Rmj7",
     "memoPubkey": "STM7wEE2KefAoCfF4Q7Za4Gt9GBLSpXXqWKrwm2nZAWbNNWRujVGf",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:36",
+    "lastOwnerUpdate": "2026-10-21T04:17:33",
     "created": "2026-10-04T15:26:06",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1288,11 +1631,11 @@
     "account": "acct-13",
     "lane": "fleet",
     "ownerPubkey": "STM62HQwpzVVRFvEZ6Ko1wPmysKh74s1c41KD6XRASEhLNEcFAKYY",
-    "activePubkey": "STM6Nb5rjr4rJujnJEfnz1XMCAYLY9xcPKfxMnzXgqV3SQZdRQ6j1",
-    "postingPubkey": "STM5BdP3Rz2SBAqxtqiTybNteL5KKvUqzUifQ2ETkteKV6fmjVoCt",
+    "activePubkey": "STM57AX4ZeTpG4HUZqipvsJaiV7UTN1rtiU9mPA419RYg1xiFq7sq",
+    "postingPubkey": "STM7jJXnJYqJJUci7cPAeFg2FTVvFVcpKLFkLi8Zxv34d1Ed8PrVp",
     "memoPubkey": "STM4zUMqzDjr4D53qrofxhrNaUAhmMXjr7oTK5bXkYeaDAEpva16B",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-07T19:05:36",
+    "lastOwnerUpdate": "2026-10-21T04:17:39",
     "created": "2026-10-04T15:26:12",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
@@ -1314,36 +1657,36 @@
    ],
    "nineWithOwnerEqualsActive": 0,
    "nineWithOwnerUpdatedSinceLeak_2026_09_12": [
-    "acct-01@2026-10-07T19:05:18",
-    "acct-02@2026-10-07T19:05:21",
-    "acct-03@2026-10-07T19:05:21",
-    "acct-04@2026-10-07T19:05:21",
-    "acct-05@2026-10-07T19:05:24",
-    "acct-06@2026-10-07T19:05:27",
-    "acct-07@2026-10-07T19:05:27",
-    "acct-09@2026-10-07T19:05:30",
-    "acct-10@2026-10-07T19:05:33"
+    "acct-01@2026-10-21T04:15:39",
+    "acct-02@2026-10-21T04:16:24",
+    "acct-03@2026-10-21T04:16:30",
+    "acct-04@2026-10-21T04:16:36",
+    "acct-05@2026-10-21T04:16:42",
+    "acct-06@2026-10-21T04:16:51",
+    "acct-07@2026-10-21T04:16:57",
+    "acct-09@2026-10-21T04:17:12",
+    "acct-10@2026-10-21T04:17:21"
    ],
    "fleetWithOwnerUpdatedSinceLeak_2026_09_12": [
     "acct-00@2026-10-12T11:12:33",
-    "acct-01@2026-10-07T19:05:18",
-    "acct-02@2026-10-07T19:05:21",
-    "acct-03@2026-10-07T19:05:21",
-    "acct-04@2026-10-07T19:05:21",
-    "acct-05@2026-10-07T19:05:24",
-    "acct-06@2026-10-07T19:05:27",
-    "acct-07@2026-10-07T19:05:27",
-    "acct-08@2026-10-07T19:05:30",
-    "acct-09@2026-10-07T19:05:30",
-    "acct-10@2026-10-07T19:05:33",
-    "acct-11@2026-10-07T19:05:33",
-    "acct-12@2026-10-07T19:05:36",
-    "acct-13@2026-10-07T19:05:36"
+    "acct-01@2026-10-21T04:15:39",
+    "acct-02@2026-10-21T04:16:24",
+    "acct-03@2026-10-21T04:16:30",
+    "acct-04@2026-10-21T04:16:36",
+    "acct-05@2026-10-21T04:16:42",
+    "acct-06@2026-10-21T04:16:51",
+    "acct-07@2026-10-21T04:16:57",
+    "acct-08@2026-10-21T04:17:03",
+    "acct-09@2026-10-21T04:17:12",
+    "acct-10@2026-10-21T04:17:21",
+    "acct-11@2026-10-21T04:17:27",
+    "acct-12@2026-10-21T04:17:33",
+    "acct-13@2026-10-21T04:17:39"
    ],
    "machineClaimCrossRef": "11-b recon (claims, not secrets): acct-11/12/13 ACTIVE=GEN-2 · the 9 in nineAccounts ACTIVE=GEN-1 (machine can sign active ops; owner-auth blocked). Possession of machine-held keys is intentionally NOT verifiable here — the vault is never touched by this engine."
   }
  },
  "log": [
-  "chain node=https://api.steemit.com · 14 fleet accounts · 56 distinct alive key bodies"
+  "chain node=https://api.steemit.com · 14 fleet accounts · 63 distinct alive key bodies"
  ]
 }
