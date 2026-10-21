@@ -42,14 +42,31 @@ async function call(cfgv, path, payload) {
   return { http: r.status, j };
 }
 
+/** listCurrencies — the market's real codebook (STEEM may have a v2-specific code) */
+export async function listCurrencies(cfgv) {
+  const { http, j } = await call(cfgv, 'currencies', {});
+  const rows = (j?.data || j || []).map?.((c) => ({ code: c.code, name: c.name, ccys: c.ccys })) || [];
+  return { http, ok: j?.code === 0 || Array.isArray(j?.data), rows, raw: Array.isArray(rows) && rows.length ? null : JSON.stringify(j).slice(0, 200) };
+}
+
+/** resolveCode — find the FF code for an asset by name/code fuzzy match */
+export function resolveCode(rows, want) {
+  const w = want.toLowerCase();
+  const hit = rows.find((c) => (c.code || '').toLowerCase() === w || (c.name || '').toLowerCase() === w || (c.ccys || []).some?.((x) => String(x).toLowerCase() === w));
+  return hit?.code ?? null;
+}
+
 /** probe — READ-ONLY: quote STEEM→BTC (and reverse). No money moves. */
 export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = {}) {
   const quotes = [];
+  const cur = await listCurrencies(cfgv);
   for (const [from, to] of ccys) {
+    const fromC = resolveCode(cur.rows, from) || from;
+    const toC = resolveCode(cur.rows, to) || to;
     for (const direction of ['from', 'to']) {
       const amt = direction === 'from' ? amount : 0.001; // to-mode: 0.001 BTC worth
-      const { http, j } = await call(cfgv, 'price', { type: 'fixed', fromCcy: from.toUpperCase(), toCcy: to.toUpperCase(), direction, amount: String(amt) });
-      quotes.push({ pair: `${from.toUpperCase()}/ ${to.toUpperCase()}`, direction, http, ok: j && j.code === 0, rate: j?.data?.rate ?? null, min: j?.data?.min ?? null, max: j?.data?.max ?? null, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
+      const { http, j } = await call(cfgv, 'price', { type: 'fixed', fromCcy: fromC, toCcy: toC, direction, amount: String(amt) });
+      quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate: j?.data?.rate ?? null, min: j?.data?.min ?? null, max: j?.data?.max ?? null, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
     }
   }
   return quotes;
