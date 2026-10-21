@@ -1,17 +1,17 @@
 {
  "protocol": "TREASURY-CONSOLIDATION-V2/1",
- "at": "2026-10-21T02:59:48.009Z",
+ "at": "2026-10-21T03:01:46.177Z",
  "treasuryRef": "acct-00",
  "armed": true,
- "confirm": "DRY",
+ "confirm": "CONSOLIDATE",
  "measured": {
-  "treasurySp": 2417.281,
-  "liquid": 133.89,
+  "treasurySp": 2417.299,
+  "liquid": 137.266,
   "outsCount": 14,
   "vestsPerSP": 1611.381
  },
  "plan": {
-  "need": 582.719,
+  "need": 582.701,
   "resizes": [
    {
     "to": "cas…",
@@ -50,11 +50,41 @@
     "drawSp": 46.382
    }
   ],
-  "powerupSp": 113.89,
+  "powerupSp": 117.266,
   "totalRecoveredSp": 228.258,
-  "projectedSp": 2759.429,
+  "projectedSp": 2762.823,
   "reachesFloor": false
  },
- "verdict": "DRY-RUN-GREEN",
- "note": "plan computed, zero broadcast — dispatch with confirm=CONSOLIDATE to execute"
+ "verdict": "EXECUTED",
+ "treasurySpAfter": 2417.299,
+ "liquidAfter": 137.266,
+ "ops": [
+  {
+   "to": "cas…",
+   "skipped": "unresolved-ref (fail-closed)"
+  },
+  {
+   "to": "isr…",
+   "skipped": "unresolved-ref (fail-closed)"
+  },
+  {
+   "to": "lsa…",
+   "skipped": "unresolved-ref (fail-closed)"
+  },
+  {
+   "to": "mac…",
+   "skipped": "unresolved-ref (fail-closed)"
+  },
+  {
+   "to": "siq…",
+   "skipped": "unresolved-ref (fail-closed)"
+  },
+  {
+   "to": "tov…",
+   "skipped": "unresolved-ref (fail-closed)"
+  },
+  {
+   "powerupFailed": "private_key required"
+  }
+ ]
 }
