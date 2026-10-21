@@ -91,6 +91,16 @@ export async function measureLive(account, rpc = rpcSteem) {
 }
 
 const isMain = process.argv[1] && process.argv[1].endsWith("treasury-floor-gate.mjs");
+if (isMain) {
+  // strict-argv [t53 · adopted from Vibe-Trading #1935 pattern: unknown config keys are a
+  // failure, not silence — a typo'd --acount must fail-closed, never default to headcorner]
+  const KNOWN = new Set(["--selftest", "--account", "--proposed-out-sp"]);
+  const unknown = process.argv.slice(2).filter((a) => a.startsWith("--") && !KNOWN.has(a));
+  if (unknown.length) {
+    console.error(`FATAL: unknown argv ${unknown.join(", ")} — fail-closed (known: ${[...KNOWN].join(", ")})`);
+    process.exit(1);
+  }
+}
 if (isMain && process.argv.includes("--selftest")) { selftest(); process.exit(process.exitCode || 0); }
 if (isMain) {
   const accIdx = process.argv.indexOf("--account");

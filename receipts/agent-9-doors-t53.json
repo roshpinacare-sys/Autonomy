@@ -1,0 +1,14 @@
+{
+ "schema": "AGENT9-DOORS-SCAN/1",
+ "at": "2026-10-21T04:25:00Z",
+ "task": "t53 — owner order: 'חפש דרכים נוספות' (new no-KYC inflow doors; HTX rejected by owner, FixedFloat pending their verification)",
+ "method": "read-only HTTPS probes from sandbox egress, bodies captured, honest verdicts only",
+ "doors": [
+  {"door": "Exolix", "http": 422, "verdict": "API-ALIVE-KEYLESS but pair unavailable", "detail": "'Such exchange pair is not available' for STEEM→BTC and HIVE→BTC — keyless public rate endpoint responds; no STEEM/HIVE today. Registered as a keyless rail for future pairs, not our door."},
+  {"door": "Godex", "http": 404, "verdict": "UNRESOLVED-SHAPE", "detail": "api v1/v2 price/rates routes not found — API contract moved; re-probe on next scan"},
+  {"door": "SwapSpace", "http": 403, "verdict": "WALL (bot-block)", "detail": "403 on rates endpoint without browser fingerprint"},
+  {"door": "ChangeAngel", "http": null, "verdict": "UNMEASURABLE-FROM-SANDBOX", "detail": "network unreachable on sandbox egress; hand to CI-egress probes (dex v78 scanner may reach it)"}
+ ],
+ "standing": "primary external inflow remains: internal STEEM/HIVE books (keyless, live) + FixedFloat gate (armed, pending their token approval); HTX excluded per owner (KYC)",
+ "nextScan": "re-probe Godex contract + ChangeAngel via CI egress; Exolix pair-list watch"
+}
