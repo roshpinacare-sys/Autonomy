@@ -19,9 +19,19 @@
  * בעת-כשל-רשת/RPC: verdict=UNMEASURED (fail-closed — אף-מסילה-לא-מאצילה-בלי-מדידה-טרייה).
  *
  * שימוש: node engine/treasury-floor-gate.mjs --selftest
- *         node engine/treasury-floor-gate.mjs --account headcorner [--proposed-out-sp 250]
+ *         node engine/treasury-floor-gate.mjs --account "$TREASURY_NAME" [--proposed-out-sp 250]   # [19.48 refs-cure] השם-מהסביבה-בלבד (חוק-refs)
  */
 export const FLOOR_SP = 3000;
+
+// [19.48 refs-cure] חוק-הקבלות (19.47): פלט/קבלה מדברים-refs בלבד — house-refOf דרך
+// refs.mjs; לא-נפתר = acct-h-<sha8> יציב (אותו-שם→אותו-ref חוצה-קבלות), לעולם לא שם-גלוי.
+import { createHash } from "node:crypto";
+import { refOf as houseRefOf } from "./refs.mjs";
+const sha8 = (s) => createHash("sha256").update(String(s)).digest("hex").slice(0, 8);
+export function receiptRefOf(n) {
+  const r = houseRefOf(n);
+  return r && r !== n ? r : `acct-h-${sha8(n)}`;
+}
 
 /** זרימת-שער — pure (testable): ממדידה לפסק-דין. אפס-סודות, אפס-רשת. */
 export function gateVerdict({ account, netSp, rowsOut, proposedOutSp = 0, now = "T" }) {
@@ -62,7 +72,13 @@ export function selftest() {
   A(v6.verdict === "PASS", "large surplus allows large feeding");
   const v7 = g(-5, 0, 0);          // שלילי-כנה → surplus 0, PASS-רק-לאפס
   A(v7.verdict === "PASS" && v7.measured.surplus === 0, "negative net → zero surplus, honest");
-  console.log("treasury-floor-gate selftest: 7/7 PASS");
+  // [19.48 refs-cure] חוקי-הפסבדונים: יציב · בפורמט acct-h-<sha8> · לעולם לא שווה-לקלט
+  const p1 = receiptRefOf("some-live-account");
+  const p2 = receiptRefOf("some-live-account");
+  A(p1 === p2, "pseudonym stable across calls (same name → same ref)");
+  A(/^acct-h-[0-9a-f]{8}$/.test(p1), "pseudonym format acct-h-sha8");
+  A(p1 !== "some-live-account", "raw name never passes through unresolved");
+  console.log("treasury-floor-gate selftest: 10/10 PASS");
 }
 
 /* ── main ─────────────────────────────────────────────────────────────────────── */
@@ -93,7 +109,8 @@ export async function measureLive(account, rpc = rpcSteem) {
 const isMain = process.argv[1] && process.argv[1].endsWith("treasury-floor-gate.mjs");
 if (isMain) {
   // strict-argv [t53 · adopted from Vibe-Trading #1935 pattern: unknown config keys are a
-  // failure, not silence — a typo'd --acount must fail-closed, never default to headcorner]
+  // failure, not silence — a typo'd --acount must fail-closed, never default to a
+  // fleet-name literal (refs law — 19.48 cure)]
   const KNOWN = new Set(["--selftest", "--account", "--proposed-out-sp"]);
   const unknown = process.argv.slice(2).filter((a) => a.startsWith("--") && !KNOWN.has(a));
   if (unknown.length) {
@@ -104,17 +121,24 @@ if (isMain) {
 if (isMain && process.argv.includes("--selftest")) { selftest(); process.exit(process.exitCode || 0); }
 if (isMain) {
   const accIdx = process.argv.indexOf("--account");
-  const account = accIdx >= 0 ? process.argv[accIdx + 1] : "headcorner";
+  // [19.48 refs-cure] אין-ברירת-מחדל-ליטרלית — דפוס-הבית של treasury-consolidate (19.47):
+  // שם-אחוזה חי בסוד/סביבה בלבד; חסר = יציאה-כנה (exit 2), לא שקר.
+  const account = accIdx >= 0 ? process.argv[accIdx + 1] : (process.env.TREASURY_NAME || "");
+  if (!account) {
+    console.error("[floor-gate] TREASURY_NAME env missing — fail-honest exit 2 (refs law: zero fleet-name literals in the public tree)");
+    process.exit(2);
+  }
   const propIdx = process.argv.indexOf("--proposed-out-sp");
   const proposedOutSp = propIdx >= 0 ? parseFloat(process.argv[propIdx + 1]) : 0;
   measureLive(account)
     .then((m) => {
-      const v = gateVerdict({ account, netSp: m.netSp, rowsOut: m.rowsOut, proposedOutSp, now: new Date().toISOString() });
+      // [19.48 refs-cure] הפסק-המודפס (ומשם-הקבלה) נושא-ref פסבדונים — לעולם לא-שם-גלוי.
+      const v = gateVerdict({ account: receiptRefOf(account), netSp: m.netSp, rowsOut: m.rowsOut, proposedOutSp, now: new Date().toISOString() });
       v.live = { rowsCount: m.rowsCount, vestsPerSP: +m.vestsPerSP.toFixed(2) };
       console.log(JSON.stringify(v, null, 1));
     })
     .catch((e) => {
-      console.log(JSON.stringify({ protocol: "TREASURY-FLOOR-GATE/1", verdict: "UNMEASURED", reason: `rpc: ${String(e.message).slice(0, 100)}`, account }, null, 1));
+      console.log(JSON.stringify({ protocol: "TREASURY-FLOOR-GATE/1", verdict: "UNMEASURED", reason: `rpc: ${String(e.message).slice(0, 100)}`, account: receiptRefOf(account) }, null, 1));
       process.exit(1);
     });
 }

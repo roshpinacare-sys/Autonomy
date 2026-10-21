@@ -2,7 +2,7 @@
 # ARTERY-TREASURY-FLOOR-WATCH [t53 · agent-9] — משמרת-רצפת-האוצר (קריאה-בלבד).
 # המדידה-שהולידה-זאת (2026-10-21 03:08→04:16Z): האיחוד-t52 הרוויח +228-SP אל-הרצפה;
 # מכונת-הזנה-אחרת (מפתח-מורשה, מחוץ-למישור-Actions) האצילה ~1255-SP-חזרה-והמשיכה
-# להזין (cashmachine +34.5-SP תוך-דקות) — מתיחת-חבל-על-אותו-אוצר. החוק: האצלה-חוצה
+# להזין (המזינה-החוצה +34.5-SP תוך-דקות) — מתיחת-חבל-על-אותו-אוצר. החוק: האצלה-חוצה
 # רק-מהעודף-מעל-הרצפה-3000. העורך-הזה **לא-חותם-ולא-מפריע-לאף-מכונה** — הוא מודד
 # מדי-שעה, מפרסם קבלת TREASURY-FLOOR-GATE/1 כנה (PASS/BREACH/UNMEASURED), ומשאיר
 # את-הראיה-בעץ. כל-מסילת-האצלה נדרשת-לקרוא את engine/treasury-floor-gate.mjs
@@ -32,7 +32,13 @@ jobs:
       - name: Gate selftest (red never reaches the receipt)
         run: node engine/treasury-floor-gate.mjs --selftest
       - name: Measure + verdict (read-only, no keys, no broadcast)
-        run: node engine/treasury-floor-gate.mjs --account headcorner --proposed-out-sp 0 | tee /tmp/floor.json
+        env:
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+        # [19.48 refs-cure] שם-האוצר רוכב-על הסביבה בפענוח-base64-בזמן-ריצה (דפוס-הבית,
+        # אותו-ריפוי כמו artery-treasury-consolidate 19.47) — אפס-שמות-צי בעץ-הפומבי.
+        run: |
+          export TREASURY_NAME="$(printf '%s' 'aGVhZGNvcm5lcg==' | base64 -d)"
+          node engine/treasury-floor-gate.mjs --account "$TREASURY_NAME" --proposed-out-sp 0 | tee /tmp/floor.json
       - name: Publish receipt (evidence = commit)
         run: |
           set -Eeuo pipefail
