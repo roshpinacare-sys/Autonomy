@@ -1,18 +1,18 @@
 {
-  "at": "2026-10-21T07:17:12.167Z",
+  "at": "2026-10-21T07:51:29.254Z",
   "repos": {
     "steem-cockpit": {
-      "head": "406a8a9f886d0c3e0551c655a4f1b67d552f10e1",
-      "overall": "PASS",
+      "head": "6c1b90b0d4c21ec8887b6e02a45f4404ab13d484",
+      "overall": "FAIL",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
-        "engineSelftest": "pass"
+        "engineSelftest": "fail"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": "engineSelftest failed:   57.8b SKIP (honest): upload/htx.txt absent on this host — exposure guard runs where the seal lives |  | SELFTEST 2016/2017 FAIL | "
     },
     "saos-dex": {
-      "head": "00cc0119fdf7c5e6e58322b821acd97a9696ec21",
+      "head": "38dc3ac47e55cd928f6bea14a88da3702d948139",
       "overall": "PASS",
       "checks": {
         "install": "pass",
@@ -42,31 +42,31 @@
     }
   },
   "alerts": [
-    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl",
-    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/saos-wallet/tools/vault-zk-check.ts"
+    "steem-cockpit: law-no-secrets-at-head: gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl",
+    "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/saos-wallet/tools/vault-zk-check.ts"
   ],
-  "overall": "PASS",
-  "reason": "steem=PASS · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "overall": "FAIL",
+  "reason": "steem=FAIL · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "39560901798",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39560901798",
-    "sha": "ccb6d81887d9de09b71543ef61b3a056d3ef886e"
+    "runId": "39564848870",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39564848870",
+    "sha": "3396577ee19ccff09649a57cd07ddefbeee9e025"
   },
   "details": [
     {
-      "at": "2026-10-21T07:17:12.167Z",
+      "at": "2026-10-21T07:51:29.254Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "406a8a9f886d0c3e0551c655a4f1b67d552f10e1",
+      "head": "6c1b90b0d4c21ec8887b6e02a45f4404ab13d484",
       "checks": {
         "install": "pass",
         "engineInstall": "pass",
-        "engineSelftest": "pass"
+        "engineSelftest": "fail"
       },
       "laws": [
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
+          "detail": "gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
         },
         {
           "id": "law-no-skipped-pass",
@@ -85,15 +85,15 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
+        "law-no-secrets-at-head: gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
       ],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": "engineSelftest failed:   57.8b SKIP (honest): upload/htx.txt absent on this host — exposure guard runs where the seal lives |  | SELFTEST 2016/2017 FAIL | "
     },
     {
-      "at": "2026-10-21T07:17:12.167Z",
+      "at": "2026-10-21T07:51:29.254Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "00cc0119fdf7c5e6e58322b821acd97a9696ec21",
+      "head": "38dc3ac47e55cd928f6bea14a88da3702d948139",
       "checks": {
         "install": "pass",
         "typecheck": "pass"
@@ -125,7 +125,7 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-21T07:17:12.167Z",
+      "at": "2026-10-21T07:51:29.254Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "9651187d2e0b65c929983bb086290a097b139204",
       "checks": {
@@ -158,7 +158,7 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-21T07:17:12.167Z",
+      "at": "2026-10-21T07:51:29.254Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
       "head": "24f08b8e09db561e5d067e7f75b7f4a4f6bb5a05",
       "checks": {},
@@ -166,7 +166,7 @@
         {
           "id": "law-no-secrets-at-head",
           "verdict": "flag",
-          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/saos-wallet/tools/vault-zk-check.ts"
+          "detail": "gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/saos-wallet/tools/vault-zk-check.ts"
         },
         {
           "id": "law-no-skipped-pass",
@@ -210,13 +210,13 @@
         }
       ],
       "alerts": [
-        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/saos-wallet/tools/vault-zk-check.ts"
+        "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/saos-wallet/tools/vault-zk-check.ts"
       ],
       "overall": "PASS",
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-21T07:17:12.167Z",
+      "at": "2026-10-21T07:51:29.254Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "c989fc12d866d39f9fa2e1f4a808521db794aa6a",
       "checks": {},

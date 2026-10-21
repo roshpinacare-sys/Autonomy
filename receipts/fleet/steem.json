@@ -1,17 +1,17 @@
 {
-  "at": "2026-10-21T07:17:12.167Z",
+  "at": "2026-10-21T07:51:29.254Z",
   "slug": "roshpinacare-sys/steem",
-  "head": "406a8a9f886d0c3e0551c655a4f1b67d552f10e1",
+  "head": "6c1b90b0d4c21ec8887b6e02a45f4404ab13d484",
   "checks": {
     "install": "pass",
     "engineInstall": "pass",
-    "engineSelftest": "pass"
+    "engineSelftest": "fail"
   },
   "laws": [
     {
       "id": "law-no-secrets-at-head",
       "verdict": "flag",
-      "detail": "gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
+      "detail": "gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
     },
     {
       "id": "law-no-skipped-pass",
@@ -30,8 +30,8 @@
     }
   ],
   "alerts": [
-    "law-no-secrets-at-head: gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-YwUCMu/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
+    "law-no-secrets-at-head: gitleaks HEAD scan: 2 finding(s) — redacted metadata: generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/agent/recovery-meta.json, generic-api-key@/tmp/fleet-verify-9igmZg/steem-cockpit/mini-services/saos-engine/state/exec-log.jsonl"
   ],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "overall": "FAIL",
+  "reason": "engineSelftest failed:   57.8b SKIP (honest): upload/htx.txt absent on this host — exposure guard runs where the seal lives |  | SELFTEST 2016/2017 FAIL | "
 }
