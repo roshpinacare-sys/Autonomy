@@ -1,0 +1,55 @@
+# ═════════════════════════════════════════════════════════════════════════════
+# ARTERY-AUTOTRADE-HEDGE-GATE [t54 · agent-9] — משמרת-סיכון-לפני-ביצוע (קריאה-בלבד).
+# נולד מפקודת-בעלים (t54): לבחון github.com/The-Swarm-Corporation/AutoHedge ולנצל-את-מה-
+# שניתן בהתאמה-לריבונות-שלנו. אומצו-דפוסים (R330 — לא-קוד): (1) Risk-first — שלב-סיכון
+# חוסם-ביצוע לפני-חתימה; (2) MarketMakingConfig — גודל-פקודה ≤1% · חשיפה ≤20% · איזון
+# 10% · רווח-מינימלי 0.2%.
+# העורק-הזה **לא-חותם, לא-מבטל, לא-מפריע לאף-מכונה** — מודד מדי-שעה מדידה-חיה-ציבורית
+# (יתרות + ספר + oracle-חוץ), מעביר את-הגריד-העומד-בפועל דרך AUTOHEDGE-GATE/1, מפרסם
+# פסק-דין כנה (PASS/BLOCK/UNMEASURED) + פער-ארביטראז פנימי↔חוץ — ומשאיר-את-הראיה-בעץ.
+# כל-מסילת-סחר/גריד נדרשת-לקרוא ל-engine/autotrade-hedge-gate.mjs לפני-חתימה (fail-closed).
+# ═════════════════════════════════════════════════════════════════════════════
+name: artery-autotrade-hedge-gate
+
+on:
+  schedule:
+    - cron: "37 * * * *"          # שעתית, מוסט-מהמשמרות-האחרות (:23 רצפה, :00/:41/:47 פעימה)
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: artery-autotrade-hedge-gate
+  cancel-in-progress: false
+
+jobs:
+  hedge-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Gate selftest (red never reaches the receipt)
+        run: node engine/autotrade-hedge-gate.mjs --selftest
+      - name: Measure + gate the standing grid (read-only, keyless, no broadcast)
+        run: node engine/autotrade-measure.mjs --account headcorner | tee /tmp/auto.json
+      - name: Publish receipt (evidence = commit)
+        run: |
+          set -Eeuo pipefail
+          mkdir -p receipts/autotrade-hedge
+          python3 - << 'PY'
+          import json, os
+          src = json.load(open('/tmp/auto.json'))
+          receipt = {"schema": "AUTOHEDGE-WATCH/1", "at": src.get("now"), "source": "engine/autotrade-measure.mjs", "measurement": src}
+          with open('receipts/autotrade-hedge/latest.json', 'w') as f:
+              json.dump(receipt, f, ensure_ascii=False, indent=1)
+              f.write('\n')
+          PY
+          git config user.name "agent-9"
+          git config user.email "agent-9@users.noreply.github.com"
+          git add receipts/autotrade-hedge/latest.json
+          VERDICT=$(python3 -c "import json;d=json.load(open('receipts/autotrade-hedge/latest.json'));g=d['measurement'].get('gate',{});print(g.get('verdict','UNMEASURED'))")
+          ARB=$(python3 -c "import json;d=json.load(open('receipts/autotrade-hedge/latest.json'));a=d['measurement'].get('arb',{});print(a.get('gapPct','n/a'))")
+          git commit -m "autotrade hedge-gate: ${VERDICT} · arb-gap ${ARB}% @ $(date -u +%FT%TZ) [skip ci]" || echo "nothing to commit"
+          git push origin HEAD:${{ github.ref_name }}
