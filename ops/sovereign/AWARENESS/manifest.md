@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T04:58:57.416Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T05:35:38.741Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -11,7 +11,7 @@
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
 - Domain: 102 workflows · schedule 89 · dispatch 101 · both 89 → **PASS**
-- Autonomy: 56 workflows · schedule 54 · dispatch 55 · both 54 → **PASS**
+- Autonomy: 57 workflows · schedule 55 · dispatch 56 · both 55 → **PASS**
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
@@ -28,7 +28,6 @@
 - [DEFECT] Domain/network-census @ 2026-10-20T04:07 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-pulse @ 2026-10-20T03:58 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-beat @ 2026-10-20T03:46 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/org-gitleaks @ 2026-10-20T03:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-21T04:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-21T03:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-21T03:32 — autonomy triage: read the log, fix root, land, verify
