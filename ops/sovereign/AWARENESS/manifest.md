@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T06:54:30.367Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T06:58:02.091Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -27,11 +27,11 @@
 - [DEFECT] Domain/products-feed @ 2026-10-20T06:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/artery-integrity-twin @ 2026-10-20T06:15 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/hive-beat-t21 @ 2026-10-20T05:12 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-participation @ 2026-10-21T06:56 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-grid @ 2026-10-21T06:50 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-21T06:50 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-21T06:50 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-21T05:36 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-participation @ 2026-10-21T03:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-treasury-consolidate @ 2026-10-21T02:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-pacer @ 2026-10-21T00:28 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/runtime-pacemaker @ 2026-10-20T16:43 — autonomy triage: read the log, fix root, land, verify
