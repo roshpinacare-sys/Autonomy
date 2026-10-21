@@ -44,9 +44,10 @@ async function call(cfgv, path, payload) {
 
 /** listCurrencies — the market's real codebook (STEEM may have a v2-specific code) */
 export async function listCurrencies(cfgv) {
-  // v2: the codebook is GET (POST /currencies 404-with-auth measured 03:16)
+  // v2 docs: the codebook lives at /ccies (docs-parsed 03:20; /currencies 404-with-auth)
   const body = JSON.stringify({});
-  const r = await fetch(`${API}/currencies`, { method: 'GET', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' } });
+  let r = await fetch(`${API}/ccies`, { method: 'GET', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' } });
+  if (r.status === 404) r = await fetch(`${API}/ccies`, { method: 'POST', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' }, body });
   const http = r.status;
   const j = await r.json().catch(() => ({}));
   const rows = (j?.data || j || []).map?.((c) => ({ code: c.code, name: c.name, ccys: c.ccys })) || [];
@@ -74,7 +75,7 @@ export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = 
       quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate: j?.data?.rate ?? null, min: j?.data?.min ?? null, max: j?.data?.max ?? null, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
     }
   }
-  return { quotes, currencies: curDebug };
+  return { quotes, currencies: curDebug, steemSupported: cur.rows.some?.((c) => String(c.code || '').toUpperCase().includes('STEEM') || String(c.name || '').toUpperCase().includes('STEEM')) || false };
 }
 
 /** create — ARMED ONLY (FIXEDFLOAT_EXEC=1). Refuses honestly otherwise. */
