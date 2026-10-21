@@ -9,10 +9,20 @@
  *   3. פסקי-דין (v3 — חוק-האפס-רחיפה):
  *      · PUBLICATION     → פטור: ענפי-הגשה (pages/gh-pages/office-pages) —
  *                          משטחי-פרסום חיים, לא עבודה-מרחפת. לעולם לא נמחקים.
+ *      · ARCHIVE-BASE    → פטור [t53]: ענף-בסיס-שרשרת-ארכיון (שמו מכיל archive) —
+ *                          תוכנו תמיד כבר תחת תג archive/<branch> (עותק-האמת);
+ *                          הענף-עצמו הוא בסיס-ההמשך לדחיפות-הארכיון-הבאות.
+ *                          מדידה שהולידה-זאת: ענף-ארכיון-אחד בצי נמחק ×3 ביממה
+ *                          וענפי-אחוזה של-סוכן-אחר בכל-ריצה — לופ-קיפול-שיקום
+ *                          אינסופי שאינו רחיפה (התוכן מעולם לא היה רחף).
  *      · MERGED-CONTENT  → נסגר-אוטומטית (מחיקת-ref עם-קבלה; אפס-תוכן-ייחודי-אבד)
  *      · UNMERGED(+N)    → ARCHIVED: תג-ארכיון archive/<branch> בראש-הענף
  *                          (העבודה-נשמרת-מאה%) ואז מחיקת-הענף. שום-דבר-לא-מרחף,
  *                          שום-דבר-לא-אבד; החזרה = ענף-מהתג.
+ *                          [t53 תיקון-D2 מדוד]: "422=התג-קיים" לא היה מאמת
+ *                          שהתג מכסה את הראש-הנוכחי — ענף-מחודש עם עבודה-חדשה
+ *                          היה נמחק והתג-הישן נשאר על ראש-ישן. מעכשיו: אימות
+ *                          כיסוי + הזזת-התג-בכוח לראש-החדש לפני מחיקה.
  *      · ORPHAN          → ARCHIVED (אותו-טיפול; היסטוריית-ארכיון-נשמרת-בתג)
  *      · ERR             → רישום-כן, ללא-מחיקה (מיקוד-הריצה-הבאה)
  *   4. מפרסם state/floating-builds.json (הספר-החי; היסטוריית-סגירות-וארכיון).
@@ -36,6 +46,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 /** ענפי-הגשה — משטחי-פרסום חיים (Pages/digest), לא עבודה-מרחפת */
 const PUBLICATION = new Set(['pages', 'gh-pages', 'office-pages', 'website', 'site']);
 
+/** ענפי-בסיס-ארכיון [t53] — שמם מכיל archive כרכיב-שלם (agent-N-archive, archive/*,
+ *  *.archive). תוכנם תמיד כבר תחת תג archive/<branch> — אינם רחיפה לעולם. */
+const ARCHIVE_BASE = /(^|[-_.\/])archive([-_.\/]|$)/i;
+
 async function gh(path, opts = {}) {
   for (let a = 0; a < 3; a++) {
     const res = await fetch(`${API}${path}`, { ...opts, headers: { ...UA, Authorization: `Bearer ${TOKEN}`, ...(opts.headers || {}) } });
@@ -55,9 +69,25 @@ async function archiveBranch(repo, branch, sha, extra = {}) {
       body: JSON.stringify({ ref: `refs/tags/${tag}`, sha }),
       headers: { 'Content-Type': 'application/json' },
     });
-    // 422 = התג-כבר-קיים (ריצה-קודמת) — לא כשל: העבודה-נשמרת
+    // 422 = התג-כבר-קיים (ריצה-קודמת) — לא כשל, אך [t53-D2] חובה לאמת-שהוא
+    // מכסה-את-ראש-הענף-הנוכחי; תג-ישן-על-ראש-ישן + עבודה-חדשה-על-הענף = הזזה-בכוח
+    // לפני-המחיקה (אחרת-העבודה-החדשה-לא-נשמרת בתג-כלל).
     if (!mk.ok && mk.status !== 422) {
       return { verdict: 'ERR', detail: `tag-HTTP-${mk.status} (לא נמחק — העבודה על הענף)` };
+    }
+    if (!mk.ok && mk.status === 422) {
+      const cur = await gh(`/repos/${OWNER}/${repo}/git/ref/${encodeURIComponent('tags/' + tag)}`);
+      const curSha = cur.ok && cur.j && cur.j.object ? cur.j.object.sha : null;
+      if (curSha && curSha !== sha) {
+        const mv = await gh(`/repos/${OWNER}/${repo}/git/refs/${encodeURIComponent('tags/' + tag)}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ sha, force: true }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (!mv.ok) {
+          return { verdict: 'ERR', detail: `tag-stale@${String(curSha).slice(0, 10)}/move-HTTP-${mv.status} (לא נמחק — העבודה על הענף)` };
+        }
+      }
     }
     const del = await gh(`/repos/${OWNER}/${repo}/git/refs/heads/${branch}`, { method: 'DELETE' });
     if (del.status === 204) return { verdict: 'ARCHIVED', detail: `תג ${tag} נחת @${String(sha).slice(0, 10)} · הענף נמחק`, tag, sha, ...extra };
@@ -89,6 +119,10 @@ async function main() {
       if (b.name === 'main') continue;
       if (PUBLICATION.has(b.name)) {
         items.push({ repo: r, branch: b.name, verdict: 'PUBLICATION', detail: 'ענף-הגשה חי (Pages/digest) — פטור מחוק-הרחיפה' });
+        continue;
+      }
+      if (ARCHIVE_BASE.test(b.name)) {
+        items.push({ repo: r, branch: b.name, verdict: 'ARCHIVE-BASE', detail: 'בסיס-שרשרת-ארכיון (תוכנו תמיד תחת תג archive/<branch>) — פטור מחוק-הרחיפה [t53]' });
         continue;
       }
       const c = await gh(`/repos/${OWNER}/${r}/compare/main...${encodeURIComponent(b.name)}`);
@@ -129,7 +163,7 @@ async function main() {
     measuredAt: new Date().toISOString(),
     durationMs: Date.now() - t0,
     reposScanned: repos.length,
-    law: 'אפס-רחיפה (R54): כל-ענף-שאינו-main נמדד ומקבל-פסק-דין. PUBLICATION=ענף-הגשה-פטור. MERGED-CONTENT=סגירה-עם-קבלה. UNMERGED/ORPHAN=תג-ארכיון archive/<branch> ואז מחיקת-הענף (העבודה-נשמרת-בתג; החזרה=ענף-מהתג). ERR=רישום-כן-בלי-מחיקה.',
+    law: 'אפס-רחיפה (R54): כל-ענף-שאינו-main נמדד ומקבל-פסק-דין. PUBLICATION=ענף-הגשה-פטור. ARCHIVE-BASE=ענף-בסיס-שרשרת-ארכיון-פטור [t53 — תוכנו תמיד תחת תג; לופ-קיפול-שיקום אינו רחיפה]. MERGED-CONTENT=סגירה-עם-קבלה. UNMERGED/ORPHAN=תג-ארכיון archive/<branch> בראש-הענף (עם אימות-כיסוי-והזזה-בכוח לראש-החדש [t53-D2]) ואז מחיקת-הענף. ERR=רישום-כן-בלי-מחיקה.',
     now: { floatingMeasured: items.length, closedThisRun: closedNow.length, archivedThisRun: archivedNow.length, closedThisRunList: closedNow, archivedThisRunList: archivedNow },
     floating: items,
     closedHistory: history.concat([{ at: new Date().toISOString(), closed: closedNow, archived: archivedNow }]).slice(-40),
