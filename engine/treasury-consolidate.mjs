@@ -91,7 +91,7 @@ export function planResize({ treasurySp, liquid, outs, vestsPerSP, map = {} }) {
     const workerSp = o.vests / vestsPerSP; // SP המואצל-כרגע-מהאוצר-ליד-זו
     const draw = Math.min(Math.max(0, workerSp - WORKER_KEEP_SP), remaining, MAX_DRAW_PER_WORKER);
     if (draw < 1) continue; // מתחת-לרף-המעשי-של-min_update — לא-שווה-אופס
-    plan.resizes.push({ to: refOf(o.to), currentSp: +workerSp.toFixed(3), keepSp: WORKER_KEEP_SP, drawSp: +draw.toFixed(3) });
+    plan.resizes.push({ to: refOf(o.to), currentSp: +workerSp.toFixed(3), keepSp: WORKER_KEEP_SP, drawSp: +draw.toFixed(3), _real: o.to });
     remaining -= draw;
     plan.totalRecoveredSp = +((plan.totalRecoveredSp + draw).toFixed(3));
   }
@@ -122,10 +122,9 @@ export async function execute({ treasury, confirm, map = {} }) {
   }
   const wif = k.value;
   const txids = [];
-  // real names needed for signing: resolve refs back via inverse map
-  const inv = Object.fromEntries(Object.entries(map).map(([r, v]) => [v, r]));
+  // real names ride in memory on the plan entries (_real) — receipts strip them.
   for (const rz of plan.resizes) {
-    const real = inv[rz.to] || null;
+    const real = rz._real || null;
     if (!real) { txids.push({ to: rz.to, skipped: 'unresolved-ref (fail-closed)' }); continue; }
     const targetVests = ((rz.currentSp - rz.drawSp) * m.vestsPerSP).toFixed(6);
     try {
@@ -158,7 +157,7 @@ export async function execute({ treasury, confirm, map = {} }) {
 
 function publish(receipt) {
   mkdirSync(OUT, { recursive: true });
-  writeFileSync(join(OUT, 'latest.json'), JSON.stringify(receipt, null, 1) + '\n');
+  writeFileSync(join(OUT, 'latest.json'), JSON.stringify(receipt, (kk, vv) => (kk.startsWith('_') ? undefined : vv), 1) + '\n');
   console.log(`[consolidation] ${receipt.verdict} need=${receipt.plan?.need ?? '?'} resizes=${receipt.plan?.resizes?.length ?? 0} powerupSp=${receipt.plan?.powerupSp ?? 0} projected=${receipt.plan?.projectedSp ?? '?'} after=${receipt.treasurySpAfter ?? '-'}`);
 }
 
