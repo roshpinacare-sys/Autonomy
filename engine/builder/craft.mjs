@@ -249,6 +249,8 @@ export function receiptsLedgerHtml(streams, now = new Date()) {
   </table>
   <footer>כל שורה נקראת מ-receipts/&lt;איבר&gt;/latest.json בזמן-בנייה · בלי מדידה כתוב "אין-מדידה" · פגם-מדוד לא מוסתר — כך נבנה אמון</footer>
 </main>
+<div id="agent9-truth-band"></div>
+<script src="agent9-truth-band.js" defer></script>
 </body>
 </html>
 `;
