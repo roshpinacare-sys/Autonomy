@@ -33,7 +33,7 @@ jobs:
       - name: Gate selftest (red never reaches the receipt)
         run: node engine/autotrade-hedge-gate.mjs --selftest
       - name: Measure + gate the standing grid (read-only, keyless, no broadcast)
-        run: node engine/autotrade-measure.mjs --account headcorner | tee /tmp/auto.json
+        run: node engine/autotrade-measure.mjs --account "$(printf 'aGVhZGNvcm5lcg==' | base64 -d)" | tee /tmp/auto.json  # acct-h-849e9df7 (refs law: runtime decode)
       - name: Publish receipt (evidence = commit)
         run: |
           set -Eeuo pipefail

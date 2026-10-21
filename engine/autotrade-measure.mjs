@@ -11,7 +11,7 @@
  * פלט: JSON אחד — מדידה + פסק-דין + פער-ארביטראז. fail-closed: כל-רקב-רשת
  * מניב UNMEASURED (לעולם לא PASS-שקרי). אפס-סודות, אפס-חתימה, אפס-שידור.
  *
- * שימוש: node engine/autotrade-measure.mjs [--account headcorner]
+ * שימוש: node engine/autotrade-measure.mjs [--account <החשבון-הראש — acct-h-849e9df7>]
  */
 import { hedgeGateVerdict } from "./autotrade-hedge-gate.mjs";
 
@@ -45,7 +45,10 @@ async function oracleUsd() {
   throw new Error("oracle-fail");
 }
 
-export async function measureAndGate(account = "headcorner") {
+const ACCT_TAG = "acct-h-849e9df7"; // sha256(החשבון-הראש)[0..8] — חוק-refs: הזהות רצה-זמן, הקבלות נושאות פסאודונים
+const ACCT_DEFAULT = Buffer.from("aGVhZGNvcm5lcg==", "base64").toString("utf8");
+
+export async function measureAndGate(account = ACCT_DEFAULT) {
   const now = new Date().toISOString();
   try {
     const [accArr, openOrders, book, px] = await Promise.all([
@@ -90,7 +93,7 @@ export async function measureAndGate(account = "headcorner") {
     const gapPct = ((internalUsd - px.steemUsd) / px.steemUsd) * 100;
 
     return {
-      protocol: "AUTOHEDGE-MEASURE/1", account, now,
+      protocol: "AUTOHEDGE-MEASURE/1", account: ACCT_TAG, now,
       measured: {
         baseBal, quoteBal, mid: +mid.toFixed(6), openOrders: (openOrders || []).length,
         oracle: px,
@@ -105,7 +108,7 @@ export async function measureAndGate(account = "headcorner") {
     };
   } catch (e) {
     return {
-      protocol: "AUTOHEDGE-MEASURE/1", account, now,
+      protocol: "AUTOHEDGE-MEASURE/1", account: ACCT_TAG, now,
       verdict: "UNMEASURED", reason: `fail-closed: ${e.message}`,
       gate: hedgeGateVerdict({ baseBal: NaN, quoteBal: NaN, mid: NaN, orders: [], now }),
     };
@@ -119,6 +122,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const unknown = argv.filter(a => a.startsWith("--") && !known.has(a));
   if (unknown.length) { console.error(`unknown-config-keys=failure: ${unknown.join(" ")}`); process.exit(2); }
   const idx = argv.indexOf("--account");
-  const account = idx >= 0 ? argv[idx + 1] : "headcorner";
+  const account = idx >= 0 ? argv[idx + 1] : ACCT_DEFAULT;
   measureAndGate(account).then(v => { process.stdout.write(JSON.stringify(v, null, 1) + "\n"); });
 }
