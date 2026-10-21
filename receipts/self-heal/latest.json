@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-21T00:59:19.740Z",
+ "at": "2026-10-21T03:04:17.062Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-21T00:32:53.574Z",
+ "verdictAt": "2026-10-21T03:00:16.886Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -24,7 +24,7 @@
   {
    "workflow": "value-scan.yml",
    "check": "sbx.wf-value-scan",
-   "level": "FAIL",
+   "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -40,7 +40,7 @@
   {
    "workflow": "artery-decision-truth.yml",
    "check": "sbx.wf-artery-decision-truth",
-   "level": "FAIL",
+   "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -59,8 +59,8 @@
  "notHealable": [
   {
    "id": "dev.rate",
-   "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 2% < 10% over 353 commits/24h",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 17%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,15 +76,15 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 1,
- "verdictOverall": "FAIL",
+ "truncated": 4,
+ "verdictOverall": "DEGRADED",
  "workflows": {
-  "total": 53,
-  "active": 53,
+  "total": 54,
+  "active": 54,
   "disabled": []
  },
  "keys": {
-  "total": 12,
+  "total": 15,
   "required": [
    {
     "name": "FLEET_PAT",
@@ -96,7 +96,7 @@
    },
    {
     "name": "CI_ADOPT_WIF_ACTIVE",
-    "present": false
+    "present": true
    }
   ],
   "via": "FLEET_PAT"
