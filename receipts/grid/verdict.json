@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-21T23:19:27.979Z",
+  "measuredAt": "2026-10-21T23:32:03.824Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -8,10 +8,24 @@
   "asserts": [
     {
       "id": "law-grid-state-present",
-      "ok": false,
+      "ok": true,
       "detail": "hyper-grid.json must exist and parse at steem@saos-cockpit HEAD",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
+    },
+    {
+      "id": "law-grid-fresh",
+      "ok": true,
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 10min)",
+      "severity": "fail",
+      "verdict": "pass"
+    },
+    {
+      "id": "law-grid-exec-alive",
+      "ok": true,
+      "detail": "grid executable: lastVerdict=CYCLE-IN-FLIGHT opsToday=1601",
+      "severity": "fail",
+      "verdict": "pass"
     },
     {
       "id": "law-grid-revival-wired",
@@ -22,13 +36,22 @@
     }
   ],
   "alerts": [],
-  "overall": "FAIL",
-  "reason": "grid-law failed: law-grid-state-present",
+  "overall": "PASS",
+  "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "86d2e7d5e53b71052a2eab19b6e3a59145af72ba",
+    "stateBlobSha": "67be27bce1e81ac3240a671888f399baf35bbf08",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "39692559691",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39692559691",
-    "sha": "a5de0d0a3a25d5314cf60d1517c5c8691f87632d"
+    "runId": "39694001203",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39694001203",
+    "sha": "f5a72a4a8ca517e72524c8a91f71a7a2c0111695"
+  },
+  "measured": {
+    "enabled": true,
+    "lastTickAt": "2026-10-21T23:21:56.353Z",
+    "ageMin": 10,
+    "ticks": 204,
+    "lastVerdict": "CYCLE-IN-FLIGHT",
+    "opsToday": 1601,
+    "lastTxid": "3a24a280814cb3fa0e1a776bb6c3b323faf0b6d0"
   }
 }
