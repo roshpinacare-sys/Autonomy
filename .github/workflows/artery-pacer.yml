@@ -40,7 +40,9 @@ jobs:
             git add receipts/pacer state/pacer
             git commit -m "pacer: beat receipt [run ${{ github.run_id }}]"
             ok=0
-            for i in 1 2 3; do git push origin main && { ok=1; break; } || { sleep $((i*7)); git pull --rebase origin main || true; }; done
+            # DECISIONS #30 alive-writer-wins at the transport: 5 attempts, alive
+            # origin state wins on conflict (-X theirs), receipts land on the next beat
+            for i in 1 2 3 4 5; do git push origin main && { ok=1; break; } || { sleep $((i*5)); git pull --rebase -X theirs origin main || true; }; done
             [ "$ok" = 1 ] || { echo "push failed after 3 retries — FAILING LOUDLY (no silent-green)"; exit 1; }
           else
             echo "quiet beat — no churn (law: only meaningful beats commit)"
