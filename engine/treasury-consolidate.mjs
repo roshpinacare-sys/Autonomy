@@ -120,7 +120,7 @@ export async function execute({ treasury, confirm, map = {} }) {
     publish(receipt);
     return receipt;
   }
-  const wif = k.value;
+  const wif = k.key; // keys.mjs contract: {ok, key} — memory-only
   const txids = [];
   // real names ride in memory on the plan entries (_real) — receipts strip them.
   for (const rz of plan.resizes) {
