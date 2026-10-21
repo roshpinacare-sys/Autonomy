@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T02:21:41.382Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T03:59:18.304Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -11,7 +11,7 @@
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
 - Domain: 102 workflows · schedule 89 · dispatch 101 · both 89 → **PASS**
-- Autonomy: 53 workflows · schedule 51 · dispatch 52 · both 51 → **PASS**
+- Autonomy: 55 workflows · schedule 53 · dispatch 54 · both 53 → **PASS**
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
@@ -29,9 +29,10 @@
 - [DEFECT] Domain/office-pulse @ 2026-10-20T03:58 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-beat @ 2026-10-20T03:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/org-gitleaks @ 2026-10-20T03:32 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-participation @ 2026-10-21T01:35 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/value-scan @ 2026-10-21T01:29 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-21T00:59 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-21T03:57 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/value-scan @ 2026-10-21T03:57 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-participation @ 2026-10-21T03:32 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-treasury-consolidate @ 2026-10-21T02:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-21T00:35 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-pacer @ 2026-10-21T00:28 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/runtime-pacemaker @ 2026-10-20T16:43 — autonomy triage: read the log, fix root, land, verify
