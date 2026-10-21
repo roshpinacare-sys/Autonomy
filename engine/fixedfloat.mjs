@@ -60,6 +60,7 @@ export function resolveCode(rows, want) {
 export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = {}) {
   const quotes = [];
   const cur = await listCurrencies(cfgv);
+  const curDebug = { http: cur.http, ok: cur.ok, count: cur.rows.length, raw: cur.raw, sample: cur.rows.slice(0, 8).map((c) => c.code || c.name) };
   for (const [from, to] of ccys) {
     const fromC = resolveCode(cur.rows, from) || from;
     const toC = resolveCode(cur.rows, to) || to;
@@ -69,7 +70,7 @@ export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = 
       quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate: j?.data?.rate ?? null, min: j?.data?.min ?? null, max: j?.data?.max ?? null, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
     }
   }
-  return quotes;
+  return { quotes, currencies: curDebug };
 }
 
 /** create — ARMED ONLY (FIXEDFLOAT_EXEC=1). Refuses honestly otherwise. */

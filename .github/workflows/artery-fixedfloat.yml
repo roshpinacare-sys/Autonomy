@@ -37,8 +37,9 @@ jobs:
           const ff = await import('./engine/fixedfloat.mjs');
           const c = ff.cfg();
           if (!c.ok) { console.log(JSON.stringify({ verdict: 'KEYLESS', reason: c.reason })); process.exit(0); }
-          const quotes = await ff.probe(c, { amount: 100, ccys: [['steem', 'btc'], ['hive', 'btc']] });
-          const receipt = { protocol: 'FIXEDFLOAT-PROBE/1', at: new Date().toISOString(), verdict: quotes.some(q => q.ok) ? 'MEASURED' : 'HONEST-FAIL', quotes, note: 'read-only price probe — no orders created (create armed-gated)' };
+          const pr = await ff.probe(c, { amount: 100, ccys: [['steem', 'btc'], ['hive', 'btc']] });
+          const quotes = pr.quotes || [];
+          const receipt = { protocol: 'FIXEDFLOAT-PROBE/1', at: new Date().toISOString(), verdict: quotes.some(q => q.ok) ? 'MEASURED' : 'HONEST-FAIL', quotes, currencies: pr.currencies, note: 'read-only price probe — no orders created (create armed-gated)' };
           console.log('FIXEDFLOAT-RECEIPT ' + JSON.stringify(receipt));
           const { writeFileSync, mkdirSync } = await import('node:fs');
           mkdirSync('receipts/fixedfloat', { recursive: true });
