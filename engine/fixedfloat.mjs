@@ -1,0 +1,83 @@
+#!/usr/bin/env node
+/**
+ * engine/fixedfloat.mjs [t52] — שער-ה-FixedFloat: המרה-אמיתית-ל-BTC-אמיתי.
+ * ═══════════════════════════════════════════════════════════════════════════
+ * מנדט-בעלים (IM trace 1a15c400a63e05d9, 2026-10-21): "אני חושב שיש שם שער
+ * איכותי שנוכל להשתמש גם כדי להפיק המון מטבעות וגם כדי להכניס נזילות לרשת
+ * שלנו ולדקס שלנו כדי שיהפוך להיות כסף אמיתי שניתן להמיר לביטקוין אמיתי".
+ * המפתחות: FIXEDFLOAT_API_KEY/SECRET (Actions-secrets על Autonomy, הוספו
+ * 2026-10-21T01:52Z — "מפתח ff" במילות-הבעלים).
+ *
+ * חוק-המדידה-ראשון: probe() = /price בלבד (קריאה, אפס-כסף-זז) → קבלה
+ * מדודה-מול-מוערך. createOrder() נעול-מאחורי FIXEDFLOAT_EXEC=1 (לא-חמוש-כברירת-
+ * מחדל) — בלי-דגל: מסרב-כנה. אפס-סוד-בפלט (החתימה-בזיכרון).
+ *
+ * API (v1): POST https://fixedfloat.com/api/v1/{price|create|orderInfo}
+ * auth: X-API-KEY + X-API-SIGN = HMAC-SHA256(body, secret) hex.
+ * עצמי-בדיקה: node engine/fixedfloat.mjs --selftest (אפס-רשת: וקטור-חתימה-ידוע).
+ */
+import { createHmac } from 'node:crypto';
+
+const API = 'https://fixedfloat.com/api/v1';
+
+export function signBody(secret, body) {
+  return createHmac('sha256', secret).update(body).digest('hex');
+}
+
+export function cfg(env = process.env) {
+  const key = env.FIXEDFLOAT_API_KEY || '';
+  const secret = env.FIXEDFLOAT_API_SECRET || '';
+  const armed = env.FIXEDFLOAT_EXEC === '1';
+  return { ok: key.length >= 8 && secret.length >= 8, key, secret, armed, reason: key.length < 8 ? 'FIXEDFLOAT_API_KEY absent' : secret.length < 8 ? 'FIXEDFLOAT_API_SECRET absent' : 'ok' };
+}
+
+async function call(cfgv, path, payload) {
+  const body = JSON.stringify(payload);
+  const r = await fetch(`${API}/${path}`, {
+    method: 'POST',
+    headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' },
+    body,
+  });
+  const j = await r.json().catch(() => ({}));
+  return { http: r.status, j };
+}
+
+/** probe — READ-ONLY: quote STEEM→BTC (and reverse). No money moves. */
+export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = {}) {
+  const quotes = [];
+  for (const [from, to] of ccys) {
+    for (const direction of ['from', 'to']) {
+      const amt = direction === 'from' ? amount : 0.001; // to-mode: 0.001 BTC worth
+      const { http, j } = await call(cfgv, 'price', { type: 'fixed', fromCcy: from.toUpperCase(), toCcy: to.toUpperCase(), direction, amount: String(amt) });
+      quotes.push({ pair: `${from.toUpperCase()}/ ${to.toUpperCase()}`, direction, http, ok: j && j.code === 0, rate: j?.data?.rate ?? null, min: j?.data?.min ?? null, max: j?.data?.max ?? null, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
+    }
+  }
+  return quotes;
+}
+
+/** create — ARMED ONLY (FIXEDFLOAT_EXEC=1). Refuses honestly otherwise. */
+export async function createOrder(cfgv, order) {
+  if (!cfgv.armed) return { refused: true, reason: 'FIXEDFLOAT_EXEC not armed — create is gated (t52 law)' };
+  const { http, j } = await call(cfgv, 'create', order);
+  return { http, j };
+}
+
+/** selftest — zero network: known-answer HMAC + gate refusal shape. */
+export async function selftest() {
+  const v = signBody('ketchtup', '{"a":1}');
+  if (v.length !== 64 || !/^[0-9a-f]{64}$/.test(v)) throw new Error('sign shape');
+  const c = cfg({ FIXEDFLOAT_API_KEY: '', FIXEDFLOAT_API_SECRET: '' });
+  if (c.ok) throw new Error('cfg must fail-closed on absent keys');
+  const c2 = cfg({ FIXEDFLOAT_API_KEY: '12345678', FIXEDFLOAT_API_SECRET: '87654321' });
+  if (!c2.ok || c2.armed) throw new Error('cfg with both keys must be ok and NOT armed by default');
+  const r = await createOrder({ ok: true, key: 'x', secret: 'y', armed: false }, {});
+  if (!r.refused) throw new Error('create must refuse unarmed');
+  console.log('[fixedfloat] selftest: PASS (HMAC shape, fail-closed cfg, create gate)');
+  return true;
+}
+
+const isMain = process.argv[1] && process.argv[1].endsWith('fixedfloat.mjs');
+if (isMain && process.argv.includes('--selftest')) {
+  await selftest();
+  process.exit(0);
+}

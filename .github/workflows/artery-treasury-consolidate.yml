@@ -1,0 +1,64 @@
+# artery-treasury-consolidate.yml [t52 · agent-9] — מבצע-הרצפה-האמיתי (v2).
+#
+# v2 נולד-מכישלון-כנה-מדוד (run 39535330768, 02:51): התורמים-מהצי אינם-יכולים-
+# להאציל-חזרה (SP-מואצל-פנימה = אפס-available_shares). הרצפה-מושגת-רק-מהיד-
+# הריבונית: כיווץ-האצלות-החוצה-של-acct-00 (כל-יד שומרת ≥100 SP — כוח-העבודה-
+# נשמר) + powerup-הנזילות. שניהם-נחתמים-ב-CI_ADOPT_WIF_ACTIVE (חובר-t52-דרך-
+# המיסוך-החתום). STASIS: מסילת-delegations-פתוחה-R30; מנדט-בעלים-טרי
+# 1a15c400a63e05d9 "תעשה הכל קדימה" + חוק-הביטוח-t42 (רצפת-3000).
+# dry-run-כברירת-מחדל: בלי confirm=CONSOLIDATE — תוכנית-בלבד, אפס-שידור.
+name: artery-treasury-consolidate
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'CONSOLIDATE = sign & broadcast; anything else = dry plan'
+        required: false
+        default: 'DRY'
+  schedule:
+    - cron: "23 6 * * *"   # ריצת-מדידה-יומית (dry) — הקבלה היא הצפירה
+permissions:
+  contents: write
+concurrency:
+  group: artery-treasury-consolidate
+  cancel-in-progress: false
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      CI_ADOPT_WIF_ACTIVE: ${{ secrets.CI_ADOPT_WIF_ACTIVE }}
+      FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
+      IN_CONFIRM: ${{ github.event.inputs.confirm }}
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 1 }
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+      - name: Install signer lib (house pattern)
+        run: npm install --prefix /tmp/steemjs steem@0.7.11 --omit=dev --no-audit --no-fund --loglevel=error
+      - name: Selftest gate (fail-closed)
+        run: NODE_PATH=/tmp/steemjs/node_modules node engine/treasury-consolidate.mjs --selftest
+      - name: Measure → plan → (execute only with CONSOLIDATE)
+        run: |
+          set -Eeuo pipefail
+          NODE_PATH=/tmp/steemjs/node_modules node engine/treasury-consolidate.mjs
+        env:
+          TREASURY_NAME: headcorner
+      - name: Live execution (only when confirm=CONSOLIDATE)
+        if: ${{ github.event.inputs.confirm == 'CONSOLIDATE' }}
+        run: |
+          set -Eeuo pipefail
+          NODE_PATH=/tmp/steemjs/node_modules node engine/treasury-consolidate.mjs --confirm
+        env:
+          TREASURY_NAME: headcorner
+      - name: Commit receipt (honest push)
+        run: |
+          set -Eeuo pipefail
+          git config user.name sovereign-agent-9
+          git config user.email agent9@fleet.local
+          git pull --rebase -X theirs --autostash origin main || true
+          git add receipts/treasury-consolidation/latest.json 2>/dev/null || true
+          git diff --cached --quiet && { echo "receipt quiet"; exit 0; }
+          git commit -q -m "treasury-consolidation receipt: $(date -u +%FT%TZ) [skip ci]"
+          for i in 1 2 3; do git pull --rebase -X theirs --autostash origin main && git push origin HEAD:main && break || { sleep $((i*5)); git rebase --abort 2>/dev/null || true; }; done
