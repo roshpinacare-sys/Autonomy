@@ -1,0 +1,53 @@
+# ═════════════════════════════════════════════════════════════════════════════
+# ARTERY-TREASURY-FLOOR-WATCH [t53 · agent-9] — משמרת-רצפת-האוצר (קריאה-בלבד).
+# המדידה-שהולידה-זאת (2026-10-21 03:08→04:16Z): האיחוד-t52 הרוויח +228-SP אל-הרצפה;
+# מכונת-הזנה-אחרת (מפתח-מורשה, מחוץ-למישור-Actions) האצילה ~1255-SP-חזרה-והמשיכה
+# להזין (cashmachine +34.5-SP תוך-דקות) — מתיחת-חבל-על-אותו-אוצר. החוק: האצלה-חוצה
+# רק-מהעודף-מעל-הרצפה-3000. העורך-הזה **לא-חותם-ולא-מפריע-לאף-מכונה** — הוא מודד
+# מדי-שעה, מפרסם קבלת TREASURY-FLOOR-GATE/1 כנה (PASS/BREACH/UNMEASURED), ומשאיר
+# את-הראיה-בעץ. כל-מסילת-האצלה נדרשת-לקרוא את engine/treasury-floor-gate.mjs
+# לפני-חתימה (fail-closed).
+# ═════════════════════════════════════════════════════════════════════════════
+name: artery-treasury-floor-watch
+
+on:
+  schedule:
+    - cron: "23 * * * *"          # שעתית, מוסט-מהסערה-ב-:00/:41/:47
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: artery-treasury-floor-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Gate selftest (red never reaches the receipt)
+        run: node engine/treasury-floor-gate.mjs --selftest
+      - name: Measure + verdict (read-only, no keys, no broadcast)
+        run: node engine/treasury-floor-gate.mjs --account headcorner --proposed-out-sp 0 | tee /tmp/floor.json
+      - name: Publish receipt (evidence = commit)
+        run: |
+          set -Eeuo pipefail
+          mkdir -p receipts/treasury-floor
+          python3 - << 'PY'
+          import json, os
+          src = json.load(open('/tmp/floor.json'))
+          receipt = {"schema": "TREASURY-FLOOR-WATCH/1", "at": src.get("now"), "gate": src}
+          with open('receipts/treasury-floor/latest.json', 'w') as f:
+              json.dump(receipt, f, ensure_ascii=False, indent=1)
+              f.write('\n')
+          PY
+          git config user.name "agent-9"
+          git config user.email "agent-9@users.noreply.github.com"
+          git add receipts/treasury-floor/latest.json
+          git commit -m "treasury-floor watch: $(python3 -c "import json;print(json.load(open('receipts/treasury-floor/latest.json'))['gate']['verdict'])") @ $(date -u +%H:%MZ) [skip ci]" || echo "no change"
+          git pull --rebase origin main || true
+          for i in 1 2 3 4 5; do git push origin main && break || sleep $((i*7)); done

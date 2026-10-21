@@ -1,97 +1,49 @@
 {
  "protocol": "TREASURY-CONSOLIDATION-V2/1",
- "at": "2026-10-21T03:08:13.296Z",
+ "at": "2026-10-21T04:09:32.672Z",
  "treasuryRef": "acct-00",
  "armed": true,
- "confirm": "CONSOLIDATE",
+ "confirm": "DRY",
+ "rosterResolved": true,
  "measured": {
-  "treasurySp": 2417.299,
-  "liquid": 134.05,
+  "treasurySp": 1679.756,
+  "liquid": 147.836,
   "outsCount": 14,
-  "vestsPerSP": 1611.38
+  "vestsPerSP": 1611.376
  },
  "plan": {
-  "need": 582.701,
+  "need": 1320.244,
   "resizes": [
    {
-    "to": "cas…",
-    "currentSp": 135.077,
+    "to": "acct-01",
+    "currentSp": 169.578,
     "keepSp": 100,
-    "drawSp": 35.077
+    "drawSp": 69.578
    },
    {
-    "to": "isr…",
-    "currentSp": 135.077,
+    "to": "acct-11",
+    "currentSp": 250,
     "keepSp": 100,
-    "drawSp": 35.077
+    "drawSp": 120
    },
    {
-    "to": "lsa…",
-    "currentSp": 135.077,
+    "to": "acct-12",
+    "currentSp": 250,
     "keepSp": 100,
-    "drawSp": 35.077
+    "drawSp": 120
    },
    {
-    "to": "mac…",
-    "currentSp": 135.077,
+    "to": "acct-13",
+    "currentSp": 250,
     "keepSp": 100,
-    "drawSp": 35.077
-   },
-   {
-    "to": "siq…",
-    "currentSp": 141.568,
-    "keepSp": 100,
-    "drawSp": 41.568
-   },
-   {
-    "to": "tov…",
-    "currentSp": 146.382,
-    "keepSp": 100,
-    "drawSp": 46.382
+    "drawSp": 120
    }
   ],
-  "powerupSp": 114.05,
-  "totalRecoveredSp": 228.258,
-  "projectedSp": 2759.607,
+  "powerupSp": 127.836,
+  "totalRecoveredSp": 429.578,
+  "projectedSp": 2237.17,
   "reachesFloor": false
  },
- "verdict": "EXECUTED",
- "treasurySpAfter": 2531.349,
- "liquidAfter": 20.236,
- "ops": [
-  {
-   "to": "cas…",
-   "drewSp": 35.077,
-   "ok": true
-  },
-  {
-   "to": "isr…",
-   "drewSp": 35.077,
-   "ok": true
-  },
-  {
-   "to": "lsa…",
-   "drewSp": 35.077,
-   "ok": true
-  },
-  {
-   "to": "mac…",
-   "drewSp": 35.077,
-   "ok": true
-  },
-  {
-   "to": "siq…",
-   "drewSp": 41.568,
-   "ok": true
-  },
-  {
-   "to": "tov…",
-   "drewSp": 46.382,
-   "ok": true
-  },
-  {
-   "powerupSp": 114.05,
-   "ok": true
-  }
- ]
+ "verdict": "DRY-RUN-GREEN",
+ "note": "plan computed, zero broadcast — dispatch with confirm=CONSOLIDATE to execute"
 }
