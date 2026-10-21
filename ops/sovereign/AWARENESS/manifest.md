@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T11:42:29.300Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-21T11:59:42.769Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,12 +15,12 @@
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [ENFORCEMENT] Domain/office3d-guard @ 2026-10-21T11:57 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/mm-supremacy @ 2026-10-21T11:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/agent9-fleet-truth @ 2026-10-21T08:40 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-21T07:50 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/dex-mirror @ 2026-10-21T07:39 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/identity-guard @ 2026-10-21T07:37 — gate held the line - verify the payload it stopped, then fix the producer
-- [ENFORCEMENT] Domain/office3d-guard @ 2026-10-21T06:05 — gate held the line - verify the payload it stopped, then fix the producer
 - [ENFORCEMENT] Autonomy/identity-guard @ 2026-10-21T09:16 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/artery-fleet @ 2026-10-21T07:50 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-21T07:48 — gate held the line - verify the payload it stopped, then fix the producer
