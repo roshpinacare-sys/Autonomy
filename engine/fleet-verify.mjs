@@ -12,6 +12,7 @@ import { execFileSync } from "node:child_process";
 import { mkdtempSync, writeFileSync, readFileSync, rmSync, existsSync, appendFileSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { scrubAll } from "./refs.mjs";
 
 const ORG = "roshpinacare-sys";
 const TOKEN = process.env.ECO_WALLET_TOKEN || "";
@@ -41,8 +42,8 @@ if (!TOKEN) {
   };
   try {
     mkdirSync("receipts/fleet", { recursive: true });
-    writeFileSync("receipts/fleet/verdict.json", JSON.stringify({ ...blocked, details: [] }, null, 2) + "\n");
-    appendFileSync("receipts/fleet/log.jsonl", JSON.stringify(blocked) + "\n");
+    writeFileSync("receipts/fleet/verdict.json", pubJSON({ ...blocked, details: [] }, true) + "\n");
+    appendFileSync("receipts/fleet/log.jsonl", pubJSON(blocked, false) + "\n");
   } catch (e) { out("receipt-write error:", String(e.message || e).slice(0, 200)); }
   process.exit(0); // BLOCKED = designed waiting state — receipt carries the truth, run stays green
 }
@@ -155,6 +156,17 @@ function walletFleetLaws(wdir, headScanned) {
 const tmp = mkdtempSync(join(tmpdir(), "fleet-verify-"));
 const results = [];
 const overall = { at: new Date().toISOString(), repos: {}, alerts: [], overall: "FAIL", reason: "" };
+
+/* G64 (2026-10-22, measured): the gitleaks "redacted metadata" paths themselves
+ * carried estate account names (…/army-grid/<name>-commits.json) — the
+ * public-surface audit failed CLOSED in 4 arteries over them. Root heal, two
+ * layers, zero estate names embedded in code:
+ *   1. scrubReceipts() — every receipt write passes through refs.scrubAll
+ *      (roster map, runtime secret) + a GENERIC tmp-path withhold rule.
+ *   2. gitleaksHeadScan no longer emits file paths at all — rule×count summary.
+ * The receipts stay honest: counts, rules, verdicts — no coordinates. */
+const pub = (s) => scrubAll(String(s)).replace(/\/tmp\/fleet-verify-[^",\s\\}]*\/[^",\s\\}]*/g, "[path-withheld-per-refs-law]");
+const pubJSON = (o, pretty) => pub(JSON.stringify(o, null, pretty ? 2 : 0));
 const askpass = join(tmp, "askpass.sh");
 writeFileSync(askpass, "#!/bin/sh\ncase \"$1\" in Username*) echo x-access-token ;; Password*) echo \"$ECO_WALLET_TOKEN\" ;; esac\n", { mode: 0o700 });
 
@@ -179,14 +191,16 @@ function gitleaksHeadScan(wdir, repName) {
     return { id: "law-no-secrets-at-head", verdict: "pass", detail: "gitleaks HEAD scan: 0 findings" };
   } catch (e) {
     // exit 1 = findings; פרס-מטא-דאטה בלבד (--redact — אפס-ערכים)
-    let count = 0; const top = [];
+    // G64: אפס-נתיבים בפירוט — הנתיבים נשאו שמות-אחוזה (חוק-השטח-הפומבי);
+    // מעתה ספירה-כללית + התפלגות-חוקים בלבד — המדידה-נשמרת, הקואורדינטות-לא.
+    let count = 0; const byRule = {};
     try {
       const findings = JSON.parse(readFileSync(rep, "utf8"));
       count = findings.length;
-      const uniq = [...new Set(findings.map((f) => `${f.RuleID}@${f.File || ""}`))];
-      top.push(...uniq);
+      for (const f of findings) byRule[f.RuleID || "unknown"] = (byRule[f.RuleID || "unknown"] || 0) + 1;
     } catch { /* report unreadable */ }
-    return { id: "law-no-secrets-at-head", verdict: count > 0 ? "flag" : "flag", detail: count > 0 ? `gitleaks HEAD scan: ${count} finding(s) — redacted metadata: ${top.join(", ")}` : "scan ran, report unreadable" };
+    const summary = Object.entries(byRule).map(([r, c]) => `${r}×${c}`).join(", ");
+    return { id: "law-no-secrets-at-head", verdict: "flag", detail: count > 0 ? `gitleaks HEAD scan: ${count} finding(s) — paths withheld per the public-surface law; by rule: ${summary}` : "scan ran, report unreadable" };
   }
 }
 
@@ -251,10 +265,10 @@ overall.provenance = {
 // קבלות-כנות תמיד (כולל FAIL)
 try {
   mkdirSync("receipts/fleet", { recursive: true });
-  writeFileSync("receipts/fleet/verdict.json", JSON.stringify({ ...overall, details: results }, null, 2) + "\n");
-  appendFileSync("receipts/fleet/log.jsonl", JSON.stringify(overall) + "\n");
+  writeFileSync("receipts/fleet/verdict.json", pubJSON({ ...overall, details: results }, true) + "\n");
+  appendFileSync("receipts/fleet/log.jsonl", pubJSON(overall, false) + "\n");
   for (const r of results) {
-    writeFileSync(`receipts/fleet/${r.slug.split("/")[1]}.json`, JSON.stringify(r, null, 2) + "\n");
+    writeFileSync(`receipts/fleet/${r.slug.split("/")[1]}.json`, pubJSON(r, true) + "\n");
   }
 } catch (e) { out("receipt-write error:", String(e.message || e).slice(0, 200)); }
 

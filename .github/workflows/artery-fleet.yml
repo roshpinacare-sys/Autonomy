@@ -45,6 +45,9 @@ jobs:
       - name: measure fleet HEADs (never trust, always verify)
         env:
           ECO_WALLET_TOKEN: ${{ secrets.ECO_WALLET_TOKEN }}
+          # G64: the roster map feeds refs.scrubAll at receipt-write time — the
+          # public-surface law is enforced at the SOURCE, not only by the auditors.
+          FLEET_ROSTER_MAP: ${{ secrets.FLEET_ROSTER_MAP }}
         run: node engine/fleet-verify.mjs
 
       - name: leak-scan (fail-closed)
