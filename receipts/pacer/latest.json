@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-22T08:01:33.632Z",
+  "at": "2026-10-22T08:15:19.706Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -9,27 +9,33 @@
   "stale": [
     {
       "wf": "value-scan.yml",
-      "ageMin": 550,
+      "ageMin": 564,
       "cadenceMin": 30,
-      "why": "last success 550min ago > cadence 30+10grace"
+      "why": "last success 564min ago > cadence 30+10grace"
     },
     {
-      "wf": "artery-grid.yml",
-      "ageMin": 40,
+      "wf": "artery-watch.yml",
+      "ageMin": 45,
       "cadenceMin": 30,
-      "why": "last success 40min ago > cadence 30+10grace"
+      "why": "last success 45min ago > cadence 30+10grace"
     },
     {
-      "wf": "verifier.yml",
-      "ageMin": 67,
+      "wf": "artery-selfheal.yml",
+      "ageMin": 45,
       "cadenceMin": 30,
-      "why": "last success 67min ago > cadence 30+10grace"
+      "why": "last success 45min ago > cadence 30+10grace"
     },
     {
       "wf": "artery-decision-truth.yml",
-      "ageMin": 577,
+      "ageMin": 590,
       "cadenceMin": 30,
-      "why": "last success 577min ago > cadence 30+10grace"
+      "why": "last success 590min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ageMin": 81,
+      "cadenceMin": 60,
+      "why": "last success 81min ago > cadence 60+10grace"
     }
   ],
   "dispatched": [
@@ -40,13 +46,13 @@
       "note": "dispatched"
     },
     {
-      "wf": "artery-grid.yml",
+      "wf": "artery-watch.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
     },
     {
-      "wf": "verifier.yml",
+      "wf": "artery-selfheal.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -56,9 +62,15 @@
       "ok": true,
       "status": 204,
       "note": "dispatched"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
     }
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-10-22T08:01:45.771Z"
+  "doneAt": "2026-10-22T08:15:33.244Z"
 }
