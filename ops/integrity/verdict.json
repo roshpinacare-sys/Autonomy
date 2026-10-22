@@ -1,26 +1,26 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-10-22T09:57:46.703Z",
+  "at": "2026-10-22T10:03:01.721Z",
   "overall": "PASS_WITH_ALERTS",
   "summary": {
     "sources": 11,
-    "verified": 11,
-    "findings": 6,
+    "verified": 12,
+    "findings": 5,
     "counts": {
-      "FLAG": 5,
+      "FLAG": 4,
       "MEDIUM": 1
     }
   },
   "provenance": {
-    "runId": "39759358178",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39759358178",
-    "sha": "e26b368683e25ca452d93e1325d5bdb131d7eeda"
+    "runId": "39760054453",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39760054453",
+    "sha": "4ad5a48fb37eff545d44cd5eab27065cfa4a0670"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=39742680990 conc=success repo=Autonomy"
+      "detail": "run=39759358178 conc=success repo=Autonomy"
     },
     {
       "where": "Sandbox:receipts/wallet/verdict.json",
@@ -31,6 +31,11 @@
       "where": "Sandbox:receipts/fleet/verdict.json",
       "law": "verified",
       "detail": "run=39751278239 conc=success repo=Sandbox"
+    },
+    {
+      "where": "Sandbox:receipts/grid/verdict.json",
+      "law": "verified",
+      "detail": "run=39759865302 conc=success repo=Sandbox"
     },
     {
       "where": "Sandbox:ops/flow/receipt.json",
@@ -76,12 +81,6 @@
   "findings": [
     {
       "level": "FLAG",
-      "where": "Sandbox:receipts/grid/verdict.json",
-      "law": "unprovenanced",
-      "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: artery-grid"
-    },
-    {
-      "level": "FLAG",
       "where": "Sandbox:receipts/latest.json",
       "law": "unprovenanced",
       "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: sovereign.yml"
@@ -90,7 +89,7 @@
       "level": "FLAG",
       "where": "Sandbox:state/verifier/verdict-latest.json",
       "law": "stale",
-      "detail": "41h > 26h — verifier.yml"
+      "detail": "42h > 26h — verifier.yml"
     },
     {
       "level": "FLAG",
@@ -108,7 +107,7 @@
       "level": "MEDIUM",
       "where": "Sandbox:ops/flow/receipt.json",
       "law": "agent-authored-receipt",
-      "detail": "committer=agent9@fleet.local — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
+      "detail": "committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
     }
   ]
 }
