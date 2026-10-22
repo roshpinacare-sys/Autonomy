@@ -15,7 +15,6 @@ name: agent-9-clock-guard
 #   dead  → dispatch ONE agent9-tick repository_dispatch to agent9-clock
 #   alive → no action (measured, logged, exit 0)
 #   API read failure → exit 1 (loud, honest — never silent)
-#
 # SAFETY:
 #   - measures ONLY the clock workflow runs of agent9-clock (own runs excluded
 #     by name filter — t55p bug-a lesson: a guard must not count itself)
@@ -28,6 +27,16 @@ on:
     - cron: "23 * * * *"
     - cron: "51 * * * *"
   workflow_dispatch:
+  # t55t — THE RELIABLE PULSE (owner order: sovereignty must survive agent exit):
+  # GitHub's scheduler measured SILENT on new crons (0 fires across 13:09/13:23/13:29/
+  # 13:49/13:51 slots on two repos, t55s) while fleet workflows demonstrably complete
+  # every few minutes. workflow_run on the fleet's own heartbeat turns the guard into
+  # a parasite on infrastructure that measurably lives — no schedule needed for revival.
+  # Self-limiting: measure-first + one-dispatch law + serialized concurrency; a healthy
+  # chain costs 2 API reads per pulse.
+  workflow_run:
+    workflows: [sovereign-state, verifier]
+    types: [completed]
 
 permissions: {}
 
