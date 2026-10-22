@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-22T12:45:37.999Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-22T13:12:15.277Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -11,8 +11,8 @@
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
 - Domain: 109 workflows · schedule 94 · dispatch 109 · both 94 → **PASS**
-- Autonomy: 57 workflows · schedule 55 · dispatch 56 · both 55 → **PASS**
-- FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
+- Autonomy: 58 workflows · schedule 56 · dispatch 57 · both 56 → **PASS**
+- FleetHQ: 21 workflows · schedule 19 · dispatch 20 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
 - [DEFECT] Domain/.github/workflows/swallow-watch.yml @ 2026-10-22T12:35 — autonomy triage: read the log, fix root, land, verify
@@ -28,5 +28,7 @@
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-22T11:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/token-watchdog @ 2026-10-22T10:33 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/profit-oracle @ 2026-10-22T10:20 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] FleetHQ/office-retro @ 2026-10-22T13:10 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] FleetHQ/pages-deploy @ 2026-10-22T13:04 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
