@@ -41,7 +41,7 @@ export function pulseHtml(facts, now = new Date()) {
       t: `measured · ${ageLabel(facts?.verifier?.at, now)}`,
     },
     {
-      l: 'הקופה הריבונית · בריאות-אוצר נמדדת',
+      l: 'דלק-הפעלה של השרשרת · SP מדוד בשירות הארכיטקטורה',
       v: facts?.treasury?.acct00sp != null
         ? `${dash(facts.treasury.health)} · ${Math.round(facts.treasury.acct00sp)} SP`
         : dash(facts?.treasury?.health),
