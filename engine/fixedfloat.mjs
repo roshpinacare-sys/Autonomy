@@ -94,7 +94,7 @@ export async function probe(cfgv, { amount = 100, ccys = [['btc', 'usdt']] } = {
       const rate = j?.data?.rate ?? (direction === 'from' ? j?.data?.from?.rate : j?.data?.to?.rate) ?? null;
       const min = j?.data?.min ?? (direction === 'from' ? j?.data?.from?.min : j?.data?.to?.min) ?? null;
       const max = j?.data?.max ?? (direction === 'from' ? j?.data?.from?.max : j?.data?.to?.max) ?? null;
-      quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate, min, max, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
+      quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate, min, max, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null, rawShape: j && j.code === 0 ? Object.keys(j.data ?? {}).join(',').slice(0, 60) : null, rawSample: j && j.code === 0 && rate == null ? JSON.stringify(j.data ?? null).slice(0, 220) : undefined }); // גל-57: מדידת-הצורה-האמיתית-במקום-ניחוש (rawSample רק-כש-rate-חסר)
     }
   }
   return { quotes, currencies: curDebug, unlisted, railsProbed: rails.map(([f, t]) => `${f}/${t}`), steemSupported: cur.rows.some?.((c) => String(c.code || '').toUpperCase().includes('STEEM') || String(c.name || '').toUpperCase().includes('STEEM')) || false };
