@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-22T15:51:21.745Z",
+ "at": "2026-10-22T16:18:04.182Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-22T15:31:00.551Z",
+ "verdictAt": "2026-10-22T16:00:41.942Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -22,24 +22,16 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "value-scan.yml",
-   "check": "sbx.wf-value-scan",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-integrity.yml",
-   "check": "sbx.wf-artery-integrity",
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -52,7 +44,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 7% < 10% over 356 commits/24h",
+   "why": "heartbeat-without-building: codeShare 0% < 10% over 356 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
