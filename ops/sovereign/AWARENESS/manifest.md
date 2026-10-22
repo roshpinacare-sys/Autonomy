@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-22T21:32:33.218Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-22T21:43:40.650Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,7 +15,7 @@
 - FleetHQ: 21 workflows · schedule 19 · dispatch 20 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-22T20:48 — gate held the line - verify the payload it stopped, then fix the producer
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-22T21:37 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/estate-scrub @ 2026-10-22T20:33 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-10-22T20:23 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-22T18:38 — autonomy triage: read the log, fix root, land, verify
