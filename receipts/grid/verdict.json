@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-22T01:34:46.725Z",
+  "measuredAt": "2026-10-22T02:27:38.411Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -8,24 +8,10 @@
   "asserts": [
     {
       "id": "law-grid-state-present",
-      "ok": true,
+      "ok": false,
       "detail": "hyper-grid.json must exist and parse at steem@saos-cockpit HEAD",
       "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-fresh",
-      "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 1min)",
-      "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-exec-alive",
-      "ok": true,
-      "detail": "grid executable: lastVerdict=GOVERNOR-ACCUMULATING opsToday=134",
-      "severity": "fail",
-      "verdict": "pass"
+      "verdict": "fail"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,22 +22,13 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "overall": "FAIL",
+  "reason": "grid-law failed: law-grid-state-present",
   "provenance": {
-    "stateBlobSha": "dc23e2ea40c324867d6a690e669c7d947f7c1958",
+    "stateBlobSha": "0d9e2ce868e50d32c267cf05b6fd743157c2a866",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "39706456683",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39706456683",
-    "sha": "47af6529ffe83d2c70faa591c60af687cdee1da2"
-  },
-  "measured": {
-    "enabled": true,
-    "lastTickAt": "2026-10-22T01:33:23.033Z",
-    "ageMin": 1,
-    "ticks": 146,
-    "lastVerdict": "GOVERNOR-ACCUMULATING",
-    "opsToday": 134,
-    "lastTxid": "dbb9031e639429bbe4d53d373ccddb2488cf3436"
+    "runId": "39711472789",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39711472789",
+    "sha": "4ced8644fbcef2fbfa8d784db61cae876508c6c0"
   }
 }
