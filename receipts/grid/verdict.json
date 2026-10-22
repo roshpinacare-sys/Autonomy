@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-22T08:02:21.285Z",
+  "measuredAt": "2026-10-22T08:43:42.820Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -16,16 +16,16 @@
     {
       "id": "law-grid-fresh",
       "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 6min)",
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 8min)",
       "severity": "fail",
       "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": false,
-      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
+      "ok": true,
+      "detail": "grid executable: lastVerdict=GOVERNOR-ACCUMULATING opsToday=1126",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,23 +36,22 @@
     }
   ],
   "alerts": [],
-  "overall": "BLOCKED",
-  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
+  "overall": "PASS",
+  "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "75c3f50c72ad13aef477232d712f618db8503f86",
+    "stateBlobSha": "9de449aa34cab30a50b9ff97b662fa34f8492052",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "39744703543",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39744703543",
-    "sha": "4fe0c2561e0b8c7ddac15024ca367c2b9e385c78"
+    "runId": "39749753774",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39749753774",
+    "sha": "592add39d4251213eb4da54b15f33bd8c9da835b"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-22T07:56:10.578Z",
-    "ageMin": 6,
-    "ticks": 3543,
-    "lastVerdict": "CREDENTIAL-MISSING",
-    "opsToday": 1084,
-    "lastTxid": "3392743e2d0c512be20cee69d5aaaf825cc48ad8"
-  },
-  "credBlocked": true
+    "lastTickAt": "2026-10-22T08:36:07.871Z",
+    "ageMin": 8,
+    "ticks": 4312,
+    "lastVerdict": "GOVERNOR-ACCUMULATING",
+    "opsToday": 1126,
+    "lastTxid": "f94b15817ea4200af2b7a8a859d50d2398f733ee"
+  }
 }
