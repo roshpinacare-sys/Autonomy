@@ -1,16 +1,94 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-22T16:31:20.931Z",
-  "ok": false,
+  "at": "2026-10-22T16:44:32.579Z",
+  "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": true,
-  "checked": 58,
-  "stale": [],
-  "dispatched": [],
-  "truncated": 0,
-  "reasons": [
-    "last beat 2026-10-22T16:17:40.607Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  "skipped": false,
+  "checked": 72,
+  "stale": [
+    {
+      "wf": "value-scan.yml",
+      "ageMin": null,
+      "cadenceMin": 30,
+      "why": "never-success-or-unknown"
+    },
+    {
+      "wf": "verifier.yml",
+      "ageMin": 45,
+      "cadenceMin": 30,
+      "why": "last success 45min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-wallet.yml",
+      "ageMin": null,
+      "cadenceMin": 60,
+      "why": "never-success-or-unknown"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ageMin": null,
+      "cadenceMin": 60,
+      "why": "never-success-or-unknown"
+    },
+    {
+      "wf": "artery-builder.yml",
+      "ageMin": null,
+      "cadenceMin": 70,
+      "why": "never-success-or-unknown"
+    },
+    {
+      "wf": "artery-growth.yml",
+      "ageMin": null,
+      "cadenceMin": 1560,
+      "why": "never-success-or-unknown"
+    },
+    {
+      "wf": "token-watchdog.yml",
+      "ageMin": null,
+      "cadenceMin": 1560,
+      "why": "never-success-or-unknown"
+    }
   ],
-  "doneAt": "2026-10-22T16:31:21.244Z"
+  "dispatched": [
+    {
+      "wf": "value-scan.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "verifier.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-wallet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-builder.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-growth.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    }
+  ],
+  "truncated": 1,
+  "reasons": [],
+  "doneAt": "2026-10-22T16:44:49.669Z"
 }
