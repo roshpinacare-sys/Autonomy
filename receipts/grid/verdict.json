@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-22T07:21:25.600Z",
+  "measuredAt": "2026-10-22T08:02:21.285Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -22,10 +22,10 @@
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": true,
-      "detail": "grid executable: lastVerdict=GOVERNOR-ACCUMULATING opsToday=1062",
+      "ok": false,
+      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
       "severity": "fail",
-      "verdict": "pass"
+      "verdict": "fail"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,22 +36,23 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "overall": "BLOCKED",
+  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
   "provenance": {
-    "stateBlobSha": "c61cd21ff581e88bf18c216334da5ceae5e0697e",
+    "stateBlobSha": "75c3f50c72ad13aef477232d712f618db8503f86",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "39739882885",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39739882885",
-    "sha": "109c8202be2d31c6626975b7a14983c4037011b8"
+    "runId": "39744703543",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39744703543",
+    "sha": "4fe0c2561e0b8c7ddac15024ca367c2b9e385c78"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-22T07:15:41.929Z",
+    "lastTickAt": "2026-10-22T07:56:10.578Z",
     "ageMin": 6,
-    "ticks": 3148,
-    "lastVerdict": "GOVERNOR-ACCUMULATING",
-    "opsToday": 1062,
-    "lastTxid": "cb8fa2e1c787a188c7dffb093683a6c2bbaaf738"
-  }
+    "ticks": 3543,
+    "lastVerdict": "CREDENTIAL-MISSING",
+    "opsToday": 1084,
+    "lastTxid": "3392743e2d0c512be20cee69d5aaaf825cc48ad8"
+  },
+  "credBlocked": true
 }
