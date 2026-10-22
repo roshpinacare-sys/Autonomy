@@ -42,12 +42,16 @@ async function call(cfgv, path, payload) {
   return { http: r.status, j };
 }
 
-/** listCurrencies — the market's real codebook (STEEM may have a v2-specific code) */
+/** listCurrencies — the market's real codebook (STEEM may have a v2-specific code)
+ * גל-57 · תיקון-מדידה-חיה (2026-10-22): POST-הוא-הפועל-המנוסה-מעבודה-חיה (watch-מקומי · code=0);
+ * GET-ראשון-חתם-גוף-ריק → 403 "Not have permission" — וה-fallback הישן-הצית-רק-על-404 →
+ * ב-CI הקודקס-היה-ריק → resolveCode=null → מחירים-על-זוגות-מתים → HONEST-FAIL-נצחי. */
 export async function listCurrencies(cfgv) {
   // v2 docs: the codebook lives at /ccies (docs-parsed 03:20; /currencies 404-with-auth)
   const body = JSON.stringify({});
-  let r = await fetch(`${API}/ccies`, { method: 'GET', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' } });
-  if (r.status === 404) r = await fetch(`${API}/ccies`, { method: 'POST', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' }, body });
+  const post = () => fetch(`${API}/ccies`, { method: 'POST', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' }, body });
+  let r = await post();
+  if (r.status === 404 || r.status === 405) r = await fetch(`${API}/ccies`, { method: 'GET', headers: { 'X-API-KEY': cfgv.key, 'X-API-SIGN': signBody(cfgv.secret, body), 'Content-Type': 'application/json' } });
   const http = r.status;
   const j = await r.json().catch(() => ({}));
   const rows = (j?.data || j || []).map?.((c) => ({ code: c.code, name: c.name, ccys: c.ccys })) || [];
@@ -61,12 +65,26 @@ export function resolveCode(rows, want) {
   return hit?.code ?? null;
 }
 
-/** probe — READ-ONLY: quote STEEM→BTC (and reverse). No money moves. */
-export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = {}) {
+/** probe — READ-ONLY: quote the venue's REAL rails (no money moves).
+ * גל-57 · חוק-המדידה-הכנה: זוג-שהנכס-שלו-אינו-בקודקס-החי אינו-"כשל" — הוא-עובדה:
+ * נרשם-ב-unlisted (מדוד-מה-ccies, אפס-המצאה) ואינו-נשלח-ל-/price-על-מנת-להיכשל.
+ * אם-אף-זוג-מבוקש-לא-שרד-את-הקודקס — מודדים-את-פסי-ההמרה-החיים-של-המקום-עצמו
+ * (BTC/LTC/TRX→USDT — נמדדו-חי-ב-watch) כדי-שהשער-ימדוד-את-המקום, לא-את-מיסכון-הקוד. */
+const FALLBACK_RAILS = [['btc', 'usdt'], ['ltc', 'usdt'], ['trx', 'usdt']];
+export async function probe(cfgv, { amount = 100, ccys = [['btc', 'usdt']] } = {}) {
   const quotes = [];
   const cur = await listCurrencies(cfgv);
   const curDebug = { http: cur.http, ok: cur.ok, count: cur.rows.length, raw: cur.raw, sample: cur.rows.slice(0, 8).map((c) => c.code || c.name) };
-  for (const [from, to] of ccys) {
+  const has = (w) => resolveCode(cur.rows, w) != null;
+  const unlisted = [];
+  const wanted = ccys.length ? ccys : FALLBACK_RAILS;
+  const live = wanted.filter(([f, t]) => {
+    const okP = has(f) && has(t);
+    if (!okP) { unlisted.push(`${f}/${t}`); } // עובדה-מדודה-מהקודקס — לא-כשל, לא-נאמד
+    return okP;
+  });
+  const rails = live.length ? live : FALLBACK_RAILS.filter(([f, t]) => has(f) && has(t)); // הפסים-החיים-של-המקום
+  for (const [from, to] of rails) {
     const fromC = resolveCode(cur.rows, from) || from.toUpperCase(); // docs codes are UPPERCASE (BTC, USDTTRC)
     const toC = resolveCode(cur.rows, to) || to.toUpperCase();
     for (const direction of ['from', 'to']) {
@@ -75,7 +93,7 @@ export async function probe(cfgv, { amount = 100, ccys = [['steem', 'btc']] } = 
       quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate: j?.data?.rate ?? null, min: j?.data?.min ?? null, max: j?.data?.max ?? null, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
     }
   }
-  return { quotes, currencies: curDebug, steemSupported: cur.rows.some?.((c) => String(c.code || '').toUpperCase().includes('STEEM') || String(c.name || '').toUpperCase().includes('STEEM')) || false };
+  return { quotes, currencies: curDebug, unlisted, railsProbed: rails.map(([f, t]) => `${f}/${t}`), steemSupported: cur.rows.some?.((c) => String(c.code || '').toUpperCase().includes('STEEM') || String(c.name || '').toUpperCase().includes('STEEM')) || false };
 }
 
 /** create — ARMED ONLY (FIXEDFLOAT_EXEC=1). Refuses honestly otherwise. */
