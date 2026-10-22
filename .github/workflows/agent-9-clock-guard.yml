@@ -1,0 +1,71 @@
+name: agent-9-clock-guard
+
+# t55s — SECOND independent GitHub-side guard for the agent9 self-chaining clock.
+# ═══════════════════════════════════════════════════════════════════════════════
+# GAP MEASURED (2026-10-22): chain-revival.yml on agent9-clock is the only
+# GitHub-side reviver, and GitHub's scheduler on that repo went 0-for-12 on
+# its */20 slots (4h+ silent, measured). Meanwhile THIS repo's scheduler
+# demonstrably fires (org-revival, sovereign-state, artery-* all firing
+# today). Two independent schedulers on two independent repos = depth-2
+# GitHub revival layer, no sandbox, no owner, no single point of scheduler
+# failure.
+#
+# LAW (identical thresholds to chain-revival / the daemon):
+#   dead := live(queued/in_progress)==0 AND (last conclusion==failure OR quiet>30min)
+#   dead  → dispatch ONE agent9-tick repository_dispatch to agent9-clock
+#   alive → no action (measured, logged, exit 0)
+#   API read failure → exit 1 (loud, honest — never silent)
+#
+# SAFETY:
+#   - measures ONLY the clock workflow runs of agent9-clock (own runs excluded
+#     by name filter — t55p bug-a lesson: a guard must not count itself)
+#   - ONE-CHAIN law inside clock.yml absorbs racing duplicates by construction
+#   - off-boundary slots 23/51 (measured: 0/20/40 slots are the contended ones)
+#   - a healthy chain costs 2 API reads/hour — noise floor
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+    - cron: "51 * * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: agent-9-clock-guard
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: measure agent9-clock chain; dispatch one tick iff dead
+        env:
+          PAT: ${{ secrets.SBX_FLEET_PAT }}
+        run: |
+          set -e
+          REPO=roshpinacare-sys/agent9-clock
+          DATA=$(curl -s -H "Authorization: Bearer $PAT" \
+            "https://api.github.com/repos/${REPO}/actions/runs?per_page=15")
+          TICKS=$(echo "$DATA" | jq -c '[.workflow_runs[] | select(.name == "agent9-clock")]')
+          LIVE=$(echo "$TICKS" | jq '[.[] | select(.status == "queued" or .status == "in_progress")] | length')
+          LAST_AT=$(echo "$TICKS" | jq -r '.[0].created_at // empty')
+          LAST_CONC=$(echo "$TICKS" | jq -r '.[0].conclusion // "null"')
+          if [ -z "$LAST_AT" ]; then
+            QUIET_MIN=9999
+          else
+            QUIET_MIN=$(( ( $(date -u +%s) - $(date -u -d "$LAST_AT" +%s) ) / 60 ))
+          fi
+          echo "measured: live=$LIVE last_conclusion=$LAST_CONC quiet_min=$QUIET_MIN"
+          if [ "$LIVE" -gt 0 ]; then echo "CHAIN-ALIVE: $LIVE live run(s) — no action"; exit 0; fi
+          if [ "$LAST_CONC" != "failure" ] && [ "$QUIET_MIN" -le 30 ]; then
+            echo "CHAIN-ALIVE: last beat healthy $QUIET_MIN min ago — no action"; exit 0; fi
+          echo "CHAIN-DEAD (conclusion=$LAST_CONC quiet=$QUIET_MIN min) — dispatching one revival tick"
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $PAT" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${REPO}/dispatches \
+            -d '{"event_type":"agent9-tick","client_payload":{"from":"autonomy-clock-guard"}}')
+          echo "dispatch http=$code"
+          [ "$code" = "204" ] || { echo "revival dispatch failed"; exit 1; }
