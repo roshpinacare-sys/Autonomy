@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-22T06:44:05.559Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-22T07:24:04.586Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,16 +15,13 @@
 - FleetHQ: 20 workflows · schedule 19 · dispatch 19 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-22T06:41 — gate held the line - verify the payload it stopped, then fix the producer
-- [ENFORCEMENT] Domain/identity-guard @ 2026-10-22T06:35 — gate held the line - verify the payload it stopped, then fix the producer
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-22T07:15 — gate held the line - verify the payload it stopped, then fix the producer
+- [ENFORCEMENT] Domain/identity-guard @ 2026-10-22T07:15 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/estate-scrub @ 2026-10-22T06:19 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-10-22T04:30 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/fill-ledger-cron @ 2026-10-22T01:37 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/saos-act @ 2026-10-21T23:13 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-22T06:28 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/value-scan @ 2026-10-22T06:28 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-22T07:21 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/value-scan @ 2026-10-22T07:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-22T06:27 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-22T04:35 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-10-22T02:27 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
