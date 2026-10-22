@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-22T14:36:36.258Z",
+  "measuredAt": "2026-10-22T15:24:39.338Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -16,14 +16,14 @@
     {
       "id": "law-grid-fresh",
       "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 5min)",
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 1min)",
       "severity": "fail",
       "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
       "ok": true,
-      "detail": "grid executable: lastVerdict=CYCLE-IN-FLIGHT opsToday=0",
+      "detail": "grid executable: lastVerdict=GOVERNOR-ACCUMULATING opsToday=19",
       "severity": "fail",
       "verdict": "pass"
     },
@@ -39,19 +39,19 @@
   "overall": "PASS",
   "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "27bd23870d0b4f0a704de39f0a08e4d9306f0984",
+    "stateBlobSha": "3ace9d71251ff6b48885be9828ebabed1fe07b3c",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "39797122412",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39797122412",
-    "sha": "3477cad9e84e90002630cd156c0d858686115afd"
+    "runId": "39804532059",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/39804532059",
+    "sha": "43f683690c0a892685fed7f902461ffae445be4a"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-22T14:31:27.211Z",
-    "ageMin": 5,
-    "ticks": 505,
-    "lastVerdict": "CYCLE-IN-FLIGHT",
-    "opsToday": 0,
-    "lastTxid": null
+    "lastTickAt": "2026-10-22T15:23:18.216Z",
+    "ageMin": 1,
+    "ticks": 1507,
+    "lastVerdict": "GOVERNOR-ACCUMULATING",
+    "opsToday": 19,
+    "lastTxid": "c90fa771cd967135cd35fdb5969cd70415820b3c"
   }
 }
