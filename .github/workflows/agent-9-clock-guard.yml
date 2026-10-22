@@ -35,7 +35,7 @@ on:
   # Self-limiting: measure-first + one-dispatch law + serialized concurrency; a healthy
   # chain costs 2 API reads per pulse.
   workflow_run:
-    workflows: [sovereign-state, verifier]
+    workflows: [sovereign-state, "verifier (truth & quality)"]
     types: [completed]
 
 permissions: {}
