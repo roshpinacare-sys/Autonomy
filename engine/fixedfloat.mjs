@@ -90,7 +90,11 @@ export async function probe(cfgv, { amount = 100, ccys = [['btc', 'usdt']] } = {
     for (const direction of ['from', 'to']) {
       const amt = direction === 'from' ? amount : 0.001; // to-mode: 0.001 BTC worth
       const { http, j } = await call(cfgv, 'price', { type: 'fixed', fromCcy: fromC, toCcy: toC, direction, amount: String(amt) });
-      quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate: j?.data?.rate ?? null, min: j?.data?.min ?? null, max: j?.data?.max ?? null, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
+      // גל-57: v2 מקנן-rate תחת data.from / data.to (נמדד-חי ב-firstmap: q.data.from.rate) — לא data.rate
+      const rate = j?.data?.rate ?? (direction === 'from' ? j?.data?.from?.rate : j?.data?.to?.rate) ?? null;
+      const min = j?.data?.min ?? (direction === 'from' ? j?.data?.from?.min : j?.data?.to?.min) ?? null;
+      const max = j?.data?.max ?? (direction === 'from' ? j?.data?.from?.max : j?.data?.to?.max) ?? null;
+      quotes.push({ pair: `${fromC}/${toC}`, direction, http, ok: j && j.code === 0, rate, min, max, err: j && j.code !== 0 ? String(j.msg || j.code).slice(0, 80) : null });
     }
   }
   return { quotes, currencies: curDebug, unlisted, railsProbed: rails.map(([f, t]) => `${f}/${t}`), steemSupported: cur.rows.some?.((c) => String(c.code || '').toUpperCase().includes('STEEM') || String(c.name || '').toUpperCase().includes('STEEM')) || false };
