@@ -1,16 +1,28 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-22T12:56:59.093Z",
-  "ok": false,
+  "at": "2026-10-22T13:10:24.925Z",
+  "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": true,
-  "checked": 58,
-  "stale": [],
-  "dispatched": [],
-  "truncated": 0,
-  "reasons": [
-    "last beat 2026-10-22T12:43:21.215Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  "skipped": false,
+  "checked": 72,
+  "stale": [
+    {
+      "wf": "token-watchdog.yml",
+      "ageMin": 1599,
+      "cadenceMin": 1560,
+      "why": "last success 1599min ago > cadence 1560+10grace"
+    }
   ],
-  "doneAt": "2026-10-22T12:56:59.683Z"
+  "dispatched": [
+    {
+      "wf": "token-watchdog.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    }
+  ],
+  "truncated": 0,
+  "reasons": [],
+  "doneAt": "2026-10-22T13:10:31.684Z"
 }
