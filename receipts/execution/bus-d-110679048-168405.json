@@ -1,0 +1,40 @@
+{
+  "schema": "exec.receipt/1",
+  "id": "bus-d-110679048-168405",
+  "task": "bus-d-110679048-168405",
+  "at": "2026-10-23T10:04:11.310Z",
+  "runner": "github-actions:ubuntu-latest",
+  "repo": "roshpinacare-sys/Autonomy",
+  "runId": "39936378235",
+  "ok": true,
+  "commandCount": 3,
+  "results": [
+    {
+      "i": 0,
+      "cmd": "echo '== engine inventory =='; ls engine/ engine/tasks/",
+      "exit": 0,
+      "killed": false,
+      "ms": 108,
+      "out": "== engine inventory ==\nengine/:\nCHAINBUS.md\nagent-gate.mjs\nartery-pacer.mjs\nautotrade-hedge-gate.mjs\nautotrade-measure.mjs\nbuilder\nbuilder.mjs\ncandidates-export.mjs\nclaims-intake.mjs\nclaims-ledger.mjs\ncloud-echo.mjs\ncounsel.mjs\ndecision-truth.mjs\ndirective-bus.mjs\nestate-relay.mjs\nestate-vault.mjs\nexec-task.mjs\nfederation-scan.mjs\nfederation-selftest.mjs\nfixedfloat.mjs\nfleet-participation.mjs\nfleet-verify.mjs\nfleet-yield-selftest.mjs\nfleet-yield.mjs\nflow-map.mjs\ngitlab-mirror.mjs\ngrid-watch.mjs\ngrowth-watch.mjs\nintegrity-guard.mjs\nkey-probe.mjs\nleak-scan.mjs\nnetwork-inventory.mjs\nnetwork-probe.mjs\noperator.mjs\npub-scrub.mjs\nrefs-scrub-file.mjs\nrefs.mjs\nrender-home.mjs\nrun-score.mjs\nruntime\nscout\nscout.mjs\nscribe.mjs\nseal-selftest.mjs\nself-heal.mjs\nsovereign-tick.mjs\nstate-lib.mjs\nstate-tick.mjs\ntasks\ntreasury-consolidate.mjs\ntreasury-floor-gate.mjs\ntreasury-forensics.mjs\ntreasury-topup.mjs\nvault-census.mjs\nvein-probe.mjs\nvercel-deploy.mjs\nverifier.mjs\nwallet-verify.mjs\nworld-evolver.mjs\n\nengine/tasks/:\ncounsel.json\nfleet-report.json\nhealth-probe.json\nminutes-census.json\nscout.json\nscripts\nself-heal.json\ntreasury.json\n",
+      "err": ""
+    },
+    {
+      "i": 1,
+      "cmd": "echo '== execution receipts (latest 5) =='; ls -t receipts/execution/ 2>/dev/null | head -5",
+      "exit": 0,
+      "killed": false,
+      "ms": 93,
+      "out": "== execution receipts (latest 5) ==\nbus-d-110626887-158732.json\nbus-d-110626887-158735.json\nbus-d-110650523-165632.json\nbus-d-110661585-167644.json\nbus-d-110661585-167647.json\n",
+      "err": ""
+    },
+    {
+      "i": 2,
+      "cmd": "echo '== remediation ledger =='; head -c 600 receipts/remediation/agent9-latest.json 2>/dev/null",
+      "exit": 0,
+      "killed": false,
+      "ms": 92,
+      "out": "== remediation ledger ==\n{\n \"schema\": \"remediation.receipt/1\",\n \"channel\": \"receipts/remediation/\",\n \"at\": \"2026-10-19T04:55:00Z\",\n \"agent\": {\n  \"id\": \"agent-9\",\n  \"task\": \"28/books-revival\",\n  \"role\": \"living-world-and-continuation\",\n  \"gitIdentity\": \"sovereign-agent-9 <agent9@sovereign.local>\"\n },\n \"scope\": \"owner order 'תמשיך ודחוף' (continue and push): the living office truth stood at 9/13 fresh books — 4 estate books dead since 2026-10-04 (curation-book, pnl-book, skill-library, tick-keeper, stale 348-363h). Root-cause all four deaths from the tree, cure what the tree can cure, prove the cure live, ke",
+      "err": ""
+    }
+  ]
+}
