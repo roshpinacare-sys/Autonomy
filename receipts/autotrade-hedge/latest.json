@@ -1,45 +1,40 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-10-23T07:54:47.584Z",
+ "at": "2026-10-23T12:35:36.293Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-10-23T07:54:47.584Z",
+  "now": "2026-10-23T12:35:36.293Z",
   "measured": {
-   "baseBal": 259.469,
-   "quoteBal": 5.719,
-   "mid": 0.102179,
-   "openOrders": 3,
+   "baseBal": 109.77,
+   "quoteBal": 26.366,
+   "mid": 0.102183,
+   "openOrders": 0,
    "oracle": {
-    "steemUsd": 0.052661,
-    "sbdUsd": 0.478348,
+    "steemUsd": 0.052477,
+    "sbdUsd": 0.476404,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
-   "verdict": "BLOCK",
-   "now": "2026-10-23T07:54:47.584Z",
+   "verdict": "PASS",
+   "now": "2026-10-23T12:35:36.293Z",
    "measured": {
-    "workingCapitalQuote": 32.2313,
-    "currentBaseExposurePct": 82.26,
-    "postBurstBaseExposurePct": 98.77,
-    "orders": 3
+    "workingCapitalQuote": 37.5826,
+    "currentBaseExposurePct": 29.85,
+    "postBurstBaseExposurePct": 29.85,
+    "orders": 0
    },
-   "blocked": [
-    "#0(buy) size 5.46% > cap 1.0%",
-    "#1(buy) size 5.46% > cap 1.0%",
-    "#2(buy) size 5.46% > cap 1.0%",
-    "post-burst base exposure 98.8% > ceiling 82.3% (cur above cap — no new buys, sells only)"
-   ],
-   "advisory": "REBALANCE: current base exposure 82.3% vs target 10%",
-   "reason": "risk-before-execution: 4 order(s) blocked"
+   "blocked": [],
+   "advisory": "REBALANCE: current base exposure 29.8% vs target 10%",
+   "reason": "PASS with advisory — REBALANCE: current base exposure 29.8% vs target 10%"
   },
   "arb": {
-   "internalSteemUsd": 0.048877,
-   "externalSteemUsd": 0.052661,
-   "gapPct": -7.185,
+   "internalSteemUsd": 0.04868,
+   "externalSteemUsd": 0.052477,
+   "gapPct": -7.235,
    "edge": "BUY-INTERNAL-DISCOUNT"
   }
  }
