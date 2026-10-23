@@ -1,43 +1,46 @@
 {
   "schema": "chainbus.scan/1",
-  "at": "2026-10-23T19:14:22.898Z",
-  "startedAt": "2026-10-23T19:14:00.754Z",
+  "at": "2026-10-23T19:44:22.696Z",
+  "startedAt": "2026-10-23T19:44:09.127Z",
   "account": "operator",
-  "node": "https://steemapi.boylikegirl.club",
+  "node": "https://api.steemit.com",
   "window": 1000,
   "nodesTried": [
     {
       "node": "https://api.steemit.com",
       "pages": 10,
       "ops": 1010,
-      "bus": 20,
-      "maxBlock": 110694161
+      "bus": 23,
+      "maxBlock": 110694960
     },
     {
       "node": "https://steemapi.boylikegirl.club",
       "pages": 10,
       "ops": 1010,
-      "bus": 21,
-      "maxBlock": 110694726
+      "bus": 23,
+      "maxBlock": 110694960
     },
     {
       "node": "https://api.steem.fans",
-      "err": "This operation was aborted"
-    },
-    {
-      "node": "https://api.steem.fans",
-      "pages": 1,
-      "ops": 0,
-      "bus": 0,
-      "maxBlock": 0
+      "pages": 10,
+      "ops": 1010,
+      "bus": 23,
+      "maxBlock": 110694960
     }
   ],
-  "busEntries": 21,
+  "busEntries": 23,
   "seenTypes": {
-    "cycle.receipt": 20,
-    "anchor.receipt": 1
+    "cycle.receipt": 21,
+    "anchor.receipt": 1,
+    "directive": 1
   },
-  "directivesFound": 0,
-  "consumed": [],
+  "directivesFound": 1,
+  "consumed": [
+    {
+      "ref": "d-110694934-172151",
+      "ok": true,
+      "task": "health-probe"
+    }
+  ],
   "ok": true
 }
