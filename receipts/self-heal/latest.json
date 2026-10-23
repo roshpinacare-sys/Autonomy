@@ -1,21 +1,13 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-23T23:15:12.383Z",
+ "at": "2026-10-23T23:58:21.196Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-23T22:50:56.974Z",
+ "verdictAt": "2026-10-23T23:54:28.638Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-catchup.yml",
-   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -52,6 +44,14 @@
    "status": 204,
    "note": "dispatched",
    "ok": true
+  },
+  {
+   "workflow": "artery-grid.yml",
+   "check": "sbx.wf-artery-grid",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
   }
  ],
  "refused": [],
@@ -60,13 +60,13 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 2% < 10% over 354 commits/24h",
+   "why": "heartbeat-without-building: codeShare 0% < 10% over 355 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
    "level": "DEGRADED",
-   "why": "treasury acct-00 at 2216 SP < 3000 (recovery-plan §3)",
+   "why": "treasury acct-00 at 2217 SP < 3000 (recovery-plan §3)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,7 +76,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 1,
+ "truncated": 3,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 58,
