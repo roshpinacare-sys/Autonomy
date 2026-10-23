@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-23T07:47:58.605Z",
+  "at": "2026-10-23T08:04:48.573Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -8,19 +8,55 @@
   "checked": 72,
   "stale": [
     {
-      "wf": "verifier.yml",
-      "ageMin": 54,
+      "wf": "value-scan.yml",
+      "ageMin": 43,
       "cadenceMin": 30,
-      "why": "last success 54min ago > cadence 30+10grace"
+      "why": "last success 43min ago > cadence 30+10grace"
     },
     {
-      "wf": "artery-wallet.yml",
-      "ageMin": 106,
-      "cadenceMin": 60,
-      "why": "last success 106min ago > cadence 60+10grace"
+      "wf": "artery-grid.yml",
+      "ageMin": 43,
+      "cadenceMin": 30,
+      "why": "last success 43min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ageMin": 43,
+      "cadenceMin": 30,
+      "why": "last success 43min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "verifier.yml",
+      "ageMin": 43,
+      "cadenceMin": 30,
+      "why": "last success 43min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 43,
+      "cadenceMin": 30,
+      "why": "last success 43min ago > cadence 30+10grace"
     }
   ],
   "dispatched": [
+    {
+      "wf": "value-scan.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-grid.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
     {
       "wf": "verifier.yml",
       "ok": true,
@@ -28,7 +64,7 @@
       "note": "dispatched"
     },
     {
-      "wf": "artery-wallet.yml",
+      "wf": "artery-selfheal.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -36,5 +72,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-10-23T07:48:05.572Z"
+  "doneAt": "2026-10-23T08:05:00.478Z"
 }
