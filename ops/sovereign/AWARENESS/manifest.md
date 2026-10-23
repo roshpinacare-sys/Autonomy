@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-23T01:32:54.057Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-23T03:01:38.990Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,13 +15,13 @@
 - FleetHQ: 21 workflows · schedule 19 · dispatch 20 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-23T02:55 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/estate-scrub @ 2026-10-23T01:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-10-23T01:22 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-23T01:07 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/estate-scrub @ 2026-10-22T23:36 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-22T18:38 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/identity-guard @ 2026-10-22T15:29 — gate held the line - verify the payload it stopped, then fix the producer
+- [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-23T01:53 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/artery-selfheal @ 2026-10-23T00:10 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-22T22:34 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/artery-integrity @ 2026-10-22T18:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-10-22T12:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/value-scan @ 2026-10-22T12:16 — autonomy triage: read the log, fix root, land, verify
@@ -29,7 +29,7 @@
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-22T11:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/token-watchdog @ 2026-10-22T10:33 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/profit-oracle @ 2026-10-22T10:20 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] FleetHQ/fresh-oracle @ 2026-10-23T01:08 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] FleetHQ/fresh-oracle @ 2026-10-23T01:54 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-retro @ 2026-10-22T14:01 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/pages-deploy @ 2026-10-22T13:04 — autonomy triage: read the log, fix root, land, verify
 
