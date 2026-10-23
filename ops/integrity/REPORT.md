@@ -1,9 +1,9 @@
-# דוח-שומר-השלמות — 2026-10-23T00:12:31.726Z
+# דוח-שומר-השלמות — 2026-10-23T00:13:50.084Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=5
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=39865328055 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=39876654909 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=39873588512 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=39864160630 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/grid/verdict.json` — run=39872127519 conc=success repo=Sandbox
