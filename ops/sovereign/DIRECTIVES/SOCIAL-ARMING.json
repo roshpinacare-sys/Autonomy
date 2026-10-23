@@ -15,43 +15,43 @@
    "required": "14/14",
    "pass": true,
    "source": "condenser_api.get_accounts roster+the-master-of-record",
-   "at": "2026-10-22T07:28:10.534Z"
+   "at": "2026-10-23T07:21:24.405Z"
   },
   "2_presenceMatrix": {
-   "measured": "7.0h",
+   "measured": "0.1h",
    "required": "<12h",
    "pass": true,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/presence-matrix.json",
-   "at": "2026-10-22T07:28:10.534Z"
+   "at": "2026-10-23T07:21:24.405Z"
   },
   "3_custody": {
    "measured": "14/14",
    "required": ">=13/14",
    "pass": true,
    "source": "saos-runtime@main state/beat/ci-last-heartbeat.json",
-   "at": "2026-10-22T07:28:10.534Z"
+   "at": "2026-10-23T07:21:24.405Z"
   },
   "4_antiFarmLaws": {
    "measured": "w=8 posts=1 votes=0",
    "required": "laws-in-config",
    "pass": true,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/readiness.json",
-   "at": "2026-10-22T07:28:10.534Z"
+   "at": "2026-10-23T07:21:24.405Z"
   },
   "5_cooldown7d": {
-   "measured": "3.24d since 2026-10-19T01:48:34.695Z",
+   "measured": "4.23d since 2026-10-19T01:48:34.695Z",
    "required": ">=7d",
    "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/content-memory/published.jsonl last=2026-10-19T01:48:34.695Z (fleet lane)",
    "eta": "2026-10-26T01:49:00Z",
-   "at": "2026-10-22T07:28:10.534Z"
+   "at": "2026-10-23T07:21:24.405Z"
   },
   "6_ownerApproval": {
    "measured": "R309-SOVEREIGN-OPENING present",
    "required": "explicit-owner-approval",
    "pass": true,
    "source": "ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md",
-   "at": "2026-10-22T07:28:10.534Z"
+   "at": "2026-10-23T07:21:24.405Z"
   }
  },
  "laws": {
@@ -85,14 +85,14 @@
   }
  ],
  "executor": "sovereign-arming-check.yml (daily 02:05Z + dispatch) — truth-monitor: re-measures every run, never reverts owner-law ARM, never self-arms over a red checklist, records discrepancy flags (42c72b28)",
- "at": "2026-10-22T07:28:10.534Z",
+ "at": "2026-10-23T07:21:24.405Z",
  "monitor": {
-  "at": "2026-10-22T07:28:10.534Z",
+  "at": "2026-10-23T07:21:24.405Z",
   "allPass": false,
   "discrepancies": [
    {
     "id": "5_cooldown7d",
-    "measured": "3.24d since 2026-10-19T01:48:34.695Z"
+    "measured": "4.23d since 2026-10-19T01:48:34.695Z"
    }
   ]
  }
