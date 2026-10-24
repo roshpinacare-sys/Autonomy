@@ -1,52 +1,66 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-10-24T10:40:09.305Z",
+ "at": "2026-10-24T11:34:30.460Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-10-24T10:40:09.305Z",
+  "now": "2026-10-24T11:34:30.460Z",
   "measured": {
-   "baseBal": 39.846,
-   "quoteBal": 1.218,
-   "mid": 0.103183,
-   "openOrders": 9,
+   "baseBal": 19.165,
+   "quoteBal": 0.736,
+   "mid": 0.10213,
+   "openOrders": 21,
    "oracle": {
-    "steemUsd": 0.050268,
-    "sbdUsd": 0.489638,
+    "steemUsd": 0.04980094,
+    "sbdUsd": 0.489225,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
    "verdict": "BLOCK",
-   "now": "2026-10-24T10:40:09.305Z",
+   "now": "2026-10-24T11:34:30.460Z",
    "measured": {
-    "workingCapitalQuote": 5.3294,
-    "currentBaseExposurePct": 77.15,
-    "postBurstBaseExposurePct": 208.4,
-    "orders": 9
+    "workingCapitalQuote": 2.6933,
+    "currentBaseExposurePct": 72.67,
+    "postBurstBaseExposurePct": 347.94,
+    "orders": 21
    },
    "blocked": [
-    "#0(sell) size 23.22% > cap 1.0%",
-    "#1(sell) size 23.22% > cap 1.0%",
-    "#2(sell) size 6.18% > cap 1.0%",
-    "#3(sell) size 143.88% > cap 1.0%",
-    "#4(sell) size 143.88% > cap 1.0%",
-    "#5(sell) size 143.88% > cap 1.0%",
-    "#6(buy) size 43.12% > cap 1.0%",
-    "#7(buy) size 43.12% > cap 1.0%",
-    "#8(buy) size 43.12% > cap 1.0%",
-    "post-burst base exposure 208.4% > ceiling 77.1% (cur above cap — no new buys, sells only)"
+    "#0(sell) size 45.48% > cap 1.0%",
+    "#1(sell) size 45.48% > cap 1.0%",
+    "#2(sell) size 115.19% > cap 1.0%",
+    "#2(sell) edge 0.081% < min 0.2%",
+    "#3(sell) size 115.19% > cap 1.0%",
+    "#3(sell) edge 0.178% < min 0.2%",
+    "#4(sell) size 115.19% > cap 1.0%",
+    "#5(sell) size 115.19% > cap 1.0%",
+    "#6(sell) size 37.81% > cap 1.0%",
+    "#7(buy) size 23.87% > cap 1.0%",
+    "#8(buy) size 23.87% > cap 1.0%",
+    "#9(buy) size 23.87% > cap 1.0%",
+    "#10(buy) size 23.87% > cap 1.0%",
+    "#11(buy) size 23.87% > cap 1.0%",
+    "#12(sell) size 12.10% > cap 1.0%",
+    "#13(sell) size 12.10% > cap 1.0%",
+    "#14(sell) size 12.10% > cap 1.0%",
+    "#15(sell) size 133.68% > cap 1.0%",
+    "#16(sell) size 133.68% > cap 1.0%",
+    "#17(sell) size 133.68% > cap 1.0%",
+    "#18(buy) size 51.50% > cap 1.0%",
+    "#19(buy) size 51.50% > cap 1.0%",
+    "#20(buy) size 51.50% > cap 1.0%",
+    "post-burst base exposure 347.9% > ceiling 72.7% (cur above cap — no new buys, sells only)"
    ],
-   "advisory": "REBALANCE: current base exposure 77.1% vs target 10%",
-   "reason": "risk-before-execution: 10 order(s) blocked"
+   "advisory": "REBALANCE: current base exposure 72.7% vs target 10%",
+   "reason": "risk-before-execution: 24 order(s) blocked"
   },
   "arb": {
-   "internalSteemUsd": 0.050522,
-   "externalSteemUsd": 0.050268,
-   "gapPct": 0.506,
-   "edge": "SELL-INTERNAL-PREMIUM"
+   "internalSteemUsd": 0.049964,
+   "externalSteemUsd": 0.04980094,
+   "gapPct": 0.328,
+   "edge": "NO-EDGE(<0.5%)"
   }
  }
 }
