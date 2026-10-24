@@ -1,7 +1,7 @@
 {
-  "at": "2026-10-24T16:10:35.695Z",
+  "at": "2026-10-24T17:34:38.254Z",
   "slug": "roshpinacare-sys/saos-dex",
-  "head": "33afdff93699edea869e3f6ae98865ffa6d4aa0c",
+  "head": "cad5294641b665a2ba6d385f1330c15c77e1dcb5",
   "checks": {
     "install": "pass",
     "typecheck": "pass"
@@ -9,8 +9,8 @@
   "laws": [
     {
       "id": "law-no-secrets-at-head",
-      "verdict": "pass",
-      "detail": "gitleaks HEAD scan: 0 findings"
+      "verdict": "flag",
+      "detail": "gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
     },
     {
       "id": "law-no-skipped-pass",
@@ -28,7 +28,9 @@
       "detail": "absent at HEAD"
     }
   ],
-  "alerts": [],
+  "alerts": [
+    "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
+  ],
   "overall": "PASS",
   "reason": "all checks and fleet laws pass"
 }
