@@ -1,40 +1,55 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-10-24T14:52:20.958Z",
+ "at": "2026-10-24T16:52:35.081Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-10-24T14:52:20.958Z",
+  "now": "2026-10-24T16:52:35.081Z",
   "measured": {
-   "baseBal": 201.038,
-   "quoteBal": 16.799,
-   "mid": 0.103524,
-   "openOrders": 1,
+   "baseBal": 50.287,
+   "quoteBal": 8.194,
+   "mid": 0.103087,
+   "openOrders": 15,
    "oracle": {
-    "steemUsd": 0.04903432,
-    "sbdUsd": 0.479743,
+    "steemUsd": 0.049081,
+    "sbdUsd": 0.489375,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
-   "verdict": "PASS",
-   "now": "2026-10-24T14:52:20.958Z",
+   "verdict": "BLOCK",
+   "now": "2026-10-24T16:52:35.081Z",
    "measured": {
-    "workingCapitalQuote": 37.6113,
-    "currentBaseExposurePct": 55.34,
-    "postBurstBaseExposurePct": 55.34,
-    "orders": 1
+    "workingCapitalQuote": 13.3779,
+    "currentBaseExposurePct": 38.75,
+    "postBurstBaseExposurePct": 166.92,
+    "orders": 15
    },
-   "blocked": [],
-   "advisory": "REBALANCE: current base exposure 55.3% vs target 10%",
-   "reason": "PASS with advisory — REBALANCE: current base exposure 55.3% vs target 10%"
+   "blocked": [
+    "#0(sell) size 7.71% > cap 1.0%",
+    "#1(sell) size 7.71% > cap 1.0%",
+    "#2(sell) size 7.71% > cap 1.0%",
+    "#3(sell) size 7.71% > cap 1.0%",
+    "#4(buy) size 37.37% > cap 1.0%",
+    "#5(buy) size 12.10% > cap 1.0%",
+    "#6(buy) size 37.38% > cap 1.0%",
+    "#7(buy) size 37.37% > cap 1.0%",
+    "#8(sell) size 5.22% > cap 1.0%",
+    "#9(sell) size 5.22% > cap 1.0%",
+    "#10(sell) size 5.22% > cap 1.0%",
+    "#11(sell) size 5.22% > cap 1.0%",
+    "#12(sell) size 4.74% > cap 1.0%",
+    "post-burst base exposure 166.9% > ceiling 38.7% (cur above cap — no new buys, sells only)"
+   ],
+   "advisory": "REBALANCE: current base exposure 38.7% vs target 10%",
+   "reason": "risk-before-execution: 14 order(s) blocked"
   },
   "arb": {
-   "internalSteemUsd": 0.049665,
-   "externalSteemUsd": 0.04903432,
-   "gapPct": 1.286,
+   "internalSteemUsd": 0.050448,
+   "externalSteemUsd": 0.049081,
+   "gapPct": 2.786,
    "edge": "SELL-INTERNAL-PREMIUM"
   }
  }
