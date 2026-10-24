@@ -1,9 +1,9 @@
-# דוח-שומר-השלמות — 2026-10-24T23:16:21.469Z
+# דוח-שומר-השלמות — 2026-10-24T23:24:29.496Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=5
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=40141620164 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=40141860561 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=40135361032 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=40135361500 conc=failure repo=Sandbox
 - ✅ `Sandbox:receipts/grid/verdict.json` — run=40140488018 conc=failure repo=Sandbox
@@ -13,7 +13,7 @@
 - ✅ `Domain:office/data.json` — run=40138574567 conc=success repo=Autonomy
 - ✅ `Domain:office/data.json` — run=40140722947 conc=failure repo=Autonomy
 - ✅ `Domain:office/data.json` — run=40140724145 conc=failure repo=Autonomy
-- ✅ `Sandbox:ops/decision-truth/verdict.json` — run=40139216401 conc=success repo=Sandbox
+- ✅ `Sandbox:ops/decision-truth/verdict.json` — run=40142476431 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/integrity/verdict.json` — run=40140489032 conc=success repo=Sandbox
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
