@@ -1,29 +1,29 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-24T22:30:42Z",
- "durationMs": 2076,
+ "generatedAt": "2026-10-24T23:11:56Z",
+ "durationMs": 1947,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-24T21:35:42Z",
-  "stateAgeMin": 55,
+  "stateAgeMin": 96,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-24T21:35:16Z",
-   "ageS": 3325,
-   "stalled": false
+   "ageS": 5799,
+   "stalled": true
   }
  },
  "measures": {
   "chain": {
-   "head": 110727322,
+   "head": 110728142,
    "treasuryNetSp": 2410.5,
-   "mult": 0.0006207455595598228
+   "mult": 0.0006207467620496474
   },
   "beaconPulse": {
-   "treasuryNetSp": 2411.7
+   "treasuryNetSp": 2410.5
   },
   "faultedAgentsNow": [],
   "flowSummary": {
@@ -50,7 +50,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -61,7 +61,7 @@
    "status": "ENFORCED",
    "priority": "P1",
    "decidedAt": "2026-10-24T21:35:42Z",
-   "truth": "STALE-TRUTH",
+   "truth": "VERIFIED",
    "checks": [
     {
      "law": "policy-internal-consistency",
@@ -75,8 +75,8 @@
     },
     {
      "law": "beacon-vs-fresh",
-     "result": "mismatch",
-     "detail": "beacon=2411.7"
+     "result": "ok",
+     "detail": "beacon=2410.5"
     },
     {
      "law": "operators-basis",
@@ -101,10 +101,10 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
-   "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
+   "note": "evidence re-measured independently + execution present"
   },
   {
    "id": "D2-eng-errors",
@@ -136,7 +136,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -162,7 +162,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -177,7 +177,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -192,7 +192,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -207,7 +207,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -222,7 +222,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -238,7 +238,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -254,18 +254,18 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 55min (limit 120)"
+     "detail": "state age 96min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "40138622623",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40138622623",
-  "sha": "1c86404215b4747366df8315c46c98289a72d974",
+  "runId": "40141713874",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40141713874",
+  "sha": "d8996a34a2dcabfbba8f0bb88162a9599d2f7f7b",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-24T22:30:42Z"
+  "generatedAt": "2026-10-24T23:11:56Z"
  },
  "selftest": {
   "vectors": 16,
