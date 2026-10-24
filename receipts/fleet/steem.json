@@ -1,11 +1,11 @@
 {
-  "at": "2026-10-24T18:54:15.538Z",
+  "at": "2026-10-24T20:25:26.815Z",
   "slug": "roshpinacare-sys/steem",
-  "head": "e9c3706d8d4e7f4c76c1c02fbd6c2bff4d021494",
+  "head": "c03b1ea3d6fff08f45f00c6a178344063b4851bc",
   "checks": {
-    "install": "pass",
-    "engineInstall": "pass",
-    "engineSelftest": "pass"
+    "install": "fail",
+    "engineInstall": "fail",
+    "engineSelftest": "fail"
   },
   "laws": [
     {
@@ -16,12 +16,12 @@
     {
       "id": "law-no-skipped-pass",
       "verdict": "pass",
-      "detail": "workflows scanned: 14, theater patterns: 0"
+      "detail": "workflows scanned: 0, theater patterns: 0"
     },
     {
       "id": "law-gitleaks-push",
-      "verdict": "pass",
-      "detail": "scan capability present + this artery scanned HEAD this run (billing-wall covenant: the artery is the push layer for walled repos)"
+      "verdict": "flag",
+      "detail": "no gitleaks.yml in repo — no in-repo secret scan"
     },
     {
       "id": "law-r11-head-absent",
@@ -29,7 +29,9 @@
       "detail": "absent at HEAD"
     }
   ],
-  "alerts": [],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "alerts": [
+    "law-gitleaks-push: no gitleaks.yml in repo — no in-repo secret scan"
+  ],
+  "overall": "FAIL",
+  "reason": "engineSelftest failed: error: Module not found \"selftest.mjs\" | "
 }

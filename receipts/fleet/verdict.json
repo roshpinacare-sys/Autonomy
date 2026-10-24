@@ -1,18 +1,18 @@
 {
-  "at": "2026-10-24T18:54:15.538Z",
+  "at": "2026-10-24T20:25:26.815Z",
   "repos": {
     "steem-cockpit": {
-      "head": "e9c3706d8d4e7f4c76c1c02fbd6c2bff4d021494",
-      "overall": "PASS",
+      "head": "c03b1ea3d6fff08f45f00c6a178344063b4851bc",
+      "overall": "FAIL",
       "checks": {
-        "install": "pass",
-        "engineInstall": "pass",
-        "engineSelftest": "pass"
+        "install": "fail",
+        "engineInstall": "fail",
+        "engineSelftest": "fail"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": "engineSelftest failed: error: Module not found \"selftest.mjs\" | "
     },
     "saos-dex": {
-      "head": "e2e4c3b451e8d54da45808fdc41d9de0cfad478d",
+      "head": "a4bcb767a0642f2449a406d3f73b15bd865c54ba",
       "overall": "PASS",
       "checks": {
         "install": "pass",
@@ -21,7 +21,7 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-agents": {
-      "head": "9e793f13946563723910e443a5361f7b77635ece",
+      "head": "34f390a3d870e7c3b6d7ce1d8889116a5eb246c6",
       "overall": "PASS",
       "checks": {
         "agentsSelftest": "pass"
@@ -29,38 +29,39 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-wallet": {
-      "head": "9d24e32645955813eff86d268db638f145f21716",
+      "head": "f991b654bda53325fca88f5b87b7b8e2d740b05e",
       "overall": "PASS",
       "checks": {},
       "reason": "all checks and fleet laws pass"
     },
     "adsmarket": {
-      "head": "65ac5175a0f6a332999f3308f203bad5bfd1174e",
+      "head": "9cc0b468c1ef99bfa1e94e95713e1b68170af161",
       "overall": "PASS",
       "checks": {},
       "reason": "all checks and fleet laws pass"
     }
   },
   "alerts": [
+    "steem-cockpit: law-gitleaks-push: no gitleaks.yml in repo — no in-repo secret scan",
     "saos-dex: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1",
     "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
   ],
-  "overall": "PASS",
-  "reason": "steem=PASS · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "overall": "FAIL",
+  "reason": "steem=FAIL · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "40122691942",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40122691942",
-    "sha": "8a7955bfac321221e298dd42da5923700b8b76de"
+    "runId": "40129686911",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40129686911",
+    "sha": "4b7f5ac09006ad8d333baf73be7371a367c5d057"
   },
   "details": [
     {
-      "at": "2026-10-24T18:54:15.538Z",
+      "at": "2026-10-24T20:25:26.815Z",
       "slug": "roshpinacare-sys/steem",
-      "head": "e9c3706d8d4e7f4c76c1c02fbd6c2bff4d021494",
+      "head": "c03b1ea3d6fff08f45f00c6a178344063b4851bc",
       "checks": {
-        "install": "pass",
-        "engineInstall": "pass",
-        "engineSelftest": "pass"
+        "install": "fail",
+        "engineInstall": "fail",
+        "engineSelftest": "fail"
       },
       "laws": [
         {
@@ -71,12 +72,12 @@
         {
           "id": "law-no-skipped-pass",
           "verdict": "pass",
-          "detail": "workflows scanned: 14, theater patterns: 0"
+          "detail": "workflows scanned: 0, theater patterns: 0"
         },
         {
           "id": "law-gitleaks-push",
-          "verdict": "pass",
-          "detail": "scan capability present + this artery scanned HEAD this run (billing-wall covenant: the artery is the push layer for walled repos)"
+          "verdict": "flag",
+          "detail": "no gitleaks.yml in repo — no in-repo secret scan"
         },
         {
           "id": "law-r11-head-absent",
@@ -84,14 +85,16 @@
           "detail": "absent at HEAD"
         }
       ],
-      "alerts": [],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "alerts": [
+        "law-gitleaks-push: no gitleaks.yml in repo — no in-repo secret scan"
+      ],
+      "overall": "FAIL",
+      "reason": "engineSelftest failed: error: Module not found \"selftest.mjs\" | "
     },
     {
-      "at": "2026-10-24T18:54:15.538Z",
+      "at": "2026-10-24T20:25:26.815Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "e2e4c3b451e8d54da45808fdc41d9de0cfad478d",
+      "head": "a4bcb767a0642f2449a406d3f73b15bd865c54ba",
       "checks": {
         "install": "pass",
         "typecheck": "pass"
@@ -125,9 +128,9 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-24T18:54:15.538Z",
+      "at": "2026-10-24T20:25:26.815Z",
       "slug": "roshpinacare-sys/saos-agents",
-      "head": "9e793f13946563723910e443a5361f7b77635ece",
+      "head": "34f390a3d870e7c3b6d7ce1d8889116a5eb246c6",
       "checks": {
         "agentsSelftest": "pass"
       },
@@ -158,9 +161,9 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-24T18:54:15.538Z",
+      "at": "2026-10-24T20:25:26.815Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
-      "head": "9d24e32645955813eff86d268db638f145f21716",
+      "head": "f991b654bda53325fca88f5b87b7b8e2d740b05e",
       "checks": {},
       "laws": [
         {
@@ -206,7 +209,7 @@
         {
           "id": "law-pass-provenance",
           "verdict": "pass",
-          "detail": "receipt provenance: https://github.com/roshpinacare-sys/Saosmartwallet/actions/runs/40116785137"
+          "detail": "receipt provenance: https://github.com/roshpinacare-sys/Saosmartwallet/actions/runs/40127101931"
         }
       ],
       "alerts": [
@@ -216,9 +219,9 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-24T18:54:15.538Z",
+      "at": "2026-10-24T20:25:26.815Z",
       "slug": "roshpinacare-sys/Adsmarket",
-      "head": "65ac5175a0f6a332999f3308f203bad5bfd1174e",
+      "head": "9cc0b468c1ef99bfa1e94e95713e1b68170af161",
       "checks": {},
       "laws": [
         {
