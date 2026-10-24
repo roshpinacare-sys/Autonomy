@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-24T03:04:00.431Z",
+  "measuredAt": "2026-10-24T03:29:37.432Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -15,15 +15,15 @@
     },
     {
       "id": "law-grid-fresh",
-      "ok": false,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 140min)",
+      "ok": true,
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 9min)",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
       "ok": true,
-      "detail": "grid executable: lastVerdict=GOVERNOR-ACCUMULATING opsToday=24",
+      "detail": "grid executable: lastVerdict=BROADCAST opsToday=42",
       "severity": "fail",
       "verdict": "pass"
     },
@@ -36,22 +36,22 @@
     }
   ],
   "alerts": [],
-  "overall": "FAIL",
-  "reason": "grid-law failed: law-grid-fresh",
+  "overall": "PASS",
+  "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "1152107d1a2edbc35cf64b0951c04e4b0241c4f8",
+    "stateBlobSha": "81286fe01b98fa4f202efe2b7faf5121fb505871",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "40056706601",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40056706601",
-    "sha": "24d96c0f3ba9e465d8bc1fc8de1c136f9710f77b"
+    "runId": "40058507423",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40058507423",
+    "sha": "793f4d4f8f15ba35f3b5ed8e9cb7408e83b6d9f0"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-24T00:44:15.127Z",
-    "ageMin": 140,
-    "ticks": 2178,
-    "lastVerdict": "GOVERNOR-ACCUMULATING",
-    "opsToday": 24,
-    "lastTxid": "123d15b7d14631d22d665651aef1d1ac2c6ef6c9"
+    "lastTickAt": "2026-10-24T03:20:09.215Z",
+    "ageMin": 9,
+    "ticks": 2207,
+    "lastVerdict": "BROADCAST",
+    "opsToday": 42,
+    "lastTxid": "d0f3ac5ff8fdb5feaaf4e7d9c35ea83f12c80d7e"
   }
 }
