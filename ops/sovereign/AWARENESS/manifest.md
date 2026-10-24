@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-24T02:02:37.806Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-24T03:06:42.203Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,17 +15,17 @@
 - FleetHQ: 21 workflows · schedule 19 · dispatch 20 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [DEFECT] Domain/fill-ledger-cron @ 2026-10-23T23:49 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/soldiers-curate @ 2026-10-24T02:32 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/fill-ledger-cron @ 2026-10-24T02:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/saos-act @ 2026-10-23T23:04 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/identity-guard @ 2026-10-23T15:45 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/treasury-route @ 2026-10-23T15:23 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-23T15:11 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/estate-scrub @ 2026-10-23T12:36 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-ecosystem @ 2026-10-23T12:12 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-grid @ 2026-10-24T03:03 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-24T01:04 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Autonomy/artery-grid @ 2026-10-23T15:34 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-selfheal @ 2026-10-23T00:10 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] FleetHQ/fresh-oracle @ 2026-10-24T01:44 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] FleetHQ/fresh-oracle @ 2026-10-24T02:03 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/opens-closer @ 2026-10-23T23:30 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
