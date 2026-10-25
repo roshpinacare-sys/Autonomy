@@ -1,52 +1,16 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-25T09:08:47.286Z",
-  "ok": true,
+  "at": "2026-10-25T09:22:02.619Z",
+  "ok": false,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": false,
-  "checked": 72,
-  "stale": [
-    {
-      "wf": "artery-grid.yml",
-      "ageMin": 737,
-      "cadenceMin": 30,
-      "why": "last success 737min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "verifier.yml",
-      "ageMin": 49,
-      "cadenceMin": 30,
-      "why": "last success 49min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ageMin": 857,
-      "cadenceMin": 60,
-      "why": "last success 857min ago > cadence 60+10grace"
-    }
-  ],
-  "dispatched": [
-    {
-      "wf": "artery-grid.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "verifier.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    }
-  ],
+  "skipped": true,
+  "checked": 58,
+  "stale": [],
+  "dispatched": [],
   "truncated": 0,
-  "reasons": [],
-  "doneAt": "2026-10-25T09:08:54.304Z"
+  "reasons": [
+    "last beat 2026-10-25T09:08:47.286Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  ],
+  "doneAt": "2026-10-25T09:22:03.759Z"
 }
