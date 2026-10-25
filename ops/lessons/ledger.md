@@ -3450,3 +3450,32 @@
 - PROPOSAL(law): decision D5-social-standby evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 - PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
 
+
+## scribe #114 · 2026-10-25T18:02:09.375Z
+- wallet 24h verdicts: {"PASS":21} · failing laws: {}
+- fleet 24h verdicts: {"FAIL":30} · alerts: 90
+- fleet actions 24h: 100 runs · failures: artery-fleet:failure×5, artery-grid:failure×8, artery-autotrade-hedge-gate:failure×1
+- sovereign tick last pulse: 3min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":74,"sovereign-agent-9":21,"github-actions[bot]":3,"agent-9":2}
+- office-ci (FleetHQ) verdict: PASS · 5min ago
+- Domain book office/data.json: 14min old (law <=60min)
+- Domain book agents/office-live.json: 73min old (law <=180min)
+- Domain book dex/office-feed.json: 559min old (law <=1560min)
+- flow map: nodes=40 edges=130 page-integrated=11 plane-internal=25 orphans=3 ghosts=0 density=3.25
+- integrity guard: overall=PASS_WITH_ALERTS sources=11 claims-verified=11 findings=6 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=11064 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=0h
+- dex book dex/showcase.json: ok sig=pair=unknown age=0h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=10 truth={"VERIFIED":8,"STALE-TRUTH":2} decider-stalled=false
+- PROPOSAL(law): fleet verify FAIL/BLOCKED streak ≥2 — a critical repo is regressing; measure before touching anything
+- PROPOSAL(law): 3 orphan producers (nobody consumes) - refinement targets: wire a consumer or honestly retire with documentation (fix-don-lock)
+- PROPOSAL(law): 16 feed(s) past their freshness law while being read by live code
+- PROPOSAL(law): integrity guard 1 MEDIUM alerts (unverifiable/unprovenanced receipts) - upgrade those producers to full provenance (fix-dont-lock)
+- PROPOSAL(law): decision D1-econ-treasury-floor evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+
