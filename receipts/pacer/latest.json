@@ -1,106 +1,16 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-25T07:49:10.575Z",
-  "ok": true,
+  "at": "2026-10-25T08:02:31.993Z",
+  "ok": false,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": false,
-  "checked": 72,
-  "stale": [
-    {
-      "wf": "value-scan.yml",
-      "ageMin": 52,
-      "cadenceMin": 30,
-      "why": "last success 52min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-grid.yml",
-      "ageMin": 658,
-      "cadenceMin": 30,
-      "why": "last success 658min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-watch.yml",
-      "ageMin": 52,
-      "cadenceMin": 30,
-      "why": "last success 52min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "verifier.yml",
-      "ageMin": 58,
-      "cadenceMin": 30,
-      "why": "last success 58min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-selfheal.yml",
-      "ageMin": 53,
-      "cadenceMin": 30,
-      "why": "last success 53min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ageMin": 53,
-      "cadenceMin": 30,
-      "why": "last success 53min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-wallet.yml",
-      "ageMin": 80,
-      "cadenceMin": 60,
-      "why": "last success 80min ago > cadence 60+10grace"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ageMin": 777,
-      "cadenceMin": 60,
-      "why": "last success 777min ago > cadence 60+10grace"
-    },
-    {
-      "wf": "artery-builder.yml",
-      "ageMin": 93,
-      "cadenceMin": 70,
-      "why": "last success 93min ago > cadence 70+10grace"
-    }
+  "skipped": true,
+  "checked": 58,
+  "stale": [],
+  "dispatched": [],
+  "truncated": 0,
+  "reasons": [
+    "last beat 2026-10-25T07:49:10.575Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
   ],
-  "dispatched": [
-    {
-      "wf": "value-scan.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-grid.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-watch.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "verifier.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-selfheal.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    }
-  ],
-  "truncated": 3,
-  "reasons": [],
-  "doneAt": "2026-10-25T07:49:21.816Z"
+  "doneAt": "2026-10-25T08:02:32.809Z"
 }
