@@ -15,43 +15,43 @@
    "required": "14/14",
    "pass": true,
    "source": "condenser_api.get_accounts roster+the-master-of-record",
-   "at": "2026-10-24T07:10:26.785Z"
+   "at": "2026-10-25T07:31:27.003Z"
   },
   "2_presenceMatrix": {
-   "measured": "0.2h",
+   "measured": "HTTP 404",
    "required": "<12h",
-   "pass": true,
+   "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/presence-matrix.json",
-   "at": "2026-10-24T07:10:26.785Z"
+   "at": "2026-10-25T07:31:27.003Z"
   },
   "3_custody": {
    "measured": "14/14",
    "required": ">=13/14",
    "pass": true,
    "source": "saos-runtime@main state/beat/ci-last-heartbeat.json",
-   "at": "2026-10-24T07:10:26.785Z"
+   "at": "2026-10-25T07:31:27.003Z"
   },
   "4_antiFarmLaws": {
-   "measured": "w=8 posts=1 votes=0",
+   "measured": "w=undefined posts=undefined votes=undefined",
    "required": "laws-in-config",
-   "pass": true,
+   "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/readiness.json",
-   "at": "2026-10-24T07:10:26.785Z"
+   "at": "2026-10-25T07:31:27.003Z"
   },
   "5_cooldown7d": {
-   "measured": "5.22d since 2026-10-19T01:48:34.695Z",
+   "measured": "HTTP 404",
    "required": ">=7d",
    "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/content-memory/published.jsonl last=2026-10-19T01:48:34.695Z (fleet lane)",
    "eta": "2026-10-26T01:49:00Z",
-   "at": "2026-10-24T07:10:26.785Z"
+   "at": "2026-10-25T07:31:27.003Z"
   },
   "6_ownerApproval": {
    "measured": "R309-SOVEREIGN-OPENING present",
    "required": "explicit-owner-approval",
    "pass": true,
    "source": "ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md",
-   "at": "2026-10-24T07:10:26.785Z"
+   "at": "2026-10-25T07:31:27.003Z"
   }
  },
  "laws": {
@@ -85,14 +85,22 @@
   }
  ],
  "executor": "sovereign-arming-check.yml (daily 02:05Z + dispatch) — truth-monitor: re-measures every run, never reverts owner-law ARM, never self-arms over a red checklist, records discrepancy flags (42c72b28)",
- "at": "2026-10-24T07:10:26.785Z",
+ "at": "2026-10-25T07:31:27.003Z",
  "monitor": {
-  "at": "2026-10-24T07:10:26.785Z",
+  "at": "2026-10-25T07:31:27.003Z",
   "allPass": false,
   "discrepancies": [
    {
+    "id": "2_presenceMatrix",
+    "measured": "HTTP 404"
+   },
+   {
+    "id": "4_antiFarmLaws",
+    "measured": "w=undefined posts=undefined votes=undefined"
+   },
+   {
     "id": "5_cooldown7d",
-    "measured": "5.22d since 2026-10-19T01:48:34.695Z"
+    "measured": "HTTP 404"
    }
   ]
  }
