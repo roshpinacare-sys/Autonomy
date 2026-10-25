@@ -1,15 +1,15 @@
 {
   "schema": "saos.run-scores/1",
-  "generatedAt": "2026-10-25T05:14:39.851Z",
+  "generatedAt": "2026-10-25T11:58:27.663Z",
   "scale": "aeon-pattern 1..5 (deterministic: success+fresh=5, success-stale=4, mixed=3, failing-streak=2, storm=1)",
-  "fleetScore": 4.67,
+  "fleetScore": 4.58,
   "lanes": [
     {
       "agent": "network-self-awareness",
       "repo": "Autonomy",
       "wf": "network-self-awareness",
       "score": 5,
-      "why": "success · last 0.3h ago · window 6/6",
+      "why": "success · last 0.2h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -17,15 +17,15 @@
       "repo": "Autonomy",
       "wf": "claims-intake",
       "score": 5,
-      "why": "success · last 6.5h ago · window 5/5",
-      "lastRun": "none"
+      "why": "success · last 6.7h ago · window 6/6",
+      "lastRun": "success"
     },
     {
       "agent": "run-score",
       "repo": "Autonomy",
       "wf": "run-score",
       "score": 5,
-      "why": "success · last 5.6h ago · window 5/5",
+      "why": "success · last 6.8h ago · window 5/5",
       "lastRun": "none"
     },
     {
@@ -33,7 +33,7 @@
       "repo": "FleetHQ",
       "wf": "sovereign-decider",
       "score": 5,
-      "why": "success · last 0.3h ago · window 6/6",
+      "why": "success · last 0.4h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -49,7 +49,7 @@
       "repo": "FleetHQ",
       "wf": "identity-patrol",
       "score": 5,
-      "why": "success · last 0.8h ago · window 6/6",
+      "why": "success · last 0.4h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -57,7 +57,7 @@
       "repo": "Domain",
       "wf": "proof-pipeline",
       "score": 5,
-      "why": "success · last 20.1h ago · window 3/3",
+      "why": "success · last 2.6h ago · window 3/3",
       "lastRun": "success"
     },
     {
@@ -65,15 +65,15 @@
       "repo": "Domain",
       "wf": "anchor-execute",
       "score": 5,
-      "why": "success · last 0.8h ago · window 6/6",
+      "why": "success · last 7.5h ago · window 6/6",
       "lastRun": "success"
     },
     {
       "agent": "estate-scrub",
       "repo": "Domain",
       "wf": "estate-scrub",
-      "score": 3,
-      "why": "mixed window 3/6 · last failure",
+      "score": 2,
+      "why": "failing-streak · window 1/6",
       "lastRun": "failure"
     },
     {
@@ -81,7 +81,7 @@
       "repo": "Domain",
       "wf": "operator-console",
       "score": 5,
-      "why": "success · last 3.6h ago · window 6/6",
+      "why": "success · last 5.2h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -89,7 +89,7 @@
       "repo": "Console",
       "wf": "dex-watch",
       "score": 5,
-      "why": "success · last 0.2h ago · window 6/6",
+      "why": "success · last 0.1h ago · window 6/6",
       "lastRun": "success"
     },
     {
@@ -97,10 +97,19 @@
       "repo": "Console",
       "wf": "grid-pulse",
       "score": 5,
-      "why": "success · last 1.7h ago · window 6/6",
+      "why": "success · last 1.5h ago · window 6/6",
       "lastRun": "success"
     }
   ],
-  "repairChainInput": [],
+  "repairChainInput": [
+    {
+      "agent": "estate-scrub",
+      "repo": "Domain",
+      "workflow": "estate-scrub",
+      "score": 2,
+      "why": "failing-streak · window 1/6",
+      "openedAt": "2026-10-25T11:58:27.663Z"
+    }
+  ],
   "note": "score≤2 lanes are the repair chain's priority signal — ops-intake work-orders + GridWatch healing consume this file; nothing here is a model opinion, all measured"
 }
