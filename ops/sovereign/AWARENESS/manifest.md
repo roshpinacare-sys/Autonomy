@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-25T10:11:56.935Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-25T10:42:56.268Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,15 +15,15 @@
 - FleetHQ: 21 workflows · schedule 19 · dispatch 20 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-25T09:53 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/treasury-route @ 2026-10-25T09:29 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/hive-beat-t21 @ 2026-10-25T10:41 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/treasury-route @ 2026-10-25T10:27 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-25T10:11 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/weave-anchor-lines @ 2026-10-25T09:03 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/hive-beat-t21 @ 2026-10-25T08:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-25T08:14 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-25T06:05 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/saos-act @ 2026-10-25T04:30 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-25T10:10 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-10-25T10:10 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-25T10:29 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-grid @ 2026-10-25T10:29 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-25T10:06 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-25T07:54 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/fresh-oracle @ 2026-10-25T07:41 — autonomy triage: read the log, fix root, land, verify
