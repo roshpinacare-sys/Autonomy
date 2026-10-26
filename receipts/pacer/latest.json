@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-26T18:19:04.635Z",
+  "at": "2026-10-26T18:33:08.324Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -9,33 +9,39 @@
   "stale": [
     {
       "wf": "artery-grid.yml",
-      "ageMin": 2728,
+      "ageMin": 2742,
       "cadenceMin": 30,
-      "why": "last success 2728min ago > cadence 30+10grace"
+      "why": "last success 2742min ago > cadence 30+10grace"
     },
     {
       "wf": "verifier.yml",
-      "ageMin": 59,
+      "ageMin": 43,
       "cadenceMin": 30,
-      "why": "last success 59min ago > cadence 30+10grace"
+      "why": "last success 43min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 41,
+      "cadenceMin": 30,
+      "why": "last success 41min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 41,
+      "cadenceMin": 30,
+      "why": "last success 41min ago > cadence 30+10grace"
     },
     {
       "wf": "artery-wallet.yml",
-      "ageMin": 172,
+      "ageMin": 186,
       "cadenceMin": 60,
-      "why": "last success 172min ago > cadence 60+10grace"
+      "why": "last success 186min ago > cadence 60+10grace"
     },
     {
       "wf": "artery-fleet.yml",
-      "ageMin": 2847,
+      "ageMin": 2861,
       "cadenceMin": 60,
-      "why": "last success 2847min ago > cadence 60+10grace"
-    },
-    {
-      "wf": "artery-builder.yml",
-      "ageMin": 109,
-      "cadenceMin": 70,
-      "why": "last success 109min ago > cadence 70+10grace"
+      "why": "last success 2861min ago > cadence 60+10grace"
     }
   ],
   "dispatched": [
@@ -52,6 +58,18 @@
       "note": "dispatched"
     },
     {
+      "wf": "artery-selfheal.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
       "wf": "artery-wallet.yml",
       "ok": true,
       "status": 204,
@@ -62,15 +80,9 @@
       "ok": true,
       "status": 204,
       "note": "dispatched"
-    },
-    {
-      "wf": "artery-builder.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
     }
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-10-26T18:19:42.342Z"
+  "doneAt": "2026-10-26T18:33:20.137Z"
 }
