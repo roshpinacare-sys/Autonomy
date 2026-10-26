@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-26T07:02:22.405Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-26T07:50:33.016Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -22,9 +22,9 @@
 - [DEFECT] Domain/treasury-route @ 2026-10-26T06:14 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-26T06:01 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/saos-act @ 2026-10-26T04:35 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-10-26T06:47 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-26T06:20 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-26T05:46 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Autonomy/artery-grid @ 2026-10-26T07:45 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-26T07:43 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-26T07:13 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-26T04:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/fresh-oracle @ 2026-10-26T05:32 — autonomy triage: read the log, fix root, land, verify
 
