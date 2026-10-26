@@ -1,17 +1,17 @@
 {
-  "at": "2026-10-26T14:39:37.771Z",
+  "at": "2026-10-26T14:54:40.448Z",
   "slug": "roshpinacare-sys/steem",
-  "head": "c03b1ea3d6fff08f45f00c6a178344063b4851bc",
+  "head": "9a09c71a1a8e1e0d88cde6c433637db89fddfee4",
   "checks": {
     "install": "fail",
-    "engineInstall": "fail",
+    "engineInstall": "pass",
     "engineSelftest": "fail"
   },
   "laws": [
     {
       "id": "law-no-secrets-at-head",
-      "verdict": "pass",
-      "detail": "gitleaks HEAD scan: 0 findings"
+      "verdict": "flag",
+      "detail": "gitleaks HEAD scan: 95 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×95"
     },
     {
       "id": "law-no-skipped-pass",
@@ -30,8 +30,9 @@
     }
   ],
   "alerts": [
+    "law-no-secrets-at-head: gitleaks HEAD scan: 95 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×95",
     "law-gitleaks-push: no gitleaks.yml in repo — no in-repo secret scan"
   ],
   "overall": "FAIL",
-  "reason": "engineSelftest failed: error: Module not found \"selftest.mjs\" | "
+  "reason": "engineSelftest failed: error: Cannot find module '../../scripts/saos-setup.mjs' from '[path-withheld-per-refs-law] |  | Bun v1.4.4 (Linux x64) | "
 }
