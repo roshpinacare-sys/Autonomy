@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-26T15:39:52.637Z",
+  "at": "2026-10-26T16:30:32.537Z",
   "repos": {
     "steem-cockpit": {
       "head": "31bf0e5c44cdf4895b8b695a7b4997d02a0ebc5a",
@@ -12,13 +12,13 @@
       "reason": "engineSelftest failed: error: Cannot find module '../../scripts/saos-setup.mjs' from '[path-withheld-per-refs-law] |  | Bun v1.4.4 (Linux x64) | "
     },
     "saos-dex": {
-      "head": "af278662e12a62f2c7e351a2dbc449e8f807aac5",
-      "overall": "PASS",
+      "head": "e3457f31571dca5196267ce49a670b623f1db43b",
+      "overall": "FAIL",
       "checks": {
         "install": "pass",
-        "typecheck": "pass"
+        "typecheck": "fail"
       },
-      "reason": "all checks and fleet laws pass"
+      "reason": "typecheck failed: Property 'message' does not exist on type '{}'. | grids/soldier-loop.ts(284,87): error TS2339: Property 'message' does not exist on type '{}'. | grids/soldier-loop.ts(345,60): error TS2339: Property 'message' does not exist on type '{}'. | "
     },
     "saos-agents": {
       "head": "34f390a3d870e7c3b6d7ce1d8889116a5eb246c6",
@@ -29,7 +29,7 @@
       "reason": "all checks and fleet laws pass"
     },
     "saos-wallet": {
-      "head": "b579cc32eb7109c563c12a2aa160e9e5aaadf722",
+      "head": "1df72a584751c97a1c31bed5856011dfab774ae2",
       "overall": "PASS",
       "checks": {},
       "reason": "all checks and fleet laws pass"
@@ -48,15 +48,15 @@
     "saos-wallet: law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
   ],
   "overall": "FAIL",
-  "reason": "steem=FAIL · saos-dex=PASS · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
+  "reason": "steem=FAIL · saos-dex=FAIL · saos-agents=PASS · Saosmartwallet=PASS · Adsmarket=PASS",
   "provenance": {
-    "runId": "40350979294",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40350979294",
-    "sha": "38059ea8399a865ea2880c4b479e1c702fe2faf9"
+    "runId": "40359752361",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40359752361",
+    "sha": "434d484074a6a13ce1317032911e39c252f72262"
   },
   "details": [
     {
-      "at": "2026-10-26T15:39:52.637Z",
+      "at": "2026-10-26T16:30:32.537Z",
       "slug": "roshpinacare-sys/steem",
       "head": "31bf0e5c44cdf4895b8b695a7b4997d02a0ebc5a",
       "checks": {
@@ -94,12 +94,12 @@
       "reason": "engineSelftest failed: error: Cannot find module '../../scripts/saos-setup.mjs' from '[path-withheld-per-refs-law] |  | Bun v1.4.4 (Linux x64) | "
     },
     {
-      "at": "2026-10-26T15:39:52.637Z",
+      "at": "2026-10-26T16:30:32.537Z",
       "slug": "roshpinacare-sys/saos-dex",
-      "head": "af278662e12a62f2c7e351a2dbc449e8f807aac5",
+      "head": "e3457f31571dca5196267ce49a670b623f1db43b",
       "checks": {
         "install": "pass",
-        "typecheck": "pass"
+        "typecheck": "fail"
       },
       "laws": [
         {
@@ -126,11 +126,11 @@
       "alerts": [
         "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
       ],
-      "overall": "PASS",
-      "reason": "all checks and fleet laws pass"
+      "overall": "FAIL",
+      "reason": "typecheck failed: Property 'message' does not exist on type '{}'. | grids/soldier-loop.ts(284,87): error TS2339: Property 'message' does not exist on type '{}'. | grids/soldier-loop.ts(345,60): error TS2339: Property 'message' does not exist on type '{}'. | "
     },
     {
-      "at": "2026-10-26T15:39:52.637Z",
+      "at": "2026-10-26T16:30:32.537Z",
       "slug": "roshpinacare-sys/saos-agents",
       "head": "34f390a3d870e7c3b6d7ce1d8889116a5eb246c6",
       "checks": {
@@ -163,9 +163,9 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-26T15:39:52.637Z",
+      "at": "2026-10-26T16:30:32.537Z",
       "slug": "roshpinacare-sys/Saosmartwallet",
-      "head": "b579cc32eb7109c563c12a2aa160e9e5aaadf722",
+      "head": "1df72a584751c97a1c31bed5856011dfab774ae2",
       "checks": {},
       "laws": [
         {
@@ -211,7 +211,7 @@
         {
           "id": "law-pass-provenance",
           "verdict": "pass",
-          "detail": "receipt provenance: https://github.com/roshpinacare-sys/Saosmartwallet/actions/runs/40349787324"
+          "detail": "receipt provenance: https://github.com/roshpinacare-sys/Saosmartwallet/actions/runs/40355537525"
         }
       ],
       "alerts": [
@@ -221,7 +221,7 @@
       "reason": "all checks and fleet laws pass"
     },
     {
-      "at": "2026-10-26T15:39:52.637Z",
+      "at": "2026-10-26T16:30:32.537Z",
       "slug": "roshpinacare-sys/Adsmarket",
       "head": "9cc0b468c1ef99bfa1e94e95713e1b68170af161",
       "checks": {},

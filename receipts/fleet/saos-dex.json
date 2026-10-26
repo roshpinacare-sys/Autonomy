@@ -1,10 +1,10 @@
 {
-  "at": "2026-10-26T15:39:52.637Z",
+  "at": "2026-10-26T16:30:32.537Z",
   "slug": "roshpinacare-sys/saos-dex",
-  "head": "af278662e12a62f2c7e351a2dbc449e8f807aac5",
+  "head": "e3457f31571dca5196267ce49a670b623f1db43b",
   "checks": {
     "install": "pass",
-    "typecheck": "pass"
+    "typecheck": "fail"
   },
   "laws": [
     {
@@ -31,6 +31,6 @@
   "alerts": [
     "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
   ],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "overall": "FAIL",
+  "reason": "typecheck failed: Property 'message' does not exist on type '{}'. | grids/soldier-loop.ts(284,87): error TS2339: Property 'message' does not exist on type '{}'. | grids/soldier-loop.ts(345,60): error TS2339: Property 'message' does not exist on type '{}'. | "
 }
