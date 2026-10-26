@@ -1,17 +1,17 @@
 {
-  "at": "2026-10-26T16:30:32.537Z",
+  "at": "2026-10-26T17:24:44.307Z",
   "slug": "roshpinacare-sys/steem",
-  "head": "31bf0e5c44cdf4895b8b695a7b4997d02a0ebc5a",
+  "head": "4ba72d0f0a8057f92a78eeda9136327a65e0e89b",
   "checks": {
     "install": "fail",
     "engineInstall": "pass",
-    "engineSelftest": "fail"
+    "engineSelftest": "pass"
   },
   "laws": [
     {
       "id": "law-no-secrets-at-head",
       "verdict": "flag",
-      "detail": "gitleaks HEAD scan: 95 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×95"
+      "detail": "gitleaks HEAD scan: 100 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×100"
     },
     {
       "id": "law-no-skipped-pass",
@@ -30,9 +30,9 @@
     }
   ],
   "alerts": [
-    "law-no-secrets-at-head: gitleaks HEAD scan: 95 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×95",
+    "law-no-secrets-at-head: gitleaks HEAD scan: 100 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×100",
     "law-gitleaks-push: no gitleaks.yml in repo — no in-repo secret scan"
   ],
   "overall": "FAIL",
-  "reason": "engineSelftest failed: error: Cannot find module '../../scripts/saos-setup.mjs' from '[path-withheld-per-refs-law] |  | Bun v1.4.4 (Linux x64) | "
+  "reason": "install failed: error: Bun could not find a package.json file to install from | note: Run \"bun init\" to initialize a project | "
 }
