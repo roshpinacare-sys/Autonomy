@@ -3762,3 +3762,41 @@
 - DIRECTIVE(1): billing-wall signature detected: 246 instant-fail runs (<5s) across the org this week — lift the Actions spending limit or migrate the affected engines' cadence to public homes; fleet-heal will re-probe within 24h of release
 - DIRECTIVE(2): silent repos (5): saos-desk, vault-home, saos-console, saos-console-zai, SovereignConsole ran nothing in 1 week(s) — either wire a real trigger or archive honestly; a repo that never runs is a claim, not a system
 - DIRECTIVE(3): open scribe law-proposals: 10 — review, adopt or refute each with a measured verdict; a proposal older than 2 retro cycles with no verdict becomes a doctrine violation itself
+
+## scribe #124 · 2026-10-26T12:59:22.164Z
+- wallet 24h verdicts: {"PASS":22} · failing laws: {}
+- fleet 24h verdicts: {"FAIL":30} · alerts: 90
+- fleet actions 24h: 100 runs · failures: .github/workflows/fleet-yield.yml:failure×2, artery-fleet:failure×3, artery-grid:failure×7
+- sovereign tick last pulse: 2min ago
+- sandbox commits 24h: 100+ (page cap) · authors: {"roshpinacare-sys":74,"sovereign-agent-9":22,"agent-9":3,"github-actions[bot]":1}
+- office-ci (FleetHQ) verdict: PASS · 175min ago
+- Domain book office/data.json: 14min old (law <=60min)
+- Domain book agents/office-live.json: 44min old (law <=180min)
+- Domain book dex/office-feed.json: 218min old (law <=1560min)
+- flow map: nodes=40 edges=130 page-integrated=11 plane-internal=25 orphans=3 ghosts=0 density=3.25
+- integrity guard: overall=PASS_WITH_ALERTS sources=11 claims-verified=12 findings=5 (receipts provenance cross-checked vs Actions API)
+- dex book dex/bridge.json: ok sig=escrow=1 intents=0 chains=8 age=unknown
+- dex book dex/fleet.json: ok sig=configured=false probedAt=unknown age=unknown
+- dex book dex/relay.json: ok sig=enabled=false anchor=saos-dex.anchor.v1 uptimeMs=58925 age=unknown
+- dex book dex/onramp.json: ok sig=stale=false steemHead=[object Object] age=1h
+- dex book dex/showcase.json: ok sig=pair=unknown age=1h
+- dex book dex/redeem-requests.json: ok sig=requests=0 protocol=SAOS-DEX-REDEEM-REQUESTS/1 age=unknown
+- dex book dex/mirror-stub.json: honest stub (ok=false) - declares itself a placeholder, kept as truth-marker
+- dex books: 6/7 carry live Console-truth (escrow/fleet/relay/onramp) - the business organs are publicly mirrored; wired to the learning loop this run
+- decision-truth: overall=PASS_WITH_ALERTS decisions=10 truth={"STALE-TRUTH":10} decider-stalled=true
+- PROPOSAL(law): fleet verify FAIL/BLOCKED streak ≥2 — a critical repo is regressing; measure before touching anything
+- PROPOSAL(law): 3 orphan producers (nobody consumes) - refinement targets: wire a consumer or honestly retire with documentation (fix-don-lock)
+- PROPOSAL(law): 16 feed(s) past their freshness law while being read by live code
+- PROPOSAL(law): integrity guard 1 MEDIUM alerts (unverifiable/unprovenanced receipts) - upgrade those producers to full provenance (fix-dont-lock)
+- PROPOSAL(law): decision D0-owner-channel evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D1-econ-treasury-floor evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D3-flow-weave evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D4-truth-network evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D6-architecture-as-owner evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D7-owner-remembrance evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D8-engineering-synthesis evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D9-economic-governance evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): decision D5-social-standby evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
+- PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
+
