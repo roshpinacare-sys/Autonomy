@@ -1,15 +1,27 @@
 {
   "schema": "fleet-yield/1",
-  "at": "2026-10-26T12:50:51.033Z",
-  "verdict": "ENGINE-MISSING",
-  "engineRoot": "fleet-engine",
-  "missing": [
-    "curator.mjs",
-    "selftest.mjs",
-    "lib.mjs"
+  "at": "2026-10-26T16:14:30.990Z",
+  "verdict": "SELFTEST-GATE-RED",
+  "engineHead": "31bf0e5c44cd",
+  "selftest": {
+    "passed": null,
+    "total": null,
+    "status": "UNPARSED",
+    "code": 1,
+    "timedOut": false
+  },
+  "tail": [
+    "at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:680:36)",
+    "at TracingChannel.tracePromise (node:diagnostics_channel:350:14)",
+    "at ModuleLoader.import (node:internal/modules/esm/loader:679:21)",
+    "at defaultImportModuleDynamicallyForModule (node:internal/modules/esm/utils:222:31) {",
+    "code: 'ERR_MODULE_NOT_FOUND',",
+    "url: 'file://<sandbox>/work/Autonomy/Autonomy/fleet-engine/scripts/saos-setup.mjs'",
+    "}",
+    "Node.js v22.23.3"
   ],
   "chain": {
-    "prev": "394bb7a292173ce57e6cb73940c9d333dad1e9fd01f4eaf45ca6372c4a459f72",
-    "cur": "67aa65af8c7663d13b3881b7b1b5b9fb0fd9f749464be91097f88aa66bcaa1d1"
+    "prev": "67aa65af8c7663d13b3881b7b1b5b9fb0fd9f749464be91097f88aa66bcaa1d1",
+    "cur": "627cb7d2e820ace696f393683032e2b1a0c60490fe4ced7643ae136fa32791ce"
   }
 }
