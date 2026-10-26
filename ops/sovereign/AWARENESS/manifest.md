@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-26T17:10:04.751Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-26T17:49:21.871Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -23,9 +23,9 @@
 - [DEFECT] Domain/weave-anchor-lines @ 2026-10-26T15:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/hive-beat-t21 @ 2026-10-26T14:29 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/pages-deploy @ 2026-10-26T14:26 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-wallet @ 2026-10-26T16:57 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-10-26T16:57 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-26T16:30 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-26T17:24 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-wallet @ 2026-10-26T17:24 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-grid @ 2026-10-26T17:24 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-26T16:14 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-26T15:27 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/directive-bus @ 2026-10-26T14:27 — autonomy triage: read the log, fix root, land, verify
