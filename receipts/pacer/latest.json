@@ -1,16 +1,76 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-26T08:20:36.896Z",
-  "ok": false,
+  "at": "2026-10-26T08:33:48.588Z",
+  "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": true,
-  "checked": 58,
-  "stale": [],
-  "dispatched": [],
-  "truncated": 0,
-  "reasons": [
-    "last beat 2026-10-26T08:06:39.143Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  "skipped": false,
+  "checked": 72,
+  "stale": [
+    {
+      "wf": "artery-grid.yml",
+      "ageMin": 2142,
+      "cadenceMin": 30,
+      "why": "last success 2142min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ageMin": 49,
+      "cadenceMin": 30,
+      "why": "last success 49min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "verifier.yml",
+      "ageMin": 43,
+      "cadenceMin": 30,
+      "why": "last success 43min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 49,
+      "cadenceMin": 30,
+      "why": "last success 49min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ageMin": 2262,
+      "cadenceMin": 60,
+      "why": "last success 2262min ago > cadence 60+10grace"
+    }
   ],
-  "doneAt": "2026-10-26T08:20:37.370Z"
+  "dispatched": [
+    {
+      "wf": "artery-grid.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "verifier.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    }
+  ],
+  "truncated": 0,
+  "reasons": [],
+  "doneAt": "2026-10-26T08:33:59.627Z"
 }
