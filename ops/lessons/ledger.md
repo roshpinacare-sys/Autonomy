@@ -3754,3 +3754,11 @@
 - PROPOSAL(law): decision D5-social-standby evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 - PROPOSAL(law): sovereign decider heartbeat stalled (>90min) - the sovereignty must keep deciding per its own charter
 
+
+## weekly-retro 2026-W44 · 2026-10-26T11:07:02.255Z
+- org runs 1w: 2024 · ok=1536 · fail=246 · instant-fail(billing-signature)=246
+- red engines: none · healthy: 8 · silent: 5
+- open law-proposals: 10
+- DIRECTIVE(1): billing-wall signature detected: 246 instant-fail runs (<5s) across the org this week — lift the Actions spending limit or migrate the affected engines' cadence to public homes; fleet-heal will re-probe within 24h of release
+- DIRECTIVE(2): silent repos (5): saos-desk, vault-home, saos-console, saos-console-zai, SovereignConsole ran nothing in 1 week(s) — either wire a real trigger or archive honestly; a repo that never runs is a claim, not a system
+- DIRECTIVE(3): open scribe law-proposals: 10 — review, adopt or refute each with a measured verdict; a proposal older than 2 retro cycles with no verdict becomes a doctrine violation itself
