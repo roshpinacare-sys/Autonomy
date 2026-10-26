@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-26T15:21:42.327Z",
+  "at": "2026-10-26T15:36:19.244Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -9,20 +9,32 @@
   "stale": [
     {
       "wf": "artery-grid.yml",
-      "ageMin": 2550,
+      "ageMin": 2565,
       "cadenceMin": 30,
-      "why": "last success 2550min ago > cadence 30+10grace"
+      "why": "last success 2565min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "verifier.yml",
+      "ageMin": 49,
+      "cadenceMin": 30,
+      "why": "last success 49min ago > cadence 30+10grace"
     },
     {
       "wf": "artery-fleet.yml",
-      "ageMin": 2669,
+      "ageMin": 2684,
       "cadenceMin": 60,
-      "why": "last success 2669min ago > cadence 60+10grace"
+      "why": "last success 2684min ago > cadence 60+10grace"
     }
   ],
   "dispatched": [
     {
       "wf": "artery-grid.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "verifier.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -36,5 +48,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-10-26T15:21:50.620Z"
+  "doneAt": "2026-10-26T15:36:29.444Z"
 }
