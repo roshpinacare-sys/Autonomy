@@ -1,16 +1,94 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-26T17:37:47.942Z",
-  "ok": false,
+  "at": "2026-10-26T17:52:05.924Z",
+  "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": true,
-  "checked": 58,
-  "stale": [],
-  "dispatched": [],
-  "truncated": 0,
-  "reasons": [
-    "last beat 2026-10-26T17:24:25.279Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  "skipped": false,
+  "checked": 72,
+  "stale": [
+    {
+      "wf": "value-scan.yml",
+      "ageMin": 53,
+      "cadenceMin": 30,
+      "why": "last success 53min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-grid.yml",
+      "ageMin": 2700,
+      "cadenceMin": 30,
+      "why": "last success 2700min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 55,
+      "cadenceMin": 30,
+      "why": "last success 55min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 55,
+      "cadenceMin": 30,
+      "why": "last success 55min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-wallet.yml",
+      "ageMin": 144,
+      "cadenceMin": 60,
+      "why": "last success 144min ago > cadence 60+10grace"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ageMin": 2820,
+      "cadenceMin": 60,
+      "why": "last success 2820min ago > cadence 60+10grace"
+    },
+    {
+      "wf": "artery-builder.yml",
+      "ageMin": 82,
+      "cadenceMin": 70,
+      "why": "last success 82min ago > cadence 70+10grace"
+    }
   ],
-  "doneAt": "2026-10-26T17:37:48.182Z"
+  "dispatched": [
+    {
+      "wf": "value-scan.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-grid.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-wallet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    }
+  ],
+  "truncated": 1,
+  "reasons": [],
+  "doneAt": "2026-10-26T17:52:20.323Z"
 }
