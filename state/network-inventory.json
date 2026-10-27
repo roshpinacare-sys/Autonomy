@@ -1,22 +1,254 @@
 {
   "schema": "network-inventory/1",
-  "generatedAt": "2026-10-27T12:31:27.111Z",
+  "generatedAt": "2026-10-27T22:28:09.495Z",
   "mode": "FULL",
   "counts": {
     "repos": 49,
     "publicRepos": 40,
     "privateRepos": 9,
     "workflows": 380,
-    "engineFiles": 889,
-    "alive": 30,
-    "dormantWorkflows": 91,
-    "failingWorkflows": 33
+    "engineFiles": 894,
+    "alive": 25,
+    "dormantWorkflows": 96,
+    "failingWorkflows": 32
   },
   "repos": [
     {
+      "ref": "sovereign-executor",
+      "private": false,
+      "pushedAt": "2026-10-27T22:26:12Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "fleet-beat",
+          "path": "fleet-beat.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:27:02Z",
+          "lastConclusion": "failure"
+        }
+      ],
+      "engineFiles": [
+        "scripts/beat.py",
+        "scripts/chain_link.py",
+        "scripts/fleet_actions_guard.py",
+        "scripts/interval_gate.py"
+      ],
+      "tags": [
+        "artery",
+        "decider",
+        "verify"
+      ],
+      "workflowsCount": 1,
+      "dormant": [],
+      "failing": [
+        "fleet-beat.yml"
+      ],
+      "lastRunAt": "2026-10-27T21:27:02Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "FleetHQ",
+      "private": false,
+      "pushedAt": "2026-10-27T22:26:03Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "claims-triage",
+          "path": "claims-triage.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:15:14Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "fresh-oracle",
+          "path": "fresh-oracle.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:02:51Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "identity-guard",
+          "path": "identity-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T14:55:35Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "identity-patrol",
+          "path": "identity-patrol.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:16:44Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "office-3d",
+          "path": "office-3d.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T12:40:56Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "office-ci",
+          "path": "office-ci.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T14:55:35Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "office-heartbeat",
+          "path": "office-heartbeat.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:40:55Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "office-ifixai-audit",
+          "path": "office-ifixai-audit.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-26T17:40:19Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "office-retro",
+          "path": "office-retro.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-22T14:01:08Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "office-window",
+          "path": "office-window.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:10:57Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "opens-closer",
+          "path": "opens-closer.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:25:24Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "pages-deploy",
+          "path": "pages-deploy.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T14:55:35Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "runtime-pacemaker",
+          "path": "runtime-pacemaker.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:25:48Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "self-book",
+          "path": "self-book.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:16:42Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "silence-watchdog",
+          "path": "silence-watchdog.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:13:57Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-decider",
+          "path": "sovereign-decider.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:25:26Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-harness",
+          "path": "sovereign-harness.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:28:46Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-identity",
+          "path": "sovereign-identity.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:29:38Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-policy-gate",
+          "path": "sovereign-policy-gate.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:16:41Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-selfscan",
+          "path": "sovereign-selfscan.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:22:01Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "value-scan",
+          "path": "value-scan.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:00:24Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "pages-build-deployment",
+          "path": "pages-build-deployment",
+          "state": "active",
+          "lastRunAt": "2026-10-22T12:54:08Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [
+        "agents/execution-metrics.json",
+        "agents/self-book-prev.json",
+        "agents/self-book.json",
+        "agents/self-book.md",
+        "ops/decisions.jsonl"
+      ],
+      "tags": [
+        "grid",
+        "office",
+        "artery",
+        "decider",
+        "intake",
+        "verify",
+        "retro"
+      ],
+      "workflowsCount": 22,
+      "dormant": [
+        {
+          "path": "office-retro.yml",
+          "lastRunAt": "2026-10-22T14:01:08Z",
+          "ageH": 128.4
+        },
+        {
+          "path": "pages-build-deployment",
+          "lastRunAt": "2026-10-22T12:54:08Z",
+          "ageH": 129.5
+        }
+      ],
+      "failing": [
+        "fresh-oracle.yml",
+        "office-retro.yml"
+      ],
+      "lastRunAt": "2026-10-27T22:25:48Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
       "ref": "Domain",
       "private": false,
-      "pushedAt": "2026-10-27T12:28:28Z",
+      "pushedAt": "2026-10-27T22:25:51Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -31,63 +263,63 @@
           "name": "agent-verify",
           "path": "agent-verify.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:19:32Z",
+          "lastRunAt": "2026-10-27T20:54:38Z",
           "lastConclusion": "success"
         },
         {
           "name": "agent9-fleet-truth",
           "path": "agent9-fleet-truth.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:24:19Z",
+          "lastRunAt": "2026-10-27T22:15:03Z",
           "lastConclusion": "success"
         },
         {
           "name": "agent9-truth-watchdog",
           "path": "agent9-truth-watchdog.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:54:46Z",
+          "lastRunAt": "2026-10-27T21:27:44Z",
           "lastConclusion": "success"
         },
         {
           "name": "anchor-execute",
           "path": "anchor-execute.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T04:50:06Z",
+          "lastRunAt": "2026-10-27T20:36:15Z",
           "lastConclusion": "success"
         },
         {
           "name": "arb-mesh",
           "path": "arb-mesh-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:53:30Z",
+          "lastRunAt": "2026-10-27T21:27:41Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-integrity-twin",
           "path": "artery-integrity-twin.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:18:29Z",
+          "lastRunAt": "2026-10-27T22:24:26Z",
           "lastConclusion": "success"
         },
         {
           "name": "audience-analyst",
           "path": "audience-analyst.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:36:23Z",
+          "lastRunAt": "2026-10-27T19:57:10Z",
           "lastConclusion": "success"
         },
         {
           "name": "autonomy-guardian",
           "path": "autonomy-guardian.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:44:00Z",
+          "lastRunAt": "2026-10-27T21:24:21Z",
           "lastConclusion": "success"
         },
         {
           "name": "bidi-guardian",
           "path": "bidi-guardian.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:15:25Z",
+          "lastRunAt": "2026-10-27T20:44:59Z",
           "lastConclusion": "success"
         },
         {
@@ -101,14 +333,14 @@
           "name": "book-audit",
           "path": "book-audit.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:05:30Z",
+          "lastRunAt": "2026-10-27T21:03:10Z",
           "lastConclusion": "success"
         },
         {
           "name": "books-revival-t28",
           "path": "books-revival-t28.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:01:41Z",
+          "lastRunAt": "2026-10-27T21:29:16Z",
           "lastConclusion": "success"
         },
         {
@@ -136,14 +368,14 @@
           "name": "cloud-pulse",
           "path": "cloud-pulse.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:18:11Z",
+          "lastRunAt": "2026-10-27T20:55:57Z",
           "lastConclusion": "success"
         },
         {
           "name": "cognition-beat",
           "path": "cognition-beat.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:55:10Z",
+          "lastRunAt": "2026-10-27T21:27:46Z",
           "lastConclusion": "success"
         },
         {
@@ -157,7 +389,7 @@
           "name": "content-gate",
           "path": "content-gate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T22:52:01Z",
+          "lastRunAt": "2026-10-27T12:38:50Z",
           "lastConclusion": "success"
         },
         {
@@ -192,63 +424,63 @@
           "name": "dex-activation",
           "path": "dex-activation.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:41:04Z",
+          "lastRunAt": "2026-10-27T21:16:50Z",
           "lastConclusion": "success"
         },
         {
           "name": "dex-beat",
           "path": "dex-beat.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:44:13Z",
+          "lastRunAt": "2026-10-27T21:24:22Z",
           "lastConclusion": "success"
         },
         {
           "name": "dex-core",
           "path": "dex-core-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:48:09Z",
+          "lastRunAt": "2026-10-27T21:10:52Z",
           "lastConclusion": "success"
         },
         {
           "name": "dex-grid",
           "path": "dex-grid.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:22:31Z",
+          "lastRunAt": "2026-10-27T22:18:06Z",
           "lastConclusion": null
         },
         {
           "name": "dex-mirror",
           "path": "dex-mirror.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:05:30Z",
+          "lastRunAt": "2026-10-27T21:29:38Z",
           "lastConclusion": "success"
         },
         {
           "name": "dex-router",
           "path": "dex-router-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:18:30Z",
+          "lastRunAt": "2026-10-27T21:55:21Z",
           "lastConclusion": "success"
         },
         {
           "name": "dex-watchdog",
           "path": "dex-watchdog.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:42:13Z",
+          "lastRunAt": "2026-10-27T21:23:30Z",
           "lastConclusion": "success"
         },
         {
           "name": "dex-xc",
           "path": "dex-xc-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:01:22Z",
+          "lastRunAt": "2026-10-27T22:06:59Z",
           "lastConclusion": "success"
         },
         {
           "name": "earn-audit-cron",
           "path": "earn-audit-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:18:12Z",
+          "lastRunAt": "2026-10-27T21:23:07Z",
           "lastConclusion": "success"
         },
         {
@@ -262,21 +494,21 @@
           "name": "econ-engine",
           "path": "econ-engine.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:27:02Z",
+          "lastRunAt": "2026-10-27T22:25:03Z",
           "lastConclusion": "success"
         },
         {
           "name": "economy-engine",
           "path": "economy-engine.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T09:14:29Z",
+          "lastRunAt": "2026-10-27T20:11:44Z",
           "lastConclusion": "success"
         },
         {
           "name": "estate-scrub",
           "path": "estate-scrub.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:08:48Z",
+          "lastRunAt": "2026-10-27T19:34:08Z",
           "lastConclusion": "failure"
         },
         {
@@ -290,35 +522,35 @@
           "name": "execution-ledger-refresh",
           "path": "execution-ledger-refresh.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:28:37Z",
+          "lastRunAt": "2026-10-27T22:26:10Z",
           "lastConclusion": "success"
         },
         {
           "name": "exposure-gate",
           "path": "exposure-gate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:12:41Z",
+          "lastRunAt": "2026-10-27T22:15:19Z",
           "lastConclusion": "failure"
         },
         {
           "name": "fill-ledger-cron",
           "path": "fill-ledger-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:40:57Z",
+          "lastRunAt": "2026-10-27T21:23:08Z",
           "lastConclusion": "failure"
         },
         {
           "name": "fleet-census-cron",
           "path": "fleet-census-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:18:13Z",
+          "lastRunAt": "2026-10-27T21:25:57Z",
           "lastConclusion": "success"
         },
         {
           "name": "fleet-heartbeat",
           "path": "fleet-heartbeat.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:56:37Z",
+          "lastRunAt": "2026-10-27T21:28:14Z",
           "lastConclusion": "success"
         },
         {
@@ -339,21 +571,21 @@
           "name": "grid-doctor",
           "path": "grid-doctor.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:01:24Z",
+          "lastRunAt": "2026-10-27T20:59:30Z",
           "lastConclusion": "success"
         },
         {
           "name": "grid-sentinel",
           "path": "grid-sentinel.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:16:35Z",
+          "lastRunAt": "2026-10-27T22:23:03Z",
           "lastConclusion": null
         },
         {
           "name": "grid-trigger-twin",
           "path": "grid-trigger-twin.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:01:59Z",
+          "lastRunAt": "2026-10-27T19:41:38Z",
           "lastConclusion": "success"
         },
         {
@@ -367,21 +599,21 @@
           "name": "hive-beat-t21",
           "path": "hive-beat-t21.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:03:23Z",
+          "lastRunAt": "2026-10-27T20:55:37Z",
           "lastConclusion": "success"
         },
         {
           "name": "human-cadence",
           "path": "human-cadence.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:48:38Z",
+          "lastRunAt": "2026-10-27T21:21:16Z",
           "lastConclusion": "success"
         },
         {
           "name": "identity-guard",
           "path": "identity-guard.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:12:41Z",
+          "lastRunAt": "2026-10-27T22:15:19Z",
           "lastConclusion": "success"
         },
         {
@@ -395,21 +627,21 @@
           "name": "ladder-refresh",
           "path": "ladder-refresh.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T05:41:38Z",
+          "lastRunAt": "2026-10-27T21:00:18Z",
           "lastConclusion": "success"
         },
         {
           "name": "market-grid-cron",
           "path": "market-grid-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:40:58Z",
+          "lastRunAt": "2026-10-27T21:23:09Z",
           "lastConclusion": "success"
         },
         {
           "name": "mirror-from-console",
           "path": "mirror-from-console.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:03:14Z",
+          "lastRunAt": "2026-10-27T21:29:24Z",
           "lastConclusion": "success"
         },
         {
@@ -423,21 +655,21 @@
           "name": "moment-watch",
           "path": "moment-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:58:29Z",
+          "lastRunAt": "2026-10-27T21:29:20Z",
           "lastConclusion": "success"
         },
         {
           "name": "network-census",
           "path": "network-census.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:57:42Z",
+          "lastRunAt": "2026-10-27T21:48:47Z",
           "lastConclusion": "success"
         },
         {
           "name": "office-artery",
           "path": "office-artery.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:03:13Z",
+          "lastRunAt": "2026-10-27T20:56:42Z",
           "lastConclusion": "success"
         },
         {
@@ -451,28 +683,28 @@
           "name": "office-orders-twin",
           "path": "office-orders-twin.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:59:16Z",
+          "lastRunAt": "2026-10-27T20:45:35Z",
           "lastConclusion": "success"
         },
         {
           "name": "office-pulse-twin",
           "path": "office-pulse-twin.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:11:10Z",
+          "lastRunAt": "2026-10-27T22:12:31Z",
           "lastConclusion": "success"
         },
         {
           "name": "office-pulse",
           "path": "office-pulse.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:15:29Z",
+          "lastRunAt": "2026-10-27T21:50:33Z",
           "lastConclusion": "success"
         },
         {
           "name": "office-worldbeat",
           "path": "office-worldbeat.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:28:17Z",
+          "lastRunAt": "2026-10-27T22:25:40Z",
           "lastConclusion": null
         },
         {
@@ -486,7 +718,7 @@
           "name": "operator-console",
           "path": "operator-console.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:46:59Z",
+          "lastRunAt": "2026-10-27T18:29:00Z",
           "lastConclusion": "success"
         },
         {
@@ -507,28 +739,28 @@
           "name": "pages-deploy",
           "path": "pages-deploy.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:12:41Z",
+          "lastRunAt": "2026-10-27T22:15:19Z",
           "lastConclusion": "success"
         },
         {
           "name": "pages-quality-gate",
           "path": "pages-quality-gate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:48:30Z",
+          "lastRunAt": "2026-10-27T21:11:37Z",
           "lastConclusion": "success"
         },
         {
           "name": "pf-artery-keeper",
           "path": "pf-artery-keeper.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:03:25Z",
+          "lastRunAt": "2026-10-27T21:25:59Z",
           "lastConclusion": "success"
         },
         {
           "name": "press-bake",
           "path": "press-bake.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:22:33Z",
+          "lastRunAt": "2026-10-27T20:05:24Z",
           "lastConclusion": "success"
         },
         {
@@ -549,28 +781,28 @@
           "name": "public-loops-bake",
           "path": "public-loops-bake.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:42:21Z",
+          "lastRunAt": "2026-10-27T20:48:11Z",
           "lastConclusion": "success"
         },
         {
           "name": "public-pulse",
           "path": "public-pulse.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:25:50Z",
+          "lastRunAt": "2026-10-27T21:26:00Z",
           "lastConclusion": "success"
         },
         {
           "name": "published-ledger",
           "path": "published-ledger.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:27:22Z",
+          "lastRunAt": "2026-10-27T20:38:13Z",
           "lastConclusion": "success"
         },
         {
           "name": "pulse-bake",
           "path": "pulse-bake.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:56:34Z",
+          "lastRunAt": "2026-10-27T21:28:04Z",
           "lastConclusion": "success"
         },
         {
@@ -584,14 +816,14 @@
           "name": "sandbox-arteries",
           "path": "sandbox-arteries.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:28:07Z",
+          "lastRunAt": "2026-10-27T22:25:47Z",
           "lastConclusion": "success"
         },
         {
           "name": "saos-act",
           "path": "saos-act.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:01:34Z",
+          "lastRunAt": "2026-10-27T22:07:09Z",
           "lastConclusion": "success"
         },
         {
@@ -605,14 +837,14 @@
           "name": "self-audience",
           "path": "self-audience.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:36:18Z",
+          "lastRunAt": "2026-10-27T19:57:07Z",
           "lastConclusion": "success"
         },
         {
           "name": "site-link-audit",
           "path": "site-link-audit.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:15:25Z",
+          "lastRunAt": "2026-10-27T20:44:59Z",
           "lastConclusion": "success"
         },
         {
@@ -626,21 +858,21 @@
           "name": "soldiers-curate",
           "path": "soldiers-curate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T23:53:24Z",
+          "lastRunAt": "2026-10-27T13:23:19Z",
           "lastConclusion": "success"
         },
         {
           "name": "sovereign-decider-twin",
           "path": "sovereign-decider-twin.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:21:02Z",
+          "lastRunAt": "2026-10-27T20:01:34Z",
           "lastConclusion": "success"
         },
         {
           "name": "sovereign-pulse",
           "path": "sovereign-pulse.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:18:31Z",
+          "lastRunAt": "2026-10-27T20:47:02Z",
           "lastConclusion": "success"
         },
         {
@@ -654,14 +886,14 @@
           "name": "sovereign-tick-cron",
           "path": "sovereign-tick-cron.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:40:56Z",
+          "lastRunAt": "2026-10-27T21:23:05Z",
           "lastConclusion": "success"
         },
         {
           "name": "stale-watchdog",
           "path": "stale-watchdog.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:48:22Z",
+          "lastRunAt": "2026-10-27T21:11:10Z",
           "lastConclusion": "success"
         },
         {
@@ -675,14 +907,14 @@
           "name": "swallow-watch",
           "path": "swallow-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:56:39Z",
+          "lastRunAt": "2026-10-27T21:28:19Z",
           "lastConclusion": "success"
         },
         {
           "name": "tick-keeper",
           "path": "tick-keeper.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:40:44Z",
+          "lastRunAt": "2026-10-27T21:22:57Z",
           "lastConclusion": "success"
         },
         {
@@ -703,21 +935,21 @@
           "name": "treasury-route",
           "path": "treasury-route.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:48:32Z",
+          "lastRunAt": "2026-10-27T21:11:38Z",
           "lastConclusion": "failure"
         },
         {
           "name": "tri-bridge",
           "path": "tri-bridge.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T20:17:01Z",
+          "lastRunAt": "2026-10-27T19:47:46Z",
           "lastConclusion": "success"
         },
         {
           "name": "twin-audit",
           "path": "twin-audit.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T13:35:54Z",
+          "lastRunAt": "2026-10-27T12:41:12Z",
           "lastConclusion": "success"
         }
       ],
@@ -1093,77 +1325,77 @@
         {
           "path": "bootstrap-pages.yml",
           "lastRunAt": "2026-10-16T15:44:53Z",
-          "ageH": 260.7
+          "ageH": 270.7
         },
         {
           "path": "canary.yml",
           "lastRunAt": "2026-10-20T04:59:34Z",
-          "ageH": 175.5
+          "ageH": 185.4
         },
         {
           "path": "cloud-heart.yml",
           "lastRunAt": "2026-10-06T11:30:48Z",
-          "ageH": 505
+          "ageH": 514.9
         },
         {
           "path": "content-campaign.yml",
           "lastRunAt": "2026-10-16T12:24:54Z",
-          "ageH": 264.1
+          "ageH": 274
         },
         {
           "path": "content-truth-wave.yml",
           "lastRunAt": "2026-10-02T11:39:35Z",
-          "ageH": 600.8
+          "ageH": 610.8
         },
         {
           "path": "foundry-mesh-tests.yml",
           "lastRunAt": "2026-10-24T09:33:42Z",
-          "ageH": 74.9
+          "ageH": 84.9
         },
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-14T07:13:18Z",
-          "ageH": 317.3
+          "ageH": 327.2
         },
         {
           "path": "hive-adopt-t21.yml",
           "lastRunAt": "2026-10-19T01:13:28Z",
-          "ageH": 203.3
+          "ageH": 213.2
         },
         {
           "path": "key-verify.yml",
           "lastRunAt": "2026-10-20T11:43:44Z",
-          "ageH": 168.8
+          "ageH": 178.7
         },
         {
           "path": "office3d-guard.yml",
           "lastRunAt": "2026-10-21T11:57:15Z",
-          "ageH": 144.5
+          "ageH": 154.5
         },
         {
           "path": "org-selftests.yml",
           "lastRunAt": "2026-10-21T09:07:16Z",
-          "ageH": 147.4
+          "ageH": 157.3
         },
         {
           "path": "seal-adopt.yml",
           "lastRunAt": "2026-10-18T00:38:35Z",
-          "ageH": 227.8
+          "ageH": 237.8
         },
         {
           "path": "social-audit.yml",
           "lastRunAt": "2026-10-23T09:39:39Z",
-          "ageH": 98.8
+          "ageH": 108.8
         },
         {
           "path": "sovereign-selftests.yml",
           "lastRunAt": "2026-10-21T11:41:14Z",
-          "ageH": 144.8
+          "ageH": 154.8
         },
         {
           "path": "steem-posting-repair.yml",
           "lastRunAt": "2026-10-12T01:39:15Z",
-          "ageH": 370.8
+          "ageH": 380.8
         }
       ],
       "failing": [
@@ -1173,116 +1405,1013 @@
         "office3d-guard.yml",
         "treasury-route.yml"
       ],
-      "lastRunAt": "2026-10-27T12:28:37Z",
+      "lastRunAt": "2026-10-27T22:26:10Z",
       "sensitiveFileNamesHidden": 0
     },
     {
-      "ref": "fleet-economy",
+      "ref": "saos-runtime",
       "private": false,
-      "pushedAt": "2026-10-27T12:26:48Z",
+      "pushedAt": "2026-10-27T22:25:41Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
         {
-          "name": "ci-probe",
-          "path": "ci-probe.yml",
+          "name": "agent-9-vault-sync",
+          "path": "agent-9-vault-sync.yml",
           "state": "active",
-          "lastRunAt": "2026-10-20T05:37:20Z",
+          "lastRunAt": "2026-10-27T09:13:16Z",
           "lastConclusion": "success"
         },
         {
-          "name": "economy-beat",
-          "path": "economy-beat.yml",
+          "name": "arb-grid",
+          "path": "arb-grid.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T05:35:23Z",
+          "lastRunAt": "2026-10-27T21:31:18Z",
           "lastConclusion": "success"
         },
         {
-          "name": "receipts-guard",
-          "path": "receipts-guard.yml",
+          "name": "army-ladder",
+          "path": "army-ladder.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:18:41Z",
+          "lastRunAt": "2026-10-27T22:22:54Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "arsenal-sentinel",
+          "path": "arsenal-sentinel.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T18:13:39Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "blurt-revival",
+          "path": "blurt-revival.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:29:47Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "builder-catchup",
+          "path": "builder-catchup.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:29:59Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "cross-custody-probe",
+          "path": "cross-custody-probe.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T13:28:18Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "custody-recover",
+          "path": "custody-recover.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T09:18:33Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "dex-beat",
+          "path": "dex-beat.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:54:31Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "directive-now",
+          "path": "directive-now.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T18:52:15Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "escrow-payroll",
+          "path": "escrow-payroll.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:28:44Z",
           "lastConclusion": "failure"
-        }
-      ],
-      "engineFiles": [
-        "scripts/fleet-receipts-guard-core.py"
-      ],
-      "tags": [
-        "artery",
-        "economy",
-        "verify"
-      ],
-      "workflowsCount": 3,
-      "dormant": [
+        },
         {
-          "path": "ci-probe.yml",
-          "lastRunAt": "2026-10-20T05:37:20Z",
-          "ageH": 174.9
+          "name": "fee-engine",
+          "path": "fee-engine.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:45:47Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "fleet-fuel",
+          "path": "fleet-fuel.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T18:52:06Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "fleet-rotation-a",
+          "path": "fleet-rotation-a.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T01:07:11Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "gen2-rotation",
+          "path": "gen2-rotation.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T00:38:18Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "ghidra-lab",
+          "path": "ghidra-lab.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T02:05:48Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "grid-watchdog",
+          "path": "grid-watchdog.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:25:28Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "hive-adopt-t21",
+          "path": "hive-adopt-t21.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-19T01:01:47Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "hive-custody-revival",
+          "path": "hive-custody-revival.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-19T03:12:42Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "key-relay-to-autonomy",
+          "path": "key-relay-to-autonomy.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-21T02:48:01Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "main-key-refresh",
+          "path": "main-key-refresh.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-26T10:27:59Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "operator-triage",
+          "path": "operator-triage.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T15:17:30Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "organ-guardian",
+          "path": "organ-guardian.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:27:45Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "organ-pacemaker",
+          "path": "organ-pacemaker.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T18:48:09Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "owner-key-adopt",
+          "path": "owner-key-adopt.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T13:34:10Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "owner-powerdown",
+          "path": "owner-powerdown.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T05:16:06Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "self-memory",
+          "path": "self-memory.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T12:38:21Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "signing-health (runtime-host)",
+          "path": "signing-health.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T18:58:13Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-builder",
+          "path": "sovereign-builder.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:18:43Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-evolution",
+          "path": "sovereign-evolution.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T10:46:39Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-pulse",
+          "path": "sovereign-pulse.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:58:43Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-runtime",
+          "path": "sovereign-runtime.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:03:23Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "steem-hand-revival",
+          "path": "steem-hand-revival.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:48:43Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "system-map",
+          "path": "system-map.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:42:10Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "treasury-consolidation",
+          "path": "treasury-consolidation.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-21T02:51:26Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "treasury-ladder",
+          "path": "treasury-ladder.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:15:12Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "vault-owner-adopt",
+          "path": "vault-owner-adopt.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-19T17:51:21Z",
+          "lastConclusion": "success"
         }
       ],
-      "failing": [
-        "receipts-guard.yml"
-      ],
-      "lastRunAt": "2026-10-27T06:18:41Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "priv-h9d7b862d",
-      "private": true,
-      "pushedAt": "2026-10-27T12:26:43Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [],
       "engineFiles": [
-        "scripts/anchor.mjs",
-        "scripts/audit-key-custody.mjs",
-        "scripts/audit-mutating-auth.mjs",
-        "scripts/check-fleet.mjs",
-        "scripts/cure-secp256k1.mjs",
-        "scripts/engine-watchdog.mjs",
-        "scripts/ext-audit.sh",
-        "scripts/fixedfloat-measure.mjs",
-        "scripts/fixedfloat-remeasure-w130.mjs",
-        "scripts/fixedfloat-watch.mjs",
-        "scripts/fleet-probe.ts",
-        "scripts/gate-bootstrap.mjs",
-        "scripts/giant-locate.mjs",
-        "scripts/join-golden.ts",
-        "scripts/owner-gate-audit.mjs",
-        "scripts/press-log-dl.mjs",
-        "scripts/press-run-log-fetch.mjs",
-        "scripts/press-workflow-audit.mjs",
-        "scripts/resurrect-fleet.sh",
-        "scripts/rotate-secret.mjs",
-        "scripts/runner-kit.mjs",
-        "scripts/scan-grid-coverage.py",
-        "scripts/seal-fixedfloat-secrets.mjs",
-        "scripts/sovereign-boot.sh",
-        "scripts/sovereign-tron-wallet.mjs",
-        "scripts/test-owner-endpoint-lock.mjs",
-        "scripts/test-secp-cure.mjs",
-        "scripts/trust-heartbeat.mjs",
-        "scripts/wave82-fund-fleet.cjs"
+        "scripts/blurt-connector.mjs",
+        "scripts/check-yml-python.py",
+        "scripts/evolution-digest.mjs",
+        "scripts/hive-revival.mjs",
+        "scripts/organ-guardian.mjs",
+        "scripts/refs.cjs",
+        "scripts/refs.mjs",
+        "scripts/test-grid-vocabulary.mjs",
+        "scripts/test-watchdog-reds.mjs",
+        "scripts/vault-drip.mjs"
       ],
       "tags": [
+        "dex",
         "grid",
         "wallet",
         "artery",
         "decider",
+        "content",
+        "verify"
+      ],
+      "workflowsCount": 37,
+      "dormant": [
+        {
+          "path": "cross-custody-probe.yml",
+          "lastRunAt": "2026-10-18T13:28:18Z",
+          "ageH": 225
+        },
+        {
+          "path": "fleet-rotation-a.yml",
+          "lastRunAt": "2026-10-18T01:07:11Z",
+          "ageH": 237.3
+        },
+        {
+          "path": "gen2-rotation.yml",
+          "lastRunAt": "2026-10-18T00:38:18Z",
+          "ageH": 237.8
+        },
+        {
+          "path": "ghidra-lab.yml",
+          "lastRunAt": "2026-10-18T02:05:48Z",
+          "ageH": 236.3
+        },
+        {
+          "path": "hive-adopt-t21.yml",
+          "lastRunAt": "2026-10-19T01:01:47Z",
+          "ageH": 213.4
+        },
+        {
+          "path": "hive-custody-revival.yml",
+          "lastRunAt": "2026-10-19T03:12:42Z",
+          "ageH": 211.2
+        },
+        {
+          "path": "key-relay-to-autonomy.yml",
+          "lastRunAt": "2026-10-21T02:48:01Z",
+          "ageH": 163.6
+        },
+        {
+          "path": "owner-key-adopt.yml",
+          "lastRunAt": "2026-10-18T13:34:10Z",
+          "ageH": 224.9
+        },
+        {
+          "path": "owner-powerdown.yml",
+          "lastRunAt": "2026-10-18T05:16:06Z",
+          "ageH": 233.2
+        },
+        {
+          "path": "treasury-consolidation.yml",
+          "lastRunAt": "2026-10-21T02:51:26Z",
+          "ageH": 163.6
+        },
+        {
+          "path": "vault-owner-adopt.yml",
+          "lastRunAt": "2026-10-19T17:51:21Z",
+          "ageH": 196.6
+        }
+      ],
+      "failing": [
+        "escrow-payroll.yml"
+      ],
+      "lastRunAt": "2026-10-27T22:25:28Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "saos-dex",
+      "private": false,
+      "pushedAt": "2026-10-27T22:25:22Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "arb-scan",
+          "path": "arb-scan.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T00:38:27Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "dex-ci",
+          "path": "ci.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:18:37Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "curate",
+          "path": "curate.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:09:21Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "dex-beat",
+          "path": "dex-beat.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:11:17Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "dex-grid",
+          "path": "dex-grid.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:24:28Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "external-profit-publish",
+          "path": "external-profit-publish.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:58:38Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "gitleaks-secret-scan",
+          "path": "gitleaks.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:18:37Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "grid-trigger",
+          "path": "grid-trigger.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T01:14:26Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "hive-heartbeat",
+          "path": "hive-heartbeat.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:11:19Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "identity-guard",
+          "path": "identity-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:18:37Z",
+          "lastConclusion": "skipped"
+        },
+        {
+          "name": "llm-bridge",
+          "path": "llm-bridge.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T01:14:24Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "mm-supremacy",
+          "path": "mm-supremacy.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-18T00:38:30Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "dex-selftest",
+          "path": "selftest.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:18:37Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "workflow-yaml-guard",
+          "path": "workflow-yaml-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:18:37Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [
+        "scripts/adversarial-identity-proof.ts",
+        "scripts/batch-run.ts",
+        "scripts/broadcast-pending.ts",
+        "scripts/build-static.mjs",
+        "scripts/chaos-test.ts",
+        "scripts/chaos2-engine.ts",
+        "scripts/chaos3-stack.ts",
+        "scripts/custody-probe.ts",
+        "scripts/fence-check.ts",
+        "scripts/fleet-key-sweep.ts",
+        "scripts/hive-heartbeat-sign.ts",
+        "scripts/ignite-blurt.ts",
+        "scripts/inspect-state.ts",
+        "scripts/install-pre-push-gate.sh",
+        "scripts/lend-debug.ts",
+        "scripts/lend-proof.ts",
+        "scripts/measure-usds-liquidity.ts",
+        "scripts/owner-purge-soldiers.ts",
+        "scripts/peg-selftest.ts",
+        "scripts/place-wif.ts",
+        "scripts/por-ceremony.ts",
+        "scripts/por-verify.ts",
+        "scripts/post-batcher.ts",
+        "scripts/pre-push-gate.sh",
+        "scripts/probe-multirail.ts",
+        "scripts/probe-v2.ts",
+        "scripts/r45-proof.ts",
+        "scripts/r46-proof.ts",
+        "scripts/r47-proof.ts",
+        "scripts/restore-drill.ts",
+        "scripts/restore-sovereign-identities.ts",
+        "scripts/revenue-router.ts",
+        "scripts/safe-push.sh",
+        "scripts/secrets-scan.ts",
+        "scripts/seed-evidence-anchor.ts",
+        "scripts/steem-fuel-loop.ts",
+        "scripts/sweep-cycle.ts",
+        "scripts/t15-truthgate-selftest.ts",
+        "scripts/t37-laws-selftest.ts",
+        "scripts/usds-sides-once.ts",
+        "scripts/verify-anchor.ts",
+        "scripts/verify-acct-00-key.ts",
+        "scripts/verify-owner-key.ts",
+        "scripts/verify-real-anchor.ts",
+        "scripts/verify-vault-keys.ts",
+        "scripts/verify-vault.ts",
+        "scripts/world-snapshot.ts",
+        "ops/dex-daemon-hardened.ts"
+      ],
+      "tags": [
+        "dex",
+        "grid",
+        "wallet",
+        "artery",
+        "decider",
+        "content",
+        "economy",
         "witness",
+        "verify",
         "retro"
       ],
-      "workflowsCount": 0,
-      "dormant": [],
+      "workflowsCount": 14,
+      "dormant": [
+        {
+          "path": "arb-scan.yml",
+          "lastRunAt": "2026-10-18T00:38:27Z",
+          "ageH": 237.8
+        },
+        {
+          "path": "grid-trigger.yml",
+          "lastRunAt": "2026-10-13T01:14:26Z",
+          "ageH": 357.2
+        },
+        {
+          "path": "llm-bridge.yml",
+          "lastRunAt": "2026-10-13T01:14:24Z",
+          "ageH": 357.2
+        },
+        {
+          "path": "mm-supremacy.yml",
+          "lastRunAt": "2026-10-18T00:38:30Z",
+          "ageH": 237.8
+        }
+      ],
+      "failing": [
+        "ci.yml",
+        "gitleaks.yml",
+        "grid-trigger.yml",
+        "llm-bridge.yml",
+        "selftest.yml"
+      ],
+      "lastRunAt": "2026-10-27T22:18:37Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "steem",
+      "private": false,
+      "pushedAt": "2026-10-27T22:25:15Z",
+      "defaultBranch": "saos-cockpit",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "cloud-heart",
+          "path": "cloud-heart.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-20T14:15:05Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [
+        "scripts/sovereign-selfcustody.mjs"
+      ],
+      "tags": [
+        "wallet",
+        "decider"
+      ],
+      "workflowsCount": 1,
+      "dormant": [
+        {
+          "path": "cloud-heart.yml",
+          "lastRunAt": "2026-10-20T14:15:05Z",
+          "ageH": 176.2
+        }
+      ],
       "failing": [],
-      "lastRunAt": null,
+      "lastRunAt": "2026-10-20T14:15:05Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "Sandbox",
+      "private": false,
+      "pushedAt": "2026-10-27T22:24:44Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "agent-access",
+          "path": "agent-access.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T03:24:01Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "agent-roster-reseal",
+          "path": "agent-roster-reseal.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-09T18:19:22Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "artery-catchup",
+          "path": "artery-catchup.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:47:25Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "artery-decision-truth",
+          "path": "artery-decision-truth.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:14:00Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "artery-fleet",
+          "path": "artery-fleet.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:45:30Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "artery-flow",
+          "path": "artery-flow.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:18:48Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "artery-grid",
+          "path": "artery-grid.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:14:00Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "artery-integrity",
+          "path": "artery-integrity.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:00:45Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "artery-participation",
+          "path": "artery-participation.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:00:44Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "artery-scribe",
+          "path": "artery-scribe.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:24:27Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "artery-wallet",
+          "path": "artery-wallet.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:53:21Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "artery-watch",
+          "path": "artery-watch.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:13:44Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "compute-canary",
+          "path": "compute-canary.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:27:13Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "evo-windows-staleness",
+          "path": "evo-windows-staleness.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-11T23:12:46Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "federation",
+          "path": "federation.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:47:26Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "fleet-heal",
+          "path": "fleet-heal.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:47:26Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "fleet-yield",
+          "path": "fleet-yield.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:00:42Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "fresh-oracle",
+          "path": "fresh-oracle.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-11T22:22:36Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "hive-probe",
+          "path": "hive-probe.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T01:14:43Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "identity-guard",
+          "path": "identity-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-22T13:21:09Z",
+          "lastConclusion": "skipped"
+        },
+        {
+          "name": "key-proof",
+          "path": "key-proof.yml",
+          "state": "active",
+          "lastRunAt": null,
+          "lastConclusion": null
+        },
+        {
+          "name": "office-growth",
+          "path": "office-growth.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T01:14:42Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "pages-deploy",
+          "path": "pages.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-21T05:54:53Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "profit-oracle",
+          "path": "profit-oracle.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T00:02:25Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "research-lane",
+          "path": "research-lane.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T00:02:23Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "weekly-retro",
+          "path": "retro.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T00:02:21Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "sovereign-decider",
+          "path": "sovereign-decider.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T03:29:21Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "sovereign-invariants",
+          "path": "sovereign-invariants.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-21T02:18:33Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-state",
+          "path": "sovereign-state.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:19:09Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "sovereign-tick",
+          "path": "sovereign.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:00:40Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "token-forge",
+          "path": "token-forge.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-11T21:15:04Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "token-watchdog",
+          "path": "token-watchdog.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-13T00:02:15Z",
+          "lastConclusion": "failure"
+        },
+        {
+          "name": "value-scan",
+          "path": "value-scan.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:47:28Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "verifier (truth & quality)",
+          "path": "verifier.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-20T16:28:16Z",
+          "lastConclusion": "cancelled"
+        }
+      ],
+      "engineFiles": [
+        "engine/agent-gate.mjs",
+        "engine/candidates-export.mjs",
+        "engine/cloud-echo.mjs",
+        "engine/decision-truth.mjs",
+        "engine/federation-scan.mjs",
+        "engine/federation-selftest.mjs",
+        "engine/fleet-participation.mjs",
+        "engine/fleet-verify.mjs",
+        "engine/fleet-yield-selftest.mjs",
+        "engine/fleet-yield.mjs",
+        "engine/flow-map.mjs",
+        "engine/gitlab-mirror.mjs",
+        "engine/grid-watch.mjs",
+        "engine/integrity-guard.mjs",
+        "engine/key-probe.mjs",
+        "engine/leak-scan.mjs",
+        "engine/network-probe.mjs",
+        "engine/operator.mjs",
+        "engine/refs.mjs",
+        "engine/render-home.mjs",
+        "engine/scribe.mjs",
+        "engine/seal-domain.mjs",
+        "engine/seal-selftest.mjs",
+        "engine/sovereign-tick.mjs",
+        "engine/state-lib.mjs",
+        "engine/state-tick.mjs",
+        "engine/vein-probe.mjs",
+        "engine/vercel-deploy.mjs",
+        "engine/verifier.mjs",
+        "engine/wallet-verify.mjs",
+        "agents/.gitignore",
+        "agents/README.md",
+        "agents/agents.json",
+        "agents/inbox.sealed.json",
+        "agents/seal-inbox.mjs",
+        "ops/AGENT-LEDGER.md",
+        "ops/ESTATE-TRUTH-2026-10-11.md",
+        "ops/FLOW-PLAN-2026-10-11.md",
+        "ops/GROWTH-PLAN-2026-10-11.md",
+        "ops/OWNER-DELEGATION-2026-10-11.md",
+        "ops/OWNER-P0-2026-10-11.md",
+        "ops/PUBLISHING-POLICY.json",
+        "ops/RESUME-PACKET.md",
+        "ops/SOVEREIGN-DECISIONS-2026-10-11.md",
+        "ops/SOVEREIGN-RECOVERY-PLAN-2026-10-11.md",
+        "ops/SOVEREIGN-REVIVAL-2026-10-11.md",
+        "ops/TOKEN-ROTATION-RUNBOOK.md",
+        "ops/TOKEN-TRUTH.md",
+        "ops/token-forge-verdicts.md"
+      ],
+      "tags": [
+        "grid",
+        "office",
+        "wallet",
+        "artery",
+        "decider",
+        "content",
+        "economy",
+        "witness",
+        "verify",
+        "retro"
+      ],
+      "workflowsCount": 34,
+      "dormant": [
+        {
+          "path": "agent-access.yml",
+          "lastRunAt": "2026-10-13T03:24:01Z",
+          "ageH": 355
+        },
+        {
+          "path": "agent-roster-reseal.yml",
+          "lastRunAt": "2026-10-09T18:19:22Z",
+          "ageH": 436.1
+        },
+        {
+          "path": "evo-windows-staleness.yml",
+          "lastRunAt": "2026-10-11T23:12:46Z",
+          "ageH": 383.2
+        },
+        {
+          "path": "fresh-oracle.yml",
+          "lastRunAt": "2026-10-11T22:22:36Z",
+          "ageH": 384.1
+        },
+        {
+          "path": "hive-probe.yml",
+          "lastRunAt": "2026-10-13T01:14:43Z",
+          "ageH": 357.2
+        },
+        {
+          "path": "identity-guard.yml",
+          "lastRunAt": "2026-10-22T13:21:09Z",
+          "ageH": 129.1
+        },
+        {
+          "path": "key-proof.yml",
+          "lastRunAt": null,
+          "ageH": null
+        },
+        {
+          "path": "office-growth.yml",
+          "lastRunAt": "2026-10-13T01:14:42Z",
+          "ageH": 357.2
+        },
+        {
+          "path": "pages.yml",
+          "lastRunAt": "2026-10-21T05:54:53Z",
+          "ageH": 160.5
+        },
+        {
+          "path": "profit-oracle.yml",
+          "lastRunAt": "2026-10-13T00:02:25Z",
+          "ageH": 358.4
+        },
+        {
+          "path": "research-lane.yml",
+          "lastRunAt": "2026-10-13T00:02:23Z",
+          "ageH": 358.4
+        },
+        {
+          "path": "retro.yml",
+          "lastRunAt": "2026-10-13T00:02:21Z",
+          "ageH": 358.4
+        },
+        {
+          "path": "sovereign-decider.yml",
+          "lastRunAt": "2026-10-13T03:29:21Z",
+          "ageH": 355
+        },
+        {
+          "path": "sovereign-invariants.yml",
+          "lastRunAt": "2026-10-21T02:18:33Z",
+          "ageH": 164.1
+        },
+        {
+          "path": "token-forge.yml",
+          "lastRunAt": "2026-10-11T21:15:04Z",
+          "ageH": 385.2
+        },
+        {
+          "path": "token-watchdog.yml",
+          "lastRunAt": "2026-10-13T00:02:15Z",
+          "ageH": 358.4
+        },
+        {
+          "path": "verifier.yml",
+          "lastRunAt": "2026-10-20T16:28:16Z",
+          "ageH": 174
+        }
+      ],
+      "failing": [
+        "agent-access.yml",
+        "artery-fleet.yml",
+        "artery-grid.yml",
+        "artery-integrity.yml",
+        "hive-probe.yml",
+        "office-growth.yml",
+        "profit-oracle.yml",
+        "research-lane.yml",
+        "retro.yml",
+        "sovereign-decider.yml",
+        "token-watchdog.yml"
+      ],
+      "lastRunAt": "2026-10-27T22:24:27Z",
       "sensitiveFileNamesHidden": 0
     },
     {
       "ref": "Autonomy",
       "private": false,
-      "pushedAt": "2026-10-27T12:26:00Z",
+      "pushedAt": "2026-10-27T22:24:33Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -1290,7 +2419,7 @@
           "name": "agent-9-clock-guard",
           "path": "agent-9-clock-guard.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:09:13Z",
+          "lastRunAt": "2026-10-27T21:35:41Z",
           "lastConclusion": "success"
         },
         {
@@ -1311,182 +2440,182 @@
           "name": "artery-autotrade-hedge-gate",
           "path": "artery-autotrade-hedge-gate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:48:33Z",
+          "lastRunAt": "2026-10-27T20:55:55Z",
           "lastConclusion": "failure"
         },
         {
           "name": "artery-builder",
           "path": "artery-builder.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:15:05Z",
+          "lastRunAt": "2026-10-27T20:42:03Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-catchup",
           "path": "artery-catchup.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:11:40Z",
+          "lastRunAt": "2026-10-27T22:22:27Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-decision-truth",
           "path": "artery-decision-truth.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:11Z",
+          "lastRunAt": "2026-10-27T21:35:21Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-defi",
           "path": "artery-defi.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:10:18Z",
+          "lastRunAt": "2026-10-27T22:13:47Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-desk",
           "path": "artery-desk.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:18:15Z",
+          "lastRunAt": "2026-10-27T20:56:49Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-fixedfloat",
           "path": "artery-fixedfloat.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:18:28Z",
+          "lastRunAt": "2026-10-27T20:57:03Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-fleet",
           "path": "artery-fleet.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:14Z",
+          "lastRunAt": "2026-10-27T22:11:46Z",
           "lastConclusion": "failure"
         },
         {
           "name": "artery-flow",
           "path": "artery-flow.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:03:26Z",
+          "lastRunAt": "2026-10-27T22:21:22Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-grid",
           "path": "artery-grid.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:24Z",
+          "lastRunAt": "2026-10-27T21:35:17Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-growth",
           "path": "artery-growth.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:23:33Z",
+          "lastRunAt": "2026-10-27T22:24:24Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-integrity",
           "path": "artery-integrity.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:42:06Z",
+          "lastRunAt": "2026-10-27T21:24:06Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-pacer",
           "path": "artery-pacer.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:21:24Z",
+          "lastRunAt": "2026-10-27T22:15:01Z",
           "lastConclusion": null
         },
         {
           "name": "artery-participation",
           "path": "artery-participation.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:15:15Z",
+          "lastRunAt": "2026-10-27T20:40:10Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-scout",
           "path": "artery-scout.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:39:42Z",
+          "lastRunAt": "2026-10-27T21:40:50Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-scribe",
           "path": "artery-scribe.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:48:36Z",
+          "lastRunAt": "2026-10-27T21:40:52Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-selfheal",
           "path": "artery-selfheal.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:10Z",
+          "lastRunAt": "2026-10-27T21:35:20Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-treasury-consolidate",
           "path": "artery-treasury-consolidate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:25:43Z",
+          "lastRunAt": "2026-10-27T21:40:53Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-treasury-floor-watch",
           "path": "artery-treasury-floor-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:04:23Z",
+          "lastRunAt": "2026-10-27T21:55:22Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-treasury",
           "path": "artery-treasury.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:04:24Z",
+          "lastRunAt": "2026-10-27T21:40:54Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-wallet",
           "path": "artery-wallet.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:12Z",
+          "lastRunAt": "2026-10-27T21:35:22Z",
           "lastConclusion": "success"
         },
         {
           "name": "artery-watch",
           "path": "artery-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:21Z",
+          "lastRunAt": "2026-10-27T22:11:26Z",
           "lastConclusion": "success"
         },
         {
           "name": "claims-intake",
           "path": "claims-intake.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T05:32:07Z",
+          "lastRunAt": "2026-10-27T20:55:35Z",
           "lastConclusion": "success"
         },
         {
           "name": "compute-rearm",
           "path": "compute-rearm.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:43:32Z",
+          "lastRunAt": "2026-10-27T21:24:58Z",
           "lastConclusion": "success"
         },
         {
           "name": "contract-check",
           "path": "contract-check.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:54:34Z",
+          "lastRunAt": "2026-10-27T22:04:37Z",
           "lastConclusion": "success"
         },
         {
           "name": "directive-bus",
           "path": "directive-bus.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:53:09Z",
+          "lastRunAt": "2026-10-27T20:53:11Z",
           "lastConclusion": "success"
         },
         {
@@ -1507,7 +2636,7 @@
           "name": "evo-windows-staleness",
           "path": "evo-windows-staleness.yml",
           "state": "active",
-          "lastRunAt": "2026-10-20T12:03:20Z",
+          "lastRunAt": "2026-10-27T12:37:48Z",
           "lastConclusion": "success"
         },
         {
@@ -1521,28 +2650,28 @@
           "name": "federation",
           "path": "federation.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:10Z",
+          "lastRunAt": "2026-10-27T22:22:48Z",
           "lastConclusion": "success"
         },
         {
           "name": "fleet-heal",
           "path": "fleet-heal.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:23Z",
+          "lastRunAt": "2026-10-27T22:11:30Z",
           "lastConclusion": "success"
         },
         {
           "name": ".github/workflows/fleet-yield.yml",
           "path": "fleet-yield.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:02:10Z",
+          "lastRunAt": "2026-10-27T22:07:54Z",
           "lastConclusion": "success"
         },
         {
           "name": "floating-builds",
           "path": "floating-builds.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:10:53Z",
+          "lastRunAt": "2026-10-27T22:22:08Z",
           "lastConclusion": "success"
         },
         {
@@ -1556,14 +2685,14 @@
           "name": "hive-probe",
           "path": "hive-probe.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:54:44Z",
+          "lastRunAt": "2026-10-27T19:29:09Z",
           "lastConclusion": "success"
         },
         {
           "name": "identity-guard",
           "path": "identity-guard.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:11:40Z",
+          "lastRunAt": "2026-10-27T22:22:27Z",
           "lastConclusion": "success"
         },
         {
@@ -1577,28 +2706,28 @@
           "name": "network-awareness",
           "path": "network-awareness.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:10:53Z",
+          "lastRunAt": "2026-10-27T22:22:08Z",
           "lastConclusion": "success"
         },
         {
           "name": "network-self-awareness",
           "path": "network-self-awareness.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:29:04Z",
+          "lastRunAt": "2026-10-27T22:26:16Z",
           "lastConclusion": null
         },
         {
           "name": "office-growth",
           "path": "office-growth.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T05:31:55Z",
+          "lastRunAt": "2026-10-27T18:15:04Z",
           "lastConclusion": "success"
         },
         {
           "name": "operator-routing",
           "path": "operator-routing.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:42:48Z",
+          "lastRunAt": "2026-10-27T20:48:30Z",
           "lastConclusion": "success"
         },
         {
@@ -1626,14 +2755,14 @@
           "name": "run-score",
           "path": "run-score.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T09:18:37Z",
+          "lastRunAt": "2026-10-27T20:13:21Z",
           "lastConclusion": "success"
         },
         {
           "name": "selfhood",
           "path": "selfhood.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:45:06Z",
+          "lastRunAt": "2026-10-27T18:23:23Z",
           "lastConclusion": "cancelled"
         },
         {
@@ -1647,21 +2776,21 @@
           "name": "sovereign-decider",
           "path": "sovereign-decider.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:22:13Z",
+          "lastRunAt": "2026-10-27T20:02:08Z",
           "lastConclusion": "success"
         },
         {
           "name": "sovereign-state",
           "path": "sovereign-state.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:23:49Z",
+          "lastRunAt": "2026-10-27T22:19:03Z",
           "lastConclusion": null
         },
         {
           "name": "sovereign-tick",
           "path": "sovereign.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:11:40Z",
+          "lastRunAt": "2026-10-27T22:22:27Z",
           "lastConclusion": "success"
         },
         {
@@ -1675,21 +2804,21 @@
           "name": "value-scan",
           "path": "value-scan.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:22Z",
+          "lastRunAt": "2026-10-27T21:35:15Z",
           "lastConclusion": "success"
         },
         {
           "name": "verifier (truth & quality)",
           "path": "verifier.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:08:17Z",
+          "lastRunAt": "2026-10-27T22:05:29Z",
           "lastConclusion": null
         },
         {
           "name": "world-evolver",
           "path": "world-evolver.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:11:32Z",
+          "lastRunAt": "2026-10-27T22:13:53Z",
           "lastConclusion": "success"
         }
       ],
@@ -1778,195 +2907,32 @@
       "workflowsCount": 58,
       "dormant": [
         {
-          "path": "evo-windows-staleness.yml",
-          "lastRunAt": "2026-10-20T12:03:20Z",
-          "ageH": 168.4
-        },
-        {
           "path": "executor.yml",
           "lastRunAt": "2026-10-17T03:11:41Z",
-          "ageH": 249.3
+          "ageH": 259.3
         },
         {
           "path": "fresh-oracle.yml",
           "lastRunAt": "2026-10-21T10:01:26Z",
-          "ageH": 146.5
+          "ageH": 156.4
         },
         {
           "path": "key-proof.yml",
           "lastRunAt": "2026-10-21T09:26:27Z",
-          "ageH": 147.1
+          "ageH": 157
         }
       ],
       "failing": [
         "artery-autotrade-hedge-gate.yml",
         "artery-fleet.yml"
       ],
-      "lastRunAt": "2026-10-27T12:29:04Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "sovereign-runner-kit",
-      "private": false,
-      "pushedAt": "2026-10-27T12:25:36Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "agent-shield",
-          "path": "agent-shield.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T13:24:30Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "capability-gate",
-          "path": "capability-gate.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T14:35:49Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "deploy-gate",
-          "path": "deploy-gate.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:01:46Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "device-lane",
-          "path": "device-lane.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:31:47Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "fleet-keeper",
-          "path": "fleet-keeper.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:08:17Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "identity-guard",
-          "path": "identity-guard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T18:51:19Z",
-          "lastConclusion": "skipped"
-        },
-        {
-          "name": "beat-keepalive",
-          "path": "keepalive.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:11:15Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "netrun-loop",
-          "path": "netrun-loop.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:56:06Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "night-steward",
-          "path": "night-steward.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T05:35:05Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "registry-verify",
-          "path": "registry-verify.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:25:27Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "scout-loop",
-          "path": "scout-loop.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:56:20Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "swallow-watch",
-          "path": "swallow-watch.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:01:14Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [
-        "scripts/agent-shield.py",
-        "scripts/beat-keepalive.py",
-        "scripts/capability-gate.py",
-        "scripts/check-role-cards.mjs",
-        "scripts/deploy-gate.py",
-        "scripts/failure-sweep.py",
-        "scripts/fleet-actions-enable.py",
-        "scripts/fleet-census.py",
-        "scripts/fleet-rearm-approval.py",
-        "scripts/fleet-receipts-guard-core.py",
-        "scripts/fleet-receipts-guard-core.test.py",
-        "scripts/fleet-receipts-guard.sh",
-        "scripts/fleet-survey.py",
-        "scripts/git_first.py",
-        "scripts/night-steward.py",
-        "scripts/pat-usage-xref.py",
-        "scripts/perpetual-host.mjs",
-        "scripts/perpetual-host.test.mjs",
-        "scripts/registry-verify.py",
-        "scripts/scout-digest.py",
-        "scripts/scout-scan.py",
-        "scripts/sovereign-runner-register.sh",
-        "scripts/yml_gate.py"
-      ],
-      "tags": [
-        "artery",
-        "decider",
-        "content",
-        "intake",
-        "verify",
-        "retro"
-      ],
-      "workflowsCount": 12,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": "2026-10-27T12:25:27Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "priv-h5c117460",
-      "private": true,
-      "pushedAt": "2026-10-27T12:25:27Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [],
-      "engineFiles": [
-        "scripts/census-watch.sh",
-        "scripts/estate-bootstrap.sh",
-        "scripts/fleet-guardian.sh",
-        "scripts/pulse-loop.sh",
-        "scripts/rearm-loops.sh",
-        "scripts/reconcile-loop.sh"
-      ],
-      "tags": [
-        "artery",
-        "decider",
-        "verify",
-        "retro"
-      ],
-      "workflowsCount": 0,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": null,
+      "lastRunAt": "2026-10-27T22:26:16Z",
       "sensitiveFileNamesHidden": 0
     },
     {
       "ref": "Console",
       "private": false,
-      "pushedAt": "2026-10-27T12:24:32Z",
+      "pushedAt": "2026-10-27T22:24:25Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -1974,56 +2940,56 @@
           "name": "agent-verify",
           "path": "agent-verify.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T05:43:55Z",
+          "lastRunAt": "2026-10-27T21:01:16Z",
           "lastConclusion": "success"
         },
         {
           "name": "agents-watch",
           "path": "agents-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:22:35Z",
+          "lastRunAt": "2026-10-27T20:58:35Z",
           "lastConclusion": "cancelled"
         },
         {
           "name": "chain-vitals",
           "path": "chain-vitals.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T05:43:00Z",
+          "lastRunAt": "2026-10-27T18:22:55Z",
           "lastConclusion": "success"
         },
         {
           "name": "console-publish",
           "path": "console-publish.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:49:06Z",
+          "lastRunAt": "2026-10-27T18:57:44Z",
           "lastConclusion": "success"
         },
         {
           "name": "dex-watch",
           "path": "dex-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T08:05:19Z",
+          "lastRunAt": "2026-10-27T20:48:48Z",
           "lastConclusion": "success"
         },
         {
           "name": "estate-scrub",
           "path": "estate-scrub.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:44:23Z",
+          "lastRunAt": "2026-10-27T18:37:36Z",
           "lastConclusion": "success"
         },
         {
           "name": "fee-law",
           "path": "fee-law.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T13:31:09Z",
+          "lastRunAt": "2026-10-27T12:38:50Z",
           "lastConclusion": "success"
         },
         {
           "name": "giants-beat",
           "path": "giants-beat.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:29:20Z",
+          "lastRunAt": "2026-10-27T21:16:41Z",
           "lastConclusion": "success"
         },
         {
@@ -2037,14 +3003,14 @@
           "name": "grid-pulse",
           "path": "grid-pulse.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:18:33Z",
+          "lastRunAt": "2026-10-27T21:26:01Z",
           "lastConclusion": "success"
         },
         {
           "name": "identity-guard",
           "path": "identity-guard.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:22:52Z",
+          "lastRunAt": "2026-10-27T22:18:33Z",
           "lastConclusion": "success"
         },
         {
@@ -2058,21 +3024,21 @@
           "name": "line-agreement",
           "path": "line-agreement.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T07:59:18Z",
+          "lastRunAt": "2026-10-27T20:46:20Z",
           "lastConclusion": "success"
         },
         {
           "name": "money-watch",
           "path": "money-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T05:21:51Z",
+          "lastRunAt": "2026-10-27T18:11:25Z",
           "lastConclusion": "success"
         },
         {
           "name": "pages-deploy",
           "path": "pages-deploy.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:22:52Z",
+          "lastRunAt": "2026-10-27T22:18:33Z",
           "lastConclusion": "success"
         },
         {
@@ -2093,42 +3059,42 @@
           "name": "runtime-pacemaker",
           "path": "runtime-pacemaker.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:29:06Z",
+          "lastRunAt": "2026-10-27T22:24:10Z",
           "lastConclusion": "success"
         },
         {
           "name": "saos-fold",
           "path": "saos-fold.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:15:14Z",
+          "lastRunAt": "2026-10-27T18:16:17Z",
           "lastConclusion": "success"
         },
         {
           "name": "swallow-watch",
           "path": "swallow-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:05:27Z",
+          "lastRunAt": "2026-10-27T21:03:09Z",
           "lastConclusion": "success"
         },
         {
           "name": "trigger-mesh",
           "path": "trigger-mesh.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T09:19:50Z",
+          "lastRunAt": "2026-10-27T20:13:21Z",
           "lastConclusion": "success"
         },
         {
           "name": "truth-gate",
           "path": "truth-gate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:23:06Z",
+          "lastRunAt": "2026-10-27T22:18:53Z",
           "lastConclusion": "success"
         },
         {
           "name": "weave-census",
           "path": "weave-census.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:59:56Z",
+          "lastRunAt": "2026-10-27T22:05:23Z",
           "lastConclusion": "success"
         },
         {
@@ -2183,675 +3149,119 @@
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-06T11:24:57Z",
-          "ageH": 505.1
+          "ageH": 515
         },
         {
           "path": "key-verify.yml",
           "lastRunAt": "2026-10-18T00:38:24Z",
-          "ageH": 227.9
+          "ageH": 237.8
         },
         {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-06T11:24:57Z",
-          "ageH": 505.1
+          "ageH": 515
         },
         {
           "path": "pages-build-deployment",
           "lastRunAt": "2026-10-22T12:53:25Z",
-          "ageH": 119.6
+          "ageH": 129.6
         }
       ],
       "failing": [],
-      "lastRunAt": "2026-10-27T12:29:06Z",
+      "lastRunAt": "2026-10-27T22:24:10Z",
       "sensitiveFileNamesHidden": 0
     },
     {
-      "ref": "saos-dex",
+      "ref": "GridWatch",
       "private": false,
-      "pushedAt": "2026-10-27T12:24:26Z",
+      "pushedAt": "2026-10-27T22:16:54Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
         {
-          "name": "arb-scan",
-          "path": "arb-scan.yml",
+          "name": "flow-map",
+          "path": "flow-map.yml",
           "state": "active",
-          "lastRunAt": "2026-10-18T00:38:27Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "dex-ci",
-          "path": "ci.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:22:53Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "curate",
-          "path": "curate.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:05:13Z",
+          "lastRunAt": "2026-10-16T23:52:26Z",
           "lastConclusion": "success"
         },
         {
-          "name": "dex-beat",
-          "path": "dex-beat.yml",
+          "name": "grid-watch",
+          "path": "grid-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:03:16Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "dex-grid",
-          "path": "dex-grid.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T08:03:20Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "external-profit-publish",
-          "path": "external-profit-publish.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T08:22:37Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "gitleaks-secret-scan",
-          "path": "gitleaks.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:22:53Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "grid-trigger",
-          "path": "grid-trigger.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T01:14:26Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "hive-heartbeat",
-          "path": "hive-heartbeat.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T08:20:52Z",
+          "lastRunAt": "2026-10-27T22:13:52Z",
           "lastConclusion": "success"
         },
         {
           "name": "identity-guard",
           "path": "identity-guard.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:22:53Z",
-          "lastConclusion": "skipped"
-        },
-        {
-          "name": "llm-bridge",
-          "path": "llm-bridge.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T01:14:24Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "mm-supremacy",
-          "path": "mm-supremacy.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-18T00:38:30Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "dex-selftest",
-          "path": "selftest.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:22:53Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "workflow-yaml-guard",
-          "path": "workflow-yaml-guard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:22:53Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [
-        "scripts/adversarial-identity-proof.ts",
-        "scripts/batch-run.ts",
-        "scripts/broadcast-pending.ts",
-        "scripts/build-static.mjs",
-        "scripts/chaos-test.ts",
-        "scripts/chaos2-engine.ts",
-        "scripts/chaos3-stack.ts",
-        "scripts/custody-probe.ts",
-        "scripts/fence-check.ts",
-        "scripts/fleet-key-sweep.ts",
-        "scripts/hive-heartbeat-sign.ts",
-        "scripts/ignite-blurt.ts",
-        "scripts/inspect-state.ts",
-        "scripts/install-pre-push-gate.sh",
-        "scripts/lend-debug.ts",
-        "scripts/lend-proof.ts",
-        "scripts/measure-usds-liquidity.ts",
-        "scripts/owner-purge-soldiers.ts",
-        "scripts/peg-selftest.ts",
-        "scripts/place-wif.ts",
-        "scripts/por-ceremony.ts",
-        "scripts/por-verify.ts",
-        "scripts/post-batcher.ts",
-        "scripts/pre-push-gate.sh",
-        "scripts/probe-multirail.ts",
-        "scripts/probe-v2.ts",
-        "scripts/r45-proof.ts",
-        "scripts/r46-proof.ts",
-        "scripts/r47-proof.ts",
-        "scripts/restore-drill.ts",
-        "scripts/restore-sovereign-identities.ts",
-        "scripts/revenue-router.ts",
-        "scripts/safe-push.sh",
-        "scripts/secrets-scan.ts",
-        "scripts/seed-evidence-anchor.ts",
-        "scripts/steem-fuel-loop.ts",
-        "scripts/sweep-cycle.ts",
-        "scripts/t15-truthgate-selftest.ts",
-        "scripts/t37-laws-selftest.ts",
-        "scripts/usds-sides-once.ts",
-        "scripts/verify-anchor.ts",
-        "scripts/verify-acct-00-key.ts",
-        "scripts/verify-owner-key.ts",
-        "scripts/verify-real-anchor.ts",
-        "scripts/verify-vault-keys.ts",
-        "scripts/verify-vault.ts",
-        "scripts/world-snapshot.ts",
-        "ops/dex-daemon-hardened.ts"
-      ],
-      "tags": [
-        "dex",
-        "grid",
-        "wallet",
-        "artery",
-        "decider",
-        "content",
-        "economy",
-        "witness",
-        "verify",
-        "retro"
-      ],
-      "workflowsCount": 14,
-      "dormant": [
-        {
-          "path": "arb-scan.yml",
-          "lastRunAt": "2026-10-18T00:38:27Z",
-          "ageH": 227.9
-        },
-        {
-          "path": "grid-trigger.yml",
-          "lastRunAt": "2026-10-13T01:14:26Z",
-          "ageH": 347.3
-        },
-        {
-          "path": "llm-bridge.yml",
-          "lastRunAt": "2026-10-13T01:14:24Z",
-          "ageH": 347.3
-        },
-        {
-          "path": "mm-supremacy.yml",
-          "lastRunAt": "2026-10-18T00:38:30Z",
-          "ageH": 227.9
-        }
-      ],
-      "failing": [
-        "ci.yml",
-        "gitleaks.yml",
-        "grid-trigger.yml",
-        "llm-bridge.yml",
-        "selftest.yml"
-      ],
-      "lastRunAt": "2026-10-27T12:22:53Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "Sandbox",
-      "private": false,
-      "pushedAt": "2026-10-27T12:21:34Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "agent-access",
-          "path": "agent-access.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T03:24:01Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "agent-roster-reseal",
-          "path": "agent-roster-reseal.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-09T18:19:22Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "artery-catchup",
-          "path": "artery-catchup.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:49:06Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "artery-decision-truth",
-          "path": "artery-decision-truth.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:16:23Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "artery-fleet",
-          "path": "artery-fleet.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:49:08Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "artery-flow",
-          "path": "artery-flow.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:03:06Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "artery-grid",
-          "path": "artery-grid.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:16:21Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "artery-integrity",
-          "path": "artery-integrity.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:29:39Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "artery-participation",
-          "path": "artery-participation.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:29:40Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "artery-scribe",
-          "path": "artery-scribe.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T07:22:40Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "artery-wallet",
-          "path": "artery-wallet.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:22:32Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "artery-watch",
-          "path": "artery-watch.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:29:25Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "compute-canary",
-          "path": "compute-canary.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T20:03:40Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "evo-windows-staleness",
-          "path": "evo-windows-staleness.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-11T23:12:46Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "federation",
-          "path": "federation.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:49:06Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "fleet-heal",
-          "path": "fleet-heal.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:49:07Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "fleet-yield",
-          "path": "fleet-yield.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:14:43Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "fresh-oracle",
-          "path": "fresh-oracle.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-11T22:22:36Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "hive-probe",
-          "path": "hive-probe.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T01:14:43Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "identity-guard",
-          "path": "identity-guard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-22T13:21:09Z",
-          "lastConclusion": "skipped"
-        },
-        {
-          "name": "key-proof",
-          "path": "key-proof.yml",
-          "state": "active",
-          "lastRunAt": null,
-          "lastConclusion": null
-        },
-        {
-          "name": "office-growth",
-          "path": "office-growth.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T01:14:42Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "pages-deploy",
-          "path": "pages.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-21T05:54:53Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "profit-oracle",
-          "path": "profit-oracle.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T00:02:25Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "research-lane",
-          "path": "research-lane.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T00:02:23Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "weekly-retro",
-          "path": "retro.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T00:02:21Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "sovereign-decider",
-          "path": "sovereign-decider.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T03:29:21Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "sovereign-invariants",
-          "path": "sovereign-invariants.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-21T02:18:33Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-state",
-          "path": "sovereign-state.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:20:58Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "sovereign-tick",
-          "path": "sovereign.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:29:37Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "token-forge",
-          "path": "token-forge.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-11T21:15:04Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "token-watchdog",
-          "path": "token-watchdog.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-13T00:02:15Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "value-scan",
-          "path": "value-scan.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:49:10Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "verifier (truth & quality)",
-          "path": "verifier.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-20T16:28:16Z",
-          "lastConclusion": "cancelled"
-        }
-      ],
-      "engineFiles": [
-        "engine/agent-gate.mjs",
-        "engine/candidates-export.mjs",
-        "engine/cloud-echo.mjs",
-        "engine/decision-truth.mjs",
-        "engine/federation-scan.mjs",
-        "engine/federation-selftest.mjs",
-        "engine/fleet-participation.mjs",
-        "engine/fleet-verify.mjs",
-        "engine/fleet-yield-selftest.mjs",
-        "engine/fleet-yield.mjs",
-        "engine/flow-map.mjs",
-        "engine/gitlab-mirror.mjs",
-        "engine/grid-watch.mjs",
-        "engine/integrity-guard.mjs",
-        "engine/key-probe.mjs",
-        "engine/leak-scan.mjs",
-        "engine/network-probe.mjs",
-        "engine/operator.mjs",
-        "engine/refs.mjs",
-        "engine/render-home.mjs",
-        "engine/scribe.mjs",
-        "engine/seal-domain.mjs",
-        "engine/seal-selftest.mjs",
-        "engine/sovereign-tick.mjs",
-        "engine/state-lib.mjs",
-        "engine/state-tick.mjs",
-        "engine/vein-probe.mjs",
-        "engine/vercel-deploy.mjs",
-        "engine/verifier.mjs",
-        "engine/wallet-verify.mjs",
-        "agents/.gitignore",
-        "agents/README.md",
-        "agents/agents.json",
-        "agents/inbox.sealed.json",
-        "agents/seal-inbox.mjs",
-        "ops/AGENT-LEDGER.md",
-        "ops/ESTATE-TRUTH-2026-10-11.md",
-        "ops/FLOW-PLAN-2026-10-11.md",
-        "ops/GROWTH-PLAN-2026-10-11.md",
-        "ops/OWNER-DELEGATION-2026-10-11.md",
-        "ops/OWNER-P0-2026-10-11.md",
-        "ops/PUBLISHING-POLICY.json",
-        "ops/RESUME-PACKET.md",
-        "ops/SOVEREIGN-DECISIONS-2026-10-11.md",
-        "ops/SOVEREIGN-RECOVERY-PLAN-2026-10-11.md",
-        "ops/SOVEREIGN-REVIVAL-2026-10-11.md",
-        "ops/TOKEN-ROTATION-RUNBOOK.md",
-        "ops/TOKEN-TRUTH.md",
-        "ops/token-forge-verdicts.md"
-      ],
-      "tags": [
-        "grid",
-        "office",
-        "wallet",
-        "artery",
-        "decider",
-        "content",
-        "economy",
-        "witness",
-        "verify",
-        "retro"
-      ],
-      "workflowsCount": 34,
-      "dormant": [
-        {
-          "path": "agent-access.yml",
-          "lastRunAt": "2026-10-13T03:24:01Z",
-          "ageH": 345.1
-        },
-        {
-          "path": "agent-roster-reseal.yml",
-          "lastRunAt": "2026-10-09T18:19:22Z",
-          "ageH": 426.2
-        },
-        {
-          "path": "evo-windows-staleness.yml",
-          "lastRunAt": "2026-10-11T23:12:46Z",
-          "ageH": 373.3
-        },
-        {
-          "path": "fresh-oracle.yml",
-          "lastRunAt": "2026-10-11T22:22:36Z",
-          "ageH": 374.1
-        },
-        {
-          "path": "hive-probe.yml",
-          "lastRunAt": "2026-10-13T01:14:43Z",
-          "ageH": 347.3
-        },
-        {
-          "path": "identity-guard.yml",
-          "lastRunAt": "2026-10-22T13:21:09Z",
-          "ageH": 119.1
-        },
-        {
-          "path": "key-proof.yml",
-          "lastRunAt": null,
-          "ageH": null
-        },
-        {
-          "path": "office-growth.yml",
-          "lastRunAt": "2026-10-13T01:14:42Z",
-          "ageH": 347.3
-        },
-        {
-          "path": "pages.yml",
-          "lastRunAt": "2026-10-21T05:54:53Z",
-          "ageH": 150.6
-        },
-        {
-          "path": "profit-oracle.yml",
-          "lastRunAt": "2026-10-13T00:02:25Z",
-          "ageH": 348.5
-        },
-        {
-          "path": "research-lane.yml",
-          "lastRunAt": "2026-10-13T00:02:23Z",
-          "ageH": 348.5
-        },
-        {
-          "path": "retro.yml",
-          "lastRunAt": "2026-10-13T00:02:21Z",
-          "ageH": 348.5
-        },
-        {
-          "path": "sovereign-decider.yml",
-          "lastRunAt": "2026-10-13T03:29:21Z",
-          "ageH": 345
-        },
-        {
-          "path": "sovereign-invariants.yml",
-          "lastRunAt": "2026-10-21T02:18:33Z",
-          "ageH": 154.2
-        },
-        {
-          "path": "token-forge.yml",
-          "lastRunAt": "2026-10-11T21:15:04Z",
-          "ageH": 375.2
-        },
-        {
-          "path": "token-watchdog.yml",
-          "lastRunAt": "2026-10-13T00:02:15Z",
-          "ageH": 348.5
-        },
-        {
-          "path": "verifier.yml",
-          "lastRunAt": "2026-10-20T16:28:16Z",
-          "ageH": 164
-        }
-      ],
-      "failing": [
-        "agent-access.yml",
-        "artery-fleet.yml",
-        "artery-grid.yml",
-        "artery-wallet.yml",
-        "hive-probe.yml",
-        "office-growth.yml",
-        "profit-oracle.yml",
-        "research-lane.yml",
-        "retro.yml",
-        "sovereign-decider.yml",
-        "token-watchdog.yml"
-      ],
-      "lastRunAt": "2026-10-27T12:29:40Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "roshpinacare-sys.github.io",
-      "private": false,
-      "pushedAt": "2026-10-27T12:20:16Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "identity-guard",
-          "path": "identity-guard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:20:17Z",
+          "lastRunAt": "2026-10-27T22:16:56Z",
           "lastConclusion": "success"
         },
         {
           "name": "pages-deploy",
           "path": "pages-deploy.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:20:17Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "swallow-watch",
-          "path": "swallow-watch.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T06:53:17Z",
+          "lastRunAt": "2026-10-27T22:16:56Z",
           "lastConclusion": "success"
         },
         {
           "name": "pages-build-deployment",
           "path": "pages-build-deployment",
           "state": "active",
-          "lastRunAt": "2026-10-26T16:13:33Z",
+          "lastRunAt": "2026-10-22T13:13:33Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [],
+      "tags": [
+        "grid",
+        "verify"
+      ],
+      "workflowsCount": 5,
+      "dormant": [
+        {
+          "path": "flow-map.yml",
+          "lastRunAt": "2026-10-16T23:52:26Z",
+          "ageH": 262.6
+        },
+        {
+          "path": "pages-build-deployment",
+          "lastRunAt": "2026-10-22T13:13:33Z",
+          "ageH": 129.2
+        }
+      ],
+      "failing": [],
+      "lastRunAt": "2026-10-27T22:16:56Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "Defi",
+      "private": false,
+      "pushedAt": "2026-10-27T22:13:54Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "canary",
+          "path": "canary.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-20T04:59:30Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "gitleaks-secret-scan",
+          "path": "gitleaks.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-20T07:42:38Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "workflow-yaml-guard",
+          "path": "workflow-yaml-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-21T04:59:05Z",
           "lastConclusion": "success"
         }
       ],
@@ -2859,215 +3269,406 @@
       "tags": [
         "verify"
       ],
-      "workflowsCount": 4,
-      "dormant": [],
+      "workflowsCount": 3,
+      "dormant": [
+        {
+          "path": "canary.yml",
+          "lastRunAt": "2026-10-20T04:59:30Z",
+          "ageH": 185.5
+        },
+        {
+          "path": "gitleaks.yml",
+          "lastRunAt": "2026-10-20T07:42:38Z",
+          "ageH": 182.7
+        },
+        {
+          "path": "workflow-yaml-guard.yml",
+          "lastRunAt": "2026-10-21T04:59:05Z",
+          "ageH": 161.5
+        }
+      ],
       "failing": [],
-      "lastRunAt": "2026-10-27T12:20:17Z",
+      "lastRunAt": "2026-10-21T04:59:05Z",
       "sensitiveFileNamesHidden": 0
     },
     {
-      "ref": "FleetHQ",
+      "ref": "sovereign-runner-kit",
       "private": false,
-      "pushedAt": "2026-10-27T12:20:14Z",
+      "pushedAt": "2026-10-27T22:13:11Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
         {
-          "name": "claims-triage",
-          "path": "claims-triage.yml",
+          "name": "agent-shield",
+          "path": "agent-shield.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:16:27Z",
+          "lastRunAt": "2026-10-27T12:31:15Z",
           "lastConclusion": "success"
         },
         {
-          "name": "fresh-oracle",
-          "path": "fresh-oracle.yml",
+          "name": "capability-gate",
+          "path": "capability-gate.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:57:42Z",
-          "lastConclusion": "failure"
+          "lastRunAt": "2026-10-27T13:38:53Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "deploy-gate",
+          "path": "deploy-gate.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T12:01:46Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "device-lane",
+          "path": "device-lane.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:07:36Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "fleet-keeper",
+          "path": "fleet-keeper.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:11:28Z",
+          "lastConclusion": "success"
         },
         {
           "name": "identity-guard",
           "path": "identity-guard.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T15:40:41Z",
-          "lastConclusion": "success"
+          "lastRunAt": "2026-10-27T18:15:37Z",
+          "lastConclusion": "skipped"
         },
         {
-          "name": "identity-patrol",
-          "path": "identity-patrol.yml",
+          "name": "beat-keepalive",
+          "path": "keepalive.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:41:01Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "office-3d",
-          "path": "office-3d.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T14:08:12Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "office-ci",
-          "path": "office-ci.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T09:45:54Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "office-heartbeat",
-          "path": "office-heartbeat.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:00:41Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "office-ifixai-audit",
-          "path": "office-ifixai-audit.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T17:40:19Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "office-retro",
-          "path": "office-retro.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-22T14:01:08Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "office-window",
-          "path": "office-window.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:10:10Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "opens-closer",
-          "path": "opens-closer.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:30:01Z",
+          "lastRunAt": "2026-10-27T22:21:34Z",
           "lastConclusion": null
         },
         {
-          "name": "pages-deploy",
-          "path": "pages-deploy.yml",
+          "name": "netrun-loop",
+          "path": "netrun-loop.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T15:40:41Z",
+          "lastRunAt": "2026-10-27T20:55:53Z",
           "lastConclusion": "success"
         },
         {
-          "name": "runtime-pacemaker",
-          "path": "runtime-pacemaker.yml",
+          "name": "night-steward",
+          "path": "night-steward.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:17:08Z",
+          "lastRunAt": "2026-10-27T18:16:41Z",
           "lastConclusion": "success"
         },
         {
-          "name": "self-book",
-          "path": "self-book.yml",
+          "name": "registry-verify",
+          "path": "registry-verify.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:41:00Z",
+          "lastRunAt": "2026-10-27T12:25:27Z",
           "lastConclusion": "success"
         },
         {
-          "name": "silence-watchdog",
-          "path": "silence-watchdog.yml",
+          "name": "scout-loop",
+          "path": "scout-loop.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:54:39Z",
+          "lastRunAt": "2026-10-27T10:56:20Z",
           "lastConclusion": "success"
         },
         {
-          "name": "sovereign-decider",
-          "path": "sovereign-decider.yml",
+          "name": "swallow-watch",
+          "path": "swallow-watch.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T12:15:44Z",
+          "lastRunAt": "2026-10-27T21:28:47Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [
+        "scripts/agent-shield.py",
+        "scripts/beat-keepalive.py",
+        "scripts/capability-gate.py",
+        "scripts/check-role-cards.mjs",
+        "scripts/deploy-gate.py",
+        "scripts/failure-sweep.py",
+        "scripts/fleet-actions-enable.py",
+        "scripts/fleet-census.py",
+        "scripts/fleet-rearm-approval.py",
+        "scripts/fleet-receipts-guard-core.py",
+        "scripts/fleet-receipts-guard-core.test.py",
+        "scripts/fleet-receipts-guard.sh",
+        "scripts/fleet-survey.py",
+        "scripts/git_first.py",
+        "scripts/night-steward.py",
+        "scripts/pat-usage-xref.py",
+        "scripts/perpetual-host.mjs",
+        "scripts/perpetual-host.test.mjs",
+        "scripts/registry-verify.py",
+        "scripts/scout-digest.py",
+        "scripts/scout-scan.py",
+        "scripts/sovereign-runner-register.sh",
+        "scripts/yml_gate.py"
+      ],
+      "tags": [
+        "artery",
+        "decider",
+        "content",
+        "intake",
+        "verify",
+        "retro"
+      ],
+      "workflowsCount": 12,
+      "dormant": [],
+      "failing": [],
+      "lastRunAt": "2026-10-27T22:21:34Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "sovereign-lighthouse",
+      "private": false,
+      "pushedAt": "2026-10-27T22:04:51Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "estate-redboard",
+          "path": "estate-redboard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:18:06Z",
           "lastConclusion": "success"
         },
         {
-          "name": "sovereign-harness",
-          "path": "sovereign-harness.yml",
+          "name": "lighthouse-pulse",
+          "path": "lighthouse-pulse.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T10:59:38Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-identity",
-          "path": "sovereign-identity.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:05:41Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-policy-gate",
-          "path": "sovereign-policy-gate.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:16:28Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-selfscan",
-          "path": "sovereign-selfscan.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:38:27Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "value-scan",
-          "path": "value-scan.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:16:30Z",
+          "lastRunAt": "2026-10-27T22:04:39Z",
           "lastConclusion": "success"
         },
         {
           "name": "pages-build-deployment",
           "path": "pages-build-deployment",
           "state": "active",
-          "lastRunAt": "2026-10-22T12:54:08Z",
+          "lastRunAt": "2026-10-12T11:15:46Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [],
+      "tags": [
+        "artery",
+        "decider"
+      ],
+      "workflowsCount": 3,
+      "dormant": [
+        {
+          "path": "pages-build-deployment",
+          "lastRunAt": "2026-10-12T11:15:46Z",
+          "ageH": 371.2
+        }
+      ],
+      "failing": [],
+      "lastRunAt": "2026-10-27T22:04:39Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "Pulse",
+      "private": false,
+      "pushedAt": "2026-10-27T22:00:31Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "heartbeat",
+          "path": "heartbeat.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:00:02Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "identity-guard",
+          "path": "identity-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-26T16:15:52Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "pages-deploy",
+          "path": "pages-deploy.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-26T16:15:52Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "sovereign-voice",
+          "path": "sovereign-voice.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:52:35Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "pages-build-deployment",
+          "path": "pages-build-deployment",
+          "state": "active",
+          "lastRunAt": "2026-10-22T13:01:30Z",
           "lastConclusion": "success"
         }
       ],
       "engineFiles": [
-        "agents/execution-metrics.json",
-        "agents/self-book-prev.json",
-        "agents/self-book.json",
-        "agents/self-book.md",
-        "ops/decisions.jsonl"
+        "scripts/economy-sources.test.mjs",
+        "scripts/probe.mjs",
+        "scripts/sovereign-voice.mjs"
       ],
       "tags": [
-        "grid",
-        "office",
         "artery",
         "decider",
-        "intake",
-        "verify",
-        "retro"
+        "content",
+        "economy",
+        "verify"
       ],
-      "workflowsCount": 22,
+      "workflowsCount": 5,
       "dormant": [
         {
-          "path": "office-retro.yml",
-          "lastRunAt": "2026-10-22T14:01:08Z",
-          "ageH": 118.5
+          "path": "pages-build-deployment",
+          "lastRunAt": "2026-10-22T13:01:30Z",
+          "ageH": 129.4
+        }
+      ],
+      "failing": [],
+      "lastRunAt": "2026-10-27T22:00:02Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "sovereign-beacon",
+      "private": false,
+      "pushedAt": "2026-10-27T21:24:35Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "beacon-pulse",
+          "path": "beacon-pulse.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:23:33Z",
+          "lastConclusion": "success"
         },
         {
+          "name": "beat-keepalive",
+          "path": "keepalive.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:06:53Z",
+          "lastConclusion": null
+        },
+        {
+          "name": "pages-build-deployment",
           "path": "pages-build-deployment",
-          "lastRunAt": "2026-10-22T12:54:08Z",
-          "ageH": 119.6
+          "state": "active",
+          "lastRunAt": "2026-10-12T11:06:29Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [
+        "scripts/beat-keepalive.py"
+      ],
+      "tags": [
+        "artery",
+        "decider"
+      ],
+      "workflowsCount": 3,
+      "dormant": [
+        {
+          "path": "pages-build-deployment",
+          "lastRunAt": "2026-10-12T11:06:29Z",
+          "ageH": 371.3
+        }
+      ],
+      "failing": [],
+      "lastRunAt": "2026-10-27T22:06:53Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "ops-intake",
+      "private": false,
+      "pushedAt": "2026-10-27T21:04:53Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "intake",
+          "path": "intake.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:01:56Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [
+        "ops/QUEUE.json",
+        "ops/QUEUE.md",
+        "ops/SPACE-MAP-PAGES.md",
+        "ops/SPACE-MAP.md",
+        "ops/intake-state.json"
+      ],
+      "tags": [
+        "intake"
+      ],
+      "workflowsCount": 1,
+      "dormant": [],
+      "failing": [],
+      "lastRunAt": "2026-10-27T21:01:56Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "fleet-economy",
+      "private": false,
+      "pushedAt": "2026-10-27T21:01:30Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "ci-probe",
+          "path": "ci-probe.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-20T05:37:20Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "economy-beat",
+          "path": "economy-beat.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:57:53Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "receipts-guard",
+          "path": "receipts-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T20:00:26Z",
+          "lastConclusion": "failure"
+        }
+      ],
+      "engineFiles": [
+        "scripts/fleet-receipts-guard-core.py"
+      ],
+      "tags": [
+        "artery",
+        "economy",
+        "verify"
+      ],
+      "workflowsCount": 3,
+      "dormant": [
+        {
+          "path": "ci-probe.yml",
+          "lastRunAt": "2026-10-20T05:37:20Z",
+          "ageH": 184.8
         }
       ],
       "failing": [
-        "fresh-oracle.yml",
-        "office-3d.yml",
-        "office-retro.yml"
+        "receipts-guard.yml"
       ],
-      "lastRunAt": "2026-10-27T12:30:01Z",
+      "lastRunAt": "2026-10-27T20:57:53Z",
       "sensitiveFileNamesHidden": 0
     },
     {
       "ref": "saos-desk",
       "private": false,
-      "pushedAt": "2026-10-27T12:18:36Z",
+      "pushedAt": "2026-10-27T20:57:02Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [],
@@ -3082,7 +3683,7 @@
     {
       "ref": "roshpina",
       "private": false,
-      "pushedAt": "2026-10-27T12:18:12Z",
+      "pushedAt": "2026-10-27T20:49:13Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -3126,17 +3727,17 @@
         {
           "path": "controls-audit.yml",
           "lastRunAt": "2026-10-20T07:42:57Z",
-          "ageH": 172.8
+          "ageH": 182.7
         },
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-06T11:26:46Z",
-          "ageH": 505.1
+          "ageH": 515
         },
         {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T04:59:54Z",
-          "ageH": 175.5
+          "ageH": 185.5
         }
       ],
       "failing": [
@@ -3146,592 +3747,120 @@
       "sensitiveFileNamesHidden": 0
     },
     {
-      "ref": "saos-runtime",
+      "ref": "giant",
       "private": false,
-      "pushedAt": "2026-10-27T12:15:36Z",
+      "pushedAt": "2026-10-27T20:20:30Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
         {
-          "name": "agent-9-vault-sync",
-          "path": "agent-9-vault-sync.yml",
+          "name": "architect-daemon",
+          "path": "architect-daemon.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T09:13:16Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "arb-grid",
-          "path": "arb-grid.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:08:31Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "army-ladder",
-          "path": "army-ladder.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:22:24Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "arsenal-sentinel",
-          "path": "arsenal-sentinel.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T05:29:05Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "blurt-revival",
-          "path": "blurt-revival.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T06:26:55Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "builder-catchup",
-          "path": "builder-catchup.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:03:15Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "cross-custody-probe",
-          "path": "cross-custody-probe.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-18T13:28:18Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "custody-recover",
-          "path": "custody-recover.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T09:18:33Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "dex-beat",
-          "path": "dex-beat.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:54:31Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "directive-now",
-          "path": "directive-now.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T14:24:19Z",
+          "lastRunAt": "2026-10-27T19:34:52Z",
           "lastConclusion": "failure"
         },
         {
-          "name": "escrow-payroll",
-          "path": "escrow-payroll.yml",
+          "name": "ext-audit",
+          "path": "ext-audit.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:25:50Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "fee-engine",
-          "path": "fee-engine.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T09:39:14Z",
+          "lastRunAt": "2026-10-26T11:18:04Z",
           "lastConclusion": "success"
         },
         {
-          "name": "fleet-fuel",
-          "path": "fleet-fuel.yml",
+          "name": "fleet-rail-guardian",
+          "path": "fleet-rail-guardian.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T06:25:45Z",
+          "lastRunAt": "2026-10-27T20:37:44Z",
           "lastConclusion": "success"
-        },
-        {
-          "name": "fleet-rotation-a",
-          "path": "fleet-rotation-a.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-18T01:07:11Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "gen2-rotation",
-          "path": "gen2-rotation.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-18T00:38:18Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "ghidra-lab",
-          "path": "ghidra-lab.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-18T02:05:48Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "grid-watchdog",
-          "path": "grid-watchdog.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:57:06Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "hive-adopt-t21",
-          "path": "hive-adopt-t21.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-19T01:01:47Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "hive-custody-revival",
-          "path": "hive-custody-revival.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-19T03:12:42Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "key-relay-to-autonomy",
-          "path": "key-relay-to-autonomy.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-21T02:48:01Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "main-key-refresh",
-          "path": "main-key-refresh.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T10:27:59Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "operator-triage",
-          "path": "operator-triage.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T16:04:07Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "organ-guardian",
-          "path": "organ-guardian.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:54:37Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "organ-pacemaker",
-          "path": "organ-pacemaker.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T06:25:14Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "owner-key-adopt",
-          "path": "owner-key-adopt.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-18T13:34:10Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "owner-powerdown",
-          "path": "owner-powerdown.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-18T05:16:06Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "self-memory",
-          "path": "self-memory.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T05:32:43Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "signing-health (runtime-host)",
-          "path": "signing-health.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T06:49:59Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-builder",
-          "path": "sovereign-builder.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T09:03:58Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-evolution",
-          "path": "sovereign-evolution.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:46:39Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-pulse",
-          "path": "sovereign-pulse.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:03:41Z",
-          "lastConclusion": "failure"
-        },
-        {
-          "name": "sovereign-runtime",
-          "path": "sovereign-runtime.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:17:47Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "steem-hand-revival",
-          "path": "steem-hand-revival.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T08:06:35Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "system-map",
-          "path": "system-map.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:34:52Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "treasury-consolidation",
-          "path": "treasury-consolidation.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-21T02:51:26Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "treasury-ladder",
-          "path": "treasury-ladder.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T09:21:43Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "vault-owner-adopt",
-          "path": "vault-owner-adopt.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-19T17:51:21Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [
-        "scripts/blurt-connector.mjs",
-        "scripts/check-yml-python.py",
-        "scripts/evolution-digest.mjs",
-        "scripts/hive-revival.mjs",
-        "scripts/organ-guardian.mjs",
-        "scripts/refs.cjs",
-        "scripts/refs.mjs",
-        "scripts/test-grid-vocabulary.mjs",
-        "scripts/test-watchdog-reds.mjs",
-        "scripts/vault-drip.mjs"
-      ],
-      "tags": [
-        "dex",
-        "grid",
-        "wallet",
-        "artery",
-        "decider",
-        "content",
-        "verify"
-      ],
-      "workflowsCount": 37,
-      "dormant": [
-        {
-          "path": "cross-custody-probe.yml",
-          "lastRunAt": "2026-10-18T13:28:18Z",
-          "ageH": 215
-        },
-        {
-          "path": "fleet-rotation-a.yml",
-          "lastRunAt": "2026-10-18T01:07:11Z",
-          "ageH": 227.4
-        },
-        {
-          "path": "gen2-rotation.yml",
-          "lastRunAt": "2026-10-18T00:38:18Z",
-          "ageH": 227.9
-        },
-        {
-          "path": "ghidra-lab.yml",
-          "lastRunAt": "2026-10-18T02:05:48Z",
-          "ageH": 226.4
-        },
-        {
-          "path": "hive-adopt-t21.yml",
-          "lastRunAt": "2026-10-19T01:01:47Z",
-          "ageH": 203.5
-        },
-        {
-          "path": "hive-custody-revival.yml",
-          "lastRunAt": "2026-10-19T03:12:42Z",
-          "ageH": 201.3
-        },
-        {
-          "path": "key-relay-to-autonomy.yml",
-          "lastRunAt": "2026-10-21T02:48:01Z",
-          "ageH": 153.7
-        },
-        {
-          "path": "owner-key-adopt.yml",
-          "lastRunAt": "2026-10-18T13:34:10Z",
-          "ageH": 214.9
-        },
-        {
-          "path": "owner-powerdown.yml",
-          "lastRunAt": "2026-10-18T05:16:06Z",
-          "ageH": 223.2
-        },
-        {
-          "path": "treasury-consolidation.yml",
-          "lastRunAt": "2026-10-21T02:51:26Z",
-          "ageH": 153.6
-        },
-        {
-          "path": "vault-owner-adopt.yml",
-          "lastRunAt": "2026-10-19T17:51:21Z",
-          "ageH": 186.6
-        }
-      ],
-      "failing": [
-        "directive-now.yml",
-        "escrow-payroll.yml",
-        "sovereign-pulse.yml"
-      ],
-      "lastRunAt": "2026-10-27T12:22:24Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "steem",
-      "private": false,
-      "pushedAt": "2026-10-27T12:15:35Z",
-      "defaultBranch": "saos-cockpit",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "cloud-heart",
-          "path": "cloud-heart.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-20T14:15:05Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [],
-      "tags": [],
-      "workflowsCount": 1,
-      "dormant": [
-        {
-          "path": "cloud-heart.yml",
-          "lastRunAt": "2026-10-20T14:15:05Z",
-          "ageH": 166.3
-        }
-      ],
-      "failing": [],
-      "lastRunAt": "2026-10-20T14:15:05Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "Defi",
-      "private": false,
-      "pushedAt": "2026-10-27T12:10:37Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "canary",
-          "path": "canary.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-20T04:59:30Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "gitleaks-secret-scan",
-          "path": "gitleaks.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-20T07:42:38Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "workflow-yaml-guard",
-          "path": "workflow-yaml-guard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-21T04:59:05Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [],
-      "tags": [
-        "verify"
-      ],
-      "workflowsCount": 3,
-      "dormant": [
-        {
-          "path": "canary.yml",
-          "lastRunAt": "2026-10-20T04:59:30Z",
-          "ageH": 175.5
-        },
-        {
-          "path": "gitleaks.yml",
-          "lastRunAt": "2026-10-20T07:42:38Z",
-          "ageH": 172.8
-        },
-        {
-          "path": "workflow-yaml-guard.yml",
-          "lastRunAt": "2026-10-21T04:59:05Z",
-          "ageH": 151.5
-        }
-      ],
-      "failing": [],
-      "lastRunAt": "2026-10-21T04:59:05Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "sovereign-executor",
-      "private": false,
-      "pushedAt": "2026-10-27T12:09:59Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "fleet-beat",
-          "path": "fleet-beat.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:10:00Z",
-          "lastConclusion": null
-        }
-      ],
-      "engineFiles": [
-        "scripts/beat.py",
-        "scripts/chain_link.py",
-        "scripts/fleet_actions_guard.py",
-        "scripts/interval_gate.py"
-      ],
-      "tags": [
-        "artery",
-        "decider",
-        "verify"
-      ],
-      "workflowsCount": 1,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": "2026-10-27T12:10:00Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "sovereign-lighthouse",
-      "private": false,
-      "pushedAt": "2026-10-27T12:06:10Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "estate-redboard",
-          "path": "estate-redboard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:05:57Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "lighthouse-pulse",
-          "path": "lighthouse-pulse.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:54:36Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "pages-build-deployment",
-          "path": "pages-build-deployment",
-          "state": "active",
-          "lastRunAt": "2026-10-12T11:15:46Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [],
-      "tags": [
-        "artery",
-        "decider"
-      ],
-      "workflowsCount": 3,
-      "dormant": [
-        {
-          "path": "pages-build-deployment",
-          "lastRunAt": "2026-10-12T11:15:46Z",
-          "ageH": 361.2
-        }
-      ],
-      "failing": [],
-      "lastRunAt": "2026-10-27T12:05:57Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "Pulse",
-      "private": false,
-      "pushedAt": "2026-10-27T12:00:39Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "heartbeat",
-          "path": "heartbeat.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:30:04Z",
-          "lastConclusion": null
         },
         {
           "name": "identity-guard",
           "path": "identity-guard.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T16:15:52Z",
+          "lastRunAt": "2026-10-27T18:02:13Z",
+          "lastConclusion": "skipped"
+        },
+        {
+          "name": "swallow-watch",
+          "path": "swallow-watch.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T21:28:47Z",
           "lastConclusion": "success"
         },
         {
-          "name": "pages-deploy",
-          "path": "pages-deploy.yml",
+          "name": "trust-heartbeat",
+          "path": "trust-heartbeat.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T16:15:52Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "sovereign-voice",
-          "path": "sovereign-voice.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T08:14:45Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "pages-build-deployment",
-          "path": "pages-build-deployment",
-          "state": "active",
-          "lastRunAt": "2026-10-22T13:01:30Z",
+          "lastRunAt": "2026-10-27T20:19:33Z",
           "lastConclusion": "success"
         }
       ],
       "engineFiles": [
-        "scripts/economy-sources.test.mjs",
-        "scripts/probe.mjs",
-        "scripts/sovereign-voice.mjs"
+        "scripts/anchor.mjs",
+        "scripts/check-fleet.mjs",
+        "scripts/db-salvage.ts",
+        "scripts/db-salvage2.ts",
+        "scripts/ext-audit.sh",
+        "scripts/fleet-probe.ts",
+        "scripts/gate-bootstrap.mjs",
+        "scripts/giant-swallow-guard.sh",
+        "scripts/join-golden.ts",
+        "scripts/quality-gate-cli.ts",
+        "scripts/resurrect-fleet.sh",
+        "scripts/runner-kit.mjs",
+        "scripts/sovereign-boot.sh",
+        "scripts/swallow-guard-cli.ts",
+        "scripts/trust-heartbeat.mjs",
+        "scripts/wave82-fund-fleet.cjs"
       ],
       "tags": [
         "artery",
         "decider",
-        "content",
-        "economy",
-        "verify"
+        "witness",
+        "verify",
+        "retro"
       ],
-      "workflowsCount": 5,
-      "dormant": [
+      "workflowsCount": 6,
+      "dormant": [],
+      "failing": [
+        "architect-daemon.yml"
+      ],
+      "lastRunAt": "2026-10-27T21:28:47Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "ops-forge",
+      "private": false,
+      "pushedAt": "2026-10-27T19:51:05Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
         {
-          "path": "pages-build-deployment",
-          "lastRunAt": "2026-10-22T13:01:30Z",
-          "ageH": 119.5
+          "name": "forge",
+          "path": "forge.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T19:50:48Z",
+          "lastConclusion": "success"
         }
       ],
+      "engineFiles": [
+        "ops/RECEIPTS.jsonl",
+        "ops/forge-state.json"
+      ],
+      "tags": [
+        "intake"
+      ],
+      "workflowsCount": 1,
+      "dormant": [],
       "failing": [],
-      "lastRunAt": "2026-10-27T12:30:04Z",
+      "lastRunAt": "2026-10-27T19:50:48Z",
       "sensitiveFileNamesHidden": 0
     },
     {
       "ref": "Saosmartwallet",
       "private": false,
-      "pushedAt": "2026-10-27T11:51:19Z",
+      "pushedAt": "2026-10-27T19:39:16Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -3739,21 +3868,21 @@
           "name": "wallet-core-tests",
           "path": "ci.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:50:17Z",
+          "lastRunAt": "2026-10-27T13:39:13Z",
           "lastConclusion": "failure"
         },
         {
           "name": "gitleaks-secret-scan",
           "path": "gitleaks.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:50:17Z",
+          "lastRunAt": "2026-10-27T12:38:41Z",
           "lastConclusion": "success"
         },
         {
           "name": "wallet-verify",
           "path": "wallet-verify.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T11:50:17Z",
+          "lastRunAt": "2026-10-27T19:37:56Z",
           "lastConclusion": "success"
         },
         {
@@ -3789,312 +3918,13 @@
       "failing": [
         "ci.yml"
       ],
-      "lastRunAt": "2026-10-27T11:50:17Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "agent9-clock",
-      "private": false,
-      "pushedAt": "2026-10-27T11:50:01Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "chain-revival",
-          "path": "chain-revival.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:28:28Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "agent9-clock",
-          "path": "clock.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:24:09Z",
-          "lastConclusion": null
-        }
-      ],
-      "engineFiles": [],
-      "tags": [],
-      "workflowsCount": 2,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": "2026-10-27T12:28:28Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "giant",
-      "private": false,
-      "pushedAt": "2026-10-27T11:49:43Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "architect-daemon",
-          "path": "architect-daemon.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T07:40:39Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "ext-audit",
-          "path": "ext-audit.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-26T11:18:04Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "fleet-rail-guardian",
-          "path": "fleet-rail-guardian.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T10:53:56Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "identity-guard",
-          "path": "identity-guard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:49:45Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "swallow-watch",
-          "path": "swallow-watch.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:00:28Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "trust-heartbeat",
-          "path": "trust-heartbeat.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T09:27:50Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [
-        "scripts/anchor.mjs",
-        "scripts/check-fleet.mjs",
-        "scripts/ext-audit.sh",
-        "scripts/fleet-probe.ts",
-        "scripts/gate-bootstrap.mjs",
-        "scripts/giant-swallow-guard.sh",
-        "scripts/join-golden.ts",
-        "scripts/quality-gate-cli.ts",
-        "scripts/resurrect-fleet.sh",
-        "scripts/runner-kit.mjs",
-        "scripts/sovereign-boot.sh",
-        "scripts/swallow-guard-cli.ts",
-        "scripts/trade-receipt-bridge-cli.ts",
-        "scripts/trust-heartbeat.mjs",
-        "scripts/wave82-fund-fleet.cjs"
-      ],
-      "tags": [
-        "artery",
-        "decider",
-        "witness",
-        "verify",
-        "retro"
-      ],
-      "workflowsCount": 6,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": "2026-10-27T11:49:45Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "ops-intake",
-      "private": false,
-      "pushedAt": "2026-10-27T11:30:40Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "intake",
-          "path": "intake.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:27:55Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [
-        "ops/QUEUE.json",
-        "ops/QUEUE.md",
-        "ops/SPACE-MAP-PAGES.md",
-        "ops/SPACE-MAP.md",
-        "ops/intake-state.json"
-      ],
-      "tags": [
-        "intake"
-      ],
-      "workflowsCount": 1,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": "2026-10-27T11:27:55Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "GridWatch",
-      "private": false,
-      "pushedAt": "2026-10-27T11:28:14Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "flow-map",
-          "path": "flow-map.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-16T23:52:26Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "grid-watch",
-          "path": "grid-watch.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:29:42Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "identity-guard",
-          "path": "identity-guard.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:28:16Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "pages-deploy",
-          "path": "pages-deploy.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T11:28:16Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "pages-build-deployment",
-          "path": "pages-build-deployment",
-          "state": "active",
-          "lastRunAt": "2026-10-22T13:13:33Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [],
-      "tags": [
-        "grid",
-        "verify"
-      ],
-      "workflowsCount": 5,
-      "dormant": [
-        {
-          "path": "flow-map.yml",
-          "lastRunAt": "2026-10-16T23:52:26Z",
-          "ageH": 252.6
-        },
-        {
-          "path": "pages-build-deployment",
-          "lastRunAt": "2026-10-22T13:13:33Z",
-          "ageH": 119.3
-        }
-      ],
-      "failing": [],
-      "lastRunAt": "2026-10-27T12:29:42Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "sovereign-beacon",
-      "private": false,
-      "pushedAt": "2026-10-27T10:44:28Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "beacon-pulse",
-          "path": "beacon-pulse.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:30:27Z",
-          "lastConclusion": "success"
-        },
-        {
-          "name": "beat-keepalive",
-          "path": "keepalive.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T12:28:27Z",
-          "lastConclusion": null
-        },
-        {
-          "name": "pages-build-deployment",
-          "path": "pages-build-deployment",
-          "state": "active",
-          "lastRunAt": "2026-10-12T11:06:29Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [
-        "scripts/beat-keepalive.py"
-      ],
-      "tags": [
-        "artery",
-        "decider"
-      ],
-      "workflowsCount": 3,
-      "dormant": [
-        {
-          "path": "pages-build-deployment",
-          "lastRunAt": "2026-10-12T11:06:29Z",
-          "ageH": 361.4
-        }
-      ],
-      "failing": [],
-      "lastRunAt": "2026-10-27T12:30:27Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "ops-forge",
-      "private": false,
-      "pushedAt": "2026-10-27T08:13:55Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [
-        {
-          "name": "forge",
-          "path": "forge.yml",
-          "state": "active",
-          "lastRunAt": "2026-10-27T08:13:34Z",
-          "lastConclusion": "success"
-        }
-      ],
-      "engineFiles": [
-        "ops/RECEIPTS.jsonl",
-        "ops/forge-state.json"
-      ],
-      "tags": [
-        "intake"
-      ],
-      "workflowsCount": 1,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": "2026-10-27T08:13:34Z",
-      "sensitiveFileNamesHidden": 0
-    },
-    {
-      "ref": "priv-h469de745",
-      "private": true,
-      "pushedAt": "2026-10-27T08:00:10Z",
-      "defaultBranch": "main",
-      "archived": false,
-      "workflows": [],
-      "engineFiles": [],
-      "tags": [
-        "wallet"
-      ],
-      "workflowsCount": 0,
-      "dormant": [],
-      "failing": [],
-      "lastRunAt": null,
+      "lastRunAt": "2026-10-27T19:37:56Z",
       "sensitiveFileNamesHidden": 0
     },
     {
       "ref": "saos-sovereign-platform",
       "private": false,
-      "pushedAt": "2026-10-27T03:28:18Z",
+      "pushedAt": "2026-10-27T19:00:14Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -4116,7 +3946,7 @@
           "name": "platform-selftest",
           "path": "platform-selftest.yml",
           "state": "active",
-          "lastRunAt": "2026-10-27T03:25:48Z",
+          "lastRunAt": "2026-10-27T18:57:49Z",
           "lastConclusion": "success"
         },
         {
@@ -4214,27 +4044,125 @@
         {
           "path": "foundry-tests.yml",
           "lastRunAt": "2026-10-20T04:42:25Z",
-          "ageH": 175.8
+          "ageH": 185.8
         },
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-20T07:43:12Z",
-          "ageH": 172.8
+          "ageH": 182.7
         },
         {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T05:00:38Z",
-          "ageH": 175.5
+          "ageH": 185.4
         }
       ],
       "failing": [],
-      "lastRunAt": "2026-10-27T03:25:48Z",
+      "lastRunAt": "2026-10-27T18:57:49Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "priv-h9d7b862d",
+      "private": true,
+      "pushedAt": "2026-10-27T17:38:42Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [],
+      "engineFiles": [
+        "scripts/anchor.mjs",
+        "scripts/audit-key-custody.mjs",
+        "scripts/audit-mutating-auth.mjs",
+        "scripts/check-fleet.mjs",
+        "scripts/cure-secp256k1.mjs",
+        "scripts/engine-watchdog.mjs",
+        "scripts/ext-audit.sh",
+        "scripts/fixedfloat-measure.mjs",
+        "scripts/fixedfloat-remeasure-w130.mjs",
+        "scripts/fixedfloat-watch.mjs",
+        "scripts/fleet-probe.ts",
+        "scripts/gate-bootstrap.mjs",
+        "scripts/giant-locate.mjs",
+        "scripts/join-golden.ts",
+        "scripts/owner-gate-audit.mjs",
+        "scripts/press-log-dl.mjs",
+        "scripts/press-run-log-fetch.mjs",
+        "scripts/press-workflow-audit.mjs",
+        "scripts/resurrect-fleet.sh",
+        "scripts/rotate-secret.mjs",
+        "scripts/runner-kit.mjs",
+        "scripts/scan-grid-coverage.py",
+        "scripts/seal-fixedfloat-secrets.mjs",
+        "scripts/sovereign-boot.sh",
+        "scripts/sovereign-tron-wallet.mjs",
+        "scripts/test-owner-endpoint-lock.mjs",
+        "scripts/test-secp-cure.mjs",
+        "scripts/trust-heartbeat.mjs",
+        "scripts/wave82-fund-fleet.cjs"
+      ],
+      "tags": [
+        "grid",
+        "wallet",
+        "artery",
+        "decider",
+        "witness",
+        "retro"
+      ],
+      "workflowsCount": 0,
+      "dormant": [],
+      "failing": [],
+      "lastRunAt": null,
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "roshpinacare-sys.github.io",
+      "private": false,
+      "pushedAt": "2026-10-27T17:31:56Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "identity-guard",
+          "path": "identity-guard.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T17:58:18Z",
+          "lastConclusion": "skipped"
+        },
+        {
+          "name": "pages-deploy",
+          "path": "pages-deploy.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T17:31:58Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "swallow-watch",
+          "path": "swallow-watch.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T18:24:40Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "pages-build-deployment",
+          "path": "pages-build-deployment",
+          "state": "active",
+          "lastRunAt": "2026-10-26T16:13:33Z",
+          "lastConclusion": "success"
+        }
+      ],
+      "engineFiles": [],
+      "tags": [
+        "verify"
+      ],
+      "workflowsCount": 4,
+      "dormant": [],
+      "failing": [],
+      "lastRunAt": "2026-10-27T18:24:40Z",
       "sensitiveFileNamesHidden": 0
     },
     {
       "ref": "execution-fabric",
       "private": false,
-      "pushedAt": "2026-10-26T18:51:12Z",
+      "pushedAt": "2026-10-27T15:26:23Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -4242,12 +4170,14 @@
           "name": "codelint",
           "path": "codelint.yml",
           "state": "active",
-          "lastRunAt": "2026-10-26T18:51:14Z",
+          "lastRunAt": "2026-10-27T15:26:25Z",
           "lastConclusion": "success"
         }
       ],
       "engineFiles": [
+        "scripts/ledger-count.mjs",
         "scripts/ledger-q97.mjs",
+        "scripts/ledger-stats.mjs",
         "scripts/q100-ops.mjs",
         "scripts/q100b.mjs",
         "scripts/q100c.mjs",
@@ -4258,6 +4188,7 @@
         "scripts/q98b.mjs",
         "scripts/q99.mjs",
         "scripts/q99b.mjs",
+        "scripts/task-stats.mjs",
         "scripts/vault-census.mjs"
       ],
       "tags": [
@@ -4268,18 +4199,30 @@
       "workflowsCount": 1,
       "dormant": [],
       "failing": [],
-      "lastRunAt": "2026-10-26T18:51:14Z",
+      "lastRunAt": "2026-10-27T15:26:25Z",
       "sensitiveFileNamesHidden": 0
     },
     {
-      "ref": "priv-h8042ff60",
+      "ref": "priv-h5c117460",
       "private": true,
-      "pushedAt": "2026-10-26T17:37:25Z",
+      "pushedAt": "2026-10-27T15:24:46Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [],
-      "engineFiles": [],
-      "tags": [],
+      "engineFiles": [
+        "scripts/census-watch.sh",
+        "scripts/estate-bootstrap.sh",
+        "scripts/fleet-guardian.sh",
+        "scripts/pulse-loop.sh",
+        "scripts/rearm-loops.sh",
+        "scripts/reconcile-loop.sh"
+      ],
+      "tags": [
+        "artery",
+        "decider",
+        "verify",
+        "retro"
+      ],
       "workflowsCount": 0,
       "dormant": [],
       "failing": [],
@@ -4289,7 +4232,7 @@
     {
       "ref": "saos-control-center",
       "private": false,
-      "pushedAt": "2026-10-26T16:51:44Z",
+      "pushedAt": "2026-10-27T15:21:21Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [
@@ -4412,14 +4355,19 @@
       "workflowsCount": 3,
       "dormant": [
         {
+          "path": "control-center-build.yml",
+          "lastRunAt": "2026-10-24T16:01:14Z",
+          "ageH": 78.4
+        },
+        {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-21T04:59:17Z",
-          "ageH": 151.5
+          "ageH": 161.5
         },
         {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T05:00:26Z",
-          "ageH": 175.5
+          "ageH": 185.5
         }
       ],
       "failing": [],
@@ -4427,9 +4375,24 @@
       "sensitiveFileNamesHidden": 2
     },
     {
+      "ref": "priv-h8042ff60",
+      "private": true,
+      "pushedAt": "2026-10-27T13:33:01Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [],
+      "engineFiles": [],
+      "tags": [],
+      "workflowsCount": 0,
+      "dormant": [],
+      "failing": [],
+      "lastRunAt": null,
+      "sensitiveFileNamesHidden": 0
+    },
+    {
       "ref": "priv-ha4c1a4d5",
       "private": true,
-      "pushedAt": "2026-10-26T15:55:11Z",
+      "pushedAt": "2026-10-27T13:06:56Z",
       "defaultBranch": "main",
       "archived": false,
       "workflows": [],
@@ -4453,6 +4416,53 @@
         "decider",
         "witness",
         "retro"
+      ],
+      "workflowsCount": 0,
+      "dormant": [],
+      "failing": [],
+      "lastRunAt": null,
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "agent9-clock",
+      "private": false,
+      "pushedAt": "2026-10-27T11:50:01Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [
+        {
+          "name": "chain-revival",
+          "path": "chain-revival.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:26:48Z",
+          "lastConclusion": "success"
+        },
+        {
+          "name": "agent9-clock",
+          "path": "clock.yml",
+          "state": "active",
+          "lastRunAt": "2026-10-27T22:14:16Z",
+          "lastConclusion": null
+        }
+      ],
+      "engineFiles": [],
+      "tags": [],
+      "workflowsCount": 2,
+      "dormant": [],
+      "failing": [],
+      "lastRunAt": "2026-10-27T22:26:48Z",
+      "sensitiveFileNamesHidden": 0
+    },
+    {
+      "ref": "priv-h469de745",
+      "private": true,
+      "pushedAt": "2026-10-27T08:00:10Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "workflows": [],
+      "engineFiles": [],
+      "tags": [
+        "wallet"
       ],
       "workflowsCount": 0,
       "dormant": [],
@@ -4499,7 +4509,7 @@
         {
           "path": "pages-build-deployment",
           "lastRunAt": "2026-10-11T23:37:53Z",
-          "ageH": 372.9
+          "ageH": 382.8
         }
       ],
       "failing": [],
@@ -4543,9 +4553,19 @@
       "workflowsCount": 3,
       "dormant": [
         {
+          "path": "claims-guard.yml",
+          "lastRunAt": "2026-10-24T16:01:20Z",
+          "ageH": 78.4
+        },
+        {
+          "path": "gitleaks.yml",
+          "lastRunAt": "2026-10-24T20:06:26Z",
+          "ageH": 74.4
+        },
+        {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T07:42:54Z",
-          "ageH": 172.8
+          "ageH": 182.7
         }
       ],
       "failing": [],
@@ -4683,7 +4703,7 @@
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-20T07:43:08Z",
-          "ageH": 172.8
+          "ageH": 182.7
         },
         {
           "path": "sdk-live.yml",
@@ -4691,9 +4711,14 @@
           "ageH": null
         },
         {
+          "path": "sdk-verify.yml",
+          "lastRunAt": "2026-10-24T16:01:20Z",
+          "ageH": 78.4
+        },
+        {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T05:00:42Z",
-          "ageH": 175.5
+          "ageH": 185.5
         }
       ],
       "failing": [],
@@ -4759,12 +4784,17 @@
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-20T07:43:06Z",
-          "ageH": 172.8
+          "ageH": 182.7
         },
         {
           "path": "hive-intel.yml",
           "lastRunAt": null,
           "ageH": null
+        },
+        {
+          "path": "jumpper-tests.yml",
+          "lastRunAt": "2026-10-24T16:01:24Z",
+          "ageH": 78.4
         },
         {
           "path": "truthrail-anchor.yml",
@@ -4774,7 +4804,7 @@
         {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T05:00:31Z",
-          "ageH": 175.5
+          "ageH": 185.5
         }
       ],
       "failing": [],
@@ -4825,19 +4855,24 @@
       "workflowsCount": 4,
       "dormant": [
         {
+          "path": "baseline-integrity.yml",
+          "lastRunAt": "2026-10-24T16:01:24Z",
+          "ageH": 78.4
+        },
+        {
           "path": "conformance-selftest.yml",
           "lastRunAt": "2026-10-20T07:43:04Z",
-          "ageH": 172.8
+          "ageH": 182.7
         },
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-21T04:59:20Z",
-          "ageH": 151.5
+          "ageH": 161.5
         },
         {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T04:59:24Z",
-          "ageH": 175.5
+          "ageH": 185.5
         }
       ],
       "failing": [],
@@ -4916,7 +4951,7 @@
         {
           "path": "sovereign-heart.yml",
           "lastRunAt": "2026-10-20T11:43:42Z",
-          "ageH": 168.8
+          "ageH": 178.7
         }
       ],
       "failing": [],
@@ -4989,17 +5024,17 @@
         {
           "path": "ci.yml",
           "lastRunAt": "2026-10-20T05:34:33Z",
-          "ageH": 174.9
+          "ageH": 184.9
         },
         {
           "path": "gitleaks.yml",
           "lastRunAt": "2026-10-07T00:57:39Z",
-          "ageH": 491.6
+          "ageH": 501.5
         },
         {
           "path": "workflow-yaml-guard.yml",
           "lastRunAt": "2026-10-20T05:00:35Z",
-          "ageH": 175.5
+          "ageH": 185.5
         }
       ],
       "failing": [
