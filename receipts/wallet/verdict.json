@@ -1,12 +1,12 @@
 {
-  "at": "2026-10-27T11:41:56.432Z",
+  "at": "2026-10-27T12:10:01.111Z",
   "slug": "roshpinacare-sys/Saosmartwallet",
-  "walletHead": "caf7edddbeb1bc37169097cc971ddcbfb9d0d298",
+  "walletHead": "d53662be7560a76bee1b294e7cf10c0ad2089f0f",
   "checks": {
     "install": "pass",
     "prismaGenerate": "pass",
-    "typecheck": "fail",
-    "productionBuild": "fail"
+    "typecheck": "pass",
+    "productionBuild": "pass"
   },
   "asserts": [
     {
@@ -28,15 +28,20 @@
       "id": "law-r11-head-absent",
       "verdict": "pass",
       "detail": "R11 key-material metadata file must stay absent at HEAD"
+    },
+    {
+      "id": "law-pass-provenance",
+      "verdict": "pass",
+      "detail": "receipt provenance: https://github.com/roshpinacare-sys/Saosmartwallet/actions/runs/40499124444"
     }
   ],
   "warns": [],
   "alerts": [],
-  "overall": "FAIL",
-  "reason": "productionBuild failed:   ✓ webpackMemoryOptimizations |  |   Creating an optimized production build ... | ✓ Compiled successfully in 14.7s |   Running TypeScript ... | ",
+  "overall": "PASS",
+  "reason": "install, prisma, typecheck, build and all wallet laws pass",
   "provenance": {
-    "runId": "40498041163",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40498041163",
-    "sha": "9d08e27a4762ec254da2cb9d73fd35113fc1ad9f"
+    "runId": "40501404053",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40501404053",
+    "sha": "372a5f394e2ef68e5aa0eb4f4fae500d4885e7bc"
   }
 }
