@@ -1,6 +1,6 @@
 {
  "schema": "sovereign.arming-check/1",
- "at": "2026-10-26T07:42:37.174Z",
+ "at": "2026-10-27T07:40:51.721Z",
  "allPass": false,
  "ownerLawArmed": true,
  "items": [
@@ -13,26 +13,26 @@
   {
    "id": "2_presenceMatrix",
    "pass": false,
-   "measured": "HTTP 404",
+   "measured": "64.4h",
    "source": "steem@saos-cockpit presence-matrix.json"
   },
   {
    "id": "3_custody",
-   "pass": true,
-   "measured": "14/14",
+   "pass": false,
+   "measured": "3/14",
    "source": "saos-runtime@main ci-last-heartbeat.json"
   },
   {
    "id": "4_antiFarmLaws",
-   "pass": false,
-   "measured": "w=undefined posts=undefined votes=undefined",
+   "pass": true,
+   "measured": "w=8 posts=1 votes=0",
    "source": "steem@saos-cockpit readiness.json"
   },
   {
    "id": "5_cooldown7d",
-   "pass": false,
-   "measured": "HTTP 404",
-   "source": "steem@saos-cockpit published.jsonl"
+   "pass": true,
+   "measured": "8.24d since 2026-10-19T01:48:34.695Z",
+   "source": "steem@saos-cockpit published.jsonl last"
   },
   {
    "id": "6_ownerApproval",
@@ -45,20 +45,14 @@
   {
    "id": "2_presenceMatrix",
    "pass": false,
-   "measured": "HTTP 404",
+   "measured": "64.4h",
    "source": "steem@saos-cockpit presence-matrix.json"
   },
   {
-   "id": "4_antiFarmLaws",
+   "id": "3_custody",
    "pass": false,
-   "measured": "w=undefined posts=undefined votes=undefined",
-   "source": "steem@saos-cockpit readiness.json"
-  },
-  {
-   "id": "5_cooldown7d",
-   "pass": false,
-   "measured": "HTTP 404",
-   "source": "steem@saos-cockpit published.jsonl"
+   "measured": "3/14",
+   "source": "saos-runtime@main ci-last-heartbeat.json"
   }
  ],
  "decision": "MONITOR (owner-law armed — discrepancies recorded, status never reverted by agent)"
