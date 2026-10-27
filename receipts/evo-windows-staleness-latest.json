@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "at": "2026-10-20T12:03:30Z",
+  "at": "2026-10-27T12:38:07Z",
   "agent": "evo-windows-staleness-gate v1 (zai-13d — WO-unwired-evo-windows: weekly keyless staleness tombstone over the Domain/agents evo chain)",
   "summary": {
     "GREEN": 2,
@@ -54,6 +54,33 @@
           "id": "V-EVO-ENGINE-ALIVE",
           "verdict": "GREEN",
           "detail": "7 white-box pins PASS · live SKIP_RUN invocation booked 134 (was 133), decisionKind=SKIPPED-EVAL-CONTEXT, exit 0"
+        }
+      ],
+      "summary": {
+        "GREEN": 2,
+        "AMBER": 0,
+        "RED": 1,
+        "UNKNOWN": 0
+      }
+    },
+    {
+      "at": "2026-10-27T12:38:07Z",
+      "trigger": "workflow_dispatch",
+      "checks": [
+        {
+          "id": "V-EVO-BOOK-FRESH",
+          "verdict": "RED",
+          "detail": "book.at 2026-10-25T08:24:23Z (52.2h) · cadence 20h · windows 134 (complete 1) · lastComplete 2026-10-11T23:46:55Z (372.9h) · nextDue 2026-10-12T19:46:55Z · ladder GREEN≤48h/AMBER≤168h/RED>168h"
+        },
+        {
+          "id": "V-EVO-DESK-BOOK",
+          "verdict": "GREEN",
+          "detail": "CR-0030 desk book present: at 2026-10-11T23:46:55Z · winner v1-incumbent · rows 10 (informational — the child's measured state)"
+        },
+        {
+          "id": "V-EVO-ENGINE-ALIVE",
+          "verdict": "GREEN",
+          "detail": "7 white-box pins PASS · live SKIP_RUN invocation booked 135 (was 134), decisionKind=SKIPPED-EVAL-CONTEXT, exit 0"
         }
       ],
       "summary": {
