@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-10-27T13:55:55.762Z",
+  "measuredAt": "2026-10-27T14:48:50.754Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -16,16 +16,16 @@
     {
       "id": "law-grid-fresh",
       "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 3min)",
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 9min)",
       "severity": "fail",
       "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": false,
-      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
+      "ok": true,
+      "detail": "grid executable: lastVerdict=BROADCAST-FAIL opsToday=?",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,23 +36,22 @@
     }
   ],
   "alerts": [],
-  "overall": "BLOCKED",
-  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
+  "overall": "PASS",
+  "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "92df51c7bea41ef100ecf5360693bae1d239008b",
+    "stateBlobSha": "cb26710b42566849a9a2bace34666dbdc2662ea3",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "40516325315",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40516325315",
-    "sha": "657ba281c1e21c2d2e3b4a952d27bda6c5dda984"
+    "runId": "40524729311",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40524729311",
+    "sha": "231c02d83f0698a02332b1a310371561214023fd"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-10-27T13:53:10.271Z",
-    "ageMin": 3,
-    "ticks": 3186,
-    "lastVerdict": "CREDENTIAL-MISSING",
-    "opsToday": 0,
+    "lastTickAt": "2026-10-27T14:39:34.503Z",
+    "ageMin": 9,
+    "ticks": 512,
+    "lastVerdict": "BROADCAST-FAIL",
+    "opsToday": null,
     "lastTxid": null
-  },
-  "credBlocked": true
+  }
 }
