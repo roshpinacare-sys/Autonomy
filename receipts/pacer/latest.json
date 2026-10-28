@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-28T08:48:26.799Z",
+  "at": "2026-10-28T09:02:28.961Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -8,21 +8,69 @@
   "checked": 72,
   "stale": [
     {
-      "wf": "verifier.yml",
-      "ageMin": 48,
+      "wf": "artery-grid.yml",
+      "ageMin": 44,
       "cadenceMin": 30,
-      "why": "last success 48min ago > cadence 30+10grace"
+      "why": "last success 44min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ageMin": 44,
+      "cadenceMin": 30,
+      "why": "last success 44min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "verifier.yml",
+      "ageMin": 44,
+      "cadenceMin": 30,
+      "why": "last success 44min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 44,
+      "cadenceMin": 30,
+      "why": "last success 44min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 44,
+      "cadenceMin": 30,
+      "why": "last success 44min ago > cadence 30+10grace"
     },
     {
       "wf": "artery-fleet.yml",
-      "ageMin": 5156,
+      "ageMin": 5170,
       "cadenceMin": 60,
-      "why": "last success 5156min ago > cadence 60+10grace"
+      "why": "last success 5170min ago > cadence 60+10grace"
     }
   ],
   "dispatched": [
     {
+      "wf": "artery-grid.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
       "wf": "verifier.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -36,5 +84,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-10-28T08:48:34.336Z"
+  "doneAt": "2026-10-28T09:02:42.992Z"
 }
