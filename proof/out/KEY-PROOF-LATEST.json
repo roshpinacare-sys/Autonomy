@@ -1,7 +1,7 @@
 {
  "protocol": "saos/key-proof/1",
- "generatedAt": "2026-10-21T09:26:32.063Z",
- "finishedAt": "2026-10-21T09:28:05.380Z",
+ "generatedAt": "2026-10-28T10:40:25.175Z",
+ "finishedAt": "2026-10-28T10:42:39.737Z",
  "mandate": "owner trace 1a12…1b95 — dead-key standing proof for R11 leaked key material (roshpina/anchor-baseline/saos-jummper/Sdk/Adsmarket)",
  "redaction": {
   "law": "hash16-of-material + derived pubkeys + place metadata ONLY; no private material, no passphrases, no file contents; auditor enforced pre-write (violation = hard failure, nothing written)",
@@ -12,54 +12,54 @@
    {
     "repo": "roshpina",
     "reachable": true,
-    "head": "0629f4ccda",
-    "commits": 257,
-    "blobs": 5555,
-    "bytes": 44865514,
-    "ms": 14431
+    "head": "beb626dc86",
+    "commits": 465,
+    "blobs": 6950,
+    "bytes": 58173778,
+    "ms": 27991
    },
    {
     "repo": "anchor-baseline",
     "reachable": true,
-    "head": "0f7836029c",
-    "commits": 130,
-    "blobs": 137,
-    "bytes": 692119,
-    "ms": 716
+    "head": "e8fc062792",
+    "commits": 134,
+    "blobs": 141,
+    "bytes": 693299,
+    "ms": 1029
    },
    {
     "repo": "saos-jummper",
     "reachable": true,
-    "head": "fed8e83adc",
-    "commits": 439,
-    "blobs": 513,
-    "bytes": 4646179,
-    "ms": 1831
+    "head": "adccbf9994",
+    "commits": 443,
+    "blobs": 517,
+    "bytes": 4647179,
+    "ms": 2521
    },
    {
     "repo": "Sdk",
     "reachable": true,
-    "head": "d10bbb0df6",
-    "commits": 131,
-    "blobs": 206,
-    "bytes": 766191,
-    "ms": 1005
+    "head": "9789350634",
+    "commits": 135,
+    "blobs": 210,
+    "bytes": 767371,
+    "ms": 1268
    },
    {
     "repo": "Adsmarket",
     "reachable": true,
-    "head": "c989fc12d8",
-    "commits": 593,
-    "blobs": 558,
-    "bytes": 11107653,
-    "ms": 2206
+    "head": "9cc0b468c1",
+    "commits": 599,
+    "blobs": 564,
+    "bytes": 11127421,
+    "ms": 3099
    }
   ],
-  "totalBlobs": 6969,
-  "totalBytes": 62077656,
+  "totalBlobs": 8382,
+  "totalBytes": 75409048,
   "reachabilityNote": "all 5 repos reachable",
   "noise": {
-   "oversizeBlobs": 13,
+   "oversizeBlobs": 24,
    "skippedBudget": 0,
    "unreadableBlobs": 0
   },
@@ -71,7 +71,7 @@
  "chain": {
   "node": "https://api.steemit.com",
   "fleetAccounts": 14,
-  "fleetAliveKeyBodies": 63,
+  "fleetAliveKeyBodies": 64,
   "keyReferencesAvailable": true,
   "keyReferenceNote": "condenser_api.get_key_references used (global reference census)",
   "rotation": {
@@ -85,7 +85,7 @@
    "truncated": true,
    "accountUpdateOps": []
   },
-  "acct-00LastOwnerUpdate": "2026-10-12T11:12:33",
+  "acct-00LastOwnerUpdate": "2026-10-21T12:30:45",
   "acct-00ActiveLive": "STM5HhJD5WUXu8vPhDmLaC2fTuuJYkwxF62Rt17HZ5G2PbnBvuHXF",
   "gen2ActiveExpected": "STM5jRfQH9DAF2474UQF1GVarShJZhpSPEYZFiZVr8MHV8cNSXDQf",
   "gen2ActiveMatchesLive": false
@@ -94,10 +94,40 @@
   "DEAD": 9,
   "ALIVE-ALERT": 0,
   "UNKNOWN": 0,
-  "UNKNOWN-NOT-CHAIN-TESTABLE": 17,
+  "UNKNOWN-NOT-CHAIN-TESTABLE": 19,
   "incident": false
  },
  "verdicts": [
+  {
+   "hash16": "8d353cfaeba829ce",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "84f913eb17537ead21683e307e9ea625b71cc81e",
+     "path": "control-plane/mini-services/fleet-runner/index.ts"
+    },
+    {
+     "repo": "roshpina",
+     "blob": "4be6b30332fc5b50dd2839f032401bce22357bf0",
+     "path": "control-plane/src/app/api/owner/unlock/route.ts"
+    }
+   ],
+   "context": "PASSPHRASE_FILE",
+   "introducedIn": [
+    {
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
   {
    "hash16": "91b546a96348aa25",
    "kind": "passphrase",
@@ -109,7 +139,7 @@
     },
     {
      "repo": "roshpina",
-     "blob": "8c591cf54489605b843afe9d325e98a8b62b6eb6",
+     "blob": "0035d92090fb758c1e14abfbd33569e35a6c3d6e",
      "path": "control-plane/vault-sealed/vault.manifest.json"
     },
     {
@@ -121,8 +151,8 @@
    "context": "passphraseHolder\"",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     },
     {
      "sha": "78db843668",
@@ -150,8 +180,8 @@
    "context": "VAULT-UNSEAL-FAIL",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     },
     {
      "sha": "78db843668",
@@ -179,8 +209,8 @@
    "context": "VAULT-UNSEAL-FAIL",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     },
     {
      "sha": "78db843668",
@@ -208,8 +238,8 @@
    "context": "VAULT-UNSEAL-FAIL",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     },
     {
      "sha": "78db843668",
@@ -237,8 +267,8 @@
    "context": "password",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
@@ -262,8 +292,8 @@
    "context": "--password",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
@@ -287,8 +317,8 @@
    "context": "pwDir",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
@@ -312,8 +342,8 @@
    "context": "ws.protection.password",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
@@ -337,8 +367,8 @@
    "context": "wb.security.workbookPassword",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
@@ -362,8 +392,8 @@
    "context": "unsealed",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
@@ -387,8 +417,8 @@
    "context": "passphraseHolder",
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
@@ -400,21 +430,46 @@
    }
   },
   {
-   "hash16": "be10e925a44b0eb4",
+   "hash16": "d8c2a6594ed6308c",
+   "kind": "passphrase",
+   "where": [
+    {
+     "repo": "roshpina",
+     "blob": "81aeddd49690c3dea87cb3f34038431e8395df07",
+     "path": "control-plane/src/app/page.tsx"
+    }
+   ],
+   "context": "passphrase",
+   "introducedIn": [
+    {
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
+    }
+   ],
+   "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE",
+   "matrixProbe": {
+    "tested": 392,
+    "derivedPubkeysTested": 336,
+    "aliveMatches": [],
+    "note": "master-password derivation (steemit-standard + 6 seed-orders × 14 fleet accounts × 4 roles) matched no live authority; as an archive passphrase it remains untestable by design (archive never opened)"
+   }
+  },
+  {
+   "hash16": "dd9902c82104bc59",
    "kind": "archive",
    "where": [
     {
      "repo": "roshpina",
-     "blob": "f795f3b53122f59123a8187d09f5742c0e542d9d",
+     "blob": "7f1020462969332971f0d7669fbbea0c269ec405",
      "path": "control-plane/vault-sealed/nim-api.env.enc"
     }
    ],
-   "gitBlobSha": "f795f3b53122f59123a8187d09f5742c0e542d9d",
+   "gitBlobSha": "7f1020462969332971f0d7669fbbea0c269ec405",
    "size": 288,
    "introducedIn": [
     {
-     "sha": "e4f95deb4a",
-     "date": "2026-10-21"
+     "sha": "181a87c5a1",
+     "date": "2026-10-27"
     }
    ],
    "verdict": "UNKNOWN-NOT-CHAIN-TESTABLE"
@@ -1429,7 +1484,7 @@
   }
  ],
  "soldierProbe": {
-  "measuredAt": "2026-10-21T09:28:05.380Z",
+  "measuredAt": "2026-10-28T10:42:39.736Z",
   "method": "condenser_api.get_accounts live authorities — facts only, zero key material, zero vault access",
   "rows": [
    {
@@ -1440,11 +1495,11 @@
     "postingPubkey": "STM5AszgPKmjPnm8mrhC66oAHdsegbWDWcK8RA3DmrUHGg2S81Tug",
     "memoPubkey": "STM7mBK98NCE3HfMhqB9ADdxTutE1RSyGzpJQ6xiybr7gbmpQcXM9",
     "ownerEqualsActive": false,
-    "lastOwnerUpdate": "2026-10-12T11:12:33",
+    "lastOwnerUpdate": "2026-10-21T12:30:45",
     "created": "2018-03-02T12:20:24",
     "ownerThreshold": 1,
     "ownerAuthCount": 1,
-    "postingAuthCount": 5,
+    "postingAuthCount": 6,
     "note": null
    },
    {
@@ -1668,7 +1723,7 @@
     "acct-10@2026-10-21T04:17:21"
    ],
    "fleetWithOwnerUpdatedSinceLeak_2026_09_12": [
-    "acct-00@2026-10-12T11:12:33",
+    "acct-00@2026-10-21T12:30:45",
     "acct-01@2026-10-21T04:15:39",
     "acct-02@2026-10-21T04:16:24",
     "acct-03@2026-10-21T04:16:30",
@@ -1687,6 +1742,6 @@
   }
  },
  "log": [
-  "chain node=https://api.steemit.com · 14 fleet accounts · 63 distinct alive key bodies"
+  "chain node=https://api.steemit.com · 14 fleet accounts · 64 distinct alive key bodies"
  ]
 }
