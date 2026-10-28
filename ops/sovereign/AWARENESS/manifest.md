@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-28T11:46:26.903Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-28T12:38:06.293Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -21,7 +21,7 @@
 - [DEFECT] Domain/org-selftests @ 2026-10-28T10:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-lines @ 2026-10-28T09:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-28T08:48 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-28T11:42 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-28T12:35 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-28T11:00 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] FleetHQ/fresh-oracle @ 2026-10-28T09:05 — autonomy triage: read the log, fix root, land, verify
 
