@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-28T05:35:51.537Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-28T05:54:13.730Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,14 +15,13 @@
 - FleetHQ: 21 workflows · schedule 19 · dispatch 20 · both 19 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [DEFECT] Domain/treasury-route @ 2026-10-28T04:44 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-28T04:33 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/weave-anchor-lines @ 2026-10-28T05:49 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/treasury-route @ 2026-10-28T05:48 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-28T05:37 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/estate-scrub @ 2026-10-28T02:15 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/weave-anchor-lines @ 2026-10-28T01:36 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-10-27T22:07 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-27T21:23 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/identity-guard @ 2026-10-27T15:34 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-28T05:23 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-28T05:50 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-27T22:54 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] FleetHQ/fresh-oracle @ 2026-10-28T03:37 — autonomy triage: read the log, fix root, land, verify
 
