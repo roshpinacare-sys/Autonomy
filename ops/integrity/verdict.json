@@ -1,71 +1,81 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-10-28T16:21:02.319Z",
+  "at": "2026-10-28T18:29:29.863Z",
   "overall": "PASS_WITH_ALERTS",
   "summary": {
     "sources": 11,
-    "verified": 10,
-    "findings": 6,
+    "verified": 12,
+    "findings": 5,
     "counts": {
-      "FLAG": 5,
+      "FLAG": 4,
       "MEDIUM": 1
     }
   },
   "provenance": {
-    "runId": "40725043084",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40725043084",
-    "sha": "3920869abbfe522185d1510507b5f63a7de34a25"
+    "runId": "40745568311",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40745568311",
+    "sha": "1f8abe82c7acee240d162c092a6c912caadedc49"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=40702932278 conc=success repo=Autonomy"
+      "detail": "run=40725043084 conc=success repo=Autonomy"
     },
     {
       "where": "Sandbox:receipts/wallet/verdict.json",
       "law": "verified",
-      "detail": "run=40720404865 conc=success repo=Sandbox"
+      "detail": "run=40735717756 conc=success repo=Sandbox"
     },
     {
       "where": "Sandbox:receipts/fleet/verdict.json",
       "law": "verified",
-      "detail": "run=40708532375 conc=failure repo=Sandbox"
+      "detail": "run=40733566502 conc=failure repo=Sandbox"
     },
     {
       "where": "Sandbox:receipts/grid/verdict.json",
       "law": "verified",
-      "detail": "run=40724857490 conc=failure repo=Sandbox"
+      "detail": "run=40741981327 conc=failure repo=Sandbox"
     },
     {
       "where": "Sandbox:ops/flow/receipt.json",
       "law": "verified",
-      "detail": "run=40695757962 conc=success repo=Sandbox"
+      "detail": "run=40731391298 conc=success repo=Sandbox"
+    },
+    {
+      "where": "FleetHQ:receipts/office-ci/verdict.json",
+      "law": "verified",
+      "detail": "run=40725922738 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=40719500517 conc=success repo=Autonomy"
+      "detail": "run=40725922738 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=40714622093 conc=success repo=Autonomy"
+      "detail": "run=40739307540 conc=success repo=Autonomy"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=40719504770 conc=failure repo=Autonomy"
+      "detail": "run=40739302013 conc=success repo=Autonomy"
+    },
+    {
+      "where": "Domain:office/data.json",
+      "law": "verified",
+      "detail": "run=40739311481 conc=failure repo=Autonomy"
     },
     {
       "where": "Sandbox:ops/decision-truth/verdict.json",
       "law": "verified",
-      "detail": "run=40724859570 conc=success repo=Sandbox"
+      "detail": "run=40741976744 conc=success repo=Sandbox"
     },
     {
       "where": "Sandbox:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=40715595869 conc=failure repo=Sandbox"
+      "detail": "run=40731395042 conc=failure repo=Sandbox"
     }
   ],
   "findings": [
@@ -79,19 +89,13 @@
       "level": "FLAG",
       "where": "Sandbox:state/verifier/verdict-latest.json",
       "law": "stale",
-      "detail": "192h > 26h — verifier.yml"
+      "detail": "194h > 26h — verifier.yml"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:state/verifier/verdict-latest.json",
       "law": "unprovenanced",
       "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: verifier.yml"
-    },
-    {
-      "level": "FLAG",
-      "where": "FleetHQ:receipts/office-ci/verdict.json",
-      "law": "source-unreachable",
-      "detail": "raw 404 — דגל-כנה, לא-מילוי"
     },
     {
       "level": "FLAG",
@@ -103,7 +107,7 @@
       "level": "MEDIUM",
       "where": "Sandbox:ops/flow/receipt.json",
       "law": "agent-authored-receipt",
-      "detail": "committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
+      "detail": "committer=agent9@fleet.local — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
     }
   ]
 }
