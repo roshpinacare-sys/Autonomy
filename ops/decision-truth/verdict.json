@@ -1,26 +1,26 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-28T11:40:03Z",
- "durationMs": 1634,
+ "generatedAt": "2026-10-28T12:35:53Z",
+ "durationMs": 2317,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-28T11:37:56Z",
-  "stateAgeMin": 2,
+  "stateAgeMin": 58,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-28T11:37:48Z",
-   "ageS": 134,
+   "ageS": 3483,
    "stalled": false
   }
  },
  "measures": {
   "chain": {
-   "head": 110828999,
+   "head": 110830109,
    "treasuryNetSp": 3655.7,
-   "mult": 0.0006208943498571942
+   "mult": 0.0006208959741309536
   },
   "beaconPulse": {
    "treasuryNetSp": 3655.7
@@ -51,7 +51,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -102,7 +102,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -126,8 +126,8 @@
     },
     {
      "law": "fleethq-reds-persist",
-     "result": "ok",
-     "detail": "failure runs in last 48h: 1 - routed WO-FleetHQ-reds subject persists (work pending)"
+     "result": "mismatch",
+     "detail": "0 failure runs in 48h - WO-FleetHQ-reds satisfied, world moved past the decision - RE-MEASURE"
     },
     {
      "law": "faulted-agents-fix",
@@ -137,7 +137,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -163,7 +163,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -178,7 +178,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -193,7 +193,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -208,7 +208,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -223,7 +223,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -239,7 +239,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -255,18 +255,18 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 2min (limit 120)"
+     "detail": "state age 58min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "40681602099",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40681602099",
-  "sha": "772aefc3505be96e243cc1bfa059e081fd483307",
+  "runId": "40689034623",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/40689034623",
+  "sha": "bb1edfe912cfe356f953f507edfaaae9a89cd542",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-28T11:40:03Z"
+  "generatedAt": "2026-10-28T12:35:53Z"
  },
  "selftest": {
   "vectors": 16,
