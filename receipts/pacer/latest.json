@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-28T08:34:19.525Z",
+  "at": "2026-10-28T08:48:26.799Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -8,39 +8,27 @@
   "checked": 72,
   "stale": [
     {
-      "wf": "value-scan.yml",
-      "ageMin": 42,
+      "wf": "verifier.yml",
+      "ageMin": 48,
       "cadenceMin": 30,
-      "why": "last success 42min ago > cadence 30+10grace"
+      "why": "last success 48min ago > cadence 30+10grace"
     },
     {
       "wf": "artery-fleet.yml",
-      "ageMin": 5142,
+      "ageMin": 5156,
       "cadenceMin": 60,
-      "why": "last success 5142min ago > cadence 60+10grace"
-    },
-    {
-      "wf": "artery-builder.yml",
-      "ageMin": 95,
-      "cadenceMin": 70,
-      "why": "last success 95min ago > cadence 70+10grace"
+      "why": "last success 5156min ago > cadence 60+10grace"
     }
   ],
   "dispatched": [
     {
-      "wf": "value-scan.yml",
+      "wf": "verifier.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
     },
     {
       "wf": "artery-fleet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-builder.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -48,5 +36,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-10-28T08:34:28.968Z"
+  "doneAt": "2026-10-28T08:48:34.336Z"
 }
