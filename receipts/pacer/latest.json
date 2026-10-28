@@ -1,16 +1,76 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-28T00:28:55.833Z",
-  "ok": false,
+  "at": "2026-10-28T00:42:05.196Z",
+  "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": true,
-  "checked": 58,
-  "stale": [],
-  "dispatched": [],
-  "truncated": 0,
-  "reasons": [
-    "last beat 2026-10-28T00:15:38.574Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  "skipped": false,
+  "checked": 72,
+  "stale": [
+    {
+      "wf": "verifier.yml",
+      "ageMin": 46,
+      "cadenceMin": 30,
+      "why": "last success 46min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 40,
+      "cadenceMin": 30,
+      "why": "last success 40min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-wallet.yml",
+      "ageMin": 93,
+      "cadenceMin": 60,
+      "why": "last success 93min ago > cadence 60+10grace"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ageMin": 4670,
+      "cadenceMin": 60,
+      "why": "last success 4670min ago > cadence 60+10grace"
+    },
+    {
+      "wf": "artery-builder.yml",
+      "ageMin": 104,
+      "cadenceMin": 70,
+      "why": "last success 104min ago > cadence 70+10grace"
+    }
   ],
-  "doneAt": "2026-10-28T00:28:56.250Z"
+  "dispatched": [
+    {
+      "wf": "verifier.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-wallet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-fleet.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-builder.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    }
+  ],
+  "truncated": 0,
+  "reasons": [],
+  "doneAt": "2026-10-28T00:42:15.573Z"
 }
