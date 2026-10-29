@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-29T10:04:32.258Z",
+ "at": "2026-10-29T10:57:32.235Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-29T09:46:13.123Z",
+ "verdictAt": "2026-10-29T10:45:52.752Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -16,6 +16,14 @@
   {
    "workflow": "artery-watch.yml",
    "check": "sbx.wf-artery-watch",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -44,14 +52,6 @@
    "status": 204,
    "note": "dispatched",
    "ok": true
-  },
-  {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
   }
  ],
  "refused": [],
@@ -59,8 +59,8 @@
  "notHealable": [
   {
    "id": "dev.rate",
-   "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 0% < 10% over 353 commits/24h",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 10%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,15 +76,15 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 2,
+ "truncated": 3,
  "verdictOverall": "FAIL",
  "workflows": {
-  "total": 58,
-  "active": 58,
+  "total": 59,
+  "active": 59,
   "disabled": []
  },
  "keys": {
-  "total": 15,
+  "total": 16,
   "required": [
    {
     "name": "FLEET_PAT",
