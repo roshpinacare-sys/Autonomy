@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-29T19:51:18.396Z",
+ "at": "2026-10-29T20:32:33.460Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-29T19:38:44.479Z",
+ "verdictAt": "2026-10-29T20:08:13.968Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -22,8 +30,8 @@
    "ok": true
   },
   {
-   "workflow": "verifier.yml",
-   "check": "sbx.wf-verifier",
+   "workflow": "federation.yml",
+   "check": "sbx.wf-federation",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -33,14 +41,6 @@
    "workflow": "value-scan.yml",
    "check": "sbx.wf-value-scan",
    "level": "FAIL",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
-   "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -60,7 +60,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 5% < 10% over 352 commits/24h",
+   "why": "heartbeat-without-building: codeShare 2% < 10% over 352 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
