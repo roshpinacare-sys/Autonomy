@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-29T02:30:26.748Z",
+ "at": "2026-10-29T03:24:15.000Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-29T02:21:31.241Z",
+ "verdictAt": "2026-10-29T03:21:09.172Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -64,13 +64,25 @@
    "reason": "not-a-dispatchable-workflow"
   },
   {
+   "id": "steem.fleet",
+   "level": "DEGRADED",
+   "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "steem.treasury",
+   "level": "NOTICE",
+   "why": "treasury account absent",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
    "id": "blurt.alive",
    "level": "NOTICE",
    "why": "blurt RPC unreachable from runner (1 hosts tried) — UNREACHABLE, לא \"מת\" עד-שיימד",
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 4,
+ "truncated": 5,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 58,
