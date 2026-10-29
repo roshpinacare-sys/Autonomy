@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-29T20:17:19.963Z",
+  "at": "2026-10-29T20:32:06.325Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -9,26 +9,62 @@
   "stale": [
     {
       "wf": "value-scan.yml",
-      "ageMin": 607,
+      "ageMin": 622,
       "cadenceMin": 30,
-      "why": "last success 607min ago > cadence 30+10grace"
+      "why": "last success 622min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ageMin": 41,
+      "cadenceMin": 30,
+      "why": "last success 41min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "verifier.yml",
+      "ageMin": 54,
+      "cadenceMin": 30,
+      "why": "last success 54min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 41,
+      "cadenceMin": 30,
+      "why": "last success 41min ago > cadence 30+10grace"
     },
     {
       "wf": "artery-decision-truth.yml",
-      "ageMin": 613,
+      "ageMin": 628,
       "cadenceMin": 30,
-      "why": "last success 613min ago > cadence 30+10grace"
+      "why": "last success 628min ago > cadence 30+10grace"
     },
     {
       "wf": "artery-fleet.yml",
-      "ageMin": 7285,
+      "ageMin": 7300,
       "cadenceMin": 60,
-      "why": "last success 7285min ago > cadence 60+10grace"
+      "why": "last success 7300min ago > cadence 60+10grace"
     }
   ],
   "dispatched": [
     {
       "wf": "value-scan.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "verifier.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-selfheal.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -48,5 +84,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-10-29T20:17:29.614Z"
+  "doneAt": "2026-10-29T20:32:25.406Z"
 }
