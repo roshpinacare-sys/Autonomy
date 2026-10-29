@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-29T01:49:52.432Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-29T02:41:17.236Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,15 +15,15 @@
 - FleetHQ: 4 workflows · schedule 3 · dispatch 4 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-29T01:26 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/treasury-route @ 2026-10-29T02:25 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-29T01:50 — gate held the line - verify the payload it stopped, then fix the producer
 - [ENFORCEMENT] Domain/identity-guard @ 2026-10-29T01:26 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/treasury-route @ 2026-10-29T01:13 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-lines @ 2026-10-29T00:58 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-29T00:24 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-28T23:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-10-28T22:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-10-28T22:30 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-29T01:37 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-29T02:30 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-10-29T01:11 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] FleetHQ/office-3d @ 2026-10-28T20:30 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/runtime-pacemaker @ 2026-10-28T15:32 — autonomy triage: read the log, fix root, land, verify
