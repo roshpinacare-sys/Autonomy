@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-29T22:22:41.030Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-29T22:37:11.118Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,10 +15,10 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/dex-mirror @ 2026-10-29T22:36 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/treasury-route @ 2026-10-29T22:22 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/market-grid-cron @ 2026-10-29T22:06 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/dex-mirror @ 2026-10-29T22:03 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-10-29T21:27 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/treasury-route @ 2026-10-29T21:23 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-29T21:11 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/economy-engine @ 2026-10-29T20:25 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-29T20:23 — autonomy triage: read the log, fix root, land, verify
