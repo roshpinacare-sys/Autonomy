@@ -1,6 +1,6 @@
-# דוח-אמת (verifier) · 2026-10-29T16:11:39.429Z
+# דוח-אמת (verifier) · 2026-10-29T16:41:12.680Z
 
-**overall: FAIL** · auth: token(fed) · took: 22457ms · כללים: config.json (אפס-דעה-אישית)
+**overall: FAIL** · auth: token(fed) · took: 23403ms · כללים: config.json (אפס-דעה-אישית)
 
 > יש-דברים-שבורים-ממש — זה הדוח-הכן, בלי-קישוטים.
 
@@ -8,19 +8,19 @@
 | בדיקה | דרגה | ראיה |
 |---|---|---|
 | `sbx.wf-sovereign` | **OK** | success recent |
-| `sbx.wf-sovereign-state` | **DEGRADED** | last success 36min ago > slot |
+| `sbx.wf-sovereign-state` | **DEGRADED** | last success 24min ago > slot |
 | `sbx.wf-artery-catchup` | **OK** | success recent |
-| `sbx.wf-artery-watch` | **DEGRADED** | last success 39min ago > slot |
-| `sbx.wf-verifier` | **OK** | success recent |
-| `sbx.wf-federation` | **DEGRADED** | last success 39min ago > slot |
+| `sbx.wf-artery-watch` | **DEGRADED** | last success 24min ago > slot |
+| `sbx.wf-verifier` | **DEGRADED** | last success 51min ago > slot |
+| `sbx.wf-federation` | **OK** | success recent |
 | `sbx.wf-value-scan` | **FAIL** | no success in last 8 runs of value-scan.yml |
 | `sbx.wf-hive-probe` | **OK** | success recent |
-| `sbx.wf-fleet-heal` | **DEGRADED** | last success 56min ago > slot |
+| `sbx.wf-fleet-heal` | **OK** | success recent |
 | `sbx.wf-artery-decision-truth` | **FAIL** | no success in last 8 runs of artery-decision-truth.yml |
-| `sbx.wf-artery-grid` | **DEGRADED** | last success 46min ago > slot |
+| `sbx.wf-artery-grid` | **OK** | success recent |
 | `sbx.wf-artery-wallet` | **OK** | success recent |
-| `sbx.wf-artery-integrity` | **OK** | success recent |
-| `sbx.wf-artery-participation` | **FAIL** | last success 462min ago > 4x slot |
+| `sbx.wf-artery-integrity` | **DEGRADED** | last success 75min ago > slot |
+| `sbx.wf-artery-participation` | **FAIL** | last success 492min ago > 4x slot |
 | `sbx.wf-artery-fleet` | **FAIL** | no success in last 8 runs of artery-fleet.yml |
 | `sbx.wf-artery-flow` | **OK** | success recent |
 
@@ -38,22 +38,22 @@
 ## 3. אמת-על-השרשרת · Steem (https://api.steemit.com)
 | חשבון | SP אפקטיבי | VP% | פוסט-אחרון | הצבעה-אחרונה |
 |---|---|---|---|---|
-| @acct-00 | 1511 | 6% | 14.2h | 3.3h |
-| @acct-01 | 300 | 68% | 264.6h | 50.9h |
-| @acct-02 | 303 | 69% | 257.2h | 50.9h |
-| @acct-03 | 320 | 64% | 255.8h | 50.9h |
-| @acct-04 | 305 | 64% | 254.4h | 50.9h |
-| @acct-05 | 300 | 64% | 418.7h | 50.9h |
-| @acct-06 | 41 | 74% | 400.9h | 50.9h |
-| @acct-07 | 41 | 73% | 402.2h | 50.9h |
-| @acct-08 | 43 | 73% | 402.2h | 50.9h |
-| @acct-09 | 41 | 73% | 402.2h | 50.9h |
-| @acct-10 | 44 | 76% | 402.2h | 50.9h |
-| @acct-11 | 0 | 0% | 264.6h | 20.5h |
-| @acct-12 | 0 | 0% | 402.2h | 20.9h |
-| @acct-13 | 0 | 0% | 419.6h | 20.9h |
+| @acct-00 | 1511 | 6% | 14.7h | 3.8h |
+| @acct-01 | 300 | 68% | 265.1h | 51.4h |
+| @acct-02 | 303 | 69% | 257.7h | 51.4h |
+| @acct-03 | 320 | 64% | 256.3h | 51.4h |
+| @acct-04 | 305 | 64% | 254.9h | 51.4h |
+| @acct-05 | 300 | 64% | 419.2h | 51.4h |
+| @acct-06 | 41 | 74% | 401.4h | 51.4h |
+| @acct-07 | 41 | 73% | 402.7h | 51.4h |
+| @acct-08 | 43 | 73% | 402.7h | 51.4h |
+| @acct-09 | 41 | 73% | 402.7h | 51.4h |
+| @acct-10 | 44 | 76% | 402.7h | 51.4h |
+| @acct-11 | 0 | 0% | 265.1h | 21h |
+| @acct-12 | 0 | 0% | 402.6h | 21.4h |
+| @acct-13 | 0 | 0% | 420.1h | 21.4h |
 
-> `steem.fleet` = **OK** — fleet posted 14.2h ago
+> `steem.fleet` = **OK** — fleet posted 14.7h ago
 > `steem.treasury` = **DEGRADED** — treasury acct-00 at 1511 SP < 3000 (recovery-plan §3)
 
 ## 4. Blurt (UNREACHABLE)
@@ -64,21 +64,19 @@ RPC בלתי-נגיש מהרץ: no blurt accounts configured in this repo's veri
 נסרקו 270 קבצים; פגומים: 0
 
 ## 6. דלתא-מול-הריצה-הקודמת
-- ↗ השתפר: `sbx.wf-verifier` DEGRADED → **OK**
-- ↘ התדרדר: `sbx.wf-federation` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-fleet-heal` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-artery-grid` OK → **DEGRADED**
-- ↗ השתפר: `sbx.wf-artery-wallet` DEGRADED → **OK**
-- ↘ התדרדר: `dev.rate` NOTICE → **DEGRADED**
+- ↘ התדרדר: `sbx.wf-verifier` OK → **DEGRADED**
+- ↗ השתפר: `sbx.wf-federation` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-fleet-heal` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-grid` DEGRADED → **OK**
+- ↘ התדרדר: `sbx.wf-artery-integrity` OK → **DEGRADED**
 
 ## 7. משימות-שנצרתו-עכשיו
 - **V-LOOP-SOVEREIGN-STATE** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-WATCH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-FEDERATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-VERIFIER** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-VALUE-SCAN** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-FLEET-HEAL** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-DECISION-TRUTH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-GRID** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-ARTERY-INTEGRITY** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-PARTICIPATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-FLEET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-DEV-FOCUS** — דופק-בלי-בנייה: להפנות-משאב-סוכנים מטביעות-מצב לבניית-מוצר/תיקונים אמתיים
