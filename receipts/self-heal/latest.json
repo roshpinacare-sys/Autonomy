@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-29T16:17:12.284Z",
+ "at": "2026-10-29T17:11:10.024Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-29T16:11:39.429Z",
+ "verdictAt": "2026-10-29T16:41:12.680Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -22,8 +22,8 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -38,17 +38,17 @@
    "ok": true
   },
   {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
-   "level": "DEGRADED",
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
+   "level": "FAIL",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "artery-decision-truth.yml",
-   "check": "sbx.wf-artery-decision-truth",
-   "level": "FAIL",
+   "workflow": "artery-integrity.yml",
+   "check": "sbx.wf-artery-integrity",
+   "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -76,7 +76,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 3,
+ "truncated": 2,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 59,
