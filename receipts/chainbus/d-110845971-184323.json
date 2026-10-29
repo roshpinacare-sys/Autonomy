@@ -1,0 +1,29 @@
+{
+  "schema": "chainbus.directive.receipt/1",
+  "at": "2026-10-29T02:38:54.560Z",
+  "ok": true,
+  "ref": {
+    "block": 110845971,
+    "idx": 184323,
+    "seq": 1,
+    "from": "operator-plane",
+    "to": "*",
+    "runId": ""
+  },
+  "body": "{\"task\":\"health-probe\",\"runId\":\"\"}",
+  "task": {
+    "name": "health-probe",
+    "description": "liveness: public chain RPC head block + this repo git tip (read-only)",
+    "commands": 2,
+    "timeoutSec": 60
+  },
+  "exec": {
+    "ok": true,
+    "code": 0,
+    "ms": 515,
+    "receipt": "receipts/execution/bus-d-110845971-184323.json",
+    "outTail": "console.error(e);process.exit(1)})'\nchain head_block: 110846886 time: 2026-10-29T02:38:51\n\n\n=== [1] exit=0 killed=false 115ms ===\n$ git log --oneline -3\n4a91f34 operator-routing: claims → autonomy lanes 2026-10-29T02:36:00Z [skip ci]\n\n\nreceipt: receipts/execution/bus-d-110845971-184323.json ok=true\n",
+    "errTail": ""
+  },
+  "node": "https://api.steemit.com"
+}
