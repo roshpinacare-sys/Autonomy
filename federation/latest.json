@@ -1,6 +1,6 @@
 {
   "schema": "federation/1",
-  "at": "2026-10-29T02:30:57.930Z",
+  "at": "2026-10-29T02:31:42.520Z",
   "verdict": "FEDERATION-DRIFT",
   "owner": "roshpinacare-sys",
   "authMode": "token",
@@ -9,13 +9,18 @@
     "github": 49,
     "records": 49,
     "flags": 40,
-    "flagsTotal": 52
+    "flagsTotal": 53
   },
   "flags": [
     {
       "repo": "Adsmarket",
       "flag": "ADOPT-PENDING",
       "detail": "discovered on GitHub (public) but not in manifest — zero-trust: adoption requires an explicit manifest commit"
+    },
+    {
+      "repo": "Autonomy",
+      "flag": "WORKFLOW-RED",
+      "detail": "artery-fleet → failure @ 2026-10-29T02:30:24"
     },
     {
       "repo": "Defi",
@@ -206,11 +211,6 @@
       "repo": "saos-jummper",
       "flag": "ADOPT-PENDING",
       "detail": "discovered on GitHub (public) but not in manifest — zero-trust: adoption requires an explicit manifest commit"
-    },
-    {
-      "repo": "saos-markets",
-      "flag": "WORKFLOW-RED",
-      "detail": "ci-probe → failure @ 2026-10-17T02:44:37"
     }
   ],
   "repos": [
@@ -234,7 +234,9 @@
       "ageHours": 0,
       "archived": false,
       "actions": "ok",
-      "redWorkflows": []
+      "redWorkflows": [
+        "artery-fleet"
+      ]
     },
     {
       "name": "Console",
@@ -290,7 +292,7 @@
       "onGithub": true,
       "role": "public estate lane (function per owner census)",
       "visibility": "public",
-      "ageHours": 0.1,
+      "ageHours": 0.2,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -336,7 +338,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 6.6,
+      "ageHours": 6.7,
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
@@ -349,7 +351,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 106.4,
+      "ageHours": 106.5,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -518,7 +520,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 1,
+      "ageHours": 1.1,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -665,7 +667,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 236,
+      "ageHours": 236.1,
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
@@ -689,7 +691,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 212.9,
+      "ageHours": 213,
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
@@ -777,9 +779,9 @@
       "redWorkflows": []
     }
   ],
-  "tookMs": 16133,
+  "tookMs": 15150,
   "chain": {
     "prev": "9c12af383c205e1bf8cc08ca0fc595725a5ca134a7317e0353c932f695c4a43c",
-    "cur": "0b1f8bb85d0cfe4f99725ef5dae5ba99415cc92ef93e6f13c12c00c30dbb2853"
+    "cur": "442b3689eb22acbd1785727a53313160326f7f84bb94e0482b9ec97cd6029195"
   }
 }
