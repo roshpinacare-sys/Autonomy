@@ -1,74 +1,74 @@
 # FLOW MAP · מפת-הזרימה המדודה של האורגניזם
 
-נמדד: 2026-10-30T21:46:27.860Z
+נמדד: 2026-10-30T22:27:22.837Z
 צומת=40 · קשת=130 · רפאים=0 · ישנים=19 · יתומים=3 · פנים-מישורי=25 · משולב-דף=11 · צפיפות-זרימה=3.25
 
 | פיד | ריפו | סוג | גיל | חוק-טריות | מי-מייצר | אינטגרציה |
 |---|---|---|---|---|---|---|
-| `receipts/wallet/verdict.json` | Autonomy | receipt | 1.3h | <=2h | artery-wallet (hourly) | INTEGRATED |
-| `receipts/fleet/verdict.json` | Autonomy | receipt | 0.0h | <=3h | artery-fleet (2h) | INTEGRATED |
-| `receipts/grid/verdict.json` | Autonomy | receipt | 0.5h | <=1h | artery-grid (30min) | INTEGRATED |
-| `receipts/latest.json` | Autonomy | pulse | 0.4h | <=1h | sovereign.yml (~15min) | INTEGRATED |
-| `ops/lessons/ledger.md` | Autonomy | lesson | 2.0h | <=26h | artery-scribe (daily) | PLANE-INTERNAL |
-| `ops/flow/flow-map.json` | Autonomy | flowmap | 2.0h | <=4h | artery-flow (3h) | SELF |
-| `receipts/office-ci/verdict.json` | FleetHQ | receipt | 10.9h | <=30h | office-ci (push) | INTEGRATED |
-| `office/state/office-state.json` | FleetHQ | state | 54.4h | <=3h | office-heartbeat (2h) | INTEGRATED |
-| `digest.json` | FleetHQ | digest | 2.8h | <=26h | unknown (404 measured 2026-10-11) | PLANE-INTERNAL |
-| `office/data.json` | Domain | book | 0.2h | <=1h | office-pulse (20min) | INTEGRATED |
-| `agents/office-live.json` | Domain | book | -0.0h | <=3h | office-artery (2h) | PLANE-INTERNAL |
-| `dex/office-feed.json` | Domain | book | 11.3h | <=26h | office-feed (daily) | PLANE-INTERNAL |
-| `status.json` | Domain | book | 0.0h | <=30h | pages build | INTEGRATED |
-| `marketing/adsmarket.json` | Domain | book | 106.2h | <=168h | adsmarket-panel (weekly Mon 05:41 UTC + dispatch) | INTEGRATED |
-| `dex/agent.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/bridge.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/credits.json` | Domain | book | 0.6h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/deposits.json` | Domain | book | 0.4h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/fleet.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/giants-gap.json` | Domain | book | 342.0h | <=48h | discovered | ORPHAN |
-| `dex/giants.json` | Domain | book | 0.6h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/grid.json` | Domain | book | 0.6h | <=26h | discovered | PLANE-INTERNAL |
-| `dex/honest-econ.json` | Domain | book | 0.6h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/mirror-stub.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/money.json` | Domain | book | 0.6h | <=48h | discovered | INTEGRATED |
-| `dex/onramp.json` | Domain | book | 0.6h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/pegout-queue.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/pnl-desk.json` | Domain | book | 5.5h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/portfolio.json` | Domain | book | 0.6h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/redeem-requests.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/relay.json` | Domain | book | 0.6h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/showcase.json` | Domain | book | 0.6h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/state.json` | Domain | book | 0.6h | <=48h | discovered | INTEGRATED |
-| `dex/vault-census.json` | Domain | book | 225.4h | <=48h | discovered | ORPHAN |
-| `dex/vault-guardian.json` | Domain | book | 225.4h | <=48h | discovered | ORPHAN |
-| `dex/watch.json` | Domain | book | 0.6h | <=26h | discovered | PLANE-INTERNAL |
-| `dex/world.json` | Domain | book | 0.6h | <=26h | discovered | PLANE-INTERNAL |
-| `dex/xc-intents.json` | Domain | book | 335.9h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/xc-ops.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
-| `dex/xc-requests.json` | Domain | book | 342.0h | <=48h | discovered | PLANE-INTERNAL |
+| `receipts/wallet/verdict.json` | Autonomy | receipt | 0.7h | <=2h | artery-wallet (hourly) | INTEGRATED |
+| `receipts/fleet/verdict.json` | Autonomy | receipt | 0.3h | <=3h | artery-fleet (2h) | INTEGRATED |
+| `receipts/grid/verdict.json` | Autonomy | receipt | 0.3h | <=1h | artery-grid (30min) | INTEGRATED |
+| `receipts/latest.json` | Autonomy | pulse | 0.7h | <=1h | sovereign.yml (~15min) | INTEGRATED |
+| `ops/lessons/ledger.md` | Autonomy | lesson | 0.5h | <=26h | artery-scribe (daily) | PLANE-INTERNAL |
+| `ops/flow/flow-map.json` | Autonomy | flowmap | 0.7h | <=4h | artery-flow (3h) | SELF |
+| `receipts/office-ci/verdict.json` | FleetHQ | receipt | 11.6h | <=30h | office-ci (push) | INTEGRATED |
+| `office/state/office-state.json` | FleetHQ | state | 55.1h | <=3h | office-heartbeat (2h) | INTEGRATED |
+| `digest.json` | FleetHQ | digest | 3.5h | <=26h | unknown (404 measured 2026-10-11) | PLANE-INTERNAL |
+| `office/data.json` | Domain | book | 0.9h | <=1h | office-pulse (20min) | INTEGRATED |
+| `agents/office-live.json` | Domain | book | 0.7h | <=3h | office-artery (2h) | PLANE-INTERNAL |
+| `dex/office-feed.json` | Domain | book | 12.0h | <=26h | office-feed (daily) | PLANE-INTERNAL |
+| `status.json` | Domain | book | 0.2h | <=30h | pages build | INTEGRATED |
+| `marketing/adsmarket.json` | Domain | book | 106.9h | <=168h | adsmarket-panel (weekly Mon 05:41 UTC + dispatch) | INTEGRATED |
+| `dex/agent.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/bridge.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/credits.json` | Domain | book | 1.3h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/deposits.json` | Domain | book | 1.1h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/fleet.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/giants-gap.json` | Domain | book | 342.7h | <=48h | discovered | ORPHAN |
+| `dex/giants.json` | Domain | book | 1.3h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/grid.json` | Domain | book | 1.3h | <=26h | discovered | PLANE-INTERNAL |
+| `dex/honest-econ.json` | Domain | book | 1.3h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/mirror-stub.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/money.json` | Domain | book | 1.3h | <=48h | discovered | INTEGRATED |
+| `dex/onramp.json` | Domain | book | 1.3h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/pegout-queue.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/pnl-desk.json` | Domain | book | 6.2h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/portfolio.json` | Domain | book | 1.3h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/redeem-requests.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/relay.json` | Domain | book | 1.3h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/showcase.json` | Domain | book | 1.3h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/state.json` | Domain | book | 1.3h | <=48h | discovered | INTEGRATED |
+| `dex/vault-census.json` | Domain | book | 226.1h | <=48h | discovered | ORPHAN |
+| `dex/vault-guardian.json` | Domain | book | 226.1h | <=48h | discovered | ORPHAN |
+| `dex/watch.json` | Domain | book | 1.3h | <=26h | discovered | PLANE-INTERNAL |
+| `dex/world.json` | Domain | book | 1.3h | <=26h | discovered | PLANE-INTERNAL |
+| `dex/xc-intents.json` | Domain | book | 336.6h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/xc-ops.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/xc-requests.json` | Domain | book | 342.7h | <=48h | discovered | PLANE-INTERNAL |
 
 ## רפאים (צרכן-חי על מפיק-מת) — flag
 - none
 
 ## ישנים-מעבר-חוק (flag)
-- roshpinacare-sys/Domain/index.html (page) -> `roshpinacare-sys/FleetHQ:office/state/office-state.json` age=54.4h
-- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/bridge.json` age=342.0h
-- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/fleet.json` age=342.0h
-- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/redeem-requests.json` age=342.0h
-- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/mirror-stub.json` age=342.0h
-- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/xc-intents.json` age=335.9h
-- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/xc-ops.json` age=342.0h
-- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/xc-requests.json` age=342.0h
-- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.0h
-- roshpinacare-sys/Domain/agents/dex-core.cjs (agent) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.0h
-- roshpinacare-sys/Domain/agents/dex-router.cjs (agent) -> `roshpinacare-sys/Domain:dex/agent.json` age=342.0h
-- roshpinacare-sys/Domain/agents/dex-xc.cjs (agent) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.0h
-- roshpinacare-sys/Domain/agents/integrity-twin.mjs (agent) -> `roshpinacare-sys/FleetHQ:office/state/office-state.json` age=54.4h
-- roshpinacare-sys/Domain/agents/pegout-hand.cjs (agent) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.0h
-- roshpinacare-sys/Sandbox/engine/decision-truth.mjs (engine) -> `roshpinacare-sys/FleetHQ:office/state/office-state.json` age=54.4h
-- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/bridge.json` age=342.0h
-- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/fleet.json` age=342.0h
-- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/redeem-requests.json` age=342.0h
-- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/mirror-stub.json` age=342.0h
+- roshpinacare-sys/Domain/index.html (page) -> `roshpinacare-sys/FleetHQ:office/state/office-state.json` age=55.1h
+- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/bridge.json` age=342.7h
+- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/fleet.json` age=342.7h
+- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/redeem-requests.json` age=342.7h
+- roshpinacare-sys/Autonomy/engine/scribe.mjs (learner) -> `roshpinacare-sys/Domain:dex/mirror-stub.json` age=342.7h
+- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/xc-intents.json` age=336.6h
+- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/xc-ops.json` age=342.7h
+- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/xc-requests.json` age=342.7h
+- roshpinacare-sys/Domain/.github/workflows/dex-xc-cron.yml (workflow) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.7h
+- roshpinacare-sys/Domain/agents/dex-core.cjs (agent) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.7h
+- roshpinacare-sys/Domain/agents/dex-router.cjs (agent) -> `roshpinacare-sys/Domain:dex/agent.json` age=342.7h
+- roshpinacare-sys/Domain/agents/dex-xc.cjs (agent) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.7h
+- roshpinacare-sys/Domain/agents/integrity-twin.mjs (agent) -> `roshpinacare-sys/FleetHQ:office/state/office-state.json` age=55.1h
+- roshpinacare-sys/Domain/agents/pegout-hand.cjs (agent) -> `roshpinacare-sys/Domain:dex/pegout-queue.json` age=342.7h
+- roshpinacare-sys/Sandbox/engine/decision-truth.mjs (engine) -> `roshpinacare-sys/FleetHQ:office/state/office-state.json` age=55.1h
+- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/bridge.json` age=342.7h
+- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/fleet.json` age=342.7h
+- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/redeem-requests.json` age=342.7h
+- roshpinacare-sys/Sandbox/engine/scribe.mjs (engine) -> `roshpinacare-sys/Domain:dex/mirror-stub.json` age=342.7h
 
 ## יתומים (מפיק-שאף-אחד-לא-קורא) — יעדי-זיקוק, flag
 - `roshpinacare-sys/Domain:dex/giants-gap.json` (discovered)
@@ -103,7 +103,7 @@
 - `roshpinacare-sys/Domain:dex/xc-requests.json` (discovered)
 
 ## סטיית-תוכן-מול-קומיט (קומיט-חד-של-תוכן-ישן) — flag
-- `roshpinacare-sys/Domain:dex/giants-gap.json` commit=342.0h content=366.5h
-- `roshpinacare-sys/Domain:dex/pegout-queue.json` commit=342.0h content=631.4h
-- `roshpinacare-sys/Domain:dex/xc-ops.json` commit=342.0h content=631.4h
-- `roshpinacare-sys/Domain:dex/xc-requests.json` commit=342.0h content=631.4h
+- `roshpinacare-sys/Domain:dex/giants-gap.json` commit=342.7h content=367.2h
+- `roshpinacare-sys/Domain:dex/pegout-queue.json` commit=342.7h content=632.1h
+- `roshpinacare-sys/Domain:dex/xc-ops.json` commit=342.7h content=632.0h
+- `roshpinacare-sys/Domain:dex/xc-requests.json` commit=342.7h content=632.1h
