@@ -15,43 +15,43 @@
    "required": "14/14",
    "pass": true,
    "source": "condenser_api.get_accounts roster+the-master-of-record",
-   "at": "2026-10-29T08:21:21.356Z"
+   "at": "2026-10-30T08:32:13.725Z"
   },
   "2_presenceMatrix": {
-   "measured": "113.1h",
+   "measured": "137.3h",
    "required": "<12h",
    "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/presence-matrix.json",
-   "at": "2026-10-29T08:21:21.356Z"
+   "at": "2026-10-30T08:32:13.725Z"
   },
   "3_custody": {
    "measured": "0/14",
    "required": ">=13/14",
    "pass": false,
    "source": "saos-runtime@main state/beat/ci-last-heartbeat.json",
-   "at": "2026-10-29T08:21:21.356Z"
+   "at": "2026-10-30T08:32:13.725Z"
   },
   "4_antiFarmLaws": {
    "measured": "w=8 posts=1 votes=0",
    "required": "laws-in-config",
    "pass": true,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/readiness.json",
-   "at": "2026-10-29T08:21:21.356Z"
+   "at": "2026-10-30T08:32:13.725Z"
   },
   "5_cooldown7d": {
-   "measured": "10.27d since 2026-10-19T01:48:34.695Z",
+   "measured": "11.28d since 2026-10-19T01:48:34.695Z",
    "required": ">=7d",
    "pass": true,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/content-memory/published.jsonl last=2026-10-19T01:48:34.695Z (fleet lane)",
    "eta": "2026-10-26T01:49:00Z",
-   "at": "2026-10-29T08:21:21.356Z"
+   "at": "2026-10-30T08:32:13.725Z"
   },
   "6_ownerApproval": {
    "measured": "R309-SOVEREIGN-OPENING present",
    "required": "explicit-owner-approval",
    "pass": true,
    "source": "ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md",
-   "at": "2026-10-29T08:21:21.356Z"
+   "at": "2026-10-30T08:32:13.725Z"
   }
  },
  "laws": {
@@ -85,14 +85,14 @@
   }
  ],
  "executor": "sovereign-arming-check.yml (daily 02:05Z + dispatch) — truth-monitor: re-measures every run, never reverts owner-law ARM, never self-arms over a red checklist, records discrepancy flags (42c72b28)",
- "at": "2026-10-29T08:21:21.356Z",
+ "at": "2026-10-30T08:32:13.725Z",
  "monitor": {
-  "at": "2026-10-29T08:21:21.356Z",
+  "at": "2026-10-30T08:32:13.725Z",
   "allPass": false,
   "discrepancies": [
    {
     "id": "2_presenceMatrix",
-    "measured": "113.1h"
+    "measured": "137.3h"
    },
    {
     "id": "3_custody",
