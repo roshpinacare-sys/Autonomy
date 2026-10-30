@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-30T18:07:43.185Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-30T18:13:14.045Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,16 +15,16 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/economy-engine @ 2026-10-30T18:07 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-10-30T17:44 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/treasury-route @ 2026-10-30T16:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-mirror @ 2026-10-30T16:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-10-30T15:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-10-30T15:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-30T13:48 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/economy-engine @ 2026-10-30T10:19 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/value-scan @ 2026-10-30T18:11 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-30T18:11 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-fleet @ 2026-10-30T17:44 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-30T17:44 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/value-scan @ 2026-10-30T17:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-10-30T16:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/floating-builds @ 2026-10-30T15:48 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-30T15:33 — autonomy triage: read the log, fix root, land, verify
