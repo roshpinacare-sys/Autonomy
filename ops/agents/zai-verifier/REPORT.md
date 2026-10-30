@@ -1,6 +1,6 @@
-# דוח-אמת (verifier) · 2026-10-30T05:31:34.686Z
+# דוח-אמת (verifier) · 2026-10-30T06:01:09.513Z
 
-**overall: FAIL** · auth: token(fed) · took: 23542ms · כללים: config.json (אפס-דעה-אישית)
+**overall: FAIL** · auth: token(fed) · took: 21256ms · כללים: config.json (אפס-דעה-אישית)
 
 > יש-דברים-שבורים-ממש — זה הדוח-הכן, בלי-קישוטים.
 
@@ -8,17 +8,17 @@
 | בדיקה | דרגה | ראיה |
 |---|---|---|
 | `sbx.wf-sovereign` | **OK** | success recent |
-| `sbx.wf-sovereign-state` | **DEGRADED** | last success 16min ago > slot |
-| `sbx.wf-artery-catchup` | **DEGRADED** | last success 30min ago > slot |
-| `sbx.wf-artery-watch` | **DEGRADED** | last success 45min ago > slot |
-| `sbx.wf-verifier` | **OK** | success recent |
-| `sbx.wf-federation` | **DEGRADED** | last success 68min ago > slot |
+| `sbx.wf-sovereign-state` | **DEGRADED** | last success 17min ago > slot |
+| `sbx.wf-artery-catchup` | **OK** | success recent |
+| `sbx.wf-artery-watch` | **DEGRADED** | last success 25min ago > slot |
+| `sbx.wf-verifier` | **DEGRADED** | last success 49min ago > slot |
+| `sbx.wf-federation` | **OK** | success recent |
 | `sbx.wf-value-scan` | **FAIL** | no success in last 8 runs of value-scan.yml |
 | `sbx.wf-hive-probe` | **OK** | success recent |
-| `sbx.wf-fleet-heal` | **DEGRADED** | last success 68min ago > slot |
+| `sbx.wf-fleet-heal` | **OK** | success recent |
 | `sbx.wf-artery-decision-truth` | **FAIL** | no success in last 8 runs of artery-decision-truth.yml |
-| `sbx.wf-artery-grid` | **OK** | success recent |
-| `sbx.wf-artery-wallet` | **OK** | success recent |
+| `sbx.wf-artery-grid` | **DEGRADED** | last success 49min ago > slot |
+| `sbx.wf-artery-wallet` | **DEGRADED** | last success 75min ago > slot |
 | `sbx.wf-artery-integrity` | **OK** | success recent |
 | `sbx.wf-artery-participation` | **FAIL** | no success in last 8 runs of artery-participation.yml |
 | `sbx.wf-artery-fleet` | **FAIL** | no success in last 8 runs of artery-fleet.yml |
@@ -29,31 +29,31 @@
 |---|---|---|---|---|
 | Autonomy | public | 100+ | 0% | ok |
 | Console | public | 100+ | 0% | ok |
-| Domain | public | 100+ | 0% | ok |
+| Domain | public | 100+ | 8% | ok |
 | Pulse | public | 52 | 0% | ok |
 
-**מדד-מסכם:** codeShare = 0% (42 commits מסווגים מתוך 352)
-> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 0% < 10% over 352 commits/24h
+**מדד-מסכם:** codeShare = 2% (42 commits מסווגים מתוך 352)
+> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 2% < 10% over 352 commits/24h
 
 ## 3. אמת-על-השרשרת · Steem (https://api.steemit.com)
 | חשבון | SP אפקטיבי | VP% | פוסט-אחרון | הצבעה-אחרונה |
 |---|---|---|---|---|
-| @acct-00 | 1511 | 13% | 5.5h | 6.8h |
-| @acct-01 | 300 | 55% | 277.9h | 64.3h |
-| @acct-02 | 303 | 55% | 270.5h | 64.2h |
-| @acct-03 | 320 | 55% | 269.1h | 64.2h |
-| @acct-04 | 305 | 55% | 267.7h | 64.2h |
-| @acct-05 | 300 | 55% | 432h | 64.2h |
-| @acct-06 | 41 | 55% | 414.3h | 64.2h |
-| @acct-07 | 41 | 54% | 415.6h | 64.2h |
-| @acct-08 | 43 | 54% | 415.6h | 64.2h |
-| @acct-09 | 41 | 54% | 415.5h | 64.2h |
-| @acct-10 | 44 | 54% | 415.5h | 64.2h |
-| @acct-11 | 0 | 0% | 277.9h | 33.8h |
-| @acct-12 | 0 | 0% | 415.5h | 34.2h |
-| @acct-13 | 0 | 0% | 432.9h | 34.2h |
+| @acct-00 | 1511 | 18% | 6h | 0.3h |
+| @acct-01 | 300 | 55% | 278.4h | 64.7h |
+| @acct-02 | 303 | 55% | 271h | 64.7h |
+| @acct-03 | 320 | 55% | 269.6h | 64.7h |
+| @acct-04 | 305 | 55% | 268.2h | 64.7h |
+| @acct-05 | 300 | 55% | 432.5h | 64.7h |
+| @acct-06 | 41 | 55% | 414.8h | 64.7h |
+| @acct-07 | 41 | 54% | 416.1h | 64.7h |
+| @acct-08 | 43 | 54% | 416h | 64.7h |
+| @acct-09 | 41 | 54% | 416h | 64.7h |
+| @acct-10 | 44 | 54% | 416h | 64.7h |
+| @acct-11 | 0 | 0% | 278.4h | 34.3h |
+| @acct-12 | 0 | 0% | 416h | 34.7h |
+| @acct-13 | 0 | 0% | 433.4h | 34.7h |
 
-> `steem.fleet` = **OK** — fleet posted 5.5h ago
+> `steem.fleet` = **OK** — fleet posted 6h ago
 > `steem.treasury` = **DEGRADED** — treasury acct-00 at 1511 SP < 3000 (recovery-plan §3)
 
 ## 4. Blurt (UNREACHABLE)
@@ -64,18 +64,21 @@ RPC בלתי-נגיש מהרץ: no blurt accounts configured in this repo's veri
 נסרקו 272 קבצים; פגומים: 0
 
 ## 6. דלתא-מול-הריצה-הקודמת
-- ↘ התדרדר: `sbx.wf-artery-catchup` OK → **DEGRADED**
-- ↗ השתפר: `sbx.wf-verifier` DEGRADED → **OK**
-- ↗ השתפר: `sbx.wf-artery-grid` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-catchup` DEGRADED → **OK**
+- ↘ התדרדר: `sbx.wf-verifier` OK → **DEGRADED**
+- ↗ השתפר: `sbx.wf-federation` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-fleet-heal` DEGRADED → **OK**
+- ↘ התדרדר: `sbx.wf-artery-grid` OK → **DEGRADED**
+- ↘ התדרדר: `sbx.wf-artery-wallet` OK → **DEGRADED**
 
 ## 7. משימות-שנצרתו-עכשיו
 - **V-LOOP-SOVEREIGN-STATE** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-CATCHUP** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-WATCH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-FEDERATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-VERIFIER** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-VALUE-SCAN** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-FLEET-HEAL** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-DECISION-TRUTH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-ARTERY-GRID** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-ARTERY-WALLET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-PARTICIPATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-FLEET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-DEV-FOCUS** — דופק-בלי-בנייה: להפנות-משאב-סוכנים מטביעות-מצב לבניית-מוצר/תיקונים אמתיים
