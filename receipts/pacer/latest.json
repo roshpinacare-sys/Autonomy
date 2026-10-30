@@ -1,76 +1,16 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-30T07:52:55.565Z",
-  "ok": true,
+  "at": "2026-10-30T08:06:22.772Z",
+  "ok": false,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": false,
-  "checked": 73,
-  "stale": [
-    {
-      "wf": "value-scan.yml",
-      "ageMin": 1303,
-      "cadenceMin": 30,
-      "why": "last success 1303min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "verifier.yml",
-      "ageMin": 53,
-      "cadenceMin": 30,
-      "why": "last success 53min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ageMin": 1308,
-      "cadenceMin": 30,
-      "why": "last success 1308min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-wallet.yml",
-      "ageMin": 88,
-      "cadenceMin": 60,
-      "why": "last success 88min ago > cadence 60+10grace"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ageMin": 7981,
-      "cadenceMin": 60,
-      "why": "last success 7981min ago > cadence 60+10grace"
-    }
-  ],
-  "dispatched": [
-    {
-      "wf": "value-scan.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "verifier.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-wallet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    }
-  ],
+  "skipped": true,
+  "checked": 59,
+  "stale": [],
+  "dispatched": [],
   "truncated": 0,
-  "reasons": [],
-  "doneAt": "2026-10-30T07:53:06.146Z"
+  "reasons": [
+    "last beat 2026-10-30T07:52:55.565Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  ],
+  "doneAt": "2026-10-30T08:06:23.095Z"
 }
