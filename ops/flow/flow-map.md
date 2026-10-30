@@ -1,6 +1,6 @@
 # FLOW MAP · מפת-הזרימה המדודה של האורגניזם
 
-נמדד: 2026-10-30T18:04:08.457Z
+נמדד: 2026-10-30T18:05:12.338Z
 צומת=40 · קשת=130 · רפאים=0 · ישנים=19 · יתומים=3 · פנים-מישורי=25 · משולב-דף=11 · צפיפות-זרימה=3.25
 
 | פיד | ריפו | סוג | גיל | חוק-טריות | מי-מייצר | אינטגרציה |
@@ -10,10 +10,10 @@
 | `receipts/grid/verdict.json` | Autonomy | receipt | 0.8h | <=1h | artery-grid (30min) | INTEGRATED |
 | `receipts/latest.json` | Autonomy | pulse | 0.6h | <=1h | sovereign.yml (~15min) | INTEGRATED |
 | `ops/lessons/ledger.md` | Autonomy | lesson | 0.8h | <=26h | artery-scribe (daily) | PLANE-INTERNAL |
-| `ops/flow/flow-map.json` | Autonomy | flowmap | 2.2h | <=4h | artery-flow (3h) | SELF |
+| `ops/flow/flow-map.json` | Autonomy | flowmap | 0.0h | <=4h | artery-flow (3h) | SELF |
 | `receipts/office-ci/verdict.json` | FleetHQ | receipt | 7.2h | <=30h | office-ci (push) | INTEGRATED |
 | `office/state/office-state.json` | FleetHQ | state | 50.7h | <=3h | office-heartbeat (2h) | INTEGRATED |
-| `digest.json` | FleetHQ | digest | 1.8h | <=26h | unknown (404 measured 2026-10-11) | PLANE-INTERNAL |
+| `digest.json` | FleetHQ | digest | 1.9h | <=26h | unknown (404 measured 2026-10-11) | PLANE-INTERNAL |
 | `office/data.json` | Domain | book | 0.7h | <=1h | office-pulse (20min) | INTEGRATED |
 | `agents/office-live.json` | Domain | book | 1.0h | <=3h | office-artery (2h) | PLANE-INTERNAL |
 | `dex/office-feed.json` | Domain | book | 7.6h | <=26h | office-feed (daily) | PLANE-INTERNAL |
@@ -25,9 +25,9 @@
 | `dex/deposits.json` | Domain | book | 0.3h | <=48h | discovered | PLANE-INTERNAL |
 | `dex/fleet.json` | Domain | book | 338.3h | <=48h | discovered | PLANE-INTERNAL |
 | `dex/giants-gap.json` | Domain | book | 338.3h | <=48h | discovered | ORPHAN |
-| `dex/giants.json` | Domain | book | 3.9h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/giants.json` | Domain | book | 4.0h | <=48h | discovered | PLANE-INTERNAL |
 | `dex/grid.json` | Domain | book | 1.8h | <=26h | discovered | PLANE-INTERNAL |
-| `dex/honest-econ.json` | Domain | book | 3.9h | <=48h | discovered | PLANE-INTERNAL |
+| `dex/honest-econ.json` | Domain | book | 4.0h | <=48h | discovered | PLANE-INTERNAL |
 | `dex/mirror-stub.json` | Domain | book | 338.3h | <=48h | discovered | PLANE-INTERNAL |
 | `dex/money.json` | Domain | book | 1.8h | <=48h | discovered | INTEGRATED |
 | `dex/onramp.json` | Domain | book | 1.8h | <=48h | discovered | PLANE-INTERNAL |
@@ -38,8 +38,8 @@
 | `dex/relay.json` | Domain | book | 1.8h | <=48h | discovered | PLANE-INTERNAL |
 | `dex/showcase.json` | Domain | book | 1.8h | <=48h | discovered | PLANE-INTERNAL |
 | `dex/state.json` | Domain | book | 1.8h | <=48h | discovered | INTEGRATED |
-| `dex/vault-census.json` | Domain | book | 221.7h | <=48h | discovered | ORPHAN |
-| `dex/vault-guardian.json` | Domain | book | 221.7h | <=48h | discovered | ORPHAN |
+| `dex/vault-census.json` | Domain | book | 221.8h | <=48h | discovered | ORPHAN |
+| `dex/vault-guardian.json` | Domain | book | 221.8h | <=48h | discovered | ORPHAN |
 | `dex/watch.json` | Domain | book | 1.8h | <=26h | discovered | PLANE-INTERNAL |
 | `dex/world.json` | Domain | book | 1.8h | <=26h | discovered | PLANE-INTERNAL |
 | `dex/xc-intents.json` | Domain | book | 332.2h | <=48h | discovered | PLANE-INTERNAL |
@@ -105,5 +105,5 @@
 ## סטיית-תוכן-מול-קומיט (קומיט-חד-של-תוכן-ישן) — flag
 - `roshpinacare-sys/Domain:dex/giants-gap.json` commit=338.3h content=362.8h
 - `roshpinacare-sys/Domain:dex/pegout-queue.json` commit=338.3h content=627.7h
-- `roshpinacare-sys/Domain:dex/xc-ops.json` commit=338.3h content=627.6h
+- `roshpinacare-sys/Domain:dex/xc-ops.json` commit=338.3h content=627.7h
 - `roshpinacare-sys/Domain:dex/xc-requests.json` commit=338.3h content=627.7h
