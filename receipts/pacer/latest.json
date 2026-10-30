@@ -1,76 +1,16 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-30T19:31:05.519Z",
-  "ok": true,
+  "at": "2026-10-30T19:44:38.563Z",
+  "ok": false,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": false,
-  "checked": 73,
-  "stale": [
-    {
-      "wf": "value-scan.yml",
-      "ageMin": 2001,
-      "cadenceMin": 30,
-      "why": "last success 2001min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-grid.yml",
-      "ageMin": 46,
-      "cadenceMin": 30,
-      "why": "last success 46min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-watch.yml",
-      "ageMin": 43,
-      "cadenceMin": 30,
-      "why": "last success 43min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ageMin": 2006,
-      "cadenceMin": 30,
-      "why": "last success 2006min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ageMin": 8679,
-      "cadenceMin": 60,
-      "why": "last success 8679min ago > cadence 60+10grace"
-    }
-  ],
-  "dispatched": [
-    {
-      "wf": "value-scan.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-grid.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-watch.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    }
-  ],
+  "skipped": true,
+  "checked": 59,
+  "stale": [],
+  "dispatched": [],
   "truncated": 0,
-  "reasons": [],
-  "doneAt": "2026-10-30T19:31:17.958Z"
+  "reasons": [
+    "last beat 2026-10-30T19:31:05.519Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  ],
+  "doneAt": "2026-10-30T19:44:38.925Z"
 }
