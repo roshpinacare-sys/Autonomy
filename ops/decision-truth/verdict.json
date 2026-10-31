@@ -1,23 +1,27 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-10-31T08:51:41Z",
- "durationMs": 1585,
+ "generatedAt": "2026-10-31T08:53:11Z",
+ "durationMs": 1696,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
  "decider": {
   "generatedAt": "2026-10-31T08:51:02Z",
-  "stateAgeMin": 1,
+  "stateAgeMin": 2,
   "source": "local-checkout",
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-10-31T08:50:52Z",
-   "ageS": 48,
+   "ageS": 138,
    "stalled": false
   }
  },
  "measures": {
-  "chain": null,
+  "chain": {
+   "head": 110911661,
+   "treasuryNetSp": 1511.2,
+   "mult": 0.0006210153010215166
+  },
   "beaconPulse": {
    "treasuryNetSp": 1511.2
   },
@@ -47,7 +51,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -58,7 +62,7 @@
    "status": "ENFORCED",
    "priority": "P1",
    "decidedAt": "2026-10-31T08:51:02Z",
-   "truth": "STALE-TRUTH",
+   "truth": "VERIFIED",
    "checks": [
     {
      "law": "policy-internal-consistency",
@@ -67,18 +71,23 @@
     },
     {
      "law": "treasury-basis-fresh-measure",
-     "result": "unverifiable",
-     "detail": "claimed=1511.2 fresh=null tol=1"
+     "result": "ok",
+     "detail": "claimed=1511.2 fresh=1511.2 tol=1"
     },
     {
      "law": "beacon-vs-fresh",
-     "result": "mismatch",
+     "result": "ok",
      "detail": "beacon=1511.2"
     },
     {
      "law": "operators-basis",
-     "result": "unverifiable",
-     "detail": "no fresh chain measure"
+     "result": "ok",
+     "detail": "all 13 operators within ±2SP"
+    },
+    {
+     "law": "below-floor-list",
+     "result": "ok",
+     "detail": "fresh-below=[\"acct-11\",\"acct-12\",\"acct-13\"] declared=[\"acct-11\",\"acct-12\",\"acct-13\"]"
     },
     {
      "law": "execution-existence",
@@ -93,10 +102,10 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
-   "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
+   "note": "evidence re-measured independently + execution present"
   },
   {
    "id": "D2-eng-errors",
@@ -128,7 +137,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "world moved past published evidence - T14 RE-MEASURE must re-decide (honest cycle)"
@@ -154,7 +163,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -169,7 +178,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -184,7 +193,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -199,7 +208,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -214,7 +223,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -230,7 +239,7 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
@@ -246,18 +255,18 @@
     {
      "law": "decider-state-age",
      "result": "ok",
-     "detail": "state age 1min (limit 120)"
+     "detail": "state age 2min (limit 120)"
     }
    ],
    "note": "evidence re-measured independently + execution present"
   }
  ],
  "provenance": {
-  "runId": "41186298092",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/41186298092",
-  "sha": "83844c77e616e3ed0c97f4f51090341cac7806bd",
+  "runId": "41186397954",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/41186397954",
+  "sha": "0948ff550b88981dc39bd531ee6ae28c06a471e2",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-10-31T08:51:41Z"
+  "generatedAt": "2026-10-31T08:53:11Z"
  },
  "selftest": {
   "vectors": 16,
