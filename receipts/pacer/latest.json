@@ -1,88 +1,16 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-31T17:07:02.232Z",
-  "ok": true,
+  "at": "2026-10-31T17:20:29.372Z",
+  "ok": false,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": false,
-  "checked": 73,
-  "stale": [
-    {
-      "wf": "value-scan.yml",
-      "ageMin": 3297,
-      "cadenceMin": 30,
-      "why": "last success 3297min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-watch.yml",
-      "ageMin": 53,
-      "cadenceMin": 30,
-      "why": "last success 53min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-selfheal.yml",
-      "ageMin": 53,
-      "cadenceMin": 30,
-      "why": "last success 53min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ageMin": 3303,
-      "cadenceMin": 30,
-      "why": "last success 3303min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-wallet.yml",
-      "ageMin": 75,
-      "cadenceMin": 60,
-      "why": "last success 75min ago > cadence 60+10grace"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ageMin": 9975,
-      "cadenceMin": 60,
-      "why": "last success 9975min ago > cadence 60+10grace"
-    }
-  ],
-  "dispatched": [
-    {
-      "wf": "value-scan.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-watch.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-selfheal.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-wallet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    }
-  ],
+  "skipped": true,
+  "checked": 59,
+  "stale": [],
+  "dispatched": [],
   "truncated": 0,
-  "reasons": [],
-  "doneAt": "2026-10-31T17:07:20.527Z"
+  "reasons": [
+    "last beat 2026-10-31T17:07:02.232Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  ],
+  "doneAt": "2026-10-31T17:20:29.600Z"
 }
