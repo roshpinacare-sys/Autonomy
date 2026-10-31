@@ -1,76 +1,16 @@
 {
   "schema": "pacer/1",
-  "at": "2026-10-31T21:47:51.262Z",
-  "ok": true,
+  "at": "2026-10-31T22:01:14.480Z",
+  "ok": false,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
-  "skipped": false,
-  "checked": 73,
-  "stale": [
-    {
-      "wf": "value-scan.yml",
-      "ageMin": 3578,
-      "cadenceMin": 30,
-      "why": "last success 3578min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "verifier.yml",
-      "ageMin": 45,
-      "cadenceMin": 30,
-      "why": "last success 45min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ageMin": 3583,
-      "cadenceMin": 30,
-      "why": "last success 3583min ago > cadence 30+10grace"
-    },
-    {
-      "wf": "artery-wallet.yml",
-      "ageMin": 91,
-      "cadenceMin": 60,
-      "why": "last success 91min ago > cadence 60+10grace"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ageMin": 10256,
-      "cadenceMin": 60,
-      "why": "last success 10256min ago > cadence 60+10grace"
-    }
-  ],
-  "dispatched": [
-    {
-      "wf": "value-scan.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "verifier.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-decision-truth.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-wallet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-fleet.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    }
-  ],
+  "skipped": true,
+  "checked": 59,
+  "stale": [],
+  "dispatched": [],
   "truncated": 0,
-  "reasons": [],
-  "doneAt": "2026-10-31T21:48:03.935Z"
+  "reasons": [
+    "last beat 2026-10-31T21:47:51.262Z < 14min ago — throttled (no receipt churn, no double-work; immune pass already ran)"
+  ],
+  "doneAt": "2026-10-31T22:01:14.866Z"
 }
