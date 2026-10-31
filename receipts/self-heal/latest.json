@@ -1,18 +1,10 @@
 {
  "schema": "self-heal/1",
- "at": "2026-10-31T01:34:30.178Z",
+ "at": "2026-10-31T02:18:49.634Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-10-31T01:19:58.033Z",
+ "verdictAt": "2026-10-31T01:50:00.134Z",
  "dispatched": [
-  {
-   "workflow": "sovereign-state.yml",
-   "check": "sbx.wf-sovereign-state",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
   {
    "workflow": "artery-watch.yml",
    "check": "sbx.wf-artery-watch",
@@ -46,9 +38,17 @@
    "ok": true
   },
   {
-   "workflow": "artery-participation.yml",
-   "check": "sbx.wf-artery-participation",
-   "level": "FAIL",
+   "workflow": "artery-grid.yml",
+   "check": "sbx.wf-artery-grid",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-wallet.yml",
+   "check": "sbx.wf-artery-wallet",
+   "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
@@ -60,7 +60,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 0% < 10% over 352 commits/24h",
+   "why": "heartbeat-without-building: codeShare 5% < 10% over 352 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,7 +76,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 1,
+ "truncated": 2,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 59,
