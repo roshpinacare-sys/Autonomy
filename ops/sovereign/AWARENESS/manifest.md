@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-10-31T10:29:02.649Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-10-31T11:24:05.483Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,17 +15,18 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-31T11:15 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/treasury-route @ 2026-10-31T09:47 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-10-31T08:58 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/estate-scrub @ 2026-10-31T08:55 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-mirror @ 2026-10-31T07:48 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-10-31T06:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-10-31T06:05 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-10-30T23:41 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-31T10:28 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/value-scan @ 2026-10-31T10:28 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-fleet @ 2026-10-31T10:01 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-participation @ 2026-10-31T08:51 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-decision-truth @ 2026-10-31T11:21 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/value-scan @ 2026-10-31T11:21 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/profit-oracle @ 2026-10-31T10:59 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-fleet @ 2026-10-31T10:54 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-participation @ 2026-10-31T10:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-10-31T08:42 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/office-3d @ 2026-10-31T06:38 — autonomy triage: read the log, fix root, land, verify
 
