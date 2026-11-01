@@ -1,58 +1,41 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-11-01T15:47:46.063Z",
+ "at": "2026-11-01T17:42:55.473Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-11-01T15:47:46.063Z",
+  "now": "2026-11-01T17:42:55.473Z",
   "measured": {
    "baseBal": 0.209,
-   "quoteBal": 53.03,
-   "mid": 0.1069,
-   "openOrders": 16,
+   "quoteBal": 65.947,
+   "mid": 0.103916,
+   "openOrders": 0,
    "oracle": {
-    "steemUsd": 0.05057,
-    "sbdUsd": 0.474637,
+    "steemUsd": 0.050783,
+    "sbdUsd": 0.494995,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
-   "verdict": "BLOCK",
-   "now": "2026-11-01T15:47:46.063Z",
+   "verdict": "PASS",
+   "now": "2026-11-01T17:42:55.473Z",
    "measured": {
-    "workingCapitalQuote": 53.0523,
-    "currentBaseExposurePct": 0.04,
-    "postBurstBaseExposurePct": 25.85,
-    "orders": 16
+    "workingCapitalQuote": 65.9687,
+    "currentBaseExposurePct": 0.03,
+    "postBurstBaseExposurePct": 0.03,
+    "orders": 0
    },
-   "blocked": [
-    "#1(buy) size 1.50% > cap 1.0%",
-    "#2(buy) size 1.50% > cap 1.0%",
-    "#3(buy) size 1.50% > cap 1.0%",
-    "#4(buy) size 1.50% > cap 1.0%",
-    "#5(buy) size 1.50% > cap 1.0%",
-    "#6(buy) size 1.50% > cap 1.0%",
-    "#7(buy) size 1.50% > cap 1.0%",
-    "#8(buy) size 1.50% > cap 1.0%",
-    "#9(buy) size 1.50% > cap 1.0%",
-    "#10(buy) size 1.50% > cap 1.0%",
-    "#11(buy) size 1.50% > cap 1.0%",
-    "#12(buy) size 1.50% > cap 1.0%",
-    "#13(buy) size 1.82% > cap 1.0%",
-    "#14(buy) size 1.82% > cap 1.0%",
-    "#15(buy) size 1.82% > cap 1.0%",
-    "post-burst base exposure 25.9% > ceiling 20.0% (cur below cap)"
-   ],
+   "blocked": [],
    "advisory": null,
-   "reason": "risk-before-execution: 16 order(s) blocked"
+   "reason": "PASS — burst within risk-first caps (AutoHedge-pattern, mechanical)"
   },
   "arb": {
-   "internalSteemUsd": 0.050739,
-   "externalSteemUsd": 0.05057,
-   "gapPct": 0.333,
-   "edge": "NO-EDGE(<0.5%)"
+   "internalSteemUsd": 0.051438,
+   "externalSteemUsd": 0.050783,
+   "gapPct": 1.29,
+   "edge": "SELL-INTERNAL-PREMIUM"
   }
  }
 }
