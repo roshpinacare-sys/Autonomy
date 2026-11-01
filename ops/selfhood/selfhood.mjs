@@ -44,12 +44,20 @@ function gitBlobSha(content) {
   return createHash('sha1').update(buf).digest('hex');
 }
 
-async function gh(path, opts = {}) {
+const GH_RETRY_MAX = 4; // t-fix (2026-11-01, issue #15/#29 forensics): לולאת-ניסיונות-אינסופית
+// על 409/5xx גרמה לכל-ריצה-להיתקע 35 דק' עד-ה-timeout (כל-הריצות מ-10-20 = cancelled).
+// עתה: חמור-חסום (4 ניסיונות, backoff), ואז {__err} — ההמשך fail-soft, והריקבון נרשם-ביומן (כנות).
+const GH_EXHAUSTED = [];
+async function gh(path, opts = {}, attempt = 1) {
   const res = await fetch(`${API}${path}`, {
     ...opts,
     headers: { ...UA, Authorization: `Bearer ${PAT}`, ...(opts.headers || {}) },
   });
-  if (res.status === 409 || res.status >= 500) { await sleep(1500); return gh(path, opts); }
+  if (res.status === 409 || res.status >= 500) {
+    if (attempt >= GH_RETRY_MAX) { GH_EXHAUSTED.push(`${res.status} ${path.split('?')[0]}`); return { __err: res.status }; }
+    await sleep(1500 * attempt);
+    return gh(path, opts, attempt + 1);
+  }
   const txt = await res.text();
   const j = txt ? tryJson(txt) : null;
   if (!res.ok) return { __err: res.status, ...(j ? { j } : {}) };
@@ -389,6 +397,7 @@ async function main() {
   console.log('[selfhood] 1/4 DISCOVERY…');
   const { repos, discoveries, newMemory } = await discovery(memory);
   console.log(`  repos=${repos.length} discoveries=${discoveries.length}`);
+  if (GH_EXHAUSTED.length) discoveries.push({ kind: 'gh-endpoint-rot', repo: OWNER, at: now(), note: `נקודות-API שלא-השיבו-גם-אחרי ${GH_RETRY_MAX} ניסיונות (${GH_EXHAUSTED.length}): ${[...new Set(GH_EXHAUSTED)].slice(0, 5).join(' · ')}` });
 
   console.log('[selfhood] 2/4 CAPABILITIES…');
   const cap = await capabilities(repos);
