@@ -1,0 +1,116 @@
+{
+  "schema": "roshpinacare.blurt-node-health-probe/1",
+  "task": "9-d",
+  "at": "2026-11-01T11:59:58.956Z",
+  "read_only": true,
+  "broadcast": false,
+  "keys_used": false,
+  "ok": true,
+  "node_used": "https://blurt-rpc.saboin.com",
+  "nodes": [
+    {
+      "node": "https://blurt-rpc.saboin.com",
+      "alive": true,
+      "ms": 253,
+      "head_block_number": 64968079,
+      "block_time_match": true,
+      "calls": {
+        "dgp": {
+          "ok": true,
+          "ms": 253
+        },
+        "block": {
+          "ok": true,
+          "ms": 44
+        },
+        "top_witnesses": {
+          "ok": true,
+          "ms": 112,
+          "count": 10
+        },
+        "account_count": {
+          "ok": true,
+          "ms": 108
+        },
+        "witness_count": {
+          "ok": true,
+          "ms": 137
+        }
+      },
+      "error": null,
+      "head_block_time": "2026-11-01T11:59:57",
+      "network": {
+        "head_block_number": 64968079,
+        "head_block_id": "03df558fc5a39e5dba6afdc792a2558f849cd638",
+        "time": "2026-11-01T11:59:57",
+        "current_witness": "khrom",
+        "current_supply": "610094876.650 BLURT",
+        "total_vesting_fund_blurt": "396537443.371 BLURT",
+        "total_vesting_shares": "344886632.452092 VESTS"
+      },
+      "block_skew_s": 0,
+      "top_witness": "khrom",
+      "account_count": 1399465,
+      "witness_count": 245
+    },
+    {
+      "node": "https://rpc.blurt.blog",
+      "alive": false,
+      "ms": 416,
+      "head_block_number": null,
+      "block_time_match": null,
+      "calls": {
+        "dgp": {
+          "ok": false,
+          "error": "http_429"
+        }
+      },
+      "error": "http_429"
+    },
+    {
+      "node": "https://rpc.blurt.world",
+      "alive": false,
+      "ms": 354,
+      "head_block_number": null,
+      "block_time_match": null,
+      "calls": {
+        "dgp": {
+          "ok": false,
+          "error": "fetch failed"
+        }
+      },
+      "error": "fetch failed"
+    },
+    {
+      "node": "https://blurt-rpc.blurtlatam.com",
+      "alive": false,
+      "ms": 121,
+      "head_block_number": null,
+      "block_time_match": null,
+      "calls": {
+        "dgp": {
+          "ok": false,
+          "error": "fetch failed"
+        }
+      },
+      "error": "fetch failed"
+    }
+  ],
+  "network": {
+    "head_block_number": 64968079,
+    "head_block_id": "03df558fc5a39e5dba6afdc792a2558f849cd638",
+    "time": "2026-11-01T11:59:57",
+    "current_witness": "khrom",
+    "current_supply": "610094876.650 BLURT",
+    "total_vesting_fund_blurt": "396537443.371 BLURT",
+    "total_vesting_shares": "344886632.452092 VESTS"
+  },
+  "witnesses": "khrom",
+  "errors": [
+    "https://rpc.blurt.blog → http_429",
+    "https://rpc.blurt.world → fetch failed",
+    "https://blurt-rpc.blurtlatam.com → fetch failed"
+  ],
+  "advisory_note": "intel for the R294 blurt agent — advisory only; never touches blurt.mjs / blurt-arm.json ceremony",
+  "scope_note": "blurt public nodes expose no internal-market/feed API (get_order_book, get_feed_history measured absent 2026-10-11) — market intel on blurt must come from external sources"
+}
