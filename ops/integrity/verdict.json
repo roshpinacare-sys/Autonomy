@@ -1,72 +1,84 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-11-01T09:25:10.268Z",
+  "at": "2026-11-01T11:38:58.422Z",
   "overall": "PASS_WITH_ALERTS",
   "summary": {
     "sources": 11,
-    "verified": 6,
-    "findings": 11,
+    "verified": 12,
+    "findings": 5,
     "counts": {
-      "MEDIUM": 7,
-      "FLAG": 4
+      "FLAG": 4,
+      "MEDIUM": 1
     }
   },
   "provenance": {
-    "runId": "41293039236",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/41293039236",
-    "sha": "63be39e08727958e7211342db4e43bf3d901df0f"
+    "runId": "41302801162",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/41302801162",
+    "sha": "8caa18c23e964d00cc5621fa97101cfba232126b"
   },
   "verified": [
     {
+      "where": "self:ops/integrity/verdict.json",
+      "law": "verified",
+      "detail": "run=41293039236 conc=success repo=Autonomy"
+    },
+    {
+      "where": "Sandbox:receipts/wallet/verdict.json",
+      "law": "verified",
+      "detail": "run=41301721813 conc=success repo=Sandbox"
+    },
+    {
       "where": "Sandbox:receipts/fleet/verdict.json",
       "law": "verified",
-      "detail": "run=41283765129 conc=failure repo=Sandbox"
+      "detail": "run=41294848912 conc=failure repo=Sandbox"
+    },
+    {
+      "where": "Sandbox:receipts/grid/verdict.json",
+      "law": "verified",
+      "detail": "run=41300736187 conc=failure repo=Sandbox"
     },
     {
       "where": "Sandbox:ops/flow/receipt.json",
       "law": "verified",
-      "detail": "run=41281178444 conc=success repo=Sandbox"
+      "detail": "run=41295781157 conc=success repo=Sandbox"
     },
     {
       "where": "FleetHQ:receipts/office-ci/verdict.json",
       "law": "verified",
-      "detail": "run=41192342567 conc=success repo=FleetHQ"
+      "detail": "run=41300907087 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=41192342567 conc=success repo=FleetHQ"
+      "detail": "run=41300907087 conc=success repo=FleetHQ"
     },
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=41285381452 conc=success repo=Autonomy"
+      "detail": "run=41296582075 conc=success repo=Autonomy"
+    },
+    {
+      "where": "Domain:office/data.json",
+      "law": "verified",
+      "detail": "run=41302419155 conc=success repo=Autonomy"
+    },
+    {
+      "where": "Domain:office/data.json",
+      "law": "verified",
+      "detail": "run=41302423982 conc=failure repo=Autonomy"
+    },
+    {
+      "where": "Sandbox:ops/decision-truth/verdict.json",
+      "law": "verified",
+      "detail": "run=41300737748 conc=success repo=Sandbox"
     },
     {
       "where": "Sandbox:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=41292964624 conc=failure repo=Sandbox"
+      "detail": "run=41299681149 conc=failure repo=Sandbox"
     }
   ],
   "findings": [
-    {
-      "level": "MEDIUM",
-      "where": "self:ops/integrity/verdict.json",
-      "law": "time-sanity",
-      "detail": "2026-11-01T08:29:04.928Z outside window 2026-11-01T09:28:25Z"
-    },
-    {
-      "level": "MEDIUM",
-      "where": "Sandbox:receipts/wallet/verdict.json",
-      "law": "time-sanity",
-      "detail": "2026-11-01T08:44:30.858Z outside window 2026-11-01T09:44:03Z"
-    },
-    {
-      "level": "MEDIUM",
-      "where": "Sandbox:receipts/grid/verdict.json",
-      "law": "time-sanity",
-      "detail": "2026-11-01T08:30:58.768Z outside window 2026-11-01T09:30:47Z"
-    },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/latest.json",
@@ -77,7 +89,7 @@
       "level": "FLAG",
       "where": "Sandbox:state/verifier/verdict-latest.json",
       "law": "stale",
-      "detail": "281h > 26h — verifier.yml"
+      "detail": "283h > 26h — verifier.yml"
     },
     {
       "level": "FLAG",
@@ -86,28 +98,10 @@
       "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: verifier.yml"
     },
     {
-      "level": "MEDIUM",
-      "where": "Domain:office/data.json",
-      "law": "time-sanity",
-      "detail": "2026-11-01T08:01:58.794Z outside window 2026-11-01T09:01:45Z"
-    },
-    {
-      "level": "MEDIUM",
-      "where": "Domain:office/data.json",
-      "law": "time-sanity",
-      "detail": "2026-11-01T08:02:06.146Z outside window 2026-11-01T09:01:47Z"
-    },
-    {
       "level": "FLAG",
       "where": "Domain:agents/office-live.json",
       "law": "unprovenanced",
       "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane"
-    },
-    {
-      "level": "MEDIUM",
-      "where": "Sandbox:ops/decision-truth/verdict.json",
-      "law": "time-sanity",
-      "detail": "2026-11-01T08:31:00Z outside window 2026-11-01T09:30:48Z"
     },
     {
       "level": "MEDIUM",
