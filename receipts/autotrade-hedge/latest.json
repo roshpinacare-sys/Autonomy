@@ -1,40 +1,53 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-11-01T17:42:55.473Z",
+ "at": "2026-11-01T19:10:26.576Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-11-01T17:42:55.473Z",
+  "now": "2026-11-01T19:10:26.576Z",
   "measured": {
    "baseBal": 0.209,
-   "quoteBal": 65.947,
-   "mid": 0.103916,
-   "openOrders": 0,
+   "quoteBal": 26.38,
+   "mid": 0.106113,
+   "openOrders": 11,
    "oracle": {
-    "steemUsd": 0.050783,
-    "sbdUsd": 0.494995,
+    "steemUsd": 0.050557,
+    "sbdUsd": 0.494798,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
-   "verdict": "PASS",
-   "now": "2026-11-01T17:42:55.473Z",
+   "verdict": "BLOCK",
+   "now": "2026-11-01T19:10:26.576Z",
    "measured": {
-    "workingCapitalQuote": 65.9687,
-    "currentBaseExposurePct": 0.03,
-    "postBurstBaseExposurePct": 0.03,
-    "orders": 0
+    "workingCapitalQuote": 26.4022,
+    "currentBaseExposurePct": 0.08,
+    "postBurstBaseExposurePct": 155.99,
+    "orders": 11
    },
-   "blocked": [],
+   "blocked": [
+    "#0(buy) size 32.22% > cap 1.0%",
+    "#1(buy) size 32.22% > cap 1.0%",
+    "#2(buy) size 27.28% > cap 1.0%",
+    "#3(buy) size 6.74% > cap 1.0%",
+    "#4(buy) size 6.74% > cap 1.0%",
+    "#5(buy) size 6.74% > cap 1.0%",
+    "#6(buy) size 5.71% > cap 1.0%",
+    "#7(buy) size 8.37% > cap 1.0%",
+    "#8(buy) size 8.37% > cap 1.0%",
+    "#9(buy) size 8.37% > cap 1.0%",
+    "#10(buy) size 7.09% > cap 1.0%",
+    "post-burst base exposure 156.0% > ceiling 20.0% (cur below cap)"
+   ],
    "advisory": null,
-   "reason": "PASS — burst within risk-first caps (AutoHedge-pattern, mechanical)"
+   "reason": "risk-before-execution: 12 order(s) blocked"
   },
   "arb": {
-   "internalSteemUsd": 0.051438,
-   "externalSteemUsd": 0.050783,
-   "gapPct": 1.29,
+   "internalSteemUsd": 0.052505,
+   "externalSteemUsd": 0.050557,
+   "gapPct": 3.852,
    "edge": "SELL-INTERNAL-PREMIUM"
   }
  }
