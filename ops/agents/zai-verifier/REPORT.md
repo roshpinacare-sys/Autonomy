@@ -1,6 +1,6 @@
-# דוח-אמת (verifier) · 2026-11-01T01:28:47.780Z
+# דוח-אמת (verifier) · 2026-11-01T01:58:17.760Z
 
-**overall: FAIL** · auth: token(fed) · took: 19326ms · כללים: config.json (אפס-דעה-אישית)
+**overall: FAIL** · auth: token(fed) · took: 19752ms · כללים: config.json (אפס-דעה-אישית)
 
 > יש-דברים-שבורים-ממש — זה הדוח-הכן, בלי-קישוטים.
 
@@ -8,18 +8,18 @@
 | בדיקה | דרגה | ראיה |
 |---|---|---|
 | `sbx.wf-sovereign` | **OK** | success recent |
-| `sbx.wf-sovereign-state` | **DEGRADED** | last success 22min ago > slot |
-| `sbx.wf-artery-catchup` | **DEGRADED** | last success 49min ago > slot |
-| `sbx.wf-artery-watch` | **DEGRADED** | last success 60min ago > slot |
+| `sbx.wf-sovereign-state` | **DEGRADED** | last success 36min ago > slot |
+| `sbx.wf-artery-catchup` | **OK** | success recent |
+| `sbx.wf-artery-watch` | **DEGRADED** | last success 36min ago > slot |
 | `sbx.wf-verifier` | **OK** | success recent |
-| `sbx.wf-federation` | **DEGRADED** | last success 59min ago > slot |
+| `sbx.wf-federation` | **OK** | success recent |
 | `sbx.wf-value-scan` | **FAIL** | no success in last 8 runs of value-scan.yml |
 | `sbx.wf-hive-probe` | **OK** | success recent |
-| `sbx.wf-fleet-heal` | **DEGRADED** | last success 59min ago > slot |
+| `sbx.wf-fleet-heal` | **OK** | success recent |
 | `sbx.wf-artery-decision-truth` | **FAIL** | no success in last 8 runs of artery-decision-truth.yml |
 | `sbx.wf-artery-grid` | **OK** | success recent |
-| `sbx.wf-artery-wallet` | **OK** | success recent |
-| `sbx.wf-artery-integrity` | **OK** | success recent |
+| `sbx.wf-artery-wallet` | **DEGRADED** | last success 63min ago > slot |
+| `sbx.wf-artery-integrity` | **DEGRADED** | last success 85min ago > slot |
 | `sbx.wf-artery-participation` | **FAIL** | no success in last 8 runs of artery-participation.yml |
 | `sbx.wf-artery-fleet` | **FAIL** | no success in last 8 runs of artery-fleet.yml |
 | `sbx.wf-artery-flow` | **OK** | success recent |
@@ -29,31 +29,31 @@
 |---|---|---|---|---|
 | Autonomy | public | 100+ | 0% | ok |
 | Console | public | 100+ | 0% | ok |
-| Domain | public | 100+ | 17% | ok |
-| Pulse | public | 54 | 0% | ok |
+| Domain | public | 100+ | 8% | ok |
+| Pulse | public | 55 | 0% | ok |
 
-**מדד-מסכם:** codeShare = 5% (42 commits מסווגים מתוך 354)
-> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 5% < 10% over 354 commits/24h
+**מדד-מסכם:** codeShare = 2% (42 commits מסווגים מתוך 355)
+> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 2% < 10% over 355 commits/24h
 
 ## 3. אמת-על-השרשרת · Steem (https://api.steemit.com)
 | חשבון | SP אפקטיבי | VP% | פוסט-אחרון | הצבעה-אחרונה |
 |---|---|---|---|---|
-| @acct-00 | 1512 | 45% | 1.4h | 1.4h |
-| @acct-01 | 300 | 55% | 321.9h | 108.2h |
-| @acct-02 | 303 | 55% | 314.5h | 108.2h |
-| @acct-03 | 320 | 55% | 313.1h | 108.2h |
-| @acct-04 | 305 | 55% | 311.7h | 108.2h |
-| @acct-05 | 300 | 55% | 476h | 108.2h |
-| @acct-06 | 41 | 55% | 458.2h | 108.2h |
-| @acct-07 | 41 | 54% | 459.5h | 108.2h |
-| @acct-08 | 43 | 54% | 459.5h | 108.2h |
-| @acct-09 | 41 | 54% | 459.5h | 108.2h |
-| @acct-10 | 44 | 54% | 459.5h | 108.2h |
-| @acct-11 | 0 | 0% | 321.9h | 77.8h |
-| @acct-12 | 0 | 0% | 459.4h | 78.2h |
-| @acct-13 | 0 | 0% | 476.9h | 78.2h |
+| @acct-00 | 1512 | 45% | 1.9h | 1.9h |
+| @acct-01 | 300 | 55% | 322.4h | 108.7h |
+| @acct-02 | 303 | 55% | 315h | 108.7h |
+| @acct-03 | 320 | 55% | 313.6h | 108.7h |
+| @acct-04 | 305 | 55% | 312.2h | 108.7h |
+| @acct-05 | 300 | 55% | 476.5h | 108.7h |
+| @acct-06 | 41 | 55% | 458.7h | 108.7h |
+| @acct-07 | 41 | 54% | 460h | 108.7h |
+| @acct-08 | 43 | 54% | 460h | 108.7h |
+| @acct-09 | 41 | 54% | 460h | 108.7h |
+| @acct-10 | 44 | 54% | 460h | 108.7h |
+| @acct-11 | 0 | 0% | 322.4h | 78.3h |
+| @acct-12 | 0 | 0% | 459.9h | 78.7h |
+| @acct-13 | 0 | 0% | 477.4h | 78.7h |
 
-> `steem.fleet` = **OK** — fleet posted 1.4h ago
+> `steem.fleet` = **OK** — fleet posted 1.9h ago
 > `steem.treasury` = **DEGRADED** — treasury acct-00 at 1512 SP < 3000 (recovery-plan §3)
 
 ## 4. Blurt (UNREACHABLE)
@@ -64,19 +64,19 @@ RPC בלתי-נגיש מהרץ: no blurt accounts configured in this repo's veri
 נסרקו 294 קבצים; פגומים: 0
 
 ## 6. דלתא-מול-הריצה-הקודמת
-- ↘ התדרדר: `sbx.wf-artery-catchup` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-federation` OK → **DEGRADED**
-- ↘ התדרדר: `sbx.wf-fleet-heal` OK → **DEGRADED**
-- ↗ השתפר: `sbx.wf-artery-grid` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-catchup` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-federation` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-fleet-heal` DEGRADED → **OK**
+- ↘ התדרדר: `sbx.wf-artery-wallet` OK → **DEGRADED**
+- ↘ התדרדר: `sbx.wf-artery-integrity` OK → **DEGRADED**
 
 ## 7. משימות-שנצרתו-עכשיו
 - **V-LOOP-SOVEREIGN-STATE** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-CATCHUP** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-WATCH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-FEDERATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-VALUE-SCAN** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-FLEET-HEAL** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-DECISION-TRUTH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-ARTERY-WALLET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-ARTERY-INTEGRITY** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-PARTICIPATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-FLEET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-DEV-FOCUS** — דופק-בלי-בנייה: להפנות-משאב-סוכנים מטביעות-מצב לבניית-מוצר/תיקונים אמתיים
