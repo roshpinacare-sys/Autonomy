@@ -1,9 +1,9 @@
-# דוח-שומר-השלמות — 2026-11-02T09:58:21.192Z
+# דוח-שומר-השלמות — 2026-11-02T10:01:42.972Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=5
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=41408437925 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=41424927138 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=41418903950 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=41411848622 conc=failure repo=Sandbox
 - ✅ `Sandbox:receipts/grid/verdict.json` — run=41420727904 conc=success repo=Sandbox
@@ -17,9 +17,9 @@
 - ✅ `Sandbox:ops/integrity/verdict.json` — run=41415532564 conc=success repo=Sandbox
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
-- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=agent9@fleet.local — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
+- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
 - **FLAG** `Sandbox:receipts/latest.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: sovereign.yml
-- **FLAG** `Sandbox:state/verifier/verdict-latest.json` — stale — 305h > 26h — verifier.yml
+- **FLAG** `Sandbox:state/verifier/verdict-latest.json` — stale — 306h > 26h — verifier.yml
 - **FLAG** `Sandbox:state/verifier/verdict-latest.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: verifier.yml
 - **FLAG** `Domain:agents/office-live.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane
 
