@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-02T16:16:36.677Z",
+ "at": "2026-11-02T17:00:32.055Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-02T15:59:03.753Z",
+ "verdictAt": "2026-11-02T16:58:17.992Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -44,14 +52,6 @@
    "status": 204,
    "note": "dispatched",
    "ok": true
-  },
-  {
-   "workflow": "artery-integrity.yml",
-   "check": "sbx.wf-artery-integrity",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
   }
  ],
  "refused": [],
@@ -76,7 +76,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
+ "truncated": 2,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 59,
