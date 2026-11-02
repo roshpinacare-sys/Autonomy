@@ -1,44 +1,51 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-11-02T21:54:33.948Z",
+ "at": "2026-11-02T23:57:54.250Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-11-02T21:54:33.948Z",
+  "now": "2026-11-02T23:57:54.250Z",
   "measured": {
    "baseBal": 18.894,
-   "quoteBal": 53.822,
-   "mid": 0.104865,
-   "openOrders": 3,
+   "quoteBal": 21.529,
+   "mid": 0.104805,
+   "openOrders": 9,
    "oracle": {
-    "steemUsd": 0.04760236,
-    "sbdUsd": 0.485301,
+    "steemUsd": 0.04733712,
+    "sbdUsd": 0.472143,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
    "verdict": "BLOCK",
-   "now": "2026-11-02T21:54:33.948Z",
+   "now": "2026-11-02T23:57:54.250Z",
    "measured": {
-    "workingCapitalQuote": 55.8033,
-    "currentBaseExposurePct": 3.55,
-    "postBurstBaseExposurePct": 3.55,
-    "orders": 3
+    "workingCapitalQuote": 23.5092,
+    "currentBaseExposurePct": 8.42,
+    "postBurstBaseExposurePct": 152.72,
+    "orders": 9
    },
    "blocked": [
-    "#0(sell) size 6.53% > cap 1.0%",
-    "#1(sell) size 6.53% > cap 1.0%",
-    "#2(sell) size 6.53% > cap 1.0%"
+    "#0(buy) size 29.02% > cap 1.0%",
+    "#1(buy) size 26.33% > cap 1.0%",
+    "#2(buy) size 20.89% > cap 1.0%",
+    "#3(buy) size 20.89% > cap 1.0%",
+    "#4(buy) size 20.89% > cap 1.0%",
+    "#5(buy) size 19.35% > cap 1.0%",
+    "#6(sell) size 15.49% > cap 1.0%",
+    "#7(sell) size 15.49% > cap 1.0%",
+    "#8(sell) size 15.49% > cap 1.0%",
+    "post-burst base exposure 152.7% > ceiling 20.0% (cur below cap)"
    ],
    "advisory": null,
-   "reason": "risk-before-execution: 3 order(s) blocked"
+   "reason": "risk-before-execution: 10 order(s) blocked"
   },
   "arb": {
-   "internalSteemUsd": 0.050891,
-   "externalSteemUsd": 0.04760236,
-   "gapPct": 6.909,
+   "internalSteemUsd": 0.049483,
+   "externalSteemUsd": 0.04733712,
+   "gapPct": 4.533,
    "edge": "SELL-INTERNAL-PREMIUM"
   }
  }
