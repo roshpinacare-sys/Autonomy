@@ -55,7 +55,9 @@ const FLEET = [
     name: "steem-cockpit",
     slug: `${ORG}/steem`,
     checks: [
-      { id: "install", cmd: "bun", args: ["install", "--frozen-lockfile"] },
+      // premise-fix 2026-11-02: root `bun install --frozen-lockfile` removed — steem repo root
+      // is a custody/ops tree (no package.json at root on saos-cockpit since the restructure);
+      // the bun surface is mini-services/saos-engine (package.json + bun.lock + selftest.mjs verified at HEAD).
       { id: "engineInstall", cmd: "bun", args: ["install"], cwd: "mini-services/saos-engine" },
       { id: "engineSelftest", cmd: "bun", args: ["selftest.mjs"], cwd: "mini-services/saos-engine", timeout: 600000, expect: "SELFTEST" },
     ],
