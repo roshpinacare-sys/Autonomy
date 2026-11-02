@@ -23,6 +23,7 @@
 
 
 
+
 2026-10-13T12:55:02Z | ECO_WALLET_TOKEN | ALIVE | fine-grained | 2026-12-12 13:08:14 UTC | 60 | 3526 | roshpinacare-sys
 2026-10-13T12:55:02Z | SBX_FLEET_PAT | ALIVE | fine-grained | 2026-12-12 13:08:14 UTC | 60 | 3525 | roshpinacare-sys
 2026-10-13T12:55:02Z | MAIN_KEY | MISSING | - | - | - | - | -
@@ -137,3 +138,8 @@
 2026-11-01T11:59:16Z | MAIN_KEY | MISSING | - | - | - | - | -
 2026-11-01T11:59:16Z | ZIP_PAT | ALIVE | classic-non-expiring | non-expiring | 9999 | 4620 | roshpinacare-sys
 2026-11-01T11:59:16Z | INV_TOKEN | ALIVE | classic-non-expiring | non-expiring | 9999 | 4619 | roshpinacare-sys
+2026-11-02T13:47:14Z | ECO_WALLET_TOKEN | ALIVE | classic-non-expiring | non-expiring | 9999 | 3936 | roshpinacare-sys
+2026-11-02T13:47:14Z | SBX_FLEET_PAT | ALIVE | classic-non-expiring | non-expiring | 9999 | 3935 | roshpinacare-sys
+2026-11-02T13:47:14Z | MAIN_KEY | MISSING | - | - | - | - | -
+2026-11-02T13:47:14Z | ZIP_PAT | ALIVE | classic-non-expiring | non-expiring | 9999 | 3934 | roshpinacare-sys
+2026-11-02T13:47:14Z | INV_TOKEN | ALIVE | classic-non-expiring | non-expiring | 9999 | 3933 | roshpinacare-sys
