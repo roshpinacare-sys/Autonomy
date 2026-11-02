@@ -1,52 +1,48 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-11-02T02:43:05.554Z",
+ "at": "2026-11-02T09:45:47.766Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-11-02T02:43:05.554Z",
+  "now": "2026-11-02T09:45:47.766Z",
   "measured": {
    "baseBal": 163.35,
-   "quoteBal": 30.902,
-   "mid": 0.102398,
-   "openOrders": 10,
+   "quoteBal": 32.402,
+   "mid": 0.102404,
+   "openOrders": 7,
    "oracle": {
-    "steemUsd": 0.050342,
-    "sbdUsd": 0.494793,
+    "steemUsd": 0.04799265,
+    "sbdUsd": 0.494882,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
    "verdict": "BLOCK",
-   "now": "2026-11-02T02:43:05.554Z",
+   "now": "2026-11-02T09:45:47.766Z",
    "measured": {
-    "workingCapitalQuote": 47.6288,
-    "currentBaseExposurePct": 35.12,
-    "postBurstBaseExposurePct": 38.32,
-    "orders": 10
+    "workingCapitalQuote": 49.1297,
+    "currentBaseExposurePct": 34.05,
+    "postBurstBaseExposurePct": 34.05,
+    "orders": 7
    },
    "blocked": [
-    "#0(buy) size 1.05% > cap 1.0%",
-    "#1(buy) size 1.05% > cap 1.0%",
-    "#2(buy) size 1.05% > cap 1.0%",
-    "#3(sell) size 4.02% > cap 1.0%",
-    "#4(sell) size 4.02% > cap 1.0%",
-    "#5(sell) size 4.02% > cap 1.0%",
-    "#6(sell) size 5.30% > cap 1.0%",
-    "#7(sell) size 5.30% > cap 1.0%",
-    "#8(sell) size 5.30% > cap 1.0%",
-    "#9(sell) size 7.67% > cap 1.0%",
-    "post-burst base exposure 38.3% > ceiling 35.1% (cur above cap — no new buys, sells only)"
+    "#0(sell) size 3.89% > cap 1.0%",
+    "#1(sell) size 3.89% > cap 1.0%",
+    "#2(sell) size 3.89% > cap 1.0%",
+    "#3(sell) size 5.14% > cap 1.0%",
+    "#4(sell) size 5.14% > cap 1.0%",
+    "#5(sell) size 5.14% > cap 1.0%",
+    "#6(sell) size 7.44% > cap 1.0%"
    ],
-   "advisory": "REBALANCE: current base exposure 35.1% vs target 10%",
-   "reason": "risk-before-execution: 11 order(s) blocked"
+   "advisory": "REBALANCE: current base exposure 34.0% vs target 10%",
+   "reason": "risk-before-execution: 7 order(s) blocked"
   },
   "arb": {
-   "internalSteemUsd": 0.050666,
-   "externalSteemUsd": 0.050342,
-   "gapPct": 0.644,
+   "internalSteemUsd": 0.050678,
+   "externalSteemUsd": 0.04799265,
+   "gapPct": 5.595,
    "edge": "SELL-INTERNAL-PREMIUM"
   }
  }
