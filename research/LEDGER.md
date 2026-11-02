@@ -76,3 +76,11 @@
   - next: if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)
 - **E3 rc-census** · 2026-10-26 — measured: 2 RC-starved accounts (<40%): acct-11 0.58%, acct-12 0.55% — propose SP delegation top-up or activity cap (owner word for delegation lane)
   - next: if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)
+
+## 2026-11-02T13:37:49.425Z
+- **E1 spread-regime** · 2026-11-02 — measured: spread widened (157.57 > 93.5 bps) — inventory/adverse-selection pressure
+  - next: track weekly; correlate with grid-beat placements (saos-dex ledger) before claiming causality
+- **E2 feed-divergence** · 2026-11-02 — measured: healthy band: divergence 154.16 bps ≤ 300 (feed_above_market)
+  - next: if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)
+- **E3 rc-census** · 2026-11-02 — measured: no starved accounts (<40%) — fleet RC healthy this week
+  - next: if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)
