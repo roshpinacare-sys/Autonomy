@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-03T12:58:54.976Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-03T13:58:31.755Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -10,8 +10,8 @@
 - אין-workflow-חדש מאז-המדידה-הקודמת
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
-- Domain: 111 workflows · schedule 95 · dispatch 111 · both 95 → **PASS**
-- Autonomy: 57 workflows · schedule 54 · dispatch 56 · both 54 → **PASS**
+- Domain: 112 workflows · schedule 95 · dispatch 112 · both 95 → **PASS**
+- Autonomy: 59 workflows · schedule 56 · dispatch 58 · both 56 → **PASS**
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
