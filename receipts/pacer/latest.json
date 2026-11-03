@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-11-03T18:07:00.747Z",
+  "at": "2026-11-03T18:23:14.973Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -8,39 +8,63 @@
   "checked": 73,
   "stale": [
     {
-      "wf": "verifier.yml",
-      "ageMin": 54,
+      "wf": "artery-grid.yml",
+      "ageMin": 44,
       "cadenceMin": 30,
-      "why": "last success 54min ago > cadence 30+10grace"
+      "why": "last success 44min ago > cadence 30+10grace"
     },
     {
-      "wf": "artery-wallet.yml",
-      "ageMin": 81,
-      "cadenceMin": 60,
-      "why": "last success 81min ago > cadence 60+10grace"
+      "wf": "artery-watch.yml",
+      "ageMin": 43,
+      "cadenceMin": 30,
+      "why": "last success 43min ago > cadence 30+10grace"
     },
     {
-      "wf": "artery-builder.yml",
-      "ageMin": 81,
-      "cadenceMin": 70,
-      "why": "last success 81min ago > cadence 70+10grace"
+      "wf": "verifier.yml",
+      "ageMin": 43,
+      "cadenceMin": 30,
+      "why": "last success 43min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ageMin": 44,
+      "cadenceMin": 30,
+      "why": "last success 44min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 44,
+      "cadenceMin": 30,
+      "why": "last success 44min ago > cadence 30+10grace"
     }
   ],
   "dispatched": [
     {
+      "wf": "artery-grid.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-watch.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
       "wf": "verifier.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
     },
     {
-      "wf": "artery-wallet.yml",
+      "wf": "artery-selfheal.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
     },
     {
-      "wf": "artery-builder.yml",
+      "wf": "artery-decision-truth.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -48,5 +72,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-11-03T18:07:08.819Z"
+  "doneAt": "2026-11-03T18:23:27.102Z"
 }
