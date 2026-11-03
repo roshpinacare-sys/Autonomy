@@ -1,4 +1,4 @@
-# דוח-שומר-השלמות — 2026-11-03T00:30:51.878Z
+# דוח-שומר-השלמות — 2026-11-03T00:31:19.330Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=5
 
@@ -14,7 +14,7 @@
 - ✅ `Domain:office/data.json` — run=41548641381 conc=success repo=Autonomy
 - ✅ `Domain:office/data.json` — run=41542522609 conc=success repo=Autonomy
 - ✅ `Sandbox:ops/decision-truth/verdict.json` — run=41548234745 conc=success repo=Sandbox
-- ✅ `Sandbox:ops/integrity/verdict.json` — run=41541223676 conc=success repo=Sandbox
+- ✅ `Sandbox:ops/integrity/verdict.json` — run=41553140496 conc=success repo=Sandbox
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
 - **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
