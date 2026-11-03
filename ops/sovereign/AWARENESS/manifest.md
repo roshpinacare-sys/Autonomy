@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-03T17:00:06.441Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-03T17:10:45.219Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -16,7 +16,7 @@
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
 - [ENFORCEMENT] Domain/identity-guard @ 2026-11-03T16:58 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/site-link-audit @ 2026-11-03T16:10 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/site-link-audit @ 2026-11-03T16:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/voice-artery @ 2026-11-03T15:03 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-11-03T12:25 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-03T11:11 — autonomy triage: read the log, fix root, land, verify
