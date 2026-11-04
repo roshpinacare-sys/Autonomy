@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-04T03:05:26.248Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-04T03:41:16.028Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -24,7 +24,7 @@
 - [DEFECT] Domain/weave-heart @ 2026-11-04T00:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-11-03T23:14 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-11-03T22:38 — gate held the line - verify the payload it stopped, then fix the producer
-- [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-11-03T20:16 — gate held the line - verify the payload it stopped, then fix the producer
+- [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-11-04T03:06 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] FleetHQ/npm_and_yarn in /. for sharp - Update #1678810551 @ 2026-11-03T21:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] FleetHQ/npm_and_yarn in /. for sharp - Update #1678808116 @ 2026-11-03T21:36 — autonomy triage: read the log, fix root, land, verify
 
