@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-04T15:45:32.806Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-04T17:13:51.846Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,12 +15,12 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [DEFECT] Domain/weave-anchor-lines @ 2026-11-04T15:43 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/weave-heart @ 2026-11-04T15:42 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/identity-guard @ 2026-11-04T15:32 — gate held the line - verify the payload it stopped, then fix the producer
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-11-04T15:32 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/site-link-audit @ 2026-11-04T15:32 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/ladder-refresh @ 2026-11-04T12:36 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/identity-guard @ 2026-11-04T17:07 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/weave-anchor-lines @ 2026-11-04T16:58 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/weave-heart @ 2026-11-04T16:58 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-11-04T16:47 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/site-link-audit @ 2026-11-04T16:47 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/fill-ledger-cron @ 2026-11-04T16:24 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-grid @ 2026-11-04T11:15 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-flow @ 2026-11-04T11:03 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/federation @ 2026-11-04T11:00 — autonomy triage: read the log, fix root, land, verify
