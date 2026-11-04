@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-04T12:35:34.493Z",
+ "at": "2026-11-04T13:28:56.090Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-04T12:19:43.547Z",
+ "verdictAt": "2026-11-04T13:18:55.268Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -14,16 +14,16 @@
    "ok": true
   },
   {
-   "workflow": "artery-watch.yml",
-   "check": "sbx.wf-artery-watch",
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "verifier.yml",
-   "check": "sbx.wf-verifier",
+   "workflow": "artery-watch.yml",
+   "check": "sbx.wf-artery-watch",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -59,8 +59,8 @@
  "notHealable": [
   {
    "id": "dev.rate",
-   "level": "NOTICE",
-   "why": "mixed activity: codeShare 14%",
+   "level": "DEGRADED",
+   "why": "heartbeat-without-building: codeShare 5% < 10% over 351 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,7 +76,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 4,
+ "truncated": 5,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 59,
