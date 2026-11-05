@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-05T13:22:59.727Z",
+ "at": "2026-11-05T14:15:36.355Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-05T13:12:02.605Z",
+ "verdictAt": "2026-11-05T14:11:45.873Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -64,9 +64,15 @@
    "reason": "not-a-dispatchable-workflow"
   },
   {
-   "id": "steem.treasury",
+   "id": "steem.fleet",
    "level": "DEGRADED",
-   "why": "treasury acct-00 at 2323 SP < 3000 (recovery-plan §3)",
+   "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "steem.treasury",
+   "level": "NOTICE",
+   "why": "treasury account absent",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,7 +82,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 4,
+ "truncated": 5,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 59,
