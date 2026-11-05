@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-05T16:04:55.689Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-05T16:47:57.353Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -26,7 +26,7 @@
 - [DEFECT] Domain/.github/workflows/seal-verify-main.yml @ 2026-11-05T04:43 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-11-05T02:04 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-11-05T01:30 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Autonomy/artery-selfheal @ 2026-11-05T16:01 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-selfheal @ 2026-11-05T16:11 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-11-05T13:02 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Autonomy/artery-builder @ 2026-11-04T18:00 — autonomy triage: read the log, fix root, land, verify
 
