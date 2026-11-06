@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-06T02:44:10.048Z",
+ "at": "2026-11-06T03:24:45.827Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-06T02:36:27.468Z",
+ "verdictAt": "2026-11-06T03:05:59.557Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -30,16 +30,16 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "artery-decision-truth.yml",
-   "check": "sbx.wf-artery-decision-truth",
+   "workflow": "fleet-heal.yml",
+   "check": "sbx.wf-fleet-heal",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -58,6 +58,12 @@
  "skipped": [],
  "notHealable": [
   {
+   "id": "dev.rate",
+   "level": "DEGRADED",
+   "why": "heartbeat-without-building: codeShare 7% < 10% over 399 commits/24h",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
    "id": "steem.treasury",
    "level": "DEGRADED",
    "why": "treasury acct-00 at 2376 SP < 3000 (recovery-plan §3)",
@@ -70,7 +76,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 1,
+ "truncated": 0,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 59,
