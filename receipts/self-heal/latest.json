@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-06T06:05:32.479Z",
+ "at": "2026-11-06T06:58:51.559Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-06T05:34:46.371Z",
+ "verdictAt": "2026-11-06T06:34:13.215Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -22,16 +22,8 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-decision-truth.yml",
-   "check": "sbx.wf-artery-decision-truth",
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -46,8 +38,8 @@
    "ok": true
   },
   {
-   "workflow": "artery-participation.yml",
-   "check": "sbx.wf-artery-participation",
+   "workflow": "artery-integrity.yml",
+   "check": "sbx.wf-artery-integrity",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -59,8 +51,8 @@
  "notHealable": [
   {
    "id": "dev.rate",
-   "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 5% < 10% over 398 commits/24h",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 12%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
