@@ -1,13 +1,13 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-06T14:37:58.620Z",
+ "at": "2026-11-06T15:19:35.146Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-06T14:29:49.182Z",
+ "verdictAt": "2026-11-06T14:59:22.408Z",
  "dispatched": [
   {
-   "workflow": "artery-catchup.yml",
-   "check": "sbx.wf-artery-catchup",
+   "workflow": "sovereign-state.yml",
+   "check": "sbx.wf-sovereign-state",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -22,24 +22,32 @@
    "ok": true
   },
   {
-   "workflow": "verifier.yml",
-   "check": "sbx.wf-verifier",
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
+   "workflow": "artery-grid.yml",
+   "check": "sbx.wf-artery-grid",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-wallet.yml",
+   "check": "sbx.wf-artery-wallet",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -49,6 +57,12 @@
  "refused": [],
  "skipped": [],
  "notHealable": [
+  {
+   "id": "dev.rate",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 14%",
+   "reason": "not-a-dispatchable-workflow"
+  },
   {
    "id": "steem.treasury",
    "level": "DEGRADED",
