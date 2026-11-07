@@ -1,17 +1,17 @@
-# דוח-שומר-השלמות — 2026-11-07T00:06:26.804Z
+# דוח-שומר-השלמות — 2026-11-07T00:31:56.077Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=5
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=42300547209 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=42316134839 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=42312308815 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=42315167159 conc=failure repo=Sandbox
-- ✅ `Sandbox:receipts/grid/verdict.json` — run=42312310263 conc=success repo=Sandbox
+- ✅ `Sandbox:receipts/grid/verdict.json` — run=42318170283 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/flow/receipt.json` — run=42305866184 conc=success repo=Sandbox
 - ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=42214385960 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=42214385960 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=42312261554 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=42312259335 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=42317800083 conc=success repo=Autonomy
 - ✅ `Domain:office/data.json` — run=42310554323 conc=success repo=Autonomy
 - ✅ `Sandbox:ops/decision-truth/verdict.json` — run=42315164826 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/integrity/verdict.json` — run=42309183887 conc=success repo=Sandbox
