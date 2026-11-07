@@ -1,49 +1,73 @@
 {
  "schema": "selfhood.memory/1",
- "updatedAt": "2026-11-07T13:56:07.275Z",
+ "updatedAt": "2026-11-07T18:42:15.945Z",
  "repos": {
-  "Pulse": {
-   "pushedAt": "2026-11-07T13:56:04Z",
-   "topHash": "157720f7f84f",
+  "saos-dex": {
+   "pushedAt": "2026-11-07T18:41:57Z",
+   "topHash": "9496c7e5959b",
    "workflows": [
-    "heartbeat:active",
+    "arb-scan:active",
+    "curate:active",
+    "dex-beat:active",
+    "dex-ci:active",
+    "dex-grid:active",
+    "dex-selftest:active",
+    "external-profit-publish:active",
+    "gitleaks-secret-scan:active",
+    "grid-trigger:active",
+    "hive-heartbeat:active",
     "identity-guard:active",
-    "pages-build-deployment:active",
-    "pages-deploy:active",
-    "sovereign-voice:active"
+    "key-census-relay-v2:active",
+    "key-census-relay:active",
+    "llm-bridge:active",
+    "mm-supremacy:active",
+    "workflow-yaml-guard:active"
    ],
    "topBlobs": [
-    "BENCHMARK.md",
-    "BOOTSTRAP.md",
+    ".env.example",
+    ".gitignore",
+    ".gitleaksignore",
+    "AGENT-BRIEFING.md",
+    "ARCHITECTURE_ROADMAP.md",
+    "BUILDQUEUE.json",
     "CHANGELOG.md",
+    "CHAOS_TEST_RESULTS.md",
+    "CONTROLS-THAT-EXIST.md",
     "DECISIONS.md",
-    "PROMPTS.md",
+    "DEPLOYMENT_CHECKLIST.md",
+    "DEX-GAP-ANALYSIS.md",
+    "EPOCH-PATCH-SPEC.md",
+    "FLEET-NOTE.md",
+    "HOT-MARKET-PLAN.md",
+    "LIQUIDITY_STRATEGY.md",
+    "NETWORK-SUMMARY.md",
+    "PHISHING_DEFENSE.md",
     "README.md",
-    "VERSION.md",
-    "index.html",
-    "sovereign.html"
+    "RELAY-PATCH-2.md",
+    "STATUS.md",
+    "beat-loop.sh",
+    "bun.lock",
+    "cloud-beat.ts",
+    "door-first-drop.ts",
+    "door-full-cycle.ts",
+    "door-money-market.ts",
+    "execution-state.json",
+    "grid-beat.ts",
+    "next.config.ts",
+    "package.json",
+    "postcss.config.mjs",
+    "save-first-cycle.ts",
+    "sbd-rail-first-cycle.ts",
+    "t15-selftest-results.json",
+    "tsconfig.json",
+    "ve-first-cycle.ts",
+    "worklog.md"
    ],
-   "desc": "Pulse — איבר-הדופק של הרשת · fleet heartbeat: autonomous census every 30min on GitHub Actions (public = unlimited free minutes), task queue, sandbox-independent. §7 sanitized runner shell."
-  },
-  "GridWatch": {
-   "pushedAt": "2026-11-07T13:56:03Z",
-   "topHash": "3a6b943f74c7",
-   "workflows": [
-    "flow-map:active",
-    "grid-watch:active",
-    "identity-guard:active",
-    "pages-build-deployment:active",
-    "pages-deploy:active"
-   ],
-   "topBlobs": [
-    "README.md",
-    "grid-watch.mjs"
-   ],
-   "desc": "Fleet control plane: measures every repo & workflow health, auto-remediates failures, feeds the sovereign decider. The grid sees itself."
+   "desc": "SAOS-DEX — הבורסה הריבונית: ספר-הזמנות דטרמיניסטי + AMM 30bps + ארנת-חיילים אוטונומית (מורשת saos-dex + grid98)"
   },
   "Console": {
-   "pushedAt": "2026-11-07T13:56:03Z",
-   "topHash": "8800e12c741d",
+   "pushedAt": "2026-11-07T18:41:55Z",
+   "topHash": "0893906b87cc",
    "workflows": [
     "agent-verify:active",
     "agents-watch:active",
@@ -117,8 +141,8 @@
    "desc": "Console — קונסולת-ה-DEX הריבונית: dex-beat שעתי, גריד-מסחר מדוד, קבלות-ריצות חיות"
   },
   "Domain": {
-   "pushedAt": "2026-11-07T13:56:02Z",
-   "topHash": "b56d6295aab6",
+   "pushedAt": "2026-11-07T18:41:04Z",
+   "topHash": "30aa34f70598",
    "workflows": [
     "adsmarket-panel:active",
     "agent-verify:active",
@@ -265,53 +289,9 @@
    ],
    "desc": "Domain — חזית-הרשת הפומבית של SAOS: דף-המוצרים, חדר-המשרד החי, ועוגני-אמת ציבוריים (GitHub Pages)"
   },
-  "roshpinacare-sys.github.io": {
-   "pushedAt": "2026-11-07T13:56:01Z",
-   "topHash": "aa06cf513c6e",
-   "workflows": [
-    "identity-guard:active",
-    "pages-build-deployment:active",
-    "pages-deploy:active",
-    "swallow-watch:active"
-   ],
-   "topBlobs": [
-    "README.md",
-    "doc-truth.html",
-    "execution-state.json",
-    "execution.html",
-    "favicon.ico",
-    "giant.html",
-    "index-en.html",
-    "index.html",
-    "live.html",
-    "mirror.json",
-    "roast.html",
-    "robots.txt",
-    "sitemap.xml",
-    "standard.html"
-   ],
-   "desc": "SAOS Network — front door. Live index of public sites & fleet health. Every number measured."
-  },
-  "sovereign-lighthouse": {
-   "pushedAt": "2026-11-07T13:55:49Z",
-   "topHash": "90ffa1bb4f23",
-   "workflows": [
-    "estate-redboard:active",
-    "lighthouse-pulse:active",
-    "pages-build-deployment:active"
-   ],
-   "topBlobs": [
-    "README.md",
-    "REVIVAL-2026-10-11.md",
-    "grid.json",
-    "index.html",
-    "state.json"
-   ],
-   "desc": "מגדלור ריבוני — Sovereign Lighthouse: זיכרון חוץ-מכונה עצמאי (RTL עברית)"
-  },
   "Autonomy": {
-   "pushedAt": "2026-11-07T13:54:20Z",
-   "topHash": "9caa3993f981",
+   "pushedAt": "2026-11-07T18:38:08Z",
+   "topHash": "33ed380b8e42",
    "workflows": [
     ".github/workflows/fleet-yield.yml:active",
     "agent-9-clock-guard:active",
@@ -382,9 +362,492 @@
    ],
    "desc": "המוח הריבוני על דקות-ציבור: עורקי-ההחלטה, הלמידה, הצמיחה — רץ 24/7 ללא תלות בשום סנדבוקס. Public compute, private memory."
   },
+  "Sandbox": {
+   "pushedAt": "2026-11-07T18:35:37Z",
+   "topHash": "2f7d8955fa48",
+   "workflows": [
+    "agent-access:active",
+    "agent-roster-reseal:active",
+    "artery-catchup:active",
+    "artery-decision-truth:active",
+    "artery-fleet:active",
+    "artery-flow:active",
+    "artery-grid:active",
+    "artery-integrity:active",
+    "artery-participation:active",
+    "artery-scribe:active",
+    "artery-wallet:active",
+    "artery-watch:active",
+    "compute-canary:active",
+    "evo-windows-staleness:active",
+    "federation:active",
+    "fleet-heal:active",
+    "fleet-yield:active",
+    "fresh-oracle:active",
+    "hive-probe:active",
+    "identity-guard:active",
+    "key-census-relay-v2:active",
+    "key-proof:active",
+    "office-growth:active",
+    "pages-deploy:active",
+    "profit-oracle:active",
+    "research-lane:active",
+    "sovereign-decider:active",
+    "sovereign-invariants:active",
+    "sovereign-state:active",
+    "sovereign-tick:active",
+    "token-forge:active",
+    "token-watchdog:active",
+    "value-scan:active",
+    "verifier (truth & quality):active",
+    "weekly-retro:active"
+   ],
+   "topBlobs": [
+    ".gitattributes",
+    ".gitignore",
+    "AGENT-LEDGER.md",
+    "README.md",
+    "SECURITY.md",
+    "worklog.md"
+   ],
+   "desc": "Sandbox — מראת-הענן החיה של סביבת-הפיתוח הראשית (my-project mirror)"
+  },
+  "Pulse": {
+   "pushedAt": "2026-11-07T18:31:29Z",
+   "topHash": "24e241d86a4d",
+   "workflows": [
+    "heartbeat:active",
+    "identity-guard:active",
+    "pages-build-deployment:active",
+    "pages-deploy:active",
+    "sovereign-voice:active"
+   ],
+   "topBlobs": [
+    "BENCHMARK.md",
+    "BOOTSTRAP.md",
+    "CHANGELOG.md",
+    "DECISIONS.md",
+    "PROMPTS.md",
+    "README.md",
+    "VERSION.md",
+    "index.html",
+    "sovereign.html"
+   ],
+   "desc": "Pulse — איבר-הדופק של הרשת · fleet heartbeat: autonomous census every 30min on GitHub Actions (public = unlimited free minutes), task queue, sandbox-independent. §7 sanitized runner shell."
+  },
+  "sovereign-executor": {
+   "pushedAt": "2026-11-07T18:31:09Z",
+   "topHash": "b27c727b7968",
+   "workflows": [
+    "fleet-beat:active"
+   ],
+   "topBlobs": [
+    "README.md"
+   ],
+   "desc": "Sovereign executor plane — free public-minutes carrier for the private fleet lanes (smart separation: content stays private, execution public)."
+  },
+  "steem": {
+   "pushedAt": "2026-11-07T18:29:34Z",
+   "topHash": "a4f67319f93e",
+   "workflows": [
+    "cloud-heart:active",
+    "crown-vault-recovery:active",
+    "engine-ci:active",
+    "engine-selftest:active",
+    "gitleaks:active",
+    "key-census-relay-v2:active",
+    "key-census-relay:active",
+    "vault-onekey-adopt:active",
+    "vault-onekey-verify:active",
+    "workflow-yaml-guard:active"
+   ],
+   "topBlobs": [
+    ".gitignore",
+    ".gitleaks.toml",
+    ".gitleaksignore",
+    "AGENT-BRIEFING.md",
+    "AGENTS.md",
+    "CONTROLS-THAT-EXIST.md",
+    "Caddyfile",
+    "ENGINEER_BRIEF.md",
+    "FLEET-NOTE.md",
+    "MANIFEST.txt",
+    "PATCH-SPEC-P11.md",
+    "README.md",
+    "THE_WEAVE.md",
+    "bun.lock",
+    "components.json",
+    "eslint.config.mjs",
+    "feature_list.json",
+    "init.sh",
+    "next.config.ts",
+    "package.json",
+    "postcss.config.mjs",
+    "progress.md",
+    "session-handoff.md",
+    "tailwind.config.ts",
+    "tsconfig.json",
+    "worklog.md"
+   ],
+   "desc": "sovereign fleet monorepo — steem/autonomy lanes"
+  },
+  "FleetHQ": {
+   "pushedAt": "2026-11-07T18:27:15Z",
+   "topHash": "b3a465583315",
+   "workflows": [
+    "Dependabot Updates:active",
+    "key-census-relay-v2:active",
+    "office-3d:active",
+    "office-ci:active",
+    "office-window:active",
+    "pages-build-deployment:active",
+    "pages-deploy:active"
+   ],
+   "topBlobs": [
+    ".env.example",
+    ".gitattributes",
+    ".gitignore",
+    "Caddyfile",
+    "DESIGN.md",
+    "FLEET-BINDING.md",
+    "LICENSE",
+    "MEMORY.md",
+    "README.md",
+    "SECURITY.md",
+    "SOVEREIGNTY.md",
+    "bun.lock",
+    "components.json",
+    "eslint.config.mjs",
+    "ghenv.sh",
+    "next.config.ts",
+    "package.json",
+    "postcss.config.mjs",
+    "sovereign-agent.env.example",
+    "supervise-fleethq.sh",
+    "tailwind.config.ts",
+    "tsconfig.json",
+    "watchdog-fleethq.sh",
+    "worklog.md"
+   ],
+   "desc": "Fleet HQ — a live operations room where real AI agents plan, work and report on your data books in real time. מפקדת הצי"
+  },
+  "Defi": {
+   "pushedAt": "2026-11-07T18:26:36Z",
+   "topHash": "62ef9a597700",
+   "workflows": [
+    "canary:active",
+    "gitleaks-secret-scan:active",
+    "workflow-yaml-guard:active"
+   ],
+   "topBlobs": [
+    "DOCTRINE.md",
+    "MISSION-1000.md",
+    "README.md",
+    "TRIGGER-CHAIN.md"
+   ],
+   "desc": "Defi — מסילת-DeFi של הריבונות: מדיניות וניתוח (רול-אפ מתוכנן לתוך saos-dex)"
+  },
+  "saos-sovereign-platform": {
+   "pushedAt": "2026-11-07T18:17:32Z",
+   "topHash": "00d8cc590f29",
+   "workflows": [
+    "foundry-tests:active",
+    "gitleaks-secret-scan:active",
+    "platform-selftest:active",
+    "workflow-yaml-guard:active"
+   ],
+   "topBlobs": [
+    ".dcg.toml",
+    ".gitignore",
+    ".gitleaksignore",
+    ".tmp-ws2a-log.txt",
+    ".tmp-ws2a-one.ts",
+    ".tmp-ws2a.ts",
+    ".tmp-ws2c.ts",
+    "2026-09-11-roast-78-addendum.md",
+    "AGENT-BRIEFING.md",
+    "AGENTS.md",
+    "CLAIMS-AUDIT-2026-09-12.md",
+    "CLAIMS-AUDIT-PREVIEW-2026-09-12.md",
+    "CONTROLS-THAT-EXIST.md",
+    "CRITICAL-R11-KEY-BROADCAST.md",
+    "Caddyfile",
+    "EPOCH-PATCH-SPEC.md",
+    "FLEET-NOTE.md",
+    "HISTORY.md",
+    "README.md",
+    "RELAY-PATCH-2.md",
+    "SAOS-BRIEFING-2026-09-11-OUTER-ANCHOR.md",
+    "SAOS-BRIEFING-2026-09-11-ROAST-80.md",
+    "SAOS-BRIEFING-2026-09-11-ROAST-84.md",
+    "SAOS-DAILY-REPORT-2026-09-11-ADSMARKET.md",
+    "SAOS-DAILY-REPORT-2026-09-11-FOUNDRY.md",
+    "SAOS-DAILY-REPORT-2026-09-11.md",
+    "SAOS-PULSE-2026-09-29-V94-FULL-VAULT.md",
+    "SAOS-PULSE-2026-09-30-V95-TRUTH-CENSUS.md",
+    "SAOS-PULSE-2026-09-30-V96-THE-WORDS-IN-THE-VAULTS.md",
+    "SAOS-PULSE-2026-09-30-V97-PREVIEW-TRUTH.md",
+    "SAOS-PULSE-2026-09-30-V98-ONE-NETWORK.md",
+    "SAOS-PULSE-2026-10-01-V99-SOVEREIGN-REVOLUTION.md",
+    "SAOS-STRATEGY-2026-09-11-ADSMARKET.md",
+    "STOP-ORDER-KEYS-DISTRIBUTION-2026-09-13.md",
+    "bun.lock",
+    "components.json",
+    "eslint.config.mjs",
+    "feature_list.json",
+    "foundry.toml",
+    "init.sh"
+   ],
+   "desc": "The chosen project - standalone canonical copy. Sovereign anchoring platform (folder B)"
+  },
+  "saos-runtime": {
+   "pushedAt": "2026-11-07T18:11:10Z",
+   "topHash": "7ea315d89a10",
+   "workflows": [
+    "agent-9-vault-sync:active",
+    "arb-grid:active",
+    "army-ladder:active",
+    "arsenal-sentinel:active",
+    "blurt-revival:active",
+    "builder-catchup:active",
+    "cross-custody-probe:active",
+    "custody-recover:active",
+    "dex-beat:active",
+    "directive-now:active",
+    "escrow-payroll:active",
+    "fee-engine:active",
+    "fleet-fuel:active",
+    "fleet-rotation-a:active",
+    "gen2-rotation:active",
+    "ghidra-lab:active",
+    "grid-watchdog:active",
+    "hive-adopt-t21:active",
+    "hive-custody-revival:active",
+    "key-census-relay-v2:active",
+    "key-census-relay:active",
+    "key-relay-to-autonomy:active",
+    "main-key-refresh:active",
+    "operator-triage:active",
+    "organ-guardian:active",
+    "organ-pacemaker:active",
+    "owner-key-adopt:active",
+    "owner-powerdown:active",
+    "self-memory:active",
+    "signing-health (runtime-host):active",
+    "sovereign-builder:active",
+    "sovereign-evolution:active",
+    "sovereign-pulse:active",
+    "sovereign-runtime:active",
+    "steem-hand-revival:active",
+    "system-map:active",
+    "treasury-consolidation:active",
+    "treasury-ladder:active",
+    "vault-owner-adopt:active"
+   ],
+   "topBlobs": [
+    ".gitignore",
+    "README.md",
+    "STATUS.md",
+    "blurt-nodes.json",
+    "hive-custody-verdict.json",
+    "index.html",
+    "package-lock.json",
+    "package.json"
+   ],
+   "desc": "SAOS sovereign runtime host — Actions runner heartbeat; clones the private engine tree at runtime (R244). No keys, no secrets in tree."
+  },
+  "GridWatch": {
+   "pushedAt": "2026-11-07T18:10:45Z",
+   "topHash": "5628a48d526d",
+   "workflows": [
+    "flow-map:active",
+    "grid-watch:active",
+    "identity-guard:active",
+    "pages-build-deployment:active",
+    "pages-deploy:active"
+   ],
+   "topBlobs": [
+    "README.md",
+    "grid-watch.mjs"
+   ],
+   "desc": "Fleet control plane: measures every repo & workflow health, auto-remediates failures, feeds the sovereign decider. The grid sees itself."
+  },
+  "saos-desk": {
+   "pushedAt": "2026-11-07T17:53:43Z",
+   "topHash": "4167893702fb",
+   "workflows": [],
+   "topBlobs": [
+    ".gitignore",
+    "LAWS.md",
+    "README.md",
+    "mandate.json",
+    "package.json",
+    "selftest.mjs"
+   ],
+   "desc": "Sovereign Trading Boardroom (R338) - multi-agent cabinet, deterministic risk kernel, mandate-gated, paper-first, checkpoint-resume, TASE + global universe"
+  },
+  "sovereign-lighthouse": {
+   "pushedAt": "2026-11-07T17:51:01Z",
+   "topHash": "646dbbc041b2",
+   "workflows": [
+    "estate-redboard:active",
+    "lighthouse-pulse:active",
+    "pages-build-deployment:active"
+   ],
+   "topBlobs": [
+    "README.md",
+    "REVIVAL-2026-10-11.md",
+    "grid.json",
+    "index.html",
+    "state.json"
+   ],
+   "desc": "מגדלור ריבוני — Sovereign Lighthouse: זיכרון חוץ-מכונה עצמאי (RTL עברית)"
+  },
+  "roshpinacare-sys.github.io": {
+   "pushedAt": "2026-11-07T17:36:59Z",
+   "topHash": "b8f712306dc9",
+   "workflows": [
+    "identity-guard:active",
+    "pages-build-deployment:active",
+    "pages-deploy:active",
+    "swallow-watch:active"
+   ],
+   "topBlobs": [
+    "README.md",
+    "doc-truth.html",
+    "execution-state.json",
+    "execution.html",
+    "favicon.ico",
+    "giant.html",
+    "index-en.html",
+    "index.html",
+    "live.html",
+    "mirror.json",
+    "roast.html",
+    "robots.txt",
+    "sitemap.xml",
+    "standard.html"
+   ],
+   "desc": "SAOS Network — front door. Live index of public sites & fleet health. Every number measured."
+  },
+  "ops-forge": {
+   "pushedAt": "2026-11-07T17:29:55Z",
+   "topHash": "fac1d0eb586e",
+   "workflows": [
+    "forge:active"
+   ],
+   "topBlobs": [
+    "README.md",
+    "worklog.md"
+   ],
+   "desc": "ops-forge — סדנת-התפעול של הצי: כלי-עבודה ומסילות-הפעלה פנימיות"
+  },
+  "sovereign-runner-kit": {
+   "pushedAt": "2026-11-07T16:55:14Z",
+   "topHash": "17655d1cc8c8",
+   "workflows": [
+    "agent-shield:active",
+    "beat-keepalive:active",
+    "capability-gate:active",
+    "deploy-gate:active",
+    "device-lane:active",
+    "fleet-keeper:active",
+    "identity-guard:active",
+    "netrun-loop:active",
+    "night-steward:active",
+    "registry-verify:active",
+    "scout-loop:active",
+    "swallow-watch:active"
+   ],
+   "topBlobs": [
+    ".gitignore",
+    "AGENT-COORDINATION.md",
+    "DECISION-BRIEF-actions-minutes.md",
+    "MORNING-REPORT.md",
+    "NETRUN.md",
+    "README.md",
+    "SECURITY-INCIDENT-2026-10.md",
+    "ToS-COMPLIANCE.md",
+    "netrun.sh",
+    "queue2netrun.mjs",
+    "register-gh-runner.sh",
+    "setup-device.sh",
+    "tasks.example.tsv"
+   ],
+   "desc": "שכבת-הביצוע-הריבונית — המכשיר שלנו הוא המנוע, GitHub ספר-בלבד. Device-side execution, zero GitHub minutes, blockchain-anchored receipts"
+  },
+  "dynamis": {
+   "pushedAt": "2026-11-07T16:21:26Z",
+   "topHash": "c8f8c77b551a",
+   "workflows": [
+    "Dependabot Updates:active",
+    "ci:active",
+    "daily-proof:active",
+    "deploy-site:active",
+    "keeper:active",
+    "pages-build-deployment:active",
+    "uptime:active"
+   ],
+   "topBlobs": [
+    ".gitignore",
+    "AGENTS.md",
+    "CANON.md",
+    "README.md",
+    "SECURITY.md",
+    "demo"
+   ],
+   "desc": "DYNAMIS — the work-verified agent economy. A public network protocol that pays agents in verified work (not votes) plus a Sovereign Operations Layer for agent-run businesses. Private root, public leaf: books and custody never leave the root."
+  },
+  "giant": {
+   "pushedAt": "2026-11-07T16:03:46Z",
+   "topHash": "d3d6247347b5",
+   "workflows": [
+    "Dependabot Updates:active",
+    "architect-daemon:active",
+    "ext-audit:active",
+    "fleet-rail-guardian:active",
+    "identity-guard:active",
+    "swallow-watch:active",
+    "trust-heartbeat:active"
+   ],
+   "topBlobs": [
+    ".gitignore",
+    "01-overview.png",
+    "02-wall.png",
+    "03-git.png",
+    "04-podium.png",
+    "05-reception.png",
+    "06-library.png",
+    "Caddyfile",
+    "README.md",
+    "SWARM_STATE.md",
+    "SYSTEM.md",
+    "bun.lock",
+    "components.json",
+    "eslint.config.mjs",
+    "next.config.ts",
+    "package.json",
+    "postcss.config.mjs",
+    "tailwind.config.ts",
+    "tsconfig.json",
+    "worklog.md"
+   ],
+   "desc": "GIANT — מערכת-האמת של SAOS: הפלטפורמה המאוחדת (ערוץ-אחד · אפס-כפילויות · תקן-ענקים). קונברגנציה נדרשת לכל-הליינים (DECISIONS #42)."
+  },
+  "ops-intake": {
+   "pushedAt": "2026-11-07T16:01:12Z",
+   "topHash": "4db7407959a2",
+   "workflows": [
+    "intake:active"
+   ],
+   "topBlobs": [
+    "README.md"
+   ],
+   "desc": "צינור-הקליטה התפעולי של הצי — מדידה, תור עבודות מדודר ומפת-מרחב מלאה, כל 30 דק"
+  },
   "Zip": {
-   "pushedAt": "2026-11-07T13:48:51Z",
-   "topHash": "42e2cde50987",
+   "pushedAt": "2026-11-07T15:48:07Z",
+   "topHash": "edc4a6cb1994",
    "workflows": [
     "d3b-wsp-escrow:active",
     "fleet-audit:active",
@@ -448,334 +911,28 @@
    ],
    "desc": "Zip — ארכיון-עבודה היסטורי 136MB (מועמד-פינוי: מראה-אחת + vault-home מספיקים)"
   },
-  "saos-dex": {
-   "pushedAt": "2026-11-07T13:47:11Z",
-   "topHash": "fab9add41c80",
+  "fleet-economy": {
+   "pushedAt": "2026-11-07T15:11:42Z",
+   "topHash": "1ff43b992796",
    "workflows": [
-    "arb-scan:active",
-    "curate:active",
-    "dex-beat:active",
-    "dex-ci:active",
-    "dex-grid:active",
-    "dex-selftest:active",
-    "external-profit-publish:active",
-    "gitleaks-secret-scan:active",
-    "grid-trigger:active",
-    "hive-heartbeat:active",
-    "identity-guard:active",
-    "key-census-relay-v2:active",
-    "key-census-relay:active",
-    "llm-bridge:active",
-    "mm-supremacy:active",
-    "workflow-yaml-guard:active"
-   ],
-   "topBlobs": [
-    ".env.example",
-    ".gitignore",
-    ".gitleaksignore",
-    "AGENT-BRIEFING.md",
-    "ARCHITECTURE_ROADMAP.md",
-    "BUILDQUEUE.json",
-    "CHANGELOG.md",
-    "CHAOS_TEST_RESULTS.md",
-    "CONTROLS-THAT-EXIST.md",
-    "DECISIONS.md",
-    "DEPLOYMENT_CHECKLIST.md",
-    "DEX-GAP-ANALYSIS.md",
-    "EPOCH-PATCH-SPEC.md",
-    "FLEET-NOTE.md",
-    "HOT-MARKET-PLAN.md",
-    "LIQUIDITY_STRATEGY.md",
-    "NETWORK-SUMMARY.md",
-    "PHISHING_DEFENSE.md",
-    "README.md",
-    "RELAY-PATCH-2.md",
-    "STATUS.md",
-    "beat-loop.sh",
-    "bun.lock",
-    "cloud-beat.ts",
-    "door-first-drop.ts",
-    "door-full-cycle.ts",
-    "door-money-market.ts",
-    "execution-state.json",
-    "grid-beat.ts",
-    "next.config.ts",
-    "package.json",
-    "postcss.config.mjs",
-    "save-first-cycle.ts",
-    "sbd-rail-first-cycle.ts",
-    "t15-selftest-results.json",
-    "tsconfig.json",
-    "ve-first-cycle.ts",
-    "worklog.md"
-   ],
-   "desc": "SAOS-DEX — הבורסה הריבונית: ספר-הזמנות דטרמיניסטי + AMM 30bps + ארנת-חיילים אוטונומית (מורשת saos-dex + grid98)"
-  },
-  "Sandbox": {
-   "pushedAt": "2026-11-07T13:45:56Z",
-   "topHash": "fbbbcc02743d",
-   "workflows": [
-    "agent-access:active",
-    "agent-roster-reseal:active",
-    "artery-catchup:active",
-    "artery-decision-truth:active",
-    "artery-fleet:active",
-    "artery-flow:active",
-    "artery-grid:active",
-    "artery-integrity:active",
-    "artery-participation:active",
-    "artery-scribe:active",
-    "artery-wallet:active",
-    "artery-watch:active",
-    "compute-canary:active",
-    "evo-windows-staleness:active",
-    "federation:active",
-    "fleet-heal:active",
-    "fleet-yield:active",
-    "fresh-oracle:active",
-    "hive-probe:active",
-    "identity-guard:active",
-    "key-census-relay-v2:active",
-    "key-proof:active",
-    "office-growth:active",
-    "pages-deploy:active",
-    "profit-oracle:active",
-    "research-lane:active",
-    "sovereign-decider:active",
-    "sovereign-invariants:active",
-    "sovereign-state:active",
-    "sovereign-tick:active",
-    "token-forge:active",
-    "token-watchdog:active",
-    "value-scan:active",
-    "verifier (truth & quality):active",
-    "weekly-retro:active"
+    "ci-probe:active",
+    "economy-beat:active",
+    "receipts-guard:active"
    ],
    "topBlobs": [
     ".gitattributes",
     ".gitignore",
-    "AGENT-LEDGER.md",
-    "README.md",
-    "SECURITY.md",
-    "worklog.md"
-   ],
-   "desc": "Sandbox — מראת-הענן החיה של סביבת-הפיתוח הראשית (my-project mirror)"
-  },
-  "saos-runtime": {
-   "pushedAt": "2026-11-07T13:43:44Z",
-   "topHash": "b688ababa9d3",
-   "workflows": [
-    "agent-9-vault-sync:active",
-    "arb-grid:active",
-    "army-ladder:active",
-    "arsenal-sentinel:active",
-    "blurt-revival:active",
-    "builder-catchup:active",
-    "cross-custody-probe:active",
-    "custody-recover:active",
-    "dex-beat:active",
-    "directive-now:active",
-    "escrow-payroll:active",
-    "fee-engine:active",
-    "fleet-fuel:active",
-    "fleet-rotation-a:active",
-    "gen2-rotation:active",
-    "ghidra-lab:active",
-    "grid-watchdog:active",
-    "hive-adopt-t21:active",
-    "hive-custody-revival:active",
-    "key-census-relay-v2:active",
-    "key-census-relay:active",
-    "key-relay-to-autonomy:active",
-    "main-key-refresh:active",
-    "operator-triage:active",
-    "organ-guardian:active",
-    "organ-pacemaker:active",
-    "owner-key-adopt:active",
-    "owner-powerdown:active",
-    "self-memory:active",
-    "signing-health (runtime-host):active",
-    "sovereign-builder:active",
-    "sovereign-evolution:active",
-    "sovereign-pulse:active",
-    "sovereign-runtime:active",
-    "steem-hand-revival:active",
-    "system-map:active",
-    "treasury-consolidation:active",
-    "treasury-ladder:active",
-    "vault-owner-adopt:active"
-   ],
-   "topBlobs": [
-    ".gitignore",
-    "README.md",
-    "STATUS.md",
-    "blurt-nodes.json",
-    "hive-custody-verdict.json",
-    "index.html",
-    "package-lock.json",
-    "package.json"
-   ],
-   "desc": "SAOS sovereign runtime host — Actions runner heartbeat; clones the private engine tree at runtime (R244). No keys, no secrets in tree."
-  },
-  "sovereign-runner-kit": {
-   "pushedAt": "2026-11-07T13:37:00Z",
-   "topHash": "ea8fc2d56f3d",
-   "workflows": [
-    "agent-shield:active",
-    "beat-keepalive:active",
-    "capability-gate:active",
-    "deploy-gate:active",
-    "device-lane:active",
-    "fleet-keeper:active",
-    "identity-guard:active",
-    "netrun-loop:active",
-    "night-steward:active",
-    "registry-verify:active",
-    "scout-loop:active",
-    "swallow-watch:active"
-   ],
-   "topBlobs": [
-    ".gitignore",
-    "AGENT-COORDINATION.md",
-    "DECISION-BRIEF-actions-minutes.md",
-    "MORNING-REPORT.md",
-    "NETRUN.md",
-    "README.md",
-    "SECURITY-INCIDENT-2026-10.md",
-    "ToS-COMPLIANCE.md",
-    "netrun.sh",
-    "queue2netrun.mjs",
-    "register-gh-runner.sh",
-    "setup-device.sh",
-    "tasks.example.tsv"
-   ],
-   "desc": "שכבת-הביצוע-הריבונית — המכשיר שלנו הוא המנוע, GitHub ספר-בלבד. Device-side execution, zero GitHub minutes, blockchain-anchored receipts"
-  },
-  "FleetHQ": {
-   "pushedAt": "2026-11-07T13:35:05Z",
-   "topHash": "a73c1dec0987",
-   "workflows": [
-    "Dependabot Updates:active",
-    "key-census-relay-v2:active",
-    "office-3d:active",
-    "office-ci:active",
-    "office-window:active",
-    "pages-build-deployment:active",
-    "pages-deploy:active"
-   ],
-   "topBlobs": [
-    ".env.example",
-    ".gitattributes",
-    ".gitignore",
-    "Caddyfile",
-    "DESIGN.md",
-    "FLEET-BINDING.md",
-    "LICENSE",
-    "MEMORY.md",
-    "README.md",
-    "SECURITY.md",
-    "SOVEREIGNTY.md",
-    "bun.lock",
-    "components.json",
-    "eslint.config.mjs",
-    "ghenv.sh",
-    "next.config.ts",
+    "beat-local.sh",
+    "chain-reconcile.mjs",
+    "index.ts",
     "package.json",
-    "postcss.config.mjs",
-    "sovereign-agent.env.example",
-    "supervise-fleethq.sh",
-    "tailwind.config.ts",
-    "tsconfig.json",
-    "watchdog-fleethq.sh",
-    "worklog.md"
+    "run-economy-beat.mjs"
    ],
-   "desc": "Fleet HQ — a live operations room where real AI agents plan, work and report on your data books in real time. מפקדת הצי"
-  },
-  "saos-desk": {
-   "pushedAt": "2026-11-07T13:31:28Z",
-   "topHash": "4e5fa9174891",
-   "workflows": [],
-   "topBlobs": [
-    ".gitignore",
-    "LAWS.md",
-    "README.md",
-    "mandate.json",
-    "package.json",
-    "selftest.mjs"
-   ],
-   "desc": "Sovereign Trading Boardroom (R338) - multi-agent cabinet, deterministic risk kernel, mandate-gated, paper-first, checkpoint-resume, TASE + global universe"
-  },
-  "sovereign-executor": {
-   "pushedAt": "2026-11-07T13:24:57Z",
-   "topHash": "413892f468d1",
-   "workflows": [
-    "fleet-beat:active"
-   ],
-   "topBlobs": [
-    "README.md"
-   ],
-   "desc": "Sovereign executor plane — free public-minutes carrier for the private fleet lanes (smart separation: content stays private, execution public)."
-  },
-  "Defi": {
-   "pushedAt": "2026-11-07T12:59:33Z",
-   "topHash": "5fa9382ede35",
-   "workflows": [
-    "canary:active",
-    "gitleaks-secret-scan:active",
-    "workflow-yaml-guard:active"
-   ],
-   "topBlobs": [
-    "DOCTRINE.md",
-    "MISSION-1000.md",
-    "README.md",
-    "TRIGGER-CHAIN.md"
-   ],
-   "desc": "Defi — מסילת-DeFi של הריבונות: מדיניות וניתוח (רול-אפ מתוכנן לתוך saos-dex)"
-  },
-  "vault-home": {
-   "pushedAt": "2026-11-07T12:12:20Z",
-   "topHash": "d185ce8d9d6b",
-   "workflows": [],
-   "topBlobs": [
-    ".gitignore",
-    "ACCOUNT-LIFECYCLE.md",
-    "MANIFEST.json",
-    "ONE-KEY.md",
-    "README.md",
-    "REVIEW-CYCLE.md",
-    "SECURITY-ADVISORY-R11B.md",
-    "SOVEREIGNTY.md",
-    "VAULT-RESURRECTION.md",
-    "auto-unseal.sh",
-    "boot-services.sh",
-    "boot-sovereign.sh",
-    "fleet-rot2.keys.enc",
-    "‹sealed-artifact›",
-    "‹sealed-artifact›",
-    "recover-estate.sh",
-    "‹sealed-artifact›",
-    "vault.sh",
-    "vaultlib.sh",
-    "worklog.md",
-    "wrap.sh"
-   ],
-   "desc": "Fleet HQ sealed key vault (AES-256, PBKDF2-200k). Keys never travel in plaintext."
-  },
-  "ops-forge": {
-   "pushedAt": "2026-11-07T11:34:19Z",
-   "topHash": "54ac11386473",
-   "workflows": [
-    "forge:active"
-   ],
-   "topBlobs": [
-    "README.md",
-    "worklog.md"
-   ],
-   "desc": "ops-forge — סדנת-התפעול של הצי: כלי-עבודה ומסילות-הפעלה פנימיות"
+   "desc": "הכלכלה-הפנימית-הריבונית — ספר-hash-chain חי · auto-sealed"
   },
   "roshpina": {
-   "pushedAt": "2026-11-07T10:25:26Z",
-   "topHash": "750ac63b20f2",
+   "pushedAt": "2026-11-07T14:56:30Z",
+   "topHash": "23e6a67c8423",
    "workflows": [
     "controls-audit:active",
     "gitleaks-secret-scan:active",
@@ -821,101 +978,38 @@
    ],
    "desc": "Roshpina — Sovereign Trust & Value Platform: profit (fee engine + cost arbitrage) + protection (fail-closed guard, hash-linked audit, Ed25519 passports) + intelligence (potential engine) — PRIVATE"
   },
-  "steem": {
-   "pushedAt": "2026-11-07T09:53:57Z",
-   "topHash": "a4f67319f93e",
-   "workflows": [
-    "cloud-heart:active",
-    "crown-vault-recovery:active",
-    "engine-ci:active",
-    "engine-selftest:active",
-    "gitleaks:active",
-    "key-census-relay-v2:active",
-    "key-census-relay:active",
-    "vault-onekey-adopt:active",
-    "vault-onekey-verify:active",
-    "workflow-yaml-guard:active"
-   ],
+  "vault-home": {
+   "pushedAt": "2026-11-07T14:33:42Z",
+   "topHash": "b8c9617f71b2",
+   "workflows": [],
    "topBlobs": [
     ".gitignore",
-    ".gitleaks.toml",
-    ".gitleaksignore",
-    "AGENT-BRIEFING.md",
-    "AGENTS.md",
-    "CONTROLS-THAT-EXIST.md",
-    "Caddyfile",
-    "ENGINEER_BRIEF.md",
-    "FLEET-NOTE.md",
-    "MANIFEST.txt",
-    "PATCH-SPEC-P11.md",
+    "ACCOUNT-LIFECYCLE.md",
+    "MANIFEST.json",
+    "ONE-KEY.md",
     "README.md",
-    "THE_WEAVE.md",
-    "bun.lock",
-    "components.json",
-    "eslint.config.mjs",
-    "feature_list.json",
-    "init.sh",
-    "next.config.ts",
-    "package.json",
-    "postcss.config.mjs",
-    "progress.md",
-    "session-handoff.md",
-    "tailwind.config.ts",
-    "tsconfig.json",
-    "worklog.md"
+    "REVIEW-CYCLE.md",
+    "SECURITY-ADVISORY-R11B.md",
+    "SOVEREIGNTY.md",
+    "VAULT-RESURRECTION.md",
+    "auto-unseal.sh",
+    "boot-services.sh",
+    "boot-sovereign.sh",
+    "fleet-rot2.keys.enc",
+    "‹sealed-artifact›",
+    "‹sealed-artifact›",
+    "recover-estate.sh",
+    "‹sealed-artifact›",
+    "vault.sh",
+    "vaultlib.sh",
+    "worklog.md",
+    "wrap.sh"
    ],
-   "desc": "sovereign fleet monorepo — steem/autonomy lanes"
-  },
-  "ops-intake": {
-   "pushedAt": "2026-11-07T09:33:30Z",
-   "topHash": "9f34748a05ac",
-   "workflows": [
-    "intake:active"
-   ],
-   "topBlobs": [
-    "README.md"
-   ],
-   "desc": "צינור-הקליטה התפעולי של הצי — מדידה, תור עבודות מדודר ומפת-מרחב מלאה, כל 30 דק"
-  },
-  "giant": {
-   "pushedAt": "2026-11-07T08:03:55Z",
-   "topHash": "d59833f879e8",
-   "workflows": [
-    "Dependabot Updates:active",
-    "architect-daemon:active",
-    "ext-audit:active",
-    "fleet-rail-guardian:active",
-    "identity-guard:active",
-    "swallow-watch:active",
-    "trust-heartbeat:active"
-   ],
-   "topBlobs": [
-    ".gitignore",
-    "01-overview.png",
-    "02-wall.png",
-    "03-git.png",
-    "04-podium.png",
-    "05-reception.png",
-    "06-library.png",
-    "Caddyfile",
-    "README.md",
-    "SWARM_STATE.md",
-    "SYSTEM.md",
-    "bun.lock",
-    "components.json",
-    "eslint.config.mjs",
-    "next.config.ts",
-    "package.json",
-    "postcss.config.mjs",
-    "tailwind.config.ts",
-    "tsconfig.json",
-    "worklog.md"
-   ],
-   "desc": "GIANT — מערכת-האמת של SAOS: הפלטפורמה המאוחדת (ערוץ-אחד · אפס-כפילויות · תקן-ענקים). קונברגנציה נדרשת לכל-הליינים (DECISIONS #42)."
+   "desc": "Fleet HQ sealed key vault (AES-256, PBKDF2-200k). Keys never travel in plaintext."
   },
   "sovereign-beacon": {
-   "pushedAt": "2026-11-07T07:21:02Z",
-   "topHash": "2143ff3ca43a",
+   "pushedAt": "2026-11-07T14:11:42Z",
+   "topHash": "c280ee2c5e9f",
    "workflows": [
     "beacon-pulse:active",
     "beat-keepalive:active",
@@ -928,47 +1022,6 @@
     "state.json"
    ],
    "desc": "Rosh Pina — sovereign lighthouse (out-of-machine console)"
-  },
-  "fleet-economy": {
-   "pushedAt": "2026-11-07T06:39:08Z",
-   "topHash": "18cc8504c2c3",
-   "workflows": [
-    "ci-probe:active",
-    "economy-beat:active",
-    "receipts-guard:active"
-   ],
-   "topBlobs": [
-    ".gitattributes",
-    ".gitignore",
-    "beat-local.sh",
-    "chain-reconcile.mjs",
-    "index.ts",
-    "package.json",
-    "run-economy-beat.mjs"
-   ],
-   "desc": "הכלכלה-הפנימית-הריבונית — ספר-hash-chain חי · auto-sealed"
-  },
-  "dynamis": {
-   "pushedAt": "2026-11-07T05:49:02Z",
-   "topHash": "1b372d1cc790",
-   "workflows": [
-    "Dependabot Updates:active",
-    "ci:active",
-    "daily-proof:active",
-    "deploy-site:active",
-    "keeper:active",
-    "pages-build-deployment:active",
-    "uptime:active"
-   ],
-   "topBlobs": [
-    ".gitignore",
-    "AGENTS.md",
-    "CANON.md",
-    "README.md",
-    "SECURITY.md",
-    "demo"
-   ],
-   "desc": "DYNAMIS — the work-verified agent economy. A public network protocol that pays agents in verified work (not votes) plus a Sovereign Operations Layer for agent-run businesses. Private root, public leaf: books and custody never leave the root."
   },
   "Saosmartwallet": {
    "pushedAt": "2026-11-06T20:34:58Z",
@@ -1023,59 +1076,6 @@
     "postcss.config.mjs"
    ],
    "desc": "Saosmartwallet — ארנק ריבוני: כספת AES-256+Shamir, חתימה-אמת STEEM/BLURT/ETH/SOL, קונסולת-רשת (פרוטוטיפ — טרם-נפרס)"
-  },
-  "saos-sovereign-platform": {
-   "pushedAt": "2026-11-06T20:08:10Z",
-   "topHash": "3af5fc71ed7f",
-   "workflows": [
-    "foundry-tests:active",
-    "gitleaks-secret-scan:active",
-    "platform-selftest:active",
-    "workflow-yaml-guard:active"
-   ],
-   "topBlobs": [
-    ".dcg.toml",
-    ".gitignore",
-    ".gitleaksignore",
-    ".tmp-ws2a-log.txt",
-    ".tmp-ws2a-one.ts",
-    ".tmp-ws2a.ts",
-    ".tmp-ws2c.ts",
-    "2026-09-11-roast-78-addendum.md",
-    "AGENT-BRIEFING.md",
-    "AGENTS.md",
-    "CLAIMS-AUDIT-2026-09-12.md",
-    "CLAIMS-AUDIT-PREVIEW-2026-09-12.md",
-    "CONTROLS-THAT-EXIST.md",
-    "CRITICAL-R11-KEY-BROADCAST.md",
-    "Caddyfile",
-    "EPOCH-PATCH-SPEC.md",
-    "FLEET-NOTE.md",
-    "HISTORY.md",
-    "README.md",
-    "RELAY-PATCH-2.md",
-    "SAOS-BRIEFING-2026-09-11-OUTER-ANCHOR.md",
-    "SAOS-BRIEFING-2026-09-11-ROAST-80.md",
-    "SAOS-BRIEFING-2026-09-11-ROAST-84.md",
-    "SAOS-DAILY-REPORT-2026-09-11-ADSMARKET.md",
-    "SAOS-DAILY-REPORT-2026-09-11-FOUNDRY.md",
-    "SAOS-DAILY-REPORT-2026-09-11.md",
-    "SAOS-PULSE-2026-09-29-V94-FULL-VAULT.md",
-    "SAOS-PULSE-2026-09-30-V95-TRUTH-CENSUS.md",
-    "SAOS-PULSE-2026-09-30-V96-THE-WORDS-IN-THE-VAULTS.md",
-    "SAOS-PULSE-2026-09-30-V97-PREVIEW-TRUTH.md",
-    "SAOS-PULSE-2026-09-30-V98-ONE-NETWORK.md",
-    "SAOS-PULSE-2026-10-01-V99-SOVEREIGN-REVOLUTION.md",
-    "SAOS-STRATEGY-2026-09-11-ADSMARKET.md",
-    "STOP-ORDER-KEYS-DISTRIBUTION-2026-09-13.md",
-    "bun.lock",
-    "components.json",
-    "eslint.config.mjs",
-    "feature_list.json",
-    "foundry.toml",
-    "init.sh"
-   ],
-   "desc": "The chosen project - standalone canonical copy. Sovereign anchoring platform (folder B)"
   },
   "execution-fabric": {
    "pushedAt": "2026-11-06T11:09:30Z",
