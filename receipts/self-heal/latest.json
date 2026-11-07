@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-07T00:54:39.849Z",
+ "at": "2026-11-07T01:57:45.556Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-07T00:31:23.409Z",
+ "verdictAt": "2026-11-07T01:31:55.123Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -30,6 +30,14 @@
    "ok": true
   },
   {
+   "workflow": "federation.yml",
+   "check": "sbx.wf-federation",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
    "workflow": "value-scan.yml",
    "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
@@ -44,14 +52,6 @@
    "status": 204,
    "note": "dispatched",
    "ok": true
-  },
-  {
-   "workflow": "artery-wallet.yml",
-   "check": "sbx.wf-artery-wallet",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
   }
  ],
  "refused": [],
@@ -60,7 +60,7 @@
   {
    "id": "dev.rate",
    "level": "NOTICE",
-   "why": "mixed activity: codeShare 19%",
+   "why": "mixed activity: codeShare 21%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
