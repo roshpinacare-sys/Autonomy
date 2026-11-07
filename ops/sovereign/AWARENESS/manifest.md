@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-07T16:45:28.457Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-07T17:36:41.528Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -6,7 +6,7 @@
 - 41 ריפואים במשק · ליבה: Domain / Autonomy / FleetHQ
 
 ## מה-חדש (הבעלים בונה כל-הזמן — הרשת מבחינה עכשיו)
-- ריפו-חדש: Autonomy (pushed 2026-11-07T16:45:13Z)
+- אין-ריפו-חדש מאז-המדידה-הקודמת
 - אין-workflow-חדש מאז-המדידה-הקודמת
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
@@ -15,8 +15,8 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/identity-guard @ 2026-11-07T16:16 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/site-link-audit @ 2026-11-07T16:16 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/site-link-audit @ 2026-11-07T17:25 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/identity-guard @ 2026-11-07T16:52 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/ladder-refresh @ 2026-11-07T15:12 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-07T10:32 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-07T10:26 — autonomy triage: read the log, fix root, land, verify
