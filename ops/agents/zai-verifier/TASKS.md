@@ -7191,3 +7191,11 @@
 - [CLOSED 2026-11-07T20:53:05.508Z] V-LOOP-ARTERY-CATCHUP — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-11-07T20:53:05.508Z] V-LOOP-VERIFIER — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-11-07T20:53:05.508Z] V-LOOP-FEDERATION — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [OPEN] V-LOOP-ARTERY-CATCHUP (DEGRADED @ 2026-11-07T21:22:32.079Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 35min ago > slot
+- [OPEN] V-LOOP-FEDERATION (DEGRADED @ 2026-11-07T21:22:32.079Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 50min ago > slot
+- [OPEN] V-LOOP-ARTERY-INTEGRITY (DEGRADED @ 2026-11-07T21:22:32.079Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 63min ago > slot
+- [CLOSED 2026-11-07T21:22:32.079Z] V-LOOP-SOVEREIGN-STATE — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-07T21:22:32.079Z] V-LOOP-VALUE-SCAN — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-07T21:22:32.079Z] V-LOOP-FLEET-HEAL — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-07T21:22:32.079Z] V-LOOP-ARTERY-GRID — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-07T21:22:32.079Z] V-LOOP-ARTERY-WALLET — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
