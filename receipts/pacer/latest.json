@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-11-08T15:28:39.790Z",
+  "at": "2026-11-08T15:42:57.820Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -8,27 +8,27 @@
   "checked": 73,
   "stale": [
     {
-      "wf": "value-scan.yml",
-      "ageMin": 54,
+      "wf": "artery-grid.yml",
+      "ageMin": 42,
       "cadenceMin": 30,
-      "why": "last success 54min ago > cadence 30+10grace"
+      "why": "last success 42min ago > cadence 30+10grace"
     },
     {
       "wf": "verifier.yml",
-      "ageMin": 54,
+      "ageMin": 68,
       "cadenceMin": 30,
-      "why": "last success 54min ago > cadence 30+10grace"
+      "why": "last success 68min ago > cadence 30+10grace"
     },
     {
-      "wf": "artery-selfheal.yml",
-      "ageMin": 54,
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 42,
       "cadenceMin": 30,
-      "why": "last success 54min ago > cadence 30+10grace"
+      "why": "last success 42min ago > cadence 30+10grace"
     }
   ],
   "dispatched": [
     {
-      "wf": "value-scan.yml",
+      "wf": "artery-grid.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -40,7 +40,7 @@
       "note": "dispatched"
     },
     {
-      "wf": "artery-selfheal.yml",
+      "wf": "artery-decision-truth.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -48,5 +48,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-11-08T15:28:48.442Z"
+  "doneAt": "2026-11-08T15:43:06.108Z"
 }
