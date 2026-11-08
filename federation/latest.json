@@ -1,6 +1,6 @@
 {
   "schema": "federation/1",
-  "at": "2026-11-08T09:27:58.330Z",
+  "at": "2026-11-08T10:32:51.708Z",
   "verdict": "FEDERATION-DRIFT",
   "owner": "roshpinacare-sys",
   "authMode": "token",
@@ -9,7 +9,7 @@
     "github": 50,
     "records": 50,
     "flags": 40,
-    "flagsTotal": 49
+    "flagsTotal": 47
   },
   "flags": [
     {
@@ -18,14 +18,14 @@
       "detail": "discovered on GitHub (public) but not in manifest — zero-trust: adoption requires an explicit manifest commit"
     },
     {
-      "repo": "Console",
-      "flag": "WORKFLOW-RED",
-      "detail": "dex-watch → failure @ 2026-11-08T09:15:02"
-    },
-    {
       "repo": "Defi",
       "flag": "ADOPT-PENDING",
       "detail": "discovered on GitHub (public) but not in manifest — zero-trust: adoption requires an explicit manifest commit"
+    },
+    {
+      "repo": "FleetHQ",
+      "flag": "WORKFLOW-RED",
+      "detail": "office-ci → failure @ 2026-11-08T09:41:50"
     },
     {
       "repo": "Project-files",
@@ -35,7 +35,7 @@
     {
       "repo": "Sandbox",
       "flag": "WORKFLOW-RED",
-      "detail": "artery-grid → failure @ 2026-11-08T08:56:31"
+      "detail": "artery-wallet → failure @ 2026-11-08T10:21:20"
     },
     {
       "repo": "Sandbox",
@@ -184,11 +184,6 @@
     },
     {
       "repo": "saos-dex",
-      "flag": "WORKFLOW-RED",
-      "detail": "gitleaks-secret-scan → failure @ 2026-11-08T09:23:44"
-    },
-    {
-      "repo": "saos-dex",
       "flag": "ADOPT-PENDING",
       "detail": "discovered on GitHub (public) but not in manifest — zero-trust: adoption requires an explicit manifest commit"
     },
@@ -211,6 +206,11 @@
       "repo": "saos-owner-channel",
       "flag": "WORKFLOW-RED",
       "detail": "arsenal-sentinel → failure @ 2026-10-18T12:00:18"
+    },
+    {
+      "repo": "saos-owner-channel",
+      "flag": "ADOPT-PENDING",
+      "detail": "discovered on GitHub (public) but not in manifest — zero-trust: adoption requires an explicit manifest commit"
     }
   ],
   "repos": [
@@ -220,7 +220,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 349.4,
+      "ageHours": 350.4,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -242,12 +242,10 @@
       "onGithub": true,
       "role": "operator console (scrub/weave books)",
       "visibility": "public",
-      "ageHours": 0,
+      "ageHours": 0.2,
       "archived": false,
       "actions": "ok",
-      "redWorkflows": [
-        "dex-watch"
-      ]
+      "redWorkflows": []
     },
     {
       "name": "Defi",
@@ -255,7 +253,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 1.3,
+      "ageHours": 0.2,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -266,7 +264,7 @@
       "onGithub": true,
       "role": "public hub + disclosure policy",
       "visibility": "public",
-      "ageHours": 0,
+      "ageHours": 0.1,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -277,10 +275,12 @@
       "onGithub": true,
       "role": "public estate lane (function per owner census)",
       "visibility": "public",
-      "ageHours": 8.6,
+      "ageHours": 0.8,
       "archived": false,
       "actions": "ok",
-      "redWorkflows": []
+      "redWorkflows": [
+        "office-ci"
+      ]
     },
     {
       "name": "GridWatch",
@@ -288,7 +288,7 @@
       "onGithub": true,
       "role": "public estate lane (function per owner census)",
       "visibility": "public",
-      "ageHours": 0.5,
+      "ageHours": 0.3,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -299,7 +299,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 350.5,
+      "ageHours": 351.6,
       "archived": true,
       "actions": "ok",
       "redWorkflows": []
@@ -310,7 +310,7 @@
       "onGithub": true,
       "role": "fleet pulse + Actions liveness census",
       "visibility": "public",
-      "ageHours": 0.4,
+      "ageHours": 0,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -325,7 +325,7 @@
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
-        "artery-grid"
+        "artery-wallet"
       ]
     },
     {
@@ -334,7 +334,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 14.4,
+      "ageHours": 15.5,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -345,7 +345,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 353.4,
+      "ageHours": 354.5,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -356,7 +356,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 282.1,
+      "ageHours": 283.1,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -367,7 +367,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 329.2,
+      "ageHours": 330.3,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -378,7 +378,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 2.8,
+      "ageHours": 3.9,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -389,7 +389,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 285.6,
+      "ageHours": 286.7,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -400,7 +400,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 87.6,
+      "ageHours": 88.7,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -411,7 +411,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 3.6,
+      "ageHours": 4.7,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -422,7 +422,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 350.6,
+      "ageHours": 351.7,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -433,7 +433,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 46.3,
+      "ageHours": 47.4,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -444,7 +444,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 2.7,
+      "ageHours": 3.8,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -455,7 +455,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 5.9,
+      "ageHours": 7,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -466,7 +466,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 641.2,
+      "ageHours": 642.3,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -477,7 +477,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 349.4,
+      "ageHours": 350.4,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -488,7 +488,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 2.5,
+      "ageHours": 3.6,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -499,7 +499,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 6.8,
+      "ageHours": 0.9,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -510,7 +510,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 408.3,
+      "ageHours": 409.3,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -521,7 +521,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 3.2,
+      "ageHours": 4.3,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -532,7 +532,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 0.7,
+      "ageHours": 1.8,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -543,7 +543,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 596.4,
+      "ageHours": 597.5,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -554,7 +554,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 453.7,
+      "ageHours": 454.8,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -565,7 +565,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 350.3,
+      "ageHours": 351.4,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -576,7 +576,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 283.9,
+      "ageHours": 285,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -587,7 +587,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 279.8,
+      "ageHours": 280.9,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -598,7 +598,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 282.1,
+      "ageHours": 283.2,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -609,7 +609,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 284.4,
+      "ageHours": 285.4,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -620,7 +620,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 1.3,
+      "ageHours": 0.2,
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
@@ -636,9 +636,7 @@
       "ageHours": 0.1,
       "archived": false,
       "actions": "ok",
-      "redWorkflows": [
-        "gitleaks-secret-scan"
-      ]
+      "redWorkflows": []
     },
     {
       "name": "saos-jummper",
@@ -646,7 +644,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 353.4,
+      "ageHours": 354.5,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -657,7 +655,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 508.1,
+      "ageHours": 509.2,
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
@@ -670,7 +668,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 483,
+      "ageHours": 484.1,
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
@@ -683,12 +681,10 @@
       "onGithub": true,
       "role": "custody + fleet-rotation home",
       "visibility": "public",
-      "ageHours": 0.4,
+      "ageHours": 0.3,
       "archived": false,
       "actions": "ok",
-      "redWorkflows": [
-        "steem-hand-revival"
-      ]
+      "redWorkflows": []
     },
     {
       "name": "saos-sovereign-foundry",
@@ -696,7 +692,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 107.2,
+      "ageHours": 108.2,
       "archived": false,
       "actions": "ok",
       "redWorkflows": [
@@ -709,7 +705,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 15.2,
+      "ageHours": 16.3,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -720,7 +716,7 @@
       "onGithub": true,
       "role": "public estate lane (function per owner census)",
       "visibility": "public",
-      "ageHours": 6.9,
+      "ageHours": 8,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -742,7 +738,7 @@
       "onGithub": true,
       "role": "public estate lane (function per owner census)",
       "visibility": "public",
-      "ageHours": 1,
+      "ageHours": 0.9,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -753,7 +749,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 0.4,
+      "ageHours": 1.5,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -764,7 +760,7 @@
       "onGithub": true,
       "role": null,
       "visibility": "public",
-      "ageHours": 0.4,
+      "ageHours": 0,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
@@ -775,15 +771,15 @@
       "onGithub": true,
       "role": null,
       "visibility": "private",
-      "ageHours": 0.3,
+      "ageHours": 1.4,
       "archived": false,
       "actions": "ok",
       "redWorkflows": []
     }
   ],
-  "tookMs": 13520,
+  "tookMs": 13729,
   "chain": {
-    "prev": "0df54f58c8ff112dc54dd65945e1d34053d799b6701440daa22ffaec91665e60",
-    "cur": "ecc49fdb1f4e878b920cd3bb1609d0131ce710942de8415a342f469051e4ae39"
+    "prev": "ecc49fdb1f4e878b920cd3bb1609d0131ce710942de8415a342f469051e4ae39",
+    "cur": "338d5f4fe4e7d56332c209085fc118aeb1d6015cf62fe7193ec4da8b25c8585a"
   }
 }
