@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-08T20:45:43.493Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-08T21:42:11.002Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,17 +15,15 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/identity-guard @ 2026-11-08T20:12 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/site-link-audit @ 2026-11-08T20:11 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/site-link-audit @ 2026-11-08T21:23 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/identity-guard @ 2026-11-08T20:49 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/ladder-refresh @ 2026-11-08T20:47 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-08T19:51 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-08T18:12 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/ladder-refresh @ 2026-11-08T15:36 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-grid @ 2026-11-08T11:52 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-11-08T11:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-11-08T11:23 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/pf-artery-keeper @ 2026-11-08T09:46 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/dex-beat @ 2026-11-08T08:57 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/saos-act @ 2026-11-08T08:54 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-08T19:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-integrity @ 2026-11-08T11:01 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-fleet @ 2026-11-08T10:34 — autonomy triage: read the log, fix root, land, verify
