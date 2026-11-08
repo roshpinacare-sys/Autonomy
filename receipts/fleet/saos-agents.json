@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-08T09:15:38.836Z",
+  "at": "2026-11-08T10:34:32.444Z",
   "slug": "roshpinacare-sys/saos-agents",
   "head": "34f390a3d870e7c3b6d7ce1d8889116a5eb246c6",
   "checks": {
@@ -8,8 +8,8 @@
   "laws": [
     {
       "id": "law-no-secrets-at-head",
-      "verdict": "pass",
-      "detail": "gitleaks HEAD scan: 0 findings"
+      "verdict": "flag",
+      "detail": "scanner unavailable this run (download failed) — no HEAD secret scan"
     },
     {
       "id": "law-no-skipped-pass",
@@ -18,8 +18,8 @@
     },
     {
       "id": "law-gitleaks-push",
-      "verdict": "pass",
-      "detail": "scan capability present + this artery scanned HEAD this run (billing-wall covenant: the artery is the push layer for walled repos)"
+      "verdict": "fail",
+      "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
     },
     {
       "id": "law-r11-head-absent",
@@ -27,7 +27,9 @@
       "detail": "absent at HEAD"
     }
   ],
-  "alerts": [],
-  "overall": "PASS",
-  "reason": "all checks and fleet laws pass"
+  "alerts": [
+    "law-no-secrets-at-head: scanner unavailable this run (download failed) — no HEAD secret scan"
+  ],
+  "overall": "FAIL",
+  "reason": ""
 }
