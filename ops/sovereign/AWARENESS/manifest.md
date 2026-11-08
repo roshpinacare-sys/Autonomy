@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-08T11:04:03.071Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-08T12:59:11.277Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,7 +15,9 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [DEFECT] Domain/dex-grid @ 2026-11-08T10:21 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/dex-grid @ 2026-11-08T11:52 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/estate-scrub @ 2026-11-08T11:38 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/treasury-route @ 2026-11-08T11:23 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/pf-artery-keeper @ 2026-11-08T09:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-beat @ 2026-11-08T08:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/saos-act @ 2026-11-08T08:54 — autonomy triage: read the log, fix root, land, verify
