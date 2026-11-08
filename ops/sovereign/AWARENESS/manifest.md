@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-08T15:32:23.872Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-08T15:45:01.216Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,6 +15,7 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/ladder-refresh @ 2026-11-08T15:36 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-08T15:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-08T13:45 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-grid @ 2026-11-08T11:52 — autonomy triage: read the log, fix root, land, verify
@@ -26,7 +27,6 @@
 - [ENFORCEMENT] Domain/identity-guard @ 2026-11-08T08:46 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/gitleaks-secret-scan @ 2026-11-08T08:46 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/site-link-audit @ 2026-11-08T07:01 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/ladder-refresh @ 2026-11-08T06:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-08T15:04 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-integrity @ 2026-11-08T11:01 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-fleet @ 2026-11-08T10:34 — autonomy triage: read the log, fix root, land, verify
