@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-08T10:34:32.444Z",
+  "at": "2026-11-08T10:38:52.672Z",
   "slug": "roshpinacare-sys/Saosmartwallet",
   "head": "21bdb6b47130b8301201b6264a8d61f4211adf7b",
   "checks": {},
@@ -7,7 +7,7 @@
     {
       "id": "law-no-secrets-at-head",
       "verdict": "flag",
-      "detail": "scanner unavailable this run (download failed) — no HEAD secret scan"
+      "detail": "gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
     },
     {
       "id": "law-no-skipped-pass",
@@ -16,8 +16,8 @@
     },
     {
       "id": "law-gitleaks-push",
-      "verdict": "fail",
-      "detail": "gitleaks.yml present but no trigger at all, or HEAD not scanned this run"
+      "verdict": "pass",
+      "detail": "scan capability present + this artery scanned HEAD this run (billing-wall covenant: the artery is the push layer for walled repos)"
     },
     {
       "id": "law-r11-head-absent",
@@ -51,8 +51,8 @@
     }
   ],
   "alerts": [
-    "law-no-secrets-at-head: scanner unavailable this run (download failed) — no HEAD secret scan"
+    "law-no-secrets-at-head: gitleaks HEAD scan: 1 finding(s) — paths withheld per the public-surface law; by rule: generic-api-key×1"
   ],
-  "overall": "FAIL",
-  "reason": ""
+  "overall": "PASS",
+  "reason": "all checks and fleet laws pass"
 }
