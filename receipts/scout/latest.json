@@ -1,6 +1,6 @@
 {
  "schema": "scout/1",
- "at": "2026-11-09T02:48:45.364Z",
+ "at": "2026-11-09T05:38:00.305Z",
  "ok": true,
  "sourcesFetched": 1,
  "candidates": 12,
@@ -24,7 +24,7 @@
     {
      "hop": "wayback",
      "ok": false,
-     "status": 404,
+     "status": 429,
      "note": "http-error"
     },
     {
@@ -37,13 +37,25 @@
   },
   {
    "source": "github-trending-daily",
-   "via": "direct",
+   "via": "jina",
    "attempts": [
     {
      "hop": "direct",
+     "ok": false,
+     "status": 504,
+     "note": "http-error"
+    },
+    {
+     "hop": "wayback",
+     "ok": false,
+     "status": 429,
+     "note": "http-error"
+    },
+    {
+     "hop": "jina",
      "ok": true,
      "status": 200,
-     "note": "520801B"
+     "note": "80488B"
     }
    ]
   }
