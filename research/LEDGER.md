@@ -84,3 +84,11 @@
   - next: if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)
 - **E3 rc-census** · 2026-11-02 — measured: no starved accounts (<40%) — fleet RC healthy this week
   - next: if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)
+
+## 2026-11-09T14:00:00.879Z
+- **E1 spread-regime** · 2026-11-09 — measured: spread tightened (77.03 < 93.5 bps) — grid-side liquidity improving
+  - next: track weekly; correlate with grid-beat placements (saos-dex ledger) before claiming causality
+- **E2 feed-divergence** · 2026-11-09 — measured: healthy band: divergence 140.31 bps ≤ 300 (feed_above_market)
+  - next: if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)
+- **E3 rc-census** · 2026-11-09 — measured: no starved accounts (<40%) — fleet RC healthy this week
+  - next: if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)
