@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-10T03:49:43.433Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-10T04:16:11.417Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -25,11 +25,10 @@
 - [DEFECT] Domain/agent9-fleet-truth @ 2026-11-09T18:28 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-grid @ 2026-11-09T18:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-worldbeat @ 2026-11-09T18:08 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/selfhood @ 2026-11-10T03:50 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-11-10T02:54 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Autonomy/selfhood @ 2026-11-09T21:31 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-11-09T18:26 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-scout @ 2026-11-09T18:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sovereign-state @ 2026-11-09T17:59 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-11-09T02:07 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
