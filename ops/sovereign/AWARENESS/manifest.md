@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-10T13:28:54.947Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-10T14:43:04.011Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,8 +15,9 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/weave-anchor-lines @ 2026-11-10T13:35 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/fill-ledger-cron @ 2026-11-10T13:27 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-11-10T13:03 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/fill-ledger-cron @ 2026-11-10T10:00 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-10T07:36 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/identity-guard @ 2026-11-10T07:01 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/site-link-audit @ 2026-11-10T07:01 — autonomy triage: read the log, fix root, land, verify
