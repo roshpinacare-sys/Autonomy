@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-11T04:39:21.149Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-11T05:35:13.412Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -6,7 +6,7 @@
 - 41 ריפואים במשק · ליבה: Domain / Autonomy / FleetHQ
 
 ## מה-חדש (הבעלים בונה כל-הזמן — הרשת מבחינה עכשיו)
-- ריפו-חדש: steem (pushed 2026-11-11T04:24:30Z)
+- אין-ריפו-חדש מאז-המדידה-הקודמת
 - אין-workflow-חדש מאז-המדידה-הקודמת
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
@@ -27,7 +27,6 @@
 - [DEFECT] Domain/site-link-audit @ 2026-11-10T07:01 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-grid @ 2026-11-10T05:18 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/grid-sentinel @ 2026-11-10T05:15 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/bridge-keeper @ 2026-11-10T02:47 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-11T00:36 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-selfheal @ 2026-11-10T23:14 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Autonomy/artery-autotrade-hedge-gate @ 2026-11-10T22:11 — gate held the line - verify the payload it stopped, then fix the producer
