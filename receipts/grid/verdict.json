@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-11-11T21:26:07.695Z",
+  "measuredAt": "2026-11-11T21:50:18.909Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -15,10 +15,10 @@
     },
     {
       "id": "law-grid-fresh",
-      "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 69min)",
+      "ok": false,
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 93min)",
       "severity": "fail",
-      "verdict": "pass"
+      "verdict": "fail"
     },
     {
       "id": "law-grid-exec-alive",
@@ -36,19 +36,19 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "overall": "FAIL",
+  "reason": "grid-law failed: law-grid-fresh",
   "provenance": {
     "stateBlobSha": "bb51ac6980eee2d404244e82a62f33ca60c59a58",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "43102989974",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43102989974",
-    "sha": "65b52a75aa11de3bdae0faa02bd3ae11f94c1e4e"
+    "runId": "43106529968",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43106529968",
+    "sha": "8b774e8564c0f69f02f1f46f132ff0d8a5b696c8"
   },
   "measured": {
     "enabled": true,
     "lastTickAt": "2026-11-11T20:17:24.104Z",
-    "ageMin": 69,
+    "ageMin": 93,
     "ticks": 49542,
     "lastVerdict": "BROADCAST-FAIL",
     "opsToday": 68,
