@@ -1,0 +1,29 @@
+{
+  "schema": "chainbus.directive.receipt/1",
+  "at": "2026-11-11T00:09:08.871Z",
+  "ok": true,
+  "ref": {
+    "block": 111215993,
+    "idx": 196429,
+    "seq": 1,
+    "from": "operator-plane",
+    "to": "*",
+    "runId": ""
+  },
+  "body": "{\"task\":\"health-probe\",\"runId\":\"\"}",
+  "task": {
+    "name": "health-probe",
+    "description": "liveness: public chain RPC head block + this repo git tip (read-only)",
+    "commands": 2,
+    "timeoutSec": 60
+  },
+  "exec": {
+    "ok": true,
+    "code": 0,
+    "ms": 704,
+    "receipt": "receipts/execution/bus-d-111215993-196429.json",
+    "outTail": ",\"time:\",j.result.time)).catch(e=>{console.error(e);process.exit(1)})'\nchain head_block: 111216681 time: 2026-11-11T00:09:06\n\n\n=== [1] exit=0 killed=false 125ms ===\n$ git log --oneline -3\neb14d0b pacer: beat receipt [run 42928933318]\n\n\nreceipt: receipts/execution/bus-d-111215993-196429.json ok=true\n",
+    "errTail": ""
+  },
+  "node": "https://api.steemit.com"
+}
