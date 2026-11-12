@@ -1,6 +1,6 @@
-# דוח-אמת (verifier) · 2026-11-12T02:08:14.993Z
+# דוח-אמת (verifier) · 2026-11-12T03:07:14.881Z
 
-**overall: DEGRADED** · auth: token(fed) · took: 19682ms · כללים: config.json (אפס-דעה-אישית)
+**overall: DEGRADED** · auth: token(fed) · took: 19661ms · כללים: config.json (אפס-דעה-אישית)
 
 > המערכת חיה אך לא בריאה-כולה: יש עורקים/לולאות שאינם מתפקדים — עם ראיות.
 
@@ -8,19 +8,19 @@
 | בדיקה | דרגה | ראיה |
 |---|---|---|
 | `sbx.wf-sovereign` | **OK** | success recent |
-| `sbx.wf-sovereign-state` | **DEGRADED** | last success 25min ago > slot |
+| `sbx.wf-sovereign-state` | **DEGRADED** | last success 28min ago > slot |
 | `sbx.wf-artery-catchup` | **OK** | success recent |
-| `sbx.wf-artery-watch` | **DEGRADED** | last success 26min ago > slot |
-| `sbx.wf-verifier` | **DEGRADED** | last success 60min ago > slot |
-| `sbx.wf-federation` | **OK** | success recent |
+| `sbx.wf-artery-watch` | **DEGRADED** | last success 23min ago > slot |
+| `sbx.wf-verifier` | **OK** | success recent |
+| `sbx.wf-federation` | **DEGRADED** | last success 34min ago > slot |
 | `sbx.wf-value-scan` | **OK** | success recent |
 | `sbx.wf-hive-probe` | **OK** | success recent |
 | `sbx.wf-fleet-heal` | **OK** | success recent |
 | `sbx.wf-artery-decision-truth` | **OK** | success recent |
-| `sbx.wf-artery-grid` | **DEGRADED** | last success 39min ago > slot |
-| `sbx.wf-artery-wallet` | **OK** | success recent |
-| `sbx.wf-artery-integrity` | **DEGRADED** | last success 65min ago > slot |
-| `sbx.wf-artery-participation` | **DEGRADED** | last success 110min ago > slot |
+| `sbx.wf-artery-grid` | **OK** | success recent |
+| `sbx.wf-artery-wallet` | **DEGRADED** | last success 69min ago > slot |
+| `sbx.wf-artery-integrity` | **OK** | success recent |
+| `sbx.wf-artery-participation` | **OK** | success recent |
 | `sbx.wf-artery-fleet` | **OK** | success recent |
 | `sbx.wf-artery-flow` | **OK** | success recent |
 
@@ -29,31 +29,31 @@
 |---|---|---|---|---|
 | Autonomy | public | 100+ | 0% | ok |
 | Console | public | 100+ | 0% | ok |
-| Domain | public | 100+ | 17% | ok |
+| Domain | public | 100+ | 8% | ok |
 | Pulse | public | 46 | 0% | ok |
 
-**מדד-מסכם:** codeShare = 5% (42 commits מסווגים מתוך 346)
-> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 5% < 10% over 346 commits/24h
+**מדד-מסכם:** codeShare = 2% (42 commits מסווגים מתוך 346)
+> שיפוט: `dev.rate` = **DEGRADED** — heartbeat-without-building: codeShare 2% < 10% over 346 commits/24h
 
 ## 3. אמת-על-השרשרת · Steem (https://api.steemit.com)
 | חשבון | SP אפקטיבי | VP% | פוסט-אחרון | הצבעה-אחרונה |
 |---|---|---|---|---|
-| @acct-00 | 2603 | 45% | 1.6h | 0.2h |
-| @acct-01 | 301 | 68% | 586.5h | 45.5h |
-| @acct-02 | 304 | 55% | 579.2h | 372.9h |
-| @acct-03 | 320 | 55% | 577.7h | 372.9h |
-| @acct-04 | 305 | 55% | 576.3h | 372.8h |
-| @acct-05 | 300 | 55% | 740.6h | 372.8h |
-| @acct-06 | 100 | 0% | 722.9h | 372.8h |
-| @acct-07 | 100 | 69% | 724.2h | 45.5h |
-| @acct-08 | 100 | 64% | 724.2h | 45.5h |
-| @acct-09 | 100 | 0% | 724.1h | 372.8h |
-| @acct-10 | 100 | 0% | 724.1h | 372.8h |
-| @acct-11 | 31 | 66% | 586.5h | 45.5h |
-| @acct-12 | 45 | 67% | 724.1h | 45.5h |
-| @acct-13 | 1 | 0% | 741.5h | 342.8h |
+| @acct-00 | 2603 | 43% | 2.5h | 0h |
+| @acct-01 | 301 | 68% | 587.5h | 46.5h |
+| @acct-02 | 304 | 55% | 580.1h | 373.8h |
+| @acct-03 | 320 | 55% | 578.7h | 373.8h |
+| @acct-04 | 305 | 55% | 577.3h | 373.8h |
+| @acct-05 | 300 | 55% | 741.6h | 373.8h |
+| @acct-06 | 100 | 0% | 723.9h | 373.8h |
+| @acct-07 | 100 | 69% | 725.2h | 46.5h |
+| @acct-08 | 100 | 64% | 725.1h | 46.5h |
+| @acct-09 | 100 | 0% | 725.1h | 373.8h |
+| @acct-10 | 100 | 0% | 725.1h | 373.8h |
+| @acct-11 | 31 | 66% | 587.5h | 46.5h |
+| @acct-12 | 45 | 67% | 725.1h | 46.5h |
+| @acct-13 | 1 | 0% | 742.5h | 343.8h |
 
-> `steem.fleet` = **OK** — fleet posted 1.6h ago
+> `steem.fleet` = **OK** — fleet posted 2.5h ago
 > `steem.treasury` = **DEGRADED** — treasury acct-00 at 2603 SP < 3000 (recovery-plan §3)
 
 ## 4. Blurt (UNREACHABLE)
@@ -64,24 +64,18 @@ RPC בלתי-נגיש מהרץ: no blurt accounts configured in this repo's veri
 נסרקו 412 קבצים; פגומים: 0
 
 ## 6. דלתא-מול-הריצה-הקודמת
-- ↗ השתפר: `sbx.wf-artery-catchup` DEGRADED → **OK**
-- ↗ השתפר: `sbx.wf-federation` DEGRADED → **OK**
-- ↗ השתפר: `sbx.wf-value-scan` DEGRADED → **OK**
-- ↗ השתפר: `sbx.wf-fleet-heal` DEGRADED → **OK**
-- ↗ השתפר: `sbx.wf-artery-decision-truth` DEGRADED → **OK**
-- ↘ התדרדר: `sbx.wf-artery-grid` OK → **DEGRADED**
-- ↗ השתפר: `sbx.wf-artery-wallet` DEGRADED → **OK**
-- ↘ התדרדר: `sbx.wf-artery-integrity` OK → **DEGRADED**
-- ↗ השתפר: `steem.fleet` DEGRADED → **OK**
-- ↘ התדרדר: `steem.treasury` NOTICE → **DEGRADED**
+- ↗ השתפר: `sbx.wf-verifier` DEGRADED → **OK**
+- ↘ התדרדר: `sbx.wf-federation` OK → **DEGRADED**
+- ↗ השתפר: `sbx.wf-artery-grid` DEGRADED → **OK**
+- ↘ התדרדר: `sbx.wf-artery-wallet` OK → **DEGRADED**
+- ↗ השתפר: `sbx.wf-artery-integrity` DEGRADED → **OK**
+- ↗ השתפר: `sbx.wf-artery-participation` DEGRADED → **OK**
 
 ## 7. משימות-שנצרתו-עכשיו
 - **V-LOOP-SOVEREIGN-STATE** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-LOOP-ARTERY-WATCH** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-VERIFIER** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-GRID** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-INTEGRITY** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
-- **V-LOOP-ARTERY-PARTICIPATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-FEDERATION** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
+- **V-LOOP-ARTERY-WALLET** — עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow)
 - **V-DEV-FOCUS** — דופק-בלי-בנייה: להפנות-משאב-סוכנים מטביעות-מצב לבניית-מוצר/תיקונים אמתיים
 - **V-TREASURY-BALANCE** — איזון-אוצר לפי §3: לשמר ≥3,000 SP אצל-האוצר; top-up חשבונות-פעילים ל-100 SP
 
