@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-12T21:27:06.632Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-12T22:25:18.996Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,17 +15,16 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [ENFORCEMENT] Domain/identity-guard @ 2026-11-12T21:40 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/site-link-audit @ 2026-11-12T21:34 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-12T20:15 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-11-12T19:25 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/identity-guard @ 2026-11-12T17:31 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/ladder-refresh @ 2026-11-12T17:07 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/site-link-audit @ 2026-11-12T16:46 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-11-12T09:30 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/market-grid-cron @ 2026-11-12T08:35 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-11-12T07:39 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/artery-grid @ 2026-11-12T22:17 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-12T19:10 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-builder @ 2026-11-12T07:44 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-11-11T21:50 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/verifier (truth & quality) @ 2026-11-11T20:04 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
