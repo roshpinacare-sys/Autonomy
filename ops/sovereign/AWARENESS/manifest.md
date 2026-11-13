@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-13T20:45:41.142Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-13T21:24:30.476Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -12,7 +12,7 @@
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
 - Domain: 114 workflows · schedule 96 · dispatch 114 · both 96 → **PASS**
 - Autonomy: 59 workflows · schedule 56 · dispatch 58 · both 56 → **PASS**
-- FleetHQ: 4 workflows · schedule 2 · dispatch 4 · both 2 → **DEGRADED**
+- FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
 - [DEFECT] Domain/ladder-refresh @ 2026-11-13T20:05 — autonomy triage: read the log, fix root, land, verify
