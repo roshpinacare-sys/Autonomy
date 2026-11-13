@@ -1,26 +1,26 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-11-13T09:14:47.849Z",
+  "at": "2026-11-13T09:38:48.463Z",
   "overall": "PASS_WITH_ALERTS",
   "summary": {
     "sources": 11,
     "verified": 12,
-    "findings": 11,
+    "findings": 12,
     "counts": {
-      "FLAG": 10,
+      "FLAG": 11,
       "MEDIUM": 1
     }
   },
   "provenance": {
-    "runId": "43399659461",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43399659461",
-    "sha": "b8bddadee05ff63530edef0bef8206ba40db70f9"
+    "runId": "43402719360",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43402719360",
+    "sha": "ee41d8916f339ae69d131717991b67effead4ed4"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=43385626788 conc=success repo=Autonomy"
+      "detail": "run=43399659461 conc=success repo=Autonomy"
     },
     {
       "where": "Sandbox:receipts/wallet/verdict.json",
@@ -83,7 +83,7 @@
       "level": "FLAG",
       "where": "Sandbox:receipts/wallet/verdict.json",
       "law": "stale",
-      "detail": "38h > 26h — artery-wallet"
+      "detail": "39h > 26h — artery-wallet"
     },
     {
       "level": "FLAG",
@@ -96,6 +96,12 @@
       "where": "Sandbox:receipts/grid/verdict.json",
       "law": "stale",
       "detail": "38h > 26h — artery-grid"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:receipts/latest.json",
+      "law": "stale",
+      "detail": "2h > 2h — sovereign.yml"
     },
     {
       "level": "FLAG",
@@ -143,7 +149,7 @@
       "level": "MEDIUM",
       "where": "Sandbox:ops/flow/receipt.json",
       "law": "agent-authored-receipt",
-      "detail": "committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
+      "detail": "committer=agent9@fleet.local — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions"
     }
   ]
 }
