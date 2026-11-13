@@ -1,9 +1,9 @@
-# דוח-שומר-השלמות — 2026-11-13T22:13:28.971Z
+# דוח-שומר-השלמות — 2026-11-13T22:30:21.127Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=12
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=43495843233 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=43517432617 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=43083532550 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=43070739670 conc=failure repo=Sandbox
 - ✅ `Sandbox:receipts/grid/verdict.json` — run=43089779307 conc=success repo=Sandbox
@@ -11,13 +11,13 @@
 - ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=43422374863 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=43422374863 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=43512257395 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=43508662003 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=43504134607 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=43516010807 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=43516021640 conc=success repo=Autonomy
 - ✅ `Sandbox:ops/decision-truth/verdict.json` — run=43087706366 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/integrity/verdict.json` — run=43093883156 conc=success repo=Sandbox
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
-- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
+- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=agent9@fleet.local — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
 - **FLAG** `Sandbox:receipts/wallet/verdict.json` — stale — 51h > 26h — artery-wallet
 - **FLAG** `Sandbox:receipts/fleet/verdict.json` — stale — 53h > 26h — artery-fleet
 - **FLAG** `Sandbox:receipts/grid/verdict.json` — stale — 51h > 26h — artery-grid
