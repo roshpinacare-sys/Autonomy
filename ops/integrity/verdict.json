@@ -1,26 +1,26 @@
 {
   "schema": "integrity-guard/2",
-  "at": "2026-11-13T01:11:22.384Z",
+  "at": "2026-11-13T01:57:43.448Z",
   "overall": "PASS_WITH_ALERTS",
   "summary": {
     "sources": 11,
     "verified": 12,
-    "findings": 10,
+    "findings": 11,
     "counts": {
-      "FLAG": 9,
+      "FLAG": 10,
       "MEDIUM": 1
     }
   },
   "provenance": {
-    "runId": "43342957086",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43342957086",
-    "sha": "bf79a6ec2ceca469cc2fede96f702dcb9e8b2a31"
+    "runId": "43348661936",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43348661936",
+    "sha": "8c298bc4437794302771f39a1e9e27e08a8d7f37"
   },
   "verified": [
     {
       "where": "self:ops/integrity/verdict.json",
       "law": "verified",
-      "detail": "run=43340895589 conc=success repo=Autonomy"
+      "detail": "run=43342957086 conc=success repo=Autonomy"
     },
     {
       "where": "Sandbox:receipts/wallet/verdict.json",
@@ -65,7 +65,7 @@
     {
       "where": "Domain:office/data.json",
       "law": "verified",
-      "detail": "run=43335918761 conc=success repo=Autonomy"
+      "detail": "run=43343474247 conc=success repo=Autonomy"
     },
     {
       "where": "Sandbox:ops/decision-truth/verdict.json",
@@ -83,25 +83,25 @@
       "level": "FLAG",
       "where": "Sandbox:receipts/wallet/verdict.json",
       "law": "stale",
-      "detail": "30h > 26h — artery-wallet"
+      "detail": "31h > 26h — artery-wallet"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/fleet/verdict.json",
       "law": "stale",
-      "detail": "31h > 26h — artery-fleet"
+      "detail": "32h > 26h — artery-fleet"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/grid/verdict.json",
       "law": "stale",
-      "detail": "29h > 26h — artery-grid"
+      "detail": "30h > 26h — artery-grid"
     },
     {
       "level": "FLAG",
       "where": "Sandbox:receipts/latest.json",
       "law": "stale",
-      "detail": "22h > 2h — sovereign.yml"
+      "detail": "23h > 2h — sovereign.yml"
     },
     {
       "level": "FLAG",
@@ -113,7 +113,7 @@
       "level": "FLAG",
       "where": "Sandbox:ops/flow/receipt.json",
       "law": "stale",
-      "detail": "31h > 26h — artery-flow"
+      "detail": "32h > 26h — artery-flow"
     },
     {
       "level": "FLAG",
@@ -132,6 +132,12 @@
       "where": "Domain:agents/office-live.json",
       "law": "unprovenanced",
       "detail": "אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane"
+    },
+    {
+      "level": "FLAG",
+      "where": "Sandbox:ops/decision-truth/verdict.json",
+      "law": "stale",
+      "detail": "30h > 30h — dynamic"
     },
     {
       "level": "MEDIUM",
