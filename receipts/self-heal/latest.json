@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-13T00:17:52.127Z",
+ "at": "2026-11-13T01:11:01.770Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-12T23:51:30.653Z",
+ "verdictAt": "2026-11-13T00:50:30.819Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -38,8 +38,16 @@
    "ok": true
   },
   {
-   "workflow": "artery-wallet.yml",
-   "check": "sbx.wf-artery-wallet",
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-integrity.yml",
+   "check": "sbx.wf-artery-integrity",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -52,7 +60,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 5% < 10% over 369 commits/24h",
+   "why": "heartbeat-without-building: codeShare 0% < 10% over 369 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
