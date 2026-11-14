@@ -1,18 +1,18 @@
 # NETWORK-MANIFEST — דיוקן-העצמי של הרשת
 
-נוצר 2026-11-14T18:22:28.896Z · מנוע network-inventory/1.0 · מדוד מה-API של הגיט, אפס-המצאה.
+נוצר 2026-11-14T22:40:28.986Z · מנוע network-inventory/1.0 · מדוד מה-API של הגיט, אפס-המצאה.
 חוק-הבעלים (2026-10-13): "הרשת תבדוק את עצמה, תהיה מודעת לעצמה וליכולות הריבוניות האוטונומיות שלה, ותדע לזהות כל דבר חדש שהבעלים בונה."
 
 ## מה הרשת כוללת עכשיו
 
-- ריפואים: **50** (פומביים 41 · פרטיים 9 מוסרים ל-ref-יציב)
+- ריפואים: **51** (פומביים 42 · פרטיים 9 מוסרים ל-ref-יציב)
 - workflows: **408** · קבצי-מנוע/סוכן: **1005**
-- מצב: פעילים 26 · דוממים (48h+) 142 · נכשלים-אחרון 37
+- מצב: פעילים 26 · דוממים (48h+) 150 · נכשלים-אחרון 40
 - מצב-מדידה: **FULL**
 
 ## מה נתגלה מאז המדידה הקודמת (מודעות לחדש)
 
-- ריפואים חדשים: — אין
+- ריפואים חדשים: `sovereign-desk`
 - workflows חדשים: — אין
 - נעלמו: ריפואים 0 · workflows 0
 
@@ -20,33 +20,34 @@
 
 | ריפו | workflows | מנועים | יכולות | פעילות-אחרונה | דומם | נכשל |
 |---|---|---|---|---|---|---|
-| `Autonomy` | 59 | 68 | grid,office,wallet,artery,decider,economy,intake,witness,verify,retro | 2026-11-14 18:20Z | 7 | 1 |
-| `Console` | 26 | 21 | dex,grid,artery,content,economy,verify,retro | 2026-11-14 18:18Z | 4 | 1 |
-| `sovereign-lighthouse` | 3 | 0 | artery,decider | 2026-11-14 18:18Z | 1 | — |
-| `saos-dex` | 16 | 48 | dex,grid,wallet,artery,decider,content,economy,witness,verify,retro | 2026-11-14 18:17Z | 4 | 4 |
-| `Domain` | 100 | 355 | dex,grid,office,wallet,artery,decider,content,economy,intake,witness,verify,retro | 2026-11-14 18:19Z | 18 | 5 |
-| `steem` | 10 | 15 | wallet,decider,verify,retro | 2026-11-14 18:14Z | 6 | 3 |
+| `Autonomy` | 59 | 68 | grid,office,wallet,artery,decider,economy,intake,witness,verify,retro | 2026-11-14 22:38Z | 7 | 1 |
+| `Domain` | 100 | 355 | dex,grid,office,wallet,artery,decider,content,economy,intake,witness,verify,retro | 2026-11-14 22:37Z | 18 | 7 |
+| `saos-dex` | 16 | 48 | dex,grid,wallet,artery,decider,content,economy,witness,verify,retro | 2026-11-14 22:25Z | 4 | 5 |
 | `roshpina` | 4 | 0 | decider,verify,retro | 2026-10-26 16:09Z | 4 | 1 |
-| `saos-runtime` | 39 | 10 | dex,grid,wallet,artery,decider,content,verify,retro | 2026-11-14 18:13Z | 14 | 1 |
-| `fleet-economy` | 3 | 1 | artery,economy,verify | 2026-11-14 18:01Z | 1 | — |
-| `Pulse` | 5 | 3 | artery,decider,content,economy,verify | 2026-11-14 18:00Z | 1 | — |
+| `saos-runtime` | 39 | 10 | dex,grid,wallet,artery,decider,content,verify,retro | 2026-11-14 22:34Z | 14 | 1 |
+| `steem` | 10 | 15 | wallet,decider,verify,retro | 2026-11-14 22:34Z | 6 | 3 |
+| `Pulse` | 5 | 3 | artery,decider,content,economy,verify | 2026-11-14 22:30Z | 1 | — |
+| `Zip` | 17 | 79 | dex,wallet,artery,decider,content,witness,verify,retro | 2026-11-14 22:29Z | 15 | 7 |
+| `Console` | 26 | 21 | dex,grid,artery,content,economy,verify,retro | 2026-11-14 22:26Z | 4 | 1 |
+| `roshpinacare-sys.github.io` | 4 | 0 | verify | 2026-11-14 22:13Z | 1 | — |
+| `GridWatch` | 5 | 0 | grid,verify | 2026-11-14 22:38Z | 2 | — |
 | `Defi` | 3 | 0 | verify | 2026-10-21 04:59Z | 3 | — |
-| `sovereign-executor` | 1 | 4 | artery,decider,verify | 2026-11-14 17:52Z | — | — |
-| `GridWatch` | 5 | 0 | grid,verify | 2026-11-14 18:20Z | 2 | — |
-| `saos-desk` | 0 | 0 | — | מעולם-לא | — | — |
-| `sovereign-runner-kit` | 12 | 23 | artery,decider,content,intake,verify,retro | 2026-11-14 17:53Z | — | — |
-| `giant` | 7 | 16 | artery,decider,witness,verify,retro | 2026-11-14 18:05Z | 2 | 1 |
-| `Zip` | 17 | 79 | dex,wallet,artery,decider,content,witness,verify,retro | 2026-11-14 16:09Z | 15 | 7 |
-| `FleetHQ` | 7 | 4 | office,retro | 2026-11-14 16:05Z | 4 | 2 |
-| `ops-forge` | 1 | 2 | intake | 2026-11-14 15:35Z | — | — |
-| `ops-intake` | 1 | 5 | intake | 2026-11-14 15:13Z | — | — |
-| `sovereign-beacon` | 3 | 1 | artery,decider | 2026-11-14 17:53Z | 1 | — |
-| `Sandbox` | 35 | 49 | grid,office,wallet,artery,decider,content,economy,witness,verify,retro | 2026-11-14 12:17Z | 20 | 10 |
+| `sovereign-lighthouse` | 3 | 0 | artery,decider | 2026-11-14 21:57Z | 1 | — |
+| `sovereign-executor` | 1 | 4 | artery,decider,verify | 2026-11-14 21:57Z | — | — |
+| `giant` | 7 | 16 | artery,decider,witness,verify,retro | 2026-11-14 21:49Z | 2 | 1 |
+| `sovereign-runner-kit` | 12 | 23 | artery,decider,content,intake,verify,retro | 2026-11-14 22:25Z | — | — |
 | `priv-h469de745` 🔒 | 0 | 0 | wallet | מעולם-לא | — | — |
-| `dynamis` | 7 | 15 | artery,witness,retro | 2026-11-14 18:10Z | 1 | — |
-| `Saosmartwallet` | 5 | 11 | wallet,intake,witness,verify,retro | 2026-11-13 20:58Z | 4 | — |
-| `saos-sovereign-platform` | 4 | 71 | dex,wallet,artery,decider,witness,verify,retro | 2026-11-13 20:39Z | 3 | — |
-| `roshpinacare-sys.github.io` | 4 | 0 | verify | 2026-11-14 17:57Z | 1 | — |
+| `saos-desk` | 0 | 0 | — | מעולם-לא | — | — |
+| `sovereign-desk` | 0 | 0 | decider | מעולם-לא | — | — |
+| `ops-forge` | 1 | 2 | intake | 2026-11-14 20:27Z | — | — |
+| `ops-intake` | 1 | 5 | intake | 2026-11-14 19:58Z | — | — |
+| `Saosmartwallet` | 5 | 11 | wallet,intake,witness,verify,retro | 2026-11-14 19:27Z | 4 | — |
+| `sovereign-beacon` | 3 | 1 | artery,decider | 2026-11-14 22:25Z | 1 | — |
+| `Sandbox` | 35 | 49 | grid,office,wallet,artery,decider,content,economy,witness,verify,retro | 2026-11-14 12:17Z | 28 | 10 |
+| `FleetHQ` | 7 | 4 | office,retro | 2026-11-14 18:55Z | 4 | 2 |
+| `saos-sovereign-platform` | 4 | 71 | dex,wallet,artery,decider,witness,verify,retro | 2026-11-14 18:50Z | 3 | — |
+| `fleet-economy` | 3 | 1 | artery,economy,verify | 2026-11-14 21:09Z | 1 | — |
+| `dynamis` | 7 | 15 | artery,witness,retro | 2026-11-14 22:33Z | 1 | — |
 | `execution-fabric` | 1 | 15 | wallet,witness,retro | 2026-11-06 11:09Z | 1 | — |
 | `anchor-baseline` | 4 | 0 | witness,verify | 2026-10-24 16:01Z | 4 | — |
 | `saos-sovereign-foundry` | 3 | 22 | dex,wallet,decider,witness,verify,retro | 2026-10-20 05:34Z | 3 | 1 |
@@ -55,7 +56,7 @@
 | `saos-control-center` | 3 | 82 | dex,grid,wallet,artery,decider,witness,verify,retro | 2026-10-24 16:01Z | 3 | — |
 | `priv-h8042ff60` 🔒 | 0 | 0 | — | מעולם-לא | — | — |
 | `priv-ha4c1a4d5` 🔒 | 0 | 13 | artery,decider,witness,retro | מעולם-לא | — | — |
-| `agent9-clock` | 2 | 0 | — | 2026-11-14 18:09Z | — | — |
+| `agent9-clock` | 2 | 0 | — | 2026-11-14 22:34Z | — | — |
 | `TruthRail` | 2 | 5 | artery,verify,retro | 2026-11-14 12:05Z | 1 | — |
 | `Adsmarket` | 3 | 0 | intake,verify | 2026-10-24 20:06Z | 3 | — |
 | `priv-hc1241174` 🔒 | 0 | 0 | — | מעולם-לא | — | — |
@@ -73,39 +74,39 @@
 
 ## דורש-תשומת-לב (הרשת רואה ומצהירה, לא משתיקה)
 
-- דוממים (142):
-  - `Autonomy` ← `evo-windows-staleness.yml` (ראן אחרון לפני 99.1h)
-  - `Autonomy` ← `executor.yml` (ראן אחרון לפני 687.1h)
-  - `Autonomy` ← `fresh-oracle.yml` (ראן אחרון לפני 77.7h)
-  - `Autonomy` ← `key-census-relay-v2.yml` (ראן אחרון לפני 391.7h)
-  - `Autonomy` ← `key-proof.yml` (ראן אחרון לפני 78.4h)
-  - `Autonomy` ← `research-lane.yml` (ראן אחרון לפני 124.4h)
-  - `Autonomy` ← `retro.yml` (ראן אחרון לפני 124.5h)
-  - `Console` ← `key-census-relay-v2.yml` (ראן אחרון לפני 391.7h)
-  - `Console` ← `key-verify.yml` (ראן אחרון לפני 665.7h)
-  - `Console` ← `rea-desk.yml` (ראן אחרון לפני 101.3h)
-  - `Console` ← `pages-build-deployment` (ראן אחרון לפני 557.5h)
-  - `sovereign-lighthouse` ← `pages-build-deployment` (ראן אחרון לפני 799.1h)
-  - `saos-dex` ← `grid-trigger.yml` (ראן אחרון לפני 785.1h)
-  - `saos-dex` ← `key-census-relay-v2.yml` (ראן אחרון לפני 391.7h)
-  - `saos-dex` ← `key-census-relay.yml` (ראן אחרון לפני 394.5h)
-  - `saos-dex` ← `llm-bridge.yml` (ראן אחרון לפני 785.1h)
-  - `Domain` ← `adsmarket-panel.yml` (ראן אחרון לפני 124h)
-  - `Domain` ← `bootstrap-pages.yml` (ראן אחרון לפני 698.6h)
-  - `Domain` ← `canary.yml` (ראן אחרון לפני 613.4h)
-  - `Domain` ← `cloud-heart.yml` (ראן אחרון לפני 942.8h)
-  - `Domain` ← `content-campaign.yml` (ראן אחרון לפני 701.9h)
-  - `Domain` ← `content-truth-wave.yml` (ראן אחרון לפני 1038.7h)
-  - `Domain` ← `evo-windows.yml` (ראן אחרון לפני 152h)
-  - `Domain` ← `hive-adopt-t21.yml` (ראן אחרון לפני 641.1h)
-  - `Domain` ← `key-census-relay-v2.yml` (ראן אחרון לפני 391.7h)
-  - `Domain` ← `key-census-relay.yml` (ראן אחרון לפני 392h)
-  - `Domain` ← `key-verify.yml` (ראן אחרון לפני 606.6h)
-  - `Domain` ← `office3d-guard.yml` (ראן אחרון לפני 582.4h)
-  - `Domain` ← `org-gitleaks.yml` (ראן אחרון לפני 124h)
-  - `Domain` ← `org-selftests.yml` (ראן אחרון לפני 78.7h)
-  - ... ועוד 112
-- ראן-אחרון-נכשל (37): `Autonomy`←`selfhood.yml`, `Console`←`key-census-relay-v2.yml`, `saos-dex`←`grid-trigger.yml`, `saos-dex`←`key-census-relay-v2.yml`, `saos-dex`←`key-census-relay.yml`, `saos-dex`←`llm-bridge.yml`, `Domain`←`economy-engine.yml`, `Domain`←`key-census-relay-v2.yml`, `Domain`←`ladder-refresh.yml`, `Domain`←`office3d-guard.yml`, `Domain`←`org-selftests.yml`, `steem`←`gitleaks.yml`, `steem`←`vault-onekey-verify.yml`, `steem`←`workflow-yaml-guard.yml`, `roshpina`←`gitleaks.yml`, `saos-runtime`←`escrow-payroll.yml`, `giant`←`dependabot-updates`, `Zip`←`weave-anchor-lines.yml`, `Zip`←`weave-anchor.yml`, `Zip`←`weave-brain-restore.yml` ...
+- דוממים (150):
+  - `Autonomy` ← `evo-windows-staleness.yml` (ראן אחרון לפני 103.4h)
+  - `Autonomy` ← `executor.yml` (ראן אחרון לפני 691.4h)
+  - `Autonomy` ← `fresh-oracle.yml` (ראן אחרון לפני 82h)
+  - `Autonomy` ← `key-census-relay-v2.yml` (ראן אחרון לפני 396h)
+  - `Autonomy` ← `key-proof.yml` (ראן אחרון לפני 82.7h)
+  - `Autonomy` ← `research-lane.yml` (ראן אחרון לפני 128.7h)
+  - `Autonomy` ← `retro.yml` (ראן אחרון לפני 128.8h)
+  - `Domain` ← `adsmarket-panel.yml` (ראן אחרון לפני 128.3h)
+  - `Domain` ← `bootstrap-pages.yml` (ראן אחרון לפני 702.9h)
+  - `Domain` ← `canary.yml` (ראן אחרון לפני 617.6h)
+  - `Domain` ← `cloud-heart.yml` (ראן אחרון לפני 947.1h)
+  - `Domain` ← `content-campaign.yml` (ראן אחרון לפני 706.2h)
+  - `Domain` ← `content-truth-wave.yml` (ראן אחרון לפני 1043h)
+  - `Domain` ← `evo-windows.yml` (ראן אחרון לפני 156.3h)
+  - `Domain` ← `hive-adopt-t21.yml` (ראן אחרון לפני 645.4h)
+  - `Domain` ← `key-census-relay-v2.yml` (ראן אחרון לפני 396h)
+  - `Domain` ← `key-census-relay.yml` (ראן אחרון לפני 396.3h)
+  - `Domain` ← `key-verify.yml` (ראן אחרון לפני 610.9h)
+  - `Domain` ← `office3d-guard.yml` (ראן אחרון לפני 586.7h)
+  - `Domain` ← `org-gitleaks.yml` (ראן אחרון לפני 128.3h)
+  - `Domain` ← `org-selftests.yml` (ראן אחרון לפני 83h)
+  - `Domain` ← `seal-adopt.yml` (ראן אחרון לפני 240.5h)
+  - `Domain` ← `sovereign-selftests.yml` (ראן אחרון לפני 80.5h)
+  - `Domain` ← `steem-posting-repair.yml` (ראן אחרון לפני 813h)
+  - `Domain` ← `token-forge.yml` (ראן אחרון לפני 153h)
+  - `saos-dex` ← `grid-trigger.yml` (ראן אחרון לפני 789.4h)
+  - `saos-dex` ← `key-census-relay-v2.yml` (ראן אחרון לפני 396h)
+  - `saos-dex` ← `key-census-relay.yml` (ראן אחרון לפני 398.8h)
+  - `saos-dex` ← `llm-bridge.yml` (ראן אחרון לפני 789.4h)
+  - `roshpina` ← `controls-audit.yml` (ראן אחרון לפני 614.9h)
+  - ... ועוד 120
+- ראן-אחרון-נכשל (40): `Autonomy`←`selfhood.yml`, `Domain`←`economy-engine.yml`, `Domain`←`estate-scrub.yml`, `Domain`←`identity-guard.yml`, `Domain`←`key-census-relay-v2.yml`, `Domain`←`ladder-refresh.yml`, `Domain`←`office3d-guard.yml`, `Domain`←`org-selftests.yml`, `saos-dex`←`grid-trigger.yml`, `saos-dex`←`key-census-relay-v2.yml`, `saos-dex`←`key-census-relay.yml`, `saos-dex`←`llm-bridge.yml`, `saos-dex`←`selftest.yml`, `roshpina`←`gitleaks.yml`, `saos-runtime`←`escrow-payroll.yml`, `steem`←`gitleaks.yml`, `steem`←`vault-onekey-verify.yml`, `steem`←`workflow-yaml-guard.yml`, `Zip`←`weave-anchor-lines.yml`, `Zip`←`weave-anchor.yml` ...
 
 ## חוקי-כנות של הדיוקן הזה
 
