@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-14T00:30:51.381Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-14T01:29:53.951Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,14 +15,14 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/ladder-refresh @ 2026-11-14T01:04 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/treasury-route @ 2026-11-14T00:59 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-11-13T23:28 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/estate-scrub @ 2026-11-13T21:37 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/ladder-refresh @ 2026-11-13T20:05 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-13T19:56 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/identity-guard @ 2026-11-13T19:14 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/site-link-audit @ 2026-11-13T18:25 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-11-13T16:43 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/treasury-route @ 2026-11-13T16:21 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-13T09:42 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/soldiers-curate @ 2026-11-13T07:17 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-13T21:39 — autonomy triage: read the log, fix root, land, verify
