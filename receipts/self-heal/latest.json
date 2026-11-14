@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-14T21:27:40.084Z",
+ "at": "2026-11-14T22:21:11.495Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-14T21:12:15.326Z",
+ "verdictAt": "2026-11-14T22:11:41.211Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -30,16 +30,24 @@
    "ok": true
   },
   {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "artery-wallet.yml",
-   "check": "sbx.wf-artery-wallet",
+   "workflow": "fleet-heal.yml",
+   "check": "sbx.wf-fleet-heal",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -51,14 +59,14 @@
  "notHealable": [
   {
    "id": "dev.rate",
-   "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 7% < 10% over 356 commits/24h",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 10%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
    "level": "DEGRADED",
-   "why": "treasury acct-00 at 2604 SP < 3000 (recovery-plan §3)",
+   "why": "treasury acct-00 at 2605 SP < 3000 (recovery-plan §3)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -68,7 +76,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
+ "truncated": 3,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 59,
