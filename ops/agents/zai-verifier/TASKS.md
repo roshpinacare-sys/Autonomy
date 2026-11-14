@@ -9352,3 +9352,6 @@
 - [CLOSED 2026-11-14T12:50:20.396Z] V-LOOP-FLEET-HEAL — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-11-14T12:50:20.396Z] V-LOOP-ARTERY-INTEGRITY — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-11-14T12:50:20.396Z] V-GRID-REVIVE — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [OPEN] V-LOOP-FEDERATION (DEGRADED @ 2026-11-14T13:19:48.076Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 48min ago > slot
+- [CLOSED 2026-11-14T13:19:48.076Z] V-LOOP-VERIFIER — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-14T13:19:48.076Z] V-LOOP-ARTERY-PARTICIPATION — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
