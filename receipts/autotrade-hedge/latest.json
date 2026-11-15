@@ -1,40 +1,42 @@
 {
  "schema": "AUTOHEDGE-WATCH/1",
- "at": "2026-11-15T05:42:55.836Z",
+ "at": "2026-11-15T11:10:18.630Z",
  "source": "engine/autotrade-measure.mjs",
  "measurement": {
   "protocol": "AUTOHEDGE-MEASURE/1",
   "account": "acct-h-849e9df7",
-  "now": "2026-11-15T05:42:55.836Z",
+  "now": "2026-11-15T11:10:18.630Z",
   "measured": {
-   "baseBal": 3.431,
+   "baseBal": 5.346,
    "quoteBal": 41.093,
-   "mid": 0.103209,
-   "openOrders": 10,
+   "mid": 0.103662,
+   "openOrders": 5,
    "oracle": {
-    "steemUsd": 0.04276859,
-    "sbdUsd": 0.446699,
+    "steemUsd": 0.043157,
+    "sbdUsd": 0.446557,
     "src": "coingecko"
    }
   },
   "gate": {
    "protocol": "AUTOHEDGE-GATE/1",
-   "verdict": "PASS",
-   "now": "2026-11-15T05:42:55.836Z",
+   "verdict": "BLOCK",
+   "now": "2026-11-15T11:10:18.630Z",
    "measured": {
-    "workingCapitalQuote": 41.4471,
-    "currentBaseExposurePct": 0.85,
-    "postBurstBaseExposurePct": 0.85,
-    "orders": 10
+    "workingCapitalQuote": 41.6472,
+    "currentBaseExposurePct": 1.33,
+    "postBurstBaseExposurePct": 1.33,
+    "orders": 5
    },
-   "blocked": [],
+   "blocked": [
+    "#4(sell) size 1.68% > cap 1.0%"
+   ],
    "advisory": null,
-   "reason": "PASS — burst within risk-first caps (AutoHedge-pattern, mechanical)"
+   "reason": "risk-before-execution: 1 order(s) blocked"
   },
   "arb": {
-   "internalSteemUsd": 0.046104,
-   "externalSteemUsd": 0.04276859,
-   "gapPct": 7.798,
+   "internalSteemUsd": 0.046291,
+   "externalSteemUsd": 0.043157,
+   "gapPct": 7.262,
    "edge": "SELL-INTERNAL-PREMIUM"
   }
  }
