@@ -52,4 +52,7 @@ jobs:
           VERDICT=$(python3 -c "import json;d=json.load(open('receipts/autotrade-hedge/latest.json'));g=d['measurement'].get('gate',{});print(g.get('verdict','UNMEASURED'))")
           ARB=$(python3 -c "import json;d=json.load(open('receipts/autotrade-hedge/latest.json'));a=d['measurement'].get('arb',{});print(a.get('gapPct','n/a'))")
           git commit -m "autotrade hedge-gate: ${VERDICT} · arb-gap ${ARB}% @ $(date -u +%FT%TZ) [skip ci]" || echo "nothing to commit"
-          git push origin HEAD:${{ github.ref_name }}
+          # 2026-11-15 root-fix (measured: runs #43743997012 + #43698381082 died "fetch first"):
+          # hourly sibling arteries push the same ref — house race-safe pattern (same as
+          # profit-oracle/fresh-oracle/hive-probe): pull-rebase + bounded retry, honest exit.
+          for i in 1 2 3; do git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" && git push origin HEAD:${{ github.ref_name }} && break || { sleep $((i*5)); git rebase --abort 2>/dev/null || true; }; done
