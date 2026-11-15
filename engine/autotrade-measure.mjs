@@ -86,7 +86,15 @@ export async function measureAndGate(account = ACCT_DEFAULT) {
       return { side: "buy", amount: parseFloat(quote), price: +price.toFixed(6) };
     });
 
-    const gate = hedgeGateVerdict({ baseBal, quoteBal, mid, orders, now });
+    /* §㊼ root-fix (2026-11-15 · measured #43755387397): the standing book IS our
+     * capital — liquid-only working capital counted our own committed orders as
+     * "new risk" (postBurst 1865% on a fully-deployed book = double-count).
+     * Working capital = liquid + committed (the sell-side amounts of our own open
+     * orders return to those balances on fill/cancel). The gate LAW unchanged;
+     * both numbers published so the receipt shows liquid AND book truth. */
+    const committedBase = orders.filter(o => o.side === "sell").reduce((s, o) => s + o.amount, 0);
+    const committedQuote = orders.filter(o => o.side === "buy").reduce((s, o) => s + o.amount * o.price, 0);
+    const gate = hedgeGateVerdict({ baseBal: baseBal + committedBase, quoteBal: quoteBal + committedQuote, mid, orders, now });
 
     // פער-ארביטראז אמיתי: מחיר-פנימי (mid × SBD/USD) מול STEEM/USD-חוץ
     const internalUsd = mid * px.sbdUsd;
@@ -96,6 +104,7 @@ export async function measureAndGate(account = ACCT_DEFAULT) {
       protocol: "AUTOHEDGE-MEASURE/1", account: ACCT_TAG, now,
       measured: {
         baseBal, quoteBal, mid: +mid.toFixed(6), openOrders: (openOrders || []).length,
+        committedBase: +committedBase.toFixed(3), committedQuoteSbd: +committedQuote.toFixed(3),
         oracle: px,
       },
       gate,
