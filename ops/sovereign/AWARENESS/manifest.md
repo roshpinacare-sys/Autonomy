@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-14T23:51:59.752Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-15T00:17:31.072Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -25,6 +25,6 @@
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-14T14:16 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/bridge-keeper @ 2026-11-14T06:44 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-11-13T23:28 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/selfhood @ 2026-11-14T20:09 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/selfhood @ 2026-11-15T00:02 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
