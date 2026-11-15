@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-11-15T17:38:49.528Z",
+  "measuredAt": "2026-11-15T18:32:06.531Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -8,50 +8,22 @@
   "asserts": [
     {
       "id": "law-grid-state-present",
-      "ok": true,
+      "ok": false,
       "detail": "hyper-grid.json must exist and parse at steem@saos-cockpit HEAD",
       "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-fresh",
-      "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 8min)",
-      "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-exec-alive",
-      "ok": true,
-      "detail": "grid executable: lastVerdict=BROADCAST-FAIL opsToday=31",
-      "severity": "fail",
-      "verdict": "pass"
-    },
-    {
-      "id": "law-grid-revival-wired",
-      "ok": true,
-      "detail": "saos-runtime heartbeat must wire the bounded burst (T-62)",
-      "severity": "flag",
-      "verdict": "pass"
+      "verdict": "fail"
     }
   ],
-  "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "alerts": [
+    "grid-revival-unprovable: saos-runtime workflow unreadable — revival path unverified"
+  ],
+  "overall": "FAIL",
+  "reason": "grid-law failed: law-grid-state-present",
   "provenance": {
-    "stateBlobSha": "10752239b7cdb140aa0e7e4e37f734a0247c25f7",
+    "stateBlobSha": null,
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "43742261690",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43742261690",
-    "sha": "a83ddcd3c39e139bed7689539d6df2c48fa2f51f"
-  },
-  "measured": {
-    "enabled": true,
-    "lastTickAt": "2026-11-15T17:30:28.503Z",
-    "ageMin": 8,
-    "ticks": 62543,
-    "lastVerdict": "BROADCAST-FAIL",
-    "opsToday": 31,
-    "lastTxid": "3e3d8a45e48ff0d7a683538fd414dad30aaa945e"
+    "runId": "43747282688",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/43747282688",
+    "sha": "912b9745be5221f4a3ae49576174b5fdcbc3a732"
   }
 }
