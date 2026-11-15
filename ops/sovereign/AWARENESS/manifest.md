@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-15T22:56:24.403Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-15T23:54:53.674Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,15 +15,15 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [ENFORCEMENT] Domain/identity-guard @ 2026-11-15T22:39 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/site-link-audit @ 2026-11-15T22:38 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/identity-guard @ 2026-11-15T23:42 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/site-link-audit @ 2026-11-15T23:42 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/estate-scrub @ 2026-11-15T23:17 — autonomy triage: read the log, fix root, land, verify
+- [ENFORCEMENT] Domain/exposure-gate @ 2026-11-15T23:08 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/economy-engine @ 2026-11-15T23:02 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-11-15T21:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/dex-grid @ 2026-11-15T19:45 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/grid-sentinel @ 2026-11-15T19:41 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/estate-scrub @ 2026-11-15T18:48 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-11-15T16:38 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/economy-engine @ 2026-11-15T16:29 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/exposure-gate @ 2026-11-15T10:18 — gate held the line - verify the payload it stopped, then fix the producer
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-15T09:48 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-15T19:52 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/floating-builds @ 2026-11-15T18:40 — autonomy triage: read the log, fix root, land, verify
