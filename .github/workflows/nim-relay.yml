@@ -1,0 +1,55 @@
+# NIM-RELAY — §㊿ · העברת-סודי-הסטים מ-Autonomy ל-saos-dex (פקודת-בעלים: «הכל-דרך-הארכיטקטורה»)
+# ═════════════════════════════════════════════════════════════════════════════
+# החוק: סודות-GitHub אינם-קריאים-חזרה (write-only). הסטים (מפתחות-NVIDIA)
+# חיים-כסודות-Autonomy בלבד, אך גשר-ה-LLM של-הצי חי ב-saos-dex.
+# הריפוי-הריבוני: הרץ-עצמו מעתיק-את-הסודים-בין-ריפויים דרך-gh-CLI
+# (הצפנת-libsodium-מובנית) — אפס-ערך-בלוג · אפס-ערך-בקוד · אפס-ערך-בפלט.
+# שמות-הסודים-בלבד מודפסים + תוצאת-ההעברה (נקלט=הוצפן).
+name: nim-relay
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: relay-NVIDIA-secrets-to-saos-dex (שמות-בלבד · אפס-ערכים)
+        env:
+          PAT_A: ${{ secrets.FLEET_PAT }}
+          PAT_B: ${{ secrets.GH_PAT }}
+          NVIDIA_NIM_KEY: ${{ secrets.NVIDIA_NIM_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
+          NVIDIA_BASE_URL: ${{ secrets.NVIDIA_BASE_URL }}
+          NVIDIA_MODELS: ${{ secrets.NVIDIA_MODELS }}
+          TARGET_REPO: roshpinacare-sys/saos-dex
+        run: |
+          set -uo pipefail
+          # בחירת-PAT: FLEET_PAT ואז-GH_PAT — מי-שמוסמך-על-היעד
+          PAT=""
+          for cand in "$PAT_A" "$PAT_B"; do
+            if [ -n "$cand" ]; then
+              code=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $cand" "https://api.github.com/repos/$TARGET_REPO")
+              if [ "$code" = "200" ]; then PAT="$cand"; echo "PAT-נבחר: מוסמך-על-היעד (HTTP-$code)"; break; else echo "PAT-נדחה (HTTP-$code על-היעד)"; fi
+            fi
+          done
+          if [ -z "$PAT" ]; then echo "אף-PAT-מוסמך-על-saos-dex — כישלון-כן (fail-closed)"; exit 1; fi
+          export GH_TOKEN="$PAT"
+          relayed=0; skipped=0
+          for name in NVIDIA_NIM_KEY NVIDIA_API_KEY NIM_API_KEY NVIDIA_BASE_URL NVIDIA_MODELS; do
+            val="${!name}"
+            if [ -z "$val" ] || [ -z "${val// }" ]; then echo "  $name: ריק-במקור — דילוג-כן"; skipped=$((skipped+1)); continue; fi
+            if printf '%s' "$val" | gh secret set "$name" --repo "$TARGET_REPO" 2>/dev/null; then
+              echo "  $name: הועבר-והוצפן ✓"
+              relayed=$((relayed+1))
+            else
+              echo "  $name: העברה-נכשלה — כישלון-כן"
+            fi
+          done
+          echo "סיכום-ריליי: הועברו=$relayed · דולגו=$skipped (אפס-ערכים-בפלט · חוק-ההשתקה-מלא)"
+          [ "$relayed" -gt 0 ] || { echo "אפס-סודים-הועברו — fail-closed"; exit 1; }
