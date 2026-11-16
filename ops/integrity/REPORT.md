@@ -1,9 +1,9 @@
-# דוח-שומר-השלמות — 2026-11-16T09:25:42.776Z
+# דוח-שומר-השלמות — 2026-11-16T09:33:48.334Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=12
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=43822411195 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=43839594839 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=43083532550 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=43070739670 conc=failure repo=Sandbox
 - ✅ `Sandbox:receipts/grid/verdict.json` — run=43089779307 conc=success repo=Sandbox
@@ -18,7 +18,7 @@
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
 - **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
-- **FLAG** `Sandbox:receipts/wallet/verdict.json` — stale — 110h > 26h — artery-wallet
+- **FLAG** `Sandbox:receipts/wallet/verdict.json` — stale — 111h > 26h — artery-wallet
 - **FLAG** `Sandbox:receipts/fleet/verdict.json` — stale — 112h > 26h — artery-fleet
 - **FLAG** `Sandbox:receipts/grid/verdict.json` — stale — 110h > 26h — artery-grid
 - **FLAG** `Sandbox:receipts/latest.json` — stale — 3h > 2h — sovereign.yml
