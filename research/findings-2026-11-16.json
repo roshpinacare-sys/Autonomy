@@ -1,0 +1,102 @@
+{
+  "schema": "saos.research.findings/1",
+  "at": "2026-11-16T13:46:47.053Z",
+  "lane": "research-and-discovery (10-d)",
+  "laws": "read-only · no keys · no broadcast · honest failures recorded",
+  "experiments": [
+    {
+      "id": "E1",
+      "name": "spread-regime",
+      "hypothesis": "פיזורי-השוק-הפנימי הם ר'זימה נמדדת — מעקב שבועי מגלה אם הגריד שלנו מצר אותם",
+      "baseline": {
+        "steemBps": 93.5,
+        "hiveBps": 10.6,
+        "at": "2026-10-11T19:55Z (ECONOMIC-PLAN §2.2)"
+      },
+      "measured": {
+        "steem": {
+          "bid": 0.10260004566336349,
+          "ask": 0.10342316096139839,
+          "spreadBps": 79.91
+        },
+        "hive": {
+          "bid": 0.0384995064165844,
+          "ask": 0.03851119718623391,
+          "spreadBps": 3.04
+        }
+      },
+      "verdict": "spread tightened (79.91 < 93.5 bps) — grid-side liquidity improving",
+      "ok": true,
+      "next": "track weekly; correlate with grid-beat placements (saos-dex ledger) before claiming causality"
+    },
+    {
+      "id": "E2",
+      "name": "feed-divergence",
+      "hypothesis": "סטיית-פיד-העדים מהשוק-הפנימי היא מדד-לחץ-יתר על הפג — מעקב שבועי מקדים-הזהרה",
+      "baseline": {
+        "feedMedian": 0.10409,
+        "marketMid": 0.10153,
+        "divergenceBps": 251,
+        "at": "2026-10-11T19:55Z"
+      },
+      "measured": {
+        "feedMedian": 0.10407,
+        "marketMid": 0.10301,
+        "divergenceBps": 102.9,
+        "direction": "feed_above_market"
+      },
+      "verdict": "healthy band: divergence 102.9 bps ≤ 300 (feed_above_market)",
+      "ok": true,
+      "next": "if >300 bps repeats 2× consecutively, escalate to operator brief (peg-door policy ref)"
+    },
+    {
+      "id": "E3",
+      "name": "rc-census",
+      "hypothesis": "חשבונות-מורעבי-RC (<40%) מדכאים-פעילות-צי — סקר-שבועי מנבא חנק לפני-שהוא נראה בפועל",
+      "baseline": {
+        "starved": [
+          "acct-11 8.05%",
+          "acct-09 25.9%",
+          "acct-13 31.0%",
+          "acct-12 35.4%"
+        ],
+        "at": "2026-10-11T19:56Z (refs per FLEET_ROSTER_MAP law — map in repo secret)"
+      },
+      "measured": {
+        "rcPct": {
+          "acct-00": 99.96,
+          "acct-01": 99.93,
+          "acct-02": 99.93,
+          "acct-03": 99.94,
+          "acct-04": 99.94,
+          "acct-05": 99.93,
+          "acct-06": 99.94,
+          "acct-07": 100,
+          "acct-08": 100,
+          "acct-09": 99.78,
+          "acct-10": 99.94,
+          "acct-11": 94.01,
+          "acct-12": 99.94,
+          "acct-13": 91.63
+        },
+        "starved": []
+      },
+      "verdict": "no starved accounts (<40%) — fleet RC healthy this week",
+      "ok": true,
+      "next": "if starved persists 2× weekly, draft a delegation delta into grids/delegate-plan (owner word gate)"
+    }
+  ],
+  "probeDigestJoin": {
+    "hive": {
+      "file": "probes/hive/2026-11-15.json",
+      "ok": true,
+      "at": "2026-11-15T19:50:27.915Z"
+    },
+    "blurt": {
+      "file": "probes/blurt/2026-11-15.json",
+      "ok": true,
+      "at": "2026-11-15T19:50:28.356Z"
+    }
+  },
+  "allConclusive": true
+}
