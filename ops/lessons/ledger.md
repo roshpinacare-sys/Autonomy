@@ -12024,3 +12024,11 @@
 - PROPOSAL(law): integrity guard 1 MEDIUM alerts (unverifiable/unprovenanced receipts) - upgrade those producers to full provenance (fix-dont-lock)
 - PROPOSAL(law): decision D2-eng-errors evidence is STALE-TRUTH (world moved past published evidence) - T14 RE-MEASURE must re-decide per charter
 
+
+## weekly-retro 2026-W47 · 2026-11-16T13:38:45.959Z
+- org runs 1w: 1891 · ok=1659 · fail=27 · instant-fail(billing-signature)=27
+- red engines: none · healthy: 16 · silent: 6
+- open law-proposals: 10
+- DIRECTIVE(1): billing-wall signature detected: 27 instant-fail runs (<5s) across the org this week — lift the Actions spending limit or migrate the affected engines' cadence to public homes; fleet-heal will re-probe within 24h of release
+- DIRECTIVE(2): silent repos (6): saos-desk, vault-home, Defi, roshpina, sovereign-desk, execution-fabric ran nothing in 1 week(s) — either wire a real trigger or archive honestly; a repo that never runs is a claim, not a system
+- DIRECTIVE(3): open scribe law-proposals: 10 — review, adopt or refute each with a measured verdict; a proposal older than 2 retro cycles with no verdict becomes a doctrine violation itself
