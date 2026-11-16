@@ -1,23 +1,23 @@
-# דוח-שומר-השלמות — 2026-11-16T02:49:56.093Z
+# דוח-שומר-השלמות — 2026-11-16T02:53:21.958Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=12
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=43781620451 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=43794482566 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=43083532550 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=43070739670 conc=failure repo=Sandbox
 - ✅ `Sandbox:receipts/grid/verdict.json` — run=43089779307 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/flow/receipt.json` — run=43075061761 conc=success repo=Sandbox
 - ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=43711131567 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=43711131567 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=43788891553 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=43789393386 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=43791811566 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=43794201336 conc=success repo=Autonomy
 - ✅ `Domain:office/data.json` — run=43788893775 conc=success repo=Autonomy
 - ✅ `Sandbox:ops/decision-truth/verdict.json` — run=43087706366 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/integrity/verdict.json` — run=43093883156 conc=success repo=Sandbox
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
-- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
+- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=agent-9@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
 - **FLAG** `Sandbox:receipts/wallet/verdict.json` — stale — 104h > 26h — artery-wallet
 - **FLAG** `Sandbox:receipts/fleet/verdict.json` — stale — 105h > 26h — artery-fleet
 - **FLAG** `Sandbox:receipts/grid/verdict.json` — stale — 103h > 26h — artery-grid
