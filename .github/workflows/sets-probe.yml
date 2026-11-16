@@ -1,0 +1,65 @@
+name: sets-probe
+# §㊾ · פקודת-בעלים «יש-גישה-לסטים ועוד-יכולות-להשיג-קריפטו» — מדידת-חיות-הסטים (המחשוב)
+# מודד: NVIDIA_API_KEY/NVIDIA_NIM_KEY/NIM_API_KEY × NVIDIA_BASE_URL × NVIDIA_MODELS × SBX_AI_CONFIG
+# פלט: סטטוס/השהיה/שמות-מודלים-בלבד · אפס-מפתחות-בלוג
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+      - name: sets-liveness-probe
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          NVIDIA_NIM_KEY: ${{ secrets.NVIDIA_NIM_KEY }}
+          NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
+          NVIDIA_BASE_URL: ${{ secrets.NVIDIA_BASE_URL }}
+          NVIDIA_MODELS: ${{ secrets.NVIDIA_MODELS }}
+          SBX_AI_CONFIG: ${{ secrets.SBX_AI_CONFIG }}
+        run: |
+          node -e '
+          const fs = require("fs");
+          const keys = { NVIDIA_API_KEY: process.env.NVIDIA_API_KEY||"", NVIDIA_NIM_KEY: process.env.NVIDIA_NIM_KEY||"", NIM_API_KEY: process.env.NIM_API_KEY||"" };
+          const bases = (process.env.NVIDIA_BASE_URL||"").split(/[\n,;]+/).map(s=>s.trim()).filter(Boolean);
+          const models = (process.env.NVIDIA_MODELS||"").split(/[\n,;]+/).map(s=>s.trim()).filter(Boolean);
+          console.log("מפתחות:", Object.entries(keys).map(([k,v])=>k+"="+(v?"[len-"+v.length+"]":"חסר")).join(" · "));
+          console.log("base-urls:", bases.length ? bases.join(" · ") : "(default api.nvcf.live)");
+          console.log("מודלים:", models.join(" · ") || "(לא-הוגדרו)");
+          if (bases.length===0) bases.push("https://integrate.api.nvidia.com");
+          const tested = [];
+          (async () => {
+            for (const [kn, kv] of Object.entries(keys)) {
+              if (!kv) continue;
+              for (const base of bases.slice(0,3)) {
+                const t0 = Date.now();
+                try {
+                  const r = await fetch(base.replace(/\/$/,"") + "/v1/models", { headers: { Authorization: "Bearer " + kv }, signal: AbortSignal.timeout(15000) });
+                  const ms = Date.now() - t0;
+                  let n = "?"; try { const j = await r.json(); n = (j.data||[]).length + "-מודלים"; if ((j.data||[]).length) console.log("  דוגמאות:", j.data.slice(0,5).map(m=>m.id).join(" · ")); } catch {}
+                  console.log("  ★ " + kn + " @ " + base + " → HTTP-" + r.status + " · " + ms + "ms · " + n);
+                  tested.push(kn);
+                } catch (e) { console.log("  ✘ " + kn + " @ " + base + " → " + String(e.message).slice(0,50) + " · " + (Date.now()-t0) + "ms"); }
+              }
+            }
+            // השלמת-מיני-צ'אט-אם-יש-מפתח-חי
+            const alive = [...new Set(tested)];
+            console.log("סיכום:", alive.length ? "הסטים-חיים: " + alive.join(" · ") : "אף-מפתח-לא-ענה");
+            fs.writeFileSync("sets-probe-latest.json", JSON.stringify({ at: new Date().toISOString(), aliveKeys: alive, bases: bases.slice(0,3), models }, null, 1));
+          })();
+          '
+      - name: receipt
+        if: always()
+        run: |
+          if [ -f sets-probe-latest.json ]; then
+            git config user.name "roshpinacare-sys"
+            git config user.email "326012154+roshpinacare-sys@users.noreply.github.com"
+            mkdir -p heal/sets
+            cp sets-probe-latest.json heal/sets/probe-latest.json
+            git add heal/sets/probe-latest.json && git commit -m "sets-probe receipt [skip ci]" && git push || echo "אין-שינוי"
+          fi
