@@ -9893,3 +9893,12 @@
 - [OPEN] V-LOOP-ARTERY-FLOW (DEGRADED @ 2026-11-16T06:13:08.767Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 186min ago > slot
 - [CLOSED 2026-11-16T06:13:08.767Z] V-LOOP-SOVEREIGN-STATE — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
 - [CLOSED 2026-11-16T06:13:08.767Z] V-DEV-FOCUS — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [OPEN] V-LOOP-SOVEREIGN-STATE (DEGRADED @ 2026-11-16T06:42:40.750Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 15min ago > slot
+- [OPEN] V-LOOP-FEDERATION (DEGRADED @ 2026-11-16T06:42:40.750Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 31min ago > slot
+- [OPEN] V-LOOP-FLEET-HEAL (DEGRADED @ 2026-11-16T06:42:40.750Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 31min ago > slot
+- [OPEN] V-LOOP-ARTERY-INTEGRITY (DEGRADED @ 2026-11-16T06:42:40.750Z): עורק-סנדבוקס סטלה/אדום — בדיקת-שורש + רה-הצתה (workflow_dispatch / תיקון-ה-workflow) | ראיה: last success 88min ago > slot
+- [OPEN] V-DEV-FOCUS (DEGRADED @ 2026-11-16T06:42:40.750Z): דופק-בלי-בנייה: להפנות-משאב-סוכנים מטביעות-מצב לבניית-מוצר/תיקונים אמתיים | ראיה: heartbeat-without-building: codeShare 7% < 10% over 376 commits/24h
+- [CLOSED 2026-11-16T06:42:40.750Z] V-LOOP-ARTERY-DECISION-TRUTH — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-16T06:42:40.750Z] V-LOOP-ARTERY-GRID — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-16T06:42:40.750Z] V-LOOP-ARTERY-FLEET — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
+- [CLOSED 2026-11-16T06:42:40.750Z] V-LOOP-ARTERY-FLOW — הכלל-כבר-לא-נצרת (ראה-דוח-הריצה-הנוכחית)
