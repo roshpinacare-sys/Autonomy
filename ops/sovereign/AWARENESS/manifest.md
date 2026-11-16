@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-16T14:57:50.207Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-16T16:37:51.654Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -28,10 +28,10 @@
 - [DEFECT] Domain/artery-integrity-twin @ 2026-11-16T03:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/office-worldbeat @ 2026-11-16T03:39 — autonomy triage: read the log, fix root, land, verify
 - [ENFORCEMENT] Domain/exposure-gate @ 2026-11-15T23:08 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Autonomy/selfhood @ 2026-11-16T16:14 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/network-awareness @ 2026-11-16T14:13 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sets-probe @ 2026-11-16T09:47 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-builder @ 2026-11-16T07:14 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/selfhood @ 2026-11-16T06:17 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-wallet @ 2026-11-16T03:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-decision-truth @ 2026-11-16T03:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-selfheal @ 2026-11-16T03:40 — autonomy triage: read the log, fix root, land, verify
