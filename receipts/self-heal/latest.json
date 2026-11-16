@@ -1,13 +1,13 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-15T23:15:30.003Z",
+ "at": "2026-11-16T00:07:42.323Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-15T22:49:43.210Z",
+ "verdictAt": "2026-11-15T23:48:41.299Z",
  "dispatched": [
   {
-   "workflow": "sovereign-state.yml",
-   "check": "sbx.wf-sovereign-state",
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -30,6 +30,22 @@
    "ok": true
   },
   {
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
    "workflow": "artery-grid.yml",
    "check": "sbx.wf-artery-grid",
    "level": "DEGRADED",
@@ -41,12 +57,6 @@
  "refused": [],
  "skipped": [],
  "notHealable": [
-  {
-   "id": "dev.rate",
-   "level": "NOTICE",
-   "why": "mixed activity: codeShare 14%",
-   "reason": "not-a-dispatchable-workflow"
-  },
   {
    "id": "steem.treasury",
    "level": "DEGRADED",
