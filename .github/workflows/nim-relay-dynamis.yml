@@ -1,0 +1,47 @@
+name: nim-relay-dynamis
+# §52 · העברת-סודי-הסטים מ-Autonomy ל-dynamis — למנוע-העבודה-של-הדלת-הציבורית
+# (אותו-דפוס-nim-relay · אפס-ערכים-בלוג · אפס-ערכים-בקוד · שמות-בלבד)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: relay-NVIDIA-secrets-to-dynamis
+        env:
+          PAT_A: ${{ secrets.FLEET_PAT }}
+          PAT_B: ${{ secrets.GH_PAT }}
+          NVIDIA_NIM_KEY: ${{ secrets.NVIDIA_NIM_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
+          NVIDIA_BASE_URL: ${{ secrets.NVIDIA_BASE_URL }}
+          TARGET_REPO: roshpinacare-sys/dynamis
+        run: |
+          set -uo pipefail
+          PAT=""
+          for cand in "$PAT_A" "$PAT_B"; do
+            if [ -n "$cand" ]; then
+              code=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $cand" "https://api.github.com/repos/$TARGET_REPO")
+              if [ "$code" = "200" ]; then PAT="$cand"; echo "PAT-ok (HTTP-$code)"; break; else echo "PAT-rejected (HTTP-$code)"; fi
+            fi
+          done
+          if [ -z "$PAT" ]; then echo "no-authorized-PAT — fail-closed"; exit 1; fi
+          export GH_TOKEN="$PAT"
+          relayed=0; skipped=0
+          for name in NVIDIA_NIM_KEY NVIDIA_API_KEY NIM_API_KEY NVIDIA_BASE_URL; do
+            val="${!name}"
+            if [ -z "$val" ] || [ -z "${val// }" ]; then echo "  $name: empty-at-source — honest-skip"; skipped=$((skipped+1)); continue; fi
+            if printf '%s' "$val" | gh secret set "$name" --repo "$TARGET_REPO" 2>/dev/null; then
+              echo "  $name: relayed (encrypted)"
+              relayed=$((relayed+1))
+            else
+              echo "  $name: relay-FAILED"
+            fi
+          done
+          echo "relayed=$relayed skipped=$skipped"
+          if [ "$relayed" -eq 0 ]; then echo "zero-relayed — fail-closed"; exit 1; fi
