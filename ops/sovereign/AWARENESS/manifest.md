@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-17T04:21:17.036Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-17T06:20:56.188Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -28,12 +28,5 @@
 - [DEFECT] Autonomy/network-awareness @ 2026-11-16T14:13 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sets-probe @ 2026-11-16T09:47 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-builder @ 2026-11-16T07:14 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-wallet @ 2026-11-16T03:40 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-decision-truth @ 2026-11-16T03:40 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-selfheal @ 2026-11-16T03:40 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-11-16T03:39 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-treasury @ 2026-11-16T03:39 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-scribe @ 2026-11-16T03:39 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-pacer @ 2026-11-16T03:39 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
