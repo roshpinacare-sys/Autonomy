@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-17T16:11:30.602Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-17T16:13:37.991Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -31,6 +31,5 @@
 - [DEFECT] Autonomy/artery-participation @ 2026-11-17T13:15 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-grid @ 2026-11-17T08:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-17T08:16 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/network-awareness @ 2026-11-16T14:13 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
