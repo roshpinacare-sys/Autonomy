@@ -1,25 +1,25 @@
 {
  "schema": "sovereign.arming-check/1",
- "at": "2026-11-16T09:26:25.638Z",
+ "at": "2026-11-17T10:31:21.253Z",
  "allPass": false,
  "ownerLawArmed": true,
  "items": [
   {
    "id": "1_chainPresence",
-   "pass": true,
-   "measured": "14/14",
+   "pass": false,
+   "measured": "ERR Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
    "source": "condenser_api.get_accounts"
   },
   {
    "id": "2_presenceMatrix",
    "pass": false,
-   "measured": "546.2h",
+   "measured": "571.2h",
    "source": "steem@saos-cockpit presence-matrix.json"
   },
   {
    "id": "3_custody",
-   "pass": true,
-   "measured": "14/14",
+   "pass": false,
+   "measured": "0/14",
    "source": "saos-runtime@main ci-last-heartbeat.json"
   },
   {
@@ -31,7 +31,7 @@
   {
    "id": "5_cooldown7d",
    "pass": false,
-   "measured": "0.51d since 2026-11-15T21:16:53.214Z",
+   "measured": "1.55d since 2026-11-15T21:16:53.214Z",
    "source": "steem@saos-cockpit published.jsonl last"
   },
   {
@@ -43,15 +43,27 @@
  ],
  "discrepancies": [
   {
+   "id": "1_chainPresence",
+   "pass": false,
+   "measured": "ERR Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+   "source": "condenser_api.get_accounts"
+  },
+  {
    "id": "2_presenceMatrix",
    "pass": false,
-   "measured": "546.2h",
+   "measured": "571.2h",
    "source": "steem@saos-cockpit presence-matrix.json"
+  },
+  {
+   "id": "3_custody",
+   "pass": false,
+   "measured": "0/14",
+   "source": "saos-runtime@main ci-last-heartbeat.json"
   },
   {
    "id": "5_cooldown7d",
    "pass": false,
-   "measured": "0.51d since 2026-11-15T21:16:53.214Z",
+   "measured": "1.55d since 2026-11-15T21:16:53.214Z",
    "source": "steem@saos-cockpit published.jsonl last"
   }
  ],

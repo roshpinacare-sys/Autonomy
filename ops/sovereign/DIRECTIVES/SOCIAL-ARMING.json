@@ -11,47 +11,47 @@
  "checklist": {
   "law": "SOCIAL-STANDBY.md סעיף ג — כל-6 חייבים-ירוקים לחימוש-על-בסיס-צ׳קליסט; חימוש-על-בסיס-חוק-בעלים-עומד (item-6) הוא-הבסיס-הפעיל-כרגע, וה-arming-check הוא-truth-monitor-שלעולם-לא-מבטל-חוק-בעלים (42c72b28)",
   "1_chainPresence": {
-   "measured": "14/14",
+   "measured": "ERR Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
    "required": "14/14",
-   "pass": true,
+   "pass": false,
    "source": "condenser_api.get_accounts roster+the-master-of-record",
-   "at": "2026-11-16T09:26:25.638Z"
+   "at": "2026-11-17T10:31:21.253Z"
   },
   "2_presenceMatrix": {
-   "measured": "546.2h",
+   "measured": "571.2h",
    "required": "<12h",
    "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/presence-matrix.json",
-   "at": "2026-11-16T09:26:25.638Z"
+   "at": "2026-11-17T10:31:21.253Z"
   },
   "3_custody": {
-   "measured": "14/14",
+   "measured": "0/14",
    "required": ">=13/14",
-   "pass": true,
+   "pass": false,
    "source": "saos-runtime@main state/beat/ci-last-heartbeat.json",
-   "at": "2026-11-16T09:26:25.638Z"
+   "at": "2026-11-17T10:31:21.253Z"
   },
   "4_antiFarmLaws": {
    "measured": "w=8 posts=1 votes=0",
    "required": "laws-in-config",
    "pass": true,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/readiness.json",
-   "at": "2026-11-16T09:26:25.638Z"
+   "at": "2026-11-17T10:31:21.253Z"
   },
   "5_cooldown7d": {
-   "measured": "0.51d since 2026-11-15T21:16:53.214Z",
+   "measured": "1.55d since 2026-11-15T21:16:53.214Z",
    "required": ">=7d",
    "pass": false,
    "source": "steem@saos-cockpit mini-services/saos-engine/state/content-memory/published.jsonl last=2026-10-19T01:48:34.695Z (fleet lane)",
    "eta": "2026-10-26T01:49:00Z",
-   "at": "2026-11-16T09:26:25.638Z"
+   "at": "2026-11-17T10:31:21.253Z"
   },
   "6_ownerApproval": {
    "measured": "R309-SOVEREIGN-OPENING present",
    "required": "explicit-owner-approval",
    "pass": true,
    "source": "ops/sovereign/DIRECTIVES/R309-SOVEREIGN-OPENING.md",
-   "at": "2026-11-16T09:26:25.638Z"
+   "at": "2026-11-17T10:31:21.253Z"
   }
  },
  "laws": {
@@ -85,18 +85,26 @@
   }
  ],
  "executor": "sovereign-arming-check.yml (daily 02:05Z + dispatch) — truth-monitor: re-measures every run, never reverts owner-law ARM, never self-arms over a red checklist, records discrepancy flags (42c72b28)",
- "at": "2026-11-16T09:26:25.638Z",
+ "at": "2026-11-17T10:31:21.253Z",
  "monitor": {
-  "at": "2026-11-16T09:26:25.638Z",
+  "at": "2026-11-17T10:31:21.253Z",
   "allPass": false,
   "discrepancies": [
    {
+    "id": "1_chainPresence",
+    "measured": "ERR Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+   },
+   {
     "id": "2_presenceMatrix",
-    "measured": "546.2h"
+    "measured": "571.2h"
+   },
+   {
+    "id": "3_custody",
+    "measured": "0/14"
    },
    {
     "id": "5_cooldown7d",
-    "measured": "0.51d since 2026-11-15T21:16:53.214Z"
+    "measured": "1.55d since 2026-11-15T21:16:53.214Z"
    }
   ]
  }
