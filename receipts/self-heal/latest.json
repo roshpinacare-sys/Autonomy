@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-17T20:50:48.631Z",
+ "at": "2026-11-17T21:53:15.626Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-17T20:47:05.091Z",
+ "verdictAt": "2026-11-17T21:46:15.959Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -30,8 +38,16 @@
    "ok": true
   },
   {
-   "workflow": "artery-wallet.yml",
-   "check": "sbx.wf-artery-wallet",
+   "workflow": "federation.yml",
+   "check": "sbx.wf-federation",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "fleet-heal.yml",
+   "check": "sbx.wf-fleet-heal",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -45,12 +61,6 @@
    "id": "steem.rpc",
    "level": "FAIL",
    "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
-   "reason": "not-a-dispatchable-workflow"
-  },
-  {
-   "id": "dev.rate",
-   "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 2% < 10% over 400 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -72,7 +82,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
+ "truncated": 3,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
@@ -80,29 +90,6 @@
   "disabled": []
  },
  "keys": {
-  "total": 16,
-  "required": [
-   {
-    "name": "FLEET_PAT",
-    "present": true
-   },
-   {
-    "name": "NVIDIA_NIM_KEY",
-    "present": true
-   },
-   {
-    "name": "CI_ADOPT_WIF_ACTIVE",
-    "present": true
-   },
-   {
-    "name": "FIXEDFLOAT_API_KEY",
-    "present": true
-   },
-   {
-    "name": "FIXEDFLOAT_API_SECRET",
-    "present": true
-   }
-  ],
-  "via": "FLEET_PAT"
+  "error": "forbidden-403 (census needs admin PAT)"
  }
 }
