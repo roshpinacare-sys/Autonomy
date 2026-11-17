@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-17T11:45:00.609Z",
+ "at": "2026-11-17T12:32:07.077Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-17T11:23:23.084Z",
+ "verdictAt": "2026-11-17T12:22:53.686Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -14,16 +14,16 @@
    "ok": true
   },
   {
-   "workflow": "artery-catchup.yml",
-   "check": "sbx.wf-artery-catchup",
+   "workflow": "artery-watch.yml",
+   "check": "sbx.wf-artery-watch",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "artery-watch.yml",
-   "check": "sbx.wf-artery-watch",
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -64,6 +64,12 @@
    "reason": "not-a-dispatchable-workflow"
   },
   {
+   "id": "dev.rate",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 17%",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
    "id": "steem.fleet",
    "level": "DEGRADED",
    "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
@@ -82,7 +88,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 1,
+ "truncated": 2,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
