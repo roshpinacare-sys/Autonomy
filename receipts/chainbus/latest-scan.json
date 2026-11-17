@@ -1,67 +1,80 @@
 {
   "schema": "chainbus.scan/1",
-  "at": "2026-11-17T03:12:26.539Z",
-  "startedAt": "2026-11-17T03:12:12.858Z",
+  "at": "2026-11-17T08:55:54.851Z",
+  "startedAt": "2026-11-17T08:55:31.849Z",
   "account": "operator",
-  "node": "https://api.steemit.com",
+  "node": "https://steemapi.boylikegirl.club",
   "window": 1000,
   "nodesTried": [
     {
       "node": "https://api.steemit.com",
-      "pages": 10,
-      "ops": 1010,
-      "bus": 24,
-      "maxBlock": 111392168
+      "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    },
+    {
+      "node": "https://api.steemit.com",
+      "pages": 1,
+      "ops": 0,
+      "bus": 0,
+      "maxBlock": 0
     },
     {
       "node": "https://steemapi.boylikegirl.club",
       "pages": 10,
       "ops": 1010,
-      "bus": 24,
-      "maxBlock": 111392168
+      "bus": 28,
+      "maxBlock": 111396009
     },
     {
       "node": "https://api.steem.fans",
       "pages": 10,
       "ops": 1010,
-      "bus": 24,
-      "maxBlock": 111392168
+      "bus": 28,
+      "maxBlock": 111396009
     }
   ],
-  "busEntries": 24,
+  "busEntries": 28,
   "seenTypes": {
-    "directive": 7,
-    "cycle.receipt": 13,
-    "anchor.receipt": 4
+    "cycle.receipt": 15,
+    "anchor.receipt": 5,
+    "directive": 8
   },
-  "directivesFound": 7,
+  "directivesFound": 8,
   "consumed": [
     {
-      "ref": "d-111386558-198879",
+      "ref": "d-111396009-198994",
+      "ok": false,
+      "task": "health-probe"
+    },
+    {
+      "ref": "d-111386558-198856",
+      "ok": true,
+      "task": "minutes-census"
+    },
+    {
+      "ref": "d-111386563-198857",
+      "ok": false,
+      "task": "health-probe"
+    },
+    {
+      "ref": "d-111375583-198642",
+      "ok": false,
+      "task": "health-probe"
+    },
+    {
+      "ref": "d-111369381-198561",
+      "ok": true,
+      "task": "fleet-report"
+    },
+    {
+      "ref": "d-111362713-198474",
       "already": true
     },
     {
-      "ref": "d-111386563-198880",
+      "ref": "d-111354311-198287",
       "already": true
     },
     {
-      "ref": "d-111369381-198584",
-      "already": true
-    },
-    {
-      "ref": "d-111375583-198665",
-      "already": true
-    },
-    {
-      "ref": "d-111362713-198497",
-      "already": true
-    },
-    {
-      "ref": "d-111354311-198310",
-      "already": true
-    },
-    {
-      "ref": "d-111352510-198104",
+      "ref": "d-111352510-198081",
       "already": true
     }
   ],
