@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-17T18:45:44.425Z",
+ "at": "2026-11-17T19:39:14.614Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-17T18:19:00.168Z",
+ "verdictAt": "2026-11-17T19:18:12.942Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -38,16 +46,8 @@
    "ok": true
   },
   {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -58,15 +58,27 @@
  "skipped": [],
  "notHealable": [
   {
+   "id": "steem.rpc",
+   "level": "FAIL",
+   "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 7% < 10% over 400 commits/24h",
+   "why": "heartbeat-without-building: codeShare 5% < 10% over 400 commits/24h",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "steem.fleet",
+   "level": "DEGRADED",
+   "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
-   "level": "DEGRADED",
-   "why": "treasury acct-00 at 2491 SP < 3000 (recovery-plan §3)",
+   "level": "NOTICE",
+   "why": "treasury account absent",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -76,8 +88,8 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 2,
- "verdictOverall": "DEGRADED",
+ "truncated": 3,
+ "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
   "active": 62,
