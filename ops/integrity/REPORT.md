@@ -1,33 +1,33 @@
-# דוח-שומר-השלמות — 2026-11-17T00:31:23.702Z
+# דוח-שומר-השלמות — 2026-11-17T02:41:57.287Z
 
 **פסק-דין: PASS_WITH_ALERTS** · מקורות=11 · טענות-שאומתו=12 · ממצאים=12
 
 ## טענות-שאומתו מול Actions API
-- ✅ `self:ops/integrity/verdict.json` — run=43969107429 conc=success repo=Autonomy
+- ✅ `self:ops/integrity/verdict.json` — run=43988264428 conc=success repo=Autonomy
 - ✅ `Sandbox:receipts/wallet/verdict.json` — run=43083532550 conc=success repo=Sandbox
 - ✅ `Sandbox:receipts/fleet/verdict.json` — run=43070739670 conc=failure repo=Sandbox
 - ✅ `Sandbox:receipts/grid/verdict.json` — run=43089779307 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/flow/receipt.json` — run=43075061761 conc=success repo=Sandbox
 - ✅ `FleetHQ:receipts/office-ci/verdict.json` — run=43868536911 conc=success repo=FleetHQ
 - ✅ `Domain:office/data.json` — run=43868536911 conc=success repo=FleetHQ
-- ✅ `Domain:office/data.json` — run=43982349708 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=43986049774 conc=success repo=Autonomy
-- ✅ `Domain:office/data.json` — run=43974470755 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=44003189773 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=43999913949 conc=success repo=Autonomy
+- ✅ `Domain:office/data.json` — run=43999922788 conc=success repo=Autonomy
 - ✅ `Sandbox:ops/decision-truth/verdict.json` — run=43087706366 conc=success repo=Sandbox
 - ✅ `Sandbox:ops/integrity/verdict.json` — run=43093883156 conc=success repo=Sandbox
 
 ## ממצאים (מדורג — כשל-רשת-שלנו לעולם לא מדווח כזיוף)
-- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=326012154+roshpinacare-sys@users.noreply.github.com — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
-- **FLAG** `Sandbox:receipts/wallet/verdict.json` — stale — 125h > 26h — artery-wallet
-- **FLAG** `Sandbox:receipts/fleet/verdict.json` — stale — 127h > 26h — artery-fleet
-- **FLAG** `Sandbox:receipts/grid/verdict.json` — stale — 125h > 26h — artery-grid
-- **FLAG** `Sandbox:receipts/latest.json` — stale — 18h > 2h — sovereign.yml
+- **MEDIUM** `Sandbox:ops/flow/receipt.json` — agent-authored-receipt — committer=agent9@fleet.local — קבלה-הטוענת-הרצת-Actions שנכתבה-מחוץ-ל-Actions
+- **FLAG** `Sandbox:receipts/wallet/verdict.json` — stale — 128h > 26h — artery-wallet
+- **FLAG** `Sandbox:receipts/fleet/verdict.json` — stale — 129h > 26h — artery-fleet
+- **FLAG** `Sandbox:receipts/grid/verdict.json` — stale — 127h > 26h — artery-grid
+- **FLAG** `Sandbox:receipts/latest.json` — stale — 20h > 2h — sovereign.yml
 - **FLAG** `Sandbox:receipts/latest.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: sovereign.yml
-- **FLAG** `Sandbox:ops/flow/receipt.json` — stale — 126h > 26h — artery-flow
-- **FLAG** `Sandbox:state/verifier/verdict-latest.json` — stale — 656h > 26h — verifier.yml
+- **FLAG** `Sandbox:ops/flow/receipt.json` — stale — 129h > 26h — artery-flow
+- **FLAG** `Sandbox:state/verifier/verdict-latest.json` — stale — 658h > 26h — verifier.yml
 - **FLAG** `Sandbox:state/verifier/verdict-latest.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: verifier.yml
 - **FLAG** `Domain:agents/office-live.json` — unprovenanced — אין-טענת-run — שדרוג-מתוכנן ל-lane: office lane
-- **FLAG** `Sandbox:ops/decision-truth/verdict.json` — stale — 125h > 30h — dynamic
-- **FLAG** `Sandbox:ops/integrity/verdict.json` — stale — 124h > 30h — dynamic
+- **FLAG** `Sandbox:ops/decision-truth/verdict.json` — stale — 127h > 30h — dynamic
+- **FLAG** `Sandbox:ops/integrity/verdict.json` — stale — 127h > 30h — dynamic
 
 [owner-directive]
