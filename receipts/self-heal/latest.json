@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-17T02:01:59.182Z",
+ "at": "2026-11-17T02:54:08.214Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-17T01:59:58.901Z",
+ "verdictAt": "2026-11-17T02:29:47.056Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -22,32 +30,8 @@
    "ok": true
   },
   {
-   "workflow": "verifier.yml",
-   "check": "sbx.wf-verifier",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "value-scan.yml",
-   "check": "sbx.wf-value-scan",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
+   "workflow": "artery-integrity.yml",
+   "check": "sbx.wf-artery-integrity",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -76,7 +60,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 3,
+ "truncated": 0,
  "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 62,
