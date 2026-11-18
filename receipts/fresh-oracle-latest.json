@@ -2183,9 +2183,445 @@
         "RED": 4,
         "UNKNOWN": 0
       }
+    },
+    {
+      "at": "2026-11-18T13:49:45.601Z",
+      "trigger": "schedule",
+      "checks": [
+        {
+          "id": "V-FLEETHQ-FRESH",
+          "verdict": "RED",
+          "measuredAt": "2026-11-18T13:49:45.601Z",
+          "evidence": {
+            "files": [
+              {
+                "page": "https://roshpinacare-sys.github.io/FleetHQ/",
+                "source": "FleetHQ@office-pages:index.html",
+                "liveSha16": "e418ab71da10fe5f",
+                "committedSha16": "a3f4720075e5ce6a",
+                "verdict": "MISMATCH",
+                "note": "סטיית-בתים מוכחת גם-במדידה-כפולה: live e418ab71da10fe5f→e418ab71da10fe5f · committed a3f4720075e5ce6a→a3f4720075e5ce6a"
+              },
+              {
+                "page": "https://roshpinacare-sys.github.io/FleetHQ/potential.html",
+                "source": "FleetHQ@office-pages:potential.html",
+                "liveSha16": "82ba7c61bf11b3ea",
+                "committedSha16": "bdd4e6a271399e7f",
+                "verdict": "MISMATCH",
+                "note": "סטיית-בתים מוכחת גם-במדידה-כפולה: live 82ba7c61bf11b3ea→82ba7c61bf11b3ea · committed bdd4e6a271399e7f→bdd4e6a271399e7f"
+              },
+              {
+                "page": "https://roshpinacare-sys.github.io/Domain/",
+                "source": "Domain@main:index.html",
+                "liveSha16": "9bcd984b8427d2d4",
+                "committedSha16": "9bcd984b8427d2d4",
+                "verdict": "MATCH",
+                "note": "שוויון-בתים (44036 bytes)"
+              },
+              {
+                "page": "https://roshpinacare-sys.github.io/Domain/office3d/",
+                "source": "Domain@main:office3d/index.html",
+                "liveSha16": "470efc83db5dca47",
+                "committedSha16": "470efc83db5dca47",
+                "verdict": "MATCH",
+                "note": "שוויון-בתים (198788 bytes)"
+              }
+            ],
+            "checked": 4,
+            "match": 2,
+            "drift": 2,
+            "unknown": 0
+          },
+          "note": "🔴 סטיית-בתים חיה: 2/4 MATCH, 2 MISMATCH"
+        },
+        {
+          "id": "V-KEYPROOF-FRESH",
+          "verdict": "GREEN",
+          "measuredAt": "2026-11-18T13:49:46.543Z",
+          "evidence": {
+            "file": "proof/out/KEY-PROOF-LATEST.json",
+            "generatedAt": "2026-11-18T13:12:14.636Z",
+            "ageDays": 0.026,
+            "DEAD": 9,
+            "ALIVE-ALERT": 0,
+            "UNKNOWN": 0,
+            "UNKNOWN-NOT-CHAIN-TESTABLE": 17
+          },
+          "note": "טרי: 0.03d ≤ 8d"
+        },
+        {
+          "id": "V-RESEARCH-FRESH",
+          "verdict": "GREEN",
+          "measuredAt": "2026-11-18T13:49:46.544Z",
+          "evidence": {
+            "file": "research/findings-2026-11-16.json",
+            "at": "2026-11-16T13:46:47.053Z",
+            "ageDays": 2.002,
+            "experiments": 3,
+            "allConclusive": true
+          },
+          "note": "טרי: 2.00d ≤ 9d"
+        },
+        {
+          "id": "V-BUS-HEALTH",
+          "verdict": "RED",
+          "measuredAt": "2026-11-18T13:49:46.544Z",
+          "evidence": {
+            "registrySource": "private-raw(token)",
+            "registryGeneratedAt": "2026-10-11T20:35:00Z",
+            "feedCount": 17,
+            "measured": 13,
+            "measuredRatio": 0.765,
+            "counts": {
+              "GREEN": 8,
+              "AMBER": 5,
+              "RED": 4,
+              "GREY": 0
+            },
+            "rows": [
+              {
+                "id": "fleethq-digest",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 29051,
+                "ageH": 252.96838583333334,
+                "verdict": "AMBER",
+                "note": "ישן: 253.0h > 24h (כנה, לא מושתק)"
+              },
+              {
+                "id": "domain-dex-grid",
+                "tier": "B",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 19162,
+                "ageH": 4.343413611111111,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "domain-dex-world",
+                "tier": "B",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 52328,
+                "ageH": 4.165533888888889,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "domain-dex-deposits",
+                "tier": "B",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 761,
+                "ageH": 6.048825277777778,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "domain-office-feed",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 7278,
+                "ageH": 25.389292222222224,
+                "verdict": "AMBER",
+                "note": "ישן: 25.4h > 24h (כנה, לא מושתק)"
+              },
+              {
+                "id": "domain-office-data",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 4893,
+                "ageH": 2.218241388888889,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "domain-grid-truth",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 1682,
+                "ageH": 9.24865111111111,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "sandbox-probe-hive",
+                "tier": "A",
+                "exposure": "public",
+                "http": null,
+                "bytes": null,
+                "ageH": null,
+                "verdict": "RED",
+                "note": "בלתי-נגיש (http 404)"
+              },
+              {
+                "id": "sandbox-probe-blurt",
+                "tier": "A",
+                "exposure": "public",
+                "http": null,
+                "bytes": null,
+                "ageH": null,
+                "verdict": "RED",
+                "note": "בלתי-נגיש (http 404)"
+              },
+              {
+                "id": "sandbox-research-findings",
+                "tier": "A",
+                "exposure": "public",
+                "http": null,
+                "bytes": null,
+                "ageH": null,
+                "verdict": "RED",
+                "note": "בלתי-נגיש (http 404)"
+              },
+              {
+                "id": "sandbox-flow-map",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 104001,
+                "ageH": 4.990010555555555,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "sandbox-lessons-ledger",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 312001,
+                "ageH": 77.92451833333334,
+                "verdict": "AMBER",
+                "note": "ישן: 77.9h > 24h (כנה, לא מושתק)"
+              },
+              {
+                "id": "domain-status",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 59574,
+                "ageH": 2.5696958333333333,
+                "verdict": "AMBER",
+                "note": "סטיית-מבנה: חסר format"
+              },
+              {
+                "id": "console-dex-grid",
+                "tier": "B",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 14392,
+                "ageH": 0.18938777777777777,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "console-dex-world",
+                "tier": "B",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 32564,
+                "ageH": 0.2963016666666667,
+                "verdict": "GREEN",
+                "note": "חי וטרי"
+              },
+              {
+                "id": "console-mirror-status",
+                "tier": "A",
+                "exposure": "private-raw",
+                "http": null,
+                "bytes": null,
+                "ageH": null,
+                "verdict": "RED",
+                "note": "בלתי-נגיש (http 404)"
+              },
+              {
+                "id": "sandbox-profit-oracle",
+                "tier": "A",
+                "exposure": "public",
+                "http": 200,
+                "bytes": 13096,
+                "ageH": 901.9485275,
+                "verdict": "AMBER",
+                "note": "ישן: 901.9h > 24h (כנה, לא מושתק)"
+              }
+            ]
+          },
+          "note": "🔴 מפיק-ציבורי מת: 4 RED — הזרימה שבורה בגלוי"
+        },
+        {
+          "id": "V-DOMAIN-LIVE",
+          "verdict": "RED",
+          "measuredAt": "2026-11-18T13:49:48.098Z",
+          "evidence": {
+            "url": "https://roshpinacare-sys.github.io/Domain/",
+            "http": 200,
+            "title": "SAOS Network | הרשת שמריצה את עצמה בגלוי · המאמתת לסוכני AI",
+            "titleOk": false,
+            "researchPanelPresent": false
+          },
+          "note": "🔴 סמנים-חסרים: titleOk=false · #p-research=false — הדף שונה ממה שהצי מפרסם"
+        },
+        {
+          "id": "V-FLEET-HEARTBEAT",
+          "verdict": "RED",
+          "measuredAt": "2026-11-18T13:49:48.123Z",
+          "evidence": {
+            "arteries": [
+              {
+                "id": "domain-dex-mirror",
+                "repo": "Domain",
+                "workflow": "dex-mirror.yml",
+                "maxAgeH": 30,
+                "healable": true,
+                "verdict": "GREEN",
+                "ageH": 0.33,
+                "lastSuccessAt": "2026-11-18T13:29:58Z",
+                "lastRunId": 44314307905,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ריצה-מוצלחת לפני 0.3h ≤ 30h"
+              },
+              {
+                "id": "domain-dex-beat",
+                "repo": "Domain",
+                "workflow": "dex-beat.yml",
+                "maxAgeH": 9,
+                "healable": true,
+                "verdict": "GREEN",
+                "ageH": 0.33,
+                "lastSuccessAt": "2026-11-18T13:30:08Z",
+                "lastRunId": 44314338810,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ריצה-מוצלחת לפני 0.3h ≤ 9h"
+              },
+              {
+                "id": "domain-office-feed",
+                "repo": "Domain",
+                "workflow": "office-feed.yml",
+                "maxAgeH": 30,
+                "healable": true,
+                "verdict": "GREEN",
+                "ageH": 1.6,
+                "lastSuccessAt": "2026-11-18T12:13:46Z",
+                "lastRunId": 44301916498,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ריצה-מוצלחת לפני 1.6h ≤ 30h"
+              },
+              {
+                "id": "fleethq-digest",
+                "repo": "FleetHQ",
+                "workflow": "office-window.yml",
+                "maxAgeH": 30,
+                "healable": true,
+                "verdict": "GREEN",
+                "ageH": 10.76,
+                "lastSuccessAt": "2026-11-18T03:04:00Z",
+                "lastRunId": 44227740584,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ריצה-מוצלחת לפני 10.8h ≤ 30h"
+              },
+              {
+                "id": "sandbox-value-scan",
+                "repo": "Sandbox",
+                "workflow": "value-scan.yml",
+                "maxAgeH": 2,
+                "healable": true,
+                "verdict": "RED",
+                "ageH": 162.11,
+                "lastSuccessAt": "2026-11-11T19:43:03Z",
+                "lastRunId": 43089784588,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ישן מדי: 162.1h > 4h — לפחות-שני-מחזורים הוחמצו"
+              },
+              {
+                "id": "sandbox-verifier",
+                "repo": "Sandbox",
+                "workflow": "verifier.yml",
+                "maxAgeH": 2,
+                "healable": true,
+                "verdict": "RED",
+                "ageH": 892.78,
+                "lastSuccessAt": "2026-10-12T09:02:47Z",
+                "lastRunId": 38227357553,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ישן מדי: 892.8h > 4h — לפחות-שני-מחזורים הוחמצו"
+              },
+              {
+                "id": "sandbox-fleet-heal",
+                "repo": "Sandbox",
+                "workflow": "fleet-heal.yml",
+                "maxAgeH": 2,
+                "healable": true,
+                "verdict": "RED",
+                "ageH": 6.56,
+                "lastSuccessAt": "2026-11-18T07:16:24Z",
+                "lastRunId": 44257582141,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ישן מדי: 6.6h > 4h — לפחות-שני-מחזורים הוחמצו"
+              },
+              {
+                "id": "console-trigger-mesh",
+                "repo": "Console",
+                "workflow": "trigger-mesh.yml",
+                "maxAgeH": 3,
+                "healable": false,
+                "verdict": "GREEN",
+                "ageH": 1.62,
+                "lastSuccessAt": "2026-11-18T12:12:18Z",
+                "lastRunId": 44301686844,
+                "dispatch": {
+                  "dispatched": false,
+                  "reason": "--heal לא הופעל בריצה זו (כלי-ידני)"
+                },
+                "note": "ריצה-מוצלחת לפני 1.6h ≤ 3h"
+              }
+            ],
+            "counts": {
+              "GREEN": 5,
+              "AMBER": 0,
+              "RED": 3,
+              "UNKNOWN": 0
+            },
+            "dispatchLog": [],
+            "healMode": false
+          },
+          "note": "🔴 עורק(ים) מתים/מוזנחים: 3/8 RED — המפיקים שלהם דורשים-עין"
+        }
+      ],
+      "summary": {
+        "GREEN": 2,
+        "AMBER": 0,
+        "RED": 4,
+        "UNKNOWN": 0
+      }
     }
   ],
-  "updatedAt": "2026-11-11T12:38:56.058Z",
+  "updatedAt": "2026-11-18T13:49:45.601Z",
   "summary": {
     "GREEN": 2,
     "AMBER": 0,
