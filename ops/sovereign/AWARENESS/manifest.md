@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-18T18:04:27.543Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-18T20:39:54.475Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,6 +15,7 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/operator-console @ 2026-11-18T18:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-11-18T17:56 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/site-link-audit @ 2026-11-18T17:40 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/saos-act @ 2026-11-18T17:10 — autonomy triage: read the log, fix root, land, verify
@@ -26,7 +27,6 @@
 - [DEFECT] Domain/treasury-arm @ 2026-11-18T12:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/org-selftests @ 2026-11-18T12:39 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-18T12:01 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/operator-console @ 2026-11-18T09:02 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/daily-digest @ 2026-11-18T08:12 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-18T16:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-11-18T13:29 — autonomy triage: read the log, fix root, land, verify
