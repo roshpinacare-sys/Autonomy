@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-18T13:29:15.331Z",
+ "at": "2026-11-18T14:23:13.526Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-18T13:04:10.959Z",
+ "verdictAt": "2026-11-18T14:03:57.340Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -46,8 +46,8 @@
    "ok": true
   },
   {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -58,27 +58,15 @@
  "skipped": [],
  "notHealable": [
   {
-   "id": "steem.rpc",
-   "level": "FAIL",
-   "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
-   "reason": "not-a-dispatchable-workflow"
-  },
-  {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 2% < 10% over 394 commits/24h",
-   "reason": "not-a-dispatchable-workflow"
-  },
-  {
-   "id": "steem.fleet",
-   "level": "DEGRADED",
-   "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
+   "why": "heartbeat-without-building: codeShare 5% < 10% over 394 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
-   "level": "NOTICE",
-   "why": "treasury account absent",
+   "level": "DEGRADED",
+   "why": "treasury acct-00 at 2492 SP < 3000 (recovery-plan §3)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -88,8 +76,8 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
- "verdictOverall": "FAIL",
+ "truncated": 4,
+ "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 62,
   "active": 62,
