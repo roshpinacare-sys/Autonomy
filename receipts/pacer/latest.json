@@ -1,6 +1,6 @@
 {
   "schema": "pacer/1",
-  "at": "2026-11-18T11:15:00.275Z",
+  "at": "2026-11-18T11:28:22.704Z",
   "ok": true,
   "organ": "artery-pacer",
   "covenant": "every artery keeps its beat without trusting the scheduler",
@@ -9,44 +9,50 @@
   "stale": [
     {
       "wf": "verifier.yml",
+      "ageMin": 54,
+      "cadenceMin": 30,
+      "why": "last success 54min ago > cadence 30+10grace"
+    },
+    {
+      "wf": "artery-selfheal.yml",
       "ageMin": 40,
       "cadenceMin": 30,
       "why": "last success 40min ago > cadence 30+10grace"
     },
     {
-      "wf": "artery-watch.yml",
-      "ageMin": 53,
+      "wf": "artery-decision-truth.yml",
+      "ageMin": 40,
       "cadenceMin": 30,
-      "why": "last success 53min ago > cadence 30+10grace"
+      "why": "last success 40min ago > cadence 30+10grace"
     },
     {
-      "wf": "verifier.yml",
-      "ageMin": 56,
-      "cadenceMin": 30,
-      "why": "last success 56min ago > cadence 30+10grace"
+      "wf": "artery-wallet.yml",
+      "ageMin": 81,
+      "cadenceMin": 60,
+      "why": "last success 81min ago > cadence 60+10grace"
     }
   ],
   "dispatched": [
     {
-      "wf": "value-scan.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-grid.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
-      "wf": "artery-watch.yml",
-      "ok": true,
-      "status": 204,
-      "note": "dispatched"
-    },
-    {
       "wf": "verifier.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-selfheal.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-decision-truth.yml",
+      "ok": true,
+      "status": 204,
+      "note": "dispatched"
+    },
+    {
+      "wf": "artery-wallet.yml",
       "ok": true,
       "status": 204,
       "note": "dispatched"
@@ -54,5 +60,5 @@
   ],
   "truncated": 0,
   "reasons": [],
-  "doneAt": "2026-11-18T11:15:06.069Z"
+  "doneAt": "2026-11-18T11:28:34.120Z"
 }
