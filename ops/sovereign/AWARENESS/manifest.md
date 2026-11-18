@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-18T10:13:35.077Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-18T11:19:53.002Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,10 +15,10 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [ENFORCEMENT] Domain/identity-guard @ 2026-11-18T10:53 — gate held the line - verify the payload it stopped, then fix the producer
+- [DEFECT] Domain/site-link-audit @ 2026-11-18T10:52 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/cloud-pulse @ 2026-11-18T10:45 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-18T09:55 — autonomy triage: read the log, fix root, land, verify
-- [ENFORCEMENT] Domain/identity-guard @ 2026-11-18T09:43 — gate held the line - verify the payload it stopped, then fix the producer
-- [DEFECT] Domain/site-link-audit @ 2026-11-18T09:43 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/cloud-pulse @ 2026-11-18T09:22 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/operator-console @ 2026-11-18T09:02 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/daily-digest @ 2026-11-18T08:12 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-11-18T07:58 — autonomy triage: read the log, fix root, land, verify
@@ -27,11 +27,11 @@
 - [DEFECT] Domain/economy-engine @ 2026-11-18T01:07 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/weave-anchor-ping @ 2026-11-18T00:54 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-11-17T23:38 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-11-18T10:09 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-11-18T10:39 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/sovereign-state @ 2026-11-18T10:08 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-18T07:14 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/federation @ 2026-11-17T21:53 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/floating-builds @ 2026-11-17T21:48 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-participation @ 2026-11-17T13:15 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/artery-grid @ 2026-11-17T08:57 — autonomy triage: read the log, fix root, land, verify
 
 טעויות-מדידה: אף-אחד
