@@ -1,0 +1,29 @@
+{
+  "schema": "chainbus.directive.receipt/1",
+  "at": "2026-11-18T11:41:40.829Z",
+  "ok": false,
+  "ref": {
+    "block": 111423177,
+    "idx": 199266,
+    "seq": 1,
+    "from": "operator-plane",
+    "to": "*",
+    "runId": "hb-20261118T045833Z"
+  },
+  "body": "{\"task\":\"health-probe\",\"runId\":\"hb-20261118T045833Z\"}",
+  "task": {
+    "name": "health-probe",
+    "description": "liveness: public chain RPC head block + this repo git tip (read-only)",
+    "commands": 2,
+    "timeoutSec": 60
+  },
+  "exec": {
+    "ok": false,
+    "code": 1,
+    "ms": 610,
+    "receipt": "receipts/execution/bus-d-111423177-199266.json",
+    "outTail": "ernal/deps/undici/undici:6004:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n\n=== [1] exit=0 killed=false 201ms ===\n$ git log --oneline -3\n910d9fa decision-truth verdict: 2026-11-18T11:40:12Z\n\n\nreceipt: receipts/execution/bus-d-111423177-199266.json ok=false\n",
+    "errTail": ""
+  },
+  "node": "https://api.steem.fans"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "exec.receipt/1",
+  "id": "bus-d-111396009-199017",
+  "task": "bus-d-111396009-199017",
+  "at": "2026-11-18T11:41:42.080Z",
+  "runner": "github-actions:ubuntu-latest",
+  "repo": "roshpinacare-sys/Autonomy",
+  "runId": "44296943878",
+  "ok": false,
+  "commandCount": 2,
+  "results": [
+    {
+      "i": 0,
+      "cmd": "node -e 'fetch(\"https://api.steemit.com\",{method:\"POST\",headers:{\"content-type\":\"application/json\"},body:JSON.stringify({jsonrpc:\"2.0\",method:\"condenser_api.get_dynamic_global_properties\",params:[],id:1})}).then(r=>r.json()).then(j=>console.log(\"chain head_block:\",j.result.head_block_number,\"time:\",j.result.time)).catch(e=>{console.error(e);process.exit(1)})'",
+      "exit": 1,
+      "killed": false,
+      "ms": 383,
+      "out": "",
+      "err": "SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at parseJSONFromBytes (node:internal/deps/undici/undici:4432:19)\n    at successSteps (node:internal/deps/undici/undici:7087:27)\n    at readAllBytes (node:internal/deps/undici/undici:6004:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n"
+    },
+    {
+      "i": 1,
+      "cmd": "git log --oneline -3",
+      "exit": 0,
+      "killed": false,
+      "ms": 200,
+      "out": "910d9fa decision-truth verdict: 2026-11-18T11:40:12Z\n",
+      "err": ""
+    }
+  ]
+}
