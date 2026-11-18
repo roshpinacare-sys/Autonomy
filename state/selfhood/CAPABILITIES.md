@@ -1,40 +1,40 @@
-# מפת-יכולות הרשת — נמדד 2026-11-18T00:01:04.604Z
+# מפת-יכולות הרשת — נמדד 2026-11-18T07:16:10.583Z
 
 > כל-מספר כאן נמדד בהרצה זו מול הגיט והאתרים. אין-שאיפות — רק מציאות.
-> מחזור: DISCOVERY 27 גילויים · CLAIMS 0 הכרעות (מוח מחובר)
+> מחזור: DISCOVERY 25 גילויים · CLAIMS 1 הכרעות (מוח מחובר)
 
 ## איברי-חישוב שרצו-בפועל (7 ימים, עיקריים)
+- saos-runtime/grid-watchdog — ✓5 ✗0 · הצלחה-אחרונה לפני 0h 
+- sovereign-lighthouse/estate-redboard — ✓20 ✗0 · הצלחה-אחרונה לפני 0h 
 - Domain/office-pulse — ✓2 ✗0 · הצלחה-אחרונה לפני 0h 
-- Autonomy/fleet-heal — ✓1 ✗0 · הצלחה-אחרונה לפני 0h 
-- Autonomy/federation — ✓1 ✗0 · הצלחה-אחרונה לפני 0h 
-- Console/runtime-pacemaker — ✓13 ✗0 · הצלחה-אחרונה לפני 0h 
-- Domain/sandbox-arteries — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- steem/engine-ci — ✓19 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- steem/engine-selftest — ✓21 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- dynamis/uptime — ✓6 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- saos-dex/dex-ci — ✓6 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- saos-dex/workflow-yaml-guard — ✓7 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- saos-dex/dex-selftest — ✓6 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- saos-dex/gitleaks-secret-scan — ✓7 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- Domain/office-worldbeat — ✓7 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- Console/truth-gate — ✓4 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- saos-runtime/sovereign-runtime — ✓17 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- Console/identity-guard — ✓3 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- Autonomy/artery-fleet — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- Autonomy/artery-wallet — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- Autonomy/artery-grid — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
-- Autonomy/value-scan — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- steem/engine-ci — ✓19 ✗0 · הצלחה-אחרונה לפני 0h 
+- steem/engine-selftest — ✓21 ✗0 · הצלחה-אחרונה לפני 0h 
+- Console/runtime-pacemaker — ✓20 ✗0 · הצלחה-אחרונה לפני 0h 
+- Autonomy/sovereign-tick — ✓3 ✗0 · הצלחה-אחרונה לפני 0h 
+- Domain/dex-xc — ✓2 ✗0 · הצלחה-אחרונה לפני 0h 
+- dynamis/daily-proof — ✓1 ✗0 · הצלחה-אחרונה לפני 0h 
+- Domain/audience-analyst — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/self-audience — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/fleet-census-cron — ✓2 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/earn-audit-cron — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/sovereign-tick-cron — ✓2 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/tick-keeper — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/pulse-bake — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/hive-beat-t21 — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/artery-integrity-twin — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/office-worldbeat — ✓8 ✗0 · הצלחה-אחרונה לפני 0.1h 
+- Domain/anchor-execute — ✓1 ✗0 · הצלחה-אחרונה לפני 0.1h 
 
 ## פידי-אמת חיים
 - משרד-חי (Domain/office/world-state.json) — חי · גיל 0h
-- פעימת-ריבונות (Autonomy/state/network-state.json) — חי · גיל 0.2h
-- מפת-זרימה (Autonomy/ops/flow/flow-map.json) — חי · גיל 1h
-- תור-עבודה (ops-intake/ops/QUEUE.json) — חי · גיל 2.9h
+- פעימת-ריבונות (Autonomy/state/network-state.json) — חי · גיל 0h
+- מפת-זרימה (Autonomy/ops/flow/flow-map.json) — חי · גיל 0.6h
+- תור-עבודה (ops-intake/ops/QUEUE.json) — חי · גיל 4.3h
 - קבלות-ביצוע (ops-forge/ops/RECEIPTS.jsonl) — חי · גיל ?h
 - גריד-DEX (saos-dex/grids/state/state.json) — חי · גיל ?h
-- מדדי-DEX (saos-dex/db/dex-metrics.json) — חי · גיל 0.1h
-- דופק-ציבורי (Pulse/state/network.json) — חי · גיל 0h
-- בריאות-צי (GridWatch/state/fleet-health.json) — חי · גיל 0.4h
+- מדדי-DEX (saos-dex/db/dex-metrics.json) — חי · גיל 0.3h
+- דופק-ציבורי (Pulse/state/network.json) — חי · גיל 0.3h
+- בריאות-צי (GridWatch/state/fleet-health.json) — חי · גיל 0.3h
 
 ## אתרים
 - https://roshpinacare-sys.github.io/ — HTTP 200
@@ -44,5 +44,5 @@
 - https://roshpinacare-sys.github.io/FleetHQ/ — HTTP 200
 
 ## חישוב
-- איברים-פומביים פעילים: 156
+- איברים-פומביים פעילים: 138
 - וורקפלו-פעילים בריפו-פרטי (אמור-להיות-0, חוק-עצירת-הדימום): 0
