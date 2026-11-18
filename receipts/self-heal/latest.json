@@ -1,13 +1,45 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-18T02:52:31.023Z",
+ "at": "2026-11-18T03:54:23.080Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-18T02:41:56.580Z",
+ "verdictAt": "2026-11-18T03:41:03.385Z",
  "dispatched": [
+  {
+   "workflow": "sovereign-state.yml",
+   "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
   {
    "workflow": "artery-watch.yml",
    "check": "sbx.wf-artery-watch",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "federation.yml",
+   "check": "sbx.wf-federation",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -20,33 +52,11 @@
    "status": 204,
    "note": "dispatched",
    "ok": true
-  },
-  {
-   "workflow": "artery-decision-truth.yml",
-   "check": "sbx.wf-artery-decision-truth",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
   }
  ],
  "refused": [],
  "skipped": [],
  "notHealable": [
-  {
-   "id": "steem.rpc",
-   "level": "FAIL",
-   "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
-   "reason": "not-a-dispatchable-workflow"
-  },
   {
    "id": "dev.rate",
    "level": "DEGRADED",
@@ -54,15 +64,9 @@
    "reason": "not-a-dispatchable-workflow"
   },
   {
-   "id": "steem.fleet",
-   "level": "DEGRADED",
-   "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
-   "reason": "not-a-dispatchable-workflow"
-  },
-  {
    "id": "steem.treasury",
-   "level": "NOTICE",
-   "why": "treasury account absent",
+   "level": "DEGRADED",
+   "why": "treasury acct-00 at 2491 SP < 3000 (recovery-plan §3)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -72,8 +76,8 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
- "verdictOverall": "FAIL",
+ "truncated": 5,
+ "verdictOverall": "DEGRADED",
  "workflows": {
   "total": 62,
   "active": 62,
