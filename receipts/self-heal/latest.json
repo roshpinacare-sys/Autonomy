@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-19T22:55:15.201Z",
+ "at": "2026-11-19T23:48:38.018Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-19T22:39:30.680Z",
+ "verdictAt": "2026-11-19T23:38:32.581Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -22,6 +30,14 @@
    "ok": true
   },
   {
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
    "workflow": "value-scan.yml",
    "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
@@ -30,16 +46,8 @@
    "ok": true
   },
   {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-participation.yml",
-   "check": "sbx.wf-artery-participation",
+   "workflow": "artery-wallet.yml",
+   "check": "sbx.wf-artery-wallet",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -53,12 +61,6 @@
    "id": "steem.rpc",
    "level": "FAIL",
    "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
-   "reason": "not-a-dispatchable-workflow"
-  },
-  {
-   "id": "dev.rate",
-   "level": "NOTICE",
-   "why": "mixed activity: codeShare 24%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -80,7 +82,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
+ "truncated": 1,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
