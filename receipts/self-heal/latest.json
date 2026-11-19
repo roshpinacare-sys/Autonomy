@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-19T21:08:49.762Z",
+ "at": "2026-11-19T22:02:00.281Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-19T20:41:06.695Z",
+ "verdictAt": "2026-11-19T21:40:22.146Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -30,24 +38,16 @@
    "ok": true
   },
   {
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
    "workflow": "artery-grid.yml",
    "check": "sbx.wf-artery-grid",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-integrity.yml",
-   "check": "sbx.wf-artery-integrity",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-participation.yml",
-   "check": "sbx.wf-artery-participation",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -66,7 +66,7 @@
   {
    "id": "dev.rate",
    "level": "NOTICE",
-   "why": "mixed activity: codeShare 12%",
+   "why": "mixed activity: codeShare 19%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
