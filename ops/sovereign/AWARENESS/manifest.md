@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-19T04:20:26.324Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-19T04:29:24.151Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -27,7 +27,7 @@
 - [DEFECT] Domain/weave-anchor-lines @ 2026-11-18T14:14 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-arm @ 2026-11-18T12:57 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/org-selftests @ 2026-11-18T12:39 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Autonomy/selfhood @ 2026-11-18T23:09 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Autonomy/selfhood @ 2026-11-19T04:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/.github/workflows/fleet-yield.yml @ 2026-11-18T13:29 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/sovereign-state @ 2026-11-18T10:08 — autonomy triage: read the log, fix root, land, verify
 
