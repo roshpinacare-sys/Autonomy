@@ -1,20 +1,20 @@
 # VALUE-MAP · סריקת-פוטנציאל-חיה (office-growth)
-## נמדד: 2026-11-18T20:51:59Z · אפס-נתונים-מדומים (UNKNOWN=לא-נמדד)
+## נמדד: 2026-11-19T07:52:25Z · אפס-נתונים-מדומים (UNKNOWN=לא-נמדד)
 
 | שטח | מצב | גיל-דחיפה(ש) | אדומות-48ש | פתוחים | ארכיון |
 |---|---|---|---|---|---|
-| FleetHQ | FRESH | 2.5 | 0 | 38 | False |
-| Domain | FRESH | 0.0 | 2 | 3 | False |
-| Sandbox | FRESH | 1.3 | 8 | 0 | False |
-| TruthRail | SILENT | 580.6 | 0 | 0 | False |
-| sovereign-beacon | AGING | 6.5 | 0 | 0 | False |
+| FleetHQ | FRESH | 1.1 | 0 | 38 | False |
+| Domain | FRESH | 0.0 | 0 | 3 | False |
+| Sandbox | FRESH | 1.1 | 7 | 0 | False |
+| TruthRail | SILENT | 591.6 | 0 | 0 | False |
+| sovereign-beacon | FRESH | 4.2 | 0 | 0 | False |
 | sovereign-lighthouse | FRESH | 0.3 | 0 | 1 | False |
-| saos-agents | SILENT | 601.7 | 0 | 0 | False |
-| saos-runtime | FRESH | 0.1 | 0 | 4 | False |
+| saos-agents | SILENT | 612.7 | 0 | 0 | False |
+| saos-runtime | FRESH | 0.2 | 3 | 4 | False |
 | Console | FRESH | 0.0 | 0 | 0 | False |
-| steem | FRESH | 0.1 | 0 | 61 | False |
+| steem | FRESH | 0.1 | 0 | 62 | False |
 | saos-dex | FRESH | 0.1 | 0 | 0 | False |
-| Saosmartwallet | AGING | 22.2 | 0 | 0 | False |
+| Saosmartwallet | AGING | 9.5 | 0 | 0 | False |
 
 ## פידים חיים
 
@@ -23,11 +23,11 @@
 - Domain/office/data.json: HTTP 200
 - Domain/agents/office-live.json: HTTP 200
 
-## דלתא-מאז-המפה-הקודמת: ['sovereign-beacon: FRESH → AGING']
+## דלתא-מאז-המפה-הקודמת: ['sovereign-beacon: AGING → FRESH']
 
 ## work-orders פתוחים (תובעים-בשורת-פנקס עם מזהה-ה-WO)
 
-- **[P1] WO-Domain-reds** — רפא 2 ריצות-אדומות (48ש) ב-Domain · קבלה: ריצה-ירוקה-מלאה + שורת-שורש-בפנקס ops/AGENT-LEDGER.md
-- **[P1] WO-Sandbox-reds** — רפא 8 ריצות-אדומות (48ש) ב-Sandbox · קבלה: ריצה-ירוקה-מלאה + שורת-שורש-בפנקס ops/AGENT-LEDGER.md
-- **[P2] WO-TruthRail-revive** — החייאה או tombstone ל-TruthRail (דחיפה-אחרונה 580.6ש) · קבלה: push-טרי עם ערך מדיד או tombstone+verifier
-- **[P2] WO-saos-agents-revive** — החייאה או tombstone ל-saos-agents (דחיפה-אחרונה 601.7ש) · קבלה: push-טרי עם ערך מדיד או tombstone+verifier
+- **[P1] WO-Sandbox-reds** — רפא 7 ריצות-אדומות (48ש) ב-Sandbox · קבלה: ריצה-ירוקה-מלאה + שורת-שורש-בפנקס ops/AGENT-LEDGER.md
+- **[P1] WO-saos-runtime-reds** — רפא 3 ריצות-אדומות (48ש) ב-saos-runtime · קבלה: ריצה-ירוקה-מלאה + שורת-שורש-בפנקס ops/AGENT-LEDGER.md
+- **[P2] WO-TruthRail-revive** — החייאה או tombstone ל-TruthRail (דחיפה-אחרונה 591.6ש) · קבלה: push-טרי עם ערך מדיד או tombstone+verifier
+- **[P2] WO-saos-agents-revive** — החייאה או tombstone ל-saos-agents (דחיפה-אחרונה 612.7ש) · קבלה: push-טרי עם ערך מדיד או tombstone+verifier
