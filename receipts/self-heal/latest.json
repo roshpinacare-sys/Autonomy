@@ -1,13 +1,21 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-19T11:18:57.448Z",
+ "at": "2026-11-19T12:12:26.316Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-19T11:18:02.201Z",
+ "verdictAt": "2026-11-19T11:47:44.391Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -30,24 +38,16 @@
    "ok": true
   },
   {
-   "workflow": "federation.yml",
-   "check": "sbx.wf-federation",
+   "workflow": "artery-integrity.yml",
+   "check": "sbx.wf-artery-integrity",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "value-scan.yml",
-   "check": "sbx.wf-value-scan",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "fleet-heal.yml",
-   "check": "sbx.wf-fleet-heal",
+   "workflow": "artery-participation.yml",
+   "check": "sbx.wf-artery-participation",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -65,8 +65,8 @@
   },
   {
    "id": "dev.rate",
-   "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 7% < 10% over 381 commits/24h",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 21%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -88,7 +88,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 4,
+ "truncated": 0,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
@@ -96,6 +96,29 @@
   "disabled": []
  },
  "keys": {
-  "error": "forbidden-403 (census needs admin PAT)"
+  "total": 16,
+  "required": [
+   {
+    "name": "FLEET_PAT",
+    "present": true
+   },
+   {
+    "name": "NVIDIA_NIM_KEY",
+    "present": true
+   },
+   {
+    "name": "CI_ADOPT_WIF_ACTIVE",
+    "present": true
+   },
+   {
+    "name": "FIXEDFLOAT_API_KEY",
+    "present": true
+   },
+   {
+    "name": "FIXEDFLOAT_API_SECRET",
+    "present": true
+   }
+  ],
+  "via": "FLEET_PAT"
  }
 }
