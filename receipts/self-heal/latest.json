@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-19T10:25:19.854Z",
+ "at": "2026-11-19T11:18:57.448Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-19T10:18:40.569Z",
+ "verdictAt": "2026-11-19T11:18:02.201Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -30,24 +30,24 @@
    "ok": true
   },
   {
-   "workflow": "artery-decision-truth.yml",
-   "check": "sbx.wf-artery-decision-truth",
+   "workflow": "federation.yml",
+   "check": "sbx.wf-federation",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "artery-grid.yml",
-   "check": "sbx.wf-artery-grid",
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
    "ok": true
   },
   {
-   "workflow": "artery-flow.yml",
-   "check": "sbx.wf-artery-flow",
+   "workflow": "fleet-heal.yml",
+   "check": "sbx.wf-fleet-heal",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -66,7 +66,7 @@
   {
    "id": "dev.rate",
    "level": "DEGRADED",
-   "why": "heartbeat-without-building: codeShare 7% < 10% over 375 commits/24h",
+   "why": "heartbeat-without-building: codeShare 7% < 10% over 381 commits/24h",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -88,7 +88,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
+ "truncated": 4,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
@@ -96,29 +96,6 @@
   "disabled": []
  },
  "keys": {
-  "total": 16,
-  "required": [
-   {
-    "name": "FLEET_PAT",
-    "present": true
-   },
-   {
-    "name": "NVIDIA_NIM_KEY",
-    "present": true
-   },
-   {
-    "name": "CI_ADOPT_WIF_ACTIVE",
-    "present": true
-   },
-   {
-    "name": "FIXEDFLOAT_API_KEY",
-    "present": true
-   },
-   {
-    "name": "FIXEDFLOAT_API_SECRET",
-    "present": true
-   }
-  ],
-  "via": "FLEET_PAT"
+  "error": "forbidden-403 (census needs admin PAT)"
  }
 }
