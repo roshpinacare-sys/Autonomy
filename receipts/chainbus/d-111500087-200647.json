@@ -1,0 +1,29 @@
+{
+  "schema": "chainbus.directive.receipt/1",
+  "at": "2026-11-20T23:21:27.630Z",
+  "ok": false,
+  "ref": {
+    "block": 111500087,
+    "idx": 200647,
+    "seq": 1,
+    "from": "operator-plane",
+    "to": "*",
+    "runId": ""
+  },
+  "body": "{\"task\":\"health-probe\",\"runId\":\"\"}",
+  "task": {
+    "name": "health-probe",
+    "description": "liveness: public chain RPC head block + this repo git tip (read-only)",
+    "commands": 2,
+    "timeoutSec": 60
+  },
+  "exec": {
+    "ok": false,
+    "code": 1,
+    "ms": 448,
+    "receipt": "receipts/execution/bus-d-111500087-200647.json",
+    "outTail": "ernal/deps/undici/undici:6019:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n\n\n=== [1] exit=0 killed=false 146ms ===\n$ git log --oneline -3\ncbb5531 decision-truth verdict: 2026-11-20T23:21:11Z\n\n\nreceipt: receipts/execution/bus-d-111500087-200647.json ok=false\n",
+    "errTail": ""
+  },
+  "node": "https://steemapi.boylikegirl.club"
+}
