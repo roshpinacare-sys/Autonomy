@@ -1,0 +1,22 @@
+{
+  "schema": "exec.receipt/1",
+  "id": "bus-d-111450949-199653",
+  "task": "bus-d-111450949-199653",
+  "at": "2026-11-20T01:09:13.207Z",
+  "runner": "github-actions:ubuntu-latest",
+  "repo": "roshpinacare-sys/Autonomy",
+  "runId": "44651390647",
+  "ok": false,
+  "commandCount": 1,
+  "results": [
+    {
+      "i": 0,
+      "cmd": "node engine/tasks/scripts/minutes-census.mjs",
+      "exit": 1,
+      "killed": false,
+      "ms": 275,
+      "out": "",
+      "err": "file:///home/runner/work/Autonomy/Autonomy/engine/tasks/scripts/minutes-census.mjs:13\n  if (r.status === 403 || r.status === 429) throw new Error(`github-rate-limited ${path}`);\n                                                  ^\n\nError: github-rate-limited /users/roshpinacare-sys/repos?per_page=100&page=1\n    at gh (file:///home/runner/work/Autonomy/Autonomy/engine/tasks/scripts/minutes-census.mjs:13:51)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async pageAll (file:///home/runner/work/Autonomy/Autonomy/engine/tasks/scripts/minutes-census.mjs:22:15)\n    at async file:///home/runner/work/Autonomy/Autonomy/engine/tasks/scripts/minutes-census.mjs:29:15\n\nNode.js v24.22.3\n"
+    }
+  ]
+}
