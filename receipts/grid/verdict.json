@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-11-20T07:37:16.166Z",
+  "measuredAt": "2026-11-20T08:30:41.623Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -16,16 +16,16 @@
     {
       "id": "law-grid-fresh",
       "ok": true,
-      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 0min)",
+      "detail": "grid enabled=true: lastTickAt must be ≤ 90min old (measured 1min)",
       "severity": "fail",
       "verdict": "pass"
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": false,
-      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
+      "ok": true,
+      "detail": "grid executable: lastVerdict=THINK-GATE-REFUSED opsToday=34",
       "severity": "fail",
-      "verdict": "fail"
+      "verdict": "pass"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,23 +36,22 @@
     }
   ],
   "alerts": [],
-  "overall": "BLOCKED",
-  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
+  "overall": "PASS",
+  "reason": "grid state measured from git; laws pass",
   "provenance": {
-    "stateBlobSha": "2b4a237114eb8b4a901f75c596cdbde86fddfdf8",
+    "stateBlobSha": "e14fefbb06b191f1004c6137a5421438fb9dda2e",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "44696289366",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/44696289366",
-    "sha": "eaa6cf485176ee75f04241d9ed56503778ddb01f"
+    "runId": "44703038419",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/44703038419",
+    "sha": "806618fad0e4817c3ab94648cb5a287340da0079"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-11-20T07:36:51.675Z",
-    "ageMin": 0,
-    "ticks": 93242,
-    "lastVerdict": "CREDENTIAL-MISSING",
+    "lastTickAt": "2026-11-20T08:29:52.778Z",
+    "ageMin": 1,
+    "ticks": 93541,
+    "lastVerdict": "THINK-GATE-REFUSED",
     "opsToday": 34,
     "lastTxid": "915d249c3fd4a3a9519acc42f112da065fe645cf"
-  },
-  "credBlocked": true
+  }
 }
