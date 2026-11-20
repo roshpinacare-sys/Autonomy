@@ -1,21 +1,13 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-20T18:21:34.211Z",
+ "at": "2026-11-20T19:14:57.374Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-20T17:54:10.790Z",
+ "verdictAt": "2026-11-20T18:53:19.861Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
    "check": "sbx.wf-sovereign-state",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "artery-catchup.yml",
-   "check": "sbx.wf-artery-catchup",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -46,6 +38,14 @@
    "ok": true
   },
   {
+   "workflow": "value-scan.yml",
+   "check": "sbx.wf-value-scan",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
    "workflow": "fleet-heal.yml",
    "check": "sbx.wf-fleet-heal",
    "level": "DEGRADED",
@@ -61,6 +61,12 @@
    "id": "steem.rpc",
    "level": "FAIL",
    "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "dev.rate",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 14%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -82,7 +88,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 1,
+ "truncated": 4,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
