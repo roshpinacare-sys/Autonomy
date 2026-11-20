@@ -1,6 +1,6 @@
 {
   "artery": "grid-watch",
-  "measuredAt": "2026-11-20T15:53:06.399Z",
+  "measuredAt": "2026-11-20T16:34:12.648Z",
   "sources": [
     "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
     "https://api.github.com/repos/roshpinacare-sys/saos-runtime/contents/.github/workflows/sovereign-runtime.yml"
@@ -22,10 +22,10 @@
     },
     {
       "id": "law-grid-exec-alive",
-      "ok": true,
-      "detail": "grid executable: lastVerdict=THINK-GATE-REFUSED opsToday=34",
+      "ok": false,
+      "detail": "grid enabled but blocked on credential (lastVerdict=CREDENTIAL-MISSING) — BLOCKED-SILENT: owner words decide; alarm lives in receipt + decider",
       "severity": "fail",
-      "verdict": "pass"
+      "verdict": "fail"
     },
     {
       "id": "law-grid-revival-wired",
@@ -36,22 +36,23 @@
     }
   ],
   "alerts": [],
-  "overall": "PASS",
-  "reason": "grid state measured from git; laws pass",
+  "overall": "BLOCKED",
+  "reason": "grid credential-blocked — BLOCKED-SILENT LAW v2: measured honestly, owner words decide",
   "provenance": {
-    "stateBlobSha": "8e1e6e3e093ff94805e2b88f5e7e61717a696f26",
+    "stateBlobSha": "9ba70adbd4daab1445b802c825e47062ddba1ed5",
     "stateUrl": "https://api.github.com/repos/roshpinacare-sys/steem/contents/mini-services/saos-engine/state/hyper-grid.json?ref=saos-cockpit",
-    "runId": "44767710053",
-    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/44767710053",
-    "sha": "d839bedfbe80673c9f83b5f82b1622fe8490b38c"
+    "runId": "44774659132",
+    "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/44774659132",
+    "sha": "b50ab20148d35ff89c6eea5f2f519de8b1bef727"
   },
   "measured": {
     "enabled": true,
-    "lastTickAt": "2026-11-20T15:49:27.408Z",
+    "lastTickAt": "2026-11-20T16:30:04.260Z",
     "ageMin": 4,
-    "ticks": 96042,
-    "lastVerdict": "THINK-GATE-REFUSED",
+    "ticks": 96282,
+    "lastVerdict": "CREDENTIAL-MISSING",
     "opsToday": 34,
     "lastTxid": "915d249c3fd4a3a9519acc42f112da065fe645cf"
-  }
+  },
+  "credBlocked": true
 }
