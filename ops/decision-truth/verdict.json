@@ -1,7 +1,7 @@
 {
  "schema": "sandbox/decision-truth/1",
- "generatedAt": "2026-11-20T05:23:40Z",
- "durationMs": 1985,
+ "generatedAt": "2026-11-20T05:24:36Z",
+ "durationMs": 1695,
  "overall": "PASS_WITH_ALERTS",
  "charter": "ops/sovereign/DECIDER/CHARTER.md",
  "law": "H: every ENFORCED decision must re-measure its evidence independently AND show a measured consumer; stale evidence = STALE-TRUTH; no consumer = UNEXECUTED; source down = UNVERIFIABLE (never forged)",
@@ -12,12 +12,16 @@
   "heartbeat": {
    "workflow": "sovereign-decider.yml",
    "lastRunAt": "2026-11-20T01:26:50Z",
-   "ageS": 14209,
+   "ageS": 14265,
    "stalled": true
   }
  },
  "measures": {
-  "chain": null,
+  "chain": {
+   "head": 111481068,
+   "treasuryNetSp": 2492.3,
+   "mult": 0.0006218472850540167
+  },
   "beaconPulse": {},
   "faultedAgentsNow": [],
   "flowSummary": {
@@ -63,8 +67,8 @@
     },
     {
      "law": "treasury-basis-fresh-measure",
-     "result": "unverifiable",
-     "detail": "claimed=null fresh=null tol=1"
+     "result": "mismatch",
+     "detail": "claimed=null fresh=2492.3 tol=1"
     },
     {
      "law": "beacon-vs-fresh",
@@ -73,8 +77,13 @@
     },
     {
      "law": "operators-basis",
-     "result": "unverifiable",
-     "detail": "no fresh chain measure"
+     "result": "ok",
+     "detail": "all 0 operators within ±2SP"
+    },
+    {
+     "law": "below-floor-list",
+     "result": "ok",
+     "detail": "fresh-below=[] declared=[]"
     },
     {
      "law": "execution-existence",
@@ -250,11 +259,11 @@
   }
  ],
  "provenance": {
-  "runId": "44680645808",
-  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/44680645808",
-  "sha": "be65442b370022517b2a69df92889bb1fed3960c",
+  "runId": "44680732172",
+  "runUrl": "https://github.com/roshpinacare-sys/Autonomy/actions/runs/44680732172",
+  "sha": "4ec9fb79e5a90bfb8aaa4fa900db408510eaf96c",
   "engine": "engine/decision-truth.mjs (H-series, zai-code-3)",
-  "generatedAt": "2026-11-20T05:23:40Z"
+  "generatedAt": "2026-11-20T05:24:36Z"
  },
  "selftest": {
   "vectors": 16,
