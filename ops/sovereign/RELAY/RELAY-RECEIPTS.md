@@ -1,9 +1,9 @@
 # RELAY-RECEIPTS — בדיקות-חסרות-המפתח של-הריפואים-הפרטיים, על-רץ-ציבורי
 
-נמדד 2026-11-18T12:17:01.897Z · estate-relay/1 · קריאה-בלבד של-הריפואים-הפרטיים · אף-כתיבה-חזרה
+נמדד 2026-11-20T12:13:04.829Z · estate-relay/1 · קריאה-בלבד של-הריפואים-הפרטיים · אף-כתיבה-חזרה
 
 - הקשר: ריפואים-פרטיים על-תוכנית-חינם = קיר-דקות (run מת-בלי-שלב-ראשון) — זהו-תיקון-היכולת, לא-הסתרת-הקיר.
-- סקופ: 8 ריפואים-פרטיים (≤200MB) · oversize דולגו כנה: priv-h469de745
+- סקופ: 9 ריפואים-פרטיים (≤200MB) · oversize דולגו כנה: priv-h469de745
 - gitleaks: v8.18.4 tree-scan (depth-1) — אם-ורק-אם-הריפו-עצמו-מבקש-זאת
 
 | ref | verdict | yaml-guard | gitleaks |
@@ -15,6 +15,7 @@
 | priv-h8042ff60 | PASS | PASS | N/A (repo has no gitleaks lane) |
 | priv-h9d7b862d | PASS | PASS | N/A (repo has no gitleaks lane) |
 | priv-ha4c1a4d5 | PASS | PASS | N/A (repo has no gitleaks lane) |
+| priv-he6c54b4c | PASS | PASS | N/A (repo has no gitleaks lane) |
 | priv-h5c117460 | PASS | PASS | N/A (repo has no gitleaks lane) |
 
 - verdict: **הכל-נקי בסקופ-הזה**
