@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-20T21:03:11.337Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-20T21:59:47.033Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -15,16 +15,16 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
-- [DEFECT] Domain/site-link-audit @ 2026-11-20T20:52 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/saos-act @ 2026-11-20T21:45 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/site-link-audit @ 2026-11-20T21:39 — autonomy triage: read the log, fix root, land, verify
+- [DEFECT] Domain/operator-console @ 2026-11-20T21:38 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/economy-engine @ 2026-11-20T20:37 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/ladder-refresh @ 2026-11-20T17:20 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-11-20T17:13 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/bridge-keeper @ 2026-11-20T17:02 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/fill-ledger-cron @ 2026-11-20T14:35 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/operator-console @ 2026-11-20T13:53 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/social-audit @ 2026-11-20T13:42 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-arm @ 2026-11-20T12:44 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/saos-act @ 2026-11-20T03:02 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/selfhood @ 2026-11-20T19:13 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Autonomy/artery-builder @ 2026-11-20T12:05 — autonomy triage: read the log, fix root, land, verify
 
