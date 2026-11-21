@@ -1,4 +1,4 @@
-# פנקס-המודעות של הרשת (network-awareness) — 2026-11-21T10:30:37.434Z
+# פנקס-המודעות של הרשת (network-awareness) — 2026-11-21T11:19:46.471Z
 
 נמדד מקצה-לקצה בכל 30 דק'. אפס-מפתחות, אפס-סנדבוקס, אפס-המצאה.
 
@@ -6,7 +6,7 @@
 - 46 ריפואים במשק · ליבה: Domain / Autonomy / FleetHQ
 
 ## מה-חדש (הבעלים בונה כל-הזמן — הרשת מבחינה עכשיו)
-- ריפו-חדש: saos-x402-door (pushed 2026-11-21T10:29:25Z)
+- אין-ריפו-חדש מאז-המדידה-הקודמת
 - אין-workflow-חדש מאז-המדידה-הקודמת
 
 ## עצמאות-מלאה-מסנדבוקס (חוק-התלות-אפס)
@@ -15,8 +15,8 @@
 - FleetHQ: 5 workflows · schedule 3 · dispatch 5 · both 3 → **PASS**
 
 ## תלונות-פתוחות (לאוטונומיה — לא לבעלים)
+- [DEFECT] Domain/site-link-audit @ 2026-11-21T11:09 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/operator-console @ 2026-11-21T10:29 — autonomy triage: read the log, fix root, land, verify
-- [DEFECT] Domain/site-link-audit @ 2026-11-21T09:59 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/daily-digest @ 2026-11-21T08:15 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/treasury-route @ 2026-11-21T07:41 — autonomy triage: read the log, fix root, land, verify
 - [DEFECT] Domain/saos-act @ 2026-11-21T03:08 — autonomy triage: read the log, fix root, land, verify
