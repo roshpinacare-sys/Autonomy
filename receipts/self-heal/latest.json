@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-21T00:08:11.916Z",
+ "at": "2026-11-21T01:01:17.177Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-20T23:49:57.499Z",
+ "verdictAt": "2026-11-21T00:48:56.616Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -14,8 +14,24 @@
    "ok": true
   },
   {
+   "workflow": "artery-catchup.yml",
+   "check": "sbx.wf-artery-catchup",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
    "workflow": "artery-watch.yml",
    "check": "sbx.wf-artery-watch",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
+  },
+  {
+   "workflow": "verifier.yml",
+   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -42,15 +58,21 @@
  "skipped": [],
  "notHealable": [
   {
-   "id": "dev.rate",
-   "level": "NOTICE",
-   "why": "mixed activity: codeShare 10%",
+   "id": "steem.rpc",
+   "level": "FAIL",
+   "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "steem.fleet",
+   "level": "DEGRADED",
+   "why": "no fleet post timestamp measurable (all never-posted or rpc partial)",
    "reason": "not-a-dispatchable-workflow"
   },
   {
    "id": "steem.treasury",
-   "level": "DEGRADED",
-   "why": "treasury acct-00 at 2533 SP < 3000 (recovery-plan §3)",
+   "level": "NOTICE",
+   "why": "treasury account absent",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -60,8 +82,8 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 0,
- "verdictOverall": "DEGRADED",
+ "truncated": 3,
+ "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
   "active": 62,
