@@ -1,9 +1,9 @@
 {
  "schema": "self-heal/1",
- "at": "2026-11-21T01:01:17.177Z",
+ "at": "2026-11-21T01:54:32.295Z",
  "repo": "roshpinacare-sys/Autonomy",
  "ok": true,
- "verdictAt": "2026-11-21T00:48:56.616Z",
+ "verdictAt": "2026-11-21T01:47:58.435Z",
  "dispatched": [
   {
    "workflow": "sovereign-state.yml",
@@ -14,24 +14,8 @@
    "ok": true
   },
   {
-   "workflow": "artery-catchup.yml",
-   "check": "sbx.wf-artery-catchup",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
    "workflow": "artery-watch.yml",
    "check": "sbx.wf-artery-watch",
-   "level": "DEGRADED",
-   "status": 204,
-   "note": "dispatched",
-   "ok": true
-  },
-  {
-   "workflow": "verifier.yml",
-   "check": "sbx.wf-verifier",
    "level": "DEGRADED",
    "status": 204,
    "note": "dispatched",
@@ -52,6 +36,14 @@
    "status": 204,
    "note": "dispatched",
    "ok": true
+  },
+  {
+   "workflow": "artery-decision-truth.yml",
+   "check": "sbx.wf-artery-decision-truth",
+   "level": "DEGRADED",
+   "status": 204,
+   "note": "dispatched",
+   "ok": true
   }
  ],
  "refused": [],
@@ -61,6 +53,12 @@
    "id": "steem.rpc",
    "level": "FAIL",
    "why": "steem RPC unreachable/malformed from runner — אין-אמת-על-השרשרת בריצה-זו",
+   "reason": "not-a-dispatchable-workflow"
+  },
+  {
+   "id": "dev.rate",
+   "level": "NOTICE",
+   "why": "mixed activity: codeShare 12%",
    "reason": "not-a-dispatchable-workflow"
   },
   {
@@ -82,7 +80,7 @@
    "reason": "not-a-dispatchable-workflow"
   }
  ],
- "truncated": 3,
+ "truncated": 0,
  "verdictOverall": "FAIL",
  "workflows": {
   "total": 62,
